@@ -18,13 +18,12 @@ const Navbar = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className={`fixed top-6 left-0 right-0 z-40 mx-auto w-[90%] max-w-5xl rounded-[2.5rem] flex items-center justify-between px-6 py-4 transition-all duration-500 ease-out border ${scrolled
-                    ? 'bg-[#0D0D12]/70 backdrop-blur-xl border-white/10 shadow-2xl text-[#FAF8F5]'
-                    : 'bg-transparent border-transparent text-[#FAF8F5]'
+                ? 'bg-[#0D0D12]/70 backdrop-blur-xl border-white/10 shadow-2xl text-[#FAF8F5]'
+                : 'bg-transparent border-transparent text-[#FAF8F5]'
                 }`}
         >
             <div className="flex items-center gap-3">
-                {/* We would use the local logo image ideally, but styling text as logo fallback for now */}
-                <span className="font-drama font-bold text-xl tracking-tight">JobCourier</span>
+                <img src="/JC_logo2x.png" alt="Job Courier Logo" className="h-10 object-contain" />
             </div>
 
             <nav className="hidden md:flex items-center gap-8 font-medium text-sm tracking-wide">

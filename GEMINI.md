@@ -26,7 +26,7 @@ Ogni preset definisce: `palette`, `typography`, `identity` (il feeling generale)
 ### Preset A — "Organic Tech" (Clinical Boutique)
 
 * **Identità:** Un ponte tra un laboratorio di ricerca biologica e una rivista di lusso d'avanguardia.
-* **Palette:** Muschio `#2E4036` (Primario), Argilla `#CC5833` (Accento), Crema `#F2F0E9` (Sfondo), Carbone `#1A1A1A` (Testo/Scuro).
+* **Palette:** Blù JobCourier `#26367b` (Primario), Azzurro brillante `#2f9de5` (Accento), Crema chiaro `#F8F9FA` (Sfondo), Carbone `#1A1A1A` (Testo/Scuro).
 * **Tipografia:** Titoli: "Plus Jakarta Sans" + "Outfit" (tracking stretto). Drama: "Cormorant Garamond" Italic. Dati: `"IBM Plex Mono"`.
 * **Image Mood:** foresta oscura, texture organiche, muschio, felci, vetrerie da laboratorio.
 * **Pattern Hero Line:** "[Concetto sostantivo] è il" (Bold Sans) / "[Parola di potere]." (Massive Serif Italic).
@@ -34,7 +34,7 @@ Ogni preset definisce: `palette`, `typography`, `identity` (il feeling generale)
 ### Preset B — "Midnight Luxe" (Dark Editorial)
 
 * **Identità:** Un club per soli soci incontra l'atelier di un orologiaio di fascia alta.
-* **Palette:** Ossidiana `#0D0D12` (Primario), Champagne `#C9A84C` (Accento), Avorio `#FAF8F5` (Sfondo), Ardesia `#2A2A35` (Testo/Scuro).
+* **Palette:** Blù Profondo `#1a2554` (Primario), Azzurro brillante `#2f9de5` (Accento), Avorio `#FAF8F5` (Sfondo), Ardesia `#2A2A35` (Testo/Scuro).
 * **Tipografia:** Titoli: "Inter" (tracking stretto). Drama: "Playfair Display" Italic. Dati: `"JetBrains Mono"`.
 * **Image Mood:** marmo scuro, accenti dorati, ombre architettoniche, interni di lusso.
 * **Pattern Hero Line:** "[Sostantivo aspirazionale] incontra" (Bold Sans) / "[Parola di precisione]." (Massive Serif Italic).
@@ -42,7 +42,7 @@ Ogni preset definisce: `palette`, `typography`, `identity` (il feeling generale)
 ### Preset C — "Brutalist Signal" (Raw Precision)
 
 * **Identità:** Una sala di controllo per il futuro — nessuna decorazione, pura densità di informazioni.
-* **Palette:** Carta `#E8E4DD` (Primario), Rosso Segnale `#E63B2E` (Accento), Bianco sporco `#F5F3EE` (Sfondo), Nero `#111111` (Testo/Scuro).
+* **Palette:** Carta `#E8E4DD` (Primario), Blù JobCourier `#26367b` (Accento), Bianco sporco `#F5F3EE` (Sfondo), Nero `#111111` (Testo/Scuro).
 * **Tipografia:** Titoli: "Space Grotesk" (tracking stretto). Drama: "DM Serif Display" Italic. Dati: `"Space Mono"`.
 * **Image Mood:** cemento, architettura brutalista, materie prime, industriale.
 * **Pattern Hero Line:** "[Verbo diretto] il" (Bold Sans) / "[Sostantivo sistema]." (Massive Serif Italic).
