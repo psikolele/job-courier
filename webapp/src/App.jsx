@@ -29,10 +29,10 @@ function App() {
       <Navbar />
       <main className="flex flex-col w-full">
         <Hero />
+        <CTA />
         <Features />
         <Philosophy />
         <Protocol />
-        <CTA />
       </main>
       <Footer />
     </div>

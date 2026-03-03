@@ -23,7 +23,7 @@ const Navbar = () => {
                 }`}
         >
             <div className="flex items-center gap-3">
-                <img src="/JC_logo2x.png" alt="Job Courier Logo" className="h-10 object-contain" />
+                <img src="/JC_logo2x.png" alt="Job Courier Logo" className="h-[28px] object-contain" />
             </div>
 
             <nav className="hidden md:flex items-center gap-8 font-medium text-sm tracking-wide">

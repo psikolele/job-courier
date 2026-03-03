@@ -24,7 +24,7 @@ const DiagnosticShuffler = () => {
     }, []);
 
     return (
-        <div className="relative h-48 w-full glass-dark rounded-[2rem] overflow-hidden p-6 shadow-2xl flex flex-col justify-between group">
+        <div className="relative h-64 w-full glass-dark rounded-[2rem] overflow-hidden p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col justify-between group">
             <div className="w-full h-[70px] relative mt-1">
                 <AnimatePresence>
                     {items.map((item, i) => (
@@ -67,7 +67,7 @@ const TelemetryTypewriter = () => {
     }, [index]);
 
     return (
-        <div className="relative h-48 w-full glass-dark rounded-[2rem] overflow-hidden p-6 shadow-2xl flex flex-col justify-between">
+        <div className="relative h-64 w-full glass-dark rounded-[2rem] overflow-hidden p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col justify-between">
             <div className="flex items-center gap-2 mb-4">
                 <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
                 <span className="text-xs font-mono text-accent uppercase tracking-wider">Live Feed Alerts</span>
@@ -88,7 +88,7 @@ const TelemetryTypewriter = () => {
 
 const CursorScheduler = () => {
     return (
-        <div className="relative h-48 w-full glass-dark rounded-[2rem] overflow-hidden p-6 shadow-2xl flex flex-col items-center group">
+        <div className="relative h-64 w-full glass-dark rounded-[2rem] overflow-hidden p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col items-center group">
             {/* Griglia giorni finta */}
             <div className="flex justify-between w-full mt-2 space-x-2">
                 {['L', 'M', 'M', 'G', 'V', 'S', 'D'].map((d, i) => (
@@ -110,7 +110,7 @@ const CursorScheduler = () => {
                 fill="currentColor"
                 viewBox="0 0 24 24"
             >
-                <path d="M4 2.8C4 1.7 5.2 1 6.1 1.6l15.1 9c.9.5.8 1.9-.1 2.4l-5 2.5-3.1 7.2c-.4 1-.2 2.2-1.9 2.2-1 0-1.8-.8-2.2-1.7l-2.4-5.5-5.6 2.5C4.8 20.6 4 19.8 4 18.8V2.8z" />
+                <path stroke="currentColor" strokeWidth="2" strokeLinejoin="round" d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />
             </motion.svg>
 
             <div className="mt-auto flex w-full flex-col align-start text-left">
