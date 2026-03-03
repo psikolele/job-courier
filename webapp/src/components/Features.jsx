@@ -36,7 +36,7 @@ const DiagnosticShuffler = () => {
                             transition={{ type: "spring", stiffness: 100, damping: 20 }}
                             className="absolute left-0 right-0 mx-auto w-[85%] h-8 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center shadow-lg"
                         >
-                            <span className="text-[#FAF8F5] text-[11px] font-semibold tracking-wide uppercase">{item.text}</span>
+                            <span className="text-background text-[11px] font-semibold tracking-wide uppercase">{item.text}</span>
                         </motion.div>
                     ))}
                 </AnimatePresence>
@@ -69,13 +69,13 @@ const TelemetryTypewriter = () => {
     return (
         <div className="relative h-48 w-full glass-dark rounded-[2rem] overflow-hidden p-6 shadow-2xl flex flex-col justify-between">
             <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse"></div>
-                <span className="text-xs font-mono text-[#C9A84C] uppercase tracking-wider">Live Feed Alerts</span>
+                <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+                <span className="text-xs font-mono text-accent uppercase tracking-wider">Live Feed Alerts</span>
             </div>
             <div className="flex-grow">
-                <p className="font-mono text-sm text-[#FAF8F5]/80 leading-relaxed">
+                <p className="font-mono text-sm text-background/80 leading-relaxed">
                     {text}
-                    <span className="inline-block w-2 bg-[#FAF8F5] h-4 ml-1 animate-pulse"></span>
+                    <span className="inline-block w-2 bg-background h-4 ml-1 animate-pulse"></span>
                 </p>
             </div>
             <div className="mt-4">
@@ -92,7 +92,7 @@ const CursorScheduler = () => {
             {/* Griglia giorni finta */}
             <div className="flex justify-between w-full mt-2 space-x-2">
                 {['L', 'M', 'M', 'G', 'V', 'S', 'D'].map((d, i) => (
-                    <div key={i} className={`h-8 w-8 rounded-lg flex items-center justify-center border border-white/10 text-xs font-mono transition-colors duration-500 ${i === 2 ? 'bg-[#C9A84C] text-[#0D0D12]' : 'text-[#FAF8F5]'}`}>
+                    <div key={i} className={`h-8 w-8 rounded-lg flex items-center justify-center border border-white/10 text-xs font-mono transition-colors duration-500 ${i === 2 ? 'bg-accent text-primary' : 'text-background'}`}>
                         {d}
                     </div>
                 ))}
@@ -123,12 +123,12 @@ const CursorScheduler = () => {
 
 const Features = () => {
     return (
-        <section id="features" className="w-full py-32 px-6 md:px-12 bg-[#FAF8F5] relative overflow-hidden">
+        <section id="features" className="w-full py-32 px-6 md:px-12 bg-background relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-20">
-                    <h2 className="text-4xl md:text-6xl font-sans tracking-tight font-bold text-[#0D0D12] mb-6">
+                    <h2 className="text-4xl md:text-6xl font-sans tracking-tight font-bold text-primary mb-6">
                         Strumenti Digitali per il<br />
-                        <span className="font-drama italic text-[#C9A84C]">Mercato del Lavoro</span>
+                        <span className="font-drama italic text-accent">Mercato del Lavoro</span>
                     </h2>
                     <p className="text-base text-gray-600 max-w-2xl leading-relaxed">
                         Non siamo solo una bacheca annunci. Forniamo un ecosistema tecnologico avanzato costruito per accelerare il tuo percorso verso il posizionamento ideale.

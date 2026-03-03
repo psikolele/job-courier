@@ -3,8 +3,9 @@
 @theme {
   --color-primary: #26367b;
   --color-accent: #2f9de5;
-  --color-background: #FAF8F5;
-  --color-foreground: #0D0D12;
+  --color-background: #F5FBFC;
+  --color-foreground: #0B132B;
+  --color-surface: #1A244D;
 
   --font-sans: "Inter", sans-serif;
   --font-drama: "Playfair Display", serif;

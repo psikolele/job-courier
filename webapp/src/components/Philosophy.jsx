@@ -36,7 +36,7 @@ const Philosophy = () => {
         <section
             id="philosophy"
             ref={sectionRef}
-            className="relative w-full py-40 px-6 md:px-16 bg-[#0D0D12] overflow-hidden"
+            className="relative w-full py-40 px-6 md:px-16 bg-surface overflow-hidden"
         >
             {/* Subtle parallax texture background */}
             <div
@@ -53,9 +53,9 @@ const Philosophy = () => {
                 <p ref={text1Ref} className="text-xl md:text-3xl font-sans text-gray-400 mb-8 max-w-3xl leading-relaxed">
                     La maggior parte dei portali offre un mare di annunci confusi: <span className="text-white">perdita di tempo e disorganizzazione.</span>
                 </p>
-                <h2 ref={text2Ref} className="text-4xl md:text-7xl font-sans font-bold text-[#FAF8F5] leading-tight">
+                <h2 ref={text2Ref} className="text-4xl md:text-7xl font-sans font-bold text-background leading-tight">
                     Noi ci concentriamo su: <br />
-                    <span className="font-drama italic text-[#C9A84C] tracking-wide text-5xl md:text-8xl">incontri precisi.</span>
+                    <span className="font-drama italic text-accent tracking-wide text-5xl md:text-8xl">incontri precisi.</span>
                 </h2>
             </div>
         </section>

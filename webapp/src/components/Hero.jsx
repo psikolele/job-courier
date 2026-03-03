@@ -33,7 +33,7 @@ const Hero = () => {
     return (
         <section
             ref={containerRef}
-            className="relative w-full min-h-[100dvh] flex items-end pb-24 px-8 md:px-16 overflow-hidden bg-[#0D0D12]"
+            className="relative w-full min-h-[100dvh] flex items-end pb-24 px-8 md:px-16 overflow-hidden bg-primary"
         >
             {/* Background Image with Dark Overlay */}
             <div
@@ -44,30 +44,30 @@ const Hero = () => {
                     backgroundSize: 'cover'
                 }}
             >
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D12] via-[#0D0D12]/70 to-[#0D0D12]/20"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/20"></div>
             </div>
 
             {/* Content in the bottom third left */}
-            <div className="relative z-10 w-full max-w-4xl text-[#FAF8F5]">
+            <div className="relative z-10 w-full max-w-4xl text-background">
                 <div className="mb-8">
-                    <p ref={text1Ref} className="text-xl md:text-2xl font-mono text-[#C9A84C] mb-4 uppercase tracking-widest">
+                    <p ref={text1Ref} className="text-xl md:text-2xl font-mono text-accent mb-4 uppercase tracking-widest">
                         JobCourier
                     </p>
                     <h1 className="leading-none tracking-tighter overflow-hidden">
                         <span ref={text2Ref} className="block text-4xl md:text-6xl font-bold font-sans mb-2">
                             Il portale svizzero per
                         </span>
-                        <span ref={text3Ref} className="block text-6xl md:text-8xl mt-2 font-drama italic text-[#C9A84C]">
+                        <span ref={text3Ref} className="block text-6xl md:text-8xl mt-2 font-drama italic text-accent">
                             il tuo prossimo lavoro.
                         </span>
                     </h1>
                 </div>
 
                 <div ref={ctaRef} className="flex flex-col sm:flex-row items-center gap-6 mt-12">
-                    <button className="w-full sm:w-auto overflow-hidden rounded-full bg-[#C9A84C] px-8 py-4 text-base font-semibold text-[#0D0D12] transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]">
+                    <button className="w-full sm:w-auto overflow-hidden rounded-full bg-accent px-8 py-4 text-base font-semibold text-foreground transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]">
                         Inizia la ricerca
                     </button>
-                    <p className="text-sm font-mono text-[#FAF8F5]/60 max-w-xs">
+                    <p className="text-sm font-mono text-background/60 max-w-xs">
                         Un click per connettere talento e opportunità in tutta la Svizzera.
                     </p>
                 </div>

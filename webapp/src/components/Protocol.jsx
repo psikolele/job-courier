@@ -46,11 +46,11 @@ const Protocol = () => {
     }, []);
 
     return (
-        <section id="protocol" className="bg-[#FAF8F5] relative">
+        <section id="protocol" className="bg-background relative">
             <div ref={containerRef} className="h-[100dvh] w-full overflow-hidden relative">
                 <div className="absolute top-20 left-0 w-full text-center z-10 pointer-events-none">
-                    <h2 className="text-4xl md:text-5xl font-sans font-bold text-[#0D0D12]">
-                        Fasi <span className="font-drama italic text-[#C9A84C]">Operative</span>
+                    <h2 className="text-4xl md:text-5xl font-sans font-bold text-primary">
+                        Fasi <span className="font-drama italic text-accent">Operative</span>
                     </h2>
                 </div>
 
@@ -62,10 +62,10 @@ const Protocol = () => {
                             className="protocol-card absolute w-full max-w-3xl h-[60dvh] md:h-[50dvh] glass-panel bg-white/80 rounded-[3rem] p-10 md:p-16 flex flex-col justify-center items-center text-center shadow-xl border border-gray-200"
                             style={{ zIndex: i + 10 }}
                         >
-                            <div className="text-sm font-mono text-[#C9A84C] mb-8 tracking-widest bg-[#0D0D12] px-4 py-2 rounded-full inline-block">
+                            <div className="text-sm font-mono text-accent mb-8 tracking-widest bg-surface px-4 py-2 rounded-full inline-block">
                                 STEP {card.num}
                             </div>
-                            <h3 className="text-3xl md:text-5xl font-sans font-bold text-[#0D0D12] mb-6">
+                            <h3 className="text-3xl md:text-5xl font-sans font-bold text-primary mb-6">
                                 {card.title}
                             </h3>
                             <p className="text-base md:text-lg text-gray-600 max-w-xl">

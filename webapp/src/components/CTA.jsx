@@ -2,7 +2,7 @@ import React from 'react';
 
 const CTA = () => {
     return (
-        <section className="w-full min-h-[80vh] flex flex-col md:flex-row bg-[#FAF8F5]">
+        <section className="w-full min-h-[80vh] flex flex-col md:flex-row bg-background">
             {/* Candidati Side */}
             <div className="flex-1 p-12 md:p-24 flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-200 relative group overflow-hidden transition-colors duration-500 hover:bg-white">
                 <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none">
@@ -12,37 +12,37 @@ const CTA = () => {
                     </svg>
                 </div>
                 <div className="relative z-10">
-                    <span className="text-sm font-mono text-[#C9A84C] tracking-widest uppercase mb-4 block">Per i Candidati</span>
-                    <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#0D0D12] mb-6 tracking-tight">
+                    <span className="text-sm font-mono text-accent tracking-widest uppercase mb-4 block">Per i Candidati</span>
+                    <h2 className="text-4xl md:text-6xl font-sans font-bold text-primary mb-6 tracking-tight">
                         Accedi al tuo<br />
                         <span className="font-drama italic">Prossimo Lavoro.</span>
                     </h2>
                     <p className="text-gray-600 mb-10 max-w-md">
                         Crea il tuo profilo, imposta gli alert per le posizioni desiderate e candidati con un singolo click. Entra nel network.
                     </p>
-                    <button className="group relative overflow-hidden rounded-full bg-[#0D0D12] px-8 py-4 font-semibold text-[#FAF8F5] transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]">
+                    <button className="group relative overflow-hidden rounded-full bg-primary px-8 py-4 font-semibold text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]">
                         Cerca Offerte
                     </button>
                 </div>
             </div>
 
             {/* Aziende Side */}
-            <div className="flex-1 p-12 md:p-24 flex flex-col justify-center bg-[#0D0D12] text-[#FAF8F5] relative group overflow-hidden">
+            <div className="flex-1 p-12 md:p-24 flex flex-col justify-center bg-surface text-background relative group overflow-hidden">
                 <div className="absolute bottom-0 left-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none">
                     <svg width="200" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 21V9C3 7.89543 3.89543 7 5 7H19C20.1046 7 21 7.89543 21 9V21M3 21H21M3 21H1M21 21H23M9 21V16C9 14.8954 9.89543 14 11 14H13C14.1046 14 15 14.8954 15 16V21" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </div>
                 <div className="relative z-10">
-                    <span className="text-sm font-mono text-[#C9A84C] tracking-widest uppercase mb-4 block">Per le Aziende</span>
+                    <span className="text-sm font-mono text-accent tracking-widest uppercase mb-4 block">Per le Aziende</span>
                     <h2 className="text-4xl md:text-6xl font-sans font-bold text-white mb-6 tracking-tight">
                         Trova il Miglior<br />
-                        <span className="font-drama italic text-[#C9A84C]">Talento.</span>
+                        <span className="font-drama italic text-accent">Talento.</span>
                     </h2>
                     <p className="text-gray-400 mb-10 max-w-md">
                         Pubblica le tue posizioni aperte, gestisci le candidature e incontra i professionisti che cerchi, focalizzati sul Ticino e sulla Svizzera.
                     </p>
-                    <button className="group relative overflow-hidden rounded-full border border-white/20 bg-transparent px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-[#C9A84C] hover:text-[#0D0D12] hover:border-transparent active:scale-[0.98]">
+                    <button className="group relative overflow-hidden rounded-full border border-white/20 bg-transparent px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-accent hover:text-foreground hover:border-transparent active:scale-[0.98]">
                         Pubblica un'Offerta
                     </button>
                 </div>
