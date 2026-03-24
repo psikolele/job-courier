@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -6,11 +6,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Filters from './components/Filters';
 import Features from './components/Features';
+import Vetrini from './components/Vetrini';
 import Philosophy from './components/Philosophy';
 import Protocol from './components/Protocol';
+import Blog from './components/Blog';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+
+// Lazy load the Ad components
+const AdSlot = lazy(() => import('./components/AdSlot'));
 
 function App() {
   useEffect(() => {
@@ -29,10 +35,34 @@ function App() {
       <Navbar />
       <main className="flex flex-col w-full">
         <Hero />
+        <Filters />
+        
+        <Suspense fallback={<div className="h-[150px]"></div>}>
+          <AdSlot id="1" type="internal" />
+        </Suspense>
+        
         <CTA />
+        
+        <Suspense fallback={<div className="h-[150px]"></div>}>
+          <AdSlot id="2" type="adsense" />
+        </Suspense>
+
         <Features />
+        
+        <Suspense fallback={<div className="h-[150px]"></div>}>
+          <AdSlot id="3" type="adsense" />
+        </Suspense>
+
+        <Vetrini />
         <Philosophy />
         <Protocol />
+
+        <Suspense fallback={<div className="h-[150px]"></div>}>
+          <AdSlot id="4" type="internal" />
+        </Suspense>
+
+        <Blog />
+
       </main>
       <Footer />
     </div>

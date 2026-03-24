@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -11,6 +13,10 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+    };
 
     return (
         <motion.header
@@ -27,27 +33,36 @@ const Navbar = () => {
             </div>
 
             <nav className="hidden md:flex items-center gap-8 font-medium text-sm tracking-wide">
-                <a href="#features" className="hover:text-accent transition-colors relative group">
-                    Vantaggi
+                <a href="#jobs" className="hover:text-accent transition-colors relative group">
+                    {t('nav.jobs')}
                     <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#philosophy" className="hover:text-accent transition-colors relative group">
-                    Filosofia
+                <a href="#companies" className="hover:text-accent transition-colors relative group">
+                    {t('nav.companies')}
                     <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#protocol" className="hover:text-accent transition-colors relative group">
-                    Come Funziona
+                <a href="#blog" className="hover:text-accent transition-colors relative group">
+                    {t('nav.blog')}
+                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#institutions" className="hover:text-accent transition-colors relative group">
+                    {t('nav.institutions')}
                     <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full"></span>
                 </a>
             </nav>
 
             <div className="flex items-center gap-4">
-                <button className="hidden sm:block text-sm font-medium hover:text-accent transition-colors">
-                    Log in
-                </button>
-                <button className="group relative overflow-hidden rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-foreground transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]">
+                <div className="hidden sm:flex uppercase text-xs font-bold gap-2 text-background/70">
+                    <button onClick={() => changeLanguage('it')} className={i18n.language === 'it' ? 'text-accent' : 'hover:text-accent'}>IT</button>
+                    <span>|</span>
+                    <button onClick={() => changeLanguage('de')} className={i18n.language === 'de' ? 'text-accent' : 'hover:text-accent'}>DE</button>
+                    <span>|</span>
+                    <button onClick={() => changeLanguage('fr')} className={i18n.language === 'fr' ? 'text-accent' : 'hover:text-accent'}>FR</button>
+                </div>
+                
+                <button className="group relative overflow-hidden rounded-full bg-red-600 px-6 py-2.5 text-sm font-semibold text-white transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] drop-shadow-lg">
                     <span className="relative z-10 flex items-center gap-2">
-                        Inizia Ora
+                        {t('nav.login')}
                         <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>

@@ -1,30 +1,36 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
     const containerRef = useRef(null);
-    const text1Ref = useRef(null);
-    const text2Ref = useRef(null);
-    const text3Ref = useRef(null);
-    const ctaRef = useRef(null);
+    const candidateRef = useRef(null);
+    const companyRef = useRef(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
         let ctx = gsap.context(() => {
             const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-            tl.fromTo(
-                [text1Ref.current, text2Ref.current, text3Ref.current],
-                { y: 40, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1.2, stagger: 0.15 },
-                0.5
-            );
+            // Animate candidate side
+            if(candidateRef.current && candidateRef.current.children) {
+                tl.fromTo(
+                    candidateRef.current.children,
+                    { y: 40, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1, stagger: 0.15 },
+                    0.2
+                );
+            }
 
-            tl.fromTo(
-                ctaRef.current,
-                { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1 },
-                1.1
-            );
+            // Animate company side
+            if(companyRef.current && companyRef.current.children) {
+                tl.fromTo(
+                    companyRef.current.children,
+                    { y: 40, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1, stagger: 0.15 },
+                    0.5
+                );
+            }
         }, containerRef);
 
         return () => ctx.revert();
@@ -33,7 +39,7 @@ const Hero = () => {
     return (
         <section
             ref={containerRef}
-            className="relative w-full min-h-[100dvh] flex items-end pb-24 px-8 md:px-16 overflow-hidden bg-primary"
+            className="relative w-full min-h-[100dvh] flex flex-col md:flex-row overflow-hidden bg-primary pt-24"
         >
             {/* Background Image with Dark Overlay */}
             <div
@@ -44,32 +50,46 @@ const Hero = () => {
                     backgroundSize: 'cover'
                 }}
             >
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/20"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-primary/30"></div>
             </div>
 
-            {/* Content in the bottom third left */}
-            <div className="relative z-10 w-full max-w-4xl text-background">
-                <div className="mb-8">
-                    <p ref={text1Ref} className="text-xl md:text-2xl font-mono text-accent mb-4 uppercase tracking-widest">
-                        JobCourier
+            {/* Left Column: Candidates */}
+            <div className="relative z-10 w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 py-12 border-b md:border-b-0 md:border-r border-white/10">
+                <div ref={candidateRef} className="max-w-xl mx-auto md:ml-auto md:mr-0 text-background">
+                    <p className="text-xl md:text-2xl font-mono text-accent mb-4 uppercase tracking-widest">
+                        Candidati
                     </p>
-                    <h1 className="leading-none tracking-tighter overflow-hidden">
-                        <span ref={text2Ref} className="block text-4xl md:text-6xl font-bold font-sans mb-2">
-                            Il portale svizzero per
-                        </span>
-                        <span ref={text3Ref} className="block text-6xl md:text-8xl mt-2 font-drama italic text-accent">
-                            il tuo prossimo lavoro.
+                    <h1 className="leading-tight tracking-tighter mb-6">
+                        <span className="block text-4xl md:text-5xl lg:text-6xl font-bold font-sans">
+                            {t('hero.candidates.h1')}
                         </span>
                     </h1>
-                </div>
-
-                <div ref={ctaRef} className="flex flex-col sm:flex-row items-center gap-6 mt-12">
-                    <button className="w-full sm:w-auto overflow-hidden rounded-full bg-accent px-8 py-4 text-base font-semibold text-foreground transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]">
-                        Inizia la ricerca
-                    </button>
-                    <p className="text-sm font-mono text-background/60 max-w-xs">
-                        Un click per connettere talento e opportunità in tutta la Svizzera.
+                    <p className="text-lg text-background/80 mb-10 max-w-md">
+                        {t('hero.candidates.subtitle')}
                     </p>
+                    <button className="w-full sm:w-auto overflow-hidden rounded-full bg-accent px-8 py-4 text-base font-semibold text-foreground transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]">
+                        {t('hero.candidates.cta')}
+                    </button>
+                </div>
+            </div>
+
+            {/* Right Column: Companies */}
+            <div className="relative z-10 w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 py-12">
+                <div ref={companyRef} className="max-w-xl mx-auto md:mr-auto md:ml-0 text-background">
+                    <p className="text-xl md:text-2xl font-mono text-white/50 mb-4 uppercase tracking-widest">
+                        Aziende
+                    </p>
+                    <h1 className="leading-tight tracking-tighter mb-6">
+                        <span className="block text-4xl md:text-5xl lg:text-6xl font-bold font-sans">
+                            {t('hero.companies.h1')}
+                        </span>
+                    </h1>
+                    <p className="text-lg text-background/80 mb-10 max-w-md">
+                        {t('hero.companies.subtitle')}
+                    </p>
+                    <button className="w-full sm:w-auto overflow-hidden rounded-full bg-white/10 border border-white/20 hover:bg-white/20 px-8 py-4 text-base font-semibold text-white transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] backdrop-blur-sm">
+                        {t('hero.companies.cta')}
+                    </button>
                 </div>
             </div>
         </section>
