@@ -47,20 +47,6 @@ function App() {
           <AdSlot id="2" type="adsense" />
         </Suspense>
 
-        <Features />
-        
-        <Suspense fallback={<div className="h-[150px]"></div>}>
-          <AdSlot id="3" type="adsense" />
-        </Suspense>
-
-        <Vetrini />
-        <Philosophy />
-        <Protocol />
-
-        <Suspense fallback={<div className="h-[150px]"></div>}>
-          <AdSlot id="4" type="internal" />
-        </Suspense>
-
         <Blog />
 
       </main>

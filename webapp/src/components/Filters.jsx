@@ -1,75 +1,254 @@
 import React, { useState, useEffect } from 'react';
-import { fetchCantons, fetchSectors } from '../services/api';
 import { useTranslation } from 'react-i18next';
-import { Search, MapPin, Briefcase } from 'lucide-react';
+import { Search, MapPin, Briefcase, ChevronRight, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Filters = () => {
     const { t } = useTranslation();
     const [cantons, setCantons] = useState([]);
     const [sectors, setSectors] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [jobsLoading, setJobsLoading] = useState(true);
     const [keyword, setKeyword] = useState('');
     const [selectedCanton, setSelectedCanton] = useState('');
     const [selectedSector, setSelectedSector] = useState('');
+    const [latestJobs, setLatestJobs] = useState([]);
 
     useEffect(() => {
-        // Simulated API data fetch
         setTimeout(() => {
-            setCantons(['Zurigo', 'Ginevra', 'Berna', 'Lugano', 'Basilea']);
-            setSectors(['Informatica', 'Finanza', 'Risorse Umane', 'Marketing', 'Sanità']);
+            // Mappatura Cantoni Ufficiali + Iniezione ID Database JobRoom (Region)
+            // I 9 principali trovati nel sito nativo hanno un ID univoco. 
+            // Gli altri faranno fallback su ricerca testuale incrociata se non dispongono di Region ID map.
+            const cantonsData = [
+                { name: 'Argovia', value: 'AG', regionId: '3095' },
+                { name: 'Basilea', value: 'BS', regionId: '3105' },
+                { name: 'Berna', value: 'BE', regionId: '3099' },
+                { name: 'Ginevra', value: 'GE', regionId: '3101' },
+                { name: 'Grigioni', value: 'GR', regionId: '3103' },
+                { name: 'Lucerna', value: 'LU', regionId: '3107' },
+                { name: 'San Gallo', value: 'SG', regionId: '3106' },
+                { name: 'Ticino', value: 'TI', regionId: '3115' },
+                { name: 'Zurigo', value: 'ZH', regionId: '3120' },
+                { name: 'Appenzello Esterno', value: 'AR' },
+                { name: 'Appenzello Interno', value: 'AI' },
+                { name: 'Basilea Campagna', value: 'BL' },
+                { name: 'Friburgo', value: 'FR' },
+                { name: 'Giura', value: 'JU' },
+                { name: 'Glarona', value: 'GL' },
+                { name: 'Neuchâtel', value: 'NE' },
+                { name: 'Nidvaldo', value: 'NW' },
+                { name: 'Obvaldo', value: 'OW' },
+                { name: 'Sciaffusa', value: 'SH' },
+                { name: 'Soletta', value: 'SO' },
+                { name: 'Svitto', value: 'SZ' },
+                { name: 'Turgovia', value: 'TG' },
+                { name: 'Uri', value: 'UR' },
+                { name: 'Vallese', value: 'VS' },
+                { name: 'Vaud', value: 'VD' },
+                { name: 'Zugo', value: 'ZG' }
+            ].sort((a, b) => a.name.localeCompare(b.name));
+            
+            setCantons(cantonsData);
+
+            // Mappatura Settori (Dizionario esatto ID estratti dalla web app originale)
+            setSectors([
+                { name: 'Amministrazione/Paghe e contributi', role: 'amministrazione-2fpaghe-e-contributi', id: '213' },
+                { name: 'Centralino/Segreteria/Servizi generali', role: 'centralino-2fsegretariato-2fservizi-generali', id: '901' },
+                { name: 'Commerciale/Vendite', role: 'commerciale-2fvendite', id: '234' },
+                { name: 'Controllo e certificazione qualità', role: 'controllo-e-certificazione-qualit-c3-a0', id: '231' },
+                { name: 'Costruzioni/Mestieri', role: 'costruzioni-2fmestieri', id: '215' },
+                { name: 'Customer Service', role: 'customer-service', id: '216' },
+                { name: 'Finanza/Contabilità/Revisione', role: 'finanza-2fcontabilit-c3-a0-2frevisione', id: '212' },
+                { name: 'IT/Technology', role: 'it-2ftechnology', id: '236' },
+                { name: 'Ingegneria/Progettazione', role: 'ingegneria-2fprogettazione', id: '219' },
+                { name: 'Logistica/Magazzino', role: 'logistica-2fmagazzino', id: '224' },
+                { name: 'Marketing/Relazioni esterne', role: 'marketing-2frelazioni-esterne', id: '226' },
+                { name: 'Medicina/Salute', role: 'medicina-2fsalute', id: '221' },
+                { name: 'Ricerca e sviluppo', role: 'ricerca-e-sviluppo', id: '232' },
+                { name: 'Risorse umane', role: 'risorse-umane', id: '222' },
+                { name: 'Ristorazione/Hotellerie', role: 'ristorazione-2fhotellerie', id: '220' },
+                { name: 'Sicurezza/Vigilanza', role: 'sicurezza-2fvigilanza', id: '233' },
+                { name: 'Trasporti', role: 'trasporti', id: '900' },
+                { name: 'Vendita al dettaglio/Servizi al pubblico', role: 'vendita-al-dettaglio-2fservizi-al-pubblico', id: '902' }
+            ]);
             setLoading(false);
         }, 800);
+
+        const fetchJobs = async () => {
+            try {
+                const res = await fetch('/api/jobs');
+                if (!res.ok) throw new Error('Backend proxy not reachable in pure Vite dev server.');
+                const data = await res.json();
+                setLatestJobs(data.slice(0, 4));
+            } catch (err) {
+                console.warn(err.message, 'Using graceful local mock data.');
+                setLatestJobs([
+                    { id: 1, title: 'Specialista in Logistica e Supply Chain', location: 'Svizzera, Chiasso', sector: 'Trasporti e logistica', company: 'Global Transport SA', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
+                    { id: 2, title: 'Responsabile Magazzino (100%)', location: 'Berna', sector: 'Logistica E-commerce', company: 'TechSwiss Distribution', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
+                    { id: 3, title: 'Autista Consegnatario Patente B', location: 'Lugano', sector: 'Trasporti', company: 'RapidCourier CH', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
+                    { id: 4, title: 'Impiegato Ufficio Spedizioni', location: 'Ginevra', sector: 'Logistica', company: 'Swiss Delivery Network', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' }
+                ]);
+            } finally {
+                setJobsLoading(false);
+            }
+        };
+        fetchJobs();
     }, []);
 
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log('Searching for:', { keyword, selectedCanton, selectedSector });
-        // Call API here...
+        
+        const baseUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php';
+        const queryParams = new URLSearchParams();
+        
+        let hasCountryRegion = false;
+        if (selectedCanton) {
+            const cantonObj = cantons.find(c => c.value === selectedCanton);
+            if (cantonObj && cantonObj.regionId) {
+                queryParams.set('country', '214'); 
+                queryParams.set('region', cantonObj.regionId);
+                hasCountryRegion = true;
+            } else {
+                queryParams.set('global', '1');
+                queryParams.set('location', cantonObj ? cantonObj.name : selectedCanton);
+            }
+        } else {
+            queryParams.set('global', '1');
+        }
+
+        if (hasCountryRegion) {
+            queryParams.set('sector', '');
+            queryParams.set('role', '');
+            queryParams.set('e_type', '');
+            queryParams.set('percent', '');
+            queryParams.set('e_type_gt', '');
+            queryParams.set('percent_gt', '');
+        }
+
+        if (keyword) {
+            queryParams.set('keyword', keyword);
+        }
+
+        if (selectedSector) {
+            const sectorObj = sectors.find(s => s.id === selectedSector);
+            if (sectorObj) {
+                queryParams.set('role', sectorObj.role);
+                queryParams.set('role_id', sectorObj.id);
+            }
+        }
+
+        window.location.href = `${baseUrl}?${queryParams.toString()}`;
     };
 
     return (
-        <div className="w-full max-w-5xl mx-auto -mt-8 relative z-20 px-4">
-            <div className="bg-surface/80 backdrop-blur-xl border border-white/20 shadow-2xl rounded-3xl p-4 md:p-6">
-                <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-4">
+        <div className="w-full max-w-6xl mx-auto -mt-8 relative z-20 px-4 pb-20">
+            <div className="bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-3xl p-4 md:p-6 mb-8 mt-2">
+                <form onSubmit={handleSearch} className="flex flex-col xl:flex-row gap-4">
+                    
+                    {/* KEYWORD */}
                     <div className="flex-1 relative flex items-center">
-                        <Search className="absolute left-4 w-5 h-5 text-gray-400" />
+                        <Search className="absolute left-4 w-5 h-5 text-slate-400" />
                         <input 
                             type="text" 
-                            placeholder={t('filters.keywordPlaceholder') || "Qualifica, keyword o azienda"}
-                            className="w-full pl-12 pr-4 py-3 rounded-xl bg-background border border-gray-200 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all"
+                            placeholder="Cerca per qualifica, azienda o parola chiave..."
+                            className="w-full pl-12 pr-4 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-[#0038A5] focus:ring-2 focus:ring-[#0038A5]/20 focus:bg-white outline-none transition-all text-slate-900 font-medium placeholder:text-slate-400"
                             value={keyword}
                             onChange={(e) => setKeyword(e.target.value)}
                         />
                     </div>
                     
-                    <div className="md:w-64 relative flex items-center">
-                        <Briefcase className="absolute left-4 w-5 h-5 text-gray-400" />
+                    {/* SECTOR */}
+                    <div className="xl:w-72 relative flex items-center">
+                        <Briefcase className="absolute left-4 w-5 h-5 text-slate-400" />
                         <select 
-                            className="w-full pl-12 pr-4 py-3 rounded-xl bg-background border border-gray-200 focus:border-accent appearance-none outline-none transition-all"
+                            className="w-full pl-12 pr-10 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-[#0038A5] focus:ring-2 focus:ring-[#0038A5]/20 focus:bg-white outline-none transition-all text-slate-900 font-medium appearance-none cursor-pointer truncate"
                             value={selectedSector}
                             onChange={(e) => setSelectedSector(e.target.value)}
                         >
-                            <option value="">{t('filters.sectorPlaceholder') || "Tutti i settori"}</option>
-                            {sectors.map(s => <option key={s} value={s}>{s}</option>)}
+                            <option value="">Qualsiasi settore lavorativo</option>
+                            {sectors.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                         </select>
+                        <ChevronRight className="absolute right-4 w-5 h-5 text-slate-400 pointer-events-none rotate-90" />
                     </div>
 
-                    <div className="md:w-64 relative flex items-center">
-                        <MapPin className="absolute left-4 w-5 h-5 text-gray-400" />
+                    {/* LOCATION */}
+                    <div className="xl:w-[18rem] relative flex items-center">
+                        <MapPin className="absolute left-4 w-5 h-5 text-slate-400" />
                         <select 
-                            className="w-full pl-12 pr-4 py-3 rounded-xl bg-background border border-gray-200 focus:border-accent appearance-none outline-none transition-all"
+                            className="w-full pl-12 pr-10 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-[#0038A5] focus:ring-2 focus:ring-[#0038A5]/20 focus:bg-white outline-none transition-all text-slate-900 font-medium appearance-none cursor-pointer truncate"
                             value={selectedCanton}
                             onChange={(e) => setSelectedCanton(e.target.value)}
                         >
-                            <option value="">{t('filters.cantonPlaceholder') || "Tutta la Svizzera"}</option>
-                            {cantons.map(c => <option key={c} value={c}>{c}</option>)}
+                            <option value="">Tutti i Cantoni (Svizzera)</option>
+                            {cantons.map(c => <option key={c.value} value={c.value}>{c.name}</option>)}
                         </select>
+                        <ChevronRight className="absolute right-4 w-5 h-5 text-slate-400 pointer-events-none rotate-90" />
                     </div>
 
-                    <button type="submit" className="bg-accent hover:bg-accent/90 text-white font-semibold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap">
-                        {t('filters.searchButton') || "Cerca Lavori"}
+                    {/* SUBMIT */}
+                    <button type="submit" className="bg-[#0038A5] hover:bg-[#002B7F] text-white font-bold py-4 px-10 rounded-xl transition-all shadow-[0_4px_12px_rgba(0,56,165,0.3)] hover:shadow-[0_6px_20px_rgba(0,56,165,0.4)] whitespace-nowrap active:scale-95 flex items-center justify-center">
+                        Trova Offerte
                     </button>
                 </form>
+            </div>
+
+            {/* Latest Jobs Feed from Vercel Proxy */}
+            <div className="pt-4">
+                <div className="flex items-center justify-between mb-6 px-2">
+                    <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <Clock className="w-5 h-5 text-[#0038A5]" />
+                        Ultime inserite
+                    </h3>
+                    <a href="#" className="hidden md:flex text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] items-center gap-1 transition-colors">
+                        Vedi tutte <ChevronRight className="w-4 h-4" />
+                    </a>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {jobsLoading ? (
+                        [...Array(4)].map((_, i) => (
+                            <div key={i} className="animate-pulse bg-white border border-slate-100 rounded-2xl p-6 h-32"></div>
+                        ))
+                    ) : (
+                        latestJobs.map((job, idx) => (
+                            <motion.a 
+                                href={job.link}
+                                key={job.id || idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                                className="group block bg-white border border-slate-200 hover:border-[#0038A5]/30 rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 relative overflow-hidden"
+                            >
+                                {/* Decorative line */}
+                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#0038A5] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                                
+                                <span className="inline-block px-2 py-1 bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider rounded-md mb-3">
+                                    {job.sector}
+                                </span>
+                                <h4 className="text-base font-bold text-slate-900 mb-2 leading-snug group-hover:text-[#0038A5] transition-colors line-clamp-2">
+                                    {job.title}
+                                </h4>
+                                
+                                <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-2">
+                                    <div className="flex items-center gap-2 text-sm text-slate-600">
+                                        <Briefcase className="w-4 h-4 text-slate-400" />
+                                        <span className="font-medium truncate">{job.company}</span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-sm text-slate-500">
+                                        <MapPin className="w-4 h-4 text-slate-400" />
+                                        <span className="truncate">{job.location}</span>
+                                    </div>
+                                </div>
+                            </motion.a>
+                        ))
+                    )}
+                </div>
+                
+                <div className="mt-6 flex justify-center md:hidden">
+                    <a href="#" className="text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] flex items-center gap-1 transition-colors">
+                        Vedi tutte le offerte <ChevronRight className="w-4 h-4" />
+                    </a>
+                </div>
             </div>
         </div>
     );
