@@ -79,14 +79,22 @@ const Filters = () => {
                 const res = await fetch('/api/jobs');
                 if (!res.ok) throw new Error('Backend proxy not reachable in pure Vite dev server.');
                 const data = await res.json();
-                setLatestJobs(data.slice(0, 4));
+                setLatestJobs(data.slice(0, 12));
             } catch (err) {
                 console.warn(err.message, 'Using graceful local mock data.');
                 setLatestJobs([
                     { id: 1, title: 'Specialista in Logistica e Supply Chain', location: 'Svizzera, Chiasso', sector: 'Trasporti e logistica', company: 'Global Transport SA', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
                     { id: 2, title: 'Responsabile Magazzino (100%)', location: 'Berna', sector: 'Logistica E-commerce', company: 'TechSwiss Distribution', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
                     { id: 3, title: 'Autista Consegnatario Patente B', location: 'Lugano', sector: 'Trasporti', company: 'RapidCourier CH', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
-                    { id: 4, title: 'Impiegato Ufficio Spedizioni', location: 'Ginevra', sector: 'Logistica', company: 'Swiss Delivery Network', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' }
+                    { id: 4, title: 'Impiegato Ufficio Spedizioni', location: 'Ginevra', sector: 'Logistica', company: 'Swiss Delivery Network', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
+                    { id: 5, title: 'Sviluppatore Web Full Stack', location: 'Zurigo', sector: 'IT/Technology', company: 'Tech Innovators', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=it-2ftechnology&role_id=236' },
+                    { id: 6, title: 'Ingegnere Civile', location: 'Basilea', sector: 'Ingegneria', company: 'BuildSwiss', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 7, title: 'Store Manager', location: 'Lugano', sector: 'Vendita al dettaglio', company: 'Fashion Group', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 8, title: 'Infermiere Professionale', location: 'Locarno', sector: 'Medicina/Salute', company: 'Clinica Santa Maria', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 9, title: 'Marketing Manager', location: 'Ginevra', sector: 'Marketing', company: 'Global Brands', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 10, title: 'Contabile Senior', location: 'Berna', sector: 'Finanza', company: 'Swiss Finance', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 11, title: 'Chef de Partie', location: 'St. Moritz', sector: 'Ristorazione', company: 'Hotel Alpina', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 12, title: 'Addetto Risorse Umane', location: 'Zurigo', sector: 'Risorse Umane', company: 'HR Solutions', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' }
                 ]);
             } finally {
                 setJobsLoading(false);
@@ -199,15 +207,15 @@ const Filters = () => {
                         <Clock className="w-5 h-5 text-[#0038A5]" />
                         Ultime inserite
                     </h3>
-                    <a href="#" className="hidden md:flex text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] items-center gap-1 transition-colors">
+                    <a href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&utm_source=homepage" className="hidden md:flex text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] items-center gap-1 transition-colors">
                         Vedi tutte <ChevronRight className="w-4 h-4" />
                     </a>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="flex overflow-x-auto gap-4 pb-8 -mx-4 px-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                     {jobsLoading ? (
-                        [...Array(4)].map((_, i) => (
-                            <div key={i} className="animate-pulse bg-white border border-slate-100 rounded-2xl p-6 h-32"></div>
+                        [...Array(12)].map((_, i) => (
+                            <div key={i} className="min-w-[280px] md:min-w-[320px] shrink-0 snap-start animate-pulse bg-white border border-slate-100 rounded-2xl p-6 h-32"></div>
                         ))
                     ) : (
                         latestJobs.map((job, idx) => (
@@ -216,8 +224,8 @@ const Filters = () => {
                                 key={job.id || idx}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                                className="group block bg-white border border-slate-200 hover:border-[#0038A5]/30 rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 relative overflow-hidden"
+                                transition={{ duration: 0.4, delay: Math.min(idx * 0.1, 1) }}
+                                className="min-w-[280px] md:min-w-[320px] shrink-0 snap-start group block bg-white border border-slate-200 hover:border-[#0038A5]/30 rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 relative overflow-hidden"
                             >
                                 {/* Decorative line */}
                                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#0038A5] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
@@ -244,8 +252,8 @@ const Filters = () => {
                     )}
                 </div>
                 
-                <div className="mt-6 flex justify-center md:hidden">
-                    <a href="#" className="text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] flex items-center gap-1 transition-colors">
+                <div className="mt-2 flex justify-center md:hidden">
+                    <a href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&utm_source=homepage" className="text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] flex items-center gap-1 transition-colors">
                         Vedi tutte le offerte <ChevronRight className="w-4 h-4" />
                     </a>
                 </div>

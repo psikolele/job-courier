@@ -1,56 +1,84 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Vetrini = () => {
     const { t } = useTranslation();
-    const [jobs, setJobs] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const iframeRef = useRef(null);
+    const [iframeHeight, setIframeHeight] = useState(300);
 
     useEffect(() => {
-        // Simulated JSON feed fetch for featured jobs
-        setTimeout(() => {
-            setJobs([
-                { id: 1, title: 'Senior React Developer', company: 'TechCorp SA', location: 'Zurigo', type: 'Full-time' },
-                { id: 2, title: 'Marketing Manager', company: 'Global Vision', location: 'Ginevra', type: 'Part-time' },
-                { id: 3, title: 'Data Scientist', company: 'DataLabs CH', location: 'Berna', type: 'Remote' }
-            ]);
-            setLoading(false);
-        }, 1000);
+        const company_type = '';
+        let checkInterval = null;
+
+        const handleMessage = (event) => {
+            // Check if event data contains height and matching company type
+            if (event.data && !isNaN(event.data.height) && event.data.company_type === company_type) {
+                setIframeHeight(event.data.height);
+                
+                // Clear polling interval once we successfully establish connection
+                if (checkInterval) {
+                    clearInterval(checkInterval);
+                    checkInterval = null;
+                }
+            }
+        };
+
+        window.addEventListener('message', handleMessage);
+
+        // Polling to ask for initial height
+        checkInterval = setInterval(() => {
+            if (iframeRef.current && iframeRef.current.contentWindow) {
+                try {
+                    iframeRef.current.contentWindow.postMessage(
+                        { 'giveMeYourHeight': true, 'company_type': company_type }, 
+                        '*'
+                    );
+                } catch (e) {
+                    console.error("Iframe communication error:", e);
+                }
+            }
+        }, 100);
+
+        // Ping iframe when window resizes to recalculate height
+        const handleResize = () => {
+            if (iframeRef.current && iframeRef.current.contentWindow) {
+                iframeRef.current.contentWindow.postMessage(
+                    { 'giveMeYourHeight': true, 'company_type': company_type }, 
+                    '*'
+                );
+            }
+        };
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('message', handleMessage);
+            window.removeEventListener('resize', handleResize);
+            if (checkInterval) clearInterval(checkInterval);
+        };
     }, []);
 
     return (
-        <section className="py-20 bg-background text-foreground relative z-10 px-8">
-            <div className="max-w-6xl mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-center mb-12">
-                    <h2 className="text-3xl md:text-5xl font-bold font-sans">
-                        Offerte in <span className="text-accent italic font-drama">Vetrina</span>
+        <section className="py-16 md:py-24 bg-white relative z-10 px-4 md:px-12 w-full" id="companies">
+            <div className="max-w-[1400px] mx-auto w-full">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-slate-900 mb-6 tracking-tight">
+                        Aziende e società di selezione in vetrina
                     </h2>
-                    <a href="#tutte" className="mt-4 md:mt-0 text-accent hover:underline font-mono uppercase text-sm tracking-wider">
-                        Vedi tutte &rarr;
-                    </a>
+                    <div className="w-24 h-1 bg-[#0038A5] mx-auto rounded-full"></div>
                 </div>
 
-                {loading ? (
-                    <div className="flex justify-center items-center h-64">
-                        <div className="animate-spin w-12 h-12 border-4 border-accent border-t-transparent rounded-full"></div>
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {jobs.map(job => (
-                            <div key={job.id} className="bg-surface border border-white/5 shadow-2xl rounded-[2rem] p-8 hover:-translate-y-2 transition-transform duration-300 group cursor-pointer relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-bl-[100px] -z-10 group-hover:scale-110 transition-transform duration-500"></div>
-                                <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full mb-4">
-                                    {job.type}
-                                </span>
-                                <h3 className="text-2xl font-bold mb-2 group-hover:text-accent transition-colors">{job.title}</h3>
-                                <p className="text-foreground/70 mb-6">{job.company} • {job.location}</p>
-                                <button className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-colors font-medium text-sm">
-                                    Candidati Ora
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                )}
+                <div className="w-full relative rounded-3xl overflow-hidden bg-white/50 border border-slate-100 p-2 md:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                    <iframe
+                        ref={iframeRef}
+                        src="https://jobroom.jobcourier.ch/job/jobsShowcase.php?company_type=&emp_job_type=JOB&language=it&limit="
+                        width="100%"
+                        height={iframeHeight}
+                        style={{ border: 0, overflow: 'hidden', transition: 'height 0.3s ease-out' }}
+                        frameBorder="0"
+                        scrolling="no"
+                        title="Aziende in Vetrina"
+                    />
+                </div>
             </div>
         </section>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect, Suspense, lazy, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -19,6 +19,8 @@ import Footer from './components/Footer';
 const AdSlot = lazy(() => import('./components/AdSlot'));
 
 function App() {
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
   useEffect(() => {
     // Add noise overlay dynamically to ensure it stays on top
     const noise = document.createElement('div');
@@ -32,15 +34,17 @@ function App() {
 
   return (
     <div className="relative w-full bg-[#FAF8F5] text-[#2A2A35] min-h-screen selection:bg-[#C9A84C]/30">
-      <Navbar />
+      <Navbar showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
       <main className="flex flex-col w-full">
-        <Hero />
+        <Hero setShowLoginModal={setShowLoginModal} />
         <Filters />
         
         <Suspense fallback={<div className="h-[150px]"></div>}>
           <AdSlot id="1" type="internal" />
         </Suspense>
         
+        <Vetrini />
+
         <CTA />
         
         <Suspense fallback={<div className="h-[150px]"></div>}>

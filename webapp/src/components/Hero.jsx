@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
-const Hero = () => {
+const Hero = ({ setShowLoginModal }) => {
     const { t } = useTranslation();
     const [hoveredSide, setHoveredSide] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
@@ -15,8 +15,16 @@ const Hero = () => {
     }, []);
 
     // Dati per i "Alti Link" richiesti
-    const candidateLinks = ["Vedi tutte le offerte", "Vedi tutte le aziende", "Blog"];
-    const companyLinks = ["Soluzioni e tariffe", "Registra azienda", "Blog"];
+    const candidateLinks = [
+        { label: "Vedi tutte le offerte", url: "https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&utm_source=homepage" },
+        { label: "Vedi tutte le aziende", url: "#companies" },
+        { label: "Blog", url: "#blog" }
+    ];
+    const companyLinks = [
+        { label: "Soluzioni e tariffe", url: "https://www.jobcourier.ch/soluzioni-e-tariffe/" },
+        { label: "Registra azienda", url: "https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it&_gl=1*e5uej*_gcl_au*MjA5NDU5ODA3Ni4xNzE4MDA1NjYy" },
+        { label: "Blog", url: "#blog" }
+    ];
 
     return (
         <section className="relative w-full min-h-screen flex flex-col md:flex-row overflow-hidden font-sans bg-[#131f3f]">
@@ -58,9 +66,9 @@ const Hero = () => {
                         Crea il tuo profilo, imposta gli alert per le posizioni desiderate e candidati con un singolo click.
                     </p>
                     
-                    <button className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-[#0038A5] px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-[0_4px_12px_rgba(0,56,165,0.3)] hover:bg-[#002B7F] active:scale-95">
+                    <a href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it" className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-[#0038A5] px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-[0_4px_12px_rgba(0,56,165,0.3)] hover:bg-[#002B7F] active:scale-95">
                         Carica CV
-                    </button>
+                    </a>
 
                     {/* Animated "Altri Link" Sub-menu - Slide from Left */}
                     <div className="relative w-full h-0 z-40">
@@ -76,9 +84,9 @@ const Hero = () => {
                                     <p className="text-sm font-semibold text-slate-500 mb-3">Altri link</p>
                                     <div className="flex flex-wrap gap-2">
                                         {candidateLinks.map((link, idx) => (
-                                            <button key={idx} className="border border-[#0038A5] text-[#0038A5] bg-white hover:bg-[#0038A5] hover:text-white rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200">
-                                                {link}
-                                            </button>
+                                            <a key={idx} href={link.url} className="border border-[#0038A5] text-[#0038A5] bg-white hover:bg-[#0038A5] hover:text-white rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200">
+                                                {link.label}
+                                            </a>
                                         ))}
                                     </div>
                                 </motion.div>
@@ -88,9 +96,9 @@ const Hero = () => {
                         {isMobile && (
                              <div className="mt-8 flex flex-wrap gap-2">
                                  {candidateLinks.map((link, idx) => (
-                                     <button key={idx} className="border border-[#0038A5] text-[#0038A5] bg-transparent hover:bg-[#0038A5] hover:text-white rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-200">
-                                         {link}
-                                     </button>
+                                     <a key={idx} href={link.url} className="border border-[#0038A5] text-[#0038A5] bg-transparent hover:bg-[#0038A5] hover:text-white rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-200">
+                                         {link.label}
+                                     </a>
                                  ))}
                              </div>
                         )}
@@ -142,7 +150,7 @@ const Hero = () => {
                         Pubblica i tuoi annunci e raggiungi le menti più brillanti nel tuo settore in pochi click.
                     </p>
                     
-                    <button className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95">
+                    <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95">
                         Pubblica Offerte
                     </button>
 
@@ -160,9 +168,9 @@ const Hero = () => {
                                     <p className="text-sm font-semibold text-slate-400 mb-3">Altri link</p>
                                     <div className="flex flex-wrap gap-2">
                                         {companyLinks.map((link, idx) => (
-                                            <button key={idx} className="border border-slate-400 text-slate-300 bg-transparent hover:bg-white hover:text-[#131f3f] hover:border-white rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200">
-                                                {link}
-                                            </button>
+                                            <a key={idx} href={link.url} className="border border-slate-400 text-slate-300 bg-transparent hover:bg-white hover:text-[#131f3f] hover:border-white rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200">
+                                                {link.label}
+                                            </a>
                                         ))}
                                     </div>
                                 </motion.div>
@@ -172,9 +180,9 @@ const Hero = () => {
                         {isMobile && (
                              <div className="mt-8 flex flex-wrap gap-2">
                                  {companyLinks.map((link, idx) => (
-                                     <button key={idx} className="border border-slate-600 text-slate-300 bg-transparent hover:bg-slate-700 hover:text-white rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-200">
-                                         {link}
-                                     </button>
+                                     <a key={idx} href={link.url} className="border border-slate-600 text-slate-300 bg-transparent hover:bg-slate-700 hover:text-white rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-200">
+                                         {link.label}
+                                     </a>
                                  ))}
                              </div>
                         )}

@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        const targetUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224&source=https%3A%2F%2Fwww.jobcourier.ch%2F';
+        const targetUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&utm_source=homepage';
         
         const response = await fetch(targetUrl, {
             headers: {
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         const $ = cheerio.load(html);
         
         const jobs = [];
-        $('.dataContainer.inline').slice(0, 4).each((i, el) => {
+        $('.dataContainer.inline').slice(0, 12).each((i, el) => {
             const $el = $(el);
             const title = $el.find('h3').text().trim();
             const link = $el.find('a').first().attr('href') || '#';
@@ -53,9 +53,18 @@ export default async function handler(req, res) {
         // Se lo scraping fallisce (bot detection), forniamo dei mock realistici per la UI
         if(jobs.length === 0) {
             return res.status(200).json([
-                { id: 1, title: 'Specialista in Logistica e Supply Chain', location: 'Svizzera, Milano, Zurigo', sector: 'Trasporti e logistica', company: 'Global Transport SA', link: '#' },
-                { id: 2, title: 'Magazziniere Carrellista', location: 'Canton Ticino, Lugano', sector: 'Logistica', company: 'LogiSwiss SA', link: '#' },
-                { id: 3, title: 'Responsabile Magazzino (100%)', location: 'Berno, Svizzera', sector: 'Logistica E-commerce', company: 'TechSwiss Distribution', link: '#' }
+                { id: 1, title: 'Specialista in Logistica e Supply Chain', location: 'Svizzera, Milano, Zurigo', sector: 'Trasporti e logistica', company: 'Global Transport SA', link: targetUrl },
+                { id: 2, title: 'Magazziniere Carrellista', location: 'Canton Ticino, Lugano', sector: 'Logistica', company: 'LogiSwiss SA', link: targetUrl },
+                { id: 3, title: 'Responsabile Magazzino (100%)', location: 'Berno, Svizzera', sector: 'Logistica E-commerce', company: 'TechSwiss Distribution', link: targetUrl },
+                { id: 4, title: 'Autista Consegnatario Patente B', location: 'Lugano', sector: 'Trasporti', company: 'RapidCourier CH', link: targetUrl },
+                { id: 5, title: 'Impiegato Ufficio Spedizioni', location: 'Ginevra', sector: 'Logistica', company: 'Swiss Delivery Network', link: targetUrl },
+                { id: 6, title: 'Sviluppatore Web Full Stack', location: 'Zurigo', sector: 'IT/Technology', company: 'Tech Innovators', link: targetUrl },
+                { id: 7, title: 'Ingegnere Civile', location: 'Basilea', sector: 'Ingegneria', company: 'BuildSwiss', link: targetUrl },
+                { id: 8, title: 'Store Manager', location: 'Lugano', sector: 'Vendita al dettaglio', company: 'Fashion Group', link: targetUrl },
+                { id: 9, title: 'Infermiere Professionale', location: 'Locarno', sector: 'Medicina/Salute', company: 'Clinica Santa Maria', link: targetUrl },
+                { id: 10, title: 'Marketing Manager', location: 'Ginevra', sector: 'Marketing', company: 'Global Brands', link: targetUrl },
+                { id: 11, title: 'Contabile Senior', location: 'Berna', sector: 'Finanza', company: 'Swiss Finance', link: targetUrl },
+                { id: 12, title: 'Chef de Partie', location: 'St. Moritz', sector: 'Ristorazione', company: 'Hotel Alpina', link: targetUrl }
             ]);
         }
 

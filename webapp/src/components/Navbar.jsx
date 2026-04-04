@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
-const Navbar = () => {
+const Navbar = ({ showLoginModal, setShowLoginModal }) => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const { t, i18n } = useTranslation();
@@ -21,6 +21,7 @@ const Navbar = () => {
     };
 
     return (
+        <>
         <motion.header
             // Il contenitore principale funge da "accordion" allargandosi verso il basso
             className={`fixed top-4 left-0 right-0 z-50 mx-auto w-[92%] md:w-[95%] max-w-7xl flex flex-col overflow-hidden transition-colors duration-500 ease-out border shadow-sm ${
@@ -59,7 +60,7 @@ const Navbar = () => {
                     </div>
                     
                     {/* Primary Login Button (Desktop) */}
-                    <button className="group relative overflow-hidden rounded-full bg-red-600 px-6 py-2 text-xs uppercase tracking-wide font-bold text-white transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] drop-shadow-[0_4px_12px_rgba(220,38,38,0.3)] hidden md:block">
+                    <button onClick={() => setShowLoginModal(true)} className="group relative overflow-hidden rounded-full bg-red-600 px-6 py-2 text-xs uppercase tracking-wide font-bold text-white transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] drop-shadow-[0_4px_12px_rgba(220,38,38,0.3)] hidden md:block">
                         <span className="relative z-10 flex items-center gap-2">
                             {t('nav.login')}
                         </span>
@@ -110,12 +111,12 @@ const Navbar = () => {
                                 {t('nav.blog')}
                                 <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#0038A5] transition-all duration-300 group-hover:w-full"></span>
                             </a>
-                            <a href="#institutions" onClick={() => setMenuOpen(false)} className="hover:text-[#0038A5] transition-colors relative group">
-                                {t('nav.institutions')}
+                            <a href="https://www.jobcourier.ch/soluzioni-e-tariffe/" onClick={() => setMenuOpen(false)} className="hover:text-[#0038A5] transition-colors relative group">
+                                Soluzioni e tariffe
                                 <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#0038A5] transition-all duration-300 group-hover:w-full"></span>
                             </a>
                             
-                            <button className="mt-4 overflow-hidden rounded-full bg-[#0038A5] px-10 py-3 text-lg font-bold text-white shadow-md transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] w-full max-w-xs text-center md:hidden">
+                            <button onClick={() => { setMenuOpen(false); setShowLoginModal(true); }} className="mt-4 overflow-hidden rounded-full bg-[#0038A5] px-10 py-3 text-lg font-bold text-white shadow-md transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] w-full max-w-xs text-center md:hidden">
                                 {t('nav.login')}
                             </button>
                         </nav>
@@ -130,6 +131,60 @@ const Navbar = () => {
                 )}
             </AnimatePresence>
         </motion.header>
+
+        {/* LOGIN MODAL OUTSIDE NAVBAR TO AVOID OVERFLOW CLIPPING */}
+        <AnimatePresence>
+            {showLoginModal && (
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4"
+                    onClick={(e) => {
+                        if (e.target === e.currentTarget) setShowLoginModal(false);
+                    }}
+                >
+                    <motion.div 
+                        initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                        animate={{ scale: 1, opacity: 1, y: 0 }}
+                        exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                        className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full relative overflow-hidden"
+                    >
+                        {/* Close button */}
+                        <button 
+                            onClick={() => setShowLoginModal(false)}
+                            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors"
+                        >
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                        
+                        <div className="text-center mb-8 pt-2">
+                            <h3 className="text-2xl font-bold text-slate-900 mb-2">Area Aziende</h3>
+                            <p className="text-slate-500 text-sm">Seleziona un'opzione per continuare l'accesso al portale.</p>
+                        </div>
+                        
+                        <div className="flex flex-col gap-4">
+                            <a 
+                                href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it&_gl=1*e5uej*_gcl_au*MjA5NDU5ODA3Ni4xNzE4MDA1NjYy" 
+                                className="group relative overflow-hidden rounded-2xl bg-white border-2 border-[#0038A5] p-4 flex flex-col items-center justify-center transition-all hover:bg-[#0038A5] hover:shadow-lg"
+                            >
+                                <span className="font-bold text-[#0038A5] group-hover:text-white transition-colors">Nuova Azienda (Registrati)</span>
+                                <span className="text-xs text-slate-500 group-hover:text-blue-100 transition-colors mt-1">Pubblica il tuo primo annuncio</span>
+                            </a>
+                            
+                            <a 
+                                href="https://jobroom.jobcourier.ch/job-seekers-login.php" 
+                                className="group relative overflow-hidden rounded-2xl bg-slate-800 border-2 border-slate-800 p-4 flex flex-col items-center justify-center transition-all hover:bg-slate-900"
+                            >
+                                <span className="font-bold text-white">Azienda Registrata (Accedi)</span>
+                                <span className="text-xs text-slate-400 group-hover:text-slate-300 transition-colors mt-1">Accedi alla tua dashboard</span>
+                            </a>
+                        </div>
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+        </>
     );
 };
 
