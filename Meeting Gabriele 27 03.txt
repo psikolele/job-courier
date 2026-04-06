@@ -1,0 +1,155 @@
+(Trascritto da TurboScribe. Aggiorna a Illimitato per rimuovere questo messaggio.)
+
+che non mi dimentico niente, vai siamo a registrazione adesso. Allora, vado, scusate mi sta andando sopra un aereo. Allora, aria, offerte diciamo. 
+
+Allora, se tu vai, se tu parti dal sito di Chuck Courier, sotto i bottoni ci sono già gli url. E quegli urli sono già buoni, giusto? Sono già tutti quelli corretti, quindi sotto carica CV trovi già l'url corretto, vedi tutte le offerte, trovi l'url corretto, vedi tutte le aziende, te le ho mandato una decina di giorni fa, secondo me via mail. Sì, allora lo ricontro... non ti ho risposto a quella mail, è strano perché di solito pure un ok lo mando sempre.
+
+No, però nel caso in cui non ce l'hai me lo dici che io quello te lo recupero. Ok, ok, allora facciamo così. Provo prima a cercarlo, poi ti scrivo.
+
+Poi vabbè, blog adesso non lo so, vediamo se poi lo lasciamo lì perché non mi fa impazzire. E tra l'altro forse ce n'era un quarto che adesso non mi ricordo. Aspetta, aspetta, ce l'ho io tutto, aspetta caro, aspetta eh, ce l'ho già, già, già, già.
+
+Tutututu, ce l'ho qui eh, ce l'ho la foto, mi sono fatto. Allora dovrebbe essere, tu mi avevi detto, vedi tutte le offerte, carica CV, vedi tutte le aziende, blog. Quindi carica CV, no però c'è perché carica CV l'avevamo dettato come call to action, che è quello in alto.
+
+Allora va bene, dai allora. Dimmi tu eh, come vuoi Gabriele. No, no, no, per il momento lascialo, poi sulla destra invece.
+
+Lato aziende quindi, lato aziende. In aziende tu hai pubblico offerte, anche qua se tu vai, a parte che è pubblico offerta al limite. Pubblico offerta, sì ok, va benissimo.
+
+Eh, ma anche qua, sia registra l'azienda, soluzioni e tariffe, se tu vai sul sito, questi sono tutti url che sono già tutti esistenti. Quindi soluzioni e tariffe, registra l'azienda, accedi e questi sono tutti quelli ok. E no, ce n'è uno però che pubblica offerte invece dove mi manda, questo non ce l'ho però.
+
+No, ti manda sempre sul registra l'azienda. Ah, è lo stesso link. Ok, registra l'azienda e se però, aspetta ti faccio una domanda, aspetta fammi capire un attimo la logica.
+
+Se tu vai su jocury e trovi sempre tutto, guarda, cioè se ti viene un dubbio, se lo provi da lì ti rendi conto come funziona. Perché se tu vai su pubblica, no, e che in alto a destra e schiacci pubblica. Ah, ti va comunque registrazione, adesso ho capito, ti va comunque registrazione, se tu però sei già registrato fai login, ho capito adesso.
+
+No, ma lui quando metterai la mail, allora tu potevi, se te lo ricordi, facevi subito login. Se tu provi a mettere la mail, lui ti dice che sei già registrato. Ma tanto tutto sto becchendo, a me non me ne frega niente perché tanto lo gestisce già per uno.
+
+No, no, esatto, esattamente. Non era giusto per capire se volevi fare magari un pannellino carino di, sai quei pop-up per, vuoi entrare nella registrazione, mi fai mettere già il nome e il password e poi... Se vuoi lo puoi fare perché tanto in realtà hai già i due link poi di backend che portano uno al login e l'altro alla registrazione, quindi se lo vuoi fare, lo puoi fare. Ok, devo solo capire come gestisce, perché ovviamente non ho tanti password, sono criptati, se riesco a passare... No, no, no, ma tu non fai niente davanti.
+
+Ah, ok. Tu fai solo il pop-up che contiene i due link, con registrati o che cosa. Ok, perfetto, registra, sei un nuovo utente oppure sei già registrato, una roba del genere.
+
+Esatto, puoi fare una roba del genere. Ok. Poi, lato UI, manca l'immagine, anzi lo slider di immagini sulle aziende, me lo ricordo.
+
+D'accordo, poi ti ho detto che lo facciamo tutti insieme. Esatto. Quello è rifinitura, se vuoi tu prevedi lo slider ma... No, ma io ti dico quello che mi ricordo, perché così almeno ne parliamo.
+
+No, è corretto, manca sul lato del candidato che è embedding widget. Esatto, esatto. E sul lato destro invece che fai lo slider di immagini.
+
+Bravissimo. Allora, per l'embedding widget che noi attualmente abbiamo, io ho pensato alla barra quella sotto, che secondo me è molto carina ed è quello dove ci ho lavorato di più praticamente, ho speso quasi tutti i token. No, sono due cose diverse però.
+
+Sono due cose completamente diverse che lavorano in due modi diversi. Allora, un tema è il widget là sopra perché lavora direttamente non su dei filtri ma sulla ricerca libera del database che tu non puoi gestire, quindi il campo sotto a ricerca libera, quello non serve. Ah ok, quindi questo campo ricerca libera non serve, questo qui.
+
+No, perché lo gestisce direttamente il widget, ok? Ho capito, ho capito. Se ti ricordi quella parte qua sotto, allora le due select di settore e di cantoni vanno bene, però se tu lo fai in questo modo come strumento di ricerca, cozzerà con il widget che c'è sopra. Infatti io avevo pensato così, però a questo punto mi hai già risposto, io avevo pensato di farne semplicemente uno dove, query di ricerca libera, settore lavorato, che poi uno non esclude l'altro.
+
+Allora lo puoi fare perché tu non hai in pancia le offerte di lavoro. No, no, ma lui, no, aspetta, la cosa che sono riuscito a fare tramite l'intelligenza artificiale, io non ho niente, ma lui riparte, lui fa un HTTP request, tutti i dati sono riusciti a estrapolarli dal vecchio sito, una cosa fighissima, se tu ci guardi, aspetta, però ti voglio far vedere, facciamo che ti condivido il mio schermo, perché ti voglio far vedere un attimo. E questa è la cosa che mi son gasatissimo, capito? Perché sono riuscito a fare tramite HTTP request e tramite l'analisi, perché la cosa complicata è che se tu ci fai caso, l'HTTP request non rilascia direttamente la geolocalizzazione in Ginevra, ma rilascia un ID, o l'ID della regione, l'ID del cantone.
+
+E questa cosa qui ci ho messo un po' per capirla, ho fatto l'analisi, io questa roba qui non l'avevo riuscita a capire l'intelligenza artificiale, vedi la differenza di capirne qualcosa? Aspetta che mi sta scrivendo per prenotare Alberto, mi sta per prenotare Federico, aspetta, scusami, mi sta scrivendo un attimo Federico, Fede, scusami, sono in meet con Gabriele, non è che riusciresti a, so che ti chiedo tanto, a prenotarmela tu, perché se no adesso non riesco, gli sto facendo vedere una cosa, poi se la prenota prima lui, pazienza, a parte che non mi posso spostare, perché poi dopo lui non vuole. Tu riusciresti a prenotarmela al volo, per favore? Ti posso chiedere questa cortesia grandissima? Scusa, no, perché mi sta scrivendo che dice che mi stanno prenotando l'auto, e poi dopo fa un casino in casino. Quindi, ti dicevo, aspetta, la mia condivisione la vedi giusto, il mio schermo? Sì.
+
+Ok. Allora, la cosa che sono riuscito a fare qui, è quello di importare, praticamente, aspetta, andiamo un attimo su Job Room, ok, così almeno riusciamo a capire, tu qui hai tutta una serie di filtri, vediamo un po', andiamo su offerte di lavoro, eccolo qua, tu c'hai questa parte di filtri qua, io fondamentalmente sono riuscito a riprodurre, tutta questi filtraggi qui, sul mio sito, in modo tale che quando io faccio i seguiti cerca, lui mi fa le stesse cose che farlo qui, ma me lo fa qua, capito? E questo mi va benissimo, infatti, il vantaggio è che tu l'hai fatto, sia per settore, che per cantone. Esatto.
+
+E questo mi va benissimo, perché ha fatto un browser, tra l'altro a questo punto, scusami, faccio un passaggio al ritrovato. Vai, dimmi. Quel pezzo lì, serviva per fare il browser, non per fare la ricerca.
+
+Aspetta, che intendi per browser, Gabri? Perdonami, per browser che cosa intendi tu? Non ti sento più. Pronto? T'ho perso, Gabri. Mi salta la rete, guarda.
+
+Eccoti, adesso ti sento. Perché ogni volta che mi squilla il telefono, perché sono con l'hotspot. Allora, se tu vai su Jobs, e vai giù in fondo.
+
+Aspetta, Jobs sarebbe il competitor, giusto? Jobs. Sì, jobs.ch. Quella parte lì serve perché non deve essere usato come filtro, ma infatti anche nel purer vecchio è esploso, perché non deve essere un filtro, deve essere un sistema di hyperlink che è agevole al candidato perché ci clicca sopra direttamente sul settore. Esatto, e come funziona adesso? È come l'ho pensato io adesso, però, questa cosa qua.
+
+Eh, no. No? No, perché... Allora, sì, sì, però poi bisogna fare attenzione che come logica non cozi con il widget, capito? Ma allora, infatti, esatto, qui è proprio il punto sulla quale dobbiamo ragionare. La mia idea di base era che questo sostituisse sia... Aspetta che ritorno un attimo sul vecchio sito, eh.
+
+La mia idea era che sostituisse il widget e soprattutto una cosa che non mi piaceva per niente era tutto questo link qui di roba che secondo me è, tra virgolette, poco leggibile. Però, allora, va bene, però il tema è o tu riesci a replicare anche la parte di ricerca libera Cioè, vedi che c'è scritto professione? Aspetta, torno qua. Professione, questo qua, sì, giusto.
+
+Professione, sei riuscito a duplicarlo? Allora, io qui se scrivo informatica, no? Informatico, per esempio, giusto? Vediamo come funziona, vediamo se funziona alla stessa maniera. Informatico. Lui ti dice informatico in tutta la Svizzera.
+
+Premesso che comunque non funziona bene, perché vedi che cosa ti fa qua? Io questa era una roba che avevo già visto, eh. Anche quel widget lì non funziona bene. Vedi che cosa mi dà con informatico? Sì.
+
+Quindi, eh... E non l'ha letto. Non l'ha letto, ma non me l'ha fatto solo con informatico, eh. Io ho fatto tantissime prove.
+
+Quindi, in realtà sì, perché se io qui adesso, e anzitutto vediamo... Prova a lanciare, no no no, rimani a zero, scrivi informatico. Da qua, giusto? Sì. Ok.
+
+Però qui devo mettere tutti i cantoni. Non mettere niente, ok. Esatto, che di default è così.
+
+Ok, ma qui che ci sarà scritto? Eh, costruttore, giusto? Sì, esatto. Ok, però ascoltami. Ma poi, scusami, facendo così mi ha perso la geolocalizzazione, però.
+
+Però non ce l'avevi neanche qui, tu ce l'avevi, eh? Certo che c'è la geolocalizzazione lì. Guarda, allora, lui guarda il sito vecchio. Lui che cosa fa? Informatico.
+
+Ok. Lui questo, guarda dove lo mette. Qua.
+
+No, no, no. E quindi lui prende in mezzo alla Svizzera come punto di riferimento. O l'ha letto solo perché è italiano.
+
+Tu qui devi completare tutti e due i campi? Sono obbligatori, sì. Lì non c'è, è fatto male. Ah, dovrebbero... Ah, ok.
+
+Allora è un altro discorso, ok. Allora dovrebbero essere obbligatori. In ogni caso, in ogni caso, lo posso fare.
+
+Adesso non mi funziona, ma lo posso fare. Lo posso fare che... Aspetta che ritorno sul mio sito. Dov'è? Allora, io qui posso... Ascoltami, eh.
+
+Queste possono andare in AND o in OR. Quindi o tutte e tre o una delle tre. Quindi queste... Questo già funziona nell'autonomia.
+
+Sempre in AND. Ok. In AND però io potrei anche... Sai qual è il problema che se tu usi AND? Visto che questa è una query libera, le query libere sono difficili poi da... targhettizzare con le offerte di lavoro.
+
+Perché ti faccio un esempio stupido. Se io cerco informatico, magari uno cerca web developer o un altro c'è scritto sviluppatore web e lui con la query di ricerca, a meno che non metti IT, technology, allora te le fa vedere tutte, è difficile. La query libera è un po' complicata da gestire.
+
+Lo so, però c'è il rischio che non tiri fuori niente dei pensioni. No, perché se tu... Non è una roba sbagliata, ma che ti tiri fuori del contenuto. No, guarda, se tu IT, technology, tutti i cantoni, vedi, lui ti butta fuori tutti... No, ma è diverso questo.
+
+Perché il settore e il ruolo sono in database dell'applicativo due campi. Mentre nel campo libero gira la semantica, quindi è un campo di ricerca strutturato in un modo diverso. Cioè stiamo paragonando due robe che sono strutturalmente diverse.
+
+Però se io... Ok, ho capito quello che mi dici tu, però se io a questo punto qui scrivo informatico e qui metto... Però lui qui me lo cerca di default su tutta la Svizzera, perché qui informatico... Sì, però prova a mettergli Lugano. Lugano... No, magari scrivo bene, niente, soppure in capo... Però vedi che di fianco hai chilometrati. Sì, sì, sì.
+
+E tu questo lo perdi, però. O replichi anche questo. Ah, questa è una bella domanda.
+
+Questo non lo so. Eh, capito. Perché il vantaggio di questo strumento qua è che ha anche la geolocalizzazione per chilometri.
+
+Se tu mi rifai il filtro di là, ma non ho la geolocalizzazione per chilometri, io sono appunto a capo. Allora non mi conviene non farlo. Comunque questo filtro qui c'è qualcosa che non va, Gabri, fai la tua idea, perché io comunque se fa... Adesso l'ho fatto direttamente da JobRoom, quindi non c'entra niente JobCourier nel mio.
+
+Sì, anche se c'è qualcosa che non sta funzionando, ok, questo l'ho visto anch'io. Ok. Allora, io sono quasi certo di poter utilizzare sia questo che il discorso del Lugano.
+
+Non so, non so, ma questo lo possiamo vedere, se riesco a farti la geolocalizzazione rispetto al punto di partenza. Ok, perché al momento quello che funziona sul mio... No, però allora, in realtà, scusami, sto dicendo una stupidanza, perché in realtà qua noi l'avevamo tolta volontariamente in un page sul widget per non creare confusione. Certo, giusto.
+
+Quindi è dentro solo nell'applicativo. Giusto. Però qui... Però il problema, sai cos'è la mia paura? Sì? Perché poi tu metti Cantoni e un conto, se scrivi la città... Tu lì hai scelto solo i Cantoni, ma anche le città.
+
+Ah no, solo i Cantoni. Qui mi hai messo... Tu mi hai chiesto solo i Cantoni. Solo i Cantoni.
+
+No, allora va bene. Allora va bene. Perché, vedi, secondo me funziona abbastanza bene, dobbiamo solo limare il discorso del campo libero e capire come settarlo.
+
+Però se io qui, per esempio, metto qualsiasi... Sai da che cosa me ne accorgo che funziona? Perché se io metto qualsiasi settore Ticino, lui mi fa uscire tutte le offerte del Ticino. E questo test io l'ho fatto... Però, allora, va bene. Allora facciamo così.
+
+Usiamo il tuo. Proviamo a usare il tuo per il momento. Lascia stare la geolocalizzazione.
+
+Però, non dico come grafica, che mi piace anche abbastanza, però deve finire in verticale nel primo blocco in alto. Qui? Qui, questo qua? Eh sì. Va bene, quello non c'è problema.
+
+Sì, sì, quello non... La posizione la decidi tu. La posizione... Ovviamente anche il vedi tutte o le altre cose lì dentro... Cioè, è già vedi tutte le offerte. Il link ce l'hai già.
+
+Sì, no, io l'avevo pensato qui giù perché lui, in realtà, Antigravity me l'aveva già messo qua, ma l'ho pensato qui perché qui non stava... Ti dico una verità, non stava proprio bene dal punto di vista UI. Allora ho detto, mo la centro qui che tanto tu lo vedi. Perché no, ma il problema è che... Sì, però il problema è che è una questione funzionale.
+
+Ok. E che è la prima cosa che si deve vedere. Ok.
+
+Quindi, se lo vuoi tenere lì in mezzo vuol dire che non dobbiamo avere lo schermo diviso metà. Perché se no, non funziona. Non funziona.
+
+No, se no, ti posso... E' la roba più utilizzata. Quindi, a me lo schermo diviso metà piaceva. Infatti ti ho anche detto, di default io lo terrei aperto a tre quarti per il candidato.
+
+No? No, ma posso pensare... Non ti preoccupare, proviamo a fare le stesse cose. Posso pensare di lasciarlo questo di default a tre quarti. Il widgetino qua lo tengo già attivo in modo tale che si veda.
+
+Cerco di cambiare a questo punto... Adesso c'è anche la scritta crea il profilo. Così con le robe lì si possono anche togliere. Poi ridimi e selezioniamo H1.
+
+Sì, esatto. Devo trovare la giusta... Mi devo... Scusami dentro perché... Bravo. Scusami dentro perché se no non perdi proprio il valore.
+
+No, no, te lo butto lì dentro. Non è un problema. Te lo butto lì dentro.
+
+Magari qui, questo, questo H1 qui e ovviamente anche di riferimento anche questo devo per forza farli uguali. E li faccio un po' più piccoli come font. Questo magari lo rimpicciolisco un po'.
+
+Questo lo lascio già aperto. Iniziamo a fare, come mi hai detto tu, no? Iniziamo a fruttare dentro le cose almeno posizionate come devono essere. Poi dopo... Bravissimo.
+
+Sì, sì, sì, va benissimo. Ok, allora questo te lo sposto. Lo sotto, allora adesso ho capito come l'hai fatto e allora mi piace perché sono le ultime offerte inserite.
+
+Bravissimo, bravissimo. E poi lui mi chiama nello stesso identico modo e ogni volta che fa refresh fa una chiamata esatto e controlla le ultime offerte. Questa è una figata secondo me perché tu ti fai vedere le ultime 3 o 4 offerte di lavoro ovviamente poi questo ti rimanda al link adesso non lo fa ma poi ti rimanderà direttamente al link dell'offerta e tu praticamente stai già avendo una sorta di back-end di front-end sul back-end.
+
+Hai capito? Top. Questa è carina, no? Bravissimo questa. Questa roba qui è carina molto figa perché poi tra l'altro non fa altro però a questo punto vedi se riesci a prendere anche il logo.
+
+Sì, sì, penso di sì. Penso di sì. Sì, intanto sto registrando quindi è a posto.
+
+Sì, allora ti faccio avere anche il logo dell'azienda. Va benissimo, va benissimo. Ok.
+
+Poi? Sponsorizzazione? Spazio sponsorizzazioni? Giusto? Sì, che io lì ne avrei fatte due una di fianco all'altra. Ah vabbè, sì poi il posizionamento non c'è problema. Però scusami ne avrei fatte quattro una sopra le ultime offerte cioè immaginati due blocchi uno tra, diciamo, l'header e le ultime offerte inserite i due blocchi uno lì e poi sotto un cilindro di sotto così almeno e delle ultime offerte secondo me se tieni quelle dimensioni lì addirittura puoi fare due file.
+
+Non è un po' troppo secondo te? Io ne terrei ti dico la mia io ne terrei le rimpiccioleria un pochino e farei una fila con cinque offerte le ultime cinque offerte e poi qui abbiamo il vedi tutte ah ok, non lo so dimmi tu Gabriele tu c'hai più il polso della situazione io ti parlo solo dal punto di vista della UI ti parlo solo dal punto di vista dell'experience sai che possiamo fare un'altra cosa carina invece? manteniamo una linea e facciamo lo slider gli ultimi dieci che scorrono così carino ok benissimo allora no fai una cosa anche per dimensione ne fai un file da quattro così è un po' più grande ci fai stare il logo ok e mi metti tre slider così sono sono dodici in totale 4, 8, 12 perfetto quindi ti faccio dei slider questo qui faccio uno scorrimento lento verso sinistra e poi all'over del mouse si ferma lo slider e va direttamente sul link bene? perfetto sì ok ma poi ascolta gli spazi della sponsorizzazione questa è proprio l'ultima delle cose che tanto questi sono placeholder ok cosa facciamo dopo utilizziamo della roba di di VLC o delle altre di webstore così facciamo le pubblicità di quelle statiche all'inizio così ci le buttiamo già dentro benissimo e vediamo l'effetto che fa no? così almeno abbiamo già noi impostato le dimensioni perfette così quando vendiamo chiediamo di averle in quella dimensione bravissimo bravissimo sì sì per forza così almeno non ci dobbiamo mettere la mano noi capito? esattamente poi vabbè queste qui sono tutti altri placeholder che possiamo tenere o togliere e così via e questi qui e poi sono le tre le ultime tre il blog non ci ho messo mano ok quindi le ultime tre informazioni del blog ripeto sul blog non ci ho minimamente messo mano però il concetto era questo qua allora ti mancano le vetrine però eh aspetta un attimo le vetrine mi sono perso un pezzo fammi vedere perché tu hai messo le ultime offerte e va benissimo però se tu vai su job courier vedi che c'è Luigi delle vetrine poi vedi ah le vetrine scusami le vetrine no sai che cosa mi manca? non so se stai dicendo la stessa cosa però non l'avevo ancora implementato perché non ne ho avuto il tempo eh i loghi cioè i brand i singoli brand mi stai portando esattamente perché quelli puntano direttamente alle pagine aziende quindi eh quelli scusami non potrai rifarli perché eh arrivano da una chiamata oppure vedi tu però quelli lì hanno dietro un parametro che si sceglie singolarmente dall'admin ok quindi secondo me quello lì è già un widget secondo me se inverti il widget fai il prima eh speriamo perché ci ho provato a dare il widget ma siccome usa due linguaggi di programmazione diversi ci ho perso una serata intera per cercare di tradurre cioè io ho cercato di essere la mente per far tradurre il codice naturalmente però però ti assicuro che ci ho messo un bel po' di tempo infatti poi la sera ho finito pure i i token mi sono dovuto fermare perché sono due linguaggi di programmazione diversi praticamente fondamentalmente wordpress usa no usa python usa si e invece tutto per farlo molto leggero eh antigravity di default usa byte come linguaggio di programmazione che è javascript e vanillascript che sono due linguaggi di programmazione molto simili insomma per fartela breve faceva un casino non capiva allora io ho detto ok per raggiungere tutto quel codice con le app http request che funziona molto bene lui ha fatto tutto il ragionamento grazie a quello che gli dicevo io cioè io sono riuscito a capire che i cantoni non gli passava direttamente in chiaro come il nome del cantone ma c'era un id dietro ad ogni cantone allora in realtà secondo me quel come si dice la vetrina comunque è un url pubblico esatto come un widget è un url pubblico quindi in realtà se rimane puntato e tu riesci a farlo in javascript che va a puntare su quell'url pubblico secondo me secondo me sì secondo me però su questo ti ripeto ancora ci devo lavorare su sta roba qua io sono quasi convinto di una volta che gli abbiamo dato in un database tutte le immagini e gli diciamo il cubotto e magari pure qui non so dimmi tu visto che riprendiamo anche la stessa struttura grafica potremmo fare sono statiche però e non puoi fare un database di questa roba qua sì esatto quello è l'unico problema che no no no devi prenderlo solo come un come se fosse widget perché è super dinamico questa roba qua non sono statiche vengono tolte e messe continuamente vengono tolte e messe diciamo dal dal responsabile del sito dal pannello dal pannello admin dal pannello admin di wordpress o di no no dal pannello admin del di job curious sì dell'applicativo no no non lo puoi fare non pensare di replicarlo perché ci sono centinaia di loghi ci sono no no no ci credo ci credo però a questo punto come lo fai vengono caricati direttamente nel cliente quando si registra quindi per quello che ti ho detto l'unica cosa che puoi fare è replicare o embeddare quel widget o fare in modo che si colleghi a quel widget bella domanda ci dovevo ci dovevo dovevo trovare un modo questo potrebbe essere un problema cioè potrebbe essere un problema ci sarà sicuramente la soluzione non dico di no però quello che riesci a fare devo devo capire io dovrei provare a parlare con capire che come si perché lui lancia un json tu mi dicevi cioè non job curious aspetta se io adesso vado su ma tu dovresti vederlo dal pannello dell'admin eh no in realtà no perché quello lì mi lascia sai che cosa mi lascia quello mi lascia solo lo short code e basta io non posso vedere niente di quella roba entro nel pannello del wordpress tu non vedi il codice no no aspetta se vuoi lo rivediamo insieme magari mi è sfuggito a me allora quello provo a chiederlo io dai perché se io so lui come il codice potrebbe essere se io so più che altro lui come parla con il con il plugin e provo magari non credo che sia non credo che sia un plugin secondo me è stato proprio picchiato dentro un pezzo di codice nel codice del wordpress eh quello potrebbe essere un'altra un'altra opzione anzi quasi sicuramente a quel punto però il codebase ce l'avete voi per quello io non lo posso vedere da wordpress perché guarda se non lo trovi se non lo trovi io questo lo lo chiedo dai anche solo capire come funziona poi magari la soluzione la troviamo comunque insieme però se io vado qui no edit live no tutututu ah questo qui coi numerini lo vuoi? tanto questo allora sì però queste qui sono statiche esatto questo potrebbe essere un'altra idea chissà se riesco a fargli fare allora le offerte di lavoro sì perché se tu vai su se riesci a fare la chiamata ti faccio vedere dove sono sul sito di jobcurer che tu hai sempre quello effettivo allora aspetta che allora ci arriviamo vedi io qui ho il codeblock basta che mi dà job var questo qui che cos'è uno script in javascript potrei provare allora non ti prometto niente potrei provare allora dagli questo impasto prova nel caso chiedo io dai tu prova vabbè mo gli do sto codeblock che trovo qui in azienda e società di selezione in vetrina sto ripetendo per la registrazione così almeno poi dopo lui è in grado di replicare il tutto e sì se dovesse riuscire va perché sono delle variabili non lo so però sono tutte variabili che lui sono tutte chiamate che lui si fa però non c'è scritto cioè fa solo chiamate cioè il codebase ci la ma il codebase boh magari lui riesce a replicare questa roba qui in invite e basta magari sì va bene allora questo poi me lo segno vabbè che te ne pare Io sono molto soddisfatto onestamente. Secondo me viene bene. Adesso se riesci a buttarlo dentro le robe iniziamo a vederlo finito, quantomeno da un punto di vista funzionale poi iniziamo a lavorare sulla parte grafica.
+
+Ok, allora ricapitolando praticamente qui devo solo modificare sulla barra di ricerca devo solo sistemare la query libera fondamentalmente mentre per quanto riguarda le, diciamo, le categorie e i cantoni abbiamo visto che già funziona tutto. Questa barra qui va spostata nell'area candidati ok? L'area candidati dovrà essere di default aperta a tre quarti il menu dovrà essere invece a full width, quindi non queste effetto... Ok, per il discorso invece traduzione qui sopra, giusto? I sottomenu ce li ho già quello non è un problema figurati i sottomenu ce li ho solo che non ho messo ancora quelli definitivi ma mi sa che tu nello schizzo sono tutte pagine statiche di vetrina, quindi quelli sono quelli più facili ok, si forse forse i sottomenu non me li avevi messi, vabbè, ma quello poi non è niente si aggiungono in un attimo allora cosa ti volevo dire quindi poi scendendo giù qui abbiamo le ultime inserite che a questo punto faremo uno slide da 4x3 giusto? 4x3 ok, il veditutte mi riporterà adesso non credo che lo farà, ma mi riporterà direttamente sul link qui job courier home, anzi home office di lavoro si, in realtà l'avevi già fatto sopra il veditutte ah, ah si? Ah ok, questo me lo son perso si, perché guarda ah, veditutte, si anche se non ci sta è tutto ovvio, eh
+
+(Questo file è più lungo di 30 minuti. Aggiorna a Illimitato su https://turboscribe.ai/it/ per trascrivere file fino a 10 ore.)

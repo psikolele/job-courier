@@ -49,41 +49,39 @@ def create_page(project_id):
     blocks = [
         {"object": "block", "type": "heading_1", "heading_1": {"rich_text": [{"type": "text", "text": {"content": "📋 Argomenti Trattati"}}]}},
         
-        # Sezione 1: Setup Progetto
-        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "1. Inizializzazione React e Vite"}}]}},
-        {"object": "block", "type": "paragraph", "paragraph": {"rich_text": [{"type": "text", "text": {"content": "Setup completo dell'ambiente di sviluppo per la landing page di JobCourier."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Creazione webapp con Vite e React."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Integrazione TailwindCSS v4, Framer Motion e GSAP."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Configurazione file index.css con preset Midnight Luxe e Glassmorphism."}}]}},
+        # Sezione 1: Integrazione API Modello
+        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "1. Sviluppo Scraper e Vercel Serverless API"}}]}},
+        {"object": "block", "type": "paragraph", "paragraph": {"rich_text": [{"type": "text", "text": {"content": "Creazione e integrazione di un bridge Vercel per bypassare il blocco CORS del portale Jobroom."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Implementazione di `api/jobs.js` tramite Cheerio."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Scraping in tempo reale delle ultime 12 offerte con gestione mock fallback locale."}}]}},
 
-        # Sezione 2: Componenti UI
-        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "2. Sviluppo Componenti UI"}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Navbar ad isola fluttuante."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Hero Section asimmetrica con tipografia Playfair Display."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Sezione Features interattive (Diagnostic Shuffler, Telemetry Typewriter)."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Sezione Protocol con card sticky parallax (ScrollTrigger)."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Footer e CTA split configurati."}}]}},
+        # Sezione 2: Componenti e Layout
+        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "2. Modale e Vetrina Aziende"}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Costruzione e sollevamento stato UI in `App.jsx` per l'handling del Modale di Login/Azienda."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Applicazione dei link definitivi 'Soluzioni e Tariffe' sia per l'Header (sostituendo Istituzioni) che nello slider ad estrazione."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Creazione del componente `Vetrini.jsx` in piena replica rispetto a `showcase-iframe.js` nativo, con polling dell'altezza in inter-window."}}]}},
 
-        # Sezione 3: Deploy
-        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "3. GitHub e Vercel"}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Commit e Push del progetto completo."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Apertura Pull Request (#1) sul ramo feature/initial-webapp per il deploy."}}]}},
+        # Sezione 3: Git e CI/CD
+        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "3. Troubleshooting GitHub Actions / Vercel"}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Commit massivo della codebase per testing Vercel."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Risoluzione configurazione `Root Directory` su Vercel Dashboard a seguito di errato default GitHub."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Creazione del branch 'trigger-vercel-deploy' e apertura di una Pull Request da CLI bypassando lock della pipeline principale."}}]}},
 
         {"object": "block", "type": "divider", "divider": {}},
         
         # Conclusione
          {"object": "block", "type": "callout", "callout": {
-             "rich_text": [{"type": "text", "text": {"content": "La prima versione della piattaforma è stata completata e pubblicata su GitHub, in attesa del deploy finale su Vercel."}}],
+             "rich_text": [{"type": "text", "text": {"content": "Le implementazioni della fase 2 di Job Courier (meeting 27/03) sono concluse: backend bypassato e UI fedeltà 100% sulla vetrina iFrame."}}],
              "icon": {"type": "emoji", "emoji": "🎯"}
          }}
     ]
 
     properties = {
-        "Descrizione Breve": {"title": [{"text": {"content": "Sviluppo JobCourier Landing Page e PR Vercel"}}]},
+        "Descrizione Breve": {"title": [{"text": {"content": "JobCourier - Implemenzione Backend Scraping, Slider Aziende e Deploy"}}]},
         "Data Sessione": {"date": {"start": today_str}},
-        "Minuti Lavorati": {"number": 120},
+        "Minuti Lavorati": {"number": 90},
         "Categoria": {"select": {"name": "Sviluppo"}},
-        "Note": {"rich_text": [{"text": {"content": "Setup React+Vite, TailwindCSS, Componenti UI (Hero, Navbar, Features, Protocol). Push su GitHub e PR per deploy."}}]}
+        "Note": {"rich_text": [{"text": {"content": "Sviluppo API Vercel Serverless, migrazione Vetrina iFrame dinamica, sistemazione workflow GitHub e Vercel, e state-management UI per i Login."}}]}
     }
 
     if project_id:
