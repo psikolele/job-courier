@@ -24,20 +24,20 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
         <>
         <motion.header
             // Il contenitore principale funge da "accordion" allargandosi verso il basso
-            className={`fixed top-4 left-0 right-0 z-50 mx-auto w-[92%] md:w-[95%] max-w-7xl flex flex-col overflow-hidden transition-colors duration-500 ease-out border shadow-sm ${
+            className={`fixed top-0 left-0 right-0 z-50 w-full flex flex-col overflow-hidden transition-colors duration-500 ease-out shadow-sm ${
                 scrolled || menuOpen
-                    ? 'bg-white/95 backdrop-blur-md border-slate-200/50 text-slate-900'
+                    ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/50 text-slate-900'
                     : 'bg-transparent border-transparent text-white'
             }`}
             animate={{ 
-                y: scrolled && !menuOpen ? 10 : 0, 
+                y: 0, 
                 height: menuOpen ? 'auto' : (scrolled ? 70 : 80),
-                borderRadius: menuOpen ? 32 : 40 // Usare px puri (32px = 2rem, 40px è metà altezza per la pillola) per evitare glitch dell'interpolazione framer-motion con 9999px
+                borderRadius: 0
             }}
             transition={{ type: 'spring', stiffness: 120, damping: 14 }}
         >
             {/* TOP BAR ALWAYS VISIBLE */}
-            <div className={`flex items-center justify-between px-6 shrink-0 w-full ${scrolled ? 'h-[70px]' : 'h-[80px]'} transition-all duration-300`}>
+            <div className={`flex items-center justify-between px-6 shrink-0 w-full max-w-7xl mx-auto ${scrolled ? 'h-[70px]' : 'h-[80px]'} transition-all duration-300`}>
                 
                 {/* Logo Section */}
                 <div className="flex items-center gap-3">
@@ -96,7 +96,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="flex flex-col items-center justify-center p-6 sm:p-8 gap-6 sm:gap-8 border-t border-slate-100 mt-2 pb-8 sm:pb-12 w-full"
+                        className="flex flex-col items-center justify-center p-6 sm:p-8 gap-6 sm:gap-8 border-t border-slate-100 mt-2 pb-8 sm:pb-12 w-full max-w-7xl mx-auto"
                     >
                         <nav className="flex flex-col items-center gap-5 sm:gap-6 text-xl sm:text-3xl font-bold font-sans tracking-tight text-slate-800">
                             <a href="#jobs" onClick={() => setMenuOpen(false)} className="hover:text-[#0038A5] transition-colors relative group">

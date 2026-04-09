@@ -52,7 +52,7 @@ async function run() {
                     location: locationMatch ? locationMatch[1].trim() : 'Svizzera',
                     sector: sectorMatch ? sectorMatch[1].trim() : 'Generale',
                     company: companyMatch || 'Azienda Riservata',
-                    link: link.replace('../', 'https://jobroom.jobcourier.ch/job/')
+                    link: new URL(link, targetUrl).href
                 });
             }
         });
