@@ -76,25 +76,26 @@ const Filters = () => {
 
         const fetchJobs = async () => {
             try {
-                const res = await fetch('/api/jobs');
-                if (!res.ok) throw new Error('Backend proxy not reachable in pure Vite dev server.');
+                const jsonUrl = `https://raw.githubusercontent.com/psikolele/job-courier/data/latest_jobs.json?t=${Date.now()}`;
+                const res = await fetch(jsonUrl);
+                if (!res.ok) throw new Error('Il ramo "data" o il file JSON non sono ancora stati generati dalla Action.');
                 const data = await res.json();
                 setLatestJobs(data.slice(0, 12));
             } catch (err) {
                 console.warn(err.message, 'Using graceful local mock data.');
                 setLatestJobs([
-                    { id: 1, title: 'Specialista in Logistica e Supply Chain', location: 'Svizzera, Chiasso', sector: 'Trasporti e logistica', company: 'Global Transport SA', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
-                    { id: 2, title: 'Responsabile Magazzino (100%)', location: 'Berna', sector: 'Logistica E-commerce', company: 'TechSwiss Distribution', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
-                    { id: 3, title: 'Autista Consegnatario Patente B', location: 'Lugano', sector: 'Trasporti', company: 'RapidCourier CH', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
-                    { id: 4, title: 'Impiegato Ufficio Spedizioni', location: 'Ginevra', sector: 'Logistica', company: 'Swiss Delivery Network', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=logistica-2fmagazzino&role_id=224' },
-                    { id: 5, title: 'Sviluppatore Web Full Stack', location: 'Zurigo', sector: 'IT/Technology', company: 'Tech Innovators', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&role=it-2ftechnology&role_id=236' },
-                    { id: 6, title: 'Ingegnere Civile', location: 'Basilea', sector: 'Ingegneria', company: 'BuildSwiss', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
-                    { id: 7, title: 'Store Manager', location: 'Lugano', sector: 'Vendita al dettaglio', company: 'Fashion Group', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
-                    { id: 8, title: 'Infermiere Professionale', location: 'Locarno', sector: 'Medicina/Salute', company: 'Clinica Santa Maria', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
-                    { id: 9, title: 'Marketing Manager', location: 'Ginevra', sector: 'Marketing', company: 'Global Brands', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
-                    { id: 10, title: 'Contabile Senior', location: 'Berna', sector: 'Finanza', company: 'Swiss Finance', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
-                    { id: 11, title: 'Chef de Partie', location: 'St. Moritz', sector: 'Ristorazione', company: 'Hotel Alpina', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
-                    { id: 12, title: 'Addetto Risorse Umane', location: 'Zurigo', sector: 'Risorse Umane', company: 'HR Solutions', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' }
+                    { id: 1, title: 'Specialista in Logistica e Supply Chain', location: 'Svizzera, Chiasso', sector: 'Trasporti e logistica', company: 'Global Transport SA', link: '#' },
+                    { id: 2, title: 'Responsabile Magazzino (100%)', location: 'Berna', sector: 'Logistica E-commerce', company: 'TechSwiss Distribution', link: '#' },
+                    { id: 3, title: 'Autista Consegnatario Patente B', location: 'Lugano', sector: 'Trasporti', company: 'RapidCourier CH', link: '#' },
+                    { id: 4, title: 'Impiegato Ufficio Spedizioni', location: 'Ginevra', sector: 'Logistica', company: 'Swiss Delivery Network', link: '#' },
+                    { id: 5, title: 'Sviluppatore Web Full Stack', location: 'Zurigo', sector: 'IT/Technology', company: 'Tech Innovators', link: '#' },
+                    { id: 6, title: 'Ingegnere Civile', location: 'Basilea', sector: 'Ingegneria', company: 'BuildSwiss', link: '#' },
+                    { id: 7, title: 'Store Manager', location: 'Lugano', sector: 'Vendita al dettaglio', company: 'Fashion Group', link: '#' },
+                    { id: 8, title: 'Infermiere Professionale', location: 'Locarno', sector: 'Medicina/Salute', company: 'Clinica Santa Maria', link: '#' },
+                    { id: 9, title: 'Marketing Manager', location: 'Ginevra', sector: 'Marketing', company: 'Global Brands', link: '#' },
+                    { id: 10, title: 'Contabile Senior', location: 'Berna', sector: 'Finanza', company: 'Swiss Finance', link: '#' },
+                    { id: 11, title: 'Chef de Partie', location: 'St. Moritz', sector: 'Ristorazione', company: 'Hotel Alpina', link: '#' },
+                    { id: 12, title: 'Addetto Risorse Umane', location: 'Zurigo', sector: 'Risorse Umane', company: 'HR Solutions', link: '#' }
                 ]);
             } finally {
                 setJobsLoading(false);
