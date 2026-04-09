@@ -48,7 +48,7 @@ const Hero = ({ setShowLoginModal }) => {
                 onMouseEnter={() => !isMobile && setHoveredSide('candidates')}
                 onMouseLeave={() => !isMobile && setHoveredSide(null)}
                 animate={{
-                    width: isMobile ? '100%' : (hoveredSide === 'companies' ? '30%' : '70%')
+                    width: isMobile ? '100%' : (hoveredSide === 'companies' ? '40%' : '60%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="relative w-full md:w-1/2 min-h-[50vh] md:min-h-screen bg-[#fafafa] flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24 text-[#1a202c] border-b md:border-b-0 md:border-r border-slate-200"
@@ -127,7 +127,7 @@ const Hero = ({ setShowLoginModal }) => {
                 onMouseEnter={() => !isMobile && setHoveredSide('companies')}
                 onMouseLeave={() => !isMobile && setHoveredSide(null)}
                 animate={{
-                    width: isMobile ? '100%' : (hoveredSide === 'companies' ? '70%' : '30%')
+                    width: isMobile ? '100%' : (hoveredSide === 'companies' ? '60%' : '40%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="relative w-full md:w-1/2 min-h-[50vh] md:min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24 text-white overflow-hidden"
