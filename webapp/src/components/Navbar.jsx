@@ -44,7 +44,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     <img 
                         src="https://www.jobcourier.ch/wp-content/uploads/2021/08/jobcourier_logo.png" 
                         alt="Job Courier Logo" 
-                        className="h-[32px] md:h-[38px] object-contain transition-all duration-300" 
+                        className={`${scrolled ? 'h-[22px] md:h-[26px]' : 'h-[28px] md:h-[34px]'} object-contain transition-all duration-300`} 
                     />
                 </div>
 
