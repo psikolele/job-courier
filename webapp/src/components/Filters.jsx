@@ -235,7 +235,7 @@ const Filters = () => {
                                     <span className="inline-block px-2 py-1 bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider rounded-md mb-3">
                                         {job.sector}
                                     </span>
-                                    <h4 className="text-base font-bold text-slate-900 mb-2 leading-snug group-hover:text-[#0038A5] transition-colors line-clamp-2">
+                                    <h4 className="h-11 text-base font-bold text-slate-900 mb-2 leading-snug group-hover:text-[#0038A5] transition-colors line-clamp-2">
                                         {job.title}
                                     </h4>
                                     
