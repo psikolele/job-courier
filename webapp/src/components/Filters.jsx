@@ -212,44 +212,46 @@ const Filters = () => {
                     </a>
                 </div>
 
-                <div className="flex overflow-x-auto gap-4 pb-8 -mx-4 px-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                    {jobsLoading ? (
-                        [...Array(12)].map((_, i) => (
-                            <div key={i} className="min-w-[280px] md:min-w-[320px] shrink-0 snap-start animate-pulse bg-white border border-slate-100 rounded-2xl p-6 h-32"></div>
-                        ))
-                    ) : (
-                        latestJobs.map((job, idx) => (
-                            <motion.a 
-                                href={job.link}
-                                key={job.id || idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: Math.min(idx * 0.1, 1) }}
-                                className="min-w-[280px] md:min-w-[320px] shrink-0 snap-start group block bg-white border border-slate-200 hover:border-[#0038A5]/30 rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 relative overflow-hidden"
-                            >
-                                {/* Decorative line */}
-                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#0038A5] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                                
-                                <span className="inline-block px-2 py-1 bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider rounded-md mb-3">
-                                    {job.sector}
-                                </span>
-                                <h4 className="text-base font-bold text-slate-900 mb-2 leading-snug group-hover:text-[#0038A5] transition-colors line-clamp-2">
-                                    {job.title}
-                                </h4>
-                                
-                                <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-2">
-                                    <div className="flex items-center gap-2 text-sm text-slate-600">
-                                        <Briefcase className="w-4 h-4 text-slate-400" />
-                                        <span className="font-medium truncate">{job.company}</span>
+                <div className="overflow-hidden pb-8 -mx-4 relative pause-on-hover px-4">
+                    <div className="flex gap-4 animate-marquee w-max">
+                        {jobsLoading ? (
+                            [...Array(12)].map((_, i) => (
+                                <div key={i} className="min-w-[280px] md:min-w-[320px] shrink-0 animate-pulse bg-white border border-slate-100 rounded-2xl p-6 h-32"></div>
+                            ))
+                        ) : (
+                            [...latestJobs, ...latestJobs].map((job, idx) => (
+                                <motion.a 
+                                    href={job.link}
+                                    key={`${job.id}-${idx}`}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.4, delay: Math.min((idx % latestJobs.length) * 0.1, 1) }}
+                                    className="min-w-[280px] md:min-w-[320px] shrink-0 group block bg-white border border-slate-200 hover:border-[#0038A5]/30 rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 relative overflow-hidden"
+                                >
+                                    {/* Decorative line */}
+                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#0038A5] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                                    
+                                    <span className="inline-block px-2 py-1 bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider rounded-md mb-3">
+                                        {job.sector}
+                                    </span>
+                                    <h4 className="text-base font-bold text-slate-900 mb-2 leading-snug group-hover:text-[#0038A5] transition-colors line-clamp-2">
+                                        {job.title}
+                                    </h4>
+                                    
+                                    <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-2">
+                                        <div className="flex items-center gap-2 text-sm text-slate-600">
+                                            <Briefcase className="w-4 h-4 text-slate-400" />
+                                            <span className="font-medium truncate">{job.company}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-sm text-slate-500">
+                                            <MapPin className="w-4 h-4 text-slate-400" />
+                                            <span className="truncate">{job.location}</span>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-2 text-sm text-slate-500">
-                                        <MapPin className="w-4 h-4 text-slate-400" />
-                                        <span className="truncate">{job.location}</span>
-                                    </div>
-                                </div>
-                            </motion.a>
-                        ))
-                    )}
+                                </motion.a>
+                            ))
+                        )}
+                    </div>
                 </div>
                 
                 <div className="mt-2 flex justify-center md:hidden">
