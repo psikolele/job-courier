@@ -6,12 +6,26 @@ const Hero = ({ setShowLoginModal }) => {
     const { t } = useTranslation();
     const [hoveredSide, setHoveredSide] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const sliderImages = [
+        "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+    ];
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
         checkMobile(); // Check on mount
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prev) => (prev + 1) % sliderImages.length);
+        }, 5000);
+        return () => clearInterval(interval);
     }, []);
 
     // Dati per i "Alti Link" richiesti
@@ -34,7 +48,7 @@ const Hero = ({ setShowLoginModal }) => {
                 onMouseEnter={() => !isMobile && setHoveredSide('candidates')}
                 onMouseLeave={() => !isMobile && setHoveredSide(null)}
                 animate={{
-                    width: isMobile ? '100%' : (hoveredSide === 'candidates' ? '60%' : hoveredSide === 'companies' ? '40%' : '50%')
+                    width: isMobile ? '100%' : (hoveredSide === 'companies' ? '30%' : '70%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="relative w-full md:w-1/2 min-h-[50vh] md:min-h-screen bg-[#fafafa] flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24 text-[#1a202c] border-b md:border-b-0 md:border-r border-slate-200"
@@ -66,9 +80,11 @@ const Hero = ({ setShowLoginModal }) => {
                         Crea il tuo profilo, imposta gli alert per le posizioni desiderate e candidati con un singolo click.
                     </p>
                     
-                    <a href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it" className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-[#0038A5] px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-[0_4px_12px_rgba(0,56,165,0.3)] hover:bg-[#002B7F] active:scale-95">
-                        Carica CV
-                    </a>
+                    <motion.div animate={{ opacity: hoveredSide === 'companies' ? 0 : 1, pointerEvents: hoveredSide === 'companies' ? 'none' : 'auto' }} transition={{ duration: 0.3 }}>
+                        <a href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it" className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-[#0038A5] px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-[0_4px_12px_rgba(0,56,165,0.3)] hover:bg-[#002B7F] active:scale-95">
+                            Carica CV
+                        </a>
+                    </motion.div>
 
                     {/* Animated "Altri Link" Sub-menu - Slide from Left */}
                     <div className="relative w-full h-0 z-40">
@@ -104,13 +120,6 @@ const Hero = ({ setShowLoginModal }) => {
                         )}
                     </div>
                 </div>
-                
-                {/* Decorative background element */}
-                <svg className="absolute top-[10%] right-[10%] w-64 h-64 text-[#0038A5] opacity-5 pointer-events-none max-md:hidden" viewBox="0 0 200 200" fill="none">
-                    <circle cx="100" cy="100" r="99" stroke="currentColor" strokeWidth="2"></circle>
-                    <circle cx="160" cy="60" r="20" stroke="currentColor" strokeWidth="2"></circle>
-                    <path d="M100 60 L100 140" stroke="currentColor" strokeWidth="8" strokeLinecap="round"></path>
-                </svg>
             </motion.div>
 
             {/* ---------------- COMPANIES SECTION (RIGHT) ---------------- */}
@@ -118,11 +127,25 @@ const Hero = ({ setShowLoginModal }) => {
                 onMouseEnter={() => !isMobile && setHoveredSide('companies')}
                 onMouseLeave={() => !isMobile && setHoveredSide(null)}
                 animate={{
-                    width: isMobile ? '100%' : (hoveredSide === 'companies' ? '60%' : hoveredSide === 'candidates' ? '40%' : '50%')
+                    width: isMobile ? '100%' : (hoveredSide === 'companies' ? '70%' : '30%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-full md:w-1/2 min-h-[50vh] md:min-h-screen bg-[#131f3f] flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24 text-white"
+                className="relative w-full md:w-1/2 min-h-[50vh] md:min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24 text-white overflow-hidden"
             >
+                {/* Background Image Slider */}
+                <AnimatePresence initial={false}>
+                    <motion.img
+                        key={currentImageIndex}
+                        src={sliderImages[currentImageIndex]}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.5 }}
+                        className="absolute inset-0 w-full h-full object-cover z-0"
+                        alt="Slider background for companies"
+                    />
+                </AnimatePresence>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0c1328]/95 to-[#0c1328]/70 z-0"></div>
                 {/* Arrow Icon Indicator */}
                 <div className="absolute top-1/2 left-4 md:left-8 -translate-y-1/2 w-12 h-12 rounded-full border border-slate-600 flex items-center justify-center opacity-70 transition-opacity z-30 bg-[#131f3f] shadow-sm max-md:hidden cursor-pointer hover:opacity-100 hover:scale-105 duration-300">
                     <svg className="w-5 h-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -146,13 +169,15 @@ const Hero = ({ setShowLoginModal }) => {
                             Talento.
                         </span>
                     </h1>
-                    <p className="text-base sm:text-lg text-slate-400 mb-10 max-w-sm">
+                    <p className="text-base sm:text-lg text-slate-300 mb-10 max-w-sm">
                         Pubblica i tuoi annunci e raggiungi le menti più brillanti nel tuo settore in pochi click.
                     </p>
                     
-                    <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95">
-                        Pubblica Offerte
-                    </button>
+                    <motion.div animate={{ opacity: hoveredSide === 'companies' || isMobile ? 1 : 0, pointerEvents: hoveredSide === 'companies' || isMobile ? 'auto' : 'none' }} transition={{ duration: 0.3 }}>
+                        <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95 backdrop-blur-sm bg-opacity-70">
+                            Pubblica Offerte
+                        </button>
+                    </motion.div>
 
                     {/* Animated "Altri Link" Sub-menu - Slide from Right */}
                     <div className="relative w-full h-0 z-40">
