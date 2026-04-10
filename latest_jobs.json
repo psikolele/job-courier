@@ -1,86 +1,6 @@
 [
   {
     "id": 0,
-    "title": "GRUISTA CON PATENTINI SUVA",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687551-gruista-con-patentini-suva-locarno&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Serramentista",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687549-serramentista-locarno&language=en"
-  },
-  {
-    "id": 2,
-    "title": "LATTONIERE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687553-lattoniere-locarno&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Carpentiere",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687556-carpentiere-lugano&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Addetto alla costruzione stradale",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687548-addetto-alla-costruzione-stradale-locarno&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Tester industriale elettronico",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687543-tester-industriale-elettronico-bellinzona-lugano&language=en"
-  },
-  {
-    "id": 6,
-    "title": "INTONACATORE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687555-intonacatore-sottoceneri&language=en"
-  },
-  {
-    "id": 7,
-    "title": "METALCOSTRUTTORE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687550-metalcostruttore-locarno&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Frigorista",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687557-frigorista-lugano&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Barista - disponibilità immediata",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687554-barista-disponibilit%C3%A0-immediata-sottoceneri&language=en"
-  },
-  {
-    "id": 10,
     "title": "SELVICOLTORE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +8,91 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687552-selvicoltore-locarno&language=en"
   },
   {
-    "id": 11,
-    "title": "Verniciatore",
+    "id": 1,
+    "title": "Frigorista",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687547-verniciatore-bellinzona&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687557-frigorista-lugano&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Front Office Junior",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687546-front-office-junior-taverne-torricella&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Serramentista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687549-serramentista-locarno&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Carpentiere",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687556-carpentiere-lugano&language=en"
+  },
+  {
+    "id": 5,
+    "title": "INTONACATORE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687555-intonacatore-sottoceneri&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Tester industriale elettronico",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687543-tester-industriale-elettronico-bellinzona-lugano&language=en"
+  },
+  {
+    "id": 7,
+    "title": "GRUISTA CON PATENTINI SUVA",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687551-gruista-con-patentini-suva-locarno&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Barista - disponibilità immediata",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687554-barista-disponibilit%C3%A0-immediata-sottoceneri&language=en"
+  },
+  {
+    "id": 9,
+    "title": "LATTONIERE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687553-lattoniere-locarno&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Tecnico di Laboratorio – Area Saggi & Analisi",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687544-tecnico-di-laboratorio-?-area-saggi-analisi-mendrisio&language=en"
+  },
+  {
+    "id": 11,
+    "title": "METALCOSTRUTTORE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6687550-metalcostruttore-locarno&language=en"
   }
 ]
