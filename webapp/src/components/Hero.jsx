@@ -64,7 +64,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </svg>
                 </div>
 
-                <div className="max-w-md w-full mx-auto md:ml-auto md:mr-12 z-10 relative">
+                <div className="max-w-md w-full mx-auto md:mx-0 md:ml-12 lg:ml-20 xl:ml-32 z-10 relative">
                     <p className="text-sm md:text-xs font-mono text-[#0038A5] mb-6 uppercase tracking-[0.2em] font-bold">
                         Per I Candidati
                     </p>
@@ -130,14 +130,14 @@ const Hero = ({ setShowLoginModal }) => {
                     width: isMobile ? '100%' : (hoveredSide === 'companies' ? '60%' : '40%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-full md:w-1/2 min-h-[50vh] md:min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24 text-white overflow-hidden"
+                className="relative w-full md:w-1/2 min-h-[50vh] md:min-h-screen bg-[#131f3f] flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24 text-white overflow-hidden"
             >
                 {/* Background Image Slider */}
                 <AnimatePresence initial={false}>
                     <motion.img
                         key={currentImageIndex}
                         src={sliderImages[currentImageIndex]}
-                        initial={{ opacity: 0, scale: 1.05 }}
+                        initial={{ opacity: currentImageIndex === 0 ? 1 : 0, scale: currentImageIndex === 0 ? 1 : 1.05 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 1.5 }}
@@ -157,26 +157,28 @@ const Hero = ({ setShowLoginModal }) => {
                     </svg>
                 </div>
 
-                <div className="max-w-md w-full mx-auto md:ml-12 md:mr-auto z-10 relative">
-                    <p className="text-sm md:text-xs font-mono text-slate-400 mb-6 uppercase tracking-[0.2em] font-bold">
-                        Per Le Aziende
-                    </p>
-                    <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
-                        <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-100">
-                            Trova il Miglior
-                        </span>
-                        <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-400 mt-2">
-                            Talento.
-                        </span>
-                    </h1>
-                    <p className="text-base sm:text-lg text-slate-300 mb-10 max-w-sm">
-                        Pubblica i tuoi annunci e raggiungi le menti più brillanti nel tuo settore in pochi click.
-                    </p>
-                    
-                    <motion.div animate={{ opacity: hoveredSide === 'companies' || isMobile ? 1 : 0, pointerEvents: hoveredSide === 'companies' || isMobile ? 'auto' : 'none' }} transition={{ duration: 0.3 }}>
-                        <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95 backdrop-blur-sm bg-opacity-70">
-                            Pubblica Offerte
-                        </button>
+                <div className="max-w-md w-full mx-auto md:mx-0 md:ml-12 lg:ml-20 xl:ml-28 z-10 relative">
+                    <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 1 : 0.85), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
+                        <p className="text-sm md:text-xs font-mono text-slate-400 mb-6 uppercase tracking-[0.2em] font-bold">
+                            Per Le Aziende
+                        </p>
+                        <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
+                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-100">
+                                Trova il Miglior
+                            </span>
+                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-400 mt-2">
+                                Talento.
+                            </span>
+                        </h1>
+                        <p className="text-base sm:text-lg text-slate-300 mb-10 max-w-sm">
+                            Pubblica i tuoi annunci e raggiungi le menti più brillanti nel tuo settore in pochi click.
+                        </p>
+                        
+                        <motion.div animate={{ opacity: hoveredSide === 'companies' || isMobile ? 1 : 0, pointerEvents: hoveredSide === 'companies' || isMobile ? 'auto' : 'none' }} transition={{ duration: 0.3 }}>
+                            <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95 backdrop-blur-sm bg-opacity-70">
+                                Pubblica Offerte
+                            </button>
+                        </motion.div>
                     </motion.div>
 
                     {/* Animated "Altri Link" Sub-menu - Slide from Right */}
