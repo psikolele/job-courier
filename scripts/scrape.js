@@ -72,6 +72,8 @@ async function run() {
             const webappDir = path.join(outDir, 'webapp');
             await fs.mkdir(webappDir, { recursive: true });
             await fs.writeFile(path.join(webappDir, '.gitkeep'), '');
+            await fs.writeFile(path.join(webappDir, 'package.json'), JSON.stringify({ name: "dummy", version: "1.0.0" }));
+            await fs.writeFile(path.join(outDir, 'vercel.json'), JSON.stringify({ github: { silent: true } }));
         } else {
             console.error("❌ Nessun job estratto. Impossibile sovrascrivere i dai con lista vuota.");
             process.exit(1);
