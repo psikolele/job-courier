@@ -116,17 +116,12 @@ const Hero = ({ setShowLoginModal }) => {
         return () => clearInterval(interval);
     }, []);
 
-    // Dati per i "Alti Link" richiesti
-    const candidateLinks = [
-        { label: "Vedi tutte le offerte", url: "https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&utm_source=homepage" },
-        { label: "Vedi tutte le aziende", url: "#companies" },
-        { label: "Blog", url: "#blog" }
-    ];
-    const companyLinks = [
-        { label: "Soluzioni e tariffe", url: "https://www.jobcourier.ch/soluzioni-e-tariffe/" },
-        { label: "Registra azienda", url: "https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it&_gl=1*e5uej*_gcl_au*MjA5NDU5ODA3Ni4xNzE4MDA1NjYy" },
-        { label: "Blog", url: "#blog" }
-    ];
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prev) => (prev + 1) % sliderImages.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <section className="relative w-full min-h-screen flex flex-col md:flex-row overflow-hidden font-sans bg-[#131f3f]">
@@ -140,9 +135,25 @@ const Hero = ({ setShowLoginModal }) => {
                     width: isMobile ? '100%' : (hoveredSide === 'companies' ? '40%' : '60%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative min-h-[50vh] md:min-h-screen bg-[#fafafa] flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24 text-[#1a202c] border-b md:border-b-0 md:border-r border-slate-200"
+                className="relative min-h-[50vh] md:min-h-screen bg-[#fafafa] flex flex-col justify-center px-8 md:px-12 lg:px-16 py-24 text-[#1a202c] border-b md:border-b-0 md:border-r border-slate-200"
             >
-                <div className="max-w-md w-full mx-auto md:mx-0 md:ml-12 lg:ml-20 xl:ml-32 z-10 relative">
+                {/* Animated Arrow Left (Candidates) */}
+                <motion.div 
+                    animate={{ 
+                        opacity: hoveredSide === 'companies' ? 0 : 0.7, 
+                        x: hoveredSide === 'candidates' ? 10 : 0 
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute top-1/2 right-4 md:right-6 -translate-y-1/2 flex items-center justify-center max-md:hidden z-30 pointer-events-none"
+                >
+                    <div className="w-10 h-10 border border-slate-300 rounded-full flex items-center justify-center bg-white shadow-sm">
+                        <svg className="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={hoveredSide === 'candidates' ? "M19 9l-7 7-7-7" : "M9 5l7 7-7 7"} />
+                        </svg>
+                    </div>
+                </motion.div>
+
+                <div className="max-w-md w-full mx-auto md:mx-0 md:ml-4 lg:ml-12 xl:ml-20 z-10 relative">
                     <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 0.85 : 1), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
                         <p className="text-sm md:text-xs font-mono text-[#0038A5] mb-6 uppercase tracking-[0.2em] font-bold">
                             Per I Candidati
@@ -192,39 +203,7 @@ const Hero = ({ setShowLoginModal }) => {
                             </div>
                         </motion.div>
 
-                        {/* Animated "Altri Link" Sub-menu - Slide from Left */}
-                        <div className="relative w-full h-0 z-40">
-                            <AnimatePresence>
-                                {hoveredSide === 'candidates' && !isMobile && (
-                                    <motion.div
-                                        initial={{ opacity: 0, x: -40 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: -30 }}
-                                        transition={{ duration: 0.4, ease: "easeOut" }}
-                                        className="absolute top-4 left-0 w-full md:w-[150%] pt-2"
-                                    >
-                                        <p className="text-sm font-semibold text-slate-500 mb-3">Altri link</p>
-                                        <div className="flex flex-wrap gap-2">
-                                            {candidateLinks.map((link, idx) => (
-                                                <a key={idx} href={link.url} className="border border-[#0038A5] text-[#0038A5] bg-white hover:bg-[#0038A5] hover:text-white rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200">
-                                                    {link.label}
-                                                </a>
-                                            ))}
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                            {/* Static Links for Mobile */}
-                            {isMobile && (
-                                <div className="mt-8 flex flex-wrap gap-2">
-                                    {candidateLinks.map((link, idx) => (
-                                        <a key={idx} href={link.url} className="border border-[#0038A5] text-[#0038A5] bg-transparent hover:bg-[#0038A5] hover:text-white rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-200">
-                                            {link.label}
-                                        </a>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </motion.div>
@@ -238,7 +217,7 @@ const Hero = ({ setShowLoginModal }) => {
                     width: isMobile ? '100%' : (hoveredSide === 'companies' ? '60%' : '40%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative min-h-[50vh] md:min-h-screen bg-[#131f3f] flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24 text-white overflow-hidden"
+                className="relative min-h-[50vh] md:min-h-screen bg-[#131f3f] flex flex-col justify-center px-8 md:px-12 lg:px-16 py-24 text-white overflow-hidden"
             >
                 {/* Background Image Slider */}
                 <AnimatePresence initial={false}>
@@ -254,7 +233,24 @@ const Hero = ({ setShowLoginModal }) => {
                     />
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0c1328]/95 to-[#0c1328]/70 z-0"></div>
-                <div className="max-w-md w-full mx-auto md:mx-0 md:ml-12 lg:ml-20 xl:ml-28 z-10 relative">
+
+                {/* Animated Arrow Right (Companies) */}
+                <motion.div 
+                    animate={{ 
+                        opacity: hoveredSide === 'candidates' ? 0 : 0.7, 
+                        x: hoveredSide === 'companies' ? -10 : 0 
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute top-1/2 left-4 md:left-6 -translate-y-1/2 flex items-center justify-center max-md:hidden z-30 pointer-events-none"
+                >
+                    <div className="w-10 h-10 border border-slate-600 rounded-full flex items-center justify-center bg-[#131f3f] shadow-sm">
+                        <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={hoveredSide === 'companies' ? "M19 9l-7 7-7-7" : "M15 19l-7-7 7-7"} />
+                        </svg>
+                    </div>
+                </motion.div>
+
+                <div className="max-w-md w-full mx-auto md:mx-0 md:ml-8 lg:ml-12 xl:ml-16 z-10 relative">
                     <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 1 : 0.85), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
                         <p className="text-sm md:text-xs font-mono text-slate-400 mb-6 uppercase tracking-[0.2em] font-bold">
                             Per Le Aziende
@@ -278,39 +274,7 @@ const Hero = ({ setShowLoginModal }) => {
                         </motion.div>
                     </motion.div>
 
-                    {/* Animated "Altri Link" Sub-menu - Slide from Right */}
-                    <div className="relative w-full h-0 z-40">
-                        <AnimatePresence>
-                            {hoveredSide === 'companies' && !isMobile && (
-                                <motion.div
-                                    initial={{ opacity: 0, x: 40 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: 30 }}
-                                    transition={{ duration: 0.4, ease: "easeOut" }}
-                                    className="absolute top-4 left-0 w-full md:w-[150%] pt-2"
-                                >
-                                    <p className="text-sm font-semibold text-slate-400 mb-3">Altri link</p>
-                                    <div className="flex flex-wrap gap-2">
-                                        {companyLinks.map((link, idx) => (
-                                            <a key={idx} href={link.url} className="border border-slate-400 text-slate-300 bg-transparent hover:bg-white hover:text-[#131f3f] hover:border-white rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200">
-                                                {link.label}
-                                            </a>
-                                        ))}
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                        {/* Static Links for Mobile */}
-                        {isMobile && (
-                             <div className="mt-8 flex flex-wrap gap-2">
-                                 {companyLinks.map((link, idx) => (
-                                     <a key={idx} href={link.url} className="border border-slate-600 text-slate-300 bg-transparent hover:bg-slate-700 hover:text-white rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-200">
-                                         {link.label}
-                                     </a>
-                                 ))}
-                             </div>
-                        )}
-                    </div>
+                    </motion.div>
                 </div>
             </motion.div>
         </section>
