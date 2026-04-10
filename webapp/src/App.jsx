@@ -39,17 +39,13 @@ function App() {
         <Hero setShowLoginModal={setShowLoginModal} />
         <Filters />
         
-        <Suspense fallback={<div className="h-[150px]"></div>}>
-          <AdSlot id="1" type="internal" />
-        </Suspense>
+
         
         <Vetrini />
 
         <CTA />
         
-        <Suspense fallback={<div className="h-[150px]"></div>}>
-          <AdSlot id="2" type="adsense" />
-        </Suspense>
+
 
         <Blog />
 
