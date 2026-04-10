@@ -151,17 +151,20 @@ const Filters = () => {
 
     return (
         <div className="w-full relative z-20 pb-20 pt-8 bg-[#fafafa]">
-            {/* 4-COLUMN TOP ADVERTISEMENT SECTION */}
-            <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-4 sm:px-8 md:px-12 lg:px-20 mb-14 mt-4">
-                {[1, 2, 3, 4].map((num) => (
-                    <div key={num} className="rounded-2xl border border-slate-200 bg-white relative group h-32 flex items-center justify-center overflow-hidden hover:border-slate-300 hover:shadow-sm transition-all cursor-pointer">
-                        <span className="absolute top-2 right-2 text-[8px] font-bold text-slate-400 uppercase tracking-widest z-10">Advertisement {num}</span>
-                        <div className="text-center">
-                            <p className="text-xs font-semibold text-slate-500">Spazio Sponsorizzato</p>
-                            <p className="text-[10px] text-[#0038A5] mt-1 font-bold tracking-wider">PREMIUM</p>
-                        </div>
-                    </div>
-                ))}
+            {/* ADVERTISEMENT SECTION */}
+            <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row gap-6 mb-14 mt-4 px-4 sm:px-8 md:px-12 lg:px-20">
+                <div className="flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
+                    <span className="absolute top-2 right-3 text-[10px] font-bold text-slate-400 uppercase z-10 bg-white/80 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">Advertisement</span>
+                    <a href="https://www.blc-sa.ch" target="_blank" rel="noopener noreferrer" className="block w-full h-[150px] md:h-[200px] relative">
+                        <img src="/img/Gemini_Generated_Image_ape98sape98sape9.png" alt="Business Learning Centre SA" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02] opacity-95 hover:opacity-100" />
+                    </a>
+                </div>
+                <div className="flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
+                    <span className="absolute top-2 right-3 text-[10px] font-bold text-slate-400 uppercase z-10 bg-white/80 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">Advertisement</span>
+                    <a href="https://www.wallmoss.ch/" target="_blank" rel="noopener noreferrer" className="block w-full h-[150px] md:h-[200px] relative">
+                        <img src="/img/Gemini_Generated_Image_lw18o4lw18o4lw18.png" alt="Wallmoss Interior Design" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02] opacity-95 hover:opacity-100" />
+                    </a>
+                </div>
             </div>
 
             {/* Latest Jobs Feed from Vercel Proxy */}
@@ -226,15 +229,17 @@ const Filters = () => {
                     </a>
                 </div>
 
-                {/* SINGLE WIDE LOWER ADVERTISEMENT SECTION */}
-                <div className="w-full max-w-[1000px] mx-auto mt-12 px-2 md:px-4">
-                    <div className="w-full rounded-2xl border border-slate-200 bg-slate-50 relative group h-36 flex items-center justify-center overflow-hidden hover:border-slate-300 transition-colors cursor-pointer">
-                        <span className="absolute top-3 right-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Advertisement</span>
-                        <div className="text-center">
-                            <p className="text-sm font-semibold text-slate-500">Spazio Sponsorizzato</p>
-                            <p className="text-xs text-slate-400 mt-1">Premium</p>
+                {/* 4-Column Lower Advertisement Section */}
+                <div className="w-full mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2 md:px-4">
+                    {[1, 2, 3, 4].map((num) => (
+                        <div key={num} className="rounded-2xl border border-slate-200 bg-white relative group h-32 flex items-center justify-center overflow-hidden hover:border-slate-300 hover:shadow-sm transition-all cursor-pointer">
+                            <span className="absolute top-2 right-2 text-[8px] font-bold text-slate-400 uppercase tracking-widest z-10">Advertisement {num}</span>
+                            <div className="text-center">
+                                <p className="text-xs font-semibold text-slate-500">Spazio Sponsorizzato</p>
+                                <p className="text-[10px] text-[#0038A5] mt-1 font-bold tracking-wider">PREMIUM</p>
+                            </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>
