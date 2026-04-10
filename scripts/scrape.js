@@ -67,6 +67,11 @@ async function run() {
             const outFile = path.join(outDir, 'latest_jobs.json');
             await fs.writeFile(outFile, JSON.stringify(jobs, null, 2));
             console.log(`💾 Salvato in ${outFile}`);
+            
+            // Dummy Vercel Root Fix: Create webapp directory to prevent Vercel crash on data branch
+            const webappDir = path.join(outDir, 'webapp');
+            await fs.mkdir(webappDir, { recursive: true });
+            await fs.writeFile(path.join(webappDir, '.gitkeep'), '');
         } else {
             console.error("❌ Nessun job estratto. Impossibile sovrascrivere i dai con lista vuota.");
             process.exit(1);
