@@ -150,7 +150,7 @@ const Filters = () => {
     };
 
     return (
-        <div className="w-[95%] max-w-[1800px] mx-auto -mt-8 relative z-20 px-4 pb-20">
+        <div className="w-full relative z-20 pb-20 pt-8 bg-[#fafafa]">
             {/* ADVERTISEMENT SECTION */}
             <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row gap-6 mb-14 mt-4 px-4 sm:px-8 md:px-12 lg:px-20">
                 <div className="flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
@@ -168,8 +168,8 @@ const Filters = () => {
             </div>
 
             {/* Latest Jobs Feed from Vercel Proxy */}
-            <div className="pt-4">
-                <div className="flex items-center justify-between mb-6 px-2">
+            <div className="pt-4 w-[95%] max-w-[1800px] mx-auto">
+                <div className="flex items-center justify-between mb-6 px-4 md:px-8">
                     <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
                         <Clock className="w-5 h-5 text-[#0038A5]" />
                         Ultime inserite
