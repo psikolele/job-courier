@@ -151,54 +151,20 @@ const Filters = () => {
 
     return (
         <div className="w-[95%] max-w-[1800px] mx-auto -mt-8 relative z-20 px-4 pb-20">
-            <div className="bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-3xl p-4 md:p-6 mb-8 mt-2">
-                <form onSubmit={handleSearch} className="flex flex-col xl:flex-row gap-4">
-                    
-                    {/* KEYWORD */}
-                    <div className="flex-1 relative flex items-center">
-                        <Search className="absolute left-4 w-5 h-5 text-slate-400" />
-                        <input 
-                            type="text" 
-                            placeholder="Cerca per qualifica, azienda o parola chiave..."
-                            className="w-full pl-12 pr-4 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-[#0038A5] focus:ring-2 focus:ring-[#0038A5]/20 focus:bg-white outline-none transition-all text-slate-900 font-medium placeholder:text-slate-400"
-                            value={keyword}
-                            onChange={(e) => setKeyword(e.target.value)}
-                        />
-                    </div>
-                    
-                    {/* SECTOR */}
-                    <div className="xl:w-72 relative flex items-center">
-                        <Briefcase className="absolute left-4 w-5 h-5 text-slate-400" />
-                        <select 
-                            className="w-full pl-12 pr-10 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-[#0038A5] focus:ring-2 focus:ring-[#0038A5]/20 focus:bg-white outline-none transition-all text-slate-900 font-medium appearance-none cursor-pointer truncate"
-                            value={selectedSector}
-                            onChange={(e) => setSelectedSector(e.target.value)}
-                        >
-                            <option value="">Qualsiasi settore lavorativo</option>
-                            {sectors.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
-                        </select>
-                        <ChevronRight className="absolute right-4 w-5 h-5 text-slate-400 pointer-events-none rotate-90" />
-                    </div>
-
-                    {/* LOCATION */}
-                    <div className="xl:w-[18rem] relative flex items-center">
-                        <MapPin className="absolute left-4 w-5 h-5 text-slate-400" />
-                        <select 
-                            className="w-full pl-12 pr-10 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-[#0038A5] focus:ring-2 focus:ring-[#0038A5]/20 focus:bg-white outline-none transition-all text-slate-900 font-medium appearance-none cursor-pointer truncate"
-                            value={selectedCanton}
-                            onChange={(e) => setSelectedCanton(e.target.value)}
-                        >
-                            <option value="">Tutti i Cantoni (Svizzera)</option>
-                            {cantons.map(c => <option key={c.value} value={c.value}>{c.name}</option>)}
-                        </select>
-                        <ChevronRight className="absolute right-4 w-5 h-5 text-slate-400 pointer-events-none rotate-90" />
-                    </div>
-
-                    {/* SUBMIT */}
-                    <button type="submit" className="bg-[#0038A5] hover:bg-[#002B7F] text-white font-bold py-4 px-10 rounded-xl transition-all shadow-[0_4px_12px_rgba(0,56,165,0.3)] hover:shadow-[0_6px_20px_rgba(0,56,165,0.4)] whitespace-nowrap active:scale-95 flex items-center justify-center">
-                        Trova Offerte
-                    </button>
-                </form>
+            {/* ADVERTISEMENT SECTION */}
+            <div className="w-full flex flex-col md:flex-row gap-6 mb-12 mt-4">
+                <div className="flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
+                    <span className="absolute top-2 right-3 text-[10px] font-bold text-slate-400 uppercase z-10 bg-white/80 backdrop-blur-sm px-2 py-0.5 rounded-full">Advertisement</span>
+                    <a href="#" className="block w-full h-[150px] md:h-[200px] relative">
+                        <img src="/img/Gemini_Generated_Image_ape98sape98sape9.png" alt="Spazio Sponsorizzato Premium 1" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 hover:opacity-100" />
+                    </a>
+                </div>
+                <div className="flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
+                    <span className="absolute top-2 right-3 text-[10px] font-bold text-slate-400 uppercase z-10 bg-white/80 backdrop-blur-sm px-2 py-0.5 rounded-full">Advertisement</span>
+                    <a href="#" className="block w-full h-[150px] md:h-[200px] relative">
+                        <img src="/img/Gemini_Generated_Image_lw18o4lw18o4lw18.png" alt="Spazio Sponsorizzato Premium 2" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 hover:opacity-100" />
+                    </a>
+                </div>
             </div>
 
             {/* Latest Jobs Feed from Vercel Proxy */}
