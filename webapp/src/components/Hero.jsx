@@ -271,8 +271,6 @@ const Hero = ({ setShowLoginModal }) => {
                             </button>
                         </motion.div>
                     </motion.div>
-
-                    </motion.div>
                 </div>
             </motion.div>
         </section>
