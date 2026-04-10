@@ -228,6 +228,19 @@ const Filters = () => {
                         Vedi tutte le offerte <ChevronRight className="w-4 h-4" />
                     </a>
                 </div>
+
+                {/* 4-Column Lower Advertisement Section */}
+                <div className="w-full mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2 md:px-4">
+                    {[1, 2, 3, 4].map((num) => (
+                        <div key={num} className="rounded-xl border border-slate-200 bg-slate-50 relative group h-24 flex items-center justify-center overflow-hidden hover:border-slate-300 transition-colors cursor-pointer">
+                            <span className="absolute top-2 right-2 text-[8px] font-bold text-slate-400 uppercase tracking-widest">Advertisement {num}</span>
+                            <div className="text-center">
+                                <p className="text-xs font-semibold text-slate-500">Spazio Sponsorizzato</p>
+                                <p className="text-[10px] text-slate-400 mt-1">Premium</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
