@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
+import heroBg1 from '../assets/hero-bg.jpg';
+
 const Hero = ({ setShowLoginModal }) => {
     const { t } = useTranslation();
     const [hoveredSide, setHoveredSide] = useState(null);
@@ -9,7 +11,7 @@ const Hero = ({ setShowLoginModal }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const sliderImages = [
-        "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+        heroBg1,
         "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
         "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
     ];
@@ -65,60 +67,62 @@ const Hero = ({ setShowLoginModal }) => {
                 </div>
 
                 <div className="max-w-md w-full mx-auto md:mx-0 md:ml-12 lg:ml-20 xl:ml-32 z-10 relative">
-                    <p className="text-sm md:text-xs font-mono text-[#0038A5] mb-6 uppercase tracking-[0.2em] font-bold">
-                        Per I Candidati
-                    </p>
-                    <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
-                        <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-900">
-                            Accedi al tuo
-                        </span>
-                        <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-[#0038A5] mt-2">
-                            Prossimo Lavoro.
-                        </span>
-                    </h1>
-                    <p className="text-base sm:text-lg text-slate-600 mb-10 max-w-sm">
-                        Crea il tuo profilo, imposta gli alert per le posizioni desiderate e candidati con un singolo click.
-                    </p>
-                    
-                    <motion.div animate={{ opacity: hoveredSide === 'companies' ? 0 : 1, pointerEvents: hoveredSide === 'companies' ? 'none' : 'auto' }} transition={{ duration: 0.3 }}>
-                        <a href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it" className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-[#0038A5] px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-[0_4px_12px_rgba(0,56,165,0.3)] hover:bg-[#002B7F] active:scale-95">
-                            Carica CV
-                        </a>
-                    </motion.div>
+                    <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 0.85 : 1), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
+                        <p className="text-sm md:text-xs font-mono text-[#0038A5] mb-6 uppercase tracking-[0.2em] font-bold">
+                            Per I Candidati
+                        </p>
+                        <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
+                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-900">
+                                Accedi al tuo
+                            </span>
+                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-[#0038A5] mt-2">
+                                Prossimo Lavoro.
+                            </span>
+                        </h1>
+                        <p className="text-base sm:text-lg text-slate-600 mb-10 max-w-sm">
+                            Crea il tuo profilo, imposta gli alert per le posizioni desiderate e candidati con un singolo click.
+                        </p>
+                        
+                        <motion.div animate={{ opacity: hoveredSide === 'companies' ? 0 : 1, pointerEvents: hoveredSide === 'companies' ? 'none' : 'auto' }} transition={{ duration: 0.3 }}>
+                            <a href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it" className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-[#0038A5] px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-[0_4px_12px_rgba(0,56,165,0.3)] hover:bg-[#002B7F] active:scale-95">
+                                Carica CV
+                            </a>
+                        </motion.div>
 
-                    {/* Animated "Altri Link" Sub-menu - Slide from Left */}
-                    <div className="relative w-full h-0 z-40">
-                        <AnimatePresence>
-                            {hoveredSide === 'candidates' && !isMobile && (
-                                <motion.div
-                                    initial={{ opacity: 0, x: -40 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -30 }}
-                                    transition={{ duration: 0.4, ease: "easeOut" }}
-                                    className="absolute top-4 left-0 w-full md:w-[150%] pt-2"
-                                >
-                                    <p className="text-sm font-semibold text-slate-500 mb-3">Altri link</p>
-                                    <div className="flex flex-wrap gap-2">
-                                        {candidateLinks.map((link, idx) => (
-                                            <a key={idx} href={link.url} className="border border-[#0038A5] text-[#0038A5] bg-white hover:bg-[#0038A5] hover:text-white rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200">
-                                                {link.label}
-                                            </a>
-                                        ))}
-                                    </div>
-                                </motion.div>
+                        {/* Animated "Altri Link" Sub-menu - Slide from Left */}
+                        <div className="relative w-full h-0 z-40">
+                            <AnimatePresence>
+                                {hoveredSide === 'candidates' && !isMobile && (
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -40 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: -30 }}
+                                        transition={{ duration: 0.4, ease: "easeOut" }}
+                                        className="absolute top-4 left-0 w-full md:w-[150%] pt-2"
+                                    >
+                                        <p className="text-sm font-semibold text-slate-500 mb-3">Altri link</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {candidateLinks.map((link, idx) => (
+                                                <a key={idx} href={link.url} className="border border-[#0038A5] text-[#0038A5] bg-white hover:bg-[#0038A5] hover:text-white rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200">
+                                                    {link.label}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                            {/* Static Links for Mobile */}
+                            {isMobile && (
+                                <div className="mt-8 flex flex-wrap gap-2">
+                                    {candidateLinks.map((link, idx) => (
+                                        <a key={idx} href={link.url} className="border border-[#0038A5] text-[#0038A5] bg-transparent hover:bg-[#0038A5] hover:text-white rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-200">
+                                            {link.label}
+                                        </a>
+                                    ))}
+                                </div>
                             )}
-                        </AnimatePresence>
-                        {/* Static Links for Mobile */}
-                        {isMobile && (
-                             <div className="mt-8 flex flex-wrap gap-2">
-                                 {candidateLinks.map((link, idx) => (
-                                     <a key={idx} href={link.url} className="border border-[#0038A5] text-[#0038A5] bg-transparent hover:bg-[#0038A5] hover:text-white rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-200">
-                                         {link.label}
-                                     </a>
-                                 ))}
-                             </div>
-                        )}
-                    </div>
+                        </div>
+                    </motion.div>
                 </div>
             </motion.div>
 

@@ -150,7 +150,7 @@ const Filters = () => {
     };
 
     return (
-        <div className="w-full max-w-6xl mx-auto -mt-8 relative z-20 px-4 pb-20">
+        <div className="w-[95%] max-w-[1800px] mx-auto -mt-8 relative z-20 px-4 pb-20">
             <div className="bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-3xl p-4 md:p-6 mb-8 mt-2">
                 <form onSubmit={handleSearch} className="flex flex-col xl:flex-row gap-4">
                     
