@@ -1,70 +1,22 @@
 [
   {
     "id": 0,
-    "title": "Polisseur/ euse 100%",
+    "title": "Treuhänder mit eidg. FA D/E 50-100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688020-polisseur-euse-100-lengnau-be&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688017-treuh%C3%A4nder-mit-eidg-fa-d-e-50-100-m-w-d-zug-zug&language=en"
   },
   {
     "id": 1,
-    "title": "Fahrzeugtechniker im mobilen Serviceeinsatz 100% (m/w/d)",
+    "title": "Leiter Treuhand (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688009-fahrzeugtechniker-im-mobilen-serviceeinsatz-100-m-w-d-schlieren-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688016-leiter-treuhand-m-w-d-100-entlebuch-luzern&language=en"
   },
   {
     "id": 2,
-    "title": "Mandatsleiter Wirtschaftsprüfung (m/w/d) 60?100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688010-mandatsleiter-wirtschaftsprufung-m-w-d-60-100-ibach-schwyz&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Elektroinstallateur EFZ m/w/d 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688018-elektroinstallateur-efz-m-w-d-80-100-basel-basel&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Poseur de bordures",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688019-poseur-de-bordures-neuch%C3%A2tel-ne&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Mitarbeiter Magazin / Werkhof 100% (a)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688012-mitarbeiter-magazin-werkhof-100-a-aarau-ag&language=en"
-  },
-  {
-    "id": 6,
-    "title": "FAGE oder Dipl 80-100%, alle Dienste",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688013-fage-oder-dipl-80-100-alle-dienste-au-sg&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Bauleiter/in Elektroinstallation",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688015-bauleiter-in-elektroinstallation-schlieren-zh&language=en"
-  },
-  {
-    "id": 8,
     "title": "Logistiker EFZ (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,15 +24,55 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688021-logistiker-efz-m-w-d-100-wohlen-ag&language=en"
   },
   {
-    "id": 9,
-    "title": "Techniker Zutrittskontrolle / Sicherheitstechnik (m/w/d)",
+    "id": 3,
+    "title": "Sachbearbeitung Schadenabteilung & Administration 60% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688008-techniker-zutrittskontrolle-sicherheitstechnik-m-w-d-wallisellen-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688014-sachbearbeitung-schadenabteilung-administration-60-m-w-d-brugg-ag&language=en"
   },
   {
-    "id": 10,
+    "id": 4,
+    "title": "Mandatsleiter Wirtschaftsprüfung (m/w/d) 60?100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688010-mandatsleiter-wirtschaftsprufung-m-w-d-60-100-ibach-schwyz&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Treuhandsachbearbeiter D/E (m/w/d) 60-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688007-treuhandsachbearbeiter-d-e-m-w-d-60-100-zug-zug&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Bauleiter/in Elektroinstallation",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688015-bauleiter-in-elektroinstallation-schlieren-zh&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Mitarbeiter Magazin / Werkhof 100% (a)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688012-mitarbeiter-magazin-werkhof-100-a-aarau-ag&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Poseur de bordures",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688019-poseur-de-bordures-neuch%C3%A2tel-ne&language=en"
+  },
+  {
+    "id": 9,
     "title": "Elektroniker / Automatiker (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +80,19 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688011-elektroniker-automatiker-m-w-d-dietikon-zh&language=en"
   },
   {
-    "id": 11,
-    "title": "Treuhandsachbearbeiter D/E (m/w/d) 60-100%",
+    "id": 10,
+    "title": "Fahrzeugtechniker im mobilen Serviceeinsatz 100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688007-treuhandsachbearbeiter-d-e-m-w-d-60-100-zug-zug&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688009-fahrzeugtechniker-im-mobilen-serviceeinsatz-100-m-w-d-schlieren-zh&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Elektroinstallateur EFZ m/w/d 80-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688018-elektroinstallateur-efz-m-w-d-80-100-basel-basel&language=en"
   }
 ]
