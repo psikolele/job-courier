@@ -12,7 +12,6 @@ import Vetrini from './components/Vetrini';
 import Philosophy from './components/Philosophy';
 import Protocol from './components/Protocol';
 import Blog from './components/Blog';
-import CTA from './components/CTA';
 import Footer from './components/Footer';
 
 // Lazy load the Ad components
@@ -43,7 +42,17 @@ function App() {
         
         <Vetrini />
 
-        <CTA />
+        {/* Ad placeholders 50/50 */}
+        <Suspense fallback={null}>
+          <div className="w-full flex flex-col md:flex-row border-t border-b border-slate-200/60">
+            <div className="flex-1 min-h-[160px] md:border-r border-slate-200/60">
+              <AdSlot id="A" type="internal" />
+            </div>
+            <div className="flex-1 min-h-[160px]">
+              <AdSlot id="B" type="internal" />
+            </div>
+          </div>
+        </Suspense>
         
 
 

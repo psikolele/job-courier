@@ -262,8 +262,8 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
     const candidateTitle = lang === 'de' ? 'Für Kandidaten' : lang === 'fr' ? 'Pour les candidats' : 'Per i Candidati';
     const companyTitle = lang === 'de' ? 'Für Unternehmen' : lang === 'fr' ? 'Pour les entreprises' : 'Per le Aziende';
 
-    // Derive navbar appearance
-    const isTransparent = !scrolled && !mobileMenuOpen && activeSection === null;
+    // Navbar is always visible; scrolled just triggers the compact/shadow state
+    const isTransparent = false;
 
     return (
         <>
@@ -285,30 +285,26 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
         {/* ── HEADER ── */}
         <header
             ref={headerRef}
-            className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
-                isTransparent
-                    ? 'bg-transparent'
-                    : 'bg-white/95 backdrop-blur-xl border-b border-slate-200/60 shadow-[0_1px_20px_rgba(38,54,123,0.06)]'
+            className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 bg-white/98 backdrop-blur-xl border-b border-slate-200/60 ${
+                scrolled
+                    ? 'shadow-[0_2px_24px_rgba(38,54,123,0.10)]'
+                    : 'shadow-none'
             }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-[64px]' : 'h-[76px]'}`}>
+                <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'h-[60px]' : 'h-[72px]'}`}>
 
                     {/* ── LOGO ── */}
                     <a href="/" className="flex items-center gap-2.5 flex-shrink-0 group">
                         <img
                             src="https://www.jobcourier.ch/wp-content/uploads/2021/08/jobcourier_logo.png"
                             alt="Job Courier"
-                            className={`object-contain transition-all duration-300 ${scrolled ? 'h-[22px] md:h-[26px]' : 'h-[26px] md:h-[30px]'} ${isTransparent ? 'brightness-0 invert' : ''}`}
+                            className={`object-contain transition-all duration-500 ${scrolled ? 'h-[22px] md:h-[24px]' : 'h-[26px] md:h-[30px]'}`}
                         />
                     </a>
 
                     {/* ── DESKTOP NAV PILL ── */}
-                    <nav className={`hidden lg:flex items-center gap-0.5 rounded-full px-2 py-1.5 transition-all duration-300 ${
-                        isTransparent
-                            ? 'bg-white/15 backdrop-blur-md border border-white/25 text-white'
-                            : 'bg-slate-50/80 border border-slate-200/80 text-slate-700'
-                    }`}>
+                    <nav className="hidden lg:flex items-center gap-0.5 rounded-full px-2 py-1.5 bg-slate-50/80 border border-slate-200/80 text-slate-700 transition-all duration-500">
                         {/* SECTION: Per i Candidati */}
                         <div className="relative">
                             <SectionTrigger
@@ -363,15 +359,14 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     {/* ── RIGHT ACTIONS ── */}
                     <div className="flex items-center gap-3 flex-shrink-0">
                         {/* Language switcher */}
-                        <div className={`hidden sm:flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest transition-colors duration-300 ${isTransparent ? 'text-white/70' : 'text-slate-400'}`}>
+                        <div className="hidden sm:flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-400">
                             {['it', 'de', 'fr'].map((lng, idx) => (
                                 <React.Fragment key={lng}>
-                                    {idx > 0 && <span className={`${isTransparent ? 'text-white/30' : 'text-slate-300'}`}>·</span>}
+                                    {idx > 0 && <span className="text-slate-300">·</span>}
                                     <button
                                         onClick={() => i18n.changeLanguage(lng)}
-                                        className={`transition-all hover:opacity-100 ${i18n.language === lng
-                                            ? (isTransparent ? 'text-white opacity-100' : 'text-[#26367b] opacity-100')
-                                            : 'opacity-60 hover:opacity-80'
+                                        className={`transition-all hover:opacity-100 ${
+                                            i18n.language === lng ? 'text-[#26367b] opacity-100' : 'opacity-60 hover:opacity-80'
                                         }`}
                                     >
                                         {lng.toUpperCase()}
@@ -392,11 +387,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         {/* Hamburger (mobile) */}
                         <button
                             onClick={() => setMobileMenuOpen(prev => !prev)}
-                            className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 ${
-                                isTransparent && !mobileMenuOpen
-                                    ? 'text-white hover:bg-white/15'
-                                    : 'text-slate-700 hover:bg-slate-100'
-                            }`}
+                            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full text-slate-700 hover:bg-slate-100 transition-all duration-200"
                             aria-label="Toggle menu"
                         >
                             {mobileMenuOpen ? <IconX /> : <IconMenu />}

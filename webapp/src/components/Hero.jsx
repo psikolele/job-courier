@@ -196,10 +196,30 @@ const Hero = ({ setShowLoginModal }) => {
                                     Trova Offerte <ChevronRight className="w-4 h-4" />
                                 </button>
                             </form>
-                            <div className="pt-2 px-1">
-                                <a href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it" className="text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] hover:underline flex items-center gap-1 transition-colors">
-                                    Oppure carica il tuo CV <ChevronRight className="w-3 h-3" />
-                                </a>
+
+                            {/* Altri link */}
+                            <div className="pt-1 px-1">
+                                <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest mb-2">Altri link</p>
+                                <div className="flex flex-wrap gap-2">
+                                    <a
+                                        href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-[#0038A5]/30 text-[#0038A5] text-sm font-semibold hover:bg-[#0038A5]/5 transition-all"
+                                    >
+                                        Vedi tutte le offerte
+                                    </a>
+                                    <a
+                                        href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-slate-300 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition-all"
+                                    >
+                                        Vedi tutte le aziende
+                                    </a>
+                                    <a
+                                        href="#blog"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-slate-300 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition-all"
+                                    >
+                                        Blog
+                                    </a>
+                                </div>
                             </div>
                         </motion.div>
                     </motion.div>
@@ -269,6 +289,25 @@ const Hero = ({ setShowLoginModal }) => {
                             <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95 backdrop-blur-sm bg-opacity-70 mt-4">
                                 Pubblica Offerte
                             </button>
+
+                            {/* Altri link aziende */}
+                            <div className="pt-1">
+                                <p className="text-xs text-slate-500 font-semibold uppercase tracking-widest mb-2">Altri link</p>
+                                <div className="flex flex-wrap gap-2">
+                                    <a
+                                        href="https://www.jobcourier.ch/soluzioni-e-tariffe/"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-white/20 text-white/80 text-sm font-semibold hover:bg-white/10 transition-all"
+                                    >
+                                        Soluzioni e tariffe
+                                    </a>
+                                    <a
+                                        href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-white/20 text-white/80 text-sm font-semibold hover:bg-white/10 transition-all"
+                                    >
+                                        Registra azienda
+                                    </a>
+                                </div>
+                            </div>
                         </motion.div>
                     </motion.div>
                 </div>
