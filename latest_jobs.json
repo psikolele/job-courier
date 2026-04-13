@@ -1,35 +1,35 @@
 [
   {
     "id": 0,
-    "title": "Mitarbeiter Magazin / Werkhof 100% (a)",
+    "title": "Câbleurs industriels",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688012-mitarbeiter-magazin-werkhof-100-a-aarau-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688030-c%C3%A2bleurs-industriels-villeneuve-vd&language=en"
   },
   {
     "id": 1,
-    "title": "Fahrzeugtechniker im mobilen Serviceeinsatz 100% (m/w/d)",
+    "title": "Elektroinstallateur / Montageelektriker EFZ für langfristigen Einsatz (a) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688009-fahrzeugtechniker-im-mobilen-serviceeinsatz-100-m-w-d-schlieren-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688029-elektroinstallateur-montageelektriker-efz-fur-langfristigen-einsatz-a-100-bern-bern-mittelland&language=en"
   },
   {
     "id": 2,
-    "title": "Bauleiter/in Elektroinstallation",
+    "title": "Betriebselektriker ohne Schichtbetrieb (a) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688015-bauleiter-in-elektroinstallation-schlieren-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688028-betriebselektriker-ohne-schichtbetrieb-a-100-ittigen-be&language=en"
   },
   {
     "id": 3,
-    "title": "Elektroinstallateur EFZ m/w/d 80-100%",
+    "title": "Logistiker EFZ (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688018-elektroinstallateur-efz-m-w-d-80-100-basel-basel&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688021-logistiker-efz-m-w-d-100-wohlen-ag&language=en"
   },
   {
     "id": 4,
@@ -41,46 +41,22 @@
   },
   {
     "id": 5,
-    "title": "Polisseur/ euse 100%",
+    "title": "Servicemitarbeiter/in (m/w/d) 80 -100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688020-polisseur-euse-100-lengnau-be&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688026-servicemitarbeiter-in-m-w-d-80-100-zurich-flughafen-zh&language=en"
   },
   {
     "id": 6,
-    "title": "Treuhandsachbearbeiter D/E (m/w/d) 60-100%",
+    "title": "Sortiermitarbeiter 35%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688007-treuhandsachbearbeiter-d-e-m-w-d-60-100-zug-zug&language=en"
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688022-sortiermitarbeiter-35-h%C3%A4rkingen&language=en"
   },
   {
     "id": 7,
-    "title": "Leiter Treuhand (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688016-leiter-treuhand-m-w-d-100-entlebuch-luzern&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Logistiker EFZ (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688021-logistiker-efz-m-w-d-100-wohlen-ag&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Mandatsleiter Wirtschaftsprüfung (m/w/d) 60?100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688010-mandatsleiter-wirtschaftsprufung-m-w-d-60-100-ibach-schwyz&language=en"
-  },
-  {
-    "id": 10,
     "title": "Poseur de bordures",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688019-poseur-de-bordures-neuch%C3%A2tel-ne&language=en"
   },
   {
-    "id": 11,
-    "title": "Elektroniker / Automatiker (m/w/d)",
+    "id": 8,
+    "title": "Leiter Treuhand (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688011-elektroniker-automatiker-m-w-d-dietikon-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688016-leiter-treuhand-m-w-d-100-entlebuch-luzern&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Teamleiter/in Spenglerei (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688027-teamleiter-in-spenglerei-m-w-d-zurich-zurich&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Polisseur/ euse 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688020-polisseur-euse-100-lengnau-be&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Mandatsleiter Treuhand (m/w/d) D/E 80-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688025-mandatsleiter-treuhand-m-w-d-d-e-80-100-baar-zug&language=en"
   }
 ]
