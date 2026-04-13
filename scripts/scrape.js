@@ -68,12 +68,12 @@ async function run() {
             await fs.writeFile(outFile, JSON.stringify(jobs, null, 2));
             console.log(`💾 Salvato in ${outFile}`);
             
-            // Dummy Vercel Root Fix: Create webapp directory to prevent Vercel crash on data branch
-            const webappDir = path.join(outDir, 'webapp');
-            await fs.mkdir(webappDir, { recursive: true });
-            await fs.writeFile(path.join(webappDir, '.gitkeep'), '');
-            await fs.writeFile(path.join(webappDir, 'package.json'), JSON.stringify({ name: "dummy", version: "1.0.0" }));
-            await fs.writeFile(path.join(outDir, 'vercel.json'), JSON.stringify({ github: { silent: true } }));
+            // Definitive Vercel Fix: prevent Vercel from trying to build the data branch.
+            // The main webapp fetches the JSON directly from GitHub Raw, so a Vercel deploy is not needed here.
+            await fs.writeFile(path.join(outDir, 'vercel.json'), JSON.stringify({ 
+                github: { silent: true },
+                ignoreCommand: "true" 
+            }, null, 2));
         } else {
             console.error("❌ Nessun job estratto. Impossibile sovrascrivere i dai con lista vuota.");
             process.exit(1);
