@@ -1,78 +1,14 @@
 [
   {
     "id": 0,
-    "title": "Posatore di Fibra Ottica",
+    "title": "Installatore di impianti fotovoltaici",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688629-posatore-di-fibra-ottica-sottoceneri&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688628-installatore-di-impianti-fotovoltaici-sottoceneri&language=en"
   },
   {
     "id": 1,
-    "title": "Techniker (m/w/d) Gebäudeautomation 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688618-techniker-m-w-d-geb%C3%A4udeautomation-80-100-dietlikon-zh&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Operatore per smerigliatura / lucidatura a specchio",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688621-operatore-per-smerigliatura-lucidatura-a-specchio-sopraceneri&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Servicetechniker (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688615-servicetechniker-m-w-d-tagelswangen-zh&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Muratore",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688625-muratore-sottoceneri&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Entwicklungsingenieur Mechatronik /Maschinenbau (m/w/d) 80?100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688617-entwicklungsingenieur-mechatronik-maschinenbau-m-w-d-80-100-dietikon-zh&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Addetto/a vendita nel reparto ortofrutta - sostituzione malattia",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688620-addetto-a-vendita-nel-reparto-ortofrutta-sostituzione-malattia-sottoceneri&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Lattoniere",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688623-lattoniere-sopraceneri&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Carpentiere metallica pesante",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688619-carpentiere-metallica-pesante-sottoceneri&language=en"
-  },
-  {
-    "id": 9,
     "title": "Frigorista",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,7 +16,55 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688624-frigorista-sottoceneri&language=en"
   },
   {
-    "id": 10,
+    "id": 2,
+    "title": "Lattoniere",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688623-lattoniere-sopraceneri&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Operatore per smerigliatura / lucidatura a specchio",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688621-operatore-per-smerigliatura-lucidatura-a-specchio-sopraceneri&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Tecnico elettrodomenstici",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688627-tecnico-elettrodomenstici-sottoceneri&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Muratore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688625-muratore-sottoceneri&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Carpentiere edile",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688626-carpentiere-edile-sottoceri&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Posatore di Fibra Ottica",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688629-posatore-di-fibra-ottica-sottoceneri&language=en"
+  },
+  {
+    "id": 8,
     "title": "Gruista Suva",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +72,27 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688622-gruista-suva-sopraceneri&language=en"
   },
   {
-    "id": 11,
-    "title": "Carpentiere edile",
+    "id": 9,
+    "title": "Carpentiere metallica pesante",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688626-carpentiere-edile-sottoceri&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688619-carpentiere-metallica-pesante-sottoceneri&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Addetto/a vendita nel reparto ortofrutta - sostituzione malattia",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688620-addetto-a-vendita-nel-reparto-ortofrutta-sostituzione-malattia-sottoceneri&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Entwicklungsingenieur Mechatronik /Maschinenbau (m/w/d) 80?100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688617-entwicklungsingenieur-mechatronik-maschinenbau-m-w-d-80-100-dietikon-zh&language=en"
   }
 ]
