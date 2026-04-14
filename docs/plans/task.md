@@ -8,5 +8,5 @@
 | Present design | ✅ Done | Design approvato con schemi visivi. |
 | Write design doc | ✅ Done | Saved to docs/plans/2026-04-14-navbar-refactor-design.md |
 | Create implementation plan | ✅ Done | Saved to docs/plans/2026-04-14-navbar-refactor.md |
-| Execute implementation | 🔄 Next | Invoke executing-plans skill. |
-| Verification | ⏳ Todo | Verify functionality and style after implementation. |
+| Execute implementation | ✅ Done | Navbar bicolore + overlay accordion implementato e committato. |
+| Verification | ✅ Done | Verificato localmente (localhost:5173) + pushed su Vercel. |
