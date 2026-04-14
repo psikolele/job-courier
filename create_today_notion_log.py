@@ -13,8 +13,7 @@ load_dotenv(r'C:\Users\psiko\Desktop\Antigravity\Bloom 2.0\.env')
 load_dotenv()
 
 API_KEY = os.getenv("NOTION_API_KEY")
-DATABASE_ID = "c024f662-8528-4572-86bb-8c1809680da2" # Sessioni di Lavoro
-PROJECTS_DB_ID = "e8c61bb9-6f17-4fd4-8d4e-12822aef64cf" # Assumendo questo come DB Progetti, ma usiamo /search generico come nello script di riferimento
+DATABASE_ID = "c024f662-8528-4572-86bb-8c1809680da2"  # Sessioni di Lavoro
 
 HEADERS = {
     "Authorization": f"Bearer {API_KEY}",
@@ -29,59 +28,78 @@ def search_page(query):
     if response.status_code == 200:
         results = response.json().get("results", [])
         for result in results:
-            if "Progetti" in result.get("parent", {}).get("database_id", "") or True:
-                 # Just take the first result for simplicity, assuming it's the project
-                 return result['id']
+            return result['id']
     return None
-
-def create_project(name, cliente="Personale", qualita="Media"):
-    url = "https://api.notion.com/v1/pages"
-    
-    # We might not know the exact DB ID for projects here (unless it's hardcoded). 
-    # But let's first search to see if "Job Courier" exists.
-    pass
 
 def create_page(project_id):
     url = "https://api.notion.com/v1/pages"
-    
-    today_str = datetime.datetime.now().strftime("%Y-%m-%d")
+
+    today_str = "2026-04-12"
 
     blocks = [
-        {"object": "block", "type": "heading_1", "heading_1": {"rich_text": [{"type": "text", "text": {"content": "📋 Argomenti Trattati"}}]}},
-        
-        # Sezione 1: Integrazione API Modello
-        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "1. Sviluppo Scraper e Vercel Serverless API"}}]}},
-        {"object": "block", "type": "paragraph", "paragraph": {"rich_text": [{"type": "text", "text": {"content": "Creazione e integrazione di un bridge Vercel per bypassare il blocco CORS del portale Jobroom."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Implementazione di `api/jobs.js` tramite Cheerio."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Scraping in tempo reale delle ultime 12 offerte con gestione mock fallback locale."}}]}},
-
-        # Sezione 2: Componenti e Layout
-        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "2. Modale e Vetrina Aziende"}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Costruzione e sollevamento stato UI in `App.jsx` per l'handling del Modale di Login/Azienda."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Applicazione dei link definitivi 'Soluzioni e Tariffe' sia per l'Header (sostituendo Istituzioni) che nello slider ad estrazione."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Creazione del componente `Vetrini.jsx` in piena replica rispetto a `showcase-iframe.js` nativo, con polling dell'altezza in inter-window."}}]}},
-
-        # Sezione 3: Git e CI/CD
-        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "3. Troubleshooting GitHub Actions / Vercel"}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Commit massivo della codebase per testing Vercel."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Risoluzione configurazione `Root Directory` su Vercel Dashboard a seguito di errato default GitHub."}}]}},
-        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Creazione del branch 'trigger-vercel-deploy' e apertura di una Pull Request da CLI bypassando lock della pipeline principale."}}]}},
+        # ── NOTA BREVE ──
+        {"object": "block", "type": "callout", "callout": {
+            "rich_text": [{"type": "text", "text": {"content": "Sessione di manutenzione e deploy per Job Courier. Recuperato contesto da chat precedente, effettuato il primo deploy del refactoring Navbar, poi applicati fix UI su tre componenti (Navbar, Hero, App)."}}],
+            "icon": {"type": "emoji", "emoji": "📝"}
+        }},
 
         {"object": "block", "type": "divider", "divider": {}},
-        
-        # Conclusione
-         {"object": "block", "type": "callout", "callout": {
-             "rich_text": [{"type": "text", "text": {"content": "Le implementazioni della fase 2 di Job Courier (meeting 27/03) sono concluse: backend bypassato e UI fedeltà 100% sulla vetrina iFrame."}}],
-             "icon": {"type": "emoji", "emoji": "🎯"}
-         }}
+
+        # ── DEV LOG ──
+        {"object": "block", "type": "heading_1", "heading_1": {"rich_text": [{"type": "text", "text": {"content": "🛠️ Dev Log — 12 Aprile 2026"}}]}},
+
+        # 1. Troubleshooting chat history
+        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "1. Diagnosi problema Chat History"}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Investigato perché Antigravity non mostrava le conversazioni precedenti nella UI."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Confermato che i file .pb esistono in conversations/ per tutte le 8 sessioni."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Il bug è nella UI di Antigravity: non genera overview.txt nei log e non mostra sessioni precedenti nella Chat History. Segnalato come bug applicativo non risolvibile lato codice."}}]}},
+
+        # 2. Recupero contesto navbar
+        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "2. Recupero contesto sessione Navbar Refactor (db992d03)"}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Recuperato il contesto della chat precedente dal brain folder (immagini reference ReflexAI, codice Navbar.jsx)."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Verificato con git status che Navbar.jsx aveva 485 righe aggiunte e 122 eliminate pronte ma mai committate."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Effettuato primo commit (5913c99) e push su main → deploy Vercel attivato."}}]}},
+
+        # 3. Fix 1 - Navbar
+        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "3. Fix Navbar — sempre visibile"}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Problema: con scrollY=0 la navbar era completamente trasparente e invisibile."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Soluzione: rimosso lo stato isTransparent (forzato a false), background white/98 sempre attivo."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Animazione elegante allo scroll: altezza shrinks 72px→60px, shadow progressiva da shadow-none a shadow-[0_2px_24px_rgba(38,54,123,0.10)]."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Logo ripristinato a colori originali (rimosso il filtro brightness-0 invert)."}}]}},
+
+        # 4. Fix 2 - Hero CTAs
+        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "4. Fix Hero — ripristino CTAs 'Altri link'"}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Il refactoring precedente aveva rimosso i link secondari presenti nella versione vecchia."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Lato candidati: aggiunta sezione 'Altri link' con 3 ghost buttons: Vedi tutte le offerte, Vedi tutte le aziende, Blog."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Lato aziende: aggiunta sezione 'Altri link' con: Soluzioni e tariffe, Registra azienda."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Link aziende visibili solo all'hover della sezione companies (opacity 0→1 con Framer Motion)."}}]}},
+
+        # 5. Fix 3 - CTA section
+        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "5. Fix App — rimozione CTA section e sostituzione AdSlot 50/50"}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Rimossa la sezione CTA (componente interattivo duplicato con 'Accedi al tuo Prossimo Lavoro' / 'Trova il Miglior Talento') che generava ridondanza visiva."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Sostituita con 2 AdSlot placeholder in layout flex-row full-width, divisione 50%/50%, divisi da bordo sottile slate-200."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Lazy loading preservato tramite Suspense wrapper."}}]}},
+
+        # 6. Deploy
+        {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "6. Deploy"}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Commit 5913c99: feat(Navbar) — primo deploy del refactoring split layout."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Commit 447db2d: fix — navbar always visible, restore hero CTAs, replace CTA with AdSlot 50/50."}}]}},
+        {"object": "block", "type": "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": "Entrambi i commit pushati su main → deploy automatico Vercel."}}]}},
+
+        {"object": "block", "type": "divider", "divider": {}},
+
+        {"object": "block", "type": "callout", "callout": {
+            "rich_text": [{"type": "text", "text": {"content": "Tutti i fix richiesti completati e deployati. La navbar è ora sempre visibile con animazione elegante allo scroll. Le CTAs secondarie dell'Hero sono ripristinate. La sezione CTA ridondante è stata sostituita con spazi pubblicitari placeholder 50/50."}}],
+            "icon": {"type": "emoji", "emoji": "✅"}
+        }}
     ]
 
     properties = {
-        "Descrizione Breve": {"title": [{"text": {"content": "JobCourier - Implemenzione Backend Scraping, Slider Aziende e Deploy"}}]},
+        "Descrizione Breve": {"title": [{"text": {"content": "JobCourier — Deploy Navbar Refactor + UI Fixes (navbar, hero CTAs, AdSlot)"}}]},
         "Data Sessione": {"date": {"start": today_str}},
-        "Minuti Lavorati": {"number": 90},
+        "Minuti Lavorati": {"number": 120},
         "Categoria": {"select": {"name": "Sviluppo"}},
-        "Note": {"rich_text": [{"text": {"content": "Sviluppo API Vercel Serverless, migrazione Vetrina iFrame dinamica, sistemazione workflow GitHub e Vercel, e state-management UI per i Login."}}]}
+        "Note": {"rich_text": [{"text": {"content": "Recupero contesto da chat persa, primo deploy Navbar split-section, fix navbar trasparente, ripristino 'Altri link' nelle sezioni Hero, sostituzione CTA con placeholder AdSlot 50/50. 2 commit su main."}}]}
     }
 
     if project_id:
@@ -103,14 +121,12 @@ def create_page(project_id):
         print(f"ERROR: {response.text}")
 
 if __name__ == "__main__":
-    import sys
-    # Search for an appropriate project, "Job Courier" or fallback to "Social & Marketing" or "BLC"
     print("Searching for project 'Job Courier'...")
     pid = search_page("Job Courier")
     if not pid:
-        print("Project 'Job Courier' not found, searching for 'Social & Marketing'...")
-        pid = search_page("Social & Marketing")
-    
+        print("Project not found, creating without relation...")
+        pid = None
+
     print(f"Project ID: {pid}")
-    print("Creating page...")
+    print("Creating Notion page...")
     create_page(pid)
