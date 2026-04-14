@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
@@ -39,18 +39,32 @@ const IconBookOpen = () => (
     </svg>
 );
 const IconChevronDown = ({ open }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-        style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        style={{
+            transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            display: 'block',
+        }}
+    >
         <polyline points="6 9 12 15 18 9"/>
     </svg>
 );
 const IconX = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
     </svg>
 );
 const IconMenu = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
     </svg>
 );
@@ -69,7 +83,7 @@ const candidateLinks = [
         labelFr: "Recherche d'emploi",
         desc: 'Esplora migliaia di offerte',
         descDe: 'Tausende Angebote entdecken',
-        descFr: 'Explorez des milliers d\'offres',
+        descFr: "Explorez des milliers d'offres",
         href: '#jobs',
     },
     {
@@ -151,7 +165,6 @@ const companyLinks = [
     },
 ];
 
-// Helper to get localised label
 const getLabel = (item, lang) => {
     if (lang === 'de' && item.labelDe) return item.labelDe;
     if (lang === 'fr' && item.labelFr) return item.labelFr;
@@ -163,329 +176,373 @@ const getDesc = (item, lang) => {
     return item.desc;
 };
 
-// ---------- DROPDOWN PANEL ----------
-const DropdownPanel = ({ links, lang, title, onClose }) => (
-    <motion.div
-        initial={{ opacity: 0, y: -8, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: -8, scale: 0.98 }}
-        transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 z-50 bg-white/95 backdrop-blur-xl border border-slate-200/70 rounded-[1.5rem] shadow-[0_20px_60px_-10px_rgba(38,54,123,0.18)] overflow-hidden"
-        style={{ minWidth: '340px', maxWidth: '400px' }}
-    >
-        {/* Panel header */}
-        <div className="px-5 pt-4 pb-2 border-b border-slate-100">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#26367b]/60">{title}</span>
-        </div>
-        {/* Links */}
-        <div className="p-2">
-            {links.map((item, i) => (
-                <a
-                    key={i}
-                    href={item.href}
-                    target={item.external ? '_blank' : undefined}
-                    rel={item.external ? 'noopener noreferrer' : undefined}
-                    onClick={onClose}
-                    className="group flex items-start gap-3 p-3 rounded-xl hover:bg-[#26367b]/5 transition-all duration-200 hover:-translate-y-[1px]"
-                >
-                    <span className="mt-[2px] flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center bg-[#26367b]/8 text-[#26367b] group-hover:bg-[#26367b] group-hover:text-white transition-all duration-200">
-                        {item.icon}
-                    </span>
-                    <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between">
-                            <span className="text-sm font-semibold text-slate-800 group-hover:text-[#26367b] transition-colors">
-                                {getLabel(item, lang)}
-                            </span>
-                            <span className="opacity-0 group-hover:opacity-100 text-[#26367b] transition-opacity ml-2 flex-shrink-0">
-                                <IconArrowRight />
-                            </span>
-                        </div>
-                        <p className="text-xs text-slate-500 mt-0.5 leading-snug">{getDesc(item, lang)}</p>
-                    </div>
-                </a>
-            ))}
-        </div>
-    </motion.div>
-);
+// ---------- ACCORDION SECTION ----------
+const AccordionSection = ({ title, links, lang, isOpen, onToggle, onClose }) => (
+    <div className="border-b border-white/10 last:border-0">
+        {/* Header — always visible */}
+        <button
+            onClick={onToggle}
+            className="w-full flex items-center justify-between py-6 px-2 text-left group"
+        >
+            <span
+                className="text-2xl sm:text-3xl font-bold tracking-tight text-white transition-colors duration-200"
+                style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+            >
+                {title}
+            </span>
+            <span className="text-white/50 flex-shrink-0 ml-4 group-hover:text-[#2f9de5] transition-colors duration-200">
+                <IconChevronDown open={isOpen} />
+            </span>
+        </button>
 
-// ---------- SECTION TRIGGER ----------
-const SectionTrigger = ({ label, isOpen, onClick, accent }) => (
-    <button
-        onClick={onClick}
-        className={`relative flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-semibold tracking-tight transition-all duration-200 select-none
-            ${isOpen
-                ? 'bg-[#26367b] text-white shadow-sm'
-                : 'text-current hover:bg-[#26367b]/8'
-            }`}
-        style={{ letterSpacing: '-0.01em' }}
-    >
-        {label}
-        <IconChevronDown open={isOpen} />
-    </button>
+        {/* Expandable link list */}
+        <AnimatePresence initial={false}>
+            {isOpen && (
+                <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    style={{ overflow: 'hidden' }}
+                >
+                    <div className="pb-6 space-y-1 px-2">
+                        {links.map((item, i) => (
+                            <a
+                                key={i}
+                                href={item.href}
+                                target={item.external ? '_blank' : undefined}
+                                rel={item.external ? 'noopener noreferrer' : undefined}
+                                onClick={onClose}
+                                className="group flex items-center gap-4 p-3 rounded-xl hover:bg-white/8 transition-all duration-200"
+                            >
+                                <span className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center bg-white/10 text-white/70 group-hover:bg-[#2f9de5] group-hover:text-white transition-all duration-200">
+                                    {item.icon}
+                                </span>
+                                <div className="flex-1 min-w-0">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-base font-semibold text-white/90 group-hover:text-white transition-colors">
+                                            {getLabel(item, lang)}
+                                        </span>
+                                        <span className="opacity-0 group-hover:opacity-100 text-[#2f9de5] transition-opacity ml-2 flex-shrink-0">
+                                            <IconArrowRight />
+                                        </span>
+                                    </div>
+                                    <p className="text-sm text-white/45 mt-0.5 leading-snug">
+                                        {getDesc(item, lang)}
+                                    </p>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    </div>
 );
 
 // ---------- MAIN NAVBAR ----------
 const Navbar = ({ showLoginModal, setShowLoginModal }) => {
     const [scrolled, setScrolled] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState(null); // 'candidates' | 'companies' | null
-    const headerRef = useRef(null);
-    const { t, i18n } = useTranslation();
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [openSection, setOpenSection] = useState(null);
+    const { i18n } = useTranslation();
     const lang = i18n.language;
 
+    const candidateTitle =
+        lang === 'de' ? 'Für Kandidaten' :
+        lang === 'fr' ? 'Pour les candidats' :
+        'Per i Candidati';
+    const companyTitle =
+        lang === 'de' ? 'Für Unternehmen' :
+        lang === 'fr' ? 'Pour les entreprises' :
+        'Per le Aziende';
+
+    // Scroll listener
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 40);
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close dropdown on outside click
+    // Lock body scroll when menu open; set default open section
     useEffect(() => {
-        const handleClick = (e) => {
-            if (headerRef.current && !headerRef.current.contains(e.target)) {
-                setActiveSection(null);
-            }
-        };
-        document.addEventListener('mousedown', handleClick);
-        return () => document.removeEventListener('mousedown', handleClick);
-    }, []);
+        if (menuOpen) {
+            document.body.style.overflow = 'hidden';
+            setOpenSection('candidates');
+        } else {
+            document.body.style.overflow = '';
+            setOpenSection(null);
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [menuOpen]);
+
+    const closeAll = useCallback(() => setMenuOpen(false), []);
 
     const toggleSection = useCallback((section) => {
-        setActiveSection(prev => prev === section ? null : section);
+        setOpenSection(prev => prev === section ? null : section);
     }, []);
 
-    const closeAll = useCallback(() => {
-        setActiveSection(null);
-        setMobileMenuOpen(false);
-    }, []);
+    const changeLanguage = useCallback((lng) => {
+        i18n.changeLanguage(lng);
+    }, [i18n]);
 
-    const candidateTitle = lang === 'de' ? 'Für Kandidaten' : lang === 'fr' ? 'Pour les candidats' : 'Per i Candidati';
-    const companyTitle = lang === 'de' ? 'Für Unternehmen' : lang === 'fr' ? 'Pour les entreprises' : 'Per le Aziende';
-
-    // Navbar is always visible; scrolled just triggers the compact/shadow state
-    const isTransparent = false;
+    const navHeight = scrolled ? '60px' : '72px';
 
     return (
         <>
-        {/* ── BACKDROP BLUR OVERLAY when dropdown open ── */}
-        <AnimatePresence>
-            {activeSection && (
-                <motion.div
-                    key="backdrop"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="fixed inset-0 z-40 bg-slate-900/10 backdrop-blur-[2px]"
-                    onClick={() => setActiveSection(null)}
-                />
-            )}
-        </AnimatePresence>
-
-        {/* ── HEADER ── */}
+        {/* ── SPLIT HEADER ── */}
         <header
-            ref={headerRef}
-            className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 bg-white/98 backdrop-blur-xl border-b border-slate-200/60 ${
-                scrolled
-                    ? 'shadow-[0_2px_24px_rgba(38,54,123,0.10)]'
-                    : 'shadow-none'
-            }`}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 50,
+                display: 'flex',
+                height: navHeight,
+                transition: 'height 0.4s ease, box-shadow 0.4s ease',
+                boxShadow: scrolled
+                    ? '0 4px 28px rgba(0,0,0,0.22)'
+                    : '0 4px 18px rgba(0,0,0,0.14)',
+            }}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'h-[60px]' : 'h-[72px]'}`}>
+            {/* LEFT: white, logo */}
+            <div
+                style={{
+                    flex: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: '#ffffff',
+                    padding: '0 2rem',
+                    borderBottom: '1px solid rgba(226,232,240,0.6)',
+                }}
+            >
+                <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
+                    <img
+                        src="https://www.jobcourier.ch/wp-content/uploads/2021/08/jobcourier_logo.png"
+                        alt="Job Courier"
+                        style={{
+                            height: scrolled ? '24px' : '30px',
+                            transition: 'height 0.4s ease',
+                            objectFit: 'contain',
+                        }}
+                    />
+                </a>
+            </div>
 
-                    {/* ── LOGO ── */}
-                    <a href="/" className="flex items-center gap-2.5 flex-shrink-0 group">
-                        <img
-                            src="https://www.jobcourier.ch/wp-content/uploads/2021/08/jobcourier_logo.png"
-                            alt="Job Courier"
-                            className={`object-contain transition-all duration-500 ${scrolled ? 'h-[22px] md:h-[24px]' : 'h-[26px] md:h-[30px]'}`}
+            {/* RIGHT: dark navy, lang + login + hamburger */}
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                    gap: '1rem',
+                    backgroundColor: '#1a2554',
+                    padding: '0 1.5rem',
+                    flexShrink: 0,
+                    borderBottom: '1px solid #1a2554',
+                }}
+            >
+                {/* Language switcher */}
+                <div className="hidden sm:flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                    {['it', 'de', 'fr'].map((lng, idx) => (
+                        <React.Fragment key={lng}>
+                            {idx > 0 && <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>}
+                            <button
+                                onClick={() => changeLanguage(lng)}
+                                style={{
+                                    color: i18n.language === lng ? '#ffffff' : 'rgba(255,255,255,0.5)',
+                                    transition: 'color 0.2s',
+                                    cursor: 'pointer',
+                                    background: 'none',
+                                    border: 'none',
+                                    fontWeight: 700,
+                                    fontSize: '10px',
+                                    letterSpacing: '0.1em',
+                                    textTransform: 'uppercase',
+                                }}
+                                onMouseEnter={e => { if (i18n.language !== lng) e.target.style.color = 'rgba(255,255,255,0.8)'; }}
+                                onMouseLeave={e => { if (i18n.language !== lng) e.target.style.color = 'rgba(255,255,255,0.5)'; }}
+                            >
+                                {lng.toUpperCase()}
+                            </button>
+                        </React.Fragment>
+                    ))}
+                </div>
+
+                {/* LOGIN button */}
+                <button
+                    onClick={() => setShowLoginModal(true)}
+                    className="hidden sm:flex items-center gap-2 rounded-full px-5 py-2 text-[11px] uppercase tracking-widest font-bold text-white transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                    style={{
+                        background: '#e63946',
+                        overflow: 'hidden',
+                        position: 'relative',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 4px 16px rgba(230,57,70,0.50)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; }}
+                >
+                    LOGIN
+                </button>
+
+                {/* Hamburger */}
+                <button
+                    onClick={() => setMenuOpen(prev => !prev)}
+                    aria-label="Toggle menu"
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: 'rgba(255,255,255,0.0)',
+                        color: '#ffffff',
+                        border: 'none',
+                        cursor: 'pointer',
+                        transition: 'background 0.2s',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.0)'; }}
+                >
+                    {menuOpen ? <IconX /> : <IconMenu />}
+                </button>
+            </div>
+        </header>
+
+        {/* ── FULL-SCREEN OVERLAY ── */}
+        <AnimatePresence>
+            {menuOpen && (
+                <motion.div
+                    key="overlay"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    style={{
+                        position: 'fixed',
+                        inset: 0,
+                        zIndex: 90,
+                        backgroundColor: '#0B1120',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        overflowY: 'auto',
+                        paddingTop: navHeight,
+                    }}
+                >
+                    {/* Close button */}
+                    <button
+                        onClick={closeAll}
+                        aria-label="Chiudi menu"
+                        style={{
+                            position: 'absolute',
+                            top: '1.25rem',
+                            right: '1.5rem',
+                            width: '40px',
+                            height: '40px',
+                            borderRadius: '50%',
+                            background: 'rgba(255,255,255,0.08)',
+                            color: '#fff',
+                            border: 'none',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'background 0.2s',
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.18)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; }}
+                    >
+                        <IconX />
+                    </button>
+
+                    {/* Content */}
+                    <div
+                        style={{
+                            flex: 1,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            maxWidth: '640px',
+                            margin: '0 auto',
+                            width: '100%',
+                            padding: '2.5rem 1.5rem',
+                        }}
+                    >
+                        {/* Accordion sections */}
+                        <AccordionSection
+                            title={candidateTitle}
+                            links={candidateLinks}
+                            lang={lang}
+                            isOpen={openSection === 'candidates'}
+                            onToggle={() => toggleSection('candidates')}
+                            onClose={closeAll}
                         />
-                    </a>
+                        <AccordionSection
+                            title={companyTitle}
+                            links={companyLinks}
+                            lang={lang}
+                            isOpen={openSection === 'companies'}
+                            onToggle={() => toggleSection('companies')}
+                            onClose={closeAll}
+                        />
 
-                    {/* ── DESKTOP NAV PILL ── */}
-                    <nav className="hidden lg:flex items-center gap-0.5 rounded-full px-2 py-1.5 bg-slate-50/80 border border-slate-200/80 text-slate-700 transition-all duration-500">
-                        {/* SECTION: Per i Candidati */}
-                        <div className="relative">
-                            <SectionTrigger
-                                label={candidateTitle}
-                                isOpen={activeSection === 'candidates'}
-                                onClick={() => toggleSection('candidates')}
-                            />
-                            <AnimatePresence>
-                                {activeSection === 'candidates' && (
-                                    <DropdownPanel
-                                        links={candidateLinks}
-                                        lang={lang}
-                                        title={candidateTitle}
-                                        onClose={closeAll}
-                                    />
-                                )}
-                            </AnimatePresence>
-                        </div>
+                        {/* Bottom actions */}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '2rem' }}>
+                            <button
+                                onClick={() => { closeAll(); setShowLoginModal(true); }}
+                                style={{
+                                    width: '100%',
+                                    padding: '1rem',
+                                    borderRadius: '9999px',
+                                    background: '#e63946',
+                                    color: '#fff',
+                                    fontSize: '0.85rem',
+                                    fontWeight: 700,
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    transition: 'background 0.2s, box-shadow 0.2s',
+                                }}
+                                onMouseEnter={e => { e.currentTarget.style.background = '#c1121f'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(230,57,70,0.4)'; }}
+                                onMouseLeave={e => { e.currentTarget.style.background = '#e63946'; e.currentTarget.style.boxShadow = 'none'; }}
+                            >
+                                Accedi
+                            </button>
 
-                        {/* SEPARATOR */}
-                        <div className={`w-px h-5 mx-1 flex-shrink-0 rounded-full transition-colors duration-300 ${isTransparent ? 'bg-white/30' : 'bg-slate-300/70'}`} />
-
-                        {/* SECTION: Per le Aziende */}
-                        <div className="relative">
-                            <SectionTrigger
-                                label={companyTitle}
-                                isOpen={activeSection === 'companies'}
-                                onClick={() => toggleSection('companies')}
-                            />
-                            <AnimatePresence>
-                                {activeSection === 'companies' && (
-                                    <DropdownPanel
-                                        links={companyLinks}
-                                        lang={lang}
-                                        title={companyTitle}
-                                        onClose={closeAll}
-                                    />
-                                )}
-                            </AnimatePresence>
-                        </div>
-
-                        {/* Spacer link — Blog */}
-                        <a
-                            href="#blog"
-                            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-semibold tracking-tight transition-all duration-200 hover:bg-[#26367b]/8 hover:-translate-y-[1px]`}
-                            style={{ letterSpacing: '-0.01em' }}
-                        >
-                            {lang === 'de' ? 'Blog' : lang === 'fr' ? 'Blog' : 'Blog'}
-                        </a>
-                    </nav>
-
-                    {/* ── RIGHT ACTIONS ── */}
-                    <div className="flex items-center gap-3 flex-shrink-0">
-                        {/* Language switcher */}
-                        <div className="hidden sm:flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                            {['it', 'de', 'fr'].map((lng, idx) => (
-                                <React.Fragment key={lng}>
-                                    {idx > 0 && <span className="text-slate-300">·</span>}
+                            {/* Language (also visible in overlay) */}
+                            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem' }}>
+                                {['it', 'de', 'fr'].map(lng => (
                                     <button
-                                        onClick={() => i18n.changeLanguage(lng)}
-                                        className={`transition-all hover:opacity-100 ${
-                                            i18n.language === lng ? 'text-[#26367b] opacity-100' : 'opacity-60 hover:opacity-80'
-                                        }`}
+                                        key={lng}
+                                        onClick={() => changeLanguage(lng)}
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            fontSize: '0.7rem',
+                                            fontWeight: 700,
+                                            letterSpacing: '0.1em',
+                                            textTransform: 'uppercase',
+                                            cursor: 'pointer',
+                                            color: i18n.language === lng ? '#ffffff' : 'rgba(255,255,255,0.35)',
+                                            transition: 'color 0.2s',
+                                        }}
+                                        onMouseEnter={e => { e.target.style.color = 'rgba(255,255,255,0.7)'; }}
+                                        onMouseLeave={e => { e.target.style.color = i18n.language === lng ? '#ffffff' : 'rgba(255,255,255,0.35)'; }}
                                     >
                                         {lng.toUpperCase()}
                                     </button>
-                                </React.Fragment>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-
-                        {/* CTA — Accedi (desktop) */}
-                        <button
-                            onClick={() => setShowLoginModal(true)}
-                            className="group relative overflow-hidden hidden md:flex items-center gap-2 rounded-full bg-[#26367b] px-5 py-2 text-[11px] uppercase tracking-widest font-bold text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_6px_20px_rgba(38,54,123,0.35)] active:scale-[0.98]"
-                        >
-                            <span className="relative z-10">Accedi</span>
-                            <div className="absolute inset-0 bg-[#2f9de5]/30 translate-x-[-110%] group-hover:translate-x-0 transition-transform duration-400 ease-out" />
-                        </button>
-
-                        {/* Hamburger (mobile) */}
-                        <button
-                            onClick={() => setMobileMenuOpen(prev => !prev)}
-                            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full text-slate-700 hover:bg-slate-100 transition-all duration-200"
-                            aria-label="Toggle menu"
-                        >
-                            {mobileMenuOpen ? <IconX /> : <IconMenu />}
-                        </button>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
 
-            {/* ── MOBILE MENU ── */}
-            <AnimatePresence>
-                {mobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                        className="lg:hidden overflow-hidden bg-white border-t border-slate-100"
-                    >
-                        <div className="max-w-7xl mx-auto px-4 py-6 space-y-6">
-                            {/* Section: Per i Candidati */}
-                            <div>
-                                <p className="text-[10px] font-bold uppercase tracking-widest text-[#26367b]/60 mb-3 px-1">{candidateTitle}</p>
-                                <div className="space-y-1">
-                                    {candidateLinks.map((item, i) => (
-                                        <a
-                                            key={i}
-                                            href={item.href}
-                                            target={item.external ? '_blank' : undefined}
-                                            rel={item.external ? 'noopener noreferrer' : undefined}
-                                            onClick={closeAll}
-                                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#26367b]/5 transition-all group"
-                                        >
-                                            <span className="w-7 h-7 flex items-center justify-center rounded-lg bg-[#26367b]/8 text-[#26367b] group-hover:bg-[#26367b] group-hover:text-white transition-all">
-                                                {item.icon}
-                                            </span>
-                                            <span className="text-sm font-semibold text-slate-700 group-hover:text-[#26367b] transition-colors">
-                                                {getLabel(item, lang)}
-                                            </span>
-                                        </a>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Separator */}
-                            <div className="h-px bg-slate-100 rounded-full" />
-
-                            {/* Section: Per le Aziende */}
-                            <div>
-                                <p className="text-[10px] font-bold uppercase tracking-widest text-[#26367b]/60 mb-3 px-1">{companyTitle}</p>
-                                <div className="space-y-1">
-                                    {companyLinks.map((item, i) => (
-                                        <a
-                                            key={i}
-                                            href={item.href}
-                                            target={item.external ? '_blank' : undefined}
-                                            rel={item.external ? 'noopener noreferrer' : undefined}
-                                            onClick={closeAll}
-                                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#26367b]/5 transition-all group"
-                                        >
-                                            <span className="w-7 h-7 flex items-center justify-center rounded-lg bg-[#26367b]/8 text-[#26367b] group-hover:bg-[#26367b] group-hover:text-white transition-all">
-                                                {item.icon}
-                                            </span>
-                                            <span className="text-sm font-semibold text-slate-700 group-hover:text-[#26367b] transition-colors">
-                                                {getLabel(item, lang)}
-                                            </span>
-                                        </a>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Bottom actions */}
-                            <div className="flex flex-col gap-3 pt-2">
-                                <button
-                                    onClick={() => { closeAll(); setShowLoginModal(true); }}
-                                    className="w-full py-3 rounded-full bg-[#26367b] text-white text-sm font-bold uppercase tracking-widest text-center hover:bg-[#1e2d6b] transition-colors"
-                                >
-                                    Accedi
-                                </button>
-                                {/* Language (mobile) */}
-                                <div className="flex justify-center gap-4 text-xs font-bold uppercase tracking-widest text-slate-400">
-                                    {['it', 'de', 'fr'].map(lng => (
-                                        <button
-                                            key={lng}
-                                            onClick={() => { i18n.changeLanguage(lng); setMobileMenuOpen(false); }}
-                                            className={i18n.language === lng ? 'text-[#26367b]' : 'hover:text-slate-600'}
-                                        >
-                                            {lng.toUpperCase()}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </header>
-
-        {/* ── LOGIN MODAL ── */}
+        {/* ── LOGIN MODAL (invariato) ── */}
         <AnimatePresence>
             {showLoginModal && (
                 <motion.div
@@ -514,7 +571,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 <IconBuilding />
                             </div>
                             <h3 className="text-2xl font-bold text-slate-900 mb-2">Area Aziende</h3>
-                            <p className="text-slate-500 text-sm">Seleziona un'opzione per continuare l'accesso al portale.</p>
+                            <p className="text-slate-500 text-sm">Seleziona un&apos;opzione per continuare l&apos;accesso al portale.</p>
                         </div>
 
                         <div className="flex flex-col gap-4">
