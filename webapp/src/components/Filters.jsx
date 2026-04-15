@@ -97,12 +97,12 @@ const Filters = () => {
             } catch (err) {
                 console.warn('API error in Filters:', err.message, 'Using graceful local mock data.');
                 setLatestJobs([
-                    { id: 1, title: 'Specialista in Logistica e Supply Chain', location: 'Svizzera, Chiasso', sector: 'Trasporti e logistica', company: 'Global Transport SA', link: '#' },
-                    { id: 2, title: 'Responsabile Magazzino (100%)', location: 'Berna', sector: 'Logistica E-commerce', company: 'TechSwiss Distribution', link: '#' },
-                    { id: 3, title: 'Autista Consegnatario Patente B', location: 'Lugano', sector: 'Trasporti', company: 'RapidCourier CH', link: '#' },
-                    { id: 4, title: 'Impiegato Ufficio Spedizioni', location: 'Ginevra', sector: 'Logistica', company: 'Swiss Delivery Network', link: '#' },
-                    { id: 5, title: 'Sviluppatore Web Full Stack', location: 'Zurigo', sector: 'IT/Technology', company: 'Tech Innovators', link: '#' },
-                    { id: 6, title: 'Ingegnere Civile', location: 'Basilea', sector: 'Ingegneria', company: 'BuildSwiss', link: '#' }
+                    { id: 1, title: 'Specialista in Logistica e Supply Chain', location: 'Svizzera, Chiasso', sector: 'Trasporti e logistica', company: 'Global Transport SA', companyLogo: 'https://www.google.com/s2/favicons?domain=globaltransport.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 2, title: 'Responsabile Magazzino (100%)', location: 'Berna', sector: 'Logistica E-commerce', company: 'TechSwiss Distribution', companyLogo: 'https://www.google.com/s2/favicons?domain=techswiss.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 3, title: 'Autista Consegnatario Patente B', location: 'Lugano', sector: 'Trasporti', company: 'RapidCourier CH', companyLogo: 'https://www.google.com/s2/favicons?domain=rapidcourier.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 4, title: 'Impiegato Ufficio Spedizioni', location: 'Ginevra', sector: 'Logistica', company: 'Swiss Delivery Network', companyLogo: 'https://www.google.com/s2/favicons?domain=swissdelivery.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 5, title: 'Sviluppatore Web Full Stack', location: 'Zurigo', sector: 'IT/Technology', company: 'Tech Innovators', companyLogo: 'https://www.google.com/s2/favicons?domain=techinnovators.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
+                    { id: 6, title: 'Ingegnere Civile', location: 'Basilea', sector: 'Ingegneria', company: 'BuildSwiss', companyLogo: 'https://www.google.com/s2/favicons?domain=buildswiss.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' }
                 ]);
             } finally {
                 setJobsLoading(false);
