@@ -1,27 +1,40 @@
 import React from 'react';
+import { MapPin, Briefcase } from 'lucide-react';
 
 const Blog = () => {
     const cards = [
         {
-            target: 'Candidati',
-            targetType: 'candidate',
+            sector: 'Technology',
+            location: 'Zurigo, CH',
             title: 'Come superare il colloquio tecnico nel 2026',
-            description: 'Scopri le strategie migliori per affrontare le technical interviews...',
-            image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop'
+            description: 'Scopri le strategie migliori per affrontare le technical interviews nel panorama tech svizzero...',
+            image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop',
+            company: {
+                name: 'Google Switzerland',
+                logo: 'https://logo.clearbit.com/google.com'
+            }
         },
         {
-            target: 'Aziende',
-            targetType: 'company',
+            sector: 'Finance',
+            location: 'Ginevra, CH',
             title: 'I trend del remote working in Svizzera',
-            description: 'Come attrarre talenti da tutta la confederazione offrendo flessibilità...',
-            image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop'
+            description: 'Come attrarre talenti da tutta la confederazione offrendo flessibilità e bilanciamento vita-lavoro...',
+            image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop',
+            company: {
+                name: 'UBS Group',
+                logo: 'https://logo.clearbit.com/ubs.com'
+            }
         },
         {
-            target: 'Istituzioni',
-            targetType: 'institution',
+            sector: 'Public Sector',
+            location: 'Berna, CH',
             title: 'Partnership pubblico-privato per il lavoro',
             description: 'Il ruolo delle istituzioni nella digitalizzazione del mercato del lavoro svizzero.',
-            image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop'
+            image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
+            company: {
+                name: 'SECO',
+                logo: 'https://logo.clearbit.com/admin.ch'
+            }
         }
     ];
 
@@ -47,9 +60,27 @@ const Blog = () => {
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 origin-center" 
                                     loading="lazy"
                                 />
-                                <div className="absolute top-4 left-4">
-                                    <span className="inline-block px-4 py-1.5 bg-black/40 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/10 shadow-lg">
-                                        {card.target}
+                                {/* Metadata chips — top left */}
+                                <div className="absolute top-4 left-4 flex flex-col gap-1.5">
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/50 backdrop-blur-md text-white text-[10px] font-semibold uppercase tracking-widest rounded-full border border-white/15 shadow-lg">
+                                        <Briefcase size={9} className="shrink-0" />
+                                        {card.sector}
+                                    </span>
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/50 backdrop-blur-md text-white text-[10px] font-semibold uppercase tracking-widest rounded-full border border-white/15 shadow-lg">
+                                        <MapPin size={9} className="shrink-0" />
+                                        {card.location}
+                                    </span>
+                                </div>
+                                {/* Company logo badge — bottom right */}
+                                <div className="absolute bottom-3 right-3 flex items-center gap-2 px-2.5 py-1.5 bg-white/90 backdrop-blur-md rounded-xl border border-white/30 shadow-lg">
+                                    <img
+                                        src={card.company.logo}
+                                        alt={card.company.name}
+                                        className="w-5 h-5 rounded-sm object-contain"
+                                        onError={(e) => { e.target.style.display = 'none'; }}
+                                    />
+                                    <span className="text-[10px] font-bold text-gray-700 leading-none tracking-tight max-w-[80px] truncate">
+                                        {card.company.name}
                                     </span>
                                 </div>
                             </div>
