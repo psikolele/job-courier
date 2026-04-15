@@ -48,16 +48,19 @@ const Blog = () => {
             setIsLoading(true);
             const data = await fetchLatestJobs();
             if (data && data.length > 0) {
-                // Map API data to UI structure, ensuring we keep the logo domain logic
+                // Map API data to UI structure
                 const formattedJobs = data.map(job => ({
                     ...job,
-                    description: job.description || `Opportunità come ${job.title} presso ${job.company.name} in zona ${job.location}.`,
+                    // Use the real description from API, or a fallback if empty
+                    description: job.description || `Scopri questa opportunità come ${job.title} in zona ${job.location}.`,
                     company: {
                         ...job.company,
-                        logo: `https://www.google.com/s2/favicons?domain=${job.company.domain}&sz=128`
+                        // Prioritize real logo from API, fallback to favicon
+                        logo: job.company.logo || `https://www.google.com/s2/favicons?domain=${job.company.domain}&sz=128`
                     }
                 }));
-                setJobs(formattedJobs);
+                // Only take the first 3-4 for the main slider to preserve design balance
+                setJobs(formattedJobs.slice(0, 3));
             } else {
                 setJobs(mockCards);
             }

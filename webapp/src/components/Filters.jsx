@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Search, MapPin, Briefcase, ChevronRight, Clock } from 'lucide-react';
+import { Search, MapPin, Briefcase, ChevronRight, Clock, Building2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fetchLatestJobs } from '../services/api';
 
@@ -87,6 +87,7 @@ const Filters = () => {
                         location: job.location,
                         sector: job.sector,
                         company: job.company.name,
+                        companyLogo: job.company.logo || `https://www.google.com/s2/favicons?domain=${job.company.domain}&sz=128`,
                         link: job.link
                     }));
                     setLatestJobs(formattedJobs);
@@ -213,14 +214,25 @@ const Filters = () => {
                                         </h4>
                                     </div>
                                     
-                                    <div className="mt-auto pt-4 border-t border-slate-100 flex flex-col gap-2 shrink-0">
-                                        <div className="flex items-center gap-2 text-sm text-slate-600">
-                                            <Briefcase className="w-4 h-4 shrink-0 text-slate-400" />
-                                            <span className="font-medium truncate">{job.company}</span>
+                                    <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between gap-4 shrink-0">
+                                        <div className="flex flex-col gap-1 min-w-0">
+                                            <div className="flex items-center gap-2 text-sm text-slate-700">
+                                                <Briefcase className="w-3.5 h-3.5 shrink-0 text-slate-400" />
+                                                <span className="font-bold truncate text-[13px]">{job.company}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2 text-sm text-slate-500">
+                                                <MapPin className="w-3.5 h-3.5 shrink-0 text-slate-400" />
+                                                <span className="truncate text-xs">{job.location}</span>
+                                            </div>
                                         </div>
-                                        <div className="flex items-center gap-2 text-sm text-slate-500">
-                                            <MapPin className="w-4 h-4 shrink-0 text-slate-400" />
-                                            <span className="truncate">{job.location}</span>
+                                        {/* Company Logo in Marquee */}
+                                        <div className="w-10 h-10 shrink-0 bg-white border border-slate-100 rounded-xl p-1.5 flex items-center justify-center shadow-sm group-hover:border-[#0038A5]/20 group-hover:shadow-md transition-all">
+                                            <img 
+                                                src={job.companyLogo} 
+                                                alt={job.company} 
+                                                className="w-full h-full object-contain"
+                                                onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-300"><Building2 size={16}/></div>'; }}
+                                            />
                                         </div>
                                     </div>
                                 </motion.a>

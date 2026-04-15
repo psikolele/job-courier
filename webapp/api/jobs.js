@@ -35,31 +35,54 @@ export default async function handler(req, res) {
     const jobs = [];
 
     $('.singleResult').each((i, el) => {
-      if (i >= 6) return; // Limit to 6 latest jobs for the slider
+      if (i >= 8) return; // Fetch a few more to have enough for both sections
 
       const $el = $(el);
-      const title = $el.find('h3').text().trim();
-      const link = $el.find('h3').closest('a').attr('href');
-      const company = $el.find('.companyLink').text().trim();
       
-      // Extract from text nodes for Sede, Settore, Ruolo
-      const fullText = $el.text();
-      const locationMatch = fullText.match(/Sede:\s*([\s\S]*?)\s*-\s*/);
-      const sectorMatch = fullText.match(/Settore:\s*([\s\S]*?)\s*(Ruolo:|Per |$)/);
-      const roleMatch = fullText.match(/Ruolo:\s*([\s\S]*?)\s*(Per |$)/);
+      // Selectors based on live inspection
+      const titleLink = $el.find('.details .dataContainer a[href*="view-job.php"]');
+      const title = titleLink.text().trim() || $el.find('h3').text().trim();
+      
+      let relativeLink = titleLink.attr('href') || $el.find('a').first().attr('href');
+      // Resolve relative path (removing ../ if present)
+      if (relativeLink && relativeLink.startsWith('..')) {
+        relativeLink = relativeLink.substring(2);
+      }
+      const absoluteLink = relativeLink ? (relativeLink.startsWith('http') ? relativeLink : `https://jobroom.jobcourier.ch/job/${relativeLink.startsWith('/') ? relativeLink.substring(1) : relativeLink}`) : '#';
+
+      const companyName = $el.find('.companyLink span').text().trim() || 'Azienda Riservata';
+      
+      let logoUrl = $el.find('img.companyImg').attr('src');
+      if (logoUrl && logoUrl.startsWith('..')) {
+        logoUrl = logoUrl.substring(2);
+      }
+      const absoluteLogo = logoUrl ? (logoUrl.startsWith('http') ? logoUrl : `https://jobroom.jobcourier.ch/job/${logoUrl.startsWith('/') ? logoUrl.substring(1) : logoUrl}`) : '';
+
+      // Extract Sede (Location)
+      const location = $el.find('.detailsHead label:contains("Sede:")').next('span').text().trim() || 'Svizzera';
+      
+      // Extract Settore (Sector)
+      const sector = $el.find('.detailsHead label:contains("Settore:")').next('span').text().trim() || 'Generale';
+
+      // Extract Ruolo (Role)
+      const role = $el.find('.detailsHead label:contains("Ruolo:")').next('span').text().trim() || 'Professional';
+
+      // Extract Description
+      const description = $el.find('.detailsData .descriptionContainer p').text().trim() || '';
 
       jobs.push({
         id: i,
         title,
-        link: link ? (link.startsWith('http') ? link : `https://jobroom.jobcourier.ch${link}`) : '#',
+        link: absoluteLink,
+        description,
         company: {
-          name: company || 'Azienda Riservata',
-          domain: company ? company.toLowerCase().replace(/\s+/g, '') + '.ch' : 'jobcourier.ch'
+          name: companyName,
+          logo: absoluteLogo,
+          domain: companyName.toLowerCase().replace(/[^a-z0-9]/g, '') + '.ch' // Fallback domain for favicon
         },
-        location: locationMatch ? locationMatch[1].trim() : 'Svizzera',
-        sector: sectorMatch ? sectorMatch[1].trim() : 'General',
-        role: roleMatch ? roleMatch[1].trim() : 'Incarico',
-        // Mock image as we don't have it in the feed, using architectural/construction themes
+        location,
+        sector,
+        role,
         image: `https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=800&auto=format&fit=crop&sig=${i}`
       });
     });
