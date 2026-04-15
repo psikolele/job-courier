@@ -1,5 +1,5 @@
 {
-  "$schema": "https://claude.com/schema/settings.json",
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "model": "claude-haiku-4-5-20251001",
   "name": "Job_Courier - Marketplace Platform",
   "context": "React job marketplace with complex filtering, search, and job matching. CRITICAL: Filter caching, search debounce, pagination, parallel API calls. Meeting notes + video recordings track progress. Status: URGENT (deadline March 27, April 10 follow-ups).",

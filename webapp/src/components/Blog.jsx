@@ -7,53 +7,59 @@ const Blog = () => {
             targetType: 'candidate',
             title: 'Come superare il colloquio tecnico nel 2026',
             description: 'Scopri le strategie migliori per affrontare le technical interviews...',
-            image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600'
+            image: 'https://images.unsplash.com/photo-1521737706056-c43318bbca9a?q=80&w=800&auto=format&fit=crop'
         },
         {
             target: 'Aziende',
             targetType: 'company',
             title: 'I trend del remote working in Svizzera',
             description: 'Come attrarre talenti da tutta la confederazione offrendo flessibilità...',
-            image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&q=80&w=600'
+            image: 'https://images.unsplash.com/photo-1573163231162-717dfc3e0c1f?q=80&w=800&auto=format&fit=crop'
         },
         {
             target: 'Istituzioni',
             targetType: 'institution',
             title: 'Partnership pubblico-privato per il lavoro',
             description: 'Il ruolo delle istituzioni nella digitalizzazione del mercato del lavoro svizzero.',
-            image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600'
+            image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop'
         }
     ];
 
     return (
-        <section id="blog" className="py-24 bg-surface text-foreground relative z-10 px-8">
+        <section id="blog" className="py-24 bg-surface text-background relative z-10 px-8">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-16 md:text-center">
-                    <h2 className="text-3xl md:text-5xl font-bold font-sans">
+                    <h2 className="text-3xl md:text-5xl font-bold font-sans text-white">
                         Risorse & <span className="text-accent italic font-drama">Blog</span>
                     </h2>
-                    <p className="mt-4 text-foreground/70 max-w-2xl mx-auto">
+                    <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
                         Approfondimenti e notizie dal mercato del lavoro, pensati su misura per te.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {cards.map((card, idx) => (
-                        <div key={idx} className="bg-background border border-black/5 dark:border-white/5 rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-transform duration-300 group cursor-pointer shadow-xl">
-                            <div className="h-48 overflow-hidden relative">
-                                <img src={card.image} alt={card.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <div key={idx} className="bg-white/5 border border-white/10 rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-all duration-500 group cursor-pointer shadow-2xl backdrop-blur-sm">
+                            <div className="h-56 overflow-hidden relative">
+                                <img 
+                                    src={card.image} 
+                                    alt={card.title} 
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 origin-center" 
+                                    loading="lazy"
+                                />
                                 <div className="absolute top-4 left-4">
-                                    <span className="inline-block px-3 py-1 bg-background/90 backdrop-blur text-accent text-xs font-bold uppercase tracking-wider rounded-full shadow-md">
+                                    <span className="inline-block px-4 py-1.5 bg-black/40 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/10 shadow-lg">
                                         {card.target}
                                     </span>
                                 </div>
                             </div>
                             <div className="p-8">
-                                <h3 className="text-xl font-bold mb-3 group-hover:text-accent transition-colors leading-snug">{card.title}</h3>
-                                <p className="text-foreground/70 text-sm mb-6">{card.description}</p>
-                                <button className="text-sm font-semibold text-accent group-hover:underline">
-                                    Leggi l'articolo &rarr;
-                                </button>
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-accent transition-colors leading-tight">{card.title}</h3>
+                                <p className="text-gray-400 text-sm mb-8 line-clamp-2 leading-relaxed">{card.description}</p>
+                                <div className="flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-tighter group-hover:gap-4 transition-all">
+                                    <span>Leggi l'articolo</span>
+                                    <span className="text-lg">&rarr;</span>
+                                </div>
                             </div>
                         </div>
                     ))}
