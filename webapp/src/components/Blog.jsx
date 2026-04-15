@@ -7,14 +7,14 @@ const Blog = () => {
             targetType: 'candidate',
             title: 'Come superare il colloquio tecnico nel 2026',
             description: 'Scopri le strategie migliori per affrontare le technical interviews...',
-            image: 'https://images.unsplash.com/photo-1521737706056-c43318bbca9a?q=80&w=800&auto=format&fit=crop'
+            image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop'
         },
         {
             target: 'Aziende',
             targetType: 'company',
             title: 'I trend del remote working in Svizzera',
             description: 'Come attrarre talenti da tutta la confederazione offrendo flessibilità...',
-            image: 'https://images.unsplash.com/photo-1573163231162-717dfc3e0c1f?q=80&w=800&auto=format&fit=crop'
+            image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop'
         },
         {
             target: 'Istituzioni',
