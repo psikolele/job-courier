@@ -12,7 +12,8 @@ const Blog = () => {
             role: 'Validation Engineer',
             location: 'Mezzovico TI, Svizzera',
             title: 'Lavoratore edile cat. B',
-            description: 'Per solida azienda del settore edile del Luganese cerchiamo un lavoratore edile...',
+            description: 'Per solida azienda del settore edile del Luganese cerchiamo un lavoratore edile cat. B con esperienza nel settore...',
+            link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en',
             image: 'https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=800&auto=format&fit=crop',
             company: {
                 name: 'Randstad Svizzera SA',
@@ -24,6 +25,7 @@ const Blog = () => {
             location: 'Bellinzona, Svizzera',
             title: 'Esperto Posatore di Parquet',
             description: 'Importante azienda attiva nel settore delle finiture cerca parchettista esperto...',
+            link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688871-parchettista-sottoceneri&language=en',
             image: 'https://images.unsplash.com/photo-1581858726780-7d022df583a0?q=80&w=800&auto=format&fit=crop',
             company: {
                 name: 'Gi Group SA',
@@ -35,6 +37,7 @@ const Blog = () => {
             location: 'Mendrisio, Svizzera',
             title: 'Progettista Metalcostruttore',
             description: 'Sei un professionista delle costruzioni metalliche? Abbiamo la posizione per te...',
+            link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688873-tecnico-metalcostruzioni-mendrisiotto&language=en',
             image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&auto=format&fit=crop',
             company: {
                 name: 'Adecco Svizzera',
@@ -99,17 +102,7 @@ const Blog = () => {
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 origin-center" 
                                         loading="lazy"
                                     />
-                                    {/* Role & Location chips — premium overlay */}
-                                    <div className="absolute top-4 left-4 flex flex-col gap-2">
-                                        <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider rounded-lg shadow-xl border border-white/20">
-                                            <Briefcase size={10} strokeWidth={3} />
-                                            Role: {card.role}
-                                        </span>
-                                        <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider rounded-lg shadow-xl border border-white/10">
-                                            <MapPin size={10} strokeWidth={3} />
-                                            {card.location}
-                                        </span>
-                                    </div>
+                                    {/* Removed Tags as per user request (Screen 2) */}
                                     {/* Elegant Company Logo Badge */}
                                     <div className="absolute bottom-4 right-4 flex items-center gap-2.5 p-2.5 bg-white rounded-2xl shadow-2xl border border-white/40 ring-4 ring-black/5 group-hover:scale-105 transition-transform">
                                         <div className="w-8 h-8 flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden border border-gray-100 p-1">

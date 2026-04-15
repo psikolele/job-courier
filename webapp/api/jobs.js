@@ -52,11 +52,21 @@ export default async function handler(req, res) {
 
       const $el = $(el);
       
-      // Selectors based on live inspection
-      const titleLink = $el.find('.details .dataContainer a[href*="view-job.php"]');
+      // Selectors based on live inspection - looking for the EXACT job link
+      // Often the title itself or the first <a> inside dataContainer is the link
+      let titleLink = $el.find('a[href*="view-job.php"]').first();
+      if (titleLink.length === 0) {
+        titleLink = $el.find('.details .dataContainer a').first();
+      }
+      
       const title = titleLink.text().trim() || $el.find('h3').text().trim();
       
-      let relativeLink = titleLink.attr('href') || $el.find('a').first().attr('href');
+      let relativeLink = titleLink.attr('href');
+      // If still no link, try find any <a> in the entire card
+      if (!relativeLink) {
+        relativeLink = $el.find('a').first().attr('href');
+      }
+      
       // Resolve relative path (removing ../ if present)
       if (relativeLink && relativeLink.startsWith('..')) {
         relativeLink = relativeLink.substring(2);
