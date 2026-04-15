@@ -1,78 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Stampatore Offset / Flexo",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688872-stampatore-offset-flexo-mendrisio&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Tecnico settore metalcostruzioni",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688867-tecnico-settore-metalcostruzioni-bellinzona-bellinzona&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Parchettista",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688871-parchettista-sottoceneri&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Validation Engineer",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Operatore di produzione in camera bianca (fixed term)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688866-operatore-di-produzione-in-camera-bianca-fixed-term-lugano-lugano&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Montatore di carpenteria pesante",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688870-montatore-di-carpenteria-pesante-sottoceneri&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Lavoratore edile cat. B",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688868-lavoratore-edile-cat-b-bellinzona-bellinzona&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Metalcostruttore",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688869-metalcostruttore-sottoceneri&language=en"
-  },
-  {
-    "id": 8,
-    "title": "HR Generalist Support (temporary, disponibilità immediata)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688863-hr-generalist-support-temporary-disponibilit%C3%A0-immediata-bellinzona-lugano&language=en"
-  },
-  {
-    "id": 9,
     "title": "Manufacturing Engineer",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,12 +8,84 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688864-manufacturing-engineer-mezzovico-ti-mezzovico&language=en"
   },
   {
-    "id": 10,
+    "id": 1,
+    "title": "Parchettista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688871-parchettista-sottoceneri&language=en"
+  },
+  {
+    "id": 2,
+    "title": "HR Generalist Support (temporary, disponibilità immediata)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688863-hr-generalist-support-temporary-disponibilit%C3%A0-immediata-bellinzona-lugano&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Lavoratore edile cat. B",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688868-lavoratore-edile-cat-b-bellinzona-bellinzona&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Tecnico settore metalcostruzioni",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688867-tecnico-settore-metalcostruzioni-bellinzona-bellinzona&language=en"
+  },
+  {
+    "id": 5,
     "title": "Manutentore Elettromeccanico",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "ER Services Sagl",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688873-manutentore-elettromeccanico-mendrisio&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Metalcostruttore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688869-metalcostruttore-sottoceneri&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Operatore di produzione in camera bianca (fixed term)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688866-operatore-di-produzione-in-camera-bianca-fixed-term-lugano-lugano&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Montatore di carpenteria pesante",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688870-montatore-di-carpenteria-pesante-sottoceneri&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Stampatore Offset / Flexo",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688872-stampatore-offset-flexo-mendrisio&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Validation Engineer",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en"
   },
   {
     "id": 11,
