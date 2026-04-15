@@ -9,14 +9,6 @@
   },
   {
     "id": 1,
-    "title": "Montatore di carpenteria pesante",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688870-montatore-di-carpenteria-pesante-sottoceneri&language=en"
-  },
-  {
-    "id": 2,
     "title": "Stampatore Offset / Flexo",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,20 +16,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688872-stampatore-offset-flexo-mendrisio&language=en"
   },
   {
+    "id": 2,
+    "title": "Montatore di carpenteria pesante",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688870-montatore-di-carpenteria-pesante-sottoceneri&language=en"
+  },
+  {
     "id": 3,
+    "title": "Manutentore Elettromeccanico",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "ER Services Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688873-manutentore-elettromeccanico-mendrisio&language=en"
+  },
+  {
+    "id": 4,
     "title": "Metalcostruttore",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Team Personnel Solutions SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688869-metalcostruttore-sottoceneri&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Tecnico settore metalcostruzioni",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688867-tecnico-settore-metalcostruzioni-bellinzona-bellinzona&language=en"
   },
   {
     "id": 5,
@@ -57,19 +57,19 @@
   },
   {
     "id": 7,
-    "title": "Polymechaniker EFZ Metall 100% (a)",
+    "title": "HR Generalist Support (temporary, disponibilità immediata)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688859-polymechaniker-efz-metall-100-a-muri-ag&language=en"
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688863-hr-generalist-support-temporary-disponibilit%C3%A0-immediata-bellinzona-lugano&language=en"
   },
   {
     "id": 8,
-    "title": "MPA für Pool 10-100% (m,w,d)",
+    "title": "Facharzt / Fachärztin für innere Medizin 50-100% (m,w,d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688861-mpa-fur-pool-10-100-m-w-d-bern-be&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688862-facharzt-fach%C3%A4rztin-fur-innere-medizin-50-100-m-w-d-zurich-zh&language=en"
   },
   {
     "id": 9,
@@ -81,18 +81,18 @@
   },
   {
     "id": 10,
-    "title": "Facharzt / Fachärztin für innere Medizin 50-100% (m,w,d)",
+    "title": "MPA für Pool 10-100% (m,w,d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688862-facharzt-fach%C3%A4rztin-fur-innere-medizin-50-100-m-w-d-zurich-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688861-mpa-fur-pool-10-100-m-w-d-bern-be&language=en"
   },
   {
     "id": 11,
-    "title": "Validation Engineer",
+    "title": "Polymechaniker EFZ Metall 100% (a)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6688859-polymechaniker-efz-metall-100-a-muri-ag&language=en"
   }
 ]
