@@ -11,7 +11,7 @@ const Blog = () => {
             image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop',
             company: {
                 name: 'Google Switzerland',
-                logo: 'https://logo.clearbit.com/google.com'
+                logo: 'https://www.google.com/s2/favicons?domain=google.com&sz=64'
             }
         },
         {
@@ -22,7 +22,7 @@ const Blog = () => {
             image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop',
             company: {
                 name: 'UBS Group',
-                logo: 'https://logo.clearbit.com/ubs.com'
+                logo: 'https://www.google.com/s2/favicons?domain=ubs.com&sz=64'
             }
         },
         {
@@ -33,7 +33,7 @@ const Blog = () => {
             image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
             company: {
                 name: 'SECO',
-                logo: 'https://logo.clearbit.com/admin.ch'
+                logo: 'https://www.google.com/s2/favicons?domain=admin.ch&sz=64'
             }
         }
     ];
