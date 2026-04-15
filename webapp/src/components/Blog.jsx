@@ -1,39 +1,39 @@
 import React from 'react';
-import { MapPin, Briefcase } from 'lucide-react';
+import { MapPin, Briefcase, Building2 } from 'lucide-react';
 
 const Blog = () => {
     const cards = [
         {
-            sector: 'Technology',
-            location: 'Zurigo, CH',
-            title: 'Come superare il colloquio tecnico nel 2026',
-            description: 'Scopri le strategie migliori per affrontare le technical interviews nel panorama tech svizzero...',
-            image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop',
+            role: 'Validation Engineer',
+            location: 'Mezzovico TI, Svizzera',
+            title: 'Lavoratore edile cat. B',
+            description: 'Per solida azienda del settore edile del Luganese cerchiamo un lavoratore edile...',
+            image: 'https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=800&auto=format&fit=crop',
             company: {
-                name: 'Google Switzerland',
-                logo: 'https://www.google.com/s2/favicons?domain=google.com&sz=64'
+                name: 'Randstad Svizzera SA',
+                logo: 'https://www.google.com/s2/favicons?domain=randstad.ch&sz=128'
             }
         },
         {
-            sector: 'Finance',
-            location: 'Ginevra, CH',
-            title: 'I trend del remote working in Svizzera',
-            description: 'Come attrarre talenti da tutta la confederazione offrendo flessibilità e bilanciamento vita-lavoro...',
-            image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop',
+            role: 'Parchettista',
+            location: 'Bellinzona, Svizzera',
+            title: 'Esperto Posatore di Parquet',
+            description: 'Importante azienda attiva nel settore delle finiture cerca parchettista esperto...',
+            image: 'https://images.unsplash.com/photo-1581858726780-7d022df583a0?q=80&w=800&auto=format&fit=crop',
             company: {
-                name: 'UBS Group',
-                logo: 'https://www.google.com/s2/favicons?domain=ubs.com&sz=64'
+                name: 'Gi Group SA',
+                logo: 'https://www.google.com/s2/favicons?domain=gigroup.com&sz=128'
             }
         },
         {
-            sector: 'Public Sector',
-            location: 'Berna, CH',
-            title: 'Partnership pubblico-privato per il lavoro',
-            description: 'Il ruolo delle istituzioni nella digitalizzazione del mercato del lavoro svizzero.',
-            image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
+            role: 'Tecnico Metalcostruzioni',
+            location: 'Mendrisio, Svizzera',
+            title: 'Progettista Metalcostruttore',
+            description: 'Sei un professionista delle costruzioni metalliche? Abbiamo la posizione per te...',
+            image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&auto=format&fit=crop',
             company: {
-                name: 'SECO',
-                logo: 'https://www.google.com/s2/favicons?domain=admin.ch&sz=64'
+                name: 'Adecco Svizzera',
+                logo: 'https://www.google.com/s2/favicons?domain=adecco.ch&sz=128'
             }
         }
     ];
@@ -43,10 +43,10 @@ const Blog = () => {
             <div className="max-w-6xl mx-auto">
                 <div className="mb-16 md:text-center">
                     <h2 className="text-3xl md:text-5xl font-bold font-sans text-white">
-                        Risorse & <span className="text-accent italic font-drama">Blog</span>
+                        Ultime <span className="text-accent italic font-drama">Offerte</span>
                     </h2>
                     <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
-                        Approfondimenti e notizie dal mercato del lavoro, pensati su misura per te.
+                        Le migliori opportunità lavorative selezionate dai nostri partner in Svizzera.
                     </p>
                 </div>
 
@@ -60,35 +60,40 @@ const Blog = () => {
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 origin-center" 
                                     loading="lazy"
                                 />
-                                {/* Metadata chips — top left */}
-                                <div className="absolute top-4 left-4 flex flex-col gap-1.5">
-                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/50 backdrop-blur-md text-white text-[10px] font-semibold uppercase tracking-widest rounded-full border border-white/15 shadow-lg">
-                                        <Briefcase size={9} className="shrink-0" />
-                                        {card.sector}
+                                {/* Role & Location chips — premium overlay */}
+                                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider rounded-lg shadow-xl border border-white/20">
+                                        <Briefcase size={10} strokeWidth={3} />
+                                        Role: {card.role}
                                     </span>
-                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/50 backdrop-blur-md text-white text-[10px] font-semibold uppercase tracking-widest rounded-full border border-white/15 shadow-lg">
-                                        <MapPin size={9} className="shrink-0" />
+                                    <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider rounded-lg shadow-xl border border-white/10">
+                                        <MapPin size={10} strokeWidth={3} />
                                         {card.location}
                                     </span>
                                 </div>
-                                {/* Company logo badge — bottom right */}
-                                <div className="absolute bottom-3 right-3 flex items-center gap-2 px-2.5 py-1.5 bg-white/90 backdrop-blur-md rounded-xl border border-white/30 shadow-lg">
-                                    <img
-                                        src={card.company.logo}
-                                        alt={card.company.name}
-                                        className="w-5 h-5 rounded-sm object-contain"
-                                        onError={(e) => { e.target.style.display = 'none'; }}
-                                    />
-                                    <span className="text-[10px] font-bold text-gray-700 leading-none tracking-tight max-w-[80px] truncate">
-                                        {card.company.name}
-                                    </span>
+                                {/* Elegant Company Logo Badge */}
+                                <div className="absolute bottom-4 right-4 flex items-center gap-2.5 p-2.5 bg-white rounded-2xl shadow-2xl border border-white/40 ring-4 ring-black/5 group-hover:scale-105 transition-transform">
+                                    <div className="w-8 h-8 flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden border border-gray-100 p-1">
+                                        <img
+                                            src={card.company.logo}
+                                            alt={card.company.name}
+                                            className="w-full h-full object-contain"
+                                            onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-gray-400"><Building2 size={16}/></div>'; }}
+                                        />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="text-[9px] text-gray-400 font-bold uppercase tracking-tighter leading-none mb-0.5">Partner</span>
+                                        <span className="text-[11px] font-extrabold text-[#26367b] leading-none truncate max-w-[100px]">
+                                            {card.company.name}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div className="p-8">
                                 <h3 className="text-xl font-bold mb-4 text-white group-hover:text-accent transition-colors leading-tight">{card.title}</h3>
                                 <p className="text-gray-400 text-sm mb-8 line-clamp-2 leading-relaxed">{card.description}</p>
                                 <div className="flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-tighter group-hover:gap-4 transition-all">
-                                    <span>Leggi l'articolo</span>
+                                    <span>Vedi i dettagli</span>
                                     <span className="text-lg">&rarr;</span>
                                 </div>
                             </div>
