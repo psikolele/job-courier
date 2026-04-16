@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // ---------- ICONS ----------
@@ -45,18 +46,16 @@ const IconMenu = () => (
 );
 
 // ---------- NAV DATA ----------
-const candidateLinks = [
-    { label: 'Cerca Lavoro', labelDe: 'Jobsuche', labelFr: "Recherche d'emploi", href: '#jobs' },
-    { label: 'Le mie Candidature', labelDe: 'Meine Bewerbungen', labelFr: 'Mes candidatures', href: 'https://jobroom.jobcourier.ch/job-seekers-login.php', external: true },
-    { label: 'Consigli di Carriera', labelDe: 'Karrieretipps', labelFr: 'Conseils carriera', href: '#blog' },
-    { label: 'Blog', labelDe: 'Blog', labelFr: 'Blog', href: '#blog' },
+const getCandidateLinks = (isHome) => [
+    { label: 'Cerca Lavoro', labelDe: 'Jobsuche', labelFr: "Recherche d'emploi", href: isHome ? '#filters' : '/#filters' },
+    { label: 'Vedi tutte le aziende', labelDe: 'Alle Unternehmen ansehen', labelFr: 'Voir tutte le imprese', href: isHome ? '#vetrini' : '/#vetrini' },
+    { label: 'Vedi tutte le offerte', labelDe: 'Alle Angebote ansehen', labelFr: 'Voir tutte le offerte', href: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php', external: true },
 ];
 
-const companyLinks = [
-    { label: 'Pubblica un Annuncio', labelDe: 'Stellenanzeige aufgeben', labelFr: 'Publier une annonce', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
-    { label: 'Gestisci Candidature', labelDe: 'Bewerbungen verwalten', labelFr: 'Gérer les candidatures', href: 'https://jobroom.jobcourier.ch/job-seekers-login.php', external: true },
-    { label: 'Soluzioni e Tariffe', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '#', external: true },
-    { label: 'Recruiter Pro', labelDe: 'Recruiter Pro', labelFr: 'Recruiter Pro', href: '#companies' },
+const getCompanyLinks = (isHome) => [
+    { label: 'Soluzioni e Tariffe', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
+    { label: 'Registra Azienda', labelDe: 'Unternehmen registrieren', labelFr: 'Enregistrer une entreprise', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
+    { label: 'Blog', labelDe: 'Blog', labelFr: 'Blog', href: isHome ? '#blog' : '/#blog' },
 ];
 
 const getLabel = (item, lang) => {
@@ -70,7 +69,10 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const { i18n } = useTranslation();
+    const location = useLocation();
     const lang = i18n.language;
+    
+    const isHome = location.pathname === '/';
 
     const candidateTitle = lang === 'de' ? 'KANDIDATEN' : lang === 'fr' ? 'CANDIDATS' : 'CANDIDATI';
     const companyTitle = lang === 'de' ? 'UNTERNEHMEN' : lang === 'fr' ? 'ENTREPRISES' : 'AZIENDE';
@@ -91,6 +93,9 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
     }, [i18n]);
 
     const navHeight = scrolled ? '64px' : '80px';
+    
+    const candidateLinks = getCandidateLinks(isHome);
+    const companyLinks = getCompanyLinks(isHome);
 
     return (
         <>
@@ -105,13 +110,13 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                 }}
             >
                 {/* Logo */}
-                <a href="/" className="flex items-center">
+                <Link to="/" className="flex items-center">
                     <img
                         src="/JC_logo2x.png"
                         alt="Job Courier"
                         className="object-contain h-6 md:h-8"
                     />
-                </a>
+                </Link>
 
                 {/* Right side actions */}
                 <div className="flex items-center gap-6">
@@ -179,14 +184,25 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                             <div className="relative z-10 flex flex-col items-center gap-4">
                                 <span className="text-xs font-bold tracking-widest text-[#26367b]/40 mb-2">{candidateTitle}</span>
                                 {candidateLinks.map((link, idx) => (
-                                    <a
-                                        key={idx}
-                                        href={link.href}
-                                        className="text-xl md:text-2xl font-bold text-slate-800 hover:text-[#e63946] transition-colors"
-                                        onClick={() => setMenuOpen(false)}
-                                    >
-                                        {getLabel(link, lang)}
-                                    </a>
+                                    link.external ? (
+                                        <a
+                                            key={idx}
+                                            href={link.href}
+                                            className="text-xl md:text-2xl font-bold text-slate-800 hover:text-[#e63946] transition-colors text-center"
+                                            onClick={() => setMenuOpen(false)}
+                                        >
+                                            {getLabel(link, lang)}
+                                        </a>
+                                    ) : (
+                                        <Link
+                                            key={idx}
+                                            to={link.href}
+                                            className="text-xl md:text-2xl font-bold text-slate-800 hover:text-[#e63946] transition-colors text-center"
+                                            onClick={() => setMenuOpen(false)}
+                                        >
+                                            {getLabel(link, lang)}
+                                        </Link>
+                                    )
                                 ))}
                             </div>
                         </div>
@@ -199,14 +215,25 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                             <div className="relative z-10 flex flex-col items-center gap-4">
                                 <span className="text-xs font-bold tracking-widest text-[#26367b]/40 mb-2">{companyTitle}</span>
                                 {companyLinks.map((link, idx) => (
-                                    <a
-                                        key={idx}
-                                        href={link.href}
-                                        className="text-xl md:text-2xl font-bold text-slate-800 hover:text-[#e63946] transition-colors"
-                                        onClick={() => setMenuOpen(false)}
-                                    >
-                                        {getLabel(link, lang)}
-                                    </a>
+                                    link.external ? (
+                                        <a
+                                            key={idx}
+                                            href={link.href}
+                                            className="text-xl md:text-2xl font-bold text-slate-800 hover:text-[#e63946] transition-colors text-center"
+                                            onClick={() => setMenuOpen(false)}
+                                        >
+                                            {getLabel(link, lang)}
+                                        </a>
+                                    ) : (
+                                        <Link
+                                            key={idx}
+                                            to={link.href}
+                                            className="text-xl md:text-2xl font-bold text-slate-800 hover:text-[#e63946] transition-colors text-center"
+                                            onClick={() => setMenuOpen(false)}
+                                        >
+                                            {getLabel(link, lang)}
+                                        </Link>
+                                    )
                                 ))}
                             </div>
                         </div>

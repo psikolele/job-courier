@@ -58,7 +58,7 @@ const Vetrini = () => {
     }, []);
 
     return (
-        <section className="py-16 md:py-24 bg-white relative z-10 px-4 md:px-12 w-full" id="companies">
+        <section className="py-16 md:py-24 bg-white relative z-10 px-4 md:px-12 w-full" id="vetrini">
             <div className="max-w-[1400px] mx-auto w-full">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-slate-900 mb-6 tracking-tight">

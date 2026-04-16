@@ -155,7 +155,7 @@ const Filters = () => {
     };
 
     return (
-        <div className="w-full relative z-20 pb-20 pt-8 bg-[#fafafa]">
+        <div id="filters" className="w-full relative z-20 pb-20 pt-8 bg-[#fafafa]">
             {/* ADVERTISEMENT SECTION */}
             <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row gap-6 mb-14 mt-4 px-4 sm:px-8 md:px-12 lg:px-20">
                 <div className="flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
