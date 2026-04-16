@@ -295,7 +295,7 @@ const Hero = ({ setShowLoginModal }) => {
                                 <p className="text-xs text-slate-500 font-semibold uppercase tracking-widest mb-2">Altri link</p>
                                 <div className="flex flex-wrap gap-2">
                                     <a
-                                        href="https://www.jobcourier.ch/soluzioni-e-tariffe/"
+                                        href="#"
                                         className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-white/20 text-white/80 text-sm font-semibold hover:bg-white/10 transition-all"
                                     >
                                         Soluzioni e tariffe

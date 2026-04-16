@@ -55,7 +55,7 @@ const candidateLinks = [
 const companyLinks = [
     { label: 'Pubblica un Annuncio', labelDe: 'Stellenanzeige aufgeben', labelFr: 'Publier une annonce', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
     { label: 'Gestisci Candidature', labelDe: 'Bewerbungen verwalten', labelFr: 'Gérer les candidatures', href: 'https://jobroom.jobcourier.ch/job-seekers-login.php', external: true },
-    { label: 'Soluzioni e Tariffe', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: 'https://www.jobcourier.ch/soluzioni-e-tariffe/', external: true },
+    { label: 'Soluzioni e Tariffe', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '#', external: true },
     { label: 'Recruiter Pro', labelDe: 'Recruiter Pro', labelFr: 'Recruiter Pro', href: '#companies' },
 ];
 
@@ -107,7 +107,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                 {/* Logo */}
                 <a href="/" className="flex items-center">
                     <img
-                        src="https://www.jobcourier.ch/wp-content/uploads/2021/08/jobcourier_logo.png"
+                        src="/JC_logo2x.png"
                         alt="Job Courier"
                         className="object-contain h-6 md:h-8"
                     />

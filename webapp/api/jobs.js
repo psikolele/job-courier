@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const jobUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&source=https%3A%2F%2Fwww.jobcourier.ch%2F';
+  const jobUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1';
 
   try {
     const response = await fetch(jobUrl, {
