@@ -74,26 +74,41 @@ export default async function handler(req, res) {
       const companyName = $el.find('.company, .firm, .details span:first-child, .companyLink span').first().text().trim() || 'Azienda Riservata';
       const location = $el.find('.location, .place, .details span:last-child, .detailsHead label:contains("Sede:")').next('span').text().trim() || 'Svizzera';
       
-      // Extract domain for favicon if possible
-      let domain = 'jobcourier.ch';
-      if (companyName.toLowerCase().includes('randstad')) domain = 'randstad.ch';
-      if (companyName.toLowerCase().includes('adecco')) domain = 'adecco.ch';
-      if (companyName.toLowerCase().includes('manpower')) domain = 'manpower.ch';
-      if (companyName.toLowerCase().includes('gi group')) domain = 'gigroup.com';
+      // LOGO EXTRACTION: Look for JobRoom's specific logo containers
+      let logoUrl = $el.find('img.companyImg, img.companyLogo, .moreDataContainer img').attr('src');
+      
+      // If not found in the list item, we could have a hidden one or need to resolve the path
+      if (!logoUrl) {
+        logoUrl = $el.find('.detailsHead img').attr('src');
+      }
+
+      let absoluteLogo = '';
+      if (logoUrl) {
+        // Resolve relative path
+        if (logoUrl.startsWith('..')) {
+          logoUrl = logoUrl.substring(2);
+        }
+        absoluteLogo = logoUrl.startsWith('http') ? logoUrl : `https://jobroom.jobcourier.ch/job/${logoUrl.startsWith('/') ? logoUrl.substring(1) : logoUrl}`;
+      } else {
+        // Fallback to favicon if JobRoom doesn't provide a logo for this specific ad
+        let domain = 'jobcourier.ch';
+        if (companyName.toLowerCase().includes('randstad')) domain = 'randstad.ch';
+        if (companyName.toLowerCase().includes('adecco')) domain = 'adecco.ch';
+        if (companyName.toLowerCase().includes('manpower')) domain = 'manpower.ch';
+        if (companyName.toLowerCase().includes('gi group')) domain = 'gigroup.com';
+        absoluteLogo = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+      }
 
       jobs.push({
         id: i,
         title,
         link: absoluteLink,
-        description,
         company: {
           name: companyName,
           logo: absoluteLogo,
-          domain: companyName.toLowerCase().replace(/[^a-z0-9]/g, '') + '.ch' // Fallback domain for favicon
+          domain: companyName.toLowerCase().replace(/[^a-z0-9]/g, '') + '.ch'
         },
         location,
-        sector,
-        role,
         image: `https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=800&auto=format&fit=crop&sig=${i}`
       });
     });
