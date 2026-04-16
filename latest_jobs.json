@@ -1,30 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Directeur de travaux 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689116-directeur-de-travaux-100-cdi-h-f-d-sierre-vs&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Technicien de maintenance [H/F/X]",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689108-technicien-de-maintenance-h-f-x-geneva-ge&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Festanstellung Allrounder im technischen Unterhalt m/w/d",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689104-festanstellung-allrounder-im-technischen-unterhalt-m-w-d-langenthal-be&language=en"
-  },
-  {
-    "id": 3,
     "title": "HR Administration Support (m/w/d) 50?70 %",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,47 +8,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689112-hr-administration-support-m-w-d-50-70%E2%80%AF-kloten-zh&language=en"
   },
   {
-    "id": 4,
-    "title": "Monteur de pneus",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689114-monteur-de-pneus-fribourg-fr&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Produktionsmitarbeiter, Maschinen-Bediener Lebensmittelbranche (Tagesbetrieb) ab sofort m/w/d",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689110-produktionsmitarbeiter-maschinen-bediener-lebensmittelbranche-tagesbetrieb-ab-sofort-m-w-d-langenthal-bern&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Mitarbeiter/in  Wareneingang im Schichtbetrieb (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689106-mitarbeiter-in-wareneingang-im-schichtbetrieb-m-w-d-100-wohlen-ag&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Betriebselektriker (m/w/d) im MedTech Umfeld",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689118-betriebselektriker-m-w-d-im-medtech-umfeld-bonaduz-gr&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Orthopédiste/Prothésiste-orthésiste 80-100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689109-orthopediste-prothesiste-orthesiste-80-100-cdi-h-f-d-sion-vs&language=en"
-  },
-  {
-    "id": 9,
+    "id": 1,
     "title": "Kurier/in Kat. A1",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +16,83 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689111-kurier-in-kat-a1-burgdorf-be&language=en"
   },
   {
-    "id": 10,
-    "title": "Speditionsmitarbeiter (m/w/d) ? 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689105-speditionsmitarbeiter-m-w-d-100-basel-bs&language=en"
-  },
-  {
-    "id": 11,
+    "id": 2,
     "title": "Ingénieur HES/EPF en hydraulique urbaine 80-100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689117-ingenieur-hes-epf-en-hydraulique-urbaine-80-100-cdi-h-f-d-sion-vs&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Assistant technique 80% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689115-assistant-technique-80-cdi-h-f-d-sion-vs&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Betriebselektriker (m/w/d) im MedTech Umfeld",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689118-betriebselektriker-m-w-d-im-medtech-umfeld-bonaduz-gr&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Operaio per posa pavimentazioni sportive in erba sintetica",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689120-operaio-per-posa-pavimentazioni-sportive-in-erba-sintetica-bellinzona-bellinzona&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Field Service Spezialist ? Automatisierte Etikettier- & Drucksysteme 80-100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689113-field-service-spezialist-automatisierte-etikettier-drucksysteme-80-100-m-w-d-spreitenbach-ag&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Produktionsmitarbeiter, Maschinen-Bediener Lebensmittelbranche (Tagesbetrieb) ab sofort m/w/d",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689110-produktionsmitarbeiter-maschinen-bediener-lebensmittelbranche-tagesbetrieb-ab-sofort-m-w-d-langenthal-bern&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Operaio per posa pavimentazioni sportive per palestre in poliuretano",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689121-operaio-per-posa-pavimentazioni-sportive-per-palestre-in-poliuretano-bellinzona-bellinzona&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Giardiniere",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689124-giardiniere-sottoceneri&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Meccanico Attrezzature da Ferramenta e giardinaggio",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689123-meccanico-attrezzature-da-ferramenta-e-giardinaggio-locarno-bellinzona&language=en"
+  },
+  {
+    "id": 11,
+    "title": "MAINTENANCE COORDINATOR",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689119-maintenance-coordinator-lugano-lugano&language=en"
   }
 ]
