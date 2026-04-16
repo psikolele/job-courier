@@ -38,8 +38,8 @@ function App() {
         <Hero setShowLoginModal={setShowLoginModal} />
         <Filters />
         
+        <Features />
 
-        
         <Vetrini />
 
         {/* Ad placeholders 50/50 */}
@@ -54,7 +54,8 @@ function App() {
           </div>
         </Suspense>
         
-
+        <Philosophy />
+        <Protocol />
 
         <Blog />
 
