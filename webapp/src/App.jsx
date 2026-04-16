@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Pricing from './pages/Pricing';
+import Contact from './pages/Contact';
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -51,6 +52,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home setShowLoginModal={setShowLoginModal} />} />
         <Route path="/soluzioni-e-tariffe" element={<Pricing />} />
+        <Route path="/contatti" element={<Contact />} />
       </Routes>
       <Footer />
     </div>

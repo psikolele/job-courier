@@ -21,14 +21,14 @@ const Footer = () => {
                 <div className="flex gap-16 md:gap-24 flex-wrap">
                     <div className="flex flex-col gap-5">
                         <h4 className="text-[10px] font-mono tracking-[0.3em] text-accent uppercase mb-3 opacity-80">Navigazione</h4>
-                        <a href="#" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Cerca Lavoro</a>
-                        <a href="#" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Aziende Vetrina</a>
-                        <a href="#" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Job Trends</a>
+                        <a href="/#filters" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Cerca Lavoro</a>
+                        <a href="/#vetrini" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Aziende Vetrina</a>
+                        <a href="/#blog" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Blog</a>
                     </div>
                     <div className="flex flex-col gap-5">
                         <h4 className="text-[10px] font-mono tracking-[0.3em] text-accent uppercase mb-3 opacity-80">Servizi</h4>
-                        <a href="#" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Pubblica Offerta</a>
-                        <a href="#" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Gestione CV</a>
+                        <a href="/soluzioni-e-tariffe" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Pubblica Offerta</a>
+                        <a href="/contatti" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Contatti</a>
                         <a href="#" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">FAQ Candidato</a>
                     </div>
                     <div className="flex flex-col gap-5">

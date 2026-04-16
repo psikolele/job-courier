@@ -54,6 +54,7 @@ const getCandidateLinks = (isHome) => [
 
 const getCompanyLinks = (isHome) => [
     { label: 'Soluzioni e Tariffe', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
+    { label: 'Contatti', labelDe: 'Kontakte', labelFr: 'Contacts', href: '/contatti' },
     { label: 'Registra Azienda', labelDe: 'Unternehmen registrieren', labelFr: 'Enregistrer une entreprise', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
     { label: 'Blog', labelDe: 'Blog', labelFr: 'Blog', href: isHome ? '#blog' : '/#blog' },
 ];
