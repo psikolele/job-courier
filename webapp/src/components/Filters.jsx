@@ -99,8 +99,8 @@ const Filters = () => {
                 setLatestJobs([
                     { id: 1, title: 'Validation Engineer', location: 'Mezzovico TI, Svizzera', sector: 'Generale', company: 'Team Personnel Solutions SA', companyLogo: 'https://www.google.com/s2/favicons?domain=teampersonnel.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en' },
                     { id: 2, title: 'Parchettista', location: 'Sottoceneri, Svizzera', sector: 'Generale', company: 'Team Personnel Solutions SA', companyLogo: 'https://www.google.com/s2/favicons?domain=teampersonnel.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688871-parchettista-sottoceneri&language=en' },
-                    { id: 3, title: 'Responsabile Magazzino', location: 'Berna', sector: 'Logistica', company: 'TechSwiss Distribution', companyLogo: 'https://www.google.com/s2/favicons?domain=techswiss.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' },
-                    { id: 4, title: 'Autista Patente B', location: 'Lugano', sector: 'Trasporti', company: 'RapidCourier CH', companyLogo: 'https://www.google.com/s2/favicons?domain=rapidcourier.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1' }
+                    { id: 3, title: 'Responsabile Magazzino', location: 'Schönbühl BE, Svizzera', sector: 'Logistica', company: 'TechSwiss Distribution', companyLogo: 'https://www.google.com/s2/favicons?domain=techswiss.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6680678-assistant-warehouse-manager-a-schönbuhl-be&language=en' },
+                    { id: 4, title: 'Autista Patente B', location: 'Luzern, Svizzera', sector: 'Trasporti', company: 'RapidCourier CH', companyLogo: 'https://www.google.com/s2/favicons?domain=rapidcourier.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675564-chauffeur-chauffeuse-kat-b-region-luzern-80-100-m-w-d-6003-luzern&language=en' }
                 ]);
             } finally {
                 setJobsLoading(false);

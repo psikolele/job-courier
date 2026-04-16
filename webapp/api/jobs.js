@@ -26,72 +26,60 @@ export default async function handler(req, res) {
         'Cache-Control': 'no-cache',
         'Pragma': 'no-cache',
         'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-        'Sec-Ch-Ua-Mobile': '?0',
-        'Sec-Ch-Ua-Platform': '"Windows"',
+        'Referer': 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php',
         'Sec-Fetch-Dest': 'document',
         'Sec-Fetch-Mode': 'navigate',
         'Sec-Fetch-Site': 'same-origin',
         'Sec-Fetch-User': '?1',
         'Upgrade-Insecure-Requests': '1',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Referer': 'https://www.jobcourier.ch/',
-        'Connection': 'keep-alive'
       }
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch: ${response.statusText}`);
+      throw new Error(`Cloudflare or JobRoom blocked the request: ${response.status}`);
     }
 
     const html = await response.text();
     const $ = cheerio.load(html);
     const jobs = [];
 
-    $('.singleResult').each((i, el) => {
-      if (i >= 8) return; // Fetch a few more to have enough for both sections
+    // The selector .vacancies .vacancy might vary, using a more inclusive one
+    $('.vacancies .vacancy, .job-listing, tr.job-item, .singleResult').each((i, el) => {
+      if (jobs.length >= 12) return;
 
       const $el = $(el);
       
       // Selectors based on live inspection - looking for the EXACT job link
-      // Often the title itself or the first <a> inside dataContainer is the link
       let titleLink = $el.find('a[href*="view-job.php"]').first();
       if (titleLink.length === 0) {
         titleLink = $el.find('.details .dataContainer a').first();
       }
       
-      const title = titleLink.text().trim() || $el.find('h3').text().trim();
-      
+      const title = titleLink.text().trim() || $el.find('h3').text().trim() || 'Titolo non disponibile';
+      if (title === 'Titolo non disponibile' && titleLink.length === 0) return; // Skip empty rows
+
       let relativeLink = titleLink.attr('href');
-      // If still no link, try find any <a> in the entire card
       if (!relativeLink) {
         relativeLink = $el.find('a').first().attr('href');
       }
       
-      // Resolve relative path (removing ../ if present)
+      // Resolve relative path
       if (relativeLink && relativeLink.startsWith('..')) {
         relativeLink = relativeLink.substring(2);
       }
-      const absoluteLink = relativeLink ? (relativeLink.startsWith('http') ? relativeLink : `https://jobroom.jobcourier.ch/job/${relativeLink.startsWith('/') ? relativeLink.substring(1) : relativeLink}`) : '#';
+      const absoluteLink = relativeLink ? 
+        (relativeLink.startsWith('http') ? relativeLink : `https://jobroom.jobcourier.ch/job/${relativeLink.startsWith('/') ? relativeLink.substring(1) : relativeLink}`) 
+        : 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1';
 
-      const companyName = $el.find('.companyLink span').text().trim() || 'Azienda Riservata';
+      const companyName = $el.find('.company, .firm, .details span:first-child, .companyLink span').first().text().trim() || 'Azienda Riservata';
+      const location = $el.find('.location, .place, .details span:last-child, .detailsHead label:contains("Sede:")').next('span').text().trim() || 'Svizzera';
       
-      let logoUrl = $el.find('img.companyImg').attr('src');
-      if (logoUrl && logoUrl.startsWith('..')) {
-        logoUrl = logoUrl.substring(2);
-      }
-      const absoluteLogo = logoUrl ? (logoUrl.startsWith('http') ? logoUrl : `https://jobroom.jobcourier.ch/job/${logoUrl.startsWith('/') ? logoUrl.substring(1) : logoUrl}`) : '';
-
-      // Extract Sede (Location)
-      const location = $el.find('.detailsHead label:contains("Sede:")').next('span').text().trim() || 'Svizzera';
-      
-      // Extract Settore (Sector)
-      const sector = $el.find('.detailsHead label:contains("Settore:")').next('span').text().trim() || 'Generale';
-
-      // Extract Ruolo (Role)
-      const role = $el.find('.detailsHead label:contains("Ruolo:")').next('span').text().trim() || 'Professional';
-
-      // Extract Description
-      const description = $el.find('.detailsData .descriptionContainer p').text().trim() || '';
+      // Extract domain for favicon if possible
+      let domain = 'jobcourier.ch';
+      if (companyName.toLowerCase().includes('randstad')) domain = 'randstad.ch';
+      if (companyName.toLowerCase().includes('adecco')) domain = 'adecco.ch';
+      if (companyName.toLowerCase().includes('manpower')) domain = 'manpower.ch';
+      if (companyName.toLowerCase().includes('gi group')) domain = 'gigroup.com';
 
       jobs.push({
         id: i,
