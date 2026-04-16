@@ -7,10 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Filters from './components/Filters';
-import Features from './components/Features';
 import Vetrini from './components/Vetrini';
-import Philosophy from './components/Philosophy';
-import Protocol from './components/Protocol';
 import Blog from './components/Blog';
 import Footer from './components/Footer';
 
@@ -38,8 +35,6 @@ function App() {
         <Hero setShowLoginModal={setShowLoginModal} />
         <Filters />
         
-        <Features />
-
         <Vetrini />
 
         {/* Ad placeholders 50/50 */}
@@ -54,9 +49,6 @@ function App() {
           </div>
         </Suspense>
         
-        <Philosophy />
-        <Protocol />
-
         <Blog />
 
       </main>
