@@ -1,27 +1,27 @@
 [
   {
     "id": 0,
-    "title": "Sanitärinstallateur EFZ (alle)",
+    "title": "ADDETTO REPARTO GALVANICA",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689327-sanit%C3%A4rinstallateur-efz-alle-wallisellen-zh&language=en"
+    "company": "ER Services Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689333-addetto-reparto-galvanica-taverne&language=en"
   },
   {
     "id": 1,
-    "title": "Buyer provenienza contesto produttivo (part-time 50-75%)",
+    "title": "FRESATORE",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689330-buyer-provenienza-contesto-produttivo-part-time-50-75-mezzovico-lugano&language=en"
+    "company": "ER Services Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689332-fresatore-taverne&language=en"
   },
   {
     "id": 2,
-    "title": "Responsabile Progetto Strutture Metalliche",
+    "title": "Operaio/a Assemblaggio Meccanico - Disponibilità Immediata",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689329-responsabile-progetto-strutture-metalliche-riazzino-bellinzona&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689334-operaio-a-assemblaggio-meccanico-disponibilit%C3%A0-immediata-stabio&language=en"
   },
   {
     "id": 3,
@@ -33,19 +33,19 @@
   },
   {
     "id": 4,
-    "title": "FRESATORE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "ER Services Sagl",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689332-fresatore-taverne&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Codierer / Betriebsmitarbeiter (80%)",
+    "title": "Abteilungsleiter Stellvertreter Dreherei 100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689321-codierer-betriebsmitarbeiter-80-frauenfeld-tg&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689328-abteilungsleiter-stellvertreter-dreherei-100-m-w-d-aarau-ag&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Elektroplaner",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689326-elektroplaner-zurich-zurich&language=en"
   },
   {
     "id": 6,
@@ -57,6 +57,14 @@
   },
   {
     "id": 7,
+    "title": "Buyer provenienza contesto produttivo (part-time 50-75%)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689330-buyer-provenienza-contesto-produttivo-part-time-50-75-mezzovico-lugano&language=en"
+  },
+  {
+    "id": 8,
     "title": "Sachbearbeitung Finanz- und Rechnungswesen (a) 80%- 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,35 +72,27 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689322-sachbearbeitung-finanz-und-rechnungswesen-a-80-100-hunzenschwil-aargau&language=en"
   },
   {
-    "id": 8,
-    "title": "ADDETTO REPARTO GALVANICA",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "ER Services Sagl",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689333-addetto-reparto-galvanica-taverne&language=en"
-  },
-  {
     "id": 9,
-    "title": "Abteilungsleiter Stellvertreter Dreherei 100% (m/w/d)",
+    "title": "Sanitärinstallateur EFZ (alle)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689328-abteilungsleiter-stellvertreter-dreherei-100-m-w-d-aarau-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689327-sanit%C3%A4rinstallateur-efz-alle-wallisellen-zh&language=en"
   },
   {
     "id": 10,
-    "title": "Elektroplaner",
+    "title": "Responsabile Progetto Strutture Metalliche",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689326-elektroplaner-zurich-zurich&language=en"
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689329-responsabile-progetto-strutture-metalliche-riazzino-bellinzona&language=en"
   },
   {
     "id": 11,
-    "title": "Operaio/a Assemblaggio Meccanico - Disponibilità Immediata",
+    "title": "Heizungsinstallateur EFZ (alle)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689334-operaio-a-assemblaggio-meccanico-disponibilit%C3%A0-immediata-stabio&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689323-heizungsinstallateur-efz-alle-schlieren-zh&language=en"
   }
 ]
