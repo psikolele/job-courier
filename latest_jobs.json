@@ -1,70 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Elektroplaner",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689326-elektroplaner-zurich-zurich&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Sanitärinstallateur EFZ (alle)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689327-sanit%C3%A4rinstallateur-efz-alle-wallisellen-zh&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Technischer Sachbearbeiter Verkauf Innendienst (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689324-technischer-sachbearbeiter-verkauf-innendienst-m-w-d-100-frick-aargau&language=en"
-  },
-  {
-    "id": 3,
-    "title": "µ Zimmermann/Zimmerin EFZ ? Dein nächster Schritt",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689319-%C2%B5-zimmermann-zimmerin-efz-dein-n%C3%A4chster-schritt-b%C3%A4rau-be&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Buyer provenienza contesto produttivo (part-time 50-75%)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689330-buyer-provenienza-contesto-produttivo-part-time-50-75-mezzovico-lugano&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Heizungsinstallateur/in (m/w/d) 100% ? Temporär",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689317-heizungsinstallateur-in-m-w-d-100-tempor%C3%A4r-winterthur-zh&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Technischer Sachbearbeiterin (w/m/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689325-technischer-sachbearbeiterin-w-m-d-100-sch%C3%B6ftland-aargau&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Sachbearbeitung Finanz- und Rechnungswesen (a) 80%- 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689322-sachbearbeitung-finanz-und-rechnungswesen-a-80-100-hunzenschwil-aargau&language=en"
-  },
-  {
-    "id": 8,
     "title": "Head of Medizintechnik im Spitalumfeld (m/w/d) 80 - 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,12 +8,76 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689318-head-of-medizintechnik-im-spitalumfeld-m-w-d-80-100-zurich-zh&language=en"
   },
   {
-    "id": 9,
+    "id": 1,
+    "title": "Operatore farmaceutico",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689316-operatore-farmaceutico-mendrisio-ti&language=en"
+  },
+  {
+    "id": 2,
     "title": "Codierer / Betriebsmitarbeiter (80%)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689321-codierer-betriebsmitarbeiter-80-frauenfeld-tg&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Responsabile Progetto Strutture Metalliche",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689329-responsabile-progetto-strutture-metalliche-riazzino-bellinzona&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Heizungsinstallateur/in (m/w/d) 100% ? Temporär",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689317-heizungsinstallateur-in-m-w-d-100-tempor%C3%A4r-winterthur-zh&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Technischer Sachbearbeiter Verkauf Innendienst (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689324-technischer-sachbearbeiter-verkauf-innendienst-m-w-d-100-frick-aargau&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Abteilungsleiter Stellvertreter Dreherei 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689328-abteilungsleiter-stellvertreter-dreherei-100-m-w-d-aarau-ag&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Elektroplaner",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689326-elektroplaner-zurich-zurich&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Sanitärinstallateur EFZ (alle)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689327-sanit%C3%A4rinstallateur-efz-alle-wallisellen-zh&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Technischer Sachbearbeiterin (w/m/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689325-technischer-sachbearbeiterin-w-m-d-100-sch%C3%B6ftland-aargau&language=en"
   },
   {
     "id": 10,
@@ -89,10 +89,10 @@
   },
   {
     "id": 11,
-    "title": "Abteilungsleiter Stellvertreter Dreherei 100% (m/w/d)",
+    "title": "Sachbearbeitung Finanz- und Rechnungswesen (a) 80%- 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689328-abteilungsleiter-stellvertreter-dreherei-100-m-w-d-aarau-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689322-sachbearbeitung-finanz-und-rechnungswesen-a-80-100-hunzenschwil-aargau&language=en"
   }
 ]
