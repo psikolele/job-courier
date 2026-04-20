@@ -19,9 +19,14 @@ const IconStar = () => (
         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
     </svg>
 );
-const IconBuilding = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const IconBuilding = ({ size = 18 }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>
+    </svg>
+);
+const IconUser = ({ size = 18 }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
     </svg>
 );
 const IconUsers = () => (
@@ -179,62 +184,72 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         </button>
 
                         {/* LEFT SECTION: CANDIDATI */}
-                        <div className="flex-1 flex flex-col items-center justify-center p-8 border-b md:border-b-0 md:border-r border-slate-200/50">
-                            <h2 className="text-4xl md:text-6xl font-black text-[#26367b]/10 absolute -top-4 md:top-20 pointer-events-none tracking-tighter">
-                                {candidateTitle}
-                            </h2>
-                            <div className="relative z-10 flex flex-col items-center gap-4 mt-8">
-                                {candidateLinks.map((link, idx) => (
-                                    link.external ? (
-                                        <a
-                                            key={idx}
-                                            href={link.href}
-                                            className="text-xl md:text-2xl font-bold text-slate-800 hover:text-[#e63946] transition-colors text-center"
-                                            onClick={() => setMenuOpen(false)}
-                                        >
-                                            {getLabel(link, lang)}
-                                        </a>
-                                    ) : (
-                                        <Link
-                                            key={idx}
-                                            to={link.href}
-                                            className="text-xl md:text-2xl font-bold text-slate-800 hover:text-[#e63946] transition-colors text-center"
-                                            onClick={() => setMenuOpen(false)}
-                                        >
-                                            {getLabel(link, lang)}
-                                        </Link>
-                                    )
-                                ))}
+                        <div className="flex-1 flex flex-col items-center justify-center p-8 border-b md:border-b-0 md:border-r border-slate-200/50 bg-[#fafafa]/50 relative overflow-hidden group">
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#26367b]/5 group-hover:text-[#26367b]/10 transition-colors duration-700">
+                                <IconUser size={isMobile ? 200 : 400} />
+                            </div>
+                            <div className="relative z-10 flex flex-col items-center">
+                                <h2 className="text-5xl md:text-7xl font-black text-[#26367b] tracking-tighter italic font-display mb-8 opacity-90">
+                                    {candidateTitle}
+                                </h2>
+                                <div className="flex flex-col items-center gap-6">
+                                    {candidateLinks.map((link, idx) => (
+                                        link.external ? (
+                                            <a
+                                                key={idx}
+                                                href={link.href}
+                                                className="text-2xl md:text-3xl font-bold text-slate-800 hover:text-[#e63946] transition-all hover:scale-105"
+                                                onClick={() => setMenuOpen(false)}
+                                            >
+                                                {getLabel(link, lang)}
+                                            </a>
+                                        ) : (
+                                            <Link
+                                                key={idx}
+                                                to={link.href}
+                                                className="text-2xl md:text-3xl font-bold text-slate-800 hover:text-[#e63946] transition-all hover:scale-105"
+                                                onClick={() => setMenuOpen(false)}
+                                            >
+                                                {getLabel(link, lang)}
+                                            </Link>
+                                        )
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
                         {/* RIGHT SECTION: AZIENDE */}
-                        <div className="flex-1 flex flex-col items-center justify-center p-8">
-                            <h2 className="text-4xl md:text-6xl font-black text-[#26367b]/10 absolute -top-4 md:top-20 pointer-events-none tracking-tighter">
-                                {companyTitle}
-                            </h2>
-                            <div className="relative z-10 flex flex-col items-center gap-4 mt-8">
-                                {companyLinks.map((link, idx) => (
-                                    link.external ? (
-                                        <a
-                                            key={idx}
-                                            href={link.href}
-                                            className="text-xl md:text-2xl font-bold text-slate-800 hover:text-[#e63946] transition-colors text-center"
-                                            onClick={() => setMenuOpen(false)}
-                                        >
-                                            {getLabel(link, lang)}
-                                        </a>
-                                    ) : (
-                                        <Link
-                                            key={idx}
-                                            to={link.href}
-                                            className="text-xl md:text-2xl font-bold text-slate-800 hover:text-[#e63946] transition-colors text-center"
-                                            onClick={() => setMenuOpen(false)}
-                                        >
-                                            {getLabel(link, lang)}
-                                        </Link>
-                                    )
-                                ))}
+                        <div className="flex-1 flex flex-col items-center justify-center p-8 relative overflow-hidden group">
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-slate-900/5 group-hover:text-slate-900/10 transition-colors duration-700">
+                                <IconBuilding size={isMobile ? 200 : 400} />
+                            </div>
+                            <div className="relative z-10 flex flex-col items-center">
+                                <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter italic font-display mb-8 opacity-90">
+                                    {companyTitle}
+                                </h2>
+                                <div className="flex flex-col items-center gap-6">
+                                    {companyLinks.map((link, idx) => (
+                                        link.external ? (
+                                            <a
+                                                key={idx}
+                                                href={link.href}
+                                                className="text-2xl md:text-3xl font-bold text-slate-800 hover:text-[#e63946] transition-all hover:scale-105"
+                                                onClick={() => setMenuOpen(false)}
+                                            >
+                                                {getLabel(link, lang)}
+                                            </a>
+                                        ) : (
+                                            <Link
+                                                key={idx}
+                                                to={link.href}
+                                                className="text-2xl md:text-3xl font-bold text-slate-800 hover:text-[#e63946] transition-all hover:scale-105"
+                                                onClick={() => setMenuOpen(false)}
+                                            >
+                                                {getLabel(link, lang)}
+                                            </Link>
+                                        )
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </motion.div>
