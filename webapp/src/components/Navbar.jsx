@@ -254,53 +254,85 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                 )}
             </AnimatePresence>
 
-            {/* ── LOGIN MODAL ── */}
+            {/* ── LOGIN MODAL: CINEMATIC SPLIT VIEW ── */}
             <AnimatePresence>
                 {showLoginModal && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[120] flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4"
+                        className="fixed inset-0 z-[120] flex items-center justify-center bg-slate-900/60 backdrop-blur-md p-4 md:p-8"
                         onClick={(e) => { if (e.target === e.currentTarget) setShowLoginModal(false); }}
                     >
                         <motion.div
-                            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                            initial={{ scale: 0.9, opacity: 0, y: 30 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                            className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full relative overflow-hidden"
+                            exit={{ scale: 0.9, opacity: 0, y: 30 }}
+                            className="bg-white rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] w-full max-w-4xl relative overflow-hidden flex flex-col md:flex-row min-h-[500px]"
                         >
                             <button
                                 onClick={() => setShowLoginModal(false)}
-                                className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
+                                className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shadow-sm"
                             >
                                 <IconX />
                             </button>
 
-                            <div className="text-center mb-8">
-                                <div className="w-12 h-12 rounded-2xl bg-[#26367b]/10 flex items-center justify-center mx-auto mb-4 text-[#26367b]">
-                                    <IconBuilding />
+                            {/* LEFT: CANDIDATI */}
+                            <div className="flex-1 p-8 md:p-12 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-slate-100 bg-slate-50/50">
+                                <div className="w-16 h-16 rounded-2xl bg-[#0038A5]/10 flex items-center justify-center mb-6 text-[#0038A5]">
+                                    <IconUser size={32} />
                                 </div>
-                                <h3 className="text-2xl font-bold text-slate-900 mb-2">Area Aziende</h3>
-                                <p className="text-slate-500 text-sm">Seleziona un'opzione per accedere al portale.</p>
+                                <h3 className="text-3xl font-black text-slate-900 mb-2 uppercase tracking-tighter italic font-display">
+                                    Candidati
+                                </h3>
+                                <p className="text-slate-500 text-sm mb-8 max-w-[240px]">Accedi al tuo profilo per gestire le candidature e il tuo CV.</p>
+                                
+                                <div className="flex flex-col gap-3 w-full max-w-[280px]">
+                                    <a
+                                        href="https://jobroom.jobcourier.ch/job-seekers-login.php"
+                                        className="w-full bg-[#0038A5] text-white font-bold py-4 rounded-2xl transition-all shadow-[0_8px_20px_rgba(0,56,165,0.2)] btn-shiny hover-lift text-center"
+                                    >
+                                        Accedi al Profilo
+                                    </a>
+                                    <a
+                                        href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it"
+                                        className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 rounded-2xl transition-all hover:border-[#0038A5] hover:text-[#0038A5] hover-lift text-center"
+                                    >
+                                        Crea il tuo profilo
+                                    </a>
+                                </div>
                             </div>
 
-                            <div className="flex flex-col gap-4">
-                                <a
-                                    href="https://jobroom.jobcourier.ch/employer/register.php"
-                                    className="group rounded-2xl bg-white border-2 border-[#26367b] p-4 flex flex-col items-center justify-center transition-all hover:bg-[#26367b]"
-                                >
-                                    <span className="font-bold text-[#26367b] group-hover:text-white transition-colors">Nuova Azienda</span>
-                                    <span className="text-xs text-slate-500 group-hover:text-blue-100 transition-colors mt-1">Registrati e pubblica</span>
-                                </a>
+                            {/* RIGHT: AZIENDE */}
+                            <div className="flex-1 p-8 md:p-12 flex flex-col items-center justify-center text-center">
+                                <div className="w-16 h-16 rounded-2xl bg-slate-900/5 flex items-center justify-center mb-6 text-slate-800">
+                                    <IconBuilding size={32} />
+                                </div>
+                                <h3 className="text-3xl font-black text-slate-900 mb-2 uppercase tracking-tighter italic font-display">
+                                    Aziende
+                                </h3>
+                                <p className="text-slate-500 text-sm mb-8 max-w-[240px]">Pubblica le tue offerte e trova i migliori talenti.</p>
+                                
+                                <div className="flex flex-col gap-3 w-full max-w-[280px]">
+                                    <a
+                                        href="https://jobroom.jobcourier.ch/employer-login.php"
+                                        className="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl transition-all shadow-[0_8px_20px_rgba(0,0,0,0.2)] btn-shiny hover-lift text-center"
+                                    >
+                                        Login Azienda
+                                    </a>
+                                    <a
+                                        href="https://jobroom.jobcourier.ch/employer/register.php"
+                                        className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 rounded-2xl transition-all hover:border-slate-800 hover:text-slate-800 hover-lift text-center"
+                                    >
+                                        Registra Azienda
+                                    </a>
+                                </div>
+                            </div>
 
-                                <a
-                                    href="https://jobroom.jobcourier.ch/job-seekers-login.php"
-                                    className="group rounded-2xl bg-slate-800 p-4 flex flex-col items-center justify-center transition-all hover:bg-black"
-                                >
-                                    <span className="font-bold text-white">Azienda Registrata</span>
-                                    <span className="text-xs text-slate-400 group-hover:text-slate-300 transition-colors mt-1">Accedi alla dashboard</span>
-                                </a>
+                            {/* Accent bottom bar */}
+                            <div className="absolute bottom-0 left-0 right-0 h-1.5 flex">
+                                <div className="flex-1 bg-[#0038A5]"></div>
+                                <div className="flex-1 bg-slate-900"></div>
                             </div>
                         </motion.div>
                     </motion.div>

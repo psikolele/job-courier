@@ -74,6 +74,24 @@ export default async function handler(req, res) {
       const companyName = $el.find('.company, .firm, .details span:first-child, .companyLink span').first().text().trim() || 'Azienda Riservata';
       const location = $el.find('.location, .place, .details span:last-child, .detailsHead label:contains("Sede:")').next('span').text().trim() || 'Svizzera';
       
+      // SECTOR & ROLE EXTRACTION
+      let sector = $el.find('.sector, .category, .details span:contains("Settore"), .detailsHead label:contains("Settore:")').next('span').text().trim();
+      if (!sector) {
+          // Fallback check for common sector types mentioned in text
+          const text = $el.text().toLowerCase();
+          if (text.includes('trasporti')) sector = 'Trasporti';
+          else if (text.includes('logistica')) sector = 'Logistica';
+          else if (text.includes('amministrazione')) sector = 'Amministrazione';
+          else if (text.includes('vendita')) sector = 'Vendita';
+          else sector = 'Generale';
+      }
+
+      let role = $el.find('.role, .details span:contains("Ruolo"), .detailsHead label:contains("Ruolo:")').next('span').text().trim();
+      if (!role) {
+          // Fallback to job type or generic role
+          role = title.toLowerCase().includes('responsabile') ? 'Manager' : 'Specialist';
+      }
+
       // LOGO EXTRACTION: Look for JobRoom's specific logo containers
       let logoUrl = $el.find('img.companyImg, img.companyLogo, .moreDataContainer img').attr('src');
       
@@ -103,6 +121,8 @@ export default async function handler(req, res) {
         id: i,
         title,
         link: absoluteLink,
+        sector,
+        role,
         company: {
           name: companyName,
           logo: absoluteLogo,

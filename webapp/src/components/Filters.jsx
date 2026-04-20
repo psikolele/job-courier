@@ -85,9 +85,10 @@ const Filters = () => {
                         id: job.id,
                         title: job.title,
                         location: job.location,
-                        sector: job.sector,
-                        company: job.company.name,
-                        companyLogo: job.company.logo || `https://www.google.com/s2/favicons?domain=${job.company.domain}&sz=128`,
+                        sector: job.sector || 'Generale',
+                        role: job.role || 'Specialist',
+                        company: job.company?.name || job.company,
+                        companyLogo: job.company?.logo || job.companyLogo || `https://www.google.com/s2/favicons?domain=${job.company?.domain || 'jobcourier.ch'}&sz=128`,
                         link: job.link
                     }));
                     setLatestJobs(formattedJobs);
@@ -157,7 +158,7 @@ const Filters = () => {
     return (
         <div id="filters" className="w-full relative z-20 pb-20 pt-8 bg-[#fafafa]">
             {/* ADVERTISEMENT SECTION */}
-            <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row gap-6 mb-14 mt-4 px-4 sm:px-8 md:px-12 lg:px-20">
+            <div className="w-[98%] mx-auto flex flex-col md:flex-row gap-4 mb-14 mt-4 px-2">
                 <div className="flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
                     <span className="absolute top-2 right-3 text-[10px] font-bold text-slate-400 uppercase z-10 bg-white/80 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">Advertisement</span>
                     <a href="https://www.blc-sa.ch" target="_blank" rel="noopener noreferrer" className="block w-full h-[150px] md:h-[200px] relative">
@@ -198,12 +199,13 @@ const Filters = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.4, delay: Math.min((idx % latestJobs.length) * 0.1, 1) }}
-                                    className="min-w-[280px] md:min-w-[340px] shrink-0 group flex flex-col h-[240px] bg-white border border-slate-200 hover:border-[#0038A5]/30 rounded-[2rem] p-7 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 relative overflow-hidden"
+                                    className="min-w-[280px] md:min-w-[340px] shrink-0 group flex flex-col h-[260px] bg-white border border-slate-200 hover:border-[#0038A5]/30 rounded-[2rem] p-7 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover-lift relative overflow-hidden"
                                 >
                                     {/* Header Row: Company Info + Logo */}
                                     <div className="flex justify-between items-start mb-6">
                                         <div className="flex flex-col min-w-0 pr-4">
-                                            <span className="text-sm font-black text-slate-900 truncate uppercase tracking-tight">
+                                            <span className="text-[10px] font-black text-[#0038A5] uppercase tracking-[0.2em] mb-1 opacity-60">Employer</span>
+                                            <span className="text-sm font-bold text-slate-900 truncate uppercase tracking-tight">
                                                 {job.company}
                                             </span>
                                             <div className="flex items-center gap-1.5 text-slate-400 mt-1">
@@ -212,30 +214,30 @@ const Filters = () => {
                                             </div>
                                         </div>
                                         
-                                        <div className="w-12 h-12 shrink-0 bg-white border border-slate-100 rounded-2xl p-2 flex items-center justify-center shadow-sm group-hover:border-[#0038A5]/20 transition-all">
+                                        <div className="w-16 h-16 shrink-0 bg-white border border-slate-100 rounded-2xl p-2.5 flex items-center justify-center shadow-sm group-hover:border-[#0038A5]/20 transition-all">
                                             <img 
                                                 src={job.companyLogo} 
                                                 alt={job.company} 
                                                 className="w-full h-full object-contain"
-                                                onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-300"><Building2 size={16}/></div>'; }}
+                                                onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-300"><Building2 size={24}/></div>'; }}
                                             />
                                         </div>
                                     </div>
 
                                     {/* Middle Section: Big Title */}
                                     <div className="flex-1">
-                                        <h4 className="text-lg md:text-xl font-bold text-slate-900 leading-[1.2] group-hover:text-[#0038A5] transition-colors line-clamp-2">
+                                        <h4 className="text-xl md:text-2xl font-bold text-slate-900 leading-[1.1] group-hover:text-[#0038A5] transition-colors line-clamp-2 italic font-display">
                                             {job.title}
                                         </h4>
                                     </div>
 
                                     {/* Footer Section: Sector and Role Tags */}
-                                    <div className="flex gap-2 mt-4">
+                                    <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-slate-50">
                                         <span className="px-3 py-1.5 bg-[#0038A5]/5 text-[#0038A5] text-[10px] font-black uppercase tracking-widest rounded-lg border border-[#0038A5]/10">
                                             {job.sector}
                                         </span>
                                         <span className="px-3 py-1.5 bg-slate-50 text-slate-500 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-slate-200">
-                                            {job.sector === 'Generale' ? 'Full-time' : 'Specialist'}
+                                            {job.role}
                                         </span>
                                     </div>
                                 </motion.a>

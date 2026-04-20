@@ -67,7 +67,16 @@ const Vetrini = () => {
                     <div className="w-24 h-1 bg-[#0038A5] mx-auto rounded-full"></div>
                 </div>
 
-                <div className="w-full relative rounded-3xl overflow-hidden bg-white/50 border border-slate-100 p-2 md:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                <div 
+                    className="w-full relative rounded-3xl overflow-hidden p-2 md:p-6 shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover-lift transition-all duration-500"
+                    style={{
+                        background: 'rgba(142, 132, 200, 0.2)',
+                        backdropFilter: 'blur(5px)',
+                        WebkitBackdropFilter: 'blur(5px)',
+                        border: '1px solid rgba(142, 132, 200, 0.3)',
+                        borderRadius: '16px'
+                    }}
+                >
                     <iframe
                         ref={iframeRef}
                         src="https://jobroom.jobcourier.ch/job/jobsShowcase.php?company_type=&emp_job_type=JOB&language=it&limit="

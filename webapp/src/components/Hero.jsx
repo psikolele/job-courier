@@ -135,7 +135,7 @@ const Hero = ({ setShowLoginModal }) => {
                     width: isMobile ? '100%' : (hoveredSide === 'companies' ? '40%' : '60%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative min-h-[50vh] md:min-h-screen bg-[#fafafa] flex flex-col justify-center px-8 md:px-12 lg:px-16 py-24 text-[#1a202c] border-b md:border-b-0 md:border-r border-slate-200"
+                className="relative min-h-[50vh] md:min-h-screen bg-[#fafafa] flex flex-col justify-start px-8 md:px-12 lg:px-16 pt-32 md:pt-48 pb-24 text-[#1a202c] border-b md:border-b-0 md:border-r border-slate-200"
             >
                 {/* Animated Arrow Left (Candidates) */}
                 <motion.div 
@@ -232,7 +232,7 @@ const Hero = ({ setShowLoginModal }) => {
                     width: isMobile ? '100%' : (hoveredSide === 'companies' ? '60%' : '40%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative min-h-[50vh] md:min-h-screen bg-[#131f3f] flex flex-col justify-center px-8 md:px-12 lg:px-16 py-24 text-white overflow-hidden"
+                className="relative min-h-[50vh] md:min-h-screen bg-[#131f3f] flex flex-col justify-start px-8 md:px-12 lg:px-16 pt-32 md:pt-48 pb-24 text-white overflow-hidden"
             >
                 {/* Background Image Slider */}
                 <AnimatePresence initial={false}>
