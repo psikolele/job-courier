@@ -80,6 +80,13 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
     const lang = i18n.language;
     
     const isHome = location.pathname === '/';
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 1024);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const candidateTitle = lang === 'de' ? 'KANDIDATEN' : lang === 'fr' ? 'CANDIDATS' : 'CANDIDATI';
     const companyTitle = lang === 'de' ? 'UNTERNEHMEN' : lang === 'fr' ? 'ENTREPRISES' : 'AZIENDE';
@@ -313,7 +320,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                         href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it"
                                         className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 rounded-2xl transition-all hover:border-[#0038A5] hover:text-[#0038A5] hover-lift text-center"
                                     >
-                                        Crea il tuo profilo
+                                        Carica il tuo CV
                                     </a>
                                 </div>
                             </div>
@@ -330,16 +337,16 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <a
-                                        href="https://jobroom.jobcourier.ch/employer-login.php"
+                                        href="https://jobroom.jobcourier.ch/job-seekers-login.php"
                                         className="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl transition-all shadow-[0_8px_20px_rgba(0,0,0,0.2)] btn-shiny hover-lift text-center"
                                     >
                                         Login Azienda
                                     </a>
                                     <a
-                                        href="https://jobroom.jobcourier.ch/employer/register.php"
-                                        className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 rounded-2xl transition-all hover:border-slate-800 hover:text-slate-800 hover-lift text-center"
+                                        href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it&_gl=1*e5uej*_gcl_au*MjA5NDU5ODA3Ni4xNzE4MDA1NjYy"
+                                        className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 rounded-2xl transition-all hover:border-slate-800 hover:text-slate-800 hover-lift text-center px-4"
                                     >
-                                        Registra Azienda
+                                        Registra la tua azienda
                                     </a>
                                 </div>
                             </div>
