@@ -159,7 +159,7 @@ const Hero = ({ setShowLoginModal }) => {
                             Per I Candidati
                         </p>
                         <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
-                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-900">
+                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-900 whitespace-nowrap">
                                 Accedi al tuo
                             </span>
                             <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-[#0038A5] mt-2">
@@ -200,19 +200,19 @@ const Hero = ({ setShowLoginModal }) => {
                                 <div className="flex flex-wrap gap-2">
                                     <a
                                         href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-[#0038A5]/30 text-[#0038A5] text-sm font-semibold hover:bg-[#0038A5]/5 transition-all"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-[#0038A5]/30 text-[#0038A5] text-sm font-semibold hover:bg-[#0038A5]/5 transition-all"
                                     >
                                         Vedi tutte le offerte
                                     </a>
                                     <a
                                         href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-slate-300 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition-all"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition-all"
                                     >
                                         Vedi tutte le aziende
                                     </a>
                                     <a
                                         href="#blog"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-slate-300 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition-all"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition-all"
                                     >
                                         Blog
                                     </a>
@@ -271,7 +271,7 @@ const Hero = ({ setShowLoginModal }) => {
                             Per Le Aziende
                         </p>
                         <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
-                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-100">
+                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-100 whitespace-nowrap">
                                 Trova il Miglior
                             </span>
                             <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-400 mt-2">
@@ -280,7 +280,7 @@ const Hero = ({ setShowLoginModal }) => {
                         </h1>
                         
                         <motion.div animate={{ opacity: hoveredSide === 'companies' || isMobile ? 1 : 0, pointerEvents: hoveredSide === 'companies' || isMobile ? 'auto' : 'none' }} transition={{ duration: 0.3 }} className="space-y-4">
-                            <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95 backdrop-blur-sm bg-opacity-70 mt-4">
+                            <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-xl bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95 backdrop-blur-sm bg-opacity-70 mt-4">
                                 Pubblica Offerte
                             </button>
 
@@ -290,13 +290,13 @@ const Hero = ({ setShowLoginModal }) => {
                                 <div className="flex flex-wrap gap-2">
                                     <a
                                         href="#"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-white/20 text-white/80 text-sm font-semibold hover:bg-white/10 transition-all"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-white/20 text-white/80 text-sm font-semibold hover:bg-white/10 transition-all"
                                     >
                                         Soluzioni e tariffe
                                     </a>
                                     <a
                                         href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-white/20 text-white/80 text-sm font-semibold hover:bg-white/10 transition-all"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-white/20 text-white/80 text-sm font-semibold hover:bg-white/10 transition-all"
                                     >
                                         Registra azienda
                                     </a>

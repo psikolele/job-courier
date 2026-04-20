@@ -140,7 +140,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     {/* RED LOGIN Button */}
                     <button
                         onClick={() => setShowLoginModal(true)}
-                        className="bg-[#e63946] hover:bg-[#c1121f] text-white px-6 py-2 rounded-full text-[11px] font-bold tracking-widest transition-all hover:shadow-lg active:scale-95"
+                        className="bg-[#e63946] hover:bg-[#c1121f] text-white px-6 py-2 rounded-xl text-[11px] font-bold tracking-widest transition-all hover:shadow-lg active:scale-95"
                     >
                         LOGIN
                     </button>
