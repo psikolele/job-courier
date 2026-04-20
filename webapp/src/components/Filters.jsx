@@ -174,22 +174,22 @@ const Filters = () => {
             </div>
 
             {/* Latest Jobs Feed from Vercel Proxy */}
-            <div className="pt-4 w-[95%] max-w-[1800px] mx-auto">
-                <div className="flex items-center justify-between mb-6 px-4 md:px-8">
-                    <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                        <Clock className="w-5 h-5 text-[#0038A5]" />
+            <div className="pt-4 w-[98%] mx-auto">
+                <div className="flex items-center justify-between mb-10 px-4 md:px-8">
+                    <h3 className="text-2xl font-normal text-slate-900 flex items-center gap-3 font-sans">
+                        <Clock className="w-6 h-6 text-[#01498C]" />
                         Ultime inserite
                     </h3>
-                    <a href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&utm_source=homepage" className="hidden md:flex text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] items-center gap-1 transition-colors">
+                    <a href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&utm_source=homepage" className="hidden md:flex text-sm font-normal text-[#01498C] hover:text-[#002B7F] items-center gap-1 transition-colors font-mono uppercase tracking-wider">
                         Vedi tutte <ChevronRight className="w-4 h-4" />
                     </a>
                 </div>
 
-                <div className="overflow-hidden pb-8 -mx-4 relative pause-on-hover px-4">
-                    <div className="flex gap-4 animate-marquee w-max">
+                <div className="overflow-hidden pb-12 -mx-4 relative pause-on-hover px-4">
+                    <div className="flex gap-6 animate-marquee w-max">
                         {jobsLoading ? (
                             [...Array(12)].map((_, i) => (
-                                <div key={i} className="min-w-[280px] md:min-w-[320px] shrink-0 animate-pulse bg-white border border-slate-100 rounded-2xl p-6 h-32"></div>
+                                <div key={i} className="min-w-[300px] md:min-w-[380px] shrink-0 animate-pulse bg-white border border-slate-100 rounded-[2rem] p-8 h-64"></div>
                             ))
                         ) : (
                             [...latestJobs, ...latestJobs].map((job, idx) => (
@@ -199,44 +199,43 @@ const Filters = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.4, delay: Math.min((idx % latestJobs.length) * 0.1, 1) }}
-                                    className="min-w-[280px] md:min-w-[340px] shrink-0 group flex flex-col h-[260px] bg-white border border-slate-200 hover:border-[#0038A5]/30 rounded-[2rem] p-7 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover-lift relative overflow-hidden"
+                                    className="min-w-[300px] md:min-w-[400px] shrink-0 group flex flex-col h-[320px] bg-white border border-slate-200 hover:border-[#01498C]/30 rounded-[2.5rem] p-8 transition-all duration-300 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover-lift relative overflow-hidden"
                                 >
                                     {/* Header Row: Company Info + Logo */}
-                                    <div className="flex justify-between items-start mb-6">
+                                    <div className="flex justify-between items-start mb-8">
                                         <div className="flex flex-col min-w-0 pr-4">
-                                            <span className="text-[10px] font-black text-[#0038A5] uppercase tracking-[0.2em] mb-1 opacity-60">Employer</span>
-                                            <span className="text-sm font-bold text-slate-900 truncate uppercase tracking-tight">
+                                            <span className="text-sm font-normal text-slate-500 truncate font-mono uppercase tracking-tight mb-2">
                                                 {job.company}
                                             </span>
-                                            <div className="flex items-center gap-1.5 text-slate-400 mt-1">
-                                                <MapPin className="w-3 h-3 shrink-0" />
-                                                <span className="text-[11px] font-medium truncate uppercase tracking-wider">{job.location}</span>
+                                            <div className="flex items-center gap-1.5 text-slate-400">
+                                                <MapPin className="w-3.5 h-3.5 shrink-0" />
+                                                <span className="text-[11px] font-normal truncate uppercase tracking-widest font-mono">{job.location}</span>
                                             </div>
                                         </div>
                                         
-                                        <div className="w-16 h-16 shrink-0 bg-white border border-slate-100 rounded-2xl p-2.5 flex items-center justify-center shadow-sm group-hover:border-[#0038A5]/20 transition-all">
+                                        <div className="w-20 h-20 shrink-0 bg-white border border-slate-100 rounded-2xl p-3 flex items-center justify-center shadow-sm group-hover:border-[#01498C]/20 transition-all">
                                             <img 
                                                 src={job.companyLogo} 
                                                 alt={job.company} 
                                                 className="w-full h-full object-contain"
-                                                onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-300"><Building2 size={24}/></div>'; }}
+                                                onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-300"><Building2 size={32}/></div>'; }}
                                             />
                                         </div>
                                     </div>
 
                                     {/* Middle Section: Big Title */}
                                     <div className="flex-1">
-                                        <h4 className="text-xl md:text-2xl font-bold text-slate-900 leading-[1.1] group-hover:text-[#0038A5] transition-colors line-clamp-2 italic font-display">
+                                        <h4 className="text-2xl md:text-3xl font-bold text-slate-900 leading-[1.1] group-hover:text-[#01498C] transition-colors line-clamp-2 italic font-display">
                                             {job.title}
                                         </h4>
                                     </div>
 
                                     {/* Footer Section: Sector and Role Tags */}
-                                    <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-slate-50">
-                                        <span className="px-3 py-1.5 bg-[#0038A5]/5 text-[#0038A5] text-[10px] font-black uppercase tracking-widest rounded-lg border border-[#0038A5]/10">
+                                    <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-slate-100/80">
+                                        <span className="px-3.5 py-1.5 bg-[#01498C]/5 text-[#01498C] text-[10px] font-normal uppercase tracking-[0.15em] rounded-lg border border-[#01498C]/10 font-mono">
                                             {job.sector}
                                         </span>
-                                        <span className="px-3 py-1.5 bg-slate-50 text-slate-500 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-slate-200">
+                                        <span className="px-3.5 py-1.5 bg-slate-50 text-slate-400 text-[10px] font-normal uppercase tracking-[0.15em] rounded-lg border border-slate-200 font-mono">
                                             {job.role}
                                         </span>
                                     </div>

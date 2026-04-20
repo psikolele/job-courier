@@ -113,14 +113,14 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
 
     return (
         <>
-            {/* ── UNIFORM NAVBAR HEADER (#F0F0F0) ── */}
+            {/* ── UNIFORM NAVBAR HEADER (#01498C) ── */}
             <header
                 className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12 transition-all duration-300"
                 style={{
                     height: navHeight,
-                    backgroundColor: '#F0F0F0',
-                    boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.08)' : 'none',
-                    borderBottom: '1px solid rgba(0,0,0,0.05)'
+                    backgroundColor: '#01498C',
+                    boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.2)' : 'none',
+                    borderBottom: '1px solid rgba(255,255,255,0.1)'
                 }}
             >
                 {/* Logo */}
@@ -128,20 +128,20 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     <img
                         src="/JC_logo2x.png"
                         alt="Job Courier"
-                        className="object-contain h-6 md:h-8"
+                        className="object-contain h-6 md:h-8 brightness-0 invert"
                     />
                 </Link>
 
                 {/* Right side actions */}
                 <div className="flex items-center gap-6">
                     {/* Language Switcher */}
-                    <div className="hidden md:flex items-center gap-2 text-[10px] font-bold text-slate-400">
+                    <div className="hidden md:flex items-center gap-2 text-[10px] font-bold text-white/60">
                         {['it', 'de', 'fr'].map((lng, idx) => (
                             <React.Fragment key={lng}>
                                 {idx > 0 && <span>|</span>}
                                 <button
                                     onClick={() => changeLanguage(lng)}
-                                    className={`hover:text-[#26367b] transition-colors ${i18n.language === lng ? 'text-[#26367b]' : ''}`}
+                                    className={`hover:text-white transition-colors ${i18n.language === lng ? 'text-white' : ''}`}
                                 >
                                     {lng.toUpperCase()}
                                 </button>
@@ -160,7 +160,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     {/* HAMBURGER Toggle */}
                     <button
                         onClick={() => setMenuOpen(!menuOpen)}
-                        className="text-[#26367b] p-1 hover:bg-black/5 rounded-full transition-colors"
+                        className="text-white p-1 hover:bg-white/10 rounded-full transition-colors"
                     >
                         {menuOpen ? <IconX /> : <IconMenu />}
                     </button>
@@ -177,8 +177,8 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         className="fixed top-0 left-0 right-0 z-[90] flex flex-col md:flex-row shadow-2xl"
                         style={{
                             height: '70vh',
-                            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                            backdropFilter: 'blur(12px)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            backdropFilter: 'blur(20px)',
                             paddingTop: navHeight,
                         }}
                     >
@@ -191,12 +191,12 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         </button>
 
                         {/* LEFT SECTION: CANDIDATI */}
-                        <div className="flex-1 flex flex-col items-center justify-center p-8 border-b md:border-b-0 md:border-r border-slate-200/50 bg-[#fafafa]/50 relative overflow-hidden group">
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#26367b]/5 group-hover:text-[#26367b]/10 transition-colors duration-700">
-                                <IconUser size={isMobile ? 200 : 400} />
+                        <div className="flex-1 flex flex-col items-center pt-16 md:pt-24 px-8 border-b md:border-b-0 md:border-r border-slate-200/50 bg-[#fafafa]/50 relative group">
+                            <div className="mb-6 text-[#01498C]/20 group-hover:text-[#01498C]/40 transition-colors duration-500">
+                                <IconUser size={64} />
                             </div>
                             <div className="relative z-10 flex flex-col items-center">
-                                <h2 className="text-5xl md:text-7xl font-black text-[#26367b] tracking-tighter italic font-display mb-8 opacity-90">
+                                <h2 className="text-xl md:text-2xl font-normal text-[#01498C] tracking-[0.2em] uppercase font-sans mb-10 opacity-70">
                                     {candidateTitle}
                                 </h2>
                                 <div className="flex flex-col items-center gap-6">
@@ -205,7 +205,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-2xl md:text-3xl font-bold text-slate-800 hover:text-[#e63946] transition-all hover:scale-105"
+                                                className="text-lg md:text-xl font-normal text-slate-600 hover:text-[#01498C] transition-all font-mono tracking-tight"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -214,7 +214,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-2xl md:text-3xl font-bold text-slate-800 hover:text-[#e63946] transition-all hover:scale-105"
+                                                className="text-lg md:text-xl font-normal text-slate-600 hover:text-[#01498C] transition-all font-mono tracking-tight"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -226,12 +226,12 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         </div>
 
                         {/* RIGHT SECTION: AZIENDE */}
-                        <div className="flex-1 flex flex-col items-center justify-center p-8 relative overflow-hidden group">
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-slate-900/5 group-hover:text-slate-900/10 transition-colors duration-700">
-                                <IconBuilding size={isMobile ? 200 : 400} />
+                        <div className="flex-1 flex flex-col items-center pt-16 md:pt-24 px-8 relative group">
+                            <div className="mb-6 text-slate-400/20 group-hover:text-slate-400/40 transition-colors duration-500">
+                                <IconBuilding size={64} />
                             </div>
                             <div className="relative z-10 flex flex-col items-center">
-                                <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter italic font-display mb-8 opacity-90">
+                                <h2 className="text-xl md:text-2xl font-normal text-slate-500 tracking-[0.2em] uppercase font-sans mb-10 opacity-70">
                                     {companyTitle}
                                 </h2>
                                 <div className="flex flex-col items-center gap-6">
@@ -240,7 +240,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-2xl md:text-3xl font-bold text-slate-800 hover:text-[#e63946] transition-all hover:scale-105"
+                                                className="text-lg md:text-xl font-normal text-slate-600 hover:text-[#01498C] transition-all font-mono tracking-tight"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -249,7 +249,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-2xl md:text-3xl font-bold text-slate-800 hover:text-[#e63946] transition-all hover:scale-105"
+                                                className="text-lg md:text-xl font-normal text-slate-600 hover:text-[#01498C] transition-all font-mono tracking-tight"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}

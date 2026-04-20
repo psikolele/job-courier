@@ -24,10 +24,10 @@ const Vetrini = () => {
         <section className="py-16 md:py-24 bg-white relative z-10 px-4 md:px-12 w-full" id="vetrini">
             <div className="max-w-[1400px] mx-auto w-full">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-slate-900 mb-6 tracking-tight italic font-display">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#01498C] mb-6 tracking-tight italic font-display">
                         Aziende e società di selezione in vetrina
                     </h2>
-                    <div className="w-24 h-1 bg-[#0038A5] mx-auto rounded-full"></div>
+                    <div className="w-24 h-1 bg-[#01498C] mx-auto rounded-full"></div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -43,12 +43,12 @@ const Vetrini = () => {
                             transition={{ delay: idx * 0.05 }}
                             className="group relative aspect-square flex flex-col items-center justify-center p-8 transition-all duration-500 hover-lift"
                             style={{
-                                background: 'rgba(142, 132, 200, 0.15)',
-                                backdropFilter: 'blur(8px)',
-                                WebkitBackdropFilter: 'blur(8px)',
-                                border: '1px solid rgba(142, 132, 200, 0.25)',
-                                borderRadius: '2rem',
-                                boxShadow: '0 8px 32px 0 rgba(142, 132, 200, 0.1)'
+                                background: 'rgba(142, 132, 200, 0.12)',
+                                backdropFilter: 'blur(12px)',
+                                WebkitBackdropFilter: 'blur(12px)',
+                                border: '1px solid rgba(142, 132, 200, 0.2)',
+                                borderRadius: '2.5rem',
+                                boxShadow: '0 8px 32px 0 rgba(142, 132, 200, 0.05)'
                             }}
                         >
                             <div className="w-full h-full flex items-center justify-center mb-2">
@@ -58,7 +58,7 @@ const Vetrini = () => {
                                     className="max-w-full max-h-[70%] object-contain filter group-hover:drop-shadow-lg transition-all duration-500"
                                 />
                             </div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#26367b] opacity-40 group-hover:opacity-100 transition-opacity">
+                            <span className="text-[10px] font-normal uppercase tracking-[0.25em] text-[#01498C] opacity-40 group-hover:opacity-100 transition-opacity font-mono">
                                 Vedi Annunci
                             </span>
                         </motion.a>
