@@ -136,7 +136,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                 <div className="flex items-center gap-6">
                     {/* Language Switcher */}
                     <div className="hidden md:flex items-center gap-2 text-[10px] font-bold text-slate-500">
-                        {['it', 'de', 'fr'].map((lng, idx) => (
+                        {['it', 'en', 'de', 'fr'].map((lng, idx) => (
                             <React.Fragment key={lng}>
                                 {idx > 0 && <span>|</span>}
                                 <button

@@ -14,14 +14,16 @@ const resources = {
       },
       "hero": {
         "candidates": {
-          "h1": "Il lavoro dei tuoi sogni è a un clic di distanza",
-          "subtitle": "Trova l'opportunità perfetta per la tua carriera.",
-          "cta": "VEDI TUTTE LE OFFERTE"
+          "h1": "Accedi al tuo",
+          "h1_sub": "Prossimo Lavoro.",
+          "subtitle": "Per I Candidati",
+          "cta": "Trova Offerte"
         },
         "companies": {
-          "h1": "Trova i migliori talenti oggi stesso",
-          "subtitle": "Pubblica i tuoi annunci e raggiungi migliaia di candidati.",
-          "cta": "PUBBLICA UN ANNUNCIO"
+          "h1": "Trova il tuo miglior",
+          "h1_sub": "Talento subito.",
+          "subtitle": "Per Le Aziende",
+          "cta": "Pubblica Annuncio"
         }
       }
     }
@@ -37,14 +39,16 @@ const resources = {
       },
       "hero": {
         "candidates": {
-          "h1": "Ihr Traumjob ist nur einen Klick entfernt",
-          "subtitle": "Finden Sie die perfekte berufliche Gelegenheit.",
-          "cta": "ALLE ANGEBOTE ANSEHEN"
+          "h1": "Zugang zu Ihrem",
+          "h1_sub": "Nächsten Job.",
+          "subtitle": "Für Kandidaten",
+          "cta": "Angebote Finden"
         },
         "companies": {
-          "h1": "Finden Sie noch heute die besten Talente",
-          "subtitle": "Veröffentlichen Sie Ihre Anzeigen und erreichen Sie Tausende von Kandidaten.",
-          "cta": "ANZEIGE AUFGEBEN"
+          "h1": "Finden Sie Ihr bestes",
+          "h1_sub": "Talent sofort.",
+          "subtitle": "Für Unternehmen",
+          "cta": "Anzeige veröffentlichen"
         }
       }
     }
@@ -60,14 +64,41 @@ const resources = {
       },
       "hero": {
         "candidates": {
-          "h1": "Le travail de vos rêves est à portée de clic",
-          "subtitle": "Trouvez l'opportunité parfaite pour votre carrière.",
-          "cta": "VOIR TOUTES LES OFFRES"
+          "h1": "Accédez à votre",
+          "h1_sub": "Prochain Emploi.",
+          "subtitle": "Pour les Candidats",
+          "cta": "Trouver des Offres"
         },
         "companies": {
-          "h1": "Trouvez les meilleurs talents dès aujourd'hui",
-          "subtitle": "Publiez vos annonces et touchez des milliers de candidats.",
-          "cta": "PUBLIER UNE ANNONCE"
+          "h1": "Trouvez votre meilleur",
+          "h1_sub": "Talent maintenant.",
+          "subtitle": "Pour les Entreprises",
+          "cta": "Publier une Annonce"
+        }
+      }
+    }
+  },
+  en: {
+    translation: {
+      "nav": {
+        "jobs": "Search Jobs",
+        "companies": "Companies",
+        "blog": "Blog",
+        "institutions": "Institutions",
+        "login": "Login"
+      },
+      "hero": {
+        "candidates": {
+          "h1": "Access your",
+          "h1_sub": "Next Job.",
+          "subtitle": "For Candidates",
+          "cta": "Find Offers"
+        },
+        "companies": {
+          "h1": "Find your best",
+          "h1_sub": "Talent right now.",
+          "subtitle": "For Companies",
+          "cta": "Publish Ad"
         }
       }
     }

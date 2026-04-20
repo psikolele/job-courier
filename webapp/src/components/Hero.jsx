@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Search, MapPin, Briefcase, ChevronRight, Mail } from 'lucide-react';
+import { Search, MapPin, Briefcase, ChevronRight, Mail, ArrowRight } from 'lucide-react';
 
 import heroBg1 from '../assets/hero-bg.jpg';
 
@@ -104,7 +104,7 @@ const Hero = ({ setShowLoginModal }) => {
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile(); // Check on mount
+        checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
@@ -116,16 +116,8 @@ const Hero = ({ setShowLoginModal }) => {
         return () => clearInterval(interval);
     }, []);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prev) => (prev + 1) % sliderImages.length);
-        }, 5000);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
         <section className="relative w-full min-h-screen flex flex-col md:flex-row overflow-hidden font-sans bg-[#131f3f]">
-            {/* ---------------- CANDIDATES SECTION (LEFT) ---------------- */}
             <motion.div
                 onMouseEnter={() => !isMobile && setHoveredSide('candidates')}
                 onMouseLeave={() => !isMobile && setHoveredSide(null)}
@@ -136,7 +128,6 @@ const Hero = ({ setShowLoginModal }) => {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="relative min-h-[50vh] md:min-h-screen bg-[#EAECEE] flex flex-col justify-start px-8 md:px-12 lg:px-16 pt-32 md:pt-48 pb-24 text-slate-900 border-b md:border-b-0 md:border-r border-slate-200"
             >
-                {/* Animated Arrow Left (Candidates) */}
                 <motion.div 
                     animate={{ 
                         opacity: hoveredSide === 'companies' ? 0 : 0.4, 
@@ -155,14 +146,14 @@ const Hero = ({ setShowLoginModal }) => {
                 <div className="max-w-md w-full mx-auto md:mx-0 md:ml-4 lg:ml-12 xl:ml-20 z-10 relative">
                     <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 0.85 : 1), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
                         <p className="text-sm md:text-xs font-mono text-slate-500 mb-6 uppercase tracking-[0.2em]">
-                            Per I Candidati
+                            {t('hero.candidates.subtitle', 'Per I Candidati')}
                         </p>
                         <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
                             <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-900 whitespace-nowrap">
-                                Accedi al tuo
+                                {t('hero.candidates.h1', 'Accedi al tuo')}
                             </span>
                             <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-[#01498C] mt-2">
-                                Prossimo Lavoro.
+                                {t('hero.candidates.h1_sub', 'Prossimo Lavoro.')}
                             </span>
                         </h1>
                         
@@ -188,33 +179,20 @@ const Hero = ({ setShowLoginModal }) => {
                                     </select>
                                     <ChevronRight className="absolute right-3 top-3.5 w-5 h-5 text-slate-400 pointer-events-none rotate-90" />
                                 </div>
-                                <button type="submit" className="w-full bg-[#01498C] hover:bg-[#0038A5] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg btn-shiny hover-lift flex justify-center items-center gap-2 mt-1">
-                                    Trova Offerte <ChevronRight className="w-4 h-4" />
+                                <button type="submit" className="h-14 px-8 bg-[#01498C] hover:bg-[#013dd6] text-white rounded-[1.25rem] font-bold tracking-wide transition-all shadow-[0_8px_20px_rgba(1,73,140,0.25)] hover:shadow-[0_12px_25px_rgba(1,73,140,0.35)] shrink-0 group flex items-center justify-center overflow-hidden hover-lift hover-shiny w-full">
+                                    <span className="relative z-10 flex items-center gap-2">
+                                        {t('hero.candidates.cta', 'Trova Offerte')}
+                                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                                    </span>
                                 </button>
                             </form>
 
-                            {/* Altri link */}
                             <div className="pt-1 px-1">
                                 <p className="text-[10px] text-slate-500 font-mono uppercase tracking-widest mb-3">Altri link</p>
                                 <div className="flex flex-wrap gap-2">
-                                    <a
-                                        href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all"
-                                    >
-                                        Vedi tutte le offerte
-                                    </a>
-                                    <a
-                                        href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all"
-                                    >
-                                        Vedi tutte le aziende
-                                    </a>
-                                    <a
-                                        href="#blog"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all"
-                                    >
-                                        Blog
-                                    </a>
+                                    <a href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php" className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all">Vedi tutte le offerte</a>
+                                    <a href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it" className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all">Vedi tutte le aziende</a>
+                                    <a href="#blog" className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all">Blog</a>
                                 </div>
                             </div>
                         </motion.div>
@@ -222,7 +200,6 @@ const Hero = ({ setShowLoginModal }) => {
                 </div>
             </motion.div>
 
-            {/* ---------------- COMPANIES SECTION (RIGHT) ---------------- */}
             <motion.div
                 onMouseEnter={() => !isMobile && setHoveredSide('companies')}
                 onMouseLeave={() => !isMobile && setHoveredSide(null)}
@@ -233,7 +210,6 @@ const Hero = ({ setShowLoginModal }) => {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="relative min-h-[50vh] md:min-h-screen bg-[#131f3f] flex flex-col justify-start px-8 md:px-12 lg:px-16 pt-32 md:pt-48 pb-24 text-white overflow-hidden"
             >
-                {/* Background Image Slider */}
                 <AnimatePresence initial={false}>
                     <motion.img
                         key={currentImageIndex}
@@ -248,7 +224,6 @@ const Hero = ({ setShowLoginModal }) => {
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0c1328]/95 to-[#0c1328]/70 z-0"></div>
 
-                {/* Animated Arrow Right (Companies) */}
                 <motion.div 
                     animate={{ 
                         opacity: hoveredSide === 'candidates' ? 0 : 0.4, 
@@ -266,24 +241,26 @@ const Hero = ({ setShowLoginModal }) => {
 
                 <div className="max-w-md w-full mx-auto md:mx-0 md:ml-8 lg:ml-12 xl:ml-16 z-10 relative">
                     <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 1 : 0.85), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
-                        <p className="text-sm md:text-xs font-mono text-white/50 mb-6 uppercase tracking-[0.2em]">
-                            Per Le Aziende
+                        <p className="text-sm md:text-xs font-mono text-[#2f9de5] mb-6 uppercase tracking-[0.2em] opacity-80 decoration-[#2f9de5]">
+                            {t('hero.companies.subtitle', 'Per Le Aziende')}
                         </p>
-                        <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
-                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-white whitespace-nowrap">
-                                Trova il Miglior
+                        <h1 className="leading-[1.1] tracking-tight mb-8 mt-4">
+                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-white">
+                                {t('hero.companies.h1', 'Trova il tuo Miglior')}
                             </span>
-                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-400 mt-2">
-                                Talento.
+                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-[#2f9de5] mt-2 whitespace-nowrap">
+                                {t('hero.companies.h1_sub', 'Talento Subito.')}
                             </span>
                         </h1>
                         
                         <motion.div animate={{ opacity: hoveredSide === 'companies' || isMobile ? 1 : 0, pointerEvents: hoveredSide === 'companies' || isMobile ? 'auto' : 'none' }} transition={{ duration: 0.3 }} className="space-y-4">
-                            <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-xl bg-white/10 border border-white/20 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-xl hover:bg-white/20 btn-shiny hover-lift backdrop-blur-md mt-4">
-                                Pubblica Offerte
+                            <button onClick={() => setShowLoginModal(true)} className="h-14 px-8 bg-[#2f9de5] hover:bg-[#2585c5] text-[#0A0A14] rounded-2xl font-bold tracking-wide transition-all shadow-[0_8px_25px_rgba(47,157,229,0.25)] flex items-center justify-center group overflow-hidden w-full sm:w-auto hover-lift hover-shiny">
+                                <span className="relative z-10 flex items-center gap-2">
+                                    {t('hero.companies.cta', 'Pubblica Annuncio')}
+                                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                                </span>
                             </button>
 
-                            {/* Altri link aziende */}
                             <div className="pt-1">
                                 <p className="text-[10px] text-white/40 font-mono uppercase tracking-widest mb-3">Altri link</p>
                                 <div className="flex flex-wrap gap-2">
