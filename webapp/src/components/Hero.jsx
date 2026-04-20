@@ -166,9 +166,6 @@ const Hero = ({ setShowLoginModal }) => {
                                 Prossimo Lavoro.
                             </span>
                         </h1>
-                        <p className="text-base sm:text-lg text-slate-600 mb-8 max-w-sm">
-                            Crea il tuo profilo, imposta gli alert per le posizioni desiderate e candidati con un singolo click.
-                        </p>
                         
                         <motion.div animate={{ opacity: hoveredSide === 'companies' ? 0 : 1, pointerEvents: hoveredSide === 'companies' ? 'none' : 'auto' }} transition={{ duration: 0.3 }} className="space-y-4">
                             <form onSubmit={handleSearch} className="flex flex-col gap-3 w-full bg-white/40 backdrop-blur-md p-3 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200">
@@ -281,9 +278,6 @@ const Hero = ({ setShowLoginModal }) => {
                                 Talento.
                             </span>
                         </h1>
-                        <p className="text-base sm:text-lg text-slate-300 mb-8 max-w-sm">
-                            Pubblica i tuoi annunci e raggiungi le menti più brillanti nel tuo settore in pochi click.
-                        </p>
                         
                         <motion.div animate={{ opacity: hoveredSide === 'companies' || isMobile ? 1 : 0, pointerEvents: hoveredSide === 'companies' || isMobile ? 'auto' : 'none' }} transition={{ duration: 0.3 }} className="space-y-4">
                             <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-full bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95 backdrop-blur-sm bg-opacity-70 mt-4">

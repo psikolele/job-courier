@@ -47,16 +47,17 @@ const IconMenu = () => (
 
 // ---------- NAV DATA ----------
 const getCandidateLinks = (isHome) => [
-    { label: 'Cerca Lavoro', labelDe: 'Jobsuche', labelFr: "Recherche d'emploi", href: isHome ? '#filters' : '/#filters' },
-    { label: 'Vedi tutte le aziende', labelDe: 'Alle Unternehmen ansehen', labelFr: 'Voir tutte le imprese', href: isHome ? '#vetrini' : '/#vetrini' },
     { label: 'Vedi tutte le offerte', labelDe: 'Alle Angebote ansehen', labelFr: 'Voir tutte le offerte', href: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php', external: true },
+    { label: 'Pubblica il tuo curriculum', labelDe: 'Lebenslauf veröffentlichen', labelFr: 'Publiez votre CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
+    { label: 'Vedi tutte le aziende', labelDe: 'Alle Unternehmen ansehen', labelFr: 'Voir tutte le imprese', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
+    { label: 'Suggerimenti per la tua carriera', labelDe: 'Karrieretipps', labelFr: 'Conseils de carrière', href: isHome ? '#blog' : '/#blog' },
 ];
 
 const getCompanyLinks = (isHome) => [
+    { label: 'Come funziona', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
     { label: 'Soluzioni e Tariffe', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
-    { label: 'Contatti', labelDe: 'Kontakte', labelFr: 'Contacts', href: '/contatti' },
     { label: 'Registra Azienda', labelDe: 'Unternehmen registrieren', labelFr: 'Enregistrer une entreprise', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
-    { label: 'Blog', labelDe: 'Blog', labelFr: 'Blog', href: isHome ? '#blog' : '/#blog' },
+    { label: 'Suggerimenti per il recruiting', labelDe: 'Recruiting-Tipps', labelFr: 'Conseils de recrutement', href: isHome ? '#blog' : '/#blog' },
 ];
 
 const getLabel = (item, lang) => {
@@ -182,8 +183,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                             <h2 className="text-4xl md:text-6xl font-black text-[#26367b]/10 absolute -top-4 md:top-20 pointer-events-none tracking-tighter">
                                 {candidateTitle}
                             </h2>
-                            <div className="relative z-10 flex flex-col items-center gap-4">
-                                <span className="text-xs font-bold tracking-widest text-[#26367b]/40 mb-2">{candidateTitle}</span>
+                            <div className="relative z-10 flex flex-col items-center gap-4 mt-8">
                                 {candidateLinks.map((link, idx) => (
                                     link.external ? (
                                         <a
@@ -213,8 +213,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                             <h2 className="text-4xl md:text-6xl font-black text-[#26367b]/10 absolute -top-4 md:top-20 pointer-events-none tracking-tighter">
                                 {companyTitle}
                             </h2>
-                            <div className="relative z-10 flex flex-col items-center gap-4">
-                                <span className="text-xs font-bold tracking-widest text-[#26367b]/40 mb-2">{companyTitle}</span>
+                            <div className="relative z-10 flex flex-col items-center gap-4 mt-8">
                                 {companyLinks.map((link, idx) => (
                                     link.external ? (
                                         <a
