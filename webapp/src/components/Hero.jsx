@@ -189,7 +189,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     </select>
                                     <ChevronRight className="absolute right-3 top-3.5 w-5 h-5 text-slate-400 pointer-events-none rotate-90" />
                                 </div>
-                                <button type="submit" className="w-full bg-[#0038A5] hover:bg-[#002B7F] text-white font-bold py-3.5 rounded-xl transition-all shadow-[0_4px_12px_rgba(0,56,165,0.3)] hover:shadow-[0_6px_20px_rgba(0,56,165,0.4)] flex justify-center items-center gap-2 mt-1">
+                                <button type="submit" className="w-full bg-[#0038A5] hover:bg-[#002B7F] text-white font-bold py-3.5 rounded-xl transition-all shadow-[0_4px_12px_rgba(0,56,165,0.3)] btn-shiny hover-lift flex justify-center items-center gap-2 mt-1">
                                     Trova Offerte <ChevronRight className="w-4 h-4" />
                                 </button>
                             </form>
@@ -280,7 +280,7 @@ const Hero = ({ setShowLoginModal }) => {
                         </h1>
                         
                         <motion.div animate={{ opacity: hoveredSide === 'companies' || isMobile ? 1 : 0, pointerEvents: hoveredSide === 'companies' || isMobile ? 'auto' : 'none' }} transition={{ duration: 0.3 }} className="space-y-4">
-                            <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-xl bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 active:scale-95 backdrop-blur-sm bg-opacity-70 mt-4">
+                            <button onClick={() => setShowLoginModal(true)} className="w-auto inline-flex items-center justify-center overflow-hidden rounded-xl bg-slate-800 border border-slate-700 px-8 py-4 text-base font-semibold text-white transition-all duration-300 shadow-md hover:bg-slate-700 btn-shiny hover-lift backdrop-blur-sm bg-opacity-70 mt-4">
                                 Pubblica Offerte
                             </button>
 

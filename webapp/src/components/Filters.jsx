@@ -198,33 +198,21 @@ const Filters = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.4, delay: Math.min((idx % latestJobs.length) * 0.1, 1) }}
-                                    className="min-w-[280px] md:min-w-[320px] shrink-0 group flex flex-col h-[220px] bg-white border border-slate-200 hover:border-[#0038A5]/30 rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 relative overflow-hidden"
+                                    className="min-w-[280px] md:min-w-[340px] shrink-0 group flex flex-col h-[240px] bg-white border border-slate-200 hover:border-[#0038A5]/30 rounded-[2rem] p-7 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 relative overflow-hidden"
                                 >
-                                    {/* Decorative line */}
-                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#0038A5] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                                    
-                                    <div className="flex-1">
-                                        <span className="inline-block px-2 py-1 bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider rounded-md mb-3">
-                                            {job.sector}
-                                        </span>
-                                        <h4 className="text-base font-bold text-slate-900 mb-2 leading-snug group-hover:text-[#0038A5] transition-colors line-clamp-2">
-                                            {job.title}
-                                        </h4>
-                                    </div>
-                                    
-                                    <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between gap-4 shrink-0">
-                                        <div className="flex flex-col gap-1 min-w-0">
-                                            <div className="flex items-center gap-2 text-sm text-slate-700">
-                                                <Briefcase className="w-3.5 h-3.5 shrink-0 text-slate-400" />
-                                                <span className="font-bold truncate text-[13px]">{job.company}</span>
-                                            </div>
-                                            <div className="flex items-center gap-2 text-sm text-slate-500">
-                                                <MapPin className="w-3.5 h-3.5 shrink-0 text-slate-400" />
-                                                <span className="truncate text-xs">{job.location}</span>
+                                    {/* Header Row: Company Info + Logo */}
+                                    <div className="flex justify-between items-start mb-6">
+                                        <div className="flex flex-col min-w-0 pr-4">
+                                            <span className="text-sm font-black text-slate-900 truncate uppercase tracking-tight">
+                                                {job.company}
+                                            </span>
+                                            <div className="flex items-center gap-1.5 text-slate-400 mt-1">
+                                                <MapPin className="w-3 h-3 shrink-0" />
+                                                <span className="text-[11px] font-medium truncate uppercase tracking-wider">{job.location}</span>
                                             </div>
                                         </div>
-                                        {/* Company Logo in Marquee */}
-                                        <div className="w-10 h-10 shrink-0 bg-white border border-slate-100 rounded-xl p-1.5 flex items-center justify-center shadow-sm group-hover:border-[#0038A5]/20 group-hover:shadow-md transition-all">
+                                        
+                                        <div className="w-12 h-12 shrink-0 bg-white border border-slate-100 rounded-2xl p-2 flex items-center justify-center shadow-sm group-hover:border-[#0038A5]/20 transition-all">
                                             <img 
                                                 src={job.companyLogo} 
                                                 alt={job.company} 
@@ -232,6 +220,23 @@ const Filters = () => {
                                                 onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-300"><Building2 size={16}/></div>'; }}
                                             />
                                         </div>
+                                    </div>
+
+                                    {/* Middle Section: Big Title */}
+                                    <div className="flex-1">
+                                        <h4 className="text-lg md:text-xl font-bold text-slate-900 leading-[1.2] group-hover:text-[#0038A5] transition-colors line-clamp-2">
+                                            {job.title}
+                                        </h4>
+                                    </div>
+
+                                    {/* Footer Section: Sector and Role Tags */}
+                                    <div className="flex gap-2 mt-4">
+                                        <span className="px-3 py-1.5 bg-[#0038A5]/5 text-[#0038A5] text-[10px] font-black uppercase tracking-widest rounded-lg border border-[#0038A5]/10">
+                                            {job.sector}
+                                        </span>
+                                        <span className="px-3 py-1.5 bg-slate-50 text-slate-500 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-slate-200">
+                                            {job.sector === 'Generale' ? 'Full-time' : 'Specialist'}
+                                        </span>
                                     </div>
                                 </motion.a>
                             ))

@@ -55,3 +55,33 @@
 .pause-on-hover:hover .animate-marquee {
   animation-play-state: paused;
 }
+
+/* --- BTN 11 / SHINY STYLE --- */
+.btn-shiny {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shiny:before {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  top: -180px;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background-color: #fff;
+  animation: shiny-animation 3.5s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes shiny-animation {
+  0% { transform: scale(0) rotate(45deg); opacity: 0; }
+  80% { transform: scale(0) rotate(45deg); opacity: 0.2; }
+  81% { transform: scale(4) rotate(45deg); opacity: 0.4; }
+  100% { transform: scale(50) rotate(45deg); opacity: 0; }
+}
+
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:scale-95;
+}
