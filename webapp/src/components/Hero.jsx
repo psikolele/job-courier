@@ -125,7 +125,7 @@ const Hero = ({ setShowLoginModal }) => {
 
     return (
         <section className="relative w-full min-h-screen flex flex-col md:flex-row overflow-hidden font-sans bg-[#131f3f]">
-                       {/* ---------------- CANDIDATES SECTION (LEFT) ---------------- */}
+            {/* ---------------- CANDIDATES SECTION (LEFT) ---------------- */}
             <motion.div
                 onMouseEnter={() => !isMobile && setHoveredSide('candidates')}
                 onMouseLeave={() => !isMobile && setHoveredSide(null)}
@@ -134,7 +134,7 @@ const Hero = ({ setShowLoginModal }) => {
                     width: isMobile ? '100%' : (hoveredSide === 'companies' ? '40%' : '60%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative min-h-[50vh] md:min-h-screen bg-[#013a70] flex flex-col justify-start px-8 md:px-12 lg:px-16 pt-32 md:pt-48 pb-24 text-white border-b md:border-b-0 md:border-r border-white/5"
+                className="relative min-h-[50vh] md:min-h-screen bg-[#EAECEE] flex flex-col justify-start px-8 md:px-12 lg:px-16 pt-32 md:pt-48 pb-24 text-slate-900 border-b md:border-b-0 md:border-r border-slate-200"
             >
                 {/* Animated Arrow Left (Candidates) */}
                 <motion.div 
@@ -145,8 +145,8 @@ const Hero = ({ setShowLoginModal }) => {
                     transition={{ duration: 0.3 }}
                     className="absolute top-1/2 right-4 md:right-6 -translate-y-1/2 flex items-center justify-center max-md:hidden z-30 pointer-events-none"
                 >
-                    <div className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center bg-white/5 shadow-sm">
-                        <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-10 h-10 border border-slate-300 rounded-full flex items-center justify-center bg-white/50 shadow-sm">
+                        <svg className="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={hoveredSide === 'candidates' ? "M19 9l-7 7-7-7" : "M9 5l7 7-7 7"} />
                         </svg>
                     </div>
@@ -154,64 +154,64 @@ const Hero = ({ setShowLoginModal }) => {
 
                 <div className="max-w-md w-full mx-auto md:mx-0 md:ml-4 lg:ml-12 xl:ml-20 z-10 relative">
                     <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 0.85 : 1), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
-                        <p className="text-sm md:text-xs font-mono text-white/50 mb-6 uppercase tracking-[0.2em]">
+                        <p className="text-sm md:text-xs font-mono text-slate-500 mb-6 uppercase tracking-[0.2em]">
                             Per I Candidati
                         </p>
                         <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
-                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-white whitespace-nowrap">
+                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-900 whitespace-nowrap">
                                 Accedi al tuo
                             </span>
-                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-[#2f9de5] mt-2">
+                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-[#01498C] mt-2">
                                 Prossimo Lavoro.
                             </span>
                         </h1>
                         
                         <motion.div animate={{ opacity: hoveredSide === 'companies' ? 0 : 1, pointerEvents: hoveredSide === 'companies' ? 'none' : 'auto' }} transition={{ duration: 0.3 }} className="space-y-4">
-                            <form onSubmit={handleSearch} className="flex flex-col gap-3 w-full bg-white/10 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-white/10">
+                            <form onSubmit={handleSearch} className="flex flex-col gap-3 w-full bg-white/60 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-slate-200">
                                 <div className="relative">
-                                    <Search className="absolute left-3 top-3.5 w-5 h-5 text-white/40" />
-                                    <input type="text" placeholder="Qualifica, azienda o parola chiave..." className="w-full pl-10 pr-3 py-3 rounded-xl bg-white text-sm focus:ring-2 focus:ring-[#2f9de5] outline-none text-slate-900 font-medium placeholder:text-slate-400 shadow-sm" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+                                    <Search className="absolute left-3 top-3.5 w-5 h-5 text-slate-400" />
+                                    <input type="text" placeholder="Qualifica, azienda o parola chiave..." className="w-full pl-10 pr-3 py-3 rounded-xl bg-white text-sm focus:ring-2 focus:ring-[#01498C] outline-none text-slate-900 font-medium placeholder:text-slate-400 shadow-sm" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
                                 </div>
                                 <div className="relative">
-                                    <Briefcase className="absolute left-3 top-3.5 w-5 h-5 text-white/40" />
-                                    <select className="w-full pl-10 pr-8 py-3 rounded-xl bg-white text-sm focus:ring-2 focus:ring-[#2f9de5] outline-none text-slate-900 font-medium appearance-none shadow-sm cursor-pointer truncate" value={selectedSector} onChange={(e) => setSelectedSector(e.target.value)}>
+                                    <Briefcase className="absolute left-3 top-3.5 w-5 h-5 text-slate-400" />
+                                    <select className="w-full pl-10 pr-8 py-3 rounded-xl bg-white text-sm focus:ring-2 focus:ring-[#01498C] outline-none text-slate-900 font-medium appearance-none shadow-sm cursor-pointer truncate" value={selectedSector} onChange={(e) => setSelectedSector(e.target.value)}>
                                         <option value="">Qualsiasi settore lavorativo</option>
                                         {sectors.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                                     </select>
                                     <ChevronRight className="absolute right-3 top-3.5 w-5 h-5 text-slate-400 pointer-events-none rotate-90" />
                                 </div>
                                 <div className="relative">
-                                    <MapPin className="absolute left-3 top-3.5 w-5 h-5 text-white/40" />
-                                    <select className="w-full pl-10 pr-8 py-3 rounded-xl bg-white text-sm focus:ring-2 focus:ring-[#2f9de5] outline-none text-slate-900 font-medium appearance-none shadow-sm cursor-pointer truncate" value={selectedCanton} onChange={(e) => setSelectedCanton(e.target.value)}>
+                                    <MapPin className="absolute left-3 top-3.5 w-5 h-5 text-slate-400" />
+                                    <select className="w-full pl-10 pr-8 py-3 rounded-xl bg-white text-sm focus:ring-2 focus:ring-[#01498C] outline-none text-slate-900 font-medium appearance-none shadow-sm cursor-pointer truncate" value={selectedCanton} onChange={(e) => setSelectedCanton(e.target.value)}>
                                         <option value="">Tutti i Cantoni (Svizzera)</option>
                                         {cantons.map(c => <option key={c.value} value={c.value}>{c.name}</option>)}
                                     </select>
                                     <ChevronRight className="absolute right-3 top-3.5 w-5 h-5 text-slate-400 pointer-events-none rotate-90" />
                                 </div>
-                                <button type="submit" className="w-full bg-[#2f9de5] hover:bg-[#1a8ad6] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg btn-shiny hover-lift flex justify-center items-center gap-2 mt-1">
+                                <button type="submit" className="w-full bg-[#01498C] hover:bg-[#0038A5] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg btn-shiny hover-lift flex justify-center items-center gap-2 mt-1">
                                     Trova Offerte <ChevronRight className="w-4 h-4" />
                                 </button>
                             </form>
 
                             {/* Altri link */}
                             <div className="pt-1 px-1">
-                                <p className="text-[10px] text-white/40 font-mono uppercase tracking-widest mb-3">Altri link</p>
+                                <p className="text-[10px] text-slate-500 font-mono uppercase tracking-widest mb-3">Altri link</p>
                                 <div className="flex flex-wrap gap-2">
                                     <a
                                         href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-white/20 text-white/80 text-xs font-mono hover:bg-white/5 transition-all"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all"
                                     >
                                         Vedi tutte le offerte
                                     </a>
                                     <a
                                         href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-white/20 text-white/80 text-xs font-mono hover:bg-white/5 transition-all"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all"
                                     >
                                         Vedi tutte le aziende
                                     </a>
                                     <a
                                         href="#blog"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-white/20 text-white/80 text-xs font-mono hover:bg-white/5 transition-all"
+                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all"
                                     >
                                         Blog
                                     </a>

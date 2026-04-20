@@ -85,8 +85,8 @@ const Filters = () => {
                         id: job.id,
                         title: job.title,
                         location: job.location,
-                        sector: job.sector || 'Generale',
-                        role: job.role || 'Specialist',
+                        sector: job.sector || 'Other',
+                        role: job.role || 'Other',
                         company: job.company?.name || job.company,
                         companyLogo: job.company?.logo || job.companyLogo || `https://www.google.com/s2/favicons?domain=${job.company?.domain || 'jobcourier.ch'}&sz=128`,
                         link: job.link
@@ -98,10 +98,10 @@ const Filters = () => {
             } catch (err) {
                 console.warn('API error in Filters:', err.message, 'Using graceful local mock data.');
                 setLatestJobs([
-                    { id: 1, title: 'Validation Engineer', location: 'Mezzovico TI, Svizzera', sector: 'Generale', company: 'Randstad Svizzera SA', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244729.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en' },
-                    { id: 2, title: 'Parchettista', location: 'Sottoceneri, Svizzera', sector: 'Generale', company: 'Team Personnel Solutions SA', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244683.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688871-parchettista-sottoceneri&language=en' },
-                    { id: 3, title: 'Responsabile Magazzino', location: 'Schönbühl BE, Svizzera', sector: 'Logistica', company: 'TechSwiss Distribution', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244683.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6680678-assistant-warehouse-manager-a-schönbuhl-be&language=en' },
-                    { id: 4, title: 'Autista Patente B', location: 'Luzern, Svizzera', sector: 'Trasporti', company: 'RapidCourier CH', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244729.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675564-chauffeur-chauffeuse-kat-b-region-luzern-80-100-m-w-d-6003-luzern&language=en' }
+                    { id: 1, title: 'Validation Engineer', location: 'Mezzovico TI, Svizzera', sector: 'Generale', role: 'Specialist', company: 'Randstad Svizzera SA', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244729.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en' },
+                    { id: 2, title: 'Parchettista', location: 'Sottoceneri, Svizzera', sector: 'Costruzioni/Mestieri', role: 'Specialist', company: 'Team Personnel Solutions SA', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244683.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688871-parchettista-sottoceneri&language=en' },
+                    { id: 3, title: 'Responsabile Magazzino', location: 'Schönbühl BE, Svizzera', sector: 'Logistica', role: 'Manager', company: 'TechSwiss Distribution', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244683.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6680678-assistant-warehouse-manager-a-schönbuhl-be&language=en' },
+                    { id: 4, title: 'Chauffeur / Chauffeuse Kat. B, Region Luzern 80%-100% (m/w/d)', location: 'Switzerland, 6003 Luzern', sector: 'Other', role: 'Other', company: 'DasTeam', companyLogo: 'https://www.google.com/s2/favicons?domain=dasteam.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675564-chauffeur-chauffeuse-kat-b-region-luzern-80-100-m-w-d-6003-luzern&language=en' }
                 ]);
             } finally {
                 setJobsLoading(false);
@@ -199,7 +199,7 @@ const Filters = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.4, delay: Math.min((idx % latestJobs.length) * 0.1, 1) }}
-                                    className="min-w-[300px] md:min-w-[400px] shrink-0 group flex flex-col h-[320px] bg-white border border-slate-200 hover:border-[#01498C]/30 rounded-[2.5rem] p-8 transition-all duration-300 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover-lift relative overflow-hidden"
+                                    className="min-w-[300px] md:min-w-[400px] shrink-0 group flex flex-col h-auto min-h-[320px] bg-white border border-slate-200 hover:border-[#01498C]/30 rounded-[2.5rem] p-8 transition-all duration-300 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover-lift relative overflow-hidden"
                                 >
                                     {/* Header Row: Company Info + Logo */}
                                     <div className="flex justify-between items-start mb-8">
@@ -225,7 +225,7 @@ const Filters = () => {
 
                                     {/* Middle Section: Big Title */}
                                     <div className="flex-1">
-                                        <h4 className="text-2xl md:text-3xl font-bold text-slate-900 leading-[1.1] group-hover:text-[#01498C] transition-colors line-clamp-2 italic font-display">
+                                        <h4 className="text-[22px] md:text-[26px] font-bold text-slate-900 leading-[1.25] group-hover:text-[#01498C] transition-colors line-clamp-3 font-sans">
                                             {job.title}
                                         </h4>
                                     </div>
