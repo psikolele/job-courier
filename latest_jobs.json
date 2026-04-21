@@ -9,78 +9,14 @@
   },
   {
     "id": 1,
-    "title": "LAN Engineer",
+    "title": "Messmittelmanager (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689569-lan-engineer-bern&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689575-messmittelmanager-m-w-d-winterthur&language=en"
   },
   {
     "id": 2,
-    "title": "Heizungsinstallateur EFZ (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689562-heizungsinstallateur-efz-m-w-d-basel&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Metallbauer Region Basel-Land (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689557-metallbauer-region-basel-land-m-w-d-basel&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Landschaftsgärtner EFZ (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689563-landschaftsg%C3%A4rtner-efz-m-w-d-muttenz&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Dachdecker EFZ (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689566-dachdecker-efz-m-w-d-oberwil&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Maler EFZ (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689559-maler-efz-m-w-d-pratteln&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Schreiner EFZ (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689564-schreiner-efz-m-w-d-liestal&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Bauspengler Region Baselland (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689558-bauspengler-region-baselland-m-w-d-therwil&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Gerüstmonteur (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689556-gerustmonteur-m-w-d-winterthur&language=en"
-  },
-  {
-    "id": 10,
     "title": "Elektroinstallateur EFZ (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +24,75 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689565-elektroinstallateur-efz-m-w-d-basel&language=en"
   },
   {
-    "id": 11,
-    "title": "Sanitärinstallateur EFZ (m/w/d)",
+    "id": 3,
+    "title": "HR Generalist (w/m/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689561-sanit%C3%A4rinstallateur-efz-m-w-d-basel&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689574-hr-generalist-w-m-d-frauenfeld&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Head of Services (m/w(d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689573-head-of-services-m-w-d-uster&language=en"
+  },
+  {
+    "id": 5,
+    "title": "LAN Engineer",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689569-lan-engineer-bern&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Automatiker Maschinenbau (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689577-automatiker-maschinenbau-m-w-d-luzern&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Bauarbeiter(m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689572-bauarbeiter-m-w-d-kollbrunn&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Dachdecker EFZ (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689566-dachdecker-efz-m-w-d-oberwil&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Schreiner EFZ (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689564-schreiner-efz-m-w-d-liestal&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Senior Test Automation Engineer (m/f/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689576-senior-test-automation-engineer-m-f-d-rotkreuz&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Auto-Mechatroniker / -Diagnostiker (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6689578-auto-mechatroniker-diagnostiker-m-w-d-cham&language=en"
   }
 ]
