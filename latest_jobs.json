@@ -1,38 +1,30 @@
 [
   {
     "id": 0,
-    "title": "Meccanico di autoveicoli",
+    "title": "Mitarbeiter im Verkaufsinnendienst (Baufachmann/-frau) 100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690185-meccanico-di-autoveicoli-lugano-lugano&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690181-mitarbeiter-im-verkaufsinnendienst-baufachmann-frau-100-m-w-d-beinwil-am-see-aargau&language=en"
   },
   {
     "id": 1,
-    "title": "Chef de Service (m/w/d) mit einem Flair für lockeren Gästekontakt",
+    "title": "Agente di sicurezza",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690180-chef-de-service-m-w-d-mit-einem-flair-fur-lockeren-g%C3%A4stekontakt-luzern-lu&language=en"
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690187-agente-di-sicurezza-rivera-tessin-bellinzona&language=en"
   },
   {
     "id": 2,
-    "title": "Sachbearbeiter/in Verkaufsinnendienst (m/w/d)",
+    "title": "Treuhänder mit eidg. FA D/E (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690183-sachbearbeiter-in-verkaufsinnendienst-m-w-d-k%C3%B6lliken-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690179-treuh%C3%A4nder-mit-eidg-fa-d-e-m-w-d-100-zug-zug&language=en"
   },
   {
     "id": 3,
-    "title": "Bewirtschaftung STWEG & Mietobjekte 80% - 100% (w/m/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690178-bewirtschaftung-stweg-mietobjekte-80-100-w-m-d-wetzikon-zh&language=en"
-  },
-  {
-    "id": 4,
     "title": "Cameriere/a di sala disponibile da subito - Locarno",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,36 +32,44 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690189-cameriere-a-di-sala-disponibile-da-subito-locarno-locarno-bellinzona&language=en"
   },
   {
-    "id": 5,
-    "title": "Autista Patente CE + ADR",
+    "id": 4,
+    "title": "Chef de Service (m/w/d) mit einem Flair für lockeren Gästekontakt",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690188-autista-patente-ce-adr-bellinzona-bellinzona&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690180-chef-de-service-m-w-d-mit-einem-flair-fur-lockeren-g%C3%A4stekontakt-luzern-lu&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Operai Impermeabilizzatori",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690191-operai-impermeabilizzatori-sottoceneri&language=en"
   },
   {
     "id": 6,
-    "title": "Immobilienbewirtschafter/in ? Gestalten Sie Ihre Zukunft!",
+    "title": "Koch / Köchin 100% für ein würziges Abenteuer",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690176-immobilienbewirtschafter-in-gestalten-sie-ihre-zukunft-aarau-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690184-koch-k%C3%B6chin-100-fur-ein-wurziges-abenteuer-sursee-lu&language=en"
   },
   {
     "id": 7,
-    "title": "Elektroinstallateur EFZ (a)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690175-elektroinstallateur-efz-a-bern-bern&language=en"
-  },
-  {
-    "id": 8,
     "title": "Giardiniere",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690186-giardiniere-rivera-tessin-bellinzona&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Ponteggista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690190-ponteggista-sottoceneri&language=en"
   },
   {
     "id": 9,
@@ -81,18 +81,18 @@
   },
   {
     "id": 10,
-    "title": "Treuhänder mit eidg. FA D/E (m/w/d) 100%",
+    "title": "Sales Consultant (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690179-treuh%C3%A4nder-mit-eidg-fa-d-e-m-w-d-100-zug-zug&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690177-sales-consultant-m-w-d-chur-gr&language=en"
   },
   {
     "id": 11,
-    "title": "Koch / Köchin 100% für ein würziges Abenteuer",
+    "title": "Meccanico di autoveicoli",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690184-koch-k%C3%B6chin-100-fur-ein-wurziges-abenteuer-sursee-lu&language=en"
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690185-meccanico-di-autoveicoli-lugano-lugano&language=en"
   }
 ]
