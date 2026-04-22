@@ -9,14 +9,6 @@
   },
   {
     "id": 1,
-    "title": "DevOps Engineer (Microsoft Technologies)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690491-devops-engineer-microsoft-technologies-bern&language=en"
-  },
-  {
-    "id": 2,
     "title": "Montatore di tubi",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,20 +16,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690490-montatore-di-tubi-mendrisio&language=en"
   },
   {
-    "id": 3,
-    "title": "Responsabile Succursale",
+    "id": 2,
+    "title": "Falegname autonomo",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Azienda Riservata",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690497-responsabile-succursale-lugano&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690492-falegname-autonomo-agno&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Menuisiers CFC",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690484-menuisiers-cfc-yverdon-les-bains-vaud&language=en"
   },
   {
     "id": 4,
-    "title": "Area Manager",
+    "title": "Prozessingenieur/in (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Grafton Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690489-area-manager-mendrisio&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690485-prozessingenieur-in-m-w-d-100-emmenbrucke-luzern&language=en"
   },
   {
     "id": 5,
@@ -49,38 +49,6 @@
   },
   {
     "id": 6,
-    "title": "Bilingual (English/Russian) AI Content Editor (Lithuania Based) – Part-Time, Freelance - 20USD/Hour",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Approach People Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690496-bilingual-english-russian-ai-content-editor-lithuania-based-?-part-time-freelance-20usd-hour-remote&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Addetta Mensa / Bar",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690493-addetta-mensa-bar-lugano&language=en"
-  },
-  {
-    "id": 8,
-    "title": "RESPONSABILE TECNICO",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "ER Services Sagl",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690498-responsabile-tecnico-stabio&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Falegname autonomo",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690492-falegname-autonomo-agno&language=en"
-  },
-  {
-    "id": 10,
     "title": "Bilingual (English/Russian) AI Content Editor (Poland Based) – Part-Time, Freelance - 20USD/Hour",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +56,43 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690495-bilingual-english-russian-ai-content-editor-poland-based-?-part-time-freelance-20usd-hour-remote&language=en"
   },
   {
-    "id": 11,
-    "title": "Menuisiers CFC",
+    "id": 7,
+    "title": "Area Manager",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Grafton Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690489-area-manager-mendrisio&language=en"
+  },
+  {
+    "id": 8,
+    "title": "DevOps Engineer (Microsoft Technologies)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690491-devops-engineer-microsoft-technologies-bern&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Addetta Mensa / Bar",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690493-addetta-mensa-bar-lugano&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Polymechaniker (m/w) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690484-menuisiers-cfc-yverdon-les-bains-vaud&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690487-polymechaniker-m-w-100-sarnen-obwalden&language=en"
+  },
+  {
+    "id": 11,
+    "title": "RESPONSABILE TECNICO",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "ER Services Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690498-responsabile-tecnico-stabio&language=en"
   }
 ]
