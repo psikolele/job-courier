@@ -1,78 +1,14 @@
 [
   {
     "id": 0,
-    "title": "Falegname autonomo",
+    "title": "Teamverantwortliche/r im Bereich Endmontage (w/m/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690492-falegname-autonomo-agno&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690479-teamverantwortliche-r-im-bereich-endmontage-w-m-d-100-kriens-luzern&language=en"
   },
   {
     "id": 1,
-    "title": "Polymechaniker (m/w) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690487-polymechaniker-m-w-100-sarnen-obwalden&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Comptable fiduciaire 80-100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690478-comptable-fiduciaire-80-100-cdi-h-f-d-sion-valais&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Servicetechniker Automation (m/w) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690481-servicetechniker-automation-m-w-100-emmenbrucke-luzern&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Montatore di tubi",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690490-montatore-di-tubi-mendrisio&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Câbleur / Electricien (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690483-c%C3%A2bleur-electricien-h-f-d-villeneuve-vd&language=en"
-  },
-  {
-    "id": 6,
-    "title": "DevOps Engineer (Microsoft Technologies)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690491-devops-engineer-microsoft-technologies-bern&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Entwicklungsingenieur (m/w/d) 80 - 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690482-entwicklungsingenieur-m-w-d-80-100-dagmersellen-luzern&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Menuisiers CFC",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690484-menuisiers-cfc-yverdon-les-bains-vaud&language=en"
-  },
-  {
-    "id": 9,
     "title": "Area Manager",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,7 +16,47 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690489-area-manager-mendrisio&language=en"
   },
   {
-    "id": 10,
+    "id": 2,
+    "title": "Montatore di tubi",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690490-montatore-di-tubi-mendrisio&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Prozessfachmann AVOR (m/w) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690486-prozessfachmann-avor-m-w-100-hochdorf-luzern&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Câbleur / Electricien (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690483-c%C3%A2bleur-electricien-h-f-d-villeneuve-vd&language=en"
+  },
+  {
+    "id": 5,
+    "title": "DevOps Engineer (Microsoft Technologies)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690491-devops-engineer-microsoft-technologies-bern&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Falegname autonomo",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690492-falegname-autonomo-agno&language=en"
+  },
+  {
+    "id": 7,
     "title": "Technischer Projektleiter (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690480-technischer-projektleiter-m-w-d-100-dagmersellen-luzern&language=en"
   },
   {
-    "id": 11,
-    "title": "Technical Project Specialist",
+    "id": 8,
+    "title": "Servicetechniker Automation (m/w) 100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Grafton Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690488-technical-project-specialist-ticino&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690481-servicetechniker-automation-m-w-100-emmenbrucke-luzern&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Polymechaniker (m/w) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690487-polymechaniker-m-w-100-sarnen-obwalden&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Prozessingenieur/in (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690485-prozessingenieur-in-m-w-d-100-emmenbrucke-luzern&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Entwicklungsingenieur (m/w/d) 80 - 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690482-entwicklungsingenieur-m-w-d-80-100-dagmersellen-luzern&language=en"
   }
 ]
