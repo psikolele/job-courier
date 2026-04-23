@@ -1,22 +1,6 @@
 [
   {
     "id": 0,
-    "title": "METALCOSTRUTTORE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690758-metalcostruttore-locarno&language=en"
-  },
-  {
-    "id": 1,
-    "title": "SERRAMENTISTA",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690761-serramentista-locarno&language=en"
-  },
-  {
-    "id": 2,
     "title": "Muratore nel Genio Civile",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,31 +8,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690766-muratore-nel-genio-civile-sopraceneri&language=en"
   },
   {
-    "id": 3,
-    "title": "Autista dumper da cava – Andermatt",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690771-autista-dumper-da-cava-?-andermatt-andermatt&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Operatore smerigliatore / lucidatrura specchio",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690762-operatore-smerigliatore-lucidatrura-specchio-sopraceneri&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Bilingual (English/Russian) AI Content Editor (USA Based) – Part-Time, Freelance - 20USD/Hour",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Approach People Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690764-bilingual-english-russian-ai-content-editor-usa-based-?-part-time-freelance-20usd-hour-remote&language=en"
-  },
-  {
-    "id": 6,
+    "id": 1,
     "title": "ASSEMBLATORI E COLLAUDATORI ELETTRICI",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,12 +16,52 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690768-assemblatori-e-collaudatori-elettrici-locarno&language=en"
   },
   {
-    "id": 7,
-    "title": "Addetto/a alla pulizia e preparazione di auto di lusso",
+    "id": 2,
+    "title": "Bilingual (English/Russian) AI Content Editor (USA Based) – Part-Time, Freelance - 20USD/Hour",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690764-bilingual-english-russian-ai-content-editor-usa-based-?-part-time-freelance-20usd-hour-remote&language=en"
+  },
+  {
+    "id": 3,
+    "title": "METALCOSTRUTTORE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690758-metalcostruttore-locarno&language=en"
+  },
+  {
+    "id": 4,
+    "title": "FALEGNAME",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690760-falegname-locarno&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Bilingual (English/Russian) AI Content Editor (Ukraine Based) – Part-Time, Freelance - 20USD/Hour",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690769-bilingual-english-russian-ai-content-editor-ukraine-based-?-part-time-freelance-20usd-hour-remote&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Autista dumper da cava – Andermatt",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690765-addetto-a-alla-pulizia-e-preparazione-di-auto-di-lusso-sottoceneri&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690771-autista-dumper-da-cava-?-andermatt-andermatt&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Manovale edile madrelingua tedesca",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690767-manovale-edile-madrelingua-tedesca-sopraceneri&language=en"
   },
   {
     "id": 8,
@@ -73,26 +73,26 @@
   },
   {
     "id": 9,
-    "title": "Responsabile ufficio Contabile",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Grafton Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690763-responsabile-ufficio-contabile-lugano&language=en"
-  },
-  {
-    "id": 10,
-    "title": "FALEGNAME",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690760-falegname-locarno&language=en"
-  },
-  {
-    "id": 11,
     "title": "ADDETTO ALLA COSTRUZIONE STRADALE",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690759-addetto-alla-costruzione-stradale-locarno&language=en"
+  },
+  {
+    "id": 10,
+    "title": "SERRAMENTISTA",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690761-serramentista-locarno&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Addetto/a alla pulizia e preparazione di auto di lusso",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690765-addetto-a-alla-pulizia-e-preparazione-di-auto-di-lusso-sottoceneri&language=en"
   }
 ]
