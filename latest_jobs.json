@@ -1,62 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Junior Accountant 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690966-junior-accountant-80-100-basel-bs&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Allrounder für die Logistik und als Hauswart m/w/d",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690965-allrounder-fur-die-logistik-und-als-hauswart-m-w-d-langenthal-be&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Teamleiter/in Verpackung, Logistik (ab 05:00)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690970-teamleiter-in-verpackung-logistik-ab-05-00-kirchberg-be&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Strassenbauer (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690967-strassenbauer-m-w-d-subingen-so&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Venditore/venditrice part-time 20%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690974-venditore-venditrice-part-time-20-lugano-lugano&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Dachdecker/in (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690969-dachdecker-in-m-w-d-100-uster-zh&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Product Engineering Mold Design",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690976-product-engineering-mold-design-sant-antonino-bellinzona&language=en"
-  },
-  {
-    "id": 7,
     "title": "Buchhalter 80-100% (a)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,23 +8,31 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690971-buchhalter-80-100-a-aesch-bl&language=en"
   },
   {
-    "id": 8,
-    "title": "Technischer Sachbearbeiter mit Verkaufsflair für die Automobilbranche (m/w/d)",
+    "id": 1,
+    "title": "Assemblaggio orologi",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690972-technischer-sachbearbeiter-mit-verkaufsflair-fur-die-automobilbranche-m-w-d-zofingen-zofingen&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690997-assemblaggio-orologi-sottoceneri&language=en"
   },
   {
-    "id": 9,
-    "title": "Dachdecker/in (m/w/d) 100%",
+    "id": 2,
+    "title": "Giardiniere con esperienza",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690964-dachdecker-in-m-w-d-100-winterthur-zh&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690996-giardiniere-con-esperienza-arbedo-castione&language=en"
   },
   {
-    "id": 10,
+    "id": 3,
+    "title": "Tecnico di manutenzione",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690975-tecnico-di-manutenzione-mezzovico-ti-mezzovico&language=en"
+  },
+  {
+    "id": 4,
     "title": "HR Consultant 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +40,59 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690973-hr-consultant-100-lugano-lugano&language=en"
   },
   {
-    "id": 11,
-    "title": "Tecnico di manutenzione",
+    "id": 5,
+    "title": "Technischer Sachbearbeiter mit Verkaufsflair für die Automobilbranche (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690972-technischer-sachbearbeiter-mit-verkaufsflair-fur-die-automobilbranche-m-w-d-zofingen-zofingen&language=en"
+  },
+  {
+    "id": 6,
+    "title": "CONTABILE (CICLO PASSIVO)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "4 U Consulting",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690984-contabile-ciclo-passivo-lugano&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Venditore/venditrice part-time 20%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690975-tecnico-di-manutenzione-mezzovico-ti-mezzovico&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690974-venditore-venditrice-part-time-20-lugano-lugano&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Product Engineering Mold Design",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690976-product-engineering-mold-design-sant-antonino-bellinzona&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Dessinateur en bâtiment 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690968-dessinateur-en-b%C3%A2timent-100-cdi-h-f-d-monthey-vs&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Dachdecker/in (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690969-dachdecker-in-m-w-d-100-uster-zh&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Teamleiter/in Verpackung, Logistik (ab 05:00)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6690970-teamleiter-in-verpackung-logistik-ab-05-00-kirchberg-be&language=en"
   }
 ]
