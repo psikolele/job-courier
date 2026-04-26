@@ -1,22 +1,30 @@
 [
   {
     "id": 0,
-    "title": "Chauffeur PL & Opérateur Logistique (H/F)",
+    "title": "Schlosser",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691272-chauffeur-pl-operateur-logistique-h-f-chavornay-vd&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691256-schlosser-altst%C3%A4tten-sg&language=en"
   },
   {
     "id": 1,
-    "title": "Gruppenleiter Gerüstbau (m/w/d)",
+    "title": "Collaborateur administratif à 100 % (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691269-gruppenleiter-gerustbau-m-w-d-sulgen&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691258-collaborateur-administratif-%C3%A0-100-h-f-d-sion-vs&language=en"
   },
   {
     "id": 2,
+    "title": "Betonbohrer / Fräser (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691266-betonbohrer-fr%C3%A4ser-m-w-d-andelfingen&language=en"
+  },
+  {
+    "id": 3,
     "title": "Sanitaire Chauffagiste",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,20 +32,12 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691259-sanitaire-chauffagiste-lausanne-vaud&language=en"
   },
   {
-    "id": 3,
-    "title": "Bauarbeiter (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691265-bauarbeiter-m-w-d-winterthur&language=en"
-  },
-  {
     "id": 4,
-    "title": "Werkstattmitarbeiter (m/w/d)",
+    "title": "Dachdecker (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691263-werkstattmitarbeiter-m-w-d-oberhasli&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691271-dachdecker-m-w-d-basel&language=en"
   },
   {
     "id": 5,
@@ -57,6 +57,14 @@
   },
   {
     "id": 7,
+    "title": "Gruppenleiter Gerüstbau (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691269-gruppenleiter-gerustbau-m-w-d-sulgen&language=en"
+  },
+  {
+    "id": 8,
     "title": "Bautenschutzfachmann (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,35 +72,27 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691270-bautenschutzfachmann-m-w-d-illnau&language=en"
   },
   {
-    "id": 8,
-    "title": "Betonbohrer / Fräser (m/w/d)",
+    "id": 9,
+    "title": "Bauarbeiter (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691266-betonbohrer-fr%C3%A4ser-m-w-d-andelfingen&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Collaborateur administratif à 100 % (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691258-collaborateur-administratif-%C3%A0-100-h-f-d-sion-vs&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691265-bauarbeiter-m-w-d-winterthur&language=en"
   },
   {
     "id": 10,
-    "title": "Gruppenleiter Gerüstbau (m/w/d)",
+    "title": "Gerüstmonteur (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691262-gruppenleiter-gerustbau-m-w-d-sulgen&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691267-gerustmonteur-m-w-d-winterthur&language=en"
   },
   {
     "id": 11,
-    "title": "Schlosser",
+    "title": "Chef de partie 100% (m/w/d) mit Seesicht",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691256-schlosser-altst%C3%A4tten-sg&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691257-chef-de-partie-100-m-w-d-mit-seesicht-pf%C3%A4ffikon-sz-sz&language=en"
   }
 ]
