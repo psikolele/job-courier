@@ -287,6 +287,24 @@ const Hero = ({ setShowLoginModal }) => {
                         </motion.div>
                     </motion.div>
                 </div>
+                
+                {/* Slider Dots */}
+                <div className="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-2 z-30">
+                    {sliderImages.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => handleDotClick(idx)}
+                            className="rounded-full bg-white transition-all duration-300 focus:outline-none"
+                            style={{
+                                width: currentImageIndex === idx ? '24px' : '6px',
+                                height: '6px',
+                                opacity: currentImageIndex === idx ? 1 : 0.4,
+                                transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                            }}
+                            aria-label={`Go to slide ${idx + 1}`}
+                        />
+                    ))}
+                </div>
             </motion.div>
         </section>
     );
