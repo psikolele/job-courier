@@ -1,68 +1,118 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const Blog = () => {
-    const cards = [
-        {
-            target: 'Candidati',
-            targetType: 'candidate',
-            title: 'Come superare il colloquio tecnico nel 2026',
-            description: 'Scopri le strategie migliori per affrontare le technical interviews...',
-            image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop'
-        },
-        {
-            target: 'Aziende',
-            targetType: 'company',
-            title: 'I trend del remote working in Svizzera',
-            description: 'Come attrarre talenti da tutta la confederazione offrendo flessibilità...',
-            image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop'
-        },
-        {
-            target: 'Istituzioni',
-            targetType: 'institution',
-            title: 'Partnership pubblico-privato per il lavoro',
-            description: 'Il ruolo delle istituzioni nella digitalizzazione del mercato del lavoro svizzero.',
-            image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop'
-        }
-    ];
+const candidateArticles = [
+    { id: 1, title: 'Come superare il colloquio tecnico nel 2026', description: 'Scopri le strategie migliori per affrontare le technical interviews nelle top tech companies svizzere...', image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop' },
+    { id: 2, title: 'Il formato CV perfetto per il mercato svizzero', description: 'Cosa guardano i recruiter nei primi 6 secondi? La guida definitiva per strutturare il tuo curriculum...', image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop' },
+    { id: 3, title: 'Negoziare lo stipendio: errori da evitare', description: 'Le tre frasi da non dire mai quando si parla di compensation package durante l\'ultimo round...', image: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=800&auto=format&fit=crop' }
+];
+
+const companyArticles = [
+    { id: 1, title: 'I trend del remote working in Svizzera', description: 'Come attrarre talenti da tutta la confederazione offrendo flessibilità garantendo la produttività...', image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop' },
+    { id: 2, title: 'Employer Branding: perché i candidati vi scartano', description: 'Analisi sui dati di rimbalzo: cosa cercano veramente i top performer quando leggono i vostri annunci...', image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop' },
+    { id: 3, title: 'Intelligenza Artificiale nello screening', description: 'Come implementare soluzioni AI nel processo di recruiting senza perdere il tocco umano essenziale...', image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop' }
+];
+
+const BlogCard = ({ article }) => (
+    <div className="w-full shrink-0 px-2 md:px-4">
+        <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-[#01498C]/30 hover:shadow-lg transition-all duration-300 group flex flex-col h-[380px]">
+            <div className="h-48 overflow-hidden relative">
+                <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-lg font-bold text-slate-900 leading-tight mb-2 group-hover:text-[#01498C] transition-colors line-clamp-2">{article.title}</h3>
+                <p className="text-slate-500 text-sm line-clamp-2 flex-1">{article.description}</p>
+                <div className="flex items-center gap-1.5 text-xs font-bold text-[#01498C] uppercase tracking-wider mt-4 group-hover:gap-2 transition-all">
+                    <span>Leggi l'articolo</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
+const BlogSlider = ({ title, articles, intervalMs }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [timerKey, setTimerKey] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+
+    useEffect(() => {
+        if (isPaused) return;
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % articles.length);
+        }, intervalMs);
+        return () => clearInterval(interval);
+    }, [timerKey, articles.length, intervalMs, isPaused]);
+
+    const handleDotClick = (idx) => {
+        setCurrentIndex(idx);
+        setTimerKey(prev => prev + 1);
+    };
 
     return (
-        <section id="blog" className="py-24 bg-surface text-background relative z-10 px-8">
-            <div className="max-w-6xl mx-auto">
-                <div className="mb-16 md:text-center">
-                    <h2 className="text-3xl md:text-5xl font-bold font-sans text-white">
-                        Risorse & <span className="text-accent italic font-drama">Blog</span>
-                    </h2>
-                    <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
-                        Approfondimenti e notizie dal mercato del lavoro, pensati su misura per te.
-                    </p>
+        <div 
+            className="flex-1 flex flex-col pt-16 pb-24 px-6 md:px-12 relative"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+        >
+            <h2 className="text-2xl md:text-3xl font-bold font-sans text-slate-900 mb-8 px-2 tracking-tight">
+                {title}
+            </h2>
+            
+            <div className="relative overflow-hidden w-full">
+                <motion.div 
+                    className="flex w-full"
+                    animate={{ x: `-${currentIndex * 100}%` }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+                >
+                    {articles.map((article) => (
+                        <BlogCard key={article.id} article={article} />
+                    ))}
+                </motion.div>
+            </div>
+
+            {/* Pill Dots */}
+            <div className="absolute bottom-10 left-0 right-0 flex justify-center items-center gap-2">
+                {articles.map((_, idx) => (
+                    <button
+                        key={idx}
+                        onClick={() => handleDotClick(idx)}
+                        className="rounded-full bg-slate-300 transition-all duration-300 focus:outline-none"
+                        style={{
+                            width: currentIndex === idx ? '24px' : '6px',
+                            height: '6px',
+                            backgroundColor: currentIndex === idx ? '#01498C' : '#CBD5E1',
+                            transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                        }}
+                        aria-label={`Vai all'articolo ${idx + 1}`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+const Blog = () => {
+    return (
+        <section id="blog" className="w-full bg-white relative z-10 border-t border-slate-100">
+            <div className="w-full flex flex-col lg:flex-row">
+                {/* Candidates Left Half */}
+                <div className="w-full lg:w-1/2 border-b lg:border-b-0 lg:border-r border-slate-200 bg-[#FAFAFA]/50">
+                    <BlogSlider 
+                        title="Suggerimenti per la Carriera" 
+                        articles={candidateArticles} 
+                        intervalMs={5000} 
+                    />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {cards.map((card, idx) => (
-                        <div key={idx} className="bg-white/5 border border-white/10 rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-all duration-500 group cursor-pointer shadow-2xl backdrop-blur-sm">
-                            <div className="h-56 overflow-hidden relative">
-                                <img 
-                                    src={card.image} 
-                                    alt={card.title} 
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 origin-center" 
-                                    loading="lazy"
-                                />
-                                <div className="absolute top-4 left-4">
-                                    <span className="inline-block px-4 py-1.5 bg-black/40 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/10 shadow-lg">
-                                        {card.target}
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="p-8">
-                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-accent transition-colors leading-tight">{card.title}</h3>
-                                <p className="text-gray-400 text-sm mb-8 line-clamp-2 leading-relaxed">{card.description}</p>
-                                <div className="flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-tighter group-hover:gap-4 transition-all">
-                                    <span>Leggi l'articolo</span>
-                                    <span className="text-lg">&rarr;</span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                {/* Companies Right Half */}
+                <div className="w-full lg:w-1/2 bg-white">
+                    <BlogSlider 
+                        title="Suggerimenti per il Recruiting" 
+                        articles={companyArticles} 
+                        intervalMs={5300} // Offset timer slightly to prevent synchronized sliding
+                    />
                 </div>
             </div>
         </section>
@@ -70,4 +120,3 @@ const Blog = () => {
 };
 
 export default Blog;
-
