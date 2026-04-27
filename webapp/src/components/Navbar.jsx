@@ -50,22 +50,22 @@ const IconMenu = () => (
     </svg>
 );
 
-// ---------- NAV DATA ----------
 const getCandidateLinks = (isHome) => [
-    { label: 'Vedi tutte le offerte', labelDe: 'Alle Angebote ansehen', labelFr: 'Voir tutte le offerte', href: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php', external: true },
-    { label: 'Pubblica il tuo curriculum', labelDe: 'Lebenslauf veröffentlichen', labelFr: 'Publiez votre CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
-    { label: 'Vedi tutte le aziende', labelDe: 'Alle Unternehmen ansehen', labelFr: 'Voir tutte le imprese', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
-    { label: 'Suggerimenti per la tua carriera', labelDe: 'Karrieretipps', labelFr: 'Conseils de carrière', href: isHome ? '#blog' : '/#blog' },
+    { label: 'Vedi tutte le offerte', labelEn: 'View all offers', labelDe: 'Alle Angebote ansehen', labelFr: 'Voir toutes les offres', href: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php', external: true },
+    { label: 'Pubblica il tuo curriculum', labelEn: 'Publish your CV', labelDe: 'Lebenslauf veröffentlichen', labelFr: 'Publiez votre CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
+    { label: 'Vedi tutte le aziende', labelEn: 'View all companies', labelDe: 'Alle Unternehmen ansehen', labelFr: 'Voir toutes les entreprises', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
+    { label: 'Suggerimenti per la tua carriera', labelEn: 'Career tips', labelDe: 'Karrieretipps', labelFr: 'Conseils de carrière', href: isHome ? '#blog' : '/#blog' },
 ];
 
 const getCompanyLinks = (isHome) => [
-    { label: 'Come funziona', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
-    { label: 'Soluzioni e Tariffe', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
-    { label: 'Registra Azienda', labelDe: 'Unternehmen registrieren', labelFr: 'Enregistrer une entreprise', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
-    { label: 'Suggerimenti per il recruiting', labelDe: 'Recruiting-Tipps', labelFr: 'Conseils de recrutement', href: isHome ? '#blog' : '/#blog' },
+    { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
+    { label: 'Soluzioni e Tariffe', labelEn: 'Solutions and Prices', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
+    { label: 'Registra Azienda', labelEn: 'Register Company', labelDe: 'Unternehmen registrieren', labelFr: 'Enregistrer une entreprise', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
+    { label: 'Suggerimenti per il recruiting', labelEn: 'Recruiting tips', labelDe: 'Recruiting-Tipps', labelFr: 'Conseils de recrutement', href: isHome ? '#blog' : '/#blog' },
 ];
 
 const getLabel = (item, lang) => {
+    if (lang === 'en' && item.labelEn) return item.labelEn;
     if (lang === 'de' && item.labelDe) return item.labelDe;
     if (lang === 'fr' && item.labelFr) return item.labelFr;
     return item.label;
@@ -152,9 +152,9 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     {/* RED LOGIN Button */}
                     <button
                         onClick={() => setShowLoginModal(true)}
-                        className="bg-[#e63946] hover:bg-[#c1121f] text-white px-6 py-2 rounded-xl text-[11px] font-bold tracking-widest transition-all btn-shiny hover-lift"
+                        className="bg-[#e63946] hover:bg-[#c1121f] text-white px-4 md:px-6 py-2 rounded-xl text-[10px] md:text-[11px] font-bold tracking-widest transition-all btn-shiny hover-lift whitespace-nowrap flex-shrink-0"
                     >
-                        LOGIN
+                        {lang === 'it' ? 'ACCEDI' : (lang === 'en' ? 'LOGIN' : (lang === 'de' ? 'ANMELDEN' : 'CONNEXION'))}
                     </button>
 
                     {/* HAMBURGER Toggle */}

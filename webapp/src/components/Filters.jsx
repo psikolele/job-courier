@@ -185,21 +185,21 @@ const Filters = () => {
                     </a>
                 </div>
 
-                <div className="overflow-hidden pb-12 -mx-4 relative pause-on-hover px-4">
-                    <div className="flex gap-6 animate-marquee w-max">
+                <div className="overflow-hidden pb-12 -mx-4 relative px-4">
+                    <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x w-full">
                         {jobsLoading ? (
                             [...Array(12)].map((_, i) => (
-                                <div key={i} className="w-[300px] md:w-[380px] shrink-0 flex-none animate-pulse bg-white border border-slate-100 rounded-[2rem] p-8 h-[320px]"></div>
+                                <div key={i} className="w-[300px] md:w-[380px] shrink-0 flex-none animate-pulse bg-white border border-slate-100 rounded-[2rem] p-8 h-[320px] snap-center"></div>
                             ))
                         ) : (
-                            [...latestJobs, ...latestJobs].map((job, idx) => (
+                            latestJobs.map((job, idx) => (
                                 <motion.a 
                                     href={job.link}
                                     key={`${job.id}-${idx}`}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.4, delay: Math.min((idx % latestJobs.length) * 0.1, 1) }}
-                                    className="w-[320px] md:w-[400px] shrink-0 group flex flex-col h-[320px] bg-white border border-slate-200 hover:border-[#01498C]/30 rounded-[2.5rem] p-8 transition-all duration-300 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover-lift relative overflow-hidden"
+                                    className="w-[320px] md:w-[400px] shrink-0 group flex flex-col h-[320px] bg-white border border-slate-200 hover:border-[#01498C]/30 rounded-[2.5rem] p-8 transition-all duration-300 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover-lift relative overflow-hidden snap-center"
                                 >
                                     {/* Header Row: Company Info + Logo */}
                                     <div className="flex justify-between items-start mb-8">
@@ -223,9 +223,8 @@ const Filters = () => {
                                         </div>
                                     </div>
 
-                                    {/* Middle Section: Big Title */}
                                     <div className="flex-1">
-                                        <h4 className="text-[22px] md:text-[26px] font-bold text-slate-900 leading-[1.25] group-hover:text-[#01498C] transition-colors line-clamp-3 font-sans">
+                                        <h4 className="text-[20px] md:text-[24px] font-bold text-slate-900 leading-[1.25] group-hover:text-[#01498C] transition-colors line-clamp-2 overflow-hidden text-ellipsis font-sans break-words">
                                             {job.title}
                                         </h4>
                                     </div>
