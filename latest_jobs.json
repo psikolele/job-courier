@@ -9,27 +9,27 @@
   },
   {
     "id": 1,
+    "title": "RIF. 585 - TECNICO ATTREZZISTA",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "E-Work Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691275-rif-585-tecnico-attrezzista-balerna&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Bilingual (English/Russian) AI Content Editor (Poland Based) – Part-Time, Freelance - 20USD/Hour",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691278-bilingual-english-russian-ai-content-editor-poland-based-?-part-time-freelance-20usd-hour-remote&language=en"
+  },
+  {
+    "id": 3,
     "title": "Field Service Engineer",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Approach People Recruitment",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691279-field-service-engineer-eindhoven&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Operatore per impianti di trattamento reflui",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691281-operatore-per-impianti-di-trattamento-reflui-mendrisio&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Saldatore Tubista TIG acciaio",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691282-saldatore-tubista-tig-acciaio-sottoceneri&language=en"
   },
   {
     "id": 4,
@@ -41,6 +41,22 @@
   },
   {
     "id": 5,
+    "title": "Saldatore Tubista TIG acciaio",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691282-saldatore-tubista-tig-acciaio-sottoceneri&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Operatore per impianti di trattamento reflui",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691281-operatore-per-impianti-di-trattamento-reflui-mendrisio&language=en"
+  },
+  {
+    "id": 7,
     "title": "Bilingual (English/Russian) AI Content Editor (Poland Based) – Part-Time, Freelance - 20USD/Hour",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,39 +64,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691277-bilingual-english-russian-ai-content-editor-poland-based-?-part-time-freelance-20usd-hour-remote&language=en"
   },
   {
-    "id": 6,
-    "title": "Bilingual (English/Russian) AI Content Editor (Poland Based) – Part-Time, Freelance - 20USD/Hour",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Approach People Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691278-bilingual-english-russian-ai-content-editor-poland-based-?-part-time-freelance-20usd-hour-remote&language=en"
-  },
-  {
-    "id": 7,
-    "title": "RIF. 585 - TECNICO ATTREZZISTA",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "E-Work Sagl",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691275-rif-585-tecnico-attrezzista-balerna&language=en"
-  },
-  {
     "id": 8,
-    "title": "Chauffeur PL & Opérateur Logistique (H/F)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691272-chauffeur-pl-operateur-logistique-h-f-chavornay-vd&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Dachdecker (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691271-dachdecker-m-w-d-basel&language=en"
-  },
-  {
-    "id": 10,
     "title": "Gruppenleiter Gerüstbau (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +72,27 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691269-gruppenleiter-gerustbau-m-w-d-sulgen&language=en"
   },
   {
-    "id": 11,
+    "id": 9,
     "title": "Gärtner (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691268-g%C3%A4rtner-m-w-d-kloten&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Chauffeur PL & Opérateur Logistique (H/F)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691272-chauffeur-pl-operateur-logistique-h-f-chavornay-vd&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Reifenpraktiker LKW 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691274-reifenpraktiker-lkw-100-m-w-d-dietlikon&language=en"
   }
 ]
