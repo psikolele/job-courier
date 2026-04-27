@@ -1,35 +1,35 @@
 [
   {
     "id": 0,
-    "title": "Dachdecker (m/w/d)",
+    "title": "Bautenschutzfachmann (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691271-dachdecker-m-w-d-basel&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691270-bautenschutzfachmann-m-w-d-illnau&language=en"
   },
   {
     "id": 1,
-    "title": "Gerüstmonteur (m/w/d)",
+    "title": "Gruppenleiter Gerüstbau (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691264-gerustmonteur-m-w-d-winterthur&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691262-gruppenleiter-gerustbau-m-w-d-sulgen&language=en"
   },
   {
     "id": 2,
-    "title": "Werkstattmitarbeiter (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691263-werkstattmitarbeiter-m-w-d-oberhasli&language=en"
-  },
-  {
-    "id": 3,
     "title": "Gärtner (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691268-g%C3%A4rtner-m-w-d-kloten&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Dachdecker (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691271-dachdecker-m-w-d-basel&language=en"
   },
   {
     "id": 4,
@@ -41,38 +41,22 @@
   },
   {
     "id": 5,
-    "title": "Opérateur de production en alimentaire H/F",
+    "title": "Betonbohrer / Fräser (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691273-operateur-de-production-en-alimentaire-h-f-cheseaux&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691266-betonbohrer-fr%C3%A4ser-m-w-d-andelfingen&language=en"
   },
   {
     "id": 6,
-    "title": "Gerüstmonteur (m/w/d)",
+    "title": "Werkstattmitarbeiter (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691267-gerustmonteur-m-w-d-winterthur&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691263-werkstattmitarbeiter-m-w-d-oberhasli&language=en"
   },
   {
     "id": 7,
-    "title": "Gruppenleiter Gerüstbau (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691262-gruppenleiter-gerustbau-m-w-d-sulgen&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Bautenschutzfachmann (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691270-bautenschutzfachmann-m-w-d-illnau&language=en"
-  },
-  {
-    "id": 9,
     "title": "Bauarbeiter (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691265-bauarbeiter-m-w-d-winterthur&language=en"
   },
   {
-    "id": 10,
-    "title": "Gruppenleiter Gerüstbau (m/w/d)",
+    "id": 8,
+    "title": "Gerüstmonteur (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691269-gruppenleiter-gerustbau-m-w-d-sulgen&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691267-gerustmonteur-m-w-d-winterthur&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Chauffeur PL & Opérateur Logistique (H/F)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691272-chauffeur-pl-operateur-logistique-h-f-chavornay-vd&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Gerüstmonteur (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691264-gerustmonteur-m-w-d-winterthur&language=en"
   },
   {
     "id": 11,
-    "title": "Betonbohrer / Fräser (m/w/d)",
+    "title": "Opérateur de production en alimentaire H/F",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691266-betonbohrer-fr%C3%A4ser-m-w-d-andelfingen&language=en"
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691273-operateur-de-production-en-alimentaire-h-f-cheseaux&language=en"
   }
 ]
