@@ -118,7 +118,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                 className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12 transition-all duration-300"
                 style={{
                     height: navHeight,
-                    backgroundColor: '#F7F8F6',
+                    backgroundColor: '#FAFAFA',
                     boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.05)' : 'none',
                     borderBottom: '1px solid rgba(0,0,0,0.05)'
                 }}

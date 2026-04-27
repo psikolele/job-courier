@@ -10,6 +10,7 @@ const Hero = ({ setShowLoginModal }) => {
     const [hoveredSide, setHoveredSide] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [timerKey, setTimerKey] = useState(0);
 
     const [cantons, setCantons] = useState([]);
     const [sectors, setSectors] = useState([]);
@@ -112,9 +113,14 @@ const Hero = ({ setShowLoginModal }) => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentImageIndex((prev) => (prev + 1) % sliderImages.length);
-        }, 5000);
+        }, 4000);
         return () => clearInterval(interval);
-    }, []);
+    }, [timerKey, sliderImages.length]);
+
+    const handleDotClick = (index) => {
+        setCurrentImageIndex(index);
+        setTimerKey(prev => prev + 1);
+    };
 
     return (
         <section className="relative w-full min-h-screen flex flex-col md:flex-row overflow-hidden font-sans bg-[#131f3f]">
@@ -126,7 +132,7 @@ const Hero = ({ setShowLoginModal }) => {
                     width: isMobile ? '100%' : (hoveredSide === 'companies' ? '40%' : '60%')
                 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative min-h-[50vh] md:min-h-screen bg-[#EAECEE] flex flex-col justify-start px-8 md:px-12 lg:px-16 pt-32 md:pt-48 pb-24 text-slate-900 border-b md:border-b-0 md:border-r border-slate-200"
+                className="relative min-h-[50vh] md:min-h-screen bg-[#F4F6F8] flex flex-col justify-start px-8 md:px-12 lg:px-16 pt-32 md:pt-48 pb-24 text-slate-900 border-b md:border-b-0 md:border-r border-slate-200"
             >
                 <motion.div 
                     animate={{ 
