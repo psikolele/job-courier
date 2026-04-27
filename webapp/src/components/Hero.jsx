@@ -152,16 +152,16 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
                 </motion.div>
 
-                <div className="max-w-md w-full mx-auto md:mx-0 md:ml-4 lg:ml-12 xl:ml-20 z-10 relative">
+                <div className="max-w-xl w-full mx-auto md:mx-0 md:ml-4 lg:ml-12 xl:ml-20 z-10 relative">
                     <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 0.85 : 1), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
                         <p className="text-sm md:text-xs font-mono text-slate-500 mb-6 uppercase tracking-[0.2em]">
                             {t('hero.candidates.subtitle')}
                         </p>
                         <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
-                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-slate-900 whitespace-nowrap">
+                            <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-sans text-slate-900">
                                 {t('hero.candidates.h1')}
                             </span>
-                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-[#01498C] mt-2">
+                            <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-sans text-[#01498C] mt-2">
                                 {t('hero.candidates.h1_sub')}
                             </span>
                         </h1>
@@ -248,16 +248,16 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
                 </motion.div>
 
-                <div className="max-w-md w-full mx-auto md:mx-0 md:ml-8 lg:ml-12 xl:ml-16 z-10 relative">
+                <div className="max-w-xl w-full mx-auto md:mx-0 md:ml-8 lg:ml-12 xl:ml-16 z-10 relative">
                     <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 1 : 0.85), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
                         <p className="text-sm md:text-xs font-mono text-[#2f9de5] mb-6 uppercase tracking-[0.2em] opacity-80 decoration-[#2f9de5]">
                             {t('hero.companies.subtitle')}
                         </p>
                         <h1 className="leading-[1.1] tracking-tight mb-8 mt-4">
-                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-white">
+                            <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-sans text-white">
                                 {t('hero.companies.h1')}
                             </span>
-                            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-sans text-[#2f9de5] mt-2 whitespace-nowrap">
+                            <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-sans text-[#2f9de5] mt-2">
                                 {t('hero.companies.h1_sub')}
                             </span>
                         </h1>

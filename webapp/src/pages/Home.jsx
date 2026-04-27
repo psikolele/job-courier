@@ -13,9 +13,6 @@ const Home = ({ setShowLoginModal }) => {
       <Filters />
       
       <Vetrini />
-
-      {/* Ad placeholders 50/50 */}
-      <AdBanner />
       
       <Blog />
     </main>

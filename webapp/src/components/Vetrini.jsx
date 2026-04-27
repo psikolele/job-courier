@@ -30,7 +30,7 @@ const Vetrini = () => {
                     <div className="w-24 h-1 bg-[#01498C] mx-auto rounded-full"></div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
                     {companies.map((company, idx) => (
                         <motion.a
                             key={idx}
@@ -41,7 +41,7 @@ const Vetrini = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.05 }}
-                            className="group relative aspect-square flex flex-col items-center justify-center p-8 transition-all duration-500 hover-lift"
+                            className="group relative aspect-square flex flex-col items-center justify-center p-4 sm:p-6 transition-all duration-500 hover-lift"
                             style={{
                                 background: 'rgba(142, 132, 200, 0.12)',
                                 backdropFilter: 'blur(12px)',
@@ -55,7 +55,7 @@ const Vetrini = () => {
                                 <img 
                                     src={company.logo} 
                                     alt={company.name} 
-                                    className="max-w-full max-h-[70%] object-contain filter group-hover:drop-shadow-lg transition-all duration-500"
+                                    className="max-w-full max-h-[75%] object-contain filter group-hover:drop-shadow-lg transition-all duration-500 rounded-[1.5rem] mix-blend-multiply"
                                 />
                             </div>
                             <span className="text-[10px] font-normal uppercase tracking-[0.25em] text-[#01498C] opacity-40 group-hover:opacity-100 transition-opacity font-mono">

@@ -191,9 +191,9 @@ const Filters = () => {
                     </a>
                 </div>
 
-                {/* 4-Column Lower Advertisement Section */}
-                <div className="w-full mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2 md:px-4">
-                    {[1, 2, 3, 4].map((num) => (
+                {/* 2-Column Lower Advertisement Section */}
+                <div className="w-[95%] mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {[1, 2].map((num) => (
                         <div key={num} className="rounded-2xl border border-slate-200 bg-white relative group h-32 flex items-center justify-center overflow-hidden hover:border-slate-300 hover:shadow-sm transition-all cursor-pointer">
                             <span className="absolute top-2 right-2 text-[8px] font-bold text-slate-400 uppercase tracking-widest z-10">Advertisement {num}</span>
                             <div className="text-center">
