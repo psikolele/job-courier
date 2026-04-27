@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // ---------- ICONS ----------
 const IconBriefcase = () => (
