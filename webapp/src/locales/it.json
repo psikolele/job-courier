@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "candidates": "CANDIDATI",
+    "companies": "AZIENDE",
+    "jobs": "Cerca Lavoro",
+    "blog": "Blog",
+    "institutions": "Istituzioni",
+    "login": "Login",
+    "other_links": "Altri link",
+    "all_offers": "Vedi tutte le offerte",
+    "all_companies": "Vedi tutte le aziende",
+    "pricing": "Soluzioni e tariffe",
+    "register_company": "Registra azienda"
+  },
+  "hero": {
+    "candidates": {
+      "h1": "Accedi al tuo",
+      "h1_sub": "Prossimo Lavoro.",
+      "subtitle": "Per I Candidati",
+      "cta": "Trova Offerte",
+      "search_placeholder": "Qualifica, azienda o parola chiave...",
+      "any_sector": "Qualsiasi settore lavorativo",
+      "all_cantons": "Tutti i Cantoni (Svizzera)"
+    },
+    "companies": {
+      "h1": "Trova il tuo Miglior",
+      "h1_sub": "Talento Subito.",
+      "subtitle": "Per Le Aziende",
+      "cta": "Pubblica Annuncio"
+    }
+  },
+  "blog": {
+    "title_candidates": "Suggerimenti per la Carriera",
+    "title_companies": "Suggerimenti per il Recruiting",
+    "read_article": "Leggi l'articolo",
+    "candidateArticles": [
+      { "id": 1, "title": "Come superare il colloquio tecnico nel 2026", "description": "Scopri le strategie migliori per affrontare le technical interviews nelle top tech companies svizzere..." },
+      { "id": 2, "title": "Il formato CV perfetto per il mercato svizzero", "description": "Cosa guardano i recruiter nei primi 6 secondi? La guida definitiva per strutturare il tuo curriculum..." },
+      { "id": 3, "title": "Negoziare lo stipendio: errori da evitare", "description": "Le tre frasi da non dire mai quando si parla di compensation package durante l'ultimo round..." }
+    ],
+    "companyArticles": [
+      { "id": 1, "title": "I trend del remote working in Svizzera", "description": "Come attrarre talenti da tutta la confederazione offrendo flessibilità garantendo la produttività..." },
+      { "id": 2, "title": "Employer Branding: perché i candidati vi scartano", "description": "Analisi sui dati di rimbalzo: cosa cercano veramente i top performer quando leggono i vostri annunci..." },
+      { "id": 3, "title": "Intelligenza Artificiale nello screening", "description": "Come implementare soluzioni AI nel processo di recruiting senza perdere il tocco umano essenziale..." }
+    ]
+  }
+}

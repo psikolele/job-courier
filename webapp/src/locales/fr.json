@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "candidates": "CANDIDATS",
+    "companies": "ENTREPRISES",
+    "jobs": "Recherche d'emploi",
+    "blog": "Blog",
+    "institutions": "Institutions",
+    "login": "Connexion",
+    "other_links": "Autres liens",
+    "all_offers": "Voir toutes les offres",
+    "all_companies": "Voir toutes les entreprises",
+    "pricing": "Prix et solutions",
+    "register_company": "Enregistrer l'entreprise"
+  },
+  "hero": {
+    "candidates": {
+      "h1": "Accédez à votre",
+      "h1_sub": "Prochain Emploi.",
+      "subtitle": "Pour les Candidats",
+      "cta": "Trouver des Offres",
+      "search_placeholder": "Titre du poste, entreprise ou mot-clé...",
+      "any_sector": "Tous les secteurs",
+      "all_cantons": "Tous les cantons (Suisse)"
+    },
+    "companies": {
+      "h1": "Trouvez votre meilleur",
+      "h1_sub": "Talent maintenant.",
+      "subtitle": "Pour les Entreprises",
+      "cta": "Publier une Annonce"
+    }
+  },
+  "blog": {
+    "title_candidates": "Conseils de carrière",
+    "title_companies": "Conseils de recrutement",
+    "read_article": "Lire l'article",
+    "candidateArticles": [
+      { "id": 1, "title": "Comment réussir les entretiens techniques en 2026", "description": "Découvrez les meilleures stratégies pour affronter les entretiens techniques dans les grandes entreprises suisses..." },
+      { "id": 2, "title": "Le format de CV parfait pour le marché suisse", "description": "Que regardent les recruteurs dans les 6 premières secondes ? Le guide ultime pour structurer votre CV..." },
+      { "id": 3, "title": "Négocier son salaire : erreurs à éviter", "description": "Les trois phrases à ne jamais dire lors de la discussion du package de rémunération lors du tour final..." }
+    ],
+    "companyArticles": [
+      { "id": 1, "title": "Les tendances du télétravail en Suisse", "description": "Comment attirer les talents de toute la confédération en offrant de la flexibilité tout en garantissant la productivité..." },
+      { "id": 2, "title": "Marque employeur : pourquoi les candidats vous rejettent", "description": "Analyse des données de rebond : ce que les meilleurs éléments recherchent vraiment lorsqu'ils lisent vos annonces..." },
+      { "id": 3, "title": "L'intelligence artificielle dans le screening", "description": "Comment intégrer des solutions d'IA dans le processus de recrutement sans perdre la touche humaine essentielle..." }
+    ]
+  }
+}

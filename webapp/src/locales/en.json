@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "candidates": "CANDIDATES",
+    "companies": "COMPANIES",
+    "jobs": "Search Jobs",
+    "blog": "Blog",
+    "institutions": "Institutions",
+    "login": "Login",
+    "other_links": "Other links",
+    "all_offers": "View all offers",
+    "all_companies": "View all companies",
+    "pricing": "Pricing and solutions",
+    "register_company": "Register company"
+  },
+  "hero": {
+    "candidates": {
+      "h1": "Access your",
+      "h1_sub": "Next Job.",
+      "subtitle": "For Candidates",
+      "cta": "Find Offers",
+      "search_placeholder": "Job title, company or keyword...",
+      "any_sector": "Any job sector",
+      "all_cantons": "All Cantons (Switzerland)"
+    },
+    "companies": {
+      "h1": "Find your best",
+      "h1_sub": "Talent right now.",
+      "subtitle": "For Companies",
+      "cta": "Publish Ad"
+    }
+  },
+  "blog": {
+    "title_candidates": "Career Tips",
+    "title_companies": "Recruiting Tips",
+    "read_article": "Read article",
+    "candidateArticles": [
+      { "id": 1, "title": "How to pass technical interviews in 2026", "description": "Discover the best strategies to tackle technical interviews in top Swiss tech companies..." },
+      { "id": 2, "title": "The perfect CV format for the Swiss market", "description": "What do recruiters look for in the first 6 seconds? The ultimate guide to structuring your resume..." },
+      { "id": 3, "title": "Negotiating salary: mistakes to avoid", "description": "The three phrases you should never say when discussing the compensation package during the final round..." }
+    ],
+    "companyArticles": [
+      { "id": 1, "title": "Remote working trends in Switzerland", "description": "How to attract talent from across the confederation by offering flexibility while ensuring productivity..." },
+      { "id": 2, "title": "Employer Branding: why candidates reject you", "description": "Analysis on bounce data: what top performers are really looking for when reading your job ads..." },
+      { "id": 3, "title": "Artificial Intelligence in screening", "description": "How to implement AI solutions in the recruiting process without losing the essential human touch..." }
+    ]
+  }
+}

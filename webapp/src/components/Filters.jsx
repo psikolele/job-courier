@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Search, MapPin, Briefcase, ChevronRight, Clock, Building2 } from 'lucide-react';
+import { MapPin, ChevronRight, Clock, Building2 } from 'lucide-react';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { fetchLatestJobs } from '../services/api';
+import AdBanner from './AdBanner';
 
 const Filters = () => {
-    const { t } = useTranslation();
+    // eslint-disable-next-line no-unused-vars
     const [cantons, setCantons] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [sectors, setSectors] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [jobsLoading, setJobsLoading] = useState(true);
-    const [keyword, setKeyword] = useState('');
-    const [selectedCanton, setSelectedCanton] = useState('');
-    const [selectedSector, setSelectedSector] = useState('');
     const [latestJobs, setLatestJobs] = useState([]);
 
     useEffect(() => {
@@ -72,7 +70,6 @@ const Filters = () => {
                 { name: 'Trasporti', role: 'trasporti', id: '900' },
                 { name: 'Vendita al dettaglio/Servizi al pubblico', role: 'vendita-al-dettaglio-2fservizi-al-pubblico', id: '902' }
             ]);
-            setLoading(false);
         }, 800);
 
         const fetchJobs = async () => {
@@ -110,68 +107,12 @@ const Filters = () => {
         fetchJobs();
     }, []);
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        
-        const baseUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php';
-        const queryParams = new URLSearchParams();
-        
-        let hasCountryRegion = false;
-        if (selectedCanton) {
-            const cantonObj = cantons.find(c => c.value === selectedCanton);
-            if (cantonObj && cantonObj.regionId) {
-                queryParams.set('country', '214'); 
-                queryParams.set('region', cantonObj.regionId);
-                hasCountryRegion = true;
-            } else {
-                queryParams.set('global', '1');
-                queryParams.set('location', cantonObj ? cantonObj.name : selectedCanton);
-            }
-        } else {
-            queryParams.set('global', '1');
-        }
 
-        if (hasCountryRegion) {
-            queryParams.set('sector', '');
-            queryParams.set('role', '');
-            queryParams.set('e_type', '');
-            queryParams.set('percent', '');
-            queryParams.set('e_type_gt', '');
-            queryParams.set('percent_gt', '');
-        }
-
-        if (keyword) {
-            queryParams.set('keyword', keyword);
-        }
-
-        if (selectedSector) {
-            const sectorObj = sectors.find(s => s.id === selectedSector);
-            if (sectorObj) {
-                queryParams.set('role', sectorObj.role);
-                queryParams.set('role_id', sectorObj.id);
-            }
-        }
-
-        window.location.href = `${baseUrl}?${queryParams.toString()}`;
-    };
 
     return (
         <div id="filters" className="w-full relative z-20 pb-20 pt-8 bg-[#fafafa]">
             {/* ADVERTISEMENT SECTION */}
-            <div className="w-[98%] mx-auto flex flex-col md:flex-row gap-4 mb-14 mt-4 px-2">
-                <div className="flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
-                    <span className="absolute top-2 right-3 text-[10px] font-bold text-slate-400 uppercase z-10 bg-white/80 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">Advertisement</span>
-                    <a href="https://www.blc-sa.ch" target="_blank" rel="noopener noreferrer" className="block w-full h-[150px] md:h-[200px] relative">
-                        <img src="/img/Gemini_Generated_Image_ape98sape98sape9.png" alt="Business Learning Centre SA" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02] opacity-95 hover:opacity-100" />
-                    </a>
-                </div>
-                <div className="flex-1 rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
-                    <span className="absolute top-2 right-3 text-[10px] font-bold text-slate-400 uppercase z-10 bg-white/80 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">Advertisement</span>
-                    <a href="https://www.wallmoss.ch/" target="_blank" rel="noopener noreferrer" className="block w-full h-[150px] md:h-[200px] relative">
-                        <img src="/img/Gemini_Generated_Image_lw18o4lw18o4lw18.png" alt="Wallmoss Interior Design" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02] opacity-95 hover:opacity-100" />
-                    </a>
-                </div>
-            </div>
+            <AdBanner />
 
             {/* Latest Jobs Feed from Vercel Proxy */}
             <div className="pt-4 w-[98%] mx-auto">

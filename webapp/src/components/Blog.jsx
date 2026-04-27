@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const candidateArticles = [
-    { id: 1, title: 'Come superare il colloquio tecnico nel 2026', description: 'Scopri le strategie migliori per affrontare le technical interviews nelle top tech companies svizzere...', image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop' },
-    { id: 2, title: 'Il formato CV perfetto per il mercato svizzero', description: 'Cosa guardano i recruiter nei primi 6 secondi? La guida definitiva per strutturare il tuo curriculum...', image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop' },
-    { id: 3, title: 'Negoziare lo stipendio: errori da evitare', description: 'Le tre frasi da non dire mai quando si parla di compensation package durante l\'ultimo round...', image: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=800&auto=format&fit=crop' }
-];
+import { useTranslation } from 'react-i18next';
 
-const companyArticles = [
-    { id: 1, title: 'I trend del remote working in Svizzera', description: 'Come attrarre talenti da tutta la confederazione offrendo flessibilità garantendo la produttività...', image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop' },
-    { id: 2, title: 'Employer Branding: perché i candidati vi scartano', description: 'Analisi sui dati di rimbalzo: cosa cercano veramente i top performer quando leggono i vostri annunci...', image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop' },
-    { id: 3, title: 'Intelligenza Artificiale nello screening', description: 'Come implementare soluzioni AI nel processo di recruiting senza perdere il tocco umano essenziale...', image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop' }
-];
+const candidateImages = {
+    1: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop',
+    2: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop',
+    3: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=800&auto=format&fit=crop'
+};
 
-const BlogCard = ({ article }) => (
+const companyImages = {
+    1: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop',
+    2: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop',
+    3: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop'
+};
+
+const BlogCard = ({ article, readArticleText }) => (
     <div className="w-full shrink-0 px-2 md:px-4">
         <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-[#01498C]/30 hover:shadow-lg transition-all duration-300 group flex flex-col h-[380px]">
             <div className="h-48 overflow-hidden relative">
@@ -24,7 +27,7 @@ const BlogCard = ({ article }) => (
                 <h3 className="text-lg font-bold text-slate-900 leading-tight mb-2 group-hover:text-[#01498C] transition-colors line-clamp-2">{article.title}</h3>
                 <p className="text-slate-500 text-sm line-clamp-2 flex-1">{article.description}</p>
                 <div className="flex items-center gap-1.5 text-xs font-bold text-[#01498C] uppercase tracking-wider mt-4 group-hover:gap-2 transition-all">
-                    <span>Leggi l'articolo</span>
+                    <span>{readArticleText}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                 </div>
             </div>
@@ -32,7 +35,7 @@ const BlogCard = ({ article }) => (
     </div>
 );
 
-const BlogSlider = ({ title, articles, intervalMs }) => {
+const BlogSlider = ({ title, articles, intervalMs, readArticleText }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [timerKey, setTimerKey] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -67,7 +70,7 @@ const BlogSlider = ({ title, articles, intervalMs }) => {
                     transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                     {articles.map((article) => (
-                        <BlogCard key={article.id} article={article} />
+                        <BlogCard key={article.id} article={article} readArticleText={readArticleText} />
                     ))}
                 </motion.div>
             </div>
@@ -94,24 +97,31 @@ const BlogSlider = ({ title, articles, intervalMs }) => {
 };
 
 const Blog = () => {
+    const { t } = useTranslation();
+
+    const candidateArticles = (t('blog.candidateArticles', { returnObjects: true }) || []).map(art => ({ ...art, image: candidateImages[art.id] }));
+    const companyArticles = (t('blog.companyArticles', { returnObjects: true }) || []).map(art => ({ ...art, image: companyImages[art.id] }));
+
     return (
         <section id="blog" className="w-full bg-white relative z-10 border-t border-slate-100">
             <div className="w-full flex flex-col lg:flex-row">
                 {/* Candidates Left Half */}
                 <div className="w-full lg:w-1/2 border-b lg:border-b-0 lg:border-r border-slate-200 bg-[#FAFAFA]/50">
                     <BlogSlider 
-                        title="Suggerimenti per la Carriera" 
+                        title={t('blog.title_candidates')} 
                         articles={candidateArticles} 
                         intervalMs={5000} 
+                        readArticleText={t('blog.read_article')}
                     />
                 </div>
 
                 {/* Companies Right Half */}
                 <div className="w-full lg:w-1/2 bg-white">
                     <BlogSlider 
-                        title="Suggerimenti per il Recruiting" 
+                        title={t('blog.title_companies')} 
                         articles={companyArticles} 
                         intervalMs={5300} // Offset timer slightly to prevent synchronized sliding
+                        readArticleText={t('blog.read_article')}
                     />
                 </div>
             </div>

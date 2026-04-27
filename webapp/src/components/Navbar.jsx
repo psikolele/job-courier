@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -75,21 +75,19 @@ const getLabel = (item, lang) => {
 const Navbar = ({ showLoginModal, setShowLoginModal }) => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const location = useLocation();
     const lang = i18n.language;
     
     const isHome = location.pathname === '/';
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
-
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 1024);
+        const handleResize = () => {};
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const candidateTitle = lang === 'de' ? 'KANDIDATEN' : lang === 'fr' ? 'CANDIDATS' : 'CANDIDATI';
-    const companyTitle = lang === 'de' ? 'UNTERNEHMEN' : lang === 'fr' ? 'ENTREPRISES' : 'AZIENDE';
+    const candidateTitle = t('nav.candidates');
+    const companyTitle = t('nav.companies');
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -154,7 +152,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         onClick={() => setShowLoginModal(true)}
                         className="bg-[#e63946] hover:bg-[#c1121f] text-white px-4 md:px-6 py-2 rounded-xl text-[10px] md:text-[11px] font-bold tracking-widest transition-all btn-shiny hover-lift whitespace-nowrap flex-shrink-0"
                     >
-                        {lang === 'it' ? 'ACCEDI' : (lang === 'en' ? 'LOGIN' : (lang === 'de' ? 'ANMELDEN' : 'CONNEXION'))}
+                        {t('nav.login').toUpperCase()}
                     </button>
 
                     {/* HAMBURGER Toggle */}
@@ -205,7 +203,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all"
+                                                className="text-xs md:text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -214,7 +212,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all"
+                                                className="text-xs md:text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -240,7 +238,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all"
+                                                className="text-xs md:text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -249,7 +247,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all"
+                                                className="text-xs md:text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}

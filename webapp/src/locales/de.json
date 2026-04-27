@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "candidates": "KANDIDATEN",
+    "companies": "UNTERNEHMEN",
+    "jobs": "Jobsuche",
+    "blog": "Blog",
+    "institutions": "Institutionen",
+    "login": "Anmelden",
+    "other_links": "Weitere Links",
+    "all_offers": "Alle Angebote anzeigen",
+    "all_companies": "Alle Unternehmen anzeigen",
+    "pricing": "Preise und Lösungen",
+    "register_company": "Unternehmen registrieren"
+  },
+  "hero": {
+    "candidates": {
+      "h1": "Zugang zu Ihrem",
+      "h1_sub": "Nächsten Job.",
+      "subtitle": "Für Kandidaten",
+      "cta": "Angebote Finden",
+      "search_placeholder": "Berufsbezeichnung, Unternehmen oder Stichwort...",
+      "any_sector": "Jeder Bereich",
+      "all_cantons": "Alle Kantone (Schweiz)"
+    },
+    "companies": {
+      "h1": "Finden Sie Ihr bestes",
+      "h1_sub": "Talent sofort.",
+      "subtitle": "Für Unternehmen",
+      "cta": "Anzeige veröffentlichen"
+    }
+  },
+  "blog": {
+    "title_candidates": "Karrieretipps",
+    "title_companies": "Recruiting-Tipps",
+    "read_article": "Artikel lesen",
+    "candidateArticles": [
+      { "id": 1, "title": "Wie man technische Vorstellungsgespräche im Jahr 2026 besteht", "description": "Entdecken Sie die besten Strategien, um technische Interviews bei Top-Tech-Unternehmen in der Schweiz zu meistern..." },
+      { "id": 2, "title": "Das perfekte CV-Format für den Schweizer Markt", "description": "Worauf achten Personalvermittler in den ersten 6 Sekunden? Der ultimative Leitfaden zur Strukturierung Ihres Lebenslaufs..." },
+      { "id": 3, "title": "Gehaltsverhandlung: Fehler vermeiden", "description": "Die drei Sätze, die Sie bei der Besprechung des Vergütungspakets in der Endrunde niemals sagen sollten..." }
+    ],
+    "companyArticles": [
+      { "id": 1, "title": "Trends bei Remote-Arbeit in der Schweiz", "description": "Wie man Talente aus der ganzen Konföderation anzieht, indem man Flexibilität bietet und gleichzeitig Produktivität gewährleistet..." },
+      { "id": 2, "title": "Employer Branding: Warum Kandidaten Sie ablehnen", "description": "Analyse von Absprungdaten: Was Top-Performer beim Lesen Ihrer Stellenanzeigen wirklich suchen..." },
+      { "id": 3, "title": "Künstliche Intelligenz im Screening", "description": "Wie man KI-Lösungen im Rekrutierungsprozess implementiert, ohne die wesentliche menschliche Note zu verlieren..." }
+    ]
+  }
+}
