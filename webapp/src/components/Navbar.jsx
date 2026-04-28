@@ -59,7 +59,7 @@ const getCandidateLinks = (isHome) => [
 ];
 
 const getCompanyLinks = (isHome) => [
-    { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
+    { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/soluzioni-e-tariffe' },
     { label: 'Soluzioni e Tariffe', labelEn: 'Solutions and Prices', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
     { label: 'Registra Azienda', labelEn: 'Register Company', labelDe: 'Unternehmen registrieren', labelFr: 'Enregistrer une entreprise', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
     { label: 'Suggerimenti per il recruiting', labelEn: 'Recruiting tips', labelDe: 'Recruiting-Tipps', labelFr: 'Conseils de recrutement', href: isHome ? '#blog' : '/#blog' },
