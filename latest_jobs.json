@@ -1,46 +1,14 @@
 [
   {
     "id": 0,
-    "title": "RIF. 510 - FRESATORE CNC",
+    "title": "FAGE (m,w,d) temporär 80 - 100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "E-Work Sagl",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691938-rif-510-fresatore-cnc-lugano&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691932-fage-m-w-d-tempor%C3%A4r-80-100-luzern-lucerne&language=en"
   },
   {
     "id": 1,
-    "title": "Investment Content Writer and Editorial Specialist",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Finders SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691939-investment-content-writer-and-editorial-specialist-geneva&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Serramentista",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691937-serramentista-sottoceneri&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Hauptbuchhalter 100% (m/w/d) ? Zahlenprofi mit Weitblick gesucht!",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691925-hauptbuchhalter-100-m-w-d-zahlenprofi-mit-weitblick-gesucht-aarau-aargau&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Techniker/in TS/HF (Elektrik / Elektronik / Automatik)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691924-techniker-in-ts-hf-elektrik-elektronik-automatik-zurich-zh&language=en"
-  },
-  {
-    "id": 5,
     "title": "Konstrukteur / Ingenieur (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,7 +16,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691933-konstrukteur-ingenieur-m-w-d-100-horw-luzern&language=en"
   },
   {
-    "id": 6,
+    "id": 2,
     "title": "Dipl. Pflegefachperson (m,w,d) für die Betreuung von pflegenden Angehörigen",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,23 +24,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691934-dipl-pflegefachperson-m-w-d-fur-die-betreuung-von-pflegenden-angeh%C3%B6rigen-rapperswil-jona-freienbach-s&language=en"
   },
   {
-    "id": 7,
-    "title": "Fresatore CNC",
+    "id": 3,
+    "title": "Serramentista",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691931-fresatore-cnc-arbedo-castione&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691937-serramentista-sottoceneri&language=en"
   },
   {
-    "id": 8,
-    "title": "Annonce d'emploi - RH Généraliste (H/F)",
+    "id": 4,
+    "title": "Chauffeur Camion (H/F)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691929-annonce-d-emploi-rh-generaliste-h-f-bienne-be&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691928-chauffeur-camion-h-f-la-chaux-de-fonds-ne&language=en"
   },
   {
-    "id": 9,
+    "id": 5,
     "title": "Architecte 60-100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,7 +48,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691927-architecte-60-100-cdi-h-f-d-sion-valais&language=en"
   },
   {
-    "id": 10,
+    "id": 6,
+    "title": "Investment Content Writer and Editorial Specialist",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Finders SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691939-investment-content-writer-and-editorial-specialist-geneva&language=en"
+  },
+  {
+    "id": 7,
     "title": "Technico-Commercial (H/F)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691930-technico-commercial-h-f-la-chaux-de-fonds-ne&language=en"
   },
   {
-    "id": 11,
+    "id": 8,
+    "title": "Techniker/in TS/HF (Elektrik / Elektronik / Automatik)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691924-techniker-in-ts-hf-elektrik-elektronik-automatik-zurich-zh&language=en"
+  },
+  {
+    "id": 9,
     "title": "Automatikmonteur / Schaltanlagenmonteur (a) ? Aufbau & Verdrahtung von Schal",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691935-automatikmonteur-schaltanlagenmonteur-a-aufbau-verdrahtung-von-schal-bern-be&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Hauptbuchhalter 100% (m/w/d) ? Zahlenprofi mit Weitblick gesucht!",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691925-hauptbuchhalter-100-m-w-d-zahlenprofi-mit-weitblick-gesucht-aarau-aargau&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Annonce d'emploi - RH Généraliste (H/F)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6691929-annonce-d-emploi-rh-generaliste-h-f-bienne-be&language=en"
   }
 ]
