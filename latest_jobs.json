@@ -1,22 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Betriebsmitarbeiter MEDTECH 100% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692148-betriebsmitarbeiter-medtech-100-m-w-d-bulach-zh&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Kommissionierer (a) im Kühllager",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692142-kommissionierer-a-im-kuhllager-lyss-be&language=en"
-  },
-  {
-    "id": 2,
     "title": "Guniteur 100% (a)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,28 +8,44 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692138-guniteur-100-a-bern-be&language=en"
   },
   {
-    "id": 3,
-    "title": "Produktionsmitarbeiter 100% (m/w/d)",
+    "id": 1,
+    "title": "Liegenschaftenbuchhater/in (w/m/d) 80-100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692136-produktionsmitarbeiter-100-m-w-d-belp-bern-mittelland&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692144-liegenschaftenbuchhater-in-w-m-d-80-100-zurich-kreis-5-zh&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Leiter Wirtschaftsprüfung (a) 80?100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692135-leiter-wirtschaftsprufung-a-80-100-basel-bs&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Kommissionierer (a) im Kühllager",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692142-kommissionierer-a-im-kuhllager-lyss-be&language=en"
   },
   {
     "id": 4,
-    "title": "Liegenschaftsbuchhalter 80-100% (a)",
+    "title": "Bilingual (English/Russian) AI Content Editor (Ukraine Based) – Part-Time, Freelance - 20USD/Hour",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692140-liegenschaftsbuchhalter-80-100-a-basel-bl&language=en"
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692149-bilingual-english-russian-ai-content-editor-ukraine-based-?-part-time-freelance-20usd-hour-remote&language=en"
   },
   {
     "id": 5,
-    "title": "Logistiker EFZ",
+    "title": "Group Accountant 80-100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692139-logistiker-efz-bazenheid-sg&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692137-group-accountant-80-100-basel-bl&language=en"
   },
   {
     "id": 6,
@@ -57,42 +57,42 @@
   },
   {
     "id": 7,
+    "title": "Liegenschaftsbuchhalter 80-100% (a)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692140-liegenschaftsbuchhalter-80-100-a-basel-bl&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Betriebsmitarbeiter MEDTECH 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692148-betriebsmitarbeiter-medtech-100-m-w-d-bulach-zh&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Assistant Wirtschaftsprüfung (a) 80?100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692147-assistant-wirtschaftsprufung-a-80-100-basel-bs&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Logistiker EFZ",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692139-logistiker-efz-bazenheid-sg&language=en"
+  },
+  {
+    "id": 11,
     "title": "Souchef für ein Gourmetrestaurant",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692141-souchef-fur-ein-gourmetrestaurant-thalwil-zh-zh&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Liegenschaftenbuchhater/in (w/m/d) 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692144-liegenschaftenbuchhater-in-w-m-d-80-100-zurich-kreis-5-zh&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Leiter Wirtschaftsprüfung (a) 80?100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692135-leiter-wirtschaftsprufung-a-80-100-basel-bs&language=en"
-  },
-  {
-    "id": 10,
-    "title": "FAGE (m,w,d) 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692146-fage-m-w-d-80-100-beromunster-lu&language=en"
-  },
-  {
-    "id": 11,
-    "title": "HR Business Partner (m/w/d) 80?100 %",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692143-hr-business-partner-m-w-d-80-100%E2%80%AF-meilen-zh&language=en"
   }
 ]
