@@ -1,14 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Cappottista",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692502-cappottista-sottoceneri&language=en"
-  },
-  {
-    "id": 1,
     "title": "Cloud Platform Engineer (Virtualization & SDN)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -16,7 +8,31 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692503-cloud-platform-engineer-virtualization-sdn-zurich&language=en"
   },
   {
+    "id": 1,
+    "title": "Cappottista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692502-cappottista-sottoceneri&language=en"
+  },
+  {
     "id": 2,
+    "title": "Sole Accountant / Specialista in finanza e contabilità",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "JARM Technologies SA.",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692507-sole-accountant-specialista-in-finanza-e-contabilit%C3%A0-cadro-lugano&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Head of Investor Relations and Fund Raising",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Finders SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692506-head-of-investor-relations-and-fund-raising-geneva&language=en"
+  },
+  {
+    "id": 4,
     "title": "Java Softwareentwickler (m/w/d) – Zürich",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,28 +40,12 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692504-java-softwareentwickler-m-w-d-?-zurich-zurich&language=en"
   },
   {
-    "id": 3,
-    "title": "Betriebselektriker Instandhaltung Zürich",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692498-betriebselektriker-instandhaltung-zurich-zurich-zurich&language=en"
-  },
-  {
-    "id": 4,
+    "id": 5,
     "title": "PROGRAMMATORE PLC - ROCKWELL e SIEMENS -",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "ER Services Sagl",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692510-programmatore-plc-rockwell-e-siemens-stabio&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Installateur chauffage 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692496-installateur-chauffage-100-cdi-h-f-d-sion-vs&language=en"
   },
   {
     "id": 6,
@@ -73,26 +73,26 @@
   },
   {
     "id": 9,
-    "title": "Head of Investor Relations and Fund Raising",
+    "title": "System Engineer Microsoft 365",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Finders SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692506-head-of-investor-relations-and-fund-raising-geneva&language=en"
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692509-system-engineer-microsoft-365-bern&language=en"
   },
   {
     "id": 10,
+    "title": "Installateur chauffage 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692496-installateur-chauffage-100-cdi-h-f-d-sion-vs&language=en"
+  },
+  {
+    "id": 11,
     "title": "Operatore CNC",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692500-operatore-cnc-mezzovico-ti-mezzovico&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Cuoco/a con (part-time 60% diurno) Bellinzona",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692499-cuoco-a-con-part-time-60-diurno-bellinzona-bellinzona-bellinzona&language=en"
   }
 ]
