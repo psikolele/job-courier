@@ -1,38 +1,54 @@
 [
   {
     "id": 0,
-    "title": "Cuoco/a con (part-time 60% diurno) Bellinzona",
+    "title": "Cappottista",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692499-cuoco-a-con-part-time-60-diurno-bellinzona-bellinzona-bellinzona&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692502-cappottista-sottoceneri&language=en"
   },
   {
     "id": 1,
-    "title": "Feld-Techniker:in im Projekt Management-Team",
+    "title": "Java Softwareentwickler (m/w/d) – Zürich",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692497-feld-techniker-in-im-projekt-management-team-zurich-zh&language=en"
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692504-java-softwareentwickler-m-w-d-?-zurich-zurich&language=en"
   },
   {
     "id": 2,
-    "title": "Betriebselektriker Instandhaltung Zürich",
+    "title": "Cloud Platform Engineer (Virtualization & SDN)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692498-betriebselektriker-instandhaltung-zurich-zurich-zurich&language=en"
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692503-cloud-platform-engineer-virtualization-sdn-zurich&language=en"
   },
   {
     "id": 3,
-    "title": "Servicemitarbeiter/in (m/w/d) 80 -100%",
+    "title": "Head of Investor Relations and Fund Raising",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692491-servicemitarbeiter-in-m-w-d-80-100-zurich-flughafen-zh&language=en"
+    "company": "Finders SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692506-head-of-investor-relations-and-fund-raising-geneva&language=en"
   },
   {
     "id": 4,
+    "title": "Investment Advisor",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Finders SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692505-investment-advisor-geneva&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Idraulico AFC",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692501-idraulico-afc-sopraceneri&language=en"
+  },
+  {
+    "id": 6,
     "title": "Chef de Service Events (a)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,7 +56,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692493-chef-de-service-events-a-oberdorf-so-so&language=en"
   },
   {
-    "id": 5,
+    "id": 7,
     "title": "Installateur chauffage 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,28 +64,12 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692496-installateur-chauffage-100-cdi-h-f-d-sion-vs&language=en"
   },
   {
-    "id": 6,
-    "title": "Electricien Chef de projet 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692489-electricien-chef-de-projet-100-cdi-h-f-d-sion-vs&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Stv. Mandatsleiter Treuhand 80-100% (a)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692488-stv-mandatsleiter-treuhand-80-100-a-basel-bl&language=en"
-  },
-  {
     "id": 8,
-    "title": "Cappottista",
+    "title": "Servicetechniker Elektromaschinen - Schweizweit im Einsatz (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692502-cappottista-sottoceneri&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692492-servicetechniker-elektromaschinen-schweizweit-im-einsatz-m-w-d-dielsdorf-zurich&language=en"
   },
   {
     "id": 9,
@@ -81,18 +81,18 @@
   },
   {
     "id": 10,
-    "title": "¢ Technischer Sachbearbeiter HLK (m/w/d)",
+    "title": "Betriebselektriker Instandhaltung Zürich",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692490-%C2%A2-technischer-sachbearbeiter-hlk-m-w-d-thun-be&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692498-betriebselektriker-instandhaltung-zurich-zurich-zurich&language=en"
   },
   {
     "id": 11,
-    "title": "Idraulico AFC",
+    "title": "Feld-Techniker:in im Projekt Management-Team",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692501-idraulico-afc-sopraceneri&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6692497-feld-techniker-in-im-projekt-management-team-zurich-zh&language=en"
   }
 ]
