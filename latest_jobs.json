@@ -1,22 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Reinigungsfachkraft (m/w/d) ? wo Sauberkeit auf Präzision trifft",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693283-reinigungsfachkraft-m-w-d-wo-sauberkeit-auf-pr%C3%A4zision-trifft-frick-aargau&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Assemblatrici / cablatrici apparecchiature elettriche o Assemblatori/ cablattori",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693281-assemblatrici-cablatrici-apparecchiature-elettriche-o-assemblatori-cablattori-bellinzona-ti&language=en"
-  },
-  {
-    "id": 2,
     "title": "Logistiker/in (m/w/d) 100 %",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,7 +8,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693284-logistiker-in-m-w-d-100%E2%80%AF-frauenfeld-tg&language=en"
   },
   {
-    "id": 3,
+    "id": 1,
     "title": "Logistiker/in (m/w/d) 80?100 %",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,7 +16,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693285-logistiker-in-m-w-d-80-100%E2%80%AF-winterthur-zh&language=en"
   },
   {
-    "id": 4,
+    "id": 2,
     "title": "Automobilmechaniker/in (m/w/d) 80?100 %",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,7 +24,39 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693282-automobilmechaniker-in-m-w-d-80-100%E2%80%AF-winterthur-zh&language=en"
   },
   {
+    "id": 3,
+    "title": "Küche, Service, Reception (m/w/d) dein Job in der Schweiz",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693287-kuche-service-reception-m-w-d-dein-job-in-der-schweiz-luzern-lu&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Reinigungsfachkraft (m/w/d) ? wo Sauberkeit auf Präzision trifft",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693283-reinigungsfachkraft-m-w-d-wo-sauberkeit-auf-pr%C3%A4zision-trifft-frick-aargau&language=en"
+  },
+  {
     "id": 5,
+    "title": "Chef de Partie (m,w)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693280-chef-de-partie-m-w-aarau-ag&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Fachfrau/-mann Finanz- & Rechnungswesen (w/m/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693292-fachfrau-mann-finanz-rechnungswesen-w-m-d-100-suhr-aargau&language=en"
+  },
+  {
+    "id": 7,
     "title": "Anlagenführer/in (m/w/d) 80?100 %",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,31 +64,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693286-anlagenfuhrer-in-m-w-d-80-100%E2%80%AF-winterthur-zh&language=en"
   },
   {
-    "id": 6,
-    "title": "Fachfrau Gesundheit EFZ (w,m,d) 80-90%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693288-fachfrau-gesundheit-efz-w-m-d-80-90-buchs-sg-sg&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Technicien prototypiste (H/F)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693291-technicien-prototypiste-h-f-bulle-fr&language=en"
-  },
-  {
     "id": 8,
-    "title": "HR Generalist",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693293-hr-generalist-mendrisiotto-ti&language=en"
-  },
-  {
-    "id": 9,
     "title": "Assistant en soins et santé communautaire (h/f/d) 80-100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +72,27 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693290-assistant-en-soins-et-sante-communautaire-h-f-d-80-100-region-de-la-riviera-vd&language=en"
   },
   {
-    "id": 10,
-    "title": "HR / Payroll Spezialist 80?100% (m/w/d)",
+    "id": 9,
+    "title": "Assemblatrici / cablatrici apparecchiature elettriche o Assemblatori/ cablattori",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693289-hr-payroll-spezialist-80-100-m-w-d-menziken-aargau&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693281-assemblatrici-cablatrici-apparecchiature-elettriche-o-assemblatori-cablattori-bellinzona-ti&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Fachfrau Gesundheit EFZ (w,m,d) 80-90%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693288-fachfrau-gesundheit-efz-w-m-d-80-90-buchs-sg-sg&language=en"
   },
   {
     "id": 11,
-    "title": "Küche, Service, Reception (m/w/d) dein Job in der Schweiz",
+    "title": "HR Generalist",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693287-kuche-service-reception-m-w-d-dein-job-in-der-schweiz-luzern-lu&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693293-hr-generalist-mendrisiotto-ti&language=en"
   }
 ]
