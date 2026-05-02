@@ -1,6 +1,14 @@
 [
   {
     "id": 0,
+    "title": "Schreiner/In EFZ / CNC Maschinist/in (m/w/d) 80?100% ? FESTANSTELLUNG ? Zentralschweiz",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "DasTeam",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693086-schreiner-in-efz-cnc-maschinist-in-m-w-d-80-100-festanstellung-zentralschweiz-6003-luzern&language=en"
+  },
+  {
+    "id": 1,
     "title": "Junior Inside Technical Sales - Settore Cosmetico",
     "location": "Svizzera",
     "sector": "Generale",
@@ -8,71 +16,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693075-junior-inside-technical-sales-settore-cosmetico-balerna-lugano&language=en"
   },
   {
-    "id": 1,
-    "title": "Carrosseriespengler EFZ 80 ? 100 %",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693068-carrosseriespengler-efz-80-100-luzern-lu&language=en"
-  },
-  {
     "id": 2,
-    "title": "Dipl. Pflegefachfrau/mann HF",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693065-dipl-pflegefachfrau-mann-hf-herzogenbuchsee-bern&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Netzelektriker (alle)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693063-netzelektriker-alle-dubendorf-zurich&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Teamleader (h/f/x) Commodities",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693070-teamleader-h-f-x-commodities-bulle-fr&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Fertigungsmitarbeiter (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693062-fertigungsmitarbeiter-m-w-d-100-weggis-luzern&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Elektroinstallateur oder Montage-Elektriker (a) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693064-elektroinstallateur-oder-montage-elektriker-a-100-bern-bern-mittelland&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Produktionsmitarbeiter/in im Kühllager",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693066-produktionsmitarbeiter-in-im-kuhllager-sursee-lu&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Operaia / Operatrice produzione elettronica con esperienza 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693072-operaia-operatrice-produzione-elettronica-con-esperienza-100-locarno-ti&language=en"
-  },
-  {
-    "id": 9,
     "title": "Chef de rang",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +24,75 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693076-chef-de-rang-locarno-bellinzona&language=en"
   },
   {
-    "id": 10,
-    "title": "Ferblantier (H-F-D)",
+    "id": 3,
+    "title": "Assistant(e) en Soins et Santé Communautaire H/F/D",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693071-ferblantier-h-f-d-morges-vd&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693073-assistant-e-en-soins-et-sante-communautaire-h-f-d-jura-ju&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Forstwart (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693079-forstwart-m-w-d-embrach&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Cuisinier CFC / Cuisinière CFC (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "DasTeam",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693087-cuisinier-cfc-cuisini%C3%A8re-cfc-h-f-d-2000-neuch%C3%A2tel&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Logistiker/in EFZ 100% in Bern",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "DasTeam",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693084-logistiker-in-efz-100-in-bern-3012-bern&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Échafaudeur CFC / Échafaudeuse CFC - 100% H/F/D",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "DasTeam",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693089-echafaudeur-cfc-echafaudeuse-cfc-100-h-f-d-1700-fribourg&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Mecanicien/ne Poids Lourds - 100% (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "DasTeam",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693083-mecanicien-ne-poids-lourds-100-h-f-d-1400-yverdon-les-bains&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Chauffeur-livreur (H/F/D) ? Mission dynamique à Genève",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "DasTeam",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693081-chauffeur-livreur-h-f-d-mission-dynamique-%C3%A0-gen%C3%A8ve-1203-gen%C3%A8ve&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Zimmermann / Zimmerin EFZ (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "DasTeam",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693088-zimmermann-zimmerin-efz-m-w-d-6003-luzern&language=en"
   },
   {
     "id": 11,
-    "title": "Pflegefachpersonal HF (m/w/d",
+    "title": "Infirmier en dialyse H/F/D Lausanne / Hôpital / Plein / Partiel",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693067-pflegefachpersonal-hf-m-w-d-lohn-ammannsegg-solothurn&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693074-infirmier-en-dialyse-h-f-d-lausanne-h%C3%B4pital-plein-partiel-lausanne-lausanne&language=en"
   }
 ]
