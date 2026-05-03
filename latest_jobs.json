@@ -1,70 +1,14 @@
 [
   {
     "id": 0,
-    "title": "MandatsleiterIn Treuhand 80-100% (m/w/d)",
+    "title": "Technicien prototypiste (H/F)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693295-mandatsleiterin-treuhand-80-100-m-w-d-stadt-zurich-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693291-technicien-prototypiste-h-f-bulle-fr&language=en"
   },
   {
     "id": 1,
-    "title": "Logistiker/in (m/w/d) 80?100 %",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693285-logistiker-in-m-w-d-80-100%E2%80%AF-winterthur-zh&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Assistant en soins et santé communautaire (h/f/d) 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693290-assistant-en-soins-et-sante-communautaire-h-f-d-80-100-region-de-la-riviera-vd&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Logistiker/in (m/w/d) 100 %",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693284-logistiker-in-m-w-d-100%E2%80%AF-frauenfeld-tg&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Fachfrau/-mann Finanz- & Rechnungswesen (w/m/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693292-fachfrau-mann-finanz-rechnungswesen-w-m-d-100-suhr-aargau&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Automobilmechaniker/in (m/w/d) 80?100 %",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693282-automobilmechaniker-in-m-w-d-80-100%E2%80%AF-winterthur-zh&language=en"
-  },
-  {
-    "id": 6,
-    "title": "HR Generalist",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693293-hr-generalist-mendrisiotto-ti&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Reinigungsfachkraft (m/w/d) ? wo Sauberkeit auf Präzision trifft",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693283-reinigungsfachkraft-m-w-d-wo-sauberkeit-auf-pr%C3%A4zision-trifft-frick-aargau&language=en"
-  },
-  {
-    "id": 8,
     "title": "Fachfrau Gesundheit EFZ (w,m,d) 80-90%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,15 +16,39 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693288-fachfrau-gesundheit-efz-w-m-d-80-90-buchs-sg-sg&language=en"
   },
   {
-    "id": 9,
-    "title": "Assemblatrici / cablatrici apparecchiature elettriche o Assemblatori/ cablattori",
+    "id": 2,
+    "title": "Küche, Service, Reception (m/w/d) dein Job in der Schweiz",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693281-assemblatrici-cablatrici-apparecchiature-elettriche-o-assemblatori-cablattori-bellinzona-ti&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693287-kuche-service-reception-m-w-d-dein-job-in-der-schweiz-luzern-lu&language=en"
   },
   {
-    "id": 10,
+    "id": 3,
+    "title": "MandatsleiterIn Treuhand 80-100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693295-mandatsleiterin-treuhand-80-100-m-w-d-stadt-zurich-zh&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Reinigungsfachkraft (m/w/d) ? wo Sauberkeit auf Präzision trifft",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693283-reinigungsfachkraft-m-w-d-wo-sauberkeit-auf-pr%C3%A4zision-trifft-frick-aargau&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Fachfrau/-mann Finanz- & Rechnungswesen (w/m/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693292-fachfrau-mann-finanz-rechnungswesen-w-m-d-100-suhr-aargau&language=en"
+  },
+  {
+    "id": 6,
     "title": "Anlagenführer/in (m/w/d) 80?100 %",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +56,43 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693286-anlagenfuhrer-in-m-w-d-80-100%E2%80%AF-winterthur-zh&language=en"
   },
   {
-    "id": 11,
-    "title": "Technicien prototypiste (H/F)",
+    "id": 7,
+    "title": "HR Generalist",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693291-technicien-prototypiste-h-f-bulle-fr&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693293-hr-generalist-mendrisiotto-ti&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Automobilmechaniker/in (m/w/d) 80?100 %",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693282-automobilmechaniker-in-m-w-d-80-100%E2%80%AF-winterthur-zh&language=en"
+  },
+  {
+    "id": 9,
+    "title": "HR / Payroll Spezialist 80?100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693289-hr-payroll-spezialist-80-100-m-w-d-menziken-aargau&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Technischer Vertriebsinnendienst m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693294-technischer-vertriebsinnendienst-m-w-d-100-basel-basel&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Logistiker/in (m/w/d) 100 %",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6693284-logistiker-in-m-w-d-100%E2%80%AF-frauenfeld-tg&language=en"
   }
 ]
