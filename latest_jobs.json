@@ -1,38 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Abbrucharbeiter m/w/d",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694393-abbrucharbeiter-m-w-d-interlaken-bern&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Elektromonteur 80 ? 100 %",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694400-elektromonteur-80-100-sursee-lu&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Dipl. Wirtschaftsprüfer/ Mitglied der Geschäftsleitung (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694396-dipl-wirtschaftsprufer-mitglied-der-gesch%C3%A4ftsleitung-m-w-d-100-cham-zug&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Digitalaffiner TREX D/E (m/w/d) 40-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694394-digitalaffiner-trex-d-e-m-w-d-40-100-luzern-luzern&language=en"
-  },
-  {
-    "id": 4,
     "title": "Mechaniker/Montage Baumaschinen 100% (a)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,23 +8,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694397-mechaniker-montage-baumaschinen-100-a-muri-ag&language=en"
   },
   {
-    "id": 5,
-    "title": "Mitarbeiter Hygiene & Reinigung ab 10:00 (m/w/d)",
+    "id": 1,
+    "title": "Treuhänder (m/w/d) 70-100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694401-mitarbeiter-hygiene-reinigung-ab-10-00-m-w-d-langenthal-be&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694398-treuh%C3%A4nder-m-w-d-70-100-zug-zug&language=en"
   },
   {
-    "id": 6,
-    "title": "Opératrice sur machine - Finition / Injection caoutchouc (H/F)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694399-operatrice-sur-machine-finition-injection-caoutchouc-h-f-rossens-fr&language=en"
-  },
-  {
-    "id": 7,
+    "id": 2,
     "title": "Treuhänder mit eidg. FA D/E (m/w/d) 40-60% mit Flair für die Digitalisierung",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,7 +24,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694403-treuh%C3%A4nder-mit-eidg-fa-d-e-m-w-d-40-60-mit-flair-fur-die-digitalisierung-luzern-luzern&language=en"
   },
   {
-    "id": 8,
+    "id": 3,
+    "title": "Dipl. Pflegefachfrau / Dipl. Pflegefachmann (m,w,d) 50-60%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694395-dipl-pflegefachfrau-dipl-pflegefachmann-m-w-d-50-60-trimbach-solothurn&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Mitarbeiter Hygiene & Reinigung ab 10:00 (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694401-mitarbeiter-hygiene-reinigung-ab-10-00-m-w-d-langenthal-be&language=en"
+  },
+  {
+    "id": 5,
     "title": "Gruista Suva",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,15 +48,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694404-gruista-suva-sopraceneri&language=en"
   },
   {
-    "id": 9,
-    "title": "Maurer m/w/d",
+    "id": 6,
+    "title": "Elektro-Sicherheitsberater oder Elektroprojektleiter m/w/d 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694391-maurer-m-w-d-thun-bern&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694392-elektro-sicherheitsberater-oder-elektroprojektleiter-m-w-d-100-basel-basel&language=en"
   },
   {
-    "id": 10,
+    "id": 7,
     "title": "Fachperson Finanzen",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694402-fachperson-finanzen-ruschlikon-zh&language=en"
   },
   {
-    "id": 11,
-    "title": "Treuhänder (m/w/d) 70-100%",
+    "id": 8,
+    "title": "Maurer m/w/d",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694398-treuh%C3%A4nder-m-w-d-70-100-zug-zug&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694391-maurer-m-w-d-thun-bern&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Digitalaffiner TREX D/E (m/w/d) 40-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694394-digitalaffiner-trex-d-e-m-w-d-40-100-luzern-luzern&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Abbrucharbeiter m/w/d",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694393-abbrucharbeiter-m-w-d-interlaken-bern&language=en"
+  },
+  {
+    "id": 11,
+    "title": "ASSISTENTE DI DIREZIONE (Family Office)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "4 U Consulting",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694405-assistente-di-direzione-family-office-lugano&language=en"
   }
 ]
