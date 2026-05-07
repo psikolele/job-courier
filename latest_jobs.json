@@ -1,38 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Bilingual (English/Russian) AI Content Editor (Based in Estonia) – Part-Time, Freelance - 20USD/Hour",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Approach People Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694614-bilingual-english-russian-ai-content-editor-based-in-estonia-?-part-time-freelance-20usd-hour-remote&language=en"
-  },
-  {
-    "id": 1,
-    "title": "HARDWARE ENGINEER",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "4 U Consulting",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694611-hardware-engineer-lugano&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Operai edili con esperienza",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694618-operai-edili-con-esperienza-sottoceneri&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Elettricista AFC",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694615-elettricista-afc-sottoceneri&language=en"
-  },
-  {
-    "id": 4,
     "title": "Lattoniere",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,15 +8,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694616-lattoniere-sottoceneri&language=en"
   },
   {
-    "id": 5,
-    "title": "Bilingual (English/Russian) AI Content Editor (Based in Estonia) – Part-Time, Freelance - 20USD/Hour",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Approach People Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694613-bilingual-english-russian-ai-content-editor-based-in-estonia-?-part-time-freelance-20usd-hour-remote&language=en"
-  },
-  {
-    "id": 6,
+    "id": 1,
     "title": "Idraulico",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,15 +16,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694617-idraulico-sopraceneri&language=en"
   },
   {
-    "id": 7,
-    "title": "AWS Cloud Engineer",
+    "id": 2,
+    "title": "Technicien ES en automation à 60-100% (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694612-aws-cloud-engineer-winterhur&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694608-technicien-es-en-automation-%C3%A0-60-100-h-f-d-vallamand-vd&language=en"
   },
   {
-    "id": 8,
+    "id": 3,
     "title": "Technicien de maintenance installations tech. + bât. à 100% (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,15 +32,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694609-technicien-de-maintenance-installations-tech-b%C3%A2t-%C3%A0-100-h-f-d-estavayer-le-lac-fr&language=en"
   },
   {
-    "id": 9,
-    "title": "Collaborateur/trice LPP",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694605-collaborateur-trice-lpp-lausanne-vd&language=en"
-  },
-  {
-    "id": 10,
+    "id": 4,
     "title": "Technicien piscine 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +40,59 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694610-technicien-piscine-100-cdi-h-f-d-aigle-vd&language=en"
   },
   {
-    "id": 11,
+    "id": 5,
+    "title": "HARDWARE ENGINEER",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "4 U Consulting",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694611-hardware-engineer-lugano&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Automaticien 80-100% (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694607-automaticien-80-100-h-f-d-domdidier-fr&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Operai edili con esperienza",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694618-operai-edili-con-esperienza-sottoceneri&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Bilingual (English/Russian) AI Content Editor (Based in Estonia) – Part-Time, Freelance - 20USD/Hour",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694614-bilingual-english-russian-ai-content-editor-based-in-estonia-?-part-time-freelance-20usd-hour-remote&language=en"
+  },
+  {
+    "id": 9,
     "title": "Mécanicien PL responsable technique et diagnostique à 100% (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694606-mecanicien-pl-responsable-technique-et-diagnostique-%C3%A0-100-h-f-d-corcelles-pr%C3%A8s-payerne-vd&language=en"
+  },
+  {
+    "id": 10,
+    "title": "AWS Cloud Engineer",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694612-aws-cloud-engineer-winterhur&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Collaborateur/trice LPP",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6694605-collaborateur-trice-lpp-lausanne-vd&language=en"
   }
 ]
