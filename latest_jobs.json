@@ -1,11 +1,11 @@
 [
   {
     "id": 0,
-    "title": "Projektentwickler:in Immobilien",
+    "title": "Junior Underwriter – Non-Life (Specialty Risks)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695265-projektentwickler-in-immobilien-zurich-zh&language=en"
+    "company": "Finders SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695273-junior-underwriter-?-non-life-specialty-risks-zurich&language=en"
   },
   {
     "id": 1,
@@ -17,30 +17,6 @@
   },
   {
     "id": 2,
-    "title": "Disponent:in Kanalservice",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695270-disponent-in-kanalservice-henggart-zurich&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Projektleiter (m/w/d) in der Energiebranche 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695269-projektleiter-m-w-d-in-der-energiebranche-80-100-luzern-luzern&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Projektleiter Elektroengineering / Elektrotechnik (m/w/d) 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695272-projektleiter-elektroengineering-elektrotechnik-m-w-d-80-100-kriens-lu&language=en"
-  },
-  {
-    "id": 5,
     "title": "Carrosseriespengler (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,23 +24,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695264-carrosseriespengler-m-w-d-zurich-zurich&language=en"
   },
   {
-    "id": 6,
-    "title": "Fachfrau Gesundheit EFZ (m,w,d) 70 - 100%",
+    "id": 3,
+    "title": "Projektentwickler:in Immobilien",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695260-fachfrau-gesundheit-efz-m-w-d-70-100-widnau-st-gallen&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695265-projektentwickler-in-immobilien-zurich-zh&language=en"
   },
   {
-    "id": 7,
-    "title": "Jungkoch 100%",
+    "id": 4,
+    "title": "Sachbearbeiter Treuhand (m/w/d) 50?100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695271-jungkoch-100-engelberg-lucerne&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695268-sachbearbeiter-treuhand-m-w-d-50-100-rothenburg-luzern&language=en"
   },
   {
-    "id": 8,
+    "id": 5,
     "title": "Automobilfachmann EFZ (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,12 +48,36 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695259-automobilfachmann-efz-m-w-d-zurich-zurich&language=en"
   },
   {
-    "id": 9,
+    "id": 6,
+    "title": "Projektleiter Elektroengineering / Elektrotechnik (m/w/d) 80-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695272-projektleiter-elektroengineering-elektrotechnik-m-w-d-80-100-kriens-lu&language=en"
+  },
+  {
+    "id": 7,
     "title": "Fachperson Treuhand (m/w/d) 60?80%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695266-fachperson-treuhand-m-w-d-60-80-schwyz-sz&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Disponent:in Kanalservice",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695270-disponent-in-kanalservice-henggart-zurich&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Aktivierungsfachperson 50-100% (m,w,d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695262-aktivierungsfachperson-50-100-m-w-d-solothurn-so&language=en"
   },
   {
     "id": 10,
@@ -89,10 +89,10 @@
   },
   {
     "id": 11,
-    "title": "Sachbearbeiter Treuhand (m/w/d) 50?100%",
+    "title": "Projektleiter (m/w/d) in der Energiebranche 80-100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695268-sachbearbeiter-treuhand-m-w-d-50-100-rothenburg-luzern&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6695269-projektleiter-m-w-d-in-der-energiebranche-80-100-luzern-luzern&language=en"
   }
 ]
