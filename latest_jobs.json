@@ -1,86 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Solarmonteur 80 ? 100 %",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701264-solarmonteur-80-100-sursee-lu&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Betriebselektriker (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701266-betriebselektriker-m-w-d-bischofszell-thurgau&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Betriebselektriker (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701267-betriebselektriker-m-w-d-kloten-zurich&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Digitalaffiner TREX D/E (m/w/d) 40-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701263-digitalaffiner-trex-d-e-m-w-d-40-100-luzern-luzern&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Servicetechniker:in Region ZH (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701259-servicetechniker-in-region-zh-m-w-d-f%C3%A4llanden-zh&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Group Consolidation & Reporting Spezialist/in (80-100%)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701262-group-consolidation-reporting-spezialist-in-80-100-basel-bl&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Dipl. Treuhandexperte D/E 80-100% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701258-dipl-treuhandexperte-d-e-80-100-m-w-d-zug-zug&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Betriebselektriker (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701268-betriebselektriker-m-w-d-meilen-zurich&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Dipl. Expertin NDS Anästhesie (m,w,d), temporär für 2-3 Monate, 60-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701255-dipl-expertin-nds-an%C3%A4sthesie-m-w-d-tempor%C3%A4r-fur-2-3-monate-60-100-richterswil-wollerau-zh&language=en"
-  },
-  {
-    "id": 9,
-    "title": "FAGE EFZ 50-100% (m,w,d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701256-fage-efz-50-100-m-w-d-grenchen-so&language=en"
-  },
-  {
-    "id": 10,
     "title": "Betriebselektriker (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +8,91 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701269-betriebselektriker-m-w-d-thal-st-gallen&language=en"
   },
   {
-    "id": 11,
-    "title": "Carrosserie - Spengler/in EFZ",
+    "id": 1,
+    "title": "Betriebselektriker (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701257-carrosserie-spengler-in-efz-bulach-zurich&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701267-betriebselektriker-m-w-d-kloten-zurich&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Betriebselektriker (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701266-betriebselektriker-m-w-d-bischofszell-thurgau&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Betriebselektriker (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701268-betriebselektriker-m-w-d-meilen-zurich&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Sachbearbeitung Finanzbuchhaltung (m/w/d) 80-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701261-sachbearbeitung-finanzbuchhaltung-m-w-d-80-100-sempach-lu&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Digitalaffiner TREX D/E (m/w/d) 40-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701263-digitalaffiner-trex-d-e-m-w-d-40-100-luzern-luzern&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Werkstatt Monteur/in EFZ (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701260-werkstatt-monteur-in-efz-m-w-d-zurich-zh&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Group Consolidation & Reporting Spezialist/in (80-100%)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701262-group-consolidation-reporting-spezialist-in-80-100-basel-bl&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Betriebselektriker m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701265-betriebselektriker-m-w-d-100-basel-basel&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Solarmonteur 80 ? 100 %",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701264-solarmonteur-80-100-sursee-lu&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Servicetechniker:in Region ZH (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701259-servicetechniker-in-region-zh-m-w-d-f%C3%A4llanden-zh&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Dipl. Expertin NDS Anästhesie (m,w,d), temporär für 2-3 Monate, 60-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701255-dipl-expertin-nds-an%C3%A4sthesie-m-w-d-tempor%C3%A4r-fur-2-3-monate-60-100-richterswil-wollerau-zh&language=en"
   }
 ]
