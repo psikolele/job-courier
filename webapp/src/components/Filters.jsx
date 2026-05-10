@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { fetchLatestJobs } from '../services/api';
@@ -16,9 +17,19 @@ const Filters = () => {
     const animationRef = useRef(null);
     const isPausedRef = useRef(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate();
 
     // Click Tracker Logic
     const checkClickLimit = () => {
+        // Bypass for admin/developer
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('admin_bypass') === '1') {
+            localStorage.setItem('jc_admin_bypass', 'true');
+        }
+        if (localStorage.getItem('jc_admin_bypass') === 'true') {
+            return false;
+        }
+
         const STORAGE_KEY = 'jc_click_tracker';
         const LIMIT = 3;
         const EXPIRY_MS = 24 * 60 * 60 * 1000;
@@ -219,9 +230,9 @@ const Filters = () => {
                         <Clock className="w-6 h-6 text-[#01498C]" />
                         Ultime inserite
                     </h3>
-                    <a href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&utm_source=homepage" className="hidden md:flex text-sm font-normal text-[#01498C] hover:text-[#002B7F] items-center gap-1 transition-colors font-mono uppercase tracking-wider">
+                    <button onClick={() => navigate('/offerte')} className="hidden md:flex text-sm font-normal text-[#01498C] hover:text-[#002B7F] items-center gap-1 transition-colors font-mono uppercase tracking-wider">
                         Vedi tutte <ChevronRight className="w-4 h-4" />
-                    </a>
+                    </button>
                 </div>
 
                 <div 
@@ -245,24 +256,22 @@ const Filters = () => {
                             ))
                         ) : (
                             latestJobs.map((job, idx) => (
-                                <motion.a 
+                                <motion.div 
                                     onClick={(e) => {
                                         if (checkClickLimit()) {
                                             e.preventDefault();
                                             e.stopPropagation();
                                             setIsModalOpen(true);
+                                        } else {
+                                            navigate(`/offerte?jobId=${job.id}`);
                                         }
                                     }}
                                     key={`${job.id}-${idx}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    // Sanitize href to ensure no double slashes or malformed params
-                                    href={job.link.replace(/([^:]\/)\/+/g, "$1")}
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.5, delay: (idx % 4) * 0.1 }}
-                                    className="w-[320px] md:w-[400px] shrink-0 group flex flex-col h-[320px] bg-white border border-slate-200 hover:border-[#01498C]/30 rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(1,73,140,0.08)] hover-lift relative overflow-hidden snap-center"
+                                    className="cursor-pointer w-[320px] md:w-[400px] shrink-0 group flex flex-col h-[320px] bg-white border border-slate-200 hover:border-[#01498C]/30 rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(1,73,140,0.08)] hover-lift relative overflow-hidden snap-center"
                                 >
                                     {/* Header Row: Company Info + Logo */}
                                     <div className="flex justify-between items-start mb-8">
@@ -304,16 +313,16 @@ const Filters = () => {
                                     
                                     {/* Decorative Accent */}
                                     <div className="absolute top-0 right-0 w-1 h-0 bg-[#01498C] group-hover:h-full transition-all duration-700"></div>
-                                </motion.a>
+                                </motion.div>
                             ))
                         )}
                     </div>
                 </div>
                 
                 <div className="mt-2 flex justify-center md:hidden">
-                    <a href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1&utm_source=homepage" className="text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] flex items-center gap-1 transition-colors">
+                    <button onClick={() => navigate('/offerte')} className="text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] flex items-center gap-1 transition-colors">
                         Vedi tutte le offerte <ChevronRight className="w-4 h-4" />
-                    </a>
+                    </button>
                 </div>
 
                 {/* 2-Column Lower Advertisement Section */}
