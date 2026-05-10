@@ -59,7 +59,7 @@ const getCandidateLinks = (isHome) => [
 ];
 
 const getCompanyLinks = (isHome) => [
-    { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/soluzioni-e-tariffe' },
+    { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
     { label: 'Soluzioni e Tariffe', labelEn: 'Solutions and Prices', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
     { label: 'Registra Azienda', labelEn: 'Register Company', labelDe: 'Unternehmen registrieren', labelFr: 'Enregistrer une entreprise', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
     { label: 'Suggerimenti per il recruiting', labelEn: 'Recruiting tips', labelDe: 'Recruiting-Tipps', labelFr: 'Conseils de recrutement', href: isHome ? '#blog' : '/#blog' },
@@ -310,7 +310,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <a
-                                        href="https://jobroom.jobcourier.ch/job-seekers-login.php"
+                                        href="https://jobroom.jobcourier.ch/job-seekers-login.php?language=it"
                                         className="w-full bg-[#0038A5] text-white font-bold py-4 rounded-2xl transition-all shadow-[0_8px_20px_rgba(0,56,165,0.2)] btn-shiny hover-lift text-center"
                                     >
                                         Accedi al Profilo
@@ -336,7 +336,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <a
-                                        href="https://jobroom.jobcourier.ch/job-seekers-login.php"
+                                        href="https://jobroom.jobcourier.ch/job-seekers-login.php?language=it"
                                         className="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl transition-all shadow-[0_8px_20px_rgba(0,0,0,0.2)] btn-shiny hover-lift text-center"
                                     >
                                         Login Azienda

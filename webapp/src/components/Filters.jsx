@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { MapPin, ChevronRight, Clock, Building2 } from 'lucide-react';
-// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect, useRef } from 'react';
+import { MapPin, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import gsap from 'gsap';
 import { fetchLatestJobs } from '../services/api';
 import AdBanner from './AdBanner';
 
@@ -12,6 +12,49 @@ const Filters = () => {
     const [sectors, setSectors] = useState([]);
     const [jobsLoading, setJobsLoading] = useState(true);
     const [latestJobs, setLatestJobs] = useState([]);
+    const sliderRef = useRef(null);
+    const animationRef = useRef(null);
+    const isPausedRef = useRef(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Click Tracker Logic
+    const checkClickLimit = () => {
+        const STORAGE_KEY = 'jc_click_tracker';
+        const LIMIT = 3;
+        const EXPIRY_MS = 24 * 60 * 60 * 1000;
+
+        const stored = localStorage.getItem(STORAGE_KEY);
+        const now = Date.now();
+
+        if (!stored) {
+            const initialData = { count: 1, expiry: now + EXPIRY_MS };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
+            return false;
+        }
+
+        const data = JSON.parse(stored);
+
+        if (now > data.expiry) {
+            const resetData = { count: 1, expiry: now + EXPIRY_MS };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(resetData));
+            return false;
+        }
+
+        if (data.count >= LIMIT) {
+            return true;
+        }
+
+        data.count += 1;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        return false;
+    };
+
+    const handleJobClick = (e) => {
+        if (checkClickLimit()) {
+            e.preventDefault();
+            setIsModalOpen(true);
+        }
+    };
 
     useEffect(() => {
         setTimeout(() => {
@@ -107,6 +150,61 @@ const Filters = () => {
         fetchJobs();
     }, []);
 
+    useEffect(() => {
+        if (!jobsLoading && latestJobs.length > 0 && sliderRef.current) {
+            const slider = sliderRef.current;
+            
+            const ctx = gsap.context(() => {
+                // We calculate the total width to scroll
+                // For a smooth infinite-like feel, we'll just auto-scroll back and forth or 
+                // use a linear move if we had duplicated items. 
+                // Let's do a slow linear crawl that resets or yoyos.
+                
+                const startAutoScroll = () => {
+                    const maxScroll = slider.scrollWidth - slider.clientWidth;
+                    if (maxScroll <= 0) return;
+
+                    animationRef.current = gsap.to(slider, {
+                        scrollLeft: maxScroll,
+                        duration: maxScroll / 40, // Adjust speed here
+                        ease: "none",
+                        repeat: -1,
+                        yoyo: true,
+                        paused: isPausedRef.current
+                    });
+                };
+
+                startAutoScroll();
+            });
+
+            return () => ctx.revert();
+        }
+    }, [jobsLoading, latestJobs]);
+
+    const handleMouseEnter = () => {
+        isPausedRef.current = true;
+        if (animationRef.current) animationRef.current.pause();
+    };
+
+    const handleMouseLeave = () => {
+        isPausedRef.current = false;
+        if (animationRef.current) animationRef.current.play();
+    };
+
+    const handleTouchStart = () => {
+        isPausedRef.current = true;
+        if (animationRef.current) animationRef.current.pause();
+    };
+
+    const handleTouchEnd = () => {
+        // Resume after a short delay
+        setTimeout(() => {
+            if (!isPausedRef.current) {
+                 if (animationRef.current) animationRef.current.play();
+            }
+        }, 2000);
+    };
+
 
 
     return (
@@ -126,8 +224,21 @@ const Filters = () => {
                     </a>
                 </div>
 
-                <div className="overflow-hidden pb-12 -mx-4 relative px-4">
-                    <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x w-full">
+                <div 
+                    className="overflow-hidden pb-12 -mx-4 relative px-4"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                >
+                    {/* Cinematic Gradients */}
+                    <div className="absolute top-0 left-0 w-12 md:w-24 h-full bg-gradient-to-r from-[#fafafa] to-transparent z-10 pointer-events-none hidden md:block"></div>
+                    <div className="absolute top-0 right-0 w-12 md:w-24 h-full bg-gradient-to-l from-[#fafafa] to-transparent z-10 pointer-events-none hidden md:block"></div>
+                    <div 
+                        ref={sliderRef}
+                        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x w-full"
+                        style={{ scrollBehavior: animationRef.current ? 'auto' : 'smooth' }}
+                    >
                         {jobsLoading ? (
                             [...Array(12)].map((_, i) => (
                                 <div key={i} className="w-[300px] md:w-[380px] shrink-0 flex-none animate-pulse bg-white border border-slate-100 rounded-[2rem] p-8 h-[320px] snap-center"></div>
@@ -135,50 +246,64 @@ const Filters = () => {
                         ) : (
                             latestJobs.map((job, idx) => (
                                 <motion.a 
-                                    href={job.link}
+                                    onClick={(e) => {
+                                        if (checkClickLimit()) {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            setIsModalOpen(true);
+                                        }
+                                    }}
                                     key={`${job.id}-${idx}`}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.4, delay: Math.min((idx % latestJobs.length) * 0.1, 1) }}
-                                    className="w-[320px] md:w-[400px] shrink-0 group flex flex-col h-[320px] bg-white border border-slate-200 hover:border-[#01498C]/30 rounded-[2.5rem] p-8 transition-all duration-300 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover-lift relative overflow-hidden snap-center"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    // Sanitize href to ensure no double slashes or malformed params
+                                    href={job.link.replace(/([^:]\/)\/+/g, "$1")}
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: (idx % 4) * 0.1 }}
+                                    className="w-[320px] md:w-[400px] shrink-0 group flex flex-col h-[320px] bg-white border border-slate-200 hover:border-[#01498C]/30 rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(1,73,140,0.08)] hover-lift relative overflow-hidden snap-center"
                                 >
                                     {/* Header Row: Company Info + Logo */}
                                     <div className="flex justify-between items-start mb-8">
                                         <div className="flex flex-col min-w-0 pr-4">
-                                            <span className="text-sm font-normal text-slate-500 truncate font-mono uppercase tracking-tight mb-2">
+                                            <span className="text-[11px] font-bold text-[#01498C]/60 truncate font-mono uppercase tracking-[0.2em] mb-2">
                                                 {job.company}
                                             </span>
                                             <div className="flex items-center gap-1.5 text-slate-400">
-                                                <MapPin className="w-3.5 h-3.5 shrink-0" />
-                                                <span className="text-[11px] font-normal truncate uppercase tracking-widest font-mono">{job.location}</span>
+                                                <MapPin className="w-3.5 h-3.5 shrink-0 text-[#2f9de5]" />
+                                                <span className="text-[10px] font-medium truncate uppercase tracking-widest font-sans">{job.location}</span>
                                             </div>
                                         </div>
                                         
-                                        <div className="w-20 h-20 shrink-0 bg-white border border-slate-100 rounded-2xl p-3 flex items-center justify-center shadow-sm group-hover:border-[#01498C]/20 transition-all">
+                                        <div className="w-16 h-16 shrink-0 bg-white border border-slate-100 rounded-2xl p-2.5 flex items-center justify-center shadow-sm group-hover:border-[#01498C]/20 transition-all duration-500">
                                             <img 
                                                 src={job.companyLogo} 
                                                 alt={job.company} 
-                                                className="w-full h-full object-contain"
-                                                onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-300"><Building2 size={32}/></div>'; }}
+                                                className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                                                onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-300"><Building2 size={24}/></div>'; }}
                                             />
                                         </div>
                                     </div>
 
                                     <div className="flex-1">
-                                        <h4 className="text-[20px] md:text-[24px] font-bold text-slate-900 leading-[1.25] group-hover:text-[#01498C] transition-colors line-clamp-2 overflow-hidden text-ellipsis font-sans break-words">
+                                        <h4 className="text-[18px] md:text-[22px] font-bold text-slate-900 leading-[1.3] group-hover:text-[#01498C] transition-colors line-clamp-2 overflow-hidden text-ellipsis font-sans tracking-tight">
                                             {job.title}
                                         </h4>
                                     </div>
 
                                     {/* Footer Section: Sector and Role Tags */}
-                                    <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-slate-100/80">
-                                        <span className="px-3.5 py-1.5 bg-[#01498C]/5 text-[#01498C] text-[10px] font-normal uppercase tracking-[0.15em] rounded-lg border border-[#01498C]/10 font-mono">
+                                    <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-slate-100/50">
+                                        <span className="px-3 py-1 bg-[#01498C]/5 text-[#01498C] text-[9px] font-bold uppercase tracking-[0.1em] rounded-full border border-[#01498C]/10 font-mono">
                                             {job.sector}
                                         </span>
-                                        <span className="px-3.5 py-1.5 bg-slate-50 text-slate-400 text-[10px] font-normal uppercase tracking-[0.15em] rounded-lg border border-slate-200 font-mono">
+                                        <span className="px-3 py-1 bg-slate-50 text-slate-400 text-[9px] font-bold uppercase tracking-[0.1em] rounded-full border border-slate-200 font-mono">
                                             {job.role}
                                         </span>
                                     </div>
+                                    
+                                    {/* Decorative Accent */}
+                                    <div className="absolute top-0 right-0 w-1 h-0 bg-[#01498C] group-hover:h-full transition-all duration-700"></div>
                                 </motion.a>
                             ))
                         )}
@@ -202,6 +327,78 @@ const Filters = () => {
                             </div>
                         </div>
                     ))}
+                </div>
+            </div>
+            {/* Registration Wall Modal */}
+            <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        </div>
+    );
+};
+
+const RegistrationModal = ({ isOpen, onClose }) => {
+    const modalRef = useRef(null);
+    const overlayRef = useRef(null);
+
+    useEffect(() => {
+        if (isOpen) {
+            const ctx = gsap.context(() => {
+                gsap.fromTo(overlayRef.current, 
+                    { opacity: 0 }, 
+                    { opacity: 1, duration: 0.5, ease: "power2.out" }
+                );
+                gsap.fromTo(modalRef.current, 
+                    { scale: 0.9, opacity: 0, y: 20 }, 
+                    { scale: 1, opacity: 1, y: 0, duration: 0.6, delay: 0.1, ease: "back.out(1.7)" }
+                );
+            });
+            return () => ctx.revert();
+        }
+    }, [isOpen]);
+
+    if (!isOpen) return null;
+
+    return (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div 
+                ref={overlayRef}
+                className="absolute inset-0 bg-[#01498C]/90 backdrop-blur-2xl" 
+                onClick={onClose} 
+            />
+            
+            <div 
+                ref={modalRef}
+                className="relative bg-white rounded-[3rem] p-8 md:p-12 max-w-lg w-full shadow-2xl overflow-hidden group"
+            >
+                {/* Noise Overlay */}
+                <div className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-repeat" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/p6.png")' }}></div>
+                
+                <button 
+                    onClick={onClose}
+                    className="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 transition-colors"
+                >
+                    <X className="w-6 h-6 text-slate-400" />
+                </button>
+
+                <div className="flex flex-col items-center text-center">
+                    <div className="w-20 h-20 bg-[#01498C]/5 rounded-full flex items-center justify-center mb-8">
+                        <UserPlus className="w-10 h-10 text-[#01498C]" />
+                    </div>
+                    
+                    <h2 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+                        Accesso Limitato
+                    </h2>
+                    
+                    <p className="text-slate-500 mb-10 leading-relaxed text-lg">
+                        Per continuare a visualizzare gli annunci, iscriviti gratuitamente al portale.
+                    </p>
+                    
+                    <a 
+                        href="https://jobroom.jobcourier.ch/job-seekers-login.php?lan=it&language=it"
+                        className="w-full bg-[#01498C] text-white py-5 rounded-2xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 shadow-xl shadow-[#01498C]/20"
+                    >
+                        Iscriviti Ora
+                        <ArrowRight className="w-5 h-5" />
+                    </a>
                 </div>
             </div>
         </div>

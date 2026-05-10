@@ -16,8 +16,17 @@ export default async function handler(req, res) {
     return;
   }
 
-  const jobUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?page=1&language=en&country=214';
-
+  const url = new URL('https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php');
+  url.searchParams.set('language', 'it');
+  url.searchParams.set('country', '214');
+  
+  if (req.query) {
+    Object.keys(req.query).forEach(key => {
+        url.searchParams.set(key, req.query[key]);
+    });
+  }
+  
+  const jobUrl = url.toString();
   try {
     const response = await fetch(jobUrl, {
       headers: {
@@ -45,8 +54,6 @@ export default async function handler(req, res) {
 
     // The selector .vacancies .vacancy might vary, using a more inclusive one
     $('.vacancies .vacancy, .job-listing, tr.job-item, .singleResult').each((i, el) => {
-      if (jobs.length >= 12) return;
-
       const $el = $(el);
       
       // Selectors based on live inspection - looking for the EXACT job link
@@ -63,13 +70,32 @@ export default async function handler(req, res) {
         relativeLink = $el.find('a').first().attr('href');
       }
       
-      // Resolve relative path
-      if (relativeLink && relativeLink.startsWith('..')) {
-        relativeLink = relativeLink.substring(2);
+      // Resolve link logic: robustly handle relative and absolute paths
+      let absoluteLink = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1';
+      
+      if (relativeLink) {
+        // Remove leading dots or slashes for consistent processing
+        let cleanPath = relativeLink.replace(/^(\.\.\/|\.\/|\/)/, '');
+        
+        // If the path already starts with 'job/', don't prepend another 'job/'
+        if (cleanPath.startsWith('job/')) {
+          absoluteLink = `https://jobroom.jobcourier.ch/${cleanPath}`;
+        } else if (cleanPath.startsWith('http')) {
+          absoluteLink = cleanPath;
+        } else {
+          absoluteLink = `https://jobroom.jobcourier.ch/job/${cleanPath}`;
+        }
       }
-      const absoluteLink = relativeLink ? 
-        (relativeLink.startsWith('http') ? relativeLink : `https://jobroom.jobcourier.ch/job/${relativeLink.startsWith('/') ? relativeLink.substring(1) : relativeLink}`) 
-        : 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?global=1';
+
+      // Ensure Italian language parameters are correctly set and not duplicated
+      if (!absoluteLink.includes('language=')) {
+        const separator = absoluteLink.includes('?') ? '&' : '?';
+        absoluteLink += `${separator}lan=it&language=it`;
+      } else {
+        // Force replace any language param with Italian to be sure
+        absoluteLink = absoluteLink.replace(/language=[a-z]{2}/, 'language=it').replace(/lan=[a-z]{2}/, 'lan=it');
+        if (!absoluteLink.includes('lan=it')) absoluteLink += '&lan=it';
+      }
 
       const companyName = $el.find('.company, .firm, .details span:first-child, .companyLink span').first().text().trim() || 'Azienda Riservata';
       const location = $el.find('.location, .place, .details span:last-child, .detailsHead label:contains("Sede:")').next('span').text().trim() || 'Svizzera';

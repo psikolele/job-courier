@@ -3,11 +3,13 @@ import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, Phone, MapPin, Send, MessageSquare, ArrowRight, Check } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
     const containerRef = useRef(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -39,19 +41,19 @@ const Contact = () => {
     const contactInfo = [
         {
             icon: <Phone className="text-accent" size={24} />,
-            label: "Commerciale",
+            label: t('contact.phone_label'),
             value: "+41 91 210 89 92",
-            sub: "Lun - Ven, 08:30 - 18:00"
+            sub: t('contact.phone_hours')
         },
         {
             icon: <Mail className="text-accent" size={24} />,
-            label: "Email",
+            label: t('contact.email_label'),
             value: "sales@jobcourier.ch",
-            sub: "Supporto rapido garantito"
+            sub: t('contact.email_sub')
         },
         {
             icon: <MapPin className="text-accent" size={24} />,
-            label: "Headquarters",
+            label: t('contact.hq_label'),
             value: "Via delle Fornaci, 6",
             sub: "6826 Riva San Vitale, CH"
         }
@@ -74,14 +76,14 @@ const Contact = () => {
                 <div className="container mx-auto relative z-10 w-full">
                     <div className="max-w-5xl">
                         <div className="hero-line overflow-hidden mb-4">
-                            <span className="text-xs font-bold tracking-[0.4em] text-accent uppercase block tracking-widest">Protocollo Comunicazione</span>
+                            <span className="text-xs font-bold tracking-[0.4em] text-accent uppercase block tracking-widest">{t('contact.protocol_label')}</span>
                         </div>
                         <h1 className="hero-line text-6xl md:text-8xl lg:text-9xl font-black text-white leading-[0.9] tracking-tighter mb-8">
-                            Parliamo di crescita. <br />
-                            <span className="italic font-drama text-accent text-5xl md:text-7xl lg:text-8xl">Noi ascoltiamo.</span>
+                            {t('contact.hero_title')} <br />
+                            <span className="italic font-drama text-accent text-5xl md:text-7xl lg:text-8xl">{t('contact.hero_em')}</span>
                         </h1>
                         <p className="hero-line text-xl md:text-2xl text-slate-300 max-w-2xl font-light leading-relaxed">
-                            Ogni grande collaborazione inizia con una conversazione. Raccontaci i tuoi obiettivi e costruiremo il piano ideale per il tuo recruitment.
+                            {t('contact.hero_sub')}
                         </p>
                     </div>
                 </div>
@@ -94,7 +96,7 @@ const Contact = () => {
                     {/* LEFT: TELEMETRY (INFO) */}
                     <div className="lg:col-span-5 space-y-12 section-reveal">
                         <div className="p-12 bg-white rounded-[3rem] border border-slate-100 shadow-2xl shadow-slate-200/50">
-                            <h2 className="text-sm font-bold text-accent tracking-[0.3em] uppercase mb-12">Dettagli Connessione</h2>
+                            <h2 className="text-sm font-bold text-accent tracking-[0.3em] uppercase mb-12">{t('contact.connection_label')}</h2>
                             
                             <div className="space-y-12">
                                 {contactInfo.map((info, idx) => (
@@ -113,7 +115,7 @@ const Contact = () => {
 
                             <div className="mt-16 pt-12 border-t border-slate-50">
                                 <p className="text-sm text-slate-500 italic leading-relaxed">
-                                    "Il nostro Servizio Clienti è a tua completa disposizione per qualsiasi richiesta o informazione sulla pubblicazione di annunci."
+                                    {t('contact.service_quote')}
                                 </p>
                             </div>
                         </div>
@@ -122,17 +124,17 @@ const Contact = () => {
                         <div className="p-12 bg-primary rounded-[3rem] text-white">
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                                <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Status: Info Candidati</span>
+                                <span className="text-[10px] font-bold tracking-[0.3em] uppercase">{t('contact.candidate_status')}</span>
                             </div>
-                            <h3 className="text-2xl font-bold mb-6">Cerchi lavoro?</h3>
+                            <h3 className="text-2xl font-bold mb-6">{t('contact.candidate_title')}</h3>
                             <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                                JobCourier non fornisce informazioni dirette sulle offerte: queste sono gestite dalle aziende. Non inviare CV via email.
+                                {t('contact.candidate_desc')}
                             </p>
                             <a 
                                 href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it"
                                 className="inline-flex items-center gap-3 text-accent hover:text-white font-bold text-xs tracking-widest transition-colors"
                             >
-                                REGISTRATI AL PORTALE <ArrowRight size={14} />
+                                {t('contact.register_portal')} <ArrowRight size={14} />
                             </a>
                         </div>
                     </div>
@@ -141,14 +143,14 @@ const Contact = () => {
                     <div className="lg:col-span-7 section-reveal">
                         <div className="sticky top-40 bg-white p-12 md:p-16 rounded-[4rem] border border-slate-100 shadow-xl">
                             <div className="mb-12">
-                                <h2 className="text-4xl font-black text-primary tracking-tighter mb-4 uppercase">Invia un messaggio</h2>
-                                <p className="text-slate-400 text-sm">Inserisci i tuoi dati e ti ricontatteremo entro 24 ore lavorative.</p>
+                                <h2 className="text-4xl font-black text-primary tracking-tighter mb-4 uppercase">{t('contact.form_title')}</h2>
+                                <p className="text-slate-400 text-sm">{t('contact.form_sub')}</p>
                             </div>
 
                             <form className="space-y-8">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="space-y-3">
-                                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Nome Completo</label>
+                                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">{t('contact.name_label')}</label>
                                         <input 
                                             type="text" 
                                             placeholder="John Doe"
@@ -156,7 +158,7 @@ const Contact = () => {
                                         />
                                     </div>
                                     <div className="space-y-3">
-                                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Email Aziendale</label>
+                                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">{t('contact.email_label')}</label>
                                         <input 
                                             type="email" 
                                             placeholder="john@company.ch"
@@ -167,7 +169,7 @@ const Contact = () => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="space-y-3">
-                                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Società</label>
+                                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">{t('contact.company_label')}</label>
                                         <input 
                                             type="text" 
                                             placeholder="Your Co. Ltd"
@@ -175,21 +177,21 @@ const Contact = () => {
                                         />
                                     </div>
                                     <div className="space-y-3">
-                                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Settore</label>
+                                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">{t('contact.sector_label')}</label>
                                         <select className="w-full bg-slate-50 border-none rounded-2xl py-5 px-6 text-sm font-medium focus:ring-2 focus:ring-accent outline-none transition-all appearance-none cursor-pointer">
-                                            <option>Risorse Umane</option>
-                                            <option>Sviluppo Software</option>
-                                            <option>Marketing</option>
-                                            <option>Altro</option>
+                                            <option>{t('contact.sector_hr')}</option>
+                                            <option>{t('contact.sector_dev')}</option>
+                                            <option>{t('contact.sector_marketing')}</option>
+                                            <option>{t('contact.sector_other')}</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div className="space-y-3">
-                                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Messaggio</label>
+                                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">{t('contact.message_label')}</label>
                                     <textarea 
                                         rows="5"
-                                        placeholder="Come possiamo aiutarti oggi?"
+                                        placeholder={t('contact.message_placeholder')}
                                         className="w-full bg-slate-50 border-none rounded-3xl py-5 px-6 text-sm font-medium focus:ring-2 focus:ring-accent outline-none transition-all resize-none"
                                     ></textarea>
                                 </div>
@@ -197,7 +199,7 @@ const Contact = () => {
                                 <div className="pt-6">
                                     <button className="group relative w-full overflow-hidden bg-primary py-6 rounded-3xl text-sm font-bold tracking-widest text-white transition-all hover:scale-[1.01] active:scale-95 shadow-xl shadow-primary/20">
                                         <span className="relative z-10 flex items-center justify-center gap-3">
-                                            INVIA MESSAGGIO <Send size={16} />
+                                            {t('contact.submit')} <Send size={16} />
                                         </span>
                                         <div className="absolute inset-0 bg-accent translate-x-full transition-transform duration-500 group-hover:translate-x-0" />
                                     </button>
@@ -205,7 +207,7 @@ const Contact = () => {
 
                                 <div className="flex items-center gap-3 pt-6 border-t border-slate-50">
                                     <Check size={14} className="text-accent" />
-                                    <p className="text-[10px] text-slate-400 font-medium">Acconsento al trattamento dei dati personali secondo le Condizioni Generali.</p>
+                                    <p className="text-[10px] text-slate-400 font-medium">{t('contact.gdpr')}</p>
                                 </div>
                             </form>
                         </div>
@@ -219,11 +221,11 @@ const Contact = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
                         <div>
                             <h2 className="text-5xl md:text-7xl font-black text-primary leading-[0.9] tracking-tighter mb-8 italic font-drama">
-                                Presenza locale, <br />
-                                <span className="text-accent underline">visione globale.</span>
+                                {t('contact.location_title')} <br />
+                                <span className="text-accent underline">{t('contact.location_em')}</span>
                             </h2>
                             <p className="text-xl text-slate-500 font-light leading-relaxed mb-12">
-                                Ci trovi nel cuore del Ticino, ma operiamo in tutto il territorio svizzero per connettere il talento alle opportunità.
+                                {t('contact.location_sub')}
                             </p>
                             <div className="flex gap-4">
                                 <a 
@@ -232,7 +234,7 @@ const Contact = () => {
                                     rel="noreferrer"
                                     className="bg-slate-100 hover:bg-slate-200 text-primary px-8 py-4 rounded-2xl font-bold text-xs tracking-widest transition-all"
                                 >
-                                    APRI MAPPA
+                                    {t('contact.open_map')}
                                 </a>
                             </div>
                         </div>

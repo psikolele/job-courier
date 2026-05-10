@@ -12,10 +12,6 @@ const Footer = () => {
                     <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-10">
                         Il portale svizzero per trovare il tuo prossimo lavoro in un click. Precisione, velocità e un network locale forte.
                     </p>
-                    <div className="flex items-center gap-3 bg-white/5 rounded-full px-5 py-2.5 w-max border border-white/10 hover:border-accent/40 transition-colors group cursor-default">
-                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.6)]"></div>
-                        <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-gray-300 group-hover:text-white transition-colors">System Operational</span>
-                    </div>
                 </div>
 
                 <div className="flex gap-16 md:gap-24 flex-wrap">

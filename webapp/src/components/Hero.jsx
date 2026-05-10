@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Search, MapPin, Briefcase, ChevronRight, Mail, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 import heroBg1 from '../assets/hero-bg.jpg';
 
@@ -12,6 +13,7 @@ const Hero = ({ setShowLoginModal }) => {
     const [isMobile, setIsMobile] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [timerKey, setTimerKey] = useState(0);
+    const navigate = useNavigate();
 
     const [cantons, setCantons] = useState([]);
     const [sectors, setSectors] = useState([]);
@@ -60,7 +62,6 @@ const Hero = ({ setShowLoginModal }) => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const baseUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php';
         const queryParams = new URLSearchParams();
         
         let hasCountryRegion = false;
@@ -97,7 +98,7 @@ const Hero = ({ setShowLoginModal }) => {
             }
         }
 
-        window.location.href = `${baseUrl}?${queryParams.toString()}`;
+        navigate(`/offerte?${queryParams.toString()}`);
     };
 
     const sliderImages = [

@@ -2,15 +2,15 @@
   "nav": {
     "candidates": "CANDIDATS",
     "companies": "ENTREPRISES",
-    "jobs": "Recherche d'emploi",
+    "jobs": "Chercher un emploi",
     "blog": "Blog",
     "institutions": "Institutions",
     "login": "Connexion",
     "other_links": "Autres liens",
     "all_offers": "Voir toutes les offres",
     "all_companies": "Voir toutes les entreprises",
-    "pricing": "Prix et solutions",
-    "register_company": "Enregistrer l'entreprise"
+    "pricing": "Solutions et tarifs",
+    "register_company": "Inscrire une entreprise"
   },
   "hero": {
     "candidates": {
@@ -18,15 +18,15 @@
       "h1_sub": "Prochain Emploi.",
       "subtitle": "Pour les Candidats",
       "cta": "Trouver des Offres",
-      "search_placeholder": "Titre du poste, entreprise ou mot-clé...",
-      "any_sector": "Tous les secteurs",
-      "all_cantons": "Tous les cantons (Suisse)"
+      "search_placeholder": "Poste, entreprise ou mot-clé...",
+      "any_sector": "Tout secteur",
+      "all_cantons": "Tous les Cantons (Suisse)"
     },
     "companies": {
       "h1": "Trouvez votre meilleur",
       "h1_sub": "Talent maintenant.",
       "subtitle": "Pour les Entreprises",
-      "cta": "Publier une Annonce"
+      "cta": "Publier une annonce"
     }
   },
   "blog": {
@@ -34,14 +34,98 @@
     "title_companies": "Conseils de recrutement",
     "read_article": "Lire l'article",
     "candidateArticles": [
-      { "id": 1, "title": "Comment réussir les entretiens techniques en 2026", "description": "Découvrez les meilleures stratégies pour affronter les entretiens techniques dans les grandes entreprises suisses..." },
-      { "id": 2, "title": "Le format de CV parfait pour le marché suisse", "description": "Que regardent les recruteurs dans les 6 premières secondes ? Le guide ultime pour structurer votre CV..." },
-      { "id": 3, "title": "Négocier son salaire : erreurs à éviter", "description": "Les trois phrases à ne jamais dire lors de la discussion du package de rémunération lors du tour final..." }
+      { "id": 1, "title": "Comment réussir les entretiens techniques en 2026", "description": "Découvrez les meilleures stratégies pour les entretiens techniques dans les meilleures entreprises tech suisses..." },
+      { "id": 2, "title": "Le format CV parfait pour le marché suisse", "description": "Que regardent les recruteurs dans les 6 premières secondes? Le guide ultime pour structurer votre CV..." },
+      { "id": 3, "title": "Négocier son salaire: erreurs à éviter", "description": "Les trois phrases à ne jamais dire lors de la discussion du package de rémunération..." }
     ],
     "companyArticles": [
-      { "id": 1, "title": "Les tendances du télétravail en Suisse", "description": "Comment attirer les talents de toute la confédération en offrant de la flexibilité tout en garantissant la productivité..." },
-      { "id": 2, "title": "Marque employeur : pourquoi les candidats vous rejettent", "description": "Analyse des données de rebond : ce que les meilleurs éléments recherchent vraiment lorsqu'ils lisent vos annonces..." },
-      { "id": 3, "title": "L'intelligence artificielle dans le screening", "description": "Comment intégrer des solutions d'IA dans le processus de recrutement sans perdre la touche humaine essentielle..." }
+      { "id": 1, "title": "Tendances du télétravail en Suisse", "description": "Comment attirer des talents de toute la confédération en offrant flexibilité et productivité..." },
+      { "id": 2, "title": "Employer Branding: pourquoi les candidats vous rejettent", "description": "Analyse des données: ce que les top performers recherchent vraiment dans vos annonces..." },
+      { "id": 3, "title": "Intelligence Artificielle dans le tri des candidatures", "description": "Comment implémenter l'IA dans le processus de recrutement sans perdre la touche humaine essentielle..." }
     ]
+  },
+  "come_funziona": {
+    "subtitle": "Processus JobCourier",
+    "hero_title": "Simple.",
+    "hero_em": "Chirurgical.",
+    "hero_sub": "De l'inscription à la première candidature: en quelques clics, vous maîtrisez le recrutement.",
+    "steps_title": "Comment ça marche",
+    "step1_title": "Inscription",
+    "step1_desc": "Créez votre compte entreprise en 30 secondes. Pas de bureaucratie, pas d'attente.",
+    "step2_title": "Choisir un plan",
+    "step2_desc": "De l'annonce unique aux forfaits enterprise: choisissez la solution la plus adaptée.",
+    "step3_title": "Publier l'annonce",
+    "step3_desc": "Gérez vos annonces de manière complète, anonyme ou visible, avec une flexibilité maximale.",
+    "step4_title": "Recevoir des candidatures",
+    "step4_desc": "Accédez à la base de données et débloquez les profils les plus qualifiés. Le matching avancé travaille pour vous.",
+    "why_title": "Pourquoi JobCourier",
+    "why_sub": "Une plateforme construite pour le marché suisse. Locale, précise, efficace.",
+    "feature1_title": "Portail Suisse",
+    "feature1_desc": "Base de données locale avec des candidats vérifiés actifs sur le marché du travail suisse.",
+    "feature2_title": "Matching Avancé",
+    "feature2_desc": "Algorithme de matching qui identifie les profils les plus compatibles avec vos exigences.",
+    "feature3_title": "Support Dédié",
+    "feature3_desc": "Une équipe d'experts à votre disposition pour optimiser vos campagnes de recrutement.",
+    "cta_title": "Prêt à commencer?",
+    "cta_sub": "Inscrivez votre entreprise et publiez votre première annonce en moins de 5 minutes.",
+    "cta_btn": "COMMENCER",
+    "cta_btn2": "Voir les plans"
+  },
+  "pricing": {
+    "subtitle": "Solutions de Recrutement",
+    "hero_title": "Vous cherchez des candidats?",
+    "hero_em": "Nous les trouvons.",
+    "hero_sub": "Nous optimisons votre temps et accélérons le recrutement avec des solutions basées sur la visibilité, la base de données et le matching avancé.",
+    "cta_register": "S'INSCRIRE GRATUITEMENT",
+    "cta_discover": "Découvrir les plans",
+    "tab_autonomia": "EN AUTONOMIE",
+    "tab_richiesta": "SUR DEMANDE",
+    "strategy_title": "Stratégie sur Mesure",
+    "strategy_sub": "Plans semestriels ou annuels pour les entreprises ayant besoin d'un flux constant d'annonces.",
+    "processo_label": "/ Processus",
+    "processo_title": "Chirurgical. Quelques clics.",
+    "processo_sub": "Nous accélérons votre recrutement. Nous libérons votre temps.",
+    "buy": "ACHETER",
+    "contact_us": "NOUS CONTACTER",
+    "cta_title": "Des questions?",
+    "cta_em": "Parlons-en.",
+    "cta_sub": "Nous écoutons attentivement les besoins de recrutement de votre organisation et proposons la solution la plus adaptée.",
+    "cta_btn": "NOUS CONTACTER",
+    "instant": "// Instantané",
+    "volume": "// Volume"
+  },
+  "contact": {
+    "protocol_label": "Protocole de Communication",
+    "hero_title": "Parlons de croissance.",
+    "hero_em": "Nous écoutons.",
+    "hero_sub": "Chaque grande collaboration commence par une conversation. Racontez-nous vos objectifs et nous construirons le plan idéal pour votre recrutement.",
+    "connection_label": "Détails de connexion",
+    "phone_label": "Commercial",
+    "phone_hours": "Lun - Ven, 08:30 - 18:00",
+    "email_sub": "Support rapide garanti",
+    "hq_label": "Siège social",
+    "service_quote": "\"Notre Service Client est entièrement à votre disposition pour toute demande d'information sur la publication d'annonces.\"",
+    "candidate_status": "Statut: Info Candidats",
+    "candidate_title": "Vous cherchez un emploi?",
+    "candidate_desc": "JobCourier ne fournit pas d'informations directes sur les offres: celles-ci sont gérées par les entreprises. N'envoyez pas de CV par e-mail.",
+    "register_portal": "S'INSCRIRE SUR LE PORTAIL",
+    "form_title": "Envoyer un message",
+    "form_sub": "Entrez vos coordonnées et nous vous répondrons dans les 24 heures ouvrables.",
+    "name_label": "Nom complet",
+    "email_label": "E-mail professionnel",
+    "company_label": "Société",
+    "sector_label": "Secteur",
+    "sector_hr": "Ressources Humaines",
+    "sector_dev": "Développement Logiciel",
+    "sector_marketing": "Marketing",
+    "sector_other": "Autre",
+    "message_label": "Message",
+    "message_placeholder": "Comment pouvons-nous vous aider aujourd'hui?",
+    "submit": "ENVOYER LE MESSAGE",
+    "gdpr": "Je consens au traitement de mes données personnelles conformément aux Conditions Générales.",
+    "location_title": "Présence locale,",
+    "location_em": "vision globale.",
+    "location_sub": "Trouvez-nous au cœur du Tessin, mais nous opérons dans toute la Suisse pour connecter les talents aux opportunités.",
+    "open_map": "OUVRIR LA CARTE"
   }
 }

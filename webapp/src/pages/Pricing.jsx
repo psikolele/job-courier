@@ -3,12 +3,53 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check, ArrowRight, MessageSquare } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import {
+    HoverSlider,
+    HoverSliderImage,
+    HoverSliderImageWrap,
+    TextStaggerHover,
+    SlideDescription,
+} from '@/components/ui/animated-slideshow';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// ---- Data for PROCESSO interactive slider ----
+const PROCESSO_SLIDES = [
+    {
+        id: 'slide-1',
+        title: 'Soluzioni Veloci',
+        subtitle: 'SOLUZIONI. VELOCI.',
+        desc: 'Assumi più velocemente grazie alle nostre soluzioni di reclutamento. La visibilità del nostro portale e l\'ampio database di candidati ti permettono di trovare rapidamente i candidati più qualificati per le tue posizioni aperte.',
+        imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop',
+    },
+    {
+        id: 'slide-2',
+        title: 'Recruiting Semplificato',
+        subtitle: 'RECRUITING SEMPLIFICATO',
+        desc: 'JobCourier ti offre una piattaforma intuitiva e facile da usare, che ti permette di gestire tutte le fasi del tuo processo di recruiting da un unico punto di accesso.',
+        imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop',
+    },
+    {
+        id: 'slide-3',
+        title: 'Più Efficienza, Meno Costi',
+        subtitle: 'PIÙ EFFICIENZA, MENO COSTI',
+        desc: 'Massimizza il tuo tempo. JobCourier trova i candidati giusti per te. Il nostro sistema di matching avanzato ti permette di identificare rapidamente i candidati che possiedono le competenze e le esperienze richieste per il tuo ruolo.',
+        imageUrl: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop',
+    },
+    {
+        id: 'slide-4',
+        title: 'Soluzioni Personalizzate',
+        subtitle: 'SOLUZIONI PERSONALIZZATE',
+        desc: 'Recluta con sicurezza grazie a un partner affidabile e strategico. Il nostro team di esperti è sempre a tua disposizione per offrirti assistenza e supporto personalizzato e studiare insieme strategie di recruiting efficaci.',
+        imageUrl: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop',
+    },
+];
 
 const Pricing = () => {
     const containerRef = useRef(null);
     const [activeTab, setActiveTab] = useState('autonomia');
+    const { t } = useTranslation();
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -131,11 +172,11 @@ const Pricing = () => {
                             <span className="text-xs font-bold tracking-[0.3em] text-[#01498C] uppercase block">Soluzioni di Recruitment</span>
                         </div>
                         <h1 className="hero-line text-5xl md:text-7xl font-bold text-[#1a1a1a] leading-tight mb-6">
-                            Cerchi candidati?<br />
-                            <span className="text-[#01498C]">Noi li troviamo.</span>
+                            {t('pricing.hero_title')}<br />
+                            <span className="text-[#01498C]">{t('pricing.hero_em')}</span>
                         </h1>
                         <p className="hero-line text-lg md:text-xl text-[#666] max-w-2xl font-normal leading-relaxed mb-8">
-                            Ottimizziamo il tuo tempo e acceleriamo il recruiting con soluzioni basate su visibilità, database e matching avanzato.
+                            {t('pricing.hero_sub')}
                         </p>
 
                         <div className="hero-line flex flex-col sm:flex-row items-center gap-4">
@@ -143,10 +184,10 @@ const Pricing = () => {
                                 href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
                                 className="inline-flex items-center gap-2 bg-[#01498C] px-8 py-4 rounded-lg text-sm font-bold tracking-wide text-white hover:bg-[#013dd6] transition-colors"
                             >
-                                REGISTRATI GRATIS <ArrowRight size={16} />
+                                {t('pricing.cta_register')} <ArrowRight size={16} />
                             </a>
                             <a href="#soluzioni" className="text-[#01498C] hover:text-[#013dd6] transition-colors font-bold text-sm tracking-wide">
-                                Scopri i piani
+                                {t('pricing.cta_discover')}
                             </a>
                         </div>
                     </div>
@@ -164,7 +205,7 @@ const Pricing = () => {
                                 : 'bg-[#F4F6F8] text-[#666] hover:bg-[#E5E5E5]'
                         }`}
                     >
-                        AUTONOMIA
+                        {t('pricing.tab_autonomia')}
                     </button>
                     <button
                         onClick={() => setActiveTab('richiesta')}
@@ -174,7 +215,7 @@ const Pricing = () => {
                                 : 'bg-[#F4F6F8] text-[#666] hover:bg-[#E5E5E5]'
                         }`}
                     >
-                        PRODOTTI SU RICHIESTA
+                        {t('pricing.tab_richiesta')}
                     </button>
                 </div>
             </div>
@@ -241,7 +282,7 @@ const Pricing = () => {
                                                 </ul>
 
                                                 <button className="w-full py-3 bg-[#1a1a1a] text-white font-bold text-xs tracking-widest rounded-lg hover:bg-[#01498C] transition-colors">
-                                                    ACQUISTA
+                                                    {t('pricing.buy')}
                                                 </button>
                                             </div>
                                         ))}
@@ -259,8 +300,8 @@ const Pricing = () => {
                             className="space-y-20"
                         >
                             <div className="border-l-4 border-[#01498C] pl-6">
-                                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] uppercase tracking-tight mb-4">Strategia su Misura</h2>
-                                <p className="text-[#666] text-lg leading-relaxed">Piani semestrali o annuali per aziende che necessitano di un flusso costante e illimitato di inserzioni.</p>
+                                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] uppercase tracking-tight mb-4">{t('pricing.strategy_title')}</h2>
+                                <p className="text-[#666] text-lg leading-relaxed">{t('pricing.strategy_sub')}</p>
                             </div>
 
                             {requested.map((section, idx) => (
@@ -308,30 +349,77 @@ const Pricing = () => {
                 </AnimatePresence>
             </section>
 
-            {/* PROCESS */}
-            <section className="bg-white py-20 px-6 md:px-12 border-t border-[#E5E5E5] section-trigger">
+
+            {/* PROCESSO — Interactive Hover Slider */}
+            <section className="bg-white py-20 px-6 md:px-12 border-t border-[#E5E5E5] section-trigger overflow-hidden">
                 <div className="container mx-auto">
-                    <div className="section-reveal mb-12 max-w-2xl border-l-4 border-[#01498C] pl-6">
-                        <h2 className="text-xs font-bold tracking-[0.3em] text-[#01498C] uppercase mb-4">Processo</h2>
-                        <h3 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] leading-tight">Chirurgico.<br />Pochi click.</h3>
+                    {/* Section Header */}
+                    <div className="section-reveal mb-16 max-w-2xl border-l-4 border-[#01498C] pl-6">
+                        <h2 className="text-xs font-bold tracking-[0.3em] text-[#01498C] uppercase mb-4 font-mono">
+                            / Processo
+                        </h2>
+                        <h3 className="text-4xl md:text-6xl font-bold text-[#1a1a1a] leading-tight">
+                            Chirurgico.<br />Pochi click.
+                        </h3>
+                        <p className="text-[#666] mt-4 text-base leading-relaxed max-w-md">
+                            Acceleriamo il tuo recruiting. Liberiamo il tuo tempo.
+                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
-                        {[
-                            { step: "01", title: "Registra", desc: "Compila il format, attiva l'account in pochi secondi." },
-                            { step: "02", title: "Acquista", desc: "E-commerce integrato: PayPal, carta o bonifico." },
-                            { step: "03", title: "Pubblica", desc: "Gestisci inserzioni in chiaro o in modalità anonima." },
-                            { step: "04", title: "Ricerca", desc: "Accedi al database e sblocca i profili migliori." }
-                        ].map((item, i) => (
-                            <div key={i} className="section-reveal p-6 bg-[#F4F6F8] rounded-lg hover:shadow-sm transition-all duration-300">
-                                <span className="text-3xl font-bold text-[#01498C] mb-4 block font-mono">{item.step}</span>
-                                <h4 className="text-lg font-bold text-[#1a1a1a] mb-3 uppercase tracking-tight">{item.title}</h4>
-                                <p className="text-[#666] text-sm leading-relaxed">{item.desc}</p>
+                    {/* Animated Hover Slider */}
+                    <HoverSlider className="w-full">
+                        <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-16">
+
+                            {/* Left: Titles only — single line each */}
+                            <div className="flex flex-col justify-center lg:w-[45%]">
+                                {PROCESSO_SLIDES.map((slide, index) => (
+                                    <div key={slide.id}>
+                                        <TextStaggerHover
+                                            index={index}
+                                            text={slide.title}
+                                            className="cursor-pointer text-xl md:text-2xl xl:text-3xl font-bold uppercase tracking-tight text-[#1a1a1a] hover:text-[#01498C] transition-colors py-3 block whitespace-nowrap overflow-hidden"
+                                        />
+                                        {/* Separator line */}
+                                        <div className="h-px w-full bg-[#E5E5E5]" />
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
+
+                            {/* Right: Image with description overlay at bottom */}
+                            <div className="lg:w-[55%] w-full">
+                                <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#01498C]/10" style={{ height: '420px' }}>
+                                    {/* Images stacked via grid */}
+                                    <HoverSliderImageWrap className="absolute inset-0">
+                                        {PROCESSO_SLIDES.map((slide, index) => (
+                                            <div key={slide.id}>
+                                                <HoverSliderImage
+                                                    index={index}
+                                                    imageUrl={slide.imageUrl}
+                                                    src={slide.imageUrl}
+                                                    alt={slide.title}
+                                                    className="w-full h-full object-cover"
+                                                    loading="eager"
+                                                    decoding="async"
+                                                />
+                                            </div>
+                                        ))}
+                                    </HoverSliderImageWrap>
+
+                                    {/* Gradient overlay — covers lower 60% of image */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#01498C] via-[#01498C]/80 via-[50%] to-transparent pointer-events-none" />
+
+                                    {/* Description text — fills lower 50% of image */}
+                                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10 pt-24 md:pt-32">
+                                        <SlideDescription slides={PROCESSO_SLIDES} />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </HoverSlider>
                 </div>
             </section>
+
 
             {/* CTA */}
             <section className="py-20 px-6 md:px-12 bg-[#F4F6F8]">
