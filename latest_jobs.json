@@ -17,19 +17,19 @@
   },
   {
     "id": 2,
-    "title": "Bilingual (English/Russian) AI Content Editor (Latvia Based) – Part-Time, Freelance - 20USD/Hour",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Approach People Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701487-bilingual-english-russian-ai-content-editor-latvia-based-?-part-time-freelance-20usd-hour-remote&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Validation Engineer",
+    "title": "Tecnico settore metalcostruzioni",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701477-validation-engineer-mezzovico-ti-mezzovico&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701479-tecnico-settore-metalcostruzioni-bellinzona-bellinzona&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Manufacturing Engineer",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701476-manufacturing-engineer-mezzovico-ti-mezzovico&language=en"
   },
   {
     "id": 4,
@@ -41,22 +41,6 @@
   },
   {
     "id": 5,
-    "title": "Meccanico/a auto (temporaneo)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701481-meccanico-a-auto-temporaneo-lugano-lugano&language=en"
-  },
-  {
-    "id": 6,
-    "title": "OPERATORE REPARTO FINITO",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701489-operatore-reparto-finito-sottoceneru&language=en"
-  },
-  {
-    "id": 7,
     "title": "Bilingual (English/Russian) AI Content Editor (Estonia Based) – Part-Time, Freelance - 20USD/Hour",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,15 +48,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701485-bilingual-english-russian-ai-content-editor-estonia-based-?-part-time-freelance-20usd-hour-remote&language=en"
   },
   {
-    "id": 8,
-    "title": "Operatore di produzione in camera bianca (fixed term)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701478-operatore-di-produzione-in-camera-bianca-fixed-term-lugano-lugano&language=en"
-  },
-  {
-    "id": 9,
+    "id": 6,
     "title": "TECNICO ATTREZZISTA POLIVALENTE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +56,43 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701490-tecnico-attrezzista-polivalente-sottoceneri&language=en"
   },
   {
-    "id": 10,
-    "title": "Manufacturing Engineer",
+    "id": 7,
+    "title": "Lavoratore edile cat. B",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701476-manufacturing-engineer-mezzovico-ti-mezzovico&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701480-lavoratore-edile-cat-b-bellinzona-bellinzona&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Bilingual (English/Russian) AI Content Editor (Ukraine Based) – Part-Time, Freelance - 20USD/Hour",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701483-bilingual-english-russian-ai-content-editor-ukraine-based-?-part-time-freelance-20usd-hour-remote&language=en"
+  },
+  {
+    "id": 9,
+    "title": "OPERATORE REPARTO FINITO",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701489-operatore-reparto-finito-sottoceneru&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Operatore di produzione in camera bianca (fixed term)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701478-operatore-di-produzione-in-camera-bianca-fixed-term-lugano-lugano&language=en"
   },
   {
     "id": 11,
-    "title": "Tecnico settore metalcostruzioni",
+    "title": "Bilingual (English/Russian) AI Content Editor (Latvia Based) – Part-Time, Freelance - 20USD/Hour",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701479-tecnico-settore-metalcostruzioni-bellinzona-bellinzona&language=en"
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701487-bilingual-english-russian-ai-content-editor-latvia-based-?-part-time-freelance-20usd-hour-remote&language=en"
   }
 ]
