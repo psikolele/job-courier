@@ -1,11 +1,11 @@
 [
   {
     "id": 0,
-    "title": "Chemical Engineer",
+    "title": "Fullstack Softwareentwickler",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701847-chemical-engineer-mezzovico-ti-mezzovico&language=en"
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701851-fullstack-softwareentwickler-cham&language=en"
   },
   {
     "id": 1,
@@ -17,19 +17,19 @@
   },
   {
     "id": 2,
-    "title": "Quality Engineer",
+    "title": "Software Entwickler:in / Software Engineer (m/w/d), 60-100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701846-quality-engineer-mezzovico-ti-mezzovico&language=en"
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701852-software-entwickler-in-software-engineer-m-w-d-60-100-goldau&language=en"
   },
   {
     "id": 3,
-    "title": "Junior Accountant (m/w/d) 80?100%",
+    "title": "Macchinista edile",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701839-junior-accountant-m-w-d-80-100-aarau-aargau&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701853-macchinista-edile-sottoceneri&language=en"
   },
   {
     "id": 4,
@@ -41,11 +41,11 @@
   },
   {
     "id": 5,
-    "title": "Fullstack Softwareentwickler",
+    "title": "Gruista Suva",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701851-fullstack-softwareentwickler-cham&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701848-gruista-suva-sopraceneri&language=en"
   },
   {
     "id": 6,
@@ -57,30 +57,6 @@
   },
   {
     "id": 7,
-    "title": "Anlagenführer ? Produktion & Maschinen (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701841-anlagenfuhrer-produktion-maschinen-m-w-d-100-wohlen-ag&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Software Entwickler:in / Software Engineer (m/w/d), 60-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701852-software-entwickler-in-software-engineer-m-w-d-60-100-goldau&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Treuhänder in Ausbildung zum TREX D/E (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701840-treuh%C3%A4nder-in-ausbildung-zum-trex-d-e-m-w-d-100-rotkreuz-zug&language=en"
-  },
-  {
-    "id": 10,
     "title": "Junior Treuhänder (m/w/d) 60-100% in Ausbildung zum Fachausweis",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701842-junior-treuh%C3%A4nder-m-w-d-60-100-in-ausbildung-zum-fachausweis-sursee-luzern&language=en"
   },
   {
-    "id": 11,
-    "title": "Gruista Suva",
+    "id": 8,
+    "title": "Anlagenführer ? Produktion & Maschinen (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701848-gruista-suva-sopraceneri&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701841-anlagenfuhrer-produktion-maschinen-m-w-d-100-wohlen-ag&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Elektroinstallateur EFZ  (a) 80-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701845-elektroinstallateur-efz-a-80-100-wangen-an-der-aare-be&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Junior Accountant (m/w/d) 80?100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701839-junior-accountant-m-w-d-80-100-aarau-aargau&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Treuhänder in Ausbildung zum TREX D/E (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6701840-treuh%C3%A4nder-in-ausbildung-zum-trex-d-e-m-w-d-100-rotkreuz-zug&language=en"
   }
 ]
