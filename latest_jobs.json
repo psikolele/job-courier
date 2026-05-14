@@ -1,22 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Servicetechniker Haushalt (m/w)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702709-servicetechniker-haushalt-m-w-spreitenbach-aargau&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Polymécanicien CFC",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702712-polymecanicien-cfc-lausanne-vaud&language=en"
-  },
-  {
-    "id": 2,
     "title": "Servicetechnikerin (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,15 +8,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702713-servicetechnikerin-m-w-d-opfikon-zh&language=en"
   },
   {
-    "id": 3,
-    "title": "Responsable d'équipe prestations LPP",
+    "id": 1,
+    "title": "Gebäudetechniker:in Elektro (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702711-responsable-d-equipe-prestations-lpp-lausanne-vaud&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702705-geb%C3%A4udetechniker-in-elektro-m-w-d-zurich-zh&language=en"
   },
   {
-    "id": 4,
+    "id": 2,
+    "title": "HR- & Finanz-Generalist:in",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702708-hr-finanz-generalist-in-riehen-bs&language=en"
+  },
+  {
+    "id": 3,
     "title": "Addetta/o linee produzione settore logistico 16h/ settimanali h. 05-09",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,12 +32,20 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702715-addetta-o-linee-produzione-settore-logistico-16h-settimanali-h-05-09-lugano-lugano&language=en"
   },
   {
-    "id": 5,
-    "title": "Zimmermann / Holzbau-Fachmann (m/w/d)",
+    "id": 4,
+    "title": "Betriebselektriker (m/w/d) Industrieumfeld Lebensmittelproduktion",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702706-zimmermann-holzbau-fachmann-m-w-d-seon-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702710-betriebselektriker-m-w-d-industrieumfeld-lebensmittelproduktion-dubendorf-zh&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Rappresentante commerciale settore Ferramenta (Bellinzonese)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702718-rappresentante-commerciale-settore-ferramenta-bellinzonese-bellinzona-bellinzona&language=en"
   },
   {
     "id": 6,
@@ -57,42 +57,42 @@
   },
   {
     "id": 7,
-    "title": "Betriebselektriker (m/w/d) Industrieumfeld Lebensmittelproduktion",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702710-betriebselektriker-m-w-d-industrieumfeld-lebensmittelproduktion-dubendorf-zh&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Spécialiste de la sécurité au travail et de la protection de la santé (STPS)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702714-specialiste-de-la-securite-au-travail-et-de-la-protection-de-la-sante-stps-lausanne-vaud&language=en"
-  },
-  {
-    "id": 9,
-    "title": "HR- & Finanz-Generalist:in",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702708-hr-finanz-generalist-in-riehen-bs&language=en"
-  },
-  {
-    "id": 10,
-    "title": "Rappresentante commerciale settore Ferramenta (Bellinzonese)",
+    "title": "Addetto/a ristorante a tempo parziale 10%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702718-rappresentante-commerciale-settore-ferramenta-bellinzonese-bellinzona-bellinzona&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702716-addetto-a-ristorante-a-tempo-parziale-10-lugano-lugano&language=en"
   },
   {
-    "id": 11,
+    "id": 8,
     "title": "HR Generalist/in (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702707-hr-generalist-in-m-w-d-100-frauenfeld-tg&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Polymécanicien CFC",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702712-polymecanicien-cfc-lausanne-vaud&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Inside Sales B2B e B2C - Energy",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702719-inside-sales-b2b-e-b2c-energy-mendrisio-lugano&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Responsable d'équipe prestations LPP",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702711-responsable-d-equipe-prestations-lpp-lausanne-vaud&language=en"
   }
 ]
