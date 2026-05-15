@@ -1,78 +1,38 @@
 [
   {
     "id": 0,
-    "title": "Spécialiste de la sécurité au travail et de la protection de la santé (STPS)",
+    "title": "Projektleiter:in Hochbau",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702714-specialiste-de-la-securite-au-travail-et-de-la-protection-de-la-sante-stps-lausanne-vaud&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702726-projektleiter-in-hochbau-zurich-zh&language=en"
   },
   {
     "id": 1,
-    "title": "HR Generalist/in (m/w/d) 100%",
+    "title": "Projektleiter:in Bahnbau",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702707-hr-generalist-in-m-w-d-100-frauenfeld-tg&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702727-projektleiter-in-bahnbau-zurich-zh&language=en"
   },
   {
     "id": 2,
-    "title": "Servicetechniker Haushalt (m/w)",
+    "title": "Projektleiter:in Tragkonstruktionen",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702709-servicetechniker-haushalt-m-w-spreitenbach-aargau&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702731-projektleiter-in-tragkonstruktionen-bern-be&language=en"
   },
   {
     "id": 3,
-    "title": "Zimmermann / Holzbau-Fachmann (m/w/d)",
+    "title": "Bauingenieur:in",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702706-zimmermann-holzbau-fachmann-m-w-d-seon-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702723-bauingenieur-in-zurich-zh&language=en"
   },
   {
     "id": 4,
-    "title": "Addetto/a ristorante a tempo parziale 10%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702716-addetto-a-ristorante-a-tempo-parziale-10-lugano-lugano&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Rappresentante commerciale settore Ferramenta (Bellinzonese)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702718-rappresentante-commerciale-settore-ferramenta-bellinzonese-bellinzona-bellinzona&language=en"
-  },
-  {
-    "id": 6,
-    "title": "HR- & Finanz-Generalist:in",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702708-hr-finanz-generalist-in-riehen-bs&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Betriebselektriker (m/w/d) Industrieumfeld Lebensmittelproduktion",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702710-betriebselektriker-m-w-d-industrieumfeld-lebensmittelproduktion-dubendorf-zh&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Addetto alle pulizie",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702717-addetto-alle-pulizie-rivera-tessin-bellinzona&language=en"
-  },
-  {
-    "id": 9,
     "title": "Inside Sales B2B e B2C - Energy",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +40,59 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702719-inside-sales-b2b-e-b2c-energy-mendrisio-lugano&language=en"
   },
   {
-    "id": 10,
-    "title": "Responsable d'équipe prestations LPP",
+    "id": 5,
+    "title": "Senior Bauingenieur:in",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702711-responsable-d-equipe-prestations-lpp-lausanne-vaud&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702728-senior-bauingenieur-in-zurich-zh&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Automobilfachmann ? in hochmodernen Werkstatt mit Zukunft (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702730-automobilfachmann-in-hochmodernen-werkstatt-mit-zukunft-m-w-d-100-zurich-zurich&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Programmeur - Régleur CNC (F/H/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702733-programmeur-regleur-cnc-f-h-d-neuch%C3%A2tel-ne&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Projektleiter:in Tunnelbau",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702722-projektleiter-in-tunnelbau-zurich-zh&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Projektingenieur:in",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702724-projektingenieur-in-zurich-zh&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Zeichner:in EFZ Fachrichtung Ingenieurbau",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702725-zeichner-in-efz-fachrichtung-ingenieurbau-zurich-zh&language=en"
   },
   {
     "id": 11,
-    "title": "Bauarbeiter (m/w/d)",
+    "title": "Zeichner:in EFZ Fachrichtung Ingenieurbau",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702720-bauarbeiter-m-w-d-hedingen&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6702729-zeichner-in-efz-fachrichtung-ingenieurbau-zurich-zh&language=en"
   }
 ]
