@@ -1,6 +1,22 @@
 [
   {
     "id": 0,
+    "title": "Meccanico Mezzi pesanti e agricoli",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703528-meccanico-mezzi-pesanti-e-agricoli-locarno&language=en"
+  },
+  {
+    "id": 1,
+    "title": "Muratore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703539-muratore-sottoceneri&language=en"
+  },
+  {
+    "id": 2,
     "title": "Idraulico",
     "location": "Svizzera",
     "sector": "Generale",
@@ -8,15 +24,31 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703526-idraulico-lugano&language=en"
   },
   {
-    "id": 1,
-    "title": "Senior Actuary Life Expert (m/f/d)",
+    "id": 3,
+    "title": "Impermeabilizzatore",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Finders SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703524-senior-actuary-life-expert-m-f-d-adliswil&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703540-impermeabilizzatore-locarno&language=en"
   },
   {
-    "id": 2,
+    "id": 4,
+    "title": "Metalcostruttore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703535-metalcostruttore-locarno&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Operai Impermeabilizzatori",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703533-operai-impermeabilizzatori-sottoceneri&language=en"
+  },
+  {
+    "id": 6,
     "title": "Pianificatore della Produzione",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,75 +56,43 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703527-pianificatore-della-produzione-locarno&language=en"
   },
   {
-    "id": 3,
-    "title": "Private Banking Assistant",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Finders SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703525-private-banking-assistant-zug&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Polymécanicien à 100% (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703521-polymecanicien-%C3%A0-100-h-f-d-payerne-vd&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Maler/in EFZ (m/w/d) 100% temporär",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703517-maler-in-efz-m-w-d-100-tempor%C3%A4r-winterthur-zh&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Hilsarbeiter/in Gipserei (m/w/d) 100% temporär",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703514-hilsarbeiter-in-gipserei-m-w-d-100-tempor%C3%A4r-frauenfeld-tg&language=en"
-  },
-  {
     "id": 7,
-    "title": "Projektleider Ladenbau",
+    "title": "Lattoniere",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703522-projektleider-ladenbau-egerkingen-so&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703538-lattoniere-sottoceneri&language=en"
   },
   {
     "id": 8,
-    "title": "Employé CVCS/MCR [H/F/X]",
+    "title": "Operai/e Addetti all'Assemblaggio e Montaggio",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703518-employe-cvcs-mcr-h-f-x-bulle-fr&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703530-operai-e-addetti-all-assemblaggio-e-montaggio-locarno&language=en"
   },
   {
     "id": 9,
-    "title": "Rangierdienstmitarbeiter (m/w/d) 100%",
+    "title": "Installatori e collaudatori elettrici",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703519-rangierdienstmitarbeiter-m-w-d-100-spreitenbach-ag&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703529-installatori-e-collaudatori-elettrici-locarno&language=en"
   },
   {
     "id": 10,
-    "title": "Elektroinstallateur / Montageelektriker EFZ für langfristigen Einsatz (a) 100%",
+    "title": "Fabbro / Metalcostruttore",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703523-elektroinstallateur-montageelektriker-efz-fur-langfristigen-einsatz-a-100-bern-bern-mittelland&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703532-fabbro-metalcostruttore-sottoceneri&language=en"
   },
   {
     "id": 11,
-    "title": "Sous Chef (m/w/d) in einem eingespielten Team",
+    "title": "Macchinista Asfaltatore",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703520-sous-chef-m-w-d-in-einem-eingespielten-team-luzern-lu&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703536-macchinista-asfaltatore-sopraceneri&language=en"
   }
 ]
