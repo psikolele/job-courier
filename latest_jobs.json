@@ -9,38 +9,14 @@
   },
   {
     "id": 1,
-    "title": "Muratore",
+    "title": "Saldatore",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703539-muratore-sottoceneri&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703534-saldatore-locarno&language=en"
   },
   {
     "id": 2,
-    "title": "Idraulico",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703526-idraulico-lugano&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Impermeabilizzatore",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703540-impermeabilizzatore-locarno&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Metalcostruttore",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703535-metalcostruttore-locarno&language=en"
-  },
-  {
-    "id": 5,
     "title": "Operai Impermeabilizzatori",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,20 +24,44 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703533-operai-impermeabilizzatori-sottoceneri&language=en"
   },
   {
-    "id": 6,
-    "title": "Pianificatore della Produzione",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703527-pianificatore-della-produzione-locarno&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Lattoniere",
+    "id": 3,
+    "title": "Fabbro / Metalcostruttore",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703538-lattoniere-sottoceneri&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703532-fabbro-metalcostruttore-sottoceneri&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Installatori e collaudatori elettrici",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703529-installatori-e-collaudatori-elettrici-locarno&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Metalcostruttore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703535-metalcostruttore-locarno&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Macchinista Asfaltatore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703536-macchinista-asfaltatore-sopraceneri&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Raspinista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703537-raspinista-sopraceneri&language=en"
   },
   {
     "id": 8,
@@ -73,26 +73,26 @@
   },
   {
     "id": 9,
-    "title": "Installatori e collaudatori elettrici",
+    "title": "Pianificatore della Produzione",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703529-installatori-e-collaudatori-elettrici-locarno&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703527-pianificatore-della-produzione-locarno&language=en"
   },
   {
     "id": 10,
-    "title": "Fabbro / Metalcostruttore",
+    "title": "Idraulico",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703532-fabbro-metalcostruttore-sottoceneri&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703526-idraulico-lugano&language=en"
   },
   {
     "id": 11,
-    "title": "Macchinista Asfaltatore",
+    "title": "Muratore",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703536-macchinista-asfaltatore-sopraceneri&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6703539-muratore-sottoceneri&language=en"
   }
 ]
