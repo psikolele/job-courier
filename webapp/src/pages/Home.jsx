@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import Hero from '../components/Hero';
+import Stats from '../components/Stats';
 import Filters from '../components/Filters';
 import Vetrini from '../components/Vetrini';
 import Blog from '../components/Blog';
@@ -10,10 +11,11 @@ const Home = ({ setShowLoginModal }) => {
   return (
     <main className="flex flex-col w-full">
       <Hero setShowLoginModal={setShowLoginModal} />
+      <Stats />
       <Filters />
-      
+
       <Vetrini />
-      
+
       <Blog />
     </main>
   );

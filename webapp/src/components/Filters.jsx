@@ -219,44 +219,67 @@ const Filters = () => {
 
 
     return (
-        <div id="filters" className="w-full relative z-20 pb-20 pt-8 bg-[#fafafa]">
+        <div id="filters" className="w-full relative z-20 pb-20 pt-8" style={{ background: 'var(--brand-gray-light)' }}>
             {/* ADVERTISEMENT SECTION */}
             <AdBanner />
 
             {/* Latest Jobs Feed from Vercel Proxy */}
             <div className="pt-4 w-[98%] mx-auto">
                 <div className="flex items-center justify-between mb-10 px-4 md:px-8">
-                    <h3 className="text-2xl font-normal text-slate-900 flex items-center gap-3 font-sans">
-                        <Clock className="w-6 h-6 text-[#01498C]" />
+                    <h3 style={{
+                        fontFamily: 'var(--font-brand)',
+                        fontWeight: 700,
+                        fontSize: 11,
+                        letterSpacing: '0.2em',
+                        textTransform: 'uppercase',
+                        color: 'var(--brand-fuchsia)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 12
+                    }}>
+                        <span style={{ width: 28, height: 2, background: 'var(--brand-fuchsia)', display: 'inline-block' }} />
                         Ultime inserite
                     </h3>
-                    <button onClick={() => navigate('/offerte')} className="hidden md:flex text-sm font-normal text-[#01498C] hover:text-[#002B7F] items-center gap-1 transition-colors font-mono uppercase tracking-wider">
+                    <button
+                        onClick={() => navigate('/offerte')}
+                        className="hidden md:flex items-center gap-1 transition-opacity hover:opacity-60"
+                        style={{
+                            fontFamily: 'var(--font-body)',
+                            fontSize: 12,
+                            color: 'var(--brand-navy)',
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            letterSpacing: '0.1em',
+                            textTransform: 'uppercase'
+                        }}
+                    >
                         Vedi tutte <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>
 
-                <div 
+                <div
                     className="overflow-hidden pb-12 -mx-4 relative px-4"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
                 >
-                    {/* Cinematic Gradients */}
-                    <div className="absolute top-0 left-0 w-12 md:w-24 h-full bg-gradient-to-r from-[#fafafa] to-transparent z-10 pointer-events-none hidden md:block"></div>
-                    <div className="absolute top-0 right-0 w-12 md:w-24 h-full bg-gradient-to-l from-[#fafafa] to-transparent z-10 pointer-events-none hidden md:block"></div>
-                    <div 
+                    {/* Edge fade */}
+                    <div className="absolute top-0 left-0 w-12 md:w-24 h-full z-10 pointer-events-none hidden md:block" style={{ background: 'linear-gradient(to right, var(--brand-gray-light), transparent)' }}></div>
+                    <div className="absolute top-0 right-0 w-12 md:w-24 h-full z-10 pointer-events-none hidden md:block" style={{ background: 'linear-gradient(to left, var(--brand-gray-light), transparent)' }}></div>
+                    <div
                         ref={sliderRef}
-                        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x w-full"
+                        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x w-full"
                         style={{ scrollBehavior: animationRef.current ? 'auto' : 'smooth' }}
                     >
                         {jobsLoading ? (
                             [...Array(12)].map((_, i) => (
-                                <div key={i} className="w-[300px] md:w-[380px] shrink-0 flex-none animate-pulse bg-white border border-slate-100 rounded-[2rem] p-8 h-[320px] snap-center"></div>
+                                <div key={i} className="w-[280px] md:w-[340px] shrink-0 flex-none animate-pulse bg-white p-6 h-[200px] snap-center" style={{ border: '1px solid rgba(5,11,43,0.07)' }}></div>
                             ))
                         ) : (
                             latestJobs.map((job, idx) => (
-                                <motion.div 
+                                <motion.div
                                     onClick={(e) => {
                                         if (checkClickLimit()) {
                                             e.preventDefault();
@@ -267,52 +290,73 @@ const Filters = () => {
                                         }
                                     }}
                                     key={`${job.id}-${idx}`}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    initial={{ opacity: 0, y: 8 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: (idx % 4) * 0.1 }}
-                                    className="cursor-pointer w-[320px] md:w-[400px] shrink-0 group flex flex-col h-[320px] bg-white border border-slate-200 hover:border-[#01498C]/30 rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(1,73,140,0.08)] hover-lift relative overflow-hidden snap-center"
+                                    transition={{ duration: 0.4, delay: (idx % 4) * 0.08 }}
+                                    className="cursor-pointer w-[280px] md:w-[340px] shrink-0 group snap-center"
+                                    style={{
+                                        background: '#FFFFFF',
+                                        border: '1px solid rgba(5,11,43,0.07)',
+                                        padding: '24px 28px',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: 0,
+                                        transition: 'background 0.15s'
+                                    }}
+                                    whileHover={{ backgroundColor: 'var(--brand-gray-light)' }}
                                 >
-                                    {/* Header Row: Company Info + Logo */}
-                                    <div className="flex justify-between items-start mb-8">
-                                        <div className="flex flex-col min-w-0 pr-4">
-                                            <span className="text-[11px] font-bold text-[#01498C]/60 truncate font-mono uppercase tracking-[0.2em] mb-2">
-                                                {job.company}
-                                            </span>
-                                            <div className="flex items-center gap-1.5 text-slate-400">
-                                                <MapPin className="w-3.5 h-3.5 shrink-0 text-[#2f9de5]" />
-                                                <span className="text-[10px] font-medium truncate uppercase tracking-widest font-sans">{job.location}</span>
+                                    {/* Fuchsia dot + role */}
+                                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 12 }}>
+                                        <span style={{
+                                            width: 7, height: 7, borderRadius: '50%',
+                                            background: 'var(--brand-fuchsia)',
+                                            flexShrink: 0, marginTop: 6
+                                        }} />
+                                        <div>
+                                            <div style={{
+                                                fontFamily: 'var(--font-brand)',
+                                                fontWeight: 700,
+                                                fontSize: 15,
+                                                color: 'var(--brand-navy)',
+                                                letterSpacing: '-0.01em',
+                                                marginBottom: 5,
+                                                lineHeight: 1.3
+                                            }}>{job.title}</div>
+                                            <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                                                <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>{job.company}</span>
+                                                <span style={{ color: 'rgba(139,143,168,0.4)', fontSize: 12 }}>·</span>
+                                                <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>{job.location}</span>
                                             </div>
                                         </div>
-                                        
-                                        <div className="w-16 h-16 shrink-0 bg-white border border-slate-100 rounded-2xl p-2.5 flex items-center justify-center shadow-sm group-hover:border-[#01498C]/20 transition-all duration-500">
-                                            <img 
-                                                src={job.companyLogo} 
-                                                alt={job.company} 
-                                                className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
-                                                onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-300"><Building2 size={24}/></div>'; }}
-                                            />
+                                    </div>
+
+                                    {/* Tags + arrow row */}
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)' }}>
+                                        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                                            {[job.sector, job.role].filter(Boolean).map(tag => (
+                                                <span key={tag} style={{
+                                                    fontFamily: 'var(--font-body)',
+                                                    fontSize: 10,
+                                                    fontWeight: 600,
+                                                    letterSpacing: '0.08em',
+                                                    textTransform: 'uppercase',
+                                                    border: '1px solid rgba(5,11,43,0.1)',
+                                                    padding: '3px 10px',
+                                                    color: 'var(--brand-gray-mid)'
+                                                }}>{tag}</span>
+                                            ))}
                                         </div>
+                                        <span style={{
+                                            fontFamily: 'var(--font-brand)',
+                                            fontSize: 18,
+                                            color: 'var(--brand-gray-mid)',
+                                            transition: 'color 0.15s',
+                                            flexShrink: 0
+                                        }}
+                                        className="group-hover:text-[var(--brand-fuchsia)]"
+                                        >→</span>
                                     </div>
-
-                                    <div className="flex-1">
-                                        <h4 className="text-[18px] md:text-[22px] font-bold text-slate-900 leading-[1.3] group-hover:text-[#01498C] transition-colors line-clamp-2 overflow-hidden text-ellipsis font-sans tracking-tight">
-                                            {job.title}
-                                        </h4>
-                                    </div>
-
-                                    {/* Footer Section: Sector and Role Tags */}
-                                    <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-slate-100/50">
-                                        <span className="px-3 py-1 bg-[#01498C]/5 text-[#01498C] text-[9px] font-bold uppercase tracking-[0.1em] rounded-full border border-[#01498C]/10 font-mono">
-                                            {job.sector}
-                                        </span>
-                                        <span className="px-3 py-1 bg-slate-50 text-slate-400 text-[9px] font-bold uppercase tracking-[0.1em] rounded-full border border-slate-200 font-mono">
-                                            {job.role}
-                                        </span>
-                                    </div>
-                                    
-                                    {/* Decorative Accent */}
-                                    <div className="absolute top-0 right-0 w-1 h-0 bg-[#01498C] group-hover:h-full transition-all duration-700"></div>
                                 </motion.div>
                             ))
                         )}
@@ -326,16 +370,27 @@ const Filters = () => {
                 </div>
 
                 {/* 2-Column Lower Advertisement Section */}
-                <div className="w-[95%] mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {[1, 2].map((num) => (
-                        <div key={num} className="rounded-2xl border border-slate-200 bg-white relative group h-32 flex items-center justify-center overflow-hidden hover:border-slate-300 hover:shadow-sm transition-all cursor-pointer">
-                            <span className="absolute top-2 right-2 text-[8px] font-bold text-slate-400 uppercase tracking-widest z-10">Advertisement {num}</span>
-                            <div className="text-center">
-                                <p className="text-xs font-semibold text-slate-500">Spazio Sponsorizzato</p>
-                                <p className="text-[10px] text-[#0038A5] mt-1 font-bold tracking-wider">PREMIUM</p>
+                <div className="w-full mt-16 max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 overflow-hidden" style={{ border: '1px solid rgba(5,11,43,0.07)', background: '#FFFFFF' }}>
+                        {[1, 2].map((num) => (
+                            <div key={num} className="relative group h-28 flex items-center justify-center cursor-pointer transition-all duration-200" style={{ borderRight: num === 1 ? '1px solid rgba(5,11,43,0.07)' : 'none' }}>
+                                <span style={{
+                                    position: 'absolute', top: 10, right: 14,
+                                    fontFamily: 'var(--font-body)',
+                                    fontSize: 8,
+                                    fontWeight: 600,
+                                    letterSpacing: '0.15em',
+                                    textTransform: 'uppercase',
+                                    color: 'var(--brand-gray-mid)',
+                                    opacity: 0.6
+                                }}>ADV</span>
+                                <div className="text-center">
+                                    <p style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10, color: 'var(--brand-navy)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Spazio Sponsorizzato</p>
+                                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 10, color: 'var(--brand-fuchsia)', marginTop: 6, letterSpacing: '0.2em', fontWeight: 600 }}>PREMIUM</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
             {/* Registration Wall Modal */}
@@ -368,45 +423,70 @@ const RegistrationModal = ({ isOpen, onClose }) => {
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <div 
+            <div
                 ref={overlayRef}
-                className="absolute inset-0 bg-[#01498C]/90 backdrop-blur-2xl" 
-                onClick={onClose} 
+                className="absolute inset-0 backdrop-blur-2xl"
+                style={{ background: 'rgba(5,11,43,0.92)' }}
+                onClick={onClose}
             />
             
-            <div 
+            <div
                 ref={modalRef}
-                className="relative bg-white rounded-[3rem] p-8 md:p-12 max-w-lg w-full shadow-2xl overflow-hidden group"
+                className="relative bg-white max-w-md w-full shadow-2xl overflow-hidden"
+                style={{ padding: '48px 40px' }}
             >
-                {/* Noise Overlay */}
-                <div className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-repeat" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/p6.png")' }}></div>
-                
-                <button 
+                <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 transition-colors"
+                    className="absolute top-5 right-5 transition-opacity hover:opacity-60"
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
                 >
-                    <X className="w-6 h-6 text-slate-400" />
+                    <X className="w-5 h-5" style={{ color: 'var(--brand-gray-mid)' }} />
                 </button>
 
                 <div className="flex flex-col items-center text-center">
-                    <div className="w-20 h-20 bg-[#01498C]/5 rounded-full flex items-center justify-center mb-8">
-                        <UserPlus className="w-10 h-10 text-[#01498C]" />
-                    </div>
-                    
-                    <h2 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+                    {/* Fuchsia dot accent */}
+                    <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--brand-fuchsia)', display: 'inline-block', marginBottom: 24 }} />
+
+                    <h2 style={{
+                        fontFamily: 'var(--font-brand)',
+                        fontWeight: 900,
+                        fontSize: 28,
+                        color: 'var(--brand-navy)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '-0.02em',
+                        marginBottom: 12
+                    }}>
                         Accesso Limitato
                     </h2>
-                    
-                    <p className="text-slate-500 mb-10 leading-relaxed text-lg">
+
+                    <p style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: 14,
+                        color: 'var(--brand-gray-mid)',
+                        marginBottom: 32,
+                        lineHeight: 1.6,
+                        maxWidth: 280
+                    }}>
                         Per continuare a visualizzare gli annunci, iscriviti gratuitamente al portale.
                     </p>
-                    
-                    <a 
+
+                    <a
                         href="https://jobroom.jobcourier.ch/job-seekers-login.php?lan=it&language=it"
-                        className="w-full bg-[#01498C] text-white py-5 rounded-2xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 shadow-xl shadow-[#01498C]/20"
+                        className="transition-opacity hover:opacity-80 w-full flex items-center justify-center gap-3"
+                        style={{
+                            background: 'var(--brand-fuchsia)',
+                            color: '#FFFFFF',
+                            padding: '15px 24px',
+                            fontFamily: 'var(--font-brand)',
+                            fontWeight: 700,
+                            fontSize: 11,
+                            letterSpacing: '0.14em',
+                            textTransform: 'uppercase',
+                            textDecoration: 'none',
+                            display: 'flex'
+                        }}
                     >
-                        Iscriviti Ora
-                        <ArrowRight className="w-5 h-5" />
+                        ISCRIVITI ORA →
                     </a>
                 </div>
             </div>

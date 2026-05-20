@@ -12,6 +12,17 @@
   --font-mono: "JetBrains Mono", monospace;
 }
 
+:root {
+  --brand-navy: #050B2B;
+  --brand-fuchsia: #FF1F7A;
+  --brand-white: #FFFFFF;
+  --brand-gray-light: #F6F7FB;
+  --brand-gray-mid: #8B8FA8;
+  --font-brand: 'DM Sans', sans-serif;
+  --font-editorial: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

@@ -2,6 +2,11 @@
   "rootDirectory": "webapp",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "git": {
+    "deploymentEnabled": {
+      "data": false
+    }
+  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],

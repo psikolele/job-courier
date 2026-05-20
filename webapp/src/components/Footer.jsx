@@ -1,48 +1,81 @@
 import React from 'react';
 
 const Footer = () => {
+    const N = 'var(--brand-navy)';
+    const F = 'var(--brand-fuchsia)';
+    const brand = 'var(--font-brand)';
+    const editorial = 'var(--font-editorial)';
+    const body = 'var(--font-body)';
+
+    const cols = [
+        { title: 'Candidati', links: [
+            { label: 'Cerca lavoro', href: '/#filters' },
+            { label: 'Newsletter', href: '#' },
+            { label: 'Salva annunci', href: '#' }
+        ]},
+        { title: 'Aziende', links: [
+            { label: 'Pubblica annuncio', href: '/soluzioni-e-tariffe' },
+            { label: 'Come funziona', href: '/come-funziona' },
+            { label: 'Piani e tariffe', href: '/soluzioni-e-tariffe' }
+        ]},
+        { title: 'Info', links: [
+            { label: 'Chi siamo', href: '#' },
+            { label: 'Privacy Policy', href: '#' },
+            { label: 'Contatti', href: '/contatti' }
+        ]},
+    ];
+
     return (
-        <footer className="w-full bg-surface text-background pt-24 pb-12 px-6 md:px-16 relative overflow-hidden mt-[-4rem] z-20 border-t border-white/5 shadow-[0_-30px_60px_rgba(0,0,0,0.3)]">
-            {/* Subtle Gradient Glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"></div>
-            
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-16 mb-24">
-                <div className="w-full md:w-1/3">
-                    <h2 className="font-drama font-bold text-4xl mb-6 tracking-tight text-white">JobCourier</h2>
-                    <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-10">
-                        Il portale svizzero per trovare il tuo prossimo lavoro in un click. Precisione, velocità e un network locale forte.
+        <footer style={{ background: N, padding: '48px 40px 28px' }}>
+            <div style={{
+                borderBottom: '1px solid rgba(255,255,255,0.07)',
+                paddingBottom: 40,
+                marginBottom: 28,
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                gap: 40
+            }}>
+                {/* Brand col */}
+                <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 16 }}>
+                        <span style={{ width: 9, height: 9, borderRadius: '50%', background: F, flexShrink: 0, display: 'inline-block' }} />
+                        <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 13, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#FFFFFF' }}>
+                            JOBCOURIER<span style={{ color: F }}>.CH</span>
+                        </span>
+                    </div>
+                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 16, color: 'rgba(255,255,255,0.35)', lineHeight: 1.55, maxWidth: 240 }}>
+                        Il job board professionale di riferimento per la Svizzera.
                     </p>
                 </div>
 
-                <div className="flex gap-16 md:gap-24 flex-wrap">
-                    <div className="flex flex-col gap-5">
-                        <h4 className="text-[10px] font-mono tracking-[0.3em] text-accent uppercase mb-3 opacity-80">Navigazione</h4>
-                        <a href="/#filters" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Cerca Lavoro</a>
-                        <a href="/#vetrini" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Aziende Vetrina</a>
-                        <a href="/#blog" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Blog</a>
+                {/* Link cols */}
+                {cols.map(col => (
+                    <div key={col.title}>
+                        <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: F, marginBottom: 16 }}>
+                            {col.title}
+                        </div>
+                        {col.links.map(l => (
+                            <div key={l.label} style={{ marginBottom: 10 }}>
+                                <a
+                                    href={l.href}
+                                    style={{ fontFamily: body, fontSize: 13, color: 'rgba(255,255,255,0.35)', textDecoration: 'none', transition: 'color 0.15s' }}
+                                    onMouseEnter={e => e.target.style.color = 'rgba(255,255,255,0.7)'}
+                                    onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.35)'}
+                                >
+                                    {l.label}
+                                </a>
+                            </div>
+                        ))}
                     </div>
-                    <div className="flex flex-col gap-5">
-                        <h4 className="text-[10px] font-mono tracking-[0.3em] text-accent uppercase mb-3 opacity-80">Servizi</h4>
-                        <a href="/soluzioni-e-tariffe" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Pubblica Offerta</a>
-                        <a href="/contatti" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Contatti</a>
-                        <a href="#" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">FAQ Candidato</a>
-                    </div>
-                    <div className="flex flex-col gap-5">
-                        <h4 className="text-[10px] font-mono tracking-[0.3em] text-accent uppercase mb-3 opacity-80">Legale</h4>
-                        <a href="#" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Privacy Policy</a>
-                        <a href="#" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Condizioni Generali</a>
-                        <a href="#" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all text-sm">Cookie Policy</a>
-                    </div>
-                </div>
+                ))}
             </div>
 
-            <div className="max-w-7xl mx-auto border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
-                <p className="text-gray-500 text-[11px] tracking-wide">© {new Date().getFullYear()} JobCourier. Precision Swiss Recruiting.</p>
-                <div className="flex items-center gap-6">
-                    <p className="text-gray-500 text-[11px] flex items-center gap-2">
-                        Designed with <span className="text-accent/60">✦</span> in Switzerland
-                    </p>
-                </div>
+            {/* Copyright row */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+                <span style={{ fontFamily: body, fontSize: 11, color: 'rgba(255,255,255,0.2)' }}>
+                    © {new Date().getFullYear()} JobCourier.ch — Tutti i diritti riservati
+                </span>
+                <div style={{ width: 36, height: 1, background: F }} />
             </div>
         </footer>
     );

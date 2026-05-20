@@ -112,35 +112,51 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
 
     return (
         <>
-            {/* ── UNIFORM NAVBAR HEADER (#F7F8F6) ── */}
+            {/* ── NAVBAR ── */}
             <header
                 className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12 transition-all duration-300"
                 style={{
                     height: navHeight,
-                    backgroundColor: '#FAFAFA',
-                    boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.05)' : 'none',
-                    borderBottom: '1px solid rgba(0,0,0,0.05)'
+                    backgroundColor: '#FFFFFF',
+                    boxShadow: scrolled ? '0 2px 16px rgba(5,11,43,0.07)' : 'none',
+                    borderBottom: '1px solid rgba(5,11,43,0.06)'
                 }}
             >
-                {/* Logo */}
-                <Link to="/" className="flex items-center">
-                    <img
-                        src="/JC_logo2x.png"
-                        alt="Job Courier"
-                        className="object-contain h-6 md:h-8"
-                    />
+                {/* Logo mark */}
+                <Link to="/" className="flex items-center gap-2.5 group">
+                    <span style={{
+                        width: 9, height: 9, borderRadius: '50%',
+                        background: 'var(--brand-fuchsia)', display: 'inline-block', flexShrink: 0
+                    }} />
+                    <span style={{
+                        fontFamily: 'var(--font-brand)',
+                        fontWeight: 700,
+                        fontSize: 13,
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        color: 'var(--brand-navy)',
+                        lineHeight: 1
+                    }}>
+                        JOBCOURIER<span style={{ color: 'var(--brand-fuchsia)' }}>.CH</span>
+                    </span>
                 </Link>
 
                 {/* Right side actions */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-5">
                     {/* Language Switcher */}
-                    <div className="hidden md:flex items-center gap-2 text-[10px] font-bold text-slate-500">
+                    <div className="hidden md:flex items-center gap-2 text-[10px] font-bold" style={{ color: 'var(--brand-gray-mid)' }}>
                         {['it', 'en', 'de', 'fr'].map((lng, idx) => (
                             <React.Fragment key={lng}>
-                                {idx > 0 && <span>|</span>}
+                                {idx > 0 && <span style={{ opacity: 0.3 }}>|</span>}
                                 <button
                                     onClick={() => changeLanguage(lng)}
-                                    className={`hover:text-[#01498C] transition-colors ${i18n.language === lng ? 'text-[#01498C]' : ''}`}
+                                    style={{
+                                        color: i18n.language === lng ? 'var(--brand-navy)' : 'var(--brand-gray-mid)',
+                                        fontFamily: 'var(--font-body)',
+                                        fontWeight: i18n.language === lng ? 700 : 400,
+                                        letterSpacing: '0.1em'
+                                    }}
+                                    className="transition-colors hover:text-[var(--brand-navy)]"
                                 >
                                     {lng.toUpperCase()}
                                 </button>
@@ -148,18 +164,49 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         ))}
                     </div>
 
-                    {/* RED LOGIN Button */}
+                    {/* Accedi link */}
                     <button
                         onClick={() => setShowLoginModal(true)}
-                        className="bg-[#e63946] hover:bg-[#c1121f] text-white px-4 md:px-6 py-2 rounded-xl text-[10px] md:text-[11px] font-bold tracking-widest transition-all btn-shiny hover-lift whitespace-nowrap flex-shrink-0"
+                        className="hidden md:block transition-colors"
+                        style={{
+                            fontFamily: 'var(--font-body)',
+                            fontSize: 13,
+                            color: 'var(--brand-gray-mid)',
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            padding: 0
+                        }}
                     >
-                        {t('nav.login').toUpperCase()}
+                        {t('nav.login')}
+                    </button>
+
+                    {/* NAVY BLOCK CTA */}
+                    <button
+                        onClick={() => setShowLoginModal(true)}
+                        className="hidden md:block whitespace-nowrap flex-shrink-0 transition-opacity hover:opacity-80"
+                        style={{
+                            background: 'var(--brand-navy)',
+                            color: '#FFFFFF',
+                            border: 'none',
+                            padding: '11px 24px',
+                            fontFamily: 'var(--font-brand)',
+                            fontSize: 10,
+                            fontWeight: 700,
+                            letterSpacing: '0.14em',
+                            textTransform: 'uppercase',
+                            cursor: 'pointer',
+                            borderRadius: 0
+                        }}
+                    >
+                        PUBBLICA ANNUNCIO →
                     </button>
 
                     {/* HAMBURGER Toggle */}
                     <button
                         onClick={() => setMenuOpen(!menuOpen)}
-                        className="text-[#01498C] p-1 rounded-full transition-colors hover:bg-[#01498C]/10"
+                        style={{ color: 'var(--brand-navy)' }}
+                        className="p-1 transition-opacity hover:opacity-70"
                     >
                         {menuOpen ? <IconX /> : <IconMenu />}
                     </button>

@@ -127,189 +127,300 @@ const Hero = ({ setShowLoginModal }) => {
     };
 
     return (
-        <section className="relative w-full min-h-screen flex flex-col md:flex-row overflow-hidden font-sans bg-[#131f3f]">
-            <motion.div
-                onMouseEnter={() => !isMobile && setHoveredSide('candidates')}
-                onMouseLeave={() => !isMobile && setHoveredSide(null)}
-                initial={{ width: isMobile ? '100%' : '60%' }}
-                animate={{
-                    width: isMobile ? '100%' : (hoveredSide === 'companies' ? '40%' : '60%')
-                }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative min-h-[50vh] md:min-h-screen bg-[#F4F6F8] flex flex-col justify-start px-8 md:px-12 lg:px-16 pt-32 md:pt-48 pb-24 text-slate-900 border-b md:border-b-0 md:border-r border-slate-200"
-            >
-                <motion.div 
-                    animate={{ 
-                        opacity: hoveredSide === 'companies' ? 0 : 0.4, 
-                        x: hoveredSide === 'candidates' ? 10 : 0 
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute top-1/2 right-4 md:right-6 -translate-y-1/2 flex items-center justify-center max-md:hidden z-30 pointer-events-none"
-                >
-                    <div className="w-10 h-10 border border-slate-300 rounded-full flex items-center justify-center bg-white/50 shadow-sm">
-                        <svg className="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={hoveredSide === 'candidates' ? "M19 9l-7 7-7-7" : "M9 5l7 7-7 7"} />
-                        </svg>
-                    </div>
-                </motion.div>
-
-                <div className="max-w-xl w-full mx-auto md:mx-0 md:ml-4 lg:ml-12 xl:ml-20 z-10 relative">
-                    <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 0.85 : 1), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
-                        <p className="text-sm md:text-xs font-mono text-slate-500 mb-6 uppercase tracking-[0.2em]">
-                            {t('hero.candidates.subtitle')}
-                        </p>
-                        <h1 className="leading-[1.1] tracking-tight mb-6 mt-4">
-                            <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-sans text-slate-900">
-                                {t('hero.candidates.h1')}
-                            </span>
-                            <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-sans text-[#01498C] mt-2">
-                                {t('hero.candidates.h1_sub')}
-                            </span>
-                        </h1>
-                        
-                        <motion.div animate={{ opacity: hoveredSide === 'companies' ? 0 : 1, pointerEvents: hoveredSide === 'companies' ? 'none' : 'auto' }} transition={{ duration: 0.3 }} className="space-y-4">
-                            <form onSubmit={handleSearch} className="flex flex-col gap-3 w-full bg-white/60 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-slate-200">
-                                <div className="relative">
-                                    <Search className="absolute left-3 top-3.5 w-5 h-5 text-slate-400" />
-                                    <input type="text" placeholder={t('hero.candidates.search_placeholder')} className="w-full pl-10 pr-3 py-3 rounded-xl bg-white text-sm focus:ring-2 focus:ring-[#01498C] outline-none text-slate-900 font-medium placeholder:text-slate-400 shadow-sm" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
-                                </div>
-                                <div className="relative">
-                                    <Briefcase className="absolute left-3 top-3.5 w-5 h-5 text-slate-400" />
-                                    <select className="w-full pl-10 pr-8 py-3 rounded-xl bg-white text-sm focus:ring-2 focus:ring-[#01498C] outline-none text-slate-900 font-medium appearance-none shadow-sm cursor-pointer truncate" value={selectedSector} onChange={(e) => setSelectedSector(e.target.value)}>
-                                        <option value="">{t('hero.candidates.any_sector')}</option>
-                                        {sectors.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
-                                    </select>
-                                    <ChevronRight className="absolute right-3 top-3.5 w-5 h-5 text-slate-400 pointer-events-none rotate-90" />
-                                </div>
-                                <div className="relative">
-                                    <MapPin className="absolute left-3 top-3.5 w-5 h-5 text-slate-400" />
-                                    <select className="w-full pl-10 pr-8 py-3 rounded-xl bg-white text-sm focus:ring-2 focus:ring-[#01498C] outline-none text-slate-900 font-medium appearance-none shadow-sm cursor-pointer truncate" value={selectedCanton} onChange={(e) => setSelectedCanton(e.target.value)}>
-                                        <option value="">{t('hero.candidates.all_cantons')}</option>
-                                        {cantons.map(c => <option key={c.value} value={c.value}>{c.name}</option>)}
-                                    </select>
-                                    <ChevronRight className="absolute right-3 top-3.5 w-5 h-5 text-slate-400 pointer-events-none rotate-90" />
-                                </div>
-                                <button type="submit" className="h-14 px-8 bg-[#01498C] hover:bg-[#013dd6] text-white rounded-[1.25rem] font-bold tracking-wide transition-all shadow-[0_8px_20px_rgba(1,73,140,0.25)] hover:shadow-[0_12px_25px_rgba(1,73,140,0.35)] shrink-0 group flex items-center justify-center overflow-hidden hover-lift hover-shiny w-full">
-                                    <span className="relative z-10 flex items-center gap-2">
-                                        {t('hero.candidates.cta')}
-                                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                                    </span>
-                                </button>
-                            </form>
-
-                            <div className="pt-1 px-1">
-                                <p className="text-[10px] text-slate-500 font-mono uppercase tracking-widest mb-3">{t('nav.other_links')}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    <a href="https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php" className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all">{t('nav.all_offers')}</a>
-                                    <a href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it" className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all">{t('nav.all_companies')}</a>
-                                    <a href="#blog" className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 text-xs font-mono hover:bg-slate-200 transition-all">{t('nav.blog')}</a>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </motion.div>
-                </div>
-            </motion.div>
-
-            <motion.div
-                onMouseEnter={() => !isMobile && setHoveredSide('companies')}
-                onMouseLeave={() => !isMobile && setHoveredSide(null)}
-                initial={{ width: isMobile ? '100%' : '40%' }}
-                animate={{
-                    width: isMobile ? '100%' : (hoveredSide === 'companies' ? '60%' : '40%')
-                }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative min-h-[50vh] md:min-h-screen bg-[#131f3f] flex flex-col justify-start px-8 md:px-12 lg:px-16 pt-32 md:pt-48 pb-24 text-white overflow-hidden"
-            >
+        <section
+            className="relative w-full min-h-screen flex flex-col md:flex-row overflow-hidden"
+            style={{ background: 'var(--brand-navy)' }}
+        >
+            {/* ── LEFT: Editorial copy + KPIs ── */}
+            <div className="relative flex-1 flex flex-col justify-center px-8 md:px-12 lg:px-20 pt-32 md:pt-40 pb-16 md:pb-24">
+                {/* Slider bg (subtle, companies side) */}
                 <AnimatePresence initial={false}>
                     <motion.img
                         key={currentImageIndex}
                         src={sliderImages[currentImageIndex]}
-                        initial={{ opacity: currentImageIndex === 0 ? 1 : 0, scale: currentImageIndex === 0 ? 1 : 1.05 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.06 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5 }}
-                        className="absolute inset-0 w-full h-full object-cover z-0"
-                        alt="Slider background for companies"
+                        transition={{ duration: 2 }}
+                        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+                        alt=""
                     />
                 </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0c1328]/95 to-[#0c1328]/70 z-0"></div>
 
-                <motion.div 
-                    animate={{ 
-                        opacity: hoveredSide === 'candidates' ? 0 : 0.4, 
-                        x: hoveredSide === 'companies' ? -10 : 0 
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute top-1/2 left-4 md:left-6 -translate-y-1/2 flex items-center justify-center max-md:hidden z-30 pointer-events-none"
-                >
-                    <div className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center bg-white/5 shadow-sm">
-                        <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={hoveredSide === 'companies' ? "M19 9l-7 7-7-7" : "M15 19l-7-7 7-7"} />
-                        </svg>
-                    </div>
-                </motion.div>
+                <div className="relative z-10 max-w-2xl">
+                    <p style={{
+                        fontFamily: 'var(--font-editorial)',
+                        fontStyle: 'italic',
+                        fontSize: isMobile ? 20 : 26,
+                        color: 'rgba(255,255,255,0.4)',
+                        marginBottom: 20,
+                        lineHeight: 1.2
+                    }}>
+                        {t('hero.candidates.subtitle')}
+                    </p>
 
-                <div className="max-w-xl w-full mx-auto md:mx-0 md:ml-8 lg:ml-12 xl:ml-16 z-10 relative">
-                    <motion.div animate={{ scale: isMobile ? 1 : (hoveredSide === 'companies' ? 1 : 0.85), transformOrigin: "left center" }} transition={{ duration: 0.5, ease: "easeOut" }}>
-                        <p className="text-sm md:text-xs font-mono text-[#2f9de5] mb-6 uppercase tracking-[0.2em] opacity-80 decoration-[#2f9de5]">
-                            {t('hero.companies.subtitle')}
-                        </p>
-                        <h1 className="leading-[1.1] tracking-tight mb-8 mt-4">
-                            <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-sans text-white">
-                                {t('hero.companies.h1')}
-                            </span>
-                            <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold font-sans text-[#2f9de5] mt-2">
-                                {t('hero.companies.h1_sub')}
-                            </span>
-                        </h1>
-                        
-                        <motion.div animate={{ opacity: hoveredSide === 'companies' || isMobile ? 1 : 0, pointerEvents: hoveredSide === 'companies' || isMobile ? 'auto' : 'none' }} transition={{ duration: 0.3 }} className="space-y-4">
-                            <button onClick={() => setShowLoginModal(true)} className="h-14 px-8 bg-[#2f9de5] hover:bg-[#2585c5] text-[#0A0A14] rounded-2xl font-bold tracking-wide transition-all shadow-[0_8px_25px_rgba(47,157,229,0.25)] flex items-center justify-center group overflow-hidden w-full sm:w-auto hover-lift hover-shiny">
-                                <span className="relative z-10 flex items-center gap-2">
-                                    {t('hero.companies.cta')}
-                                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                                </span>
-                            </button>
+                    <h1 style={{
+                        fontFamily: 'var(--font-brand)',
+                        fontWeight: 900,
+                        fontSize: isMobile ? 44 : 68,
+                        color: '#FFFFFF',
+                        textTransform: 'uppercase',
+                        letterSpacing: '-0.025em',
+                        lineHeight: 0.9,
+                        marginBottom: 6
+                    }}>
+                        {t('hero.candidates.h1')}
+                    </h1>
+                    <h1 style={{
+                        fontFamily: 'var(--font-brand)',
+                        fontWeight: 900,
+                        fontSize: isMobile ? 44 : 68,
+                        color: 'var(--brand-fuchsia)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '-0.025em',
+                        lineHeight: 0.9,
+                        marginBottom: 44
+                    }}>
+                        {t('hero.candidates.h1_sub')}
+                    </h1>
 
-                            <div className="pt-1">
-                                <p className="text-[10px] text-white/40 font-mono uppercase tracking-widest mb-3">{t('nav.other_links')}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    <a
-                                        href="#"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-white/20 text-white/80 text-xs font-mono hover:bg-white/5 transition-all"
-                                    >
-                                        {t('nav.pricing')}
-                                    </a>
-                                    <a
-                                        href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
-                                        className="inline-flex items-center gap-1 px-4 py-2 rounded-xl border border-white/20 text-white/80 text-xs font-mono hover:bg-white/5 transition-all"
-                                    >
-                                        {t('nav.register_company')}
-                                    </a>
-                                </div>
+                    {/* KPI row */}
+                    <div className="flex gap-8 md:gap-12 flex-wrap">
+                        {[
+                            ['100K+', t('hero.kpi.candidates') || 'Candidati attivi'],
+                            ['2.4K', t('hero.kpi.jobs') || 'Annunci live'],
+                            ['500+', t('hero.kpi.companies') || 'Aziende partner']
+                        ].map(([num, label]) => (
+                            <div key={label}>
+                                <div style={{
+                                    fontFamily: 'var(--font-brand)',
+                                    fontWeight: 900,
+                                    fontSize: isMobile ? 28 : 36,
+                                    color: 'var(--brand-fuchsia)',
+                                    letterSpacing: '-0.02em',
+                                    lineHeight: 1
+                                }}>{num}</div>
+                                <div style={{
+                                    fontFamily: 'var(--font-body)',
+                                    fontSize: 10,
+                                    color: 'rgba(255,255,255,0.3)',
+                                    letterSpacing: '0.1em',
+                                    textTransform: 'uppercase',
+                                    marginTop: 4
+                                }}>{label}</div>
                             </div>
-                        </motion.div>
-                    </motion.div>
+                        ))}
+                    </div>
                 </div>
-                
-                {/* Slider Dots */}
-                <div className="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-2 z-30">
+
+                {/* Slider dots */}
+                <div className="absolute bottom-8 left-8 md:left-20 flex items-center gap-2 z-20">
                     {sliderImages.map((_, idx) => (
                         <button
                             key={idx}
                             onClick={() => handleDotClick(idx)}
-                            className="rounded-full bg-white transition-all duration-300 focus:outline-none"
+                            className="transition-all duration-300 focus:outline-none"
                             style={{
-                                width: currentImageIndex === idx ? '24px' : '6px',
-                                height: '6px',
-                                opacity: currentImageIndex === idx ? 1 : 0.4,
-                                transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                                width: currentImageIndex === idx ? 20 : 5,
+                                height: 5,
+                                borderRadius: 3,
+                                background: currentImageIndex === idx ? 'var(--brand-fuchsia)' : 'rgba(255,255,255,0.25)',
                             }}
                             aria-label={`Go to slide ${idx + 1}`}
                         />
                     ))}
                 </div>
-            </motion.div>
+            </div>
+
+            {/* ── RIGHT: White search panel ── */}
+            <div
+                className="relative z-10 flex flex-col justify-center px-8 md:px-12 pt-20 md:pt-0 pb-16 md:pb-0"
+                style={{
+                    background: '#FFFFFF',
+                    width: isMobile ? '100%' : 360,
+                    minWidth: isMobile ? 'auto' : 340,
+                    flexShrink: 0
+                }}
+            >
+                <div className="w-full max-w-xs mx-auto">
+                    <p style={{
+                        fontFamily: 'var(--font-brand)',
+                        fontWeight: 700,
+                        fontSize: 10,
+                        letterSpacing: '0.18em',
+                        textTransform: 'uppercase',
+                        color: 'var(--brand-navy)',
+                        marginBottom: 20
+                    }}>CERCA LAVORO</p>
+
+                    <form onSubmit={handleSearch} className="flex flex-col gap-3">
+                        <input
+                            type="text"
+                            placeholder={t('hero.candidates.search_placeholder')}
+                            value={keyword}
+                            onChange={(e) => setKeyword(e.target.value)}
+                            style={{
+                                display: 'block',
+                                width: '100%',
+                                padding: '13px 16px',
+                                border: '1.5px solid rgba(5,11,43,0.1)',
+                                fontFamily: 'var(--font-body)',
+                                fontSize: 14,
+                                outline: 'none',
+                                color: 'var(--brand-navy)',
+                                borderRadius: 0,
+                                background: '#fff'
+                            }}
+                        />
+                        <div className="relative">
+                            <select
+                                value={selectedSector}
+                                onChange={(e) => setSelectedSector(e.target.value)}
+                                style={{
+                                    display: 'block',
+                                    width: '100%',
+                                    padding: '13px 16px',
+                                    border: '1.5px solid rgba(5,11,43,0.1)',
+                                    fontFamily: 'var(--font-body)',
+                                    fontSize: 14,
+                                    outline: 'none',
+                                    color: selectedSector ? 'var(--brand-navy)' : '#8B8FA8',
+                                    borderRadius: 0,
+                                    background: '#fff',
+                                    appearance: 'none',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                <option value="">{t('hero.candidates.any_sector')}</option>
+                                {sectors.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+                            </select>
+                            <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none rotate-90" style={{ color: 'var(--brand-gray-mid)' }} />
+                        </div>
+                        <div className="relative">
+                            <select
+                                value={selectedCanton}
+                                onChange={(e) => setSelectedCanton(e.target.value)}
+                                style={{
+                                    display: 'block',
+                                    width: '100%',
+                                    padding: '13px 16px',
+                                    border: '1.5px solid rgba(5,11,43,0.1)',
+                                    fontFamily: 'var(--font-body)',
+                                    fontSize: 14,
+                                    outline: 'none',
+                                    color: selectedCanton ? 'var(--brand-navy)' : '#8B8FA8',
+                                    borderRadius: 0,
+                                    background: '#fff',
+                                    appearance: 'none',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                <option value="">{t('hero.candidates.all_cantons')}</option>
+                                {cantons.map(c => <option key={c.value} value={c.value}>{c.name}</option>)}
+                            </select>
+                            <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none rotate-90" style={{ color: 'var(--brand-gray-mid)' }} />
+                        </div>
+                        <button
+                            type="submit"
+                            className="transition-opacity hover:opacity-80"
+                            style={{
+                                background: 'var(--brand-fuchsia)',
+                                color: '#FFFFFF',
+                                border: 'none',
+                                padding: '15px',
+                                fontFamily: 'var(--font-brand)',
+                                fontWeight: 700,
+                                fontSize: 10,
+                                letterSpacing: '0.14em',
+                                textTransform: 'uppercase',
+                                cursor: 'pointer',
+                                borderRadius: 0,
+                                width: '100%'
+                            }}
+                        >
+                            CERCA ANNUNCI →
+                        </button>
+                    </form>
+
+                    {/* Quick links */}
+                    <div style={{ marginTop: 20 }}>
+                        <p style={{
+                            fontFamily: 'var(--font-body)',
+                            fontSize: 10,
+                            color: 'var(--brand-gray-mid)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.12em',
+                            marginBottom: 10
+                        }}>{t('nav.other_links')}</p>
+                        <div className="flex flex-wrap gap-2">
+                            {[
+                                { label: t('nav.all_offers'), href: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php' },
+                                { label: t('nav.all_companies'), href: 'https://jobroom.jobcourier.ch/jobs-by-company.php' },
+                                { label: t('nav.blog'), href: '#blog' }
+                            ].map(({ label, href }) => (
+                                <a
+                                    key={label}
+                                    href={href}
+                                    style={{
+                                        border: '1.5px solid rgba(5,11,43,0.1)',
+                                        background: 'none',
+                                        padding: '5px 12px',
+                                        fontFamily: 'var(--font-body)',
+                                        fontSize: 11,
+                                        color: 'var(--brand-navy)',
+                                        textDecoration: 'none',
+                                        letterSpacing: '0.04em',
+                                        display: 'inline-block',
+                                        transition: 'background 0.15s'
+                                    }}
+                                >
+                                    {label}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Companies CTA */}
+                    <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid rgba(5,11,43,0.07)' }}>
+                        <p style={{
+                            fontFamily: 'var(--font-brand)',
+                            fontWeight: 700,
+                            fontSize: 10,
+                            letterSpacing: '0.18em',
+                            textTransform: 'uppercase',
+                            color: 'var(--brand-fuchsia)',
+                            marginBottom: 12
+                        }}>AZIENDE</p>
+                        <p style={{
+                            fontFamily: 'var(--font-editorial)',
+                            fontStyle: 'italic',
+                            fontSize: 15,
+                            color: 'var(--brand-gray-mid)',
+                            marginBottom: 16,
+                            lineHeight: 1.4
+                        }}>{t('hero.companies.h1')}</p>
+                        <button
+                            onClick={() => setShowLoginModal(true)}
+                            className="transition-opacity hover:opacity-80 w-full"
+                            style={{
+                                background: 'var(--brand-navy)',
+                                color: '#FFFFFF',
+                                border: 'none',
+                                padding: '13px',
+                                fontFamily: 'var(--font-brand)',
+                                fontWeight: 700,
+                                fontSize: 10,
+                                letterSpacing: '0.14em',
+                                textTransform: 'uppercase',
+                                cursor: 'pointer',
+                                borderRadius: 0
+                            }}
+                        >
+                            {t('hero.companies.cta')} →
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 };
