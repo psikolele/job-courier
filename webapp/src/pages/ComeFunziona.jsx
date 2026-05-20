@@ -5,59 +5,44 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, UserPlus, CreditCard, FileText, Users, MapPin, Zap, Headphones } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 import {
-    HoverSlider,
-    HoverSliderImage,
-    HoverSliderImageWrap,
-    TextStaggerHover,
-    SlideDescription,
+    HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover, SlideDescription,
 } from '@/components/ui/animated-slideshow';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const N = 'var(--brand-navy)';
+const F = 'var(--brand-fuchsia)';
+const GL = 'var(--brand-gray-light)';
+const GM = 'var(--brand-gray-mid)';
+const brand = 'var(--font-brand)';
+const editorial = 'var(--font-editorial)';
+const body = 'var(--font-body)';
+
+const SectionLabel = ({ children, dark = false }) => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+        <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+        <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>{children}</span>
+    </div>
+);
+
 const STEPS = [
-    {
-        num: '01',
-        icon: <UserPlus size={28} />,
-        titleKey: 'come_funziona.step1_title',
-        descKey: 'come_funziona.step1_desc',
-        image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop',
-    },
-    {
-        num: '02',
-        icon: <CreditCard size={28} />,
-        titleKey: 'come_funziona.step2_title',
-        descKey: 'come_funziona.step2_desc',
-        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop',
-    },
-    {
-        num: '03',
-        icon: <FileText size={28} />,
-        titleKey: 'come_funziona.step3_title',
-        descKey: 'come_funziona.step3_desc',
-        image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop',
-    },
-    {
-        num: '04',
-        icon: <Users size={28} />,
-        titleKey: 'come_funziona.step4_title',
-        descKey: 'come_funziona.step4_desc',
-        image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop',
-    },
+    { num: '01', icon: <UserPlus size={24} />, titleKey: 'come_funziona.step1_title', descKey: 'come_funziona.step1_desc', image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop' },
+    { num: '02', icon: <CreditCard size={24} />, titleKey: 'come_funziona.step2_title', descKey: 'come_funziona.step2_desc', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop' },
+    { num: '03', icon: <FileText size={24} />, titleKey: 'come_funziona.step3_title', descKey: 'come_funziona.step3_desc', image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop' },
+    { num: '04', icon: <Users size={24} />, titleKey: 'come_funziona.step4_title', descKey: 'come_funziona.step4_desc', image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop' },
 ];
 
 const WHY = [
-    { titleKey: 'come_funziona.feature1_title', descKey: 'come_funziona.feature1_desc', icon: <MapPin size={32} /> },
-    { titleKey: 'come_funziona.feature2_title', descKey: 'come_funziona.feature2_desc', icon: <Zap size={32} /> },
-    { titleKey: 'come_funziona.feature3_title', descKey: 'come_funziona.feature3_desc', icon: <Headphones size={32} /> },
+    { titleKey: 'come_funziona.feature1_title', descKey: 'come_funziona.feature1_desc', icon: <MapPin size={28} /> },
+    { titleKey: 'come_funziona.feature2_title', descKey: 'come_funziona.feature2_desc', icon: <Zap size={28} /> },
+    { titleKey: 'come_funziona.feature3_title', descKey: 'come_funziona.feature3_desc', icon: <Headphones size={28} /> },
 ];
 
 const ComeFunziona = () => {
     const containerRef = useRef(null);
     const { t } = useTranslation();
 
-    // Map STEPS to the format required by AnimatedSlideshow components
     const SLIDER_STEPS = STEPS.map(step => ({
         id: step.num,
         title: t(step.titleKey),
@@ -67,83 +52,105 @@ const ComeFunziona = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from('.hero-line', {
-                y: 30, opacity: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out',
-            });
-            gsap.from('.why-card', {
-                y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out',
-                scrollTrigger: { trigger: '.why-trigger', start: 'top 80%' },
-            });
+            gsap.from('.hero-line', { y: 30, opacity: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out' });
+            gsap.from('.why-card', { y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out', scrollTrigger: { trigger: '.why-trigger', start: 'top 80%' } });
         }, containerRef);
         return () => ctx.revert();
     }, []);
 
     return (
-        <div ref={containerRef} className="bg-[#F4F6F8] min-h-screen overflow-x-hidden">
+        <div ref={containerRef} className="min-h-screen overflow-x-hidden" style={{ background: GL }}>
 
             {/* HERO */}
-            <section className="relative min-h-[60vh] pt-32 pb-16 bg-white px-6 md:px-12 flex flex-col justify-center border-b border-[#E5E5E5]">
+            <section className="relative min-h-[60vh] pt-32 pb-20 px-6 md:px-12 flex flex-col justify-center" style={{ background: N }}>
                 <div className="container mx-auto w-full">
                     <div className="max-w-4xl">
-                        <div className="hero-line overflow-hidden mb-4">
-                            <span className="text-xs font-bold tracking-[0.3em] text-[#01498C] uppercase font-mono block">
-                                {t('come_funziona.subtitle')}
-                            </span>
-                        </div>
-                        <h1 className="hero-line text-5xl md:text-7xl font-bold text-[#1a1a1a] leading-tight mb-6">
-                            {t('come_funziona.hero_title')}<br />
-                            <span className="text-[#01498C]">{t('come_funziona.hero_em')}</span>
-                        </h1>
-                        <p className="hero-line text-lg md:text-xl text-[#666] max-w-2xl font-normal leading-relaxed mb-8">
+                        <div className="hero-line"><SectionLabel>{t('come_funziona.subtitle')}</SectionLabel></div>
+                        <p className="hero-line" style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 24, color: 'rgba(255,255,255,0.4)', marginBottom: 16, lineHeight: 1.2 }}>
                             {t('come_funziona.hero_sub')}
                         </p>
-                        <div className="hero-line flex flex-col sm:flex-row items-center gap-4">
-                            <a
-                                href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
-                                className="inline-flex items-center gap-2 bg-[#01498C] px-8 py-4 rounded-lg text-sm font-bold tracking-wide text-white hover:bg-[#013dd6] transition-colors"
-                            >
-                                {t('come_funziona.cta_btn')} <ArrowRight size={16} />
+                        <h1 className="hero-line" style={{
+                            fontFamily: brand, fontWeight: 900, fontSize: 64,
+                            color: '#FFFFFF', textTransform: 'uppercase',
+                            letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 8
+                        }}>{t('come_funziona.hero_title')}</h1>
+                        <h1 className="hero-line" style={{
+                            fontFamily: brand, fontWeight: 900, fontSize: 64,
+                            color: F, textTransform: 'uppercase',
+                            letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 40
+                        }}>{t('come_funziona.hero_em')}</h1>
+
+                        <div className="hero-line flex flex-col sm:flex-row items-start gap-4">
+                            <a href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
+                                style={{
+                                    background: F, color: '#FFFFFF', border: 'none',
+                                    padding: '14px 28px',
+                                    fontFamily: brand, fontWeight: 700, fontSize: 11,
+                                    letterSpacing: '0.14em', textTransform: 'uppercase',
+                                    cursor: 'pointer', borderRadius: 0, textDecoration: 'none',
+                                    display: 'inline-flex', alignItems: 'center', gap: 8
+                                }} className="hover:opacity-80 transition-opacity">
+                                {t('come_funziona.cta_btn')} →
                             </a>
-                            <Link to="/soluzioni-e-tariffe" className="text-[#01498C] hover:text-[#013dd6] transition-colors font-bold text-sm tracking-wide">
-                                {t('come_funziona.cta_btn2')}
+                            <Link to="/soluzioni-e-tariffe" style={{
+                                fontFamily: brand, fontWeight: 700, fontSize: 11,
+                                letterSpacing: '0.14em', textTransform: 'uppercase',
+                                color: 'rgba(255,255,255,0.6)',
+                                padding: '14px 0',
+                                textDecoration: 'none',
+                                display: 'inline-flex', alignItems: 'center', gap: 6
+                            }} className="hover:opacity-100 transition-opacity">
+                                {t('come_funziona.cta_btn2')} →
                             </Link>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* STEPS — Interactive Hover Slider */}
-            <section className="bg-white py-24 px-6 md:px-12 border-b border-[#E5E5E5] overflow-hidden">
+            {/* STEPS */}
+            <section className="py-24 px-6 md:px-12 overflow-hidden" style={{ background: '#FFFFFF' }}>
                 <div className="container mx-auto">
-                    <div className="mb-16 border-l-4 border-[#01498C] pl-6">
-                        <h2 className="text-xs font-bold tracking-[0.3em] text-[#01498C] uppercase mb-4 font-mono">
-                            / {t('come_funziona.subtitle')}
-                        </h2>
-                        <h3 className="text-3xl md:text-5xl font-bold text-[#1a1a1a] uppercase tracking-tight max-w-4xl leading-tight">
-                            {t('come_funziona.steps_title')}
-                        </h3>
+                    <div className="mb-16 max-w-2xl">
+                        <SectionLabel>{t('come_funziona.subtitle')}</SectionLabel>
+                        <h3 style={{
+                            fontFamily: brand, fontWeight: 900, fontSize: 48,
+                            color: N, textTransform: 'uppercase',
+                            letterSpacing: '-0.025em', lineHeight: 0.95
+                        }}>{t('come_funziona.steps_title')}</h3>
                     </div>
 
                     <HoverSlider className="w-full">
                         <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-16">
-
-                            {/* Left: Titles */}
                             <div className="flex flex-col justify-center lg:w-[45%]">
                                 {SLIDER_STEPS.map((slide, index) => (
-                                    <div key={slide.id}>
-                                        <TextStaggerHover
-                                            index={index}
-                                            text={slide.title}
-                                            className="cursor-pointer text-xl md:text-2xl xl:text-2xl font-bold uppercase tracking-tight text-[#1a1a1a] hover:text-[#01498C] transition-colors py-5 block whitespace-nowrap overflow-hidden"
-                                        />
-                                        <div className="h-px w-full bg-[#E5E5E5]" />
+                                    <div key={slide.id} style={{ display: 'flex', alignItems: 'baseline', gap: 16 }}>
+                                        <span style={{
+                                            fontFamily: brand, fontWeight: 900, fontSize: 14,
+                                            color: F, letterSpacing: '0.16em',
+                                            textTransform: 'uppercase',
+                                            width: 40, flexShrink: 0
+                                        }}>0{index + 1}</span>
+                                        <div style={{ flex: 1 }}>
+                                            <TextStaggerHover
+                                                index={index}
+                                                text={slide.title}
+                                                className="cursor-pointer block whitespace-nowrap overflow-hidden py-4"
+                                                style={{
+                                                    fontFamily: brand, fontWeight: 900,
+                                                    fontSize: 24,
+                                                    color: N,
+                                                    textTransform: 'uppercase',
+                                                    letterSpacing: '-0.02em'
+                                                }}
+                                            />
+                                            <div style={{ height: 1, width: '100%', background: 'rgba(5,11,43,0.07)' }} />
+                                        </div>
                                     </div>
                                 ))}
                             </div>
 
-                            {/* Right: Image with description overlay */}
                             <div className="lg:w-[55%] w-full">
-                                <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#01498C]/10" style={{ height: '420px' }}>
+                                <div className="relative overflow-hidden" style={{ height: 460, border: '1px solid rgba(5,11,43,0.07)' }}>
                                     <HoverSliderImageWrap className="absolute inset-0">
                                         {SLIDER_STEPS.map((slide, index) => (
                                             <div key={slide.id}>
@@ -159,56 +166,58 @@ const ComeFunziona = () => {
                                             </div>
                                         ))}
                                     </HoverSliderImageWrap>
-
-                                    {/* Gradient overlay — covers lower 60% of image */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#01498C] via-[#01498C]/80 via-[50%] to-transparent pointer-events-none" />
-
-                                    {/* Description text — fills lower 50% of image */}
-                                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10 pt-24 md:pt-32">
+                                    <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(5,11,43,0.95) 0%, rgba(5,11,43,0.7) 50%, transparent 100%)' }} />
+                                    <div className="absolute bottom-0 left-0 right-0 p-10 pt-24">
                                         <SlideDescription slides={SLIDER_STEPS} />
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </HoverSlider>
                 </div>
             </section>
 
-
-            {/* WHY JOBCOURIER — Premium KSP Cards */}
-            <section className="py-24 px-6 md:px-12 bg-white border-t border-[#E5E5E5] why-trigger">
+            {/* WHY */}
+            <section className="py-24 px-6 md:px-12 why-trigger" style={{ background: GL }}>
                 <div className="container mx-auto">
-                    <div className="mb-16 border-l-4 border-[#01498C] pl-6">
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] uppercase tracking-tight mb-4">
-                            {t('come_funziona.why_title')}
-                        </h2>
-                        <p className="text-[#666] text-lg max-w-2xl leading-relaxed">
+                    <div className="mb-16 max-w-2xl">
+                        <SectionLabel>Why JobCourier</SectionLabel>
+                        <h2 style={{
+                            fontFamily: brand, fontWeight: 900, fontSize: 48,
+                            color: N, textTransform: 'uppercase',
+                            letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 12
+                        }}>{t('come_funziona.why_title')}</h2>
+                        <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 20, color: GM, lineHeight: 1.4 }}>
                             {t('come_funziona.why_sub')}
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                    <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 1, background: 'rgba(5,11,43,0.06)' }}>
                         {WHY.map((f, i) => (
-                            <motion.div
-                                key={i}
-                                className="why-card group relative p-10 bg-white rounded-3xl border border-[#E5E5E5] hover:border-[#01498C] hover:shadow-2xl hover:shadow-[#01498C]/5 transition-all duration-500 flex flex-col h-full"
-                                whileHover={{ y: -8 }}
-                            >
-                                {/* Icon with background blob */}
-                                <div className="relative mb-8 w-16 h-16 flex items-center justify-center text-[#01498C] bg-[#F4F6F8] rounded-2xl group-hover:bg-[#01498C] group-hover:text-white transition-colors duration-500">
+                            <motion.div key={i} className="why-card group" style={{ background: '#FFFFFF', padding: '40px 36px', display: 'flex', flexDirection: 'column' }}>
+                                <div style={{
+                                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                    width: 48, height: 48,
+                                    background: GL, color: F,
+                                    marginBottom: 24,
+                                    flexShrink: 0,
+                                    alignSelf: 'flex-start'
+                                }}>
                                     {f.icon}
                                 </div>
-
-                                <h4 className="text-2xl font-bold text-[#1a1a1a] uppercase tracking-tight mb-4 group-hover:text-[#01498C] transition-colors">
-                                    {t(f.titleKey)}
-                                </h4>
-                                <p className="text-[#666] text-base leading-relaxed group-hover:text-[#444] transition-colors flex-grow">
+                                <span style={{
+                                    fontFamily: brand, fontWeight: 900, fontSize: 14,
+                                    color: F, letterSpacing: '0.16em',
+                                    textTransform: 'uppercase', marginBottom: 12
+                                }}>0{i + 1}</span>
+                                <h4 style={{
+                                    fontFamily: brand, fontWeight: 900, fontSize: 22,
+                                    color: N, textTransform: 'uppercase',
+                                    letterSpacing: '-0.02em', lineHeight: 1.05, marginBottom: 12
+                                }}>{t(f.titleKey)}</h4>
+                                <p style={{ fontFamily: body, fontSize: 14, color: GM, lineHeight: 1.6, flexGrow: 1 }}>
                                     {t(f.descKey)}
                                 </p>
-
-                                {/* Decorative bottom bar */}
-                                <div className="mt-8 h-1 w-12 bg-[#01498C] rounded-full group-hover:w-full transition-all duration-500" />
                             </motion.div>
                         ))}
                     </div>
@@ -216,28 +225,44 @@ const ComeFunziona = () => {
             </section>
 
             {/* CTA */}
-            <section className="py-20 px-6 md:px-12 bg-[#F4F6F8]">
-                <div className="container mx-auto">
-                    <div className="flex flex-col lg:flex-row items-center justify-between gap-8 bg-white border-4 border-[#01498C] p-10 md:p-16 rounded-2xl">
-                        <div className="flex-1">
-                            <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] leading-tight mb-6">
-                                {t('come_funziona.cta_title')}<br />
-                            </h2>
-                            <p className="text-lg text-[#666] max-w-lg leading-relaxed mb-8">
-                                {t('come_funziona.cta_sub')}
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <a
-                                    href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
-                                    className="inline-flex items-center gap-2 bg-[#01498C] text-white px-8 py-4 rounded-lg font-bold text-sm tracking-wide hover:bg-[#013dd6] transition-colors"
-                                >
-                                    {t('come_funziona.cta_btn')} <ArrowRight size={18} />
-                                </a>
-                                <Link to="/soluzioni-e-tariffe" className="inline-flex items-center gap-2 border-2 border-[#01498C] text-[#01498C] px-8 py-4 rounded-lg font-bold text-sm tracking-wide hover:bg-[#01498C] hover:text-white transition-colors">
-                                    {t('come_funziona.cta_btn2')}
-                                </Link>
-                            </div>
-                        </div>
+            <section className="py-24 px-6 md:px-12" style={{ background: N }}>
+                <div className="container mx-auto max-w-4xl">
+                    <SectionLabel>Inizia</SectionLabel>
+                    <h2 style={{
+                        fontFamily: brand, fontWeight: 900, fontSize: 56,
+                        color: '#FFFFFF', textTransform: 'uppercase',
+                        letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 12
+                    }}>{t('come_funziona.cta_title')}</h2>
+                    <p style={{
+                        fontFamily: editorial, fontStyle: 'italic', fontSize: 22,
+                        color: 'rgba(255,255,255,0.5)', lineHeight: 1.4,
+                        maxWidth: 580, marginBottom: 40
+                    }}>
+                        {t('come_funziona.cta_sub')}
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <a href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
+                            style={{
+                                background: F, color: '#FFFFFF', border: 'none',
+                                padding: '14px 28px',
+                                fontFamily: brand, fontWeight: 700, fontSize: 11,
+                                letterSpacing: '0.14em', textTransform: 'uppercase',
+                                cursor: 'pointer', borderRadius: 0, textDecoration: 'none',
+                                display: 'inline-flex', alignItems: 'center', gap: 8
+                            }} className="hover:opacity-80 transition-opacity">
+                            {t('come_funziona.cta_btn')} <ArrowRight size={14} />
+                        </a>
+                        <Link to="/soluzioni-e-tariffe" style={{
+                            background: 'transparent', color: '#FFFFFF',
+                            border: '1.5px solid rgba(255,255,255,0.3)',
+                            padding: '14px 28px',
+                            fontFamily: brand, fontWeight: 700, fontSize: 11,
+                            letterSpacing: '0.14em', textTransform: 'uppercase',
+                            cursor: 'pointer', borderRadius: 0, textDecoration: 'none',
+                            display: 'inline-flex', alignItems: 'center', gap: 8
+                        }} className="hover:opacity-80 transition-opacity">
+                            {t('come_funziona.cta_btn2')}
+                        </Link>
                     </div>
                 </div>
             </section>

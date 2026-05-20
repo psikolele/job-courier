@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { MapPin, Briefcase, ChevronLeft, Building2, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+const N = 'var(--brand-navy)';
+const F = 'var(--brand-fuchsia)';
+const GL = 'var(--brand-gray-light)';
+const GM = 'var(--brand-gray-mid)';
+const brand = 'var(--font-brand)';
+const editorial = 'var(--font-editorial)';
+const body = 'var(--font-body)';
+
 const Offerte = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const navigate = useNavigate();
-    
+
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -15,23 +22,17 @@ const Offerte = () => {
 
     const selectedJobId = searchParams.get('jobId');
 
-    // Debounce logic for search bar
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             const newParams = new URLSearchParams(searchParams);
             const currentKeyword = searchParams.get('keyword') || '';
-            
             if (searchQuery !== currentKeyword) {
-                if (searchQuery) {
-                    newParams.set('keyword', searchQuery);
-                } else {
-                    newParams.delete('keyword');
-                }
-                newParams.delete('jobId'); // Reset selected job on new search
+                if (searchQuery) newParams.set('keyword', searchQuery);
+                else newParams.delete('keyword');
+                newParams.delete('jobId');
                 setSearchParams(newParams, { replace: true });
             }
         }, 500);
-
         return () => clearTimeout(timeoutId);
     }, [searchQuery, searchParams, setSearchParams]);
 
@@ -45,16 +46,12 @@ const Offerte = () => {
         const fetchJobs = async () => {
             setLoading(true);
             try {
-                // Remove jobId from API call
                 const apiParams = new URLSearchParams(searchParams);
                 apiParams.delete('jobId');
-                
                 const response = await fetch(`/api/jobs?${apiParams.toString()}`);
                 if (!response.ok) throw new Error('Failed to fetch jobs');
                 const data = await response.json();
                 setJobs(data);
-                
-                // Auto-select first job on desktop if none selected
                 if (!isMobile && !selectedJobId && data.length > 0) {
                     const newParams = new URLSearchParams(searchParams);
                     newParams.set('jobId', data[0].id.toString());
@@ -67,9 +64,8 @@ const Offerte = () => {
                 setLoading(false);
             }
         };
-
         fetchJobs();
-    }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location')]); // Only refetch when actual search params change
+    }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location')]);
 
     const handleSelectJob = (id) => {
         const newParams = new URLSearchParams(searchParams);
@@ -84,80 +80,113 @@ const Offerte = () => {
     };
 
     const selectedJob = jobs.find(j => j.id.toString() === selectedJobId) || jobs[0];
-
     const showList = !isMobile || (isMobile && !selectedJobId);
     const showDetail = !isMobile || (isMobile && selectedJobId);
 
     return (
-        <div className="pt-24 min-h-screen bg-[#F5F3EE] font-sans">
+        <div className="pt-24 min-h-screen" style={{ background: GL }}>
             <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-8">
-                <div className="flex flex-col md:flex-row gap-6">
-                    {/* Left Column: Job List */}
+                {/* Page header */}
+                <div className="mb-8">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                        <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                        <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                            Offerte di lavoro
+                        </span>
+                    </div>
+                    <h1 style={{
+                        fontFamily: brand, fontWeight: 900, fontSize: 44,
+                        color: N, textTransform: 'uppercase',
+                        letterSpacing: '-0.025em', lineHeight: 0.95
+                    }}>
+                        {jobs.length} <span style={{ color: F }}>annunci</span> live
+                    </h1>
+                </div>
+
+                <div className="flex flex-col md:flex-row gap-1" style={{ background: 'rgba(5,11,43,0.06)' }}>
+                    {/* LIST */}
                     {showList && (
-                        <div className="w-full md:w-[40%] lg:w-[35%] flex flex-col gap-4">
-                            <div className="relative mb-2">
-                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                                <input 
-                                    type="text" 
-                                    placeholder="Cerca per professione, azienda..." 
+                        <div className="w-full md:w-[40%] lg:w-[35%] flex flex-col" style={{ background: '#FFFFFF', padding: '28px 24px' }}>
+                            <div className="relative mb-6">
+                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: GM }} />
+                                <input
+                                    type="text"
+                                    placeholder="Cerca per professione, azienda..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-12 pr-4 py-3.5 bg-white border border-slate-200 rounded-[1.25rem] text-sm focus:outline-none focus:ring-2 focus:ring-[#26367b] focus:border-transparent shadow-sm transition-all text-slate-800 font-medium placeholder:text-slate-400"
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px 16px 12px 42px',
+                                        background: '#FFFFFF',
+                                        border: '1.5px solid rgba(5,11,43,0.1)',
+                                        fontFamily: body, fontSize: 14,
+                                        outline: 'none', color: N,
+                                        borderRadius: 0
+                                    }}
                                 />
                             </div>
-                            <h2 className="text-xl font-bold text-[#111111] mb-2 font-['Space_Grotesk'] tracking-tight">Offerte di Lavoro ({jobs.length})</h2>
-                            
+
                             {loading ? (
-                                <div className="space-y-4">
+                                <div className="space-y-2">
                                     {[1, 2, 3, 4, 5].map(i => (
-                                        <div key={i} className="bg-white p-5 rounded-[1.5rem] border border-slate-200 shadow-sm animate-pulse">
-                                            <div className="h-5 bg-slate-200 rounded w-3/4 mb-3"></div>
-                                            <div className="h-4 bg-slate-200 rounded w-1/2 mb-4"></div>
-                                            <div className="flex gap-2">
-                                                <div className="h-6 bg-slate-200 rounded w-20"></div>
-                                                <div className="h-6 bg-slate-200 rounded w-20"></div>
-                                            </div>
-                                        </div>
+                                        <div key={i} className="animate-pulse" style={{ background: GL, padding: 20, height: 110 }} />
                                     ))}
                                 </div>
                             ) : error ? (
-                                <div className="p-4 bg-red-50 text-red-600 rounded-2xl">{error}</div>
+                                <div style={{ padding: 16, background: '#FFF0F0', color: '#C00', fontFamily: body, fontSize: 13 }}>{error}</div>
                             ) : jobs.length === 0 ? (
-                                <div className="p-8 text-center text-slate-500 bg-white rounded-[2rem] shadow-sm">
+                                <div style={{ padding: 32, textAlign: 'center', color: GM, fontFamily: body, fontSize: 14 }}>
                                     Nessuna offerta trovata con i filtri attuali.
                                 </div>
                             ) : (
-                                <div className="flex flex-col gap-4 overflow-y-auto pr-2 pb-8" style={{ maxHeight: 'calc(100vh - 150px)' }}>
+                                <div className="flex flex-col gap-1 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 280px)', background: 'rgba(5,11,43,0.04)' }}>
                                     {jobs.map(job => {
                                         const isSelected = selectedJobId === job.id.toString();
                                         return (
-                                            <motion.div 
+                                            <motion.div
                                                 key={job.id}
-                                                whileHover={{ scale: 1.01 }}
                                                 onClick={() => handleSelectJob(job.id)}
-                                                className={`cursor-pointer p-5 rounded-[1.5rem] border transition-all duration-300 shadow-sm ${isSelected ? 'border-[#26367b] ring-1 ring-[#26367b] bg-white' : 'border-slate-200 bg-white hover:border-[#26367b]/50'}`}
+                                                style={{
+                                                    cursor: 'pointer',
+                                                    padding: '20px 18px',
+                                                    background: isSelected ? GL : '#FFFFFF',
+                                                    borderLeft: isSelected ? `3px solid ${F}` : '3px solid transparent',
+                                                    transition: 'all 0.15s'
+                                                }}
                                             >
-                                                <div className="flex items-start justify-between gap-4 mb-3">
-                                                    <h3 className="font-bold text-lg text-[#111111] leading-tight font-['Space_Grotesk']">{job.title}</h3>
-                                                    {job.company?.logo && (
-                                                        <img src={job.company.logo} alt={job.company.name} className="w-10 h-10 object-contain rounded-md shrink-0 border border-slate-100" />
-                                                    )}
-                                                </div>
-                                                <p className="text-slate-600 text-sm mb-4 font-medium flex items-center gap-1">
-                                                    <Building2 className="w-4 h-4" /> {job.company?.name || 'Azienda Riservata'}
-                                                </p>
-                                                
-                                                <div className="flex flex-wrap gap-2 mt-auto">
-                                                    {job.location && (
-                                                        <span className="inline-flex items-center gap-1 px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full font-mono">
-                                                            <MapPin className="w-3 h-3" /> {job.location}
-                                                        </span>
-                                                    )}
-                                                    {job.sector && (
-                                                        <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-mono">
-                                                            <Briefcase className="w-3 h-3" /> {job.sector}
-                                                        </span>
-                                                    )}
+                                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                                                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: F, marginTop: 7, flexShrink: 0, display: 'inline-block' }} />
+                                                    <div style={{ flex: 1, minWidth: 0 }}>
+                                                        <h3 style={{
+                                                            fontFamily: brand, fontWeight: 700, fontSize: 14,
+                                                            color: N, lineHeight: 1.3,
+                                                            letterSpacing: '-0.01em', marginBottom: 4
+                                                        }}>{job.title}</h3>
+                                                        <p style={{ fontFamily: body, fontSize: 12, color: GM, marginBottom: 8 }}>
+                                                            {job.company?.name || 'Azienda Riservata'}
+                                                        </p>
+
+                                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                                                            {job.location && (
+                                                                <span style={{
+                                                                    fontFamily: body, fontSize: 10, fontWeight: 600,
+                                                                    letterSpacing: '0.08em', textTransform: 'uppercase',
+                                                                    color: GM,
+                                                                    border: '1px solid rgba(5,11,43,0.1)',
+                                                                    padding: '2px 8px'
+                                                                }}>{job.location}</span>
+                                                            )}
+                                                            {job.sector && (
+                                                                <span style={{
+                                                                    fontFamily: body, fontSize: 10, fontWeight: 600,
+                                                                    letterSpacing: '0.08em', textTransform: 'uppercase',
+                                                                    color: GM,
+                                                                    border: '1px solid rgba(5,11,43,0.1)',
+                                                                    padding: '2px 8px'
+                                                                }}>{job.sector}</span>
+                                                            )}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </motion.div>
                                         );
@@ -167,69 +196,139 @@ const Offerte = () => {
                         </div>
                     )}
 
-                    {/* Right Column: Job Detail (Sticky) */}
+                    {/* DETAIL */}
                     {showDetail && (
                         <div className="w-full md:w-[60%] lg:w-[65%]">
-                            <div className="md:sticky md:top-[100px] h-auto md:h-[calc(100vh-120px)] bg-white rounded-[2rem] border border-slate-200 shadow-xl overflow-hidden flex flex-col">
+                            <div className="md:sticky md:top-[100px] flex flex-col" style={{
+                                background: '#FFFFFF',
+                                height: isMobile ? 'auto' : 'calc(100vh - 200px)',
+                                overflow: 'hidden'
+                            }}>
                                 {isMobile && (
-                                    <div className="p-4 border-b border-slate-100">
-                                        <button onClick={handleBackToList} className="flex items-center gap-2 text-slate-600 hover:text-[#26367b] font-medium text-sm transition-colors">
-                                            <ChevronLeft className="w-4 h-4" /> Torna alle offerte
+                                    <div style={{ padding: 16, borderBottom: '1px solid rgba(5,11,43,0.07)' }}>
+                                        <button onClick={handleBackToList} style={{
+                                            background: 'none', border: 'none', cursor: 'pointer',
+                                            fontFamily: brand, fontWeight: 700, fontSize: 11,
+                                            letterSpacing: '0.14em', textTransform: 'uppercase',
+                                            color: F,
+                                            display: 'inline-flex', alignItems: 'center', gap: 6
+                                        }}>
+                                            <ChevronLeft size={14} /> Torna alle offerte
                                         </button>
                                     </div>
                                 )}
-                                
+
                                 {selectedJob ? (
                                     <>
-                                        <div className="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
+                                        <div style={{ padding: '32px 36px', borderBottom: '1px solid rgba(5,11,43,0.07)' }}>
                                             <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-                                                <div>
-                                                    <h1 className="text-2xl md:text-3xl font-bold text-[#111111] mb-3 font-['Space_Grotesk'] tracking-tight">{selectedJob.title}</h1>
-                                                    <div className="text-lg text-[#26367b] font-medium mb-4">{selectedJob.company?.name || 'Azienda Riservata'}</div>
-                                                    
-                                                    <div className="flex flex-wrap gap-3">
-                                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-700 text-sm rounded-xl font-mono">
-                                                            <MapPin className="w-4 h-4" /> {selectedJob.location}
+                                                <div style={{ flex: 1 }}>
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                                                        <span style={{ width: 8, height: 8, borderRadius: '50%', background: F, display: 'inline-block' }} />
+                                                        <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                                                            {selectedJob.company?.name || 'Azienda Riservata'}
                                                         </span>
-                                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 text-slate-700 text-sm rounded-xl font-mono">
-                                                            <Briefcase className="w-4 h-4" /> {selectedJob.role || selectedJob.sector}
+                                                    </div>
+                                                    <h1 style={{
+                                                        fontFamily: brand, fontWeight: 900, fontSize: 32,
+                                                        color: N, textTransform: 'uppercase',
+                                                        letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 20
+                                                    }}>{selectedJob.title}</h1>
+
+                                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                                                        <span style={{
+                                                            fontFamily: body, fontSize: 11, fontWeight: 600,
+                                                            letterSpacing: '0.08em', textTransform: 'uppercase',
+                                                            color: GM,
+                                                            border: '1px solid rgba(5,11,43,0.1)',
+                                                            padding: '4px 12px',
+                                                            display: 'inline-flex', alignItems: 'center', gap: 6
+                                                        }}>
+                                                            <MapPin size={12} /> {selectedJob.location}
+                                                        </span>
+                                                        <span style={{
+                                                            fontFamily: body, fontSize: 11, fontWeight: 600,
+                                                            letterSpacing: '0.08em', textTransform: 'uppercase',
+                                                            color: GM,
+                                                            border: '1px solid rgba(5,11,43,0.1)',
+                                                            padding: '4px 12px',
+                                                            display: 'inline-flex', alignItems: 'center', gap: 6
+                                                        }}>
+                                                            <Briefcase size={12} /> {selectedJob.role || selectedJob.sector}
                                                         </span>
                                                     </div>
                                                 </div>
                                                 {selectedJob.company?.logo && (
-                                                    <div className="w-20 h-20 bg-white rounded-2xl border border-slate-200 shadow-sm p-2 flex items-center justify-center shrink-0">
-                                                        <img src={selectedJob.company.logo} alt={selectedJob.company.name} className="max-w-full max-h-full object-contain" />
+                                                    <div style={{
+                                                        width: 72, height: 72,
+                                                        background: '#FFFFFF',
+                                                        border: '1px solid rgba(5,11,43,0.07)',
+                                                        padding: 8,
+                                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                        flexShrink: 0
+                                                    }}>
+                                                        <img src={selectedJob.company.logo} alt={selectedJob.company.name} className="max-w-full max-h-full object-contain grayscale" />
                                                     </div>
                                                 )}
                                             </div>
-                                            
-                                            <div className="mt-8">
-                                                <a href={selectedJob.link} target="_blank" rel="noopener noreferrer" className="inline-flex justify-center items-center h-12 px-8 bg-[#26367b] hover:bg-[#1a2554] text-white rounded-[1rem] font-bold tracking-wide transition-all shadow-md hover:shadow-lg w-full md:w-auto hover:-translate-y-0.5">
-                                                    Candidati su JobRoom
+
+                                            <div style={{ marginTop: 28 }}>
+                                                <a href={selectedJob.link} target="_blank" rel="noopener noreferrer"
+                                                    style={{
+                                                        background: F, color: '#FFFFFF', border: 'none',
+                                                        padding: '14px 32px',
+                                                        fontFamily: brand, fontWeight: 700, fontSize: 11,
+                                                        letterSpacing: '0.14em', textTransform: 'uppercase',
+                                                        cursor: 'pointer', borderRadius: 0, textDecoration: 'none',
+                                                        display: 'inline-flex', alignItems: 'center', gap: 8
+                                                    }} className="hover:opacity-80 transition-opacity">
+                                                    Candidati →
                                                 </a>
                                             </div>
                                         </div>
-                                        
-                                        <div className="p-6 md:p-8 overflow-y-auto">
-                                            <h3 className="text-xl font-bold mb-4 font-['Space_Grotesk']">Dettagli della posizione</h3>
-                                            <div className="prose prose-slate max-w-none">
-                                                <p className="text-slate-600 leading-relaxed">
-                                                    Questa posizione è offerta da {selectedJob.company?.name || 'un\'azienda riservata'}.
-                                                    Per visualizzare la descrizione completa del lavoro, i requisiti e per candidarti, visita l'annuncio originale tramite il pulsante sopra.
-                                                </p>
-                                                <div className="mt-8 p-6 bg-blue-50/50 border border-blue-100 rounded-[1.5rem]">
-                                                    <h4 className="font-bold text-[#26367b] mb-2">Perché candidarsi tramite Job Courier?</h4>
-                                                    <ul className="list-disc list-inside text-blue-800/80 space-y-2 text-sm font-medium">
-                                                        <li>Accesso diretto alle migliori aziende in Svizzera</li>
-                                                        <li>Supporto nella preparazione del CV</li>
-                                                        <li>Aggiornamenti in tempo reale sullo stato della candidatura</li>
-                                                    </ul>
-                                                </div>
+
+                                        <div style={{ padding: '32px 36px', overflowY: 'auto', flex: 1 }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                                                <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                                                <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                                                    Dettagli posizione
+                                                </span>
+                                            </div>
+                                            <p style={{ fontFamily: body, fontSize: 14, color: N, lineHeight: 1.7, opacity: 0.8 }}>
+                                                Questa posizione è offerta da {selectedJob.company?.name || 'un\'azienda riservata'}.
+                                                Per visualizzare la descrizione completa del lavoro, i requisiti e per candidarti, visita l'annuncio originale tramite il pulsante sopra.
+                                            </p>
+
+                                            <div style={{
+                                                marginTop: 32, padding: '24px 28px',
+                                                background: GL,
+                                                borderLeft: `3px solid ${F}`
+                                            }}>
+                                                <p style={{
+                                                    fontFamily: brand, fontWeight: 700, fontSize: 11,
+                                                    letterSpacing: '0.16em', textTransform: 'uppercase',
+                                                    color: F, marginBottom: 12
+                                                }}>Perché Job Courier</p>
+                                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                                    {[
+                                                        'Accesso diretto alle migliori aziende in Svizzera',
+                                                        'Supporto nella preparazione del CV',
+                                                        'Aggiornamenti in tempo reale sullo stato della candidatura'
+                                                    ].map((item, i) => (
+                                                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 8, fontFamily: body, fontSize: 13, color: N }}>
+                                                            <span style={{ width: 5, height: 5, borderRadius: '50%', background: F, marginTop: 8, flexShrink: 0, display: 'inline-block' }} />
+                                                            {item}
+                                                        </li>
+                                                    ))}
+                                                </ul>
                                             </div>
                                         </div>
                                     </>
                                 ) : (
-                                    <div className="flex-1 flex items-center justify-center text-slate-400 p-8 text-center font-mono text-sm">
+                                    <div className="flex-1 flex items-center justify-center p-8 text-center" style={{
+                                        fontFamily: editorial, fontStyle: 'italic',
+                                        fontSize: 18, color: GM
+                                    }}>
                                         Seleziona un'offerta dalla lista
                                     </div>
                                 )}

@@ -12,32 +12,64 @@ const AdSlot = ({ id, type = 'internal' }) => {
                     observer.disconnect();
                 }
             },
-            { rootMargin: '200px' } 
+            { rootMargin: '200px' }
         );
 
-        if (slotRef.current) {
-            observer.observe(slotRef.current);
-        }
-
-        return () => {
-            if (observer) observer.disconnect();
-        };
+        if (slotRef.current) observer.observe(slotRef.current);
+        return () => { if (observer) observer.disconnect(); };
     }, []);
 
+    const N = 'var(--brand-navy)';
+    const F = 'var(--brand-fuchsia)';
+    const GM = 'var(--brand-gray-mid)';
+    const brand = 'var(--font-brand)';
+    const body = 'var(--font-body)';
+
     return (
-        <div ref={slotRef} className="w-full max-w-4xl mx-auto my-8 md:my-16 flex justify-center items-center px-4">
+        <div ref={slotRef} className="w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 my-12 flex justify-center items-center">
             {isVisible ? (
-                <div className="w-full h-[100px] md:h-[150px] bg-white/5 border border-black/10 rounded-2xl flex flex-col items-center justify-center text-foreground/50 relative overflow-hidden group shadow-inner">
-                    <span className="text-xs tracking-widest uppercase mb-1 opacity-70">Advertisement {id}</span>
+                <div className="w-full flex flex-col items-center justify-center relative overflow-hidden group"
+                    style={{
+                        height: 140,
+                        background: '#FFFFFF',
+                        border: '1px solid rgba(5,11,43,0.07)'
+                    }}>
+                    <span style={{
+                        position: 'absolute', top: 12, right: 16,
+                        fontFamily: body,
+                        fontSize: 9,
+                        fontWeight: 700,
+                        letterSpacing: '0.22em',
+                        textTransform: 'uppercase',
+                        color: GM
+                    }}>ADV {id}</span>
+                    <span style={{
+                        fontFamily: brand,
+                        fontWeight: 700,
+                        fontSize: 10,
+                        letterSpacing: '0.18em',
+                        textTransform: 'uppercase',
+                        color: GM,
+                        marginBottom: 6
+                    }}>Spazio Sponsorizzato</span>
                     {type === 'internal' ? (
-                        <p className="font-mono text-sm group-hover:text-accent transition-colors">Spazio Sponsorizzato Premium</p>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: F, display: 'inline-block' }} />
+                            <p style={{
+                                fontFamily: brand,
+                                fontWeight: 700,
+                                fontSize: 14,
+                                color: N,
+                                letterSpacing: '0.12em',
+                                textTransform: 'uppercase'
+                            }}>PREMIUM PARTNER</p>
+                        </div>
                     ) : (
-                        <p className="font-mono text-sm group-hover:text-accent transition-colors">AdSense Placeholder</p>
+                        <p style={{ fontFamily: body, fontSize: 12, color: GM }}>AdSense Placeholder</p>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </div>
             ) : (
-                <div className="w-full h-[100px] md:h-[150px] bg-transparent"></div>
+                <div className="w-full" style={{ height: 140, background: 'transparent' }} />
             )}
         </div>
     );

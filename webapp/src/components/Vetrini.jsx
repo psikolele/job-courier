@@ -20,47 +20,71 @@ const Vetrini = () => {
         { name: "ER Services Sagl", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243694.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243694&company-name=er-services-sagl" }
     ];
 
-    return (
-        <section className="py-16 md:py-24 bg-white relative z-10 px-4 md:px-12 w-full" id="vetrini">
-            <div className="max-w-[1400px] mx-auto w-full">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-[#01498C] mb-6 tracking-tight italic font-display">
-                        Aziende e società di selezione in vetrina
-                    </h2>
-                    <div className="w-24 h-1 bg-[#01498C] mx-auto rounded-full"></div>
-                </div>
+    const N = 'var(--brand-navy)';
+    const F = 'var(--brand-fuchsia)';
+    const GL = 'var(--brand-gray-light)';
+    const GM = 'var(--brand-gray-mid)';
+    const brand = 'var(--font-brand)';
+    const editorial = 'var(--font-editorial)';
+    const body = 'var(--font-body)';
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+    return (
+        <section className="py-20 md:py-28 px-6 md:px-12 w-full" id="vetrini" style={{ background: '#FFFFFF' }}>
+            <div className="max-w-[1400px] mx-auto w-full">
+                {/* Section label */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                    <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                    <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                        Aziende Vetrina
+                    </span>
+                </div>
+                <h2 style={{
+                    fontFamily: editorial,
+                    fontStyle: 'italic',
+                    fontSize: 36,
+                    color: N,
+                    marginBottom: 56,
+                    maxWidth: 620,
+                    lineHeight: 1.2
+                }}>
+                    Aziende e società di selezione di riferimento in Svizzera.
+                </h2>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" style={{ gap: 1, background: 'rgba(5,11,43,0.06)' }}>
                     {companies.map((company, idx) => (
                         <motion.a
                             key={idx}
                             href={company.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 12 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.05 }}
-                            className="group relative aspect-square flex flex-col items-center justify-center p-4 sm:p-6 transition-all duration-500 hover-lift"
-                            style={{
-                                background: 'rgba(142, 132, 200, 0.12)',
-                                backdropFilter: 'blur(12px)',
-                                WebkitBackdropFilter: 'blur(12px)',
-                                border: '1px solid rgba(142, 132, 200, 0.2)',
-                                borderRadius: '2.5rem',
-                                boxShadow: '0 8px 32px 0 rgba(142, 132, 200, 0.05)'
-                            }}
+                            transition={{ delay: idx * 0.03 }}
+                            className="group relative aspect-square flex flex-col items-center justify-center p-6 transition-colors duration-200"
+                            style={{ background: '#FFFFFF', borderRadius: 0 }}
+                            whileHover={{ backgroundColor: GL }}
                         >
                             <div className="w-full h-full flex items-center justify-center mb-2">
-                                <img 
-                                    src={company.logo} 
-                                    alt={company.name} 
-                                    className="max-w-full max-h-[75%] object-contain filter group-hover:drop-shadow-lg transition-all duration-500 rounded-[1.5rem] mix-blend-multiply"
+                                <img
+                                    src={company.logo}
+                                    alt={company.name}
+                                    className="max-w-full max-h-[70%] object-contain transition-all duration-300 mix-blend-multiply grayscale group-hover:grayscale-0"
                                 />
                             </div>
-                            <span className="text-[10px] font-normal uppercase tracking-[0.25em] text-[#01498C] opacity-40 group-hover:opacity-100 transition-opacity font-mono">
-                                Vedi Annunci
-                            </span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                <span style={{ width: 5, height: 5, borderRadius: '50%', background: F, display: 'inline-block' }} />
+                                <span style={{
+                                    fontFamily: body,
+                                    fontSize: 10,
+                                    fontWeight: 600,
+                                    letterSpacing: '0.18em',
+                                    textTransform: 'uppercase',
+                                    color: GM
+                                }}>
+                                    Vedi Annunci
+                                </span>
+                            </div>
                         </motion.a>
                     ))}
                 </div>

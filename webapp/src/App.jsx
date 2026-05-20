@@ -48,7 +48,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative w-full bg-[#FAF8F5] text-[#2A2A35] min-h-screen selection:bg-[#C9A84C]/30">
+    <div className="relative w-full min-h-screen" style={{ background: 'var(--brand-gray-light)', color: 'var(--brand-navy)' }}>
       <ScrollToTop />
       <Navbar showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
       <Routes>
