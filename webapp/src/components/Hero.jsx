@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import heroBg1 from '../assets/hero-bg.jpg';
 
 const Hero = ({ setShowLoginModal }) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [hoveredSide, setHoveredSide] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
