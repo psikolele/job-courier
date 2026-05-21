@@ -1,11 +1,11 @@
 [
   {
     "id": 0,
-    "title": "Elettricista AFC",
+    "title": "Pittore AFC / CFP",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704184-elettricista-afc-sottoceneri&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704183-pittore-afc-cfp-sopraceneri&language=en"
   },
   {
     "id": 1,
@@ -17,38 +17,14 @@
   },
   {
     "id": 2,
-    "title": "RIF. 587 - METROLOGO",
+    "title": "Automobildiagnostiker (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "E-Work Sagl",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704182-rif-587-metrologo-mendrisio&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704173-automobildiagnostiker-m-w-d-100-m%C3%B6nchaltorf-zh&language=en"
   },
   {
     "id": 3,
-    "title": "Montatore di carpenteria pesante",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704181-montatore-di-carpenteria-pesante-sottoceneri&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Parchettista",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704186-parchettista-sottoceneri&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Pittore AFC / CFP",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704183-pittore-afc-cfp-sopraceneri&language=en"
-  },
-  {
-    "id": 6,
     "title": "Operatore per smerigliatura / lucidatura a specchio",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,15 +32,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704179-operatore-per-smerigliatura-lucidatura-a-specchio-sopraceneri&language=en"
   },
   {
-    "id": 7,
-    "title": "Metalcostruttore",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704180-metalcostruttore-sottoceneri&language=en"
-  },
-  {
-    "id": 8,
+    "id": 4,
     "title": "Gessatore",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,12 +40,44 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704185-gessatore-sottoceneri&language=en"
   },
   {
-    "id": 9,
+    "id": 5,
+    "title": "Montatore di carpenteria pesante",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704181-montatore-di-carpenteria-pesante-sottoceneri&language=en"
+  },
+  {
+    "id": 6,
     "title": "Tecnico di Produzione biotech (Downstream Processing)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704177-tecnico-di-produzione-biotech-downstream-processing-lugano-lugano&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Elettricista AFC",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704184-elettricista-afc-sottoceneri&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Infirmier/Infirmière HES / ES ou avec la reconnaissance Croix-Rouge Suisse H/F/D Soins à domicile",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704176-infirmier-infirmi%C3%A8re-hes-es-ou-avec-la-reconnaissance-croix-rouge-suisse-h-f-d-soins-%C3%A0-domicile-jura-ju&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Technischer Hauswart (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704175-technischer-hauswart-m-w-d-100-frauenfeld-tg&language=en"
   },
   {
     "id": 10,
@@ -89,10 +89,10 @@
   },
   {
     "id": 11,
-    "title": "Technischer Hauswart (m/w/d) 100%",
+    "title": "RIF. 587 - METROLOGO",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704175-technischer-hauswart-m-w-d-100-frauenfeld-tg&language=en"
+    "company": "E-Work Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704182-rif-587-metrologo-mendrisio&language=en"
   }
 ]
