@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { MapPin, Briefcase, ChevronLeft, Building2, Search } from 'lucide-react';
+import { MapPin, Briefcase, ChevronLeft, Calendar, Search, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
+import useRegistrationWall from '../hooks/useRegistrationWall';
+import RegistrationWallModal from '../components/RegistrationWallModal';
+import ApplyRedirectModal from '../components/ApplyRedirectModal';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -21,6 +24,12 @@ const Offerte = () => {
     const [searchQuery, setSearchQuery] = useState(searchParams.get('keyword') || '');
 
     const selectedJobId = searchParams.get('jobId');
+
+    // Registration wall (shared logic with Filters.jsx)
+    const wall = useRegistrationWall();
+
+    // External redirect modal
+    const [redirectModal, setRedirectModal] = useState({ open: false, url: null, company: '' });
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
@@ -68,9 +77,25 @@ const Offerte = () => {
     }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location')]);
 
     const handleSelectJob = (id) => {
+        // Gate behind registration wall (skip block on already-selected job → allows nav within detail)
+        if (selectedJobId !== id.toString()) {
+            const allowed = wall.guard();
+            if (!allowed) return;
+        }
         const newParams = new URLSearchParams(searchParams);
         newParams.set('jobId', id.toString());
         setSearchParams(newParams);
+    };
+
+    const handleApply = (job) => {
+        if (!job) return;
+        if (job.redirect && job.external_url) {
+            setRedirectModal({ open: true, url: job.external_url, company: job.company?.name || '' });
+            return;
+        }
+        // Internal flow → open JobRoom view-job (login + apply handled there)
+        const url = job.apply_url || job.link;
+        window.open(url, '_blank', 'noopener,noreferrer');
     };
 
     const handleBackToList = () => {
@@ -162,9 +187,22 @@ const Offerte = () => {
                                                             color: N, lineHeight: 1.3,
                                                             letterSpacing: '-0.01em', marginBottom: 4
                                                         }}>{job.title}</h3>
-                                                        <p style={{ fontFamily: body, fontSize: 12, color: GM, marginBottom: 8 }}>
+                                                        <p style={{ fontFamily: body, fontSize: 12, color: GM, marginBottom: 6 }}>
                                                             {job.company?.name || 'Azienda Riservata'}
                                                         </p>
+                                                        {job.published_at && (
+                                                            <p style={{ fontFamily: body, fontSize: 10, color: GM, marginBottom: 8, display: 'flex', alignItems: 'center', gap: 4, opacity: 0.7 }}>
+                                                                <Calendar size={10} /> {job.published_at}
+                                                            </p>
+                                                        )}
+                                                        {job.redirect && (
+                                                            <span style={{
+                                                                display: 'inline-block',
+                                                                fontFamily: brand, fontWeight: 700, fontSize: 8,
+                                                                letterSpacing: '0.18em', textTransform: 'uppercase',
+                                                                color: F, marginBottom: 6
+                                                            }}>● Esterno</span>
+                                                        )}
 
                                                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                                                             {job.location && (
@@ -272,18 +310,28 @@ const Offerte = () => {
                                                 )}
                                             </div>
 
-                                            <div style={{ marginTop: 28 }}>
-                                                <a href={selectedJob.link} target="_blank" rel="noopener noreferrer"
+                                            <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                                                <button onClick={() => handleApply(selectedJob)}
                                                     style={{
                                                         background: F, color: '#FFFFFF', border: 'none',
                                                         padding: '14px 32px',
                                                         fontFamily: brand, fontWeight: 700, fontSize: 11,
                                                         letterSpacing: '0.14em', textTransform: 'uppercase',
-                                                        cursor: 'pointer', borderRadius: 0, textDecoration: 'none',
-                                                        display: 'inline-flex', alignItems: 'center', gap: 8
+                                                        cursor: 'pointer', borderRadius: 0,
+                                                        display: 'inline-flex', alignItems: 'center', gap: 8,
+                                                        width: 'fit-content'
                                                     }} className="hover:opacity-80 transition-opacity">
-                                                    Candidati →
-                                                </a>
+                                                    {selectedJob.redirect ? (
+                                                        <>Candidati <ExternalLink size={13} /></>
+                                                    ) : (
+                                                        <>Candidati su Job Courier →</>
+                                                    )}
+                                                </button>
+                                                {selectedJob.redirect && (
+                                                    <span style={{ fontFamily: body, fontSize: 11, color: GM, fontStyle: 'italic' }}>
+                                                        Candidatura gestita su sito esterno
+                                                    </span>
+                                                )}
                                             </div>
                                         </div>
 
@@ -337,6 +385,17 @@ const Offerte = () => {
                     )}
                 </div>
             </div>
+
+            {/* Registration wall (after 3 clicks/24h) */}
+            <RegistrationWallModal isOpen={wall.isOpen} onClose={() => wall.setIsOpen(false)} />
+
+            {/* External redirect modal — "Ti stiamo mandando su un altro sito" */}
+            <ApplyRedirectModal
+                isOpen={redirectModal.open}
+                externalUrl={redirectModal.url}
+                companyName={redirectModal.company}
+                onClose={() => setRedirectModal({ open: false, url: null, company: '' })}
+            />
         </div>
     );
 };

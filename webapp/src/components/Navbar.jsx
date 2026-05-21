@@ -51,18 +51,16 @@ const IconMenu = () => (
     </svg>
 );
 
-const getCandidateLinks = (isHome) => [
-    { label: 'Vedi tutte le offerte', labelEn: 'View all offers', labelDe: 'Alle Angebote ansehen', labelFr: 'Voir toutes les offres', href: 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php', external: true },
+const getCandidateLinks = () => [
+    { label: 'Vedi tutte le offerte', labelEn: 'View all offers', labelDe: 'Alle Angebote ansehen', labelFr: 'Voir toutes les offres', href: '/offerte' },
     { label: 'Pubblica il tuo curriculum', labelEn: 'Publish your CV', labelDe: 'Lebenslauf veröffentlichen', labelFr: 'Publiez votre CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
     { label: 'Vedi tutte le aziende', labelEn: 'View all companies', labelDe: 'Alle Unternehmen ansehen', labelFr: 'Voir toutes les entreprises', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
-    { label: 'Suggerimenti per la tua carriera', labelEn: 'Career tips', labelDe: 'Karrieretipps', labelFr: 'Conseils de carrière', href: isHome ? '#blog' : '/#blog' },
 ];
 
-const getCompanyLinks = (isHome) => [
+const getCompanyLinks = () => [
     { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
     { label: 'Soluzioni e Tariffe', labelEn: 'Solutions and Prices', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
     { label: 'Registra Azienda', labelEn: 'Register Company', labelDe: 'Unternehmen registrieren', labelFr: 'Enregistrer une entreprise', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
-    { label: 'Suggerimenti per il recruiting', labelEn: 'Recruiting tips', labelDe: 'Recruiting-Tipps', labelFr: 'Conseils de recrutement', href: isHome ? '#blog' : '/#blog' },
 ];
 
 const getLabel = (item, lang) => {
@@ -107,8 +105,8 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
 
     const navHeight = scrolled ? '64px' : '80px';
     
-    const candidateLinks = getCandidateLinks(isHome);
-    const companyLinks = getCompanyLinks(isHome);
+    const candidateLinks = getCandidateLinks();
+    const companyLinks = getCompanyLinks();
 
     return (
         <>
@@ -118,7 +116,6 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                 style={{
                     height: navHeight,
                     backgroundColor: '#FFFFFF',
-                    boxShadow: scrolled ? '0 2px 16px rgba(5,11,43,0.07)' : 'none',
                     borderBottom: '1px solid rgba(5,11,43,0.06)'
                 }}
             >
@@ -130,8 +127,8 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     }} />
                     <span style={{
                         fontFamily: 'var(--font-brand)',
-                        fontWeight: 700,
-                        fontSize: 13,
+                        fontWeight: 900,
+                        fontSize: 18,
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
                         color: 'var(--brand-navy)',
@@ -156,7 +153,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                         fontWeight: i18n.language === lng ? 700 : 400,
                                         letterSpacing: '0.1em'
                                     }}
-                                    className="transition-colors hover:text-[var(--brand-navy)]"
+                                    className="transition-colors hover:text-[var(--brand-navy)] cursor-pointer"
                                 >
                                     {lng.toUpperCase()}
                                 </button>
@@ -167,14 +164,13 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     {/* Accedi link */}
                     <button
                         onClick={() => setShowLoginModal(true)}
-                        className="hidden md:block transition-colors"
+                        className="hidden md:block transition-colors cursor-pointer"
                         style={{
                             fontFamily: 'var(--font-body)',
                             fontSize: 13,
                             color: 'var(--brand-gray-mid)',
                             background: 'none',
                             border: 'none',
-                            cursor: 'pointer',
                             padding: 0
                         }}
                     >
@@ -182,9 +178,11 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     </button>
 
                     {/* NAVY BLOCK CTA */}
-                    <button
+                    <motion.button
+                        whileHover={{ scale: 1.03 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
                         onClick={() => setShowLoginModal(true)}
-                        className="hidden md:block whitespace-nowrap flex-shrink-0 transition-opacity hover:opacity-80"
+                        className="hidden md:block whitespace-nowrap flex-shrink-0 transition-colors cursor-pointer"
                         style={{
                             background: 'var(--brand-navy)',
                             color: '#FFFFFF',
@@ -195,54 +193,51 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                             fontWeight: 700,
                             letterSpacing: '0.14em',
                             textTransform: 'uppercase',
-                            cursor: 'pointer',
                             borderRadius: 0
                         }}
                     >
                         PUBBLICA ANNUNCIO →
-                    </button>
+                    </motion.button>
 
                     {/* HAMBURGER Toggle */}
                     <button
                         onClick={() => setMenuOpen(!menuOpen)}
                         style={{ color: 'var(--brand-navy)' }}
-                        className="p-1 transition-opacity hover:opacity-70"
+                        className="p-1 transition-opacity hover:opacity-70 cursor-pointer"
                     >
                         {menuOpen ? <IconX /> : <IconMenu />}
                     </button>
                 </div>
             </header>
 
-            {/* ── GLASS SPLIT MENU (70% HEIGHT) ── */}
+            {/* ── GLASS SPLIT MENU (COMPACT HEIGHT) ── */}
             <AnimatePresence>
                 {menuOpen && (
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed top-0 left-0 right-0 z-[90] flex flex-col md:flex-row shadow-2xl"
+                        className="fixed top-0 left-0 right-0 z-[90] flex flex-col md:flex-row border-b border-[#050B2B]/10 h-[85vh] md:h-[52vh] overflow-y-auto md:overflow-hidden"
                         style={{
-                            height: '70vh',
-                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                            backdropFilter: 'blur(20px)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.98)',
                             paddingTop: navHeight,
                         }}
                     >
                         {/* CLOSE Button Overlay (Mobile focus) */}
                         <button 
                             onClick={() => setMenuOpen(false)}
-                            className="absolute top-20 right-6 md:hidden text-slate-400"
+                            className="absolute top-20 right-6 md:hidden text-slate-400 cursor-pointer"
                         >
                             <IconX />
                         </button>
 
                         {/* LEFT SECTION: CANDIDATI */}
-                        <div className="flex-1 flex flex-col items-center pt-10 md:pt-16 px-8 border-b md:border-b-0 md:border-r border-slate-200/50 bg-[#fafafa]/50 relative group">
-                            <div className="mb-4 text-[#01498C]/40 group-hover:text-[#01498C]/60 transition-colors duration-500">
+                        <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 border-b md:border-b-0 md:border-r border-slate-200/50 bg-[#F6F7FB] relative group">
+                            <div className="mb-4 text-[var(--brand-navy)]/40 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
                                 <IconUser size={32} />
                             </div>
                             <div className="relative z-10 flex flex-col items-center">
-                                <h2 className="text-xl md:text-2xl font-normal text-[#01498C] tracking-[0.2em] uppercase font-sans mb-6 opacity-70">
+                                <h2 className="text-lg md:text-xl font-bold text-[var(--brand-navy)] tracking-[0.2em] uppercase font-sans mb-4">
                                     {candidateTitle}
                                 </h2>
                                 <div className="flex flex-col items-center gap-4">
@@ -251,7 +246,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-xs md:text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-slate-500 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -260,7 +255,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-xs md:text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-slate-500 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -272,12 +267,12 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         </div>
 
                         {/* RIGHT SECTION: AZIENDE */}
-                        <div className="flex-1 flex flex-col items-center pt-10 md:pt-16 px-8 relative group">
-                            <div className="mb-4 text-slate-400/40 group-hover:text-slate-400/60 transition-colors duration-500">
+                        <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 relative group bg-white">
+                            <div className="mb-4 text-slate-400/40 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
                                 <IconBuilding size={32} />
                             </div>
                             <div className="relative z-10 flex flex-col items-center">
-                                <h2 className="text-xl md:text-2xl font-normal text-slate-500 tracking-[0.2em] uppercase font-sans mb-6 opacity-70">
+                                <h2 className="text-lg md:text-xl font-bold text-slate-500 tracking-[0.2em] uppercase font-sans mb-4">
                                     {companyTitle}
                                 </h2>
                                 <div className="flex flex-col items-center gap-4">
@@ -286,7 +281,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-xs md:text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-slate-500 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -295,7 +290,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-xs md:text-sm text-slate-500 font-mono hover:text-[#01498C] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-slate-500 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -333,75 +328,80 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         onClick={(e) => { if (e.target === e.currentTarget) setShowLoginModal(false); }}
                     >
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0, y: 30 }}
+                            initial={{ scale: 0.95, opacity: 0, y: 15 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.9, opacity: 0, y: 30 }}
-                            className="bg-white rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] w-full max-w-4xl relative overflow-hidden flex flex-col md:flex-row min-h-[500px]"
+                            exit={{ scale: 0.95, opacity: 0, y: 15 }}
+                            className="bg-white shadow-2xl w-full max-w-4xl relative overflow-hidden flex flex-col md:flex-row min-h-[500px] rounded-none border border-slate-200"
                         >
                             <button
                                 onClick={() => setShowLoginModal(false)}
-                                className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shadow-sm"
+                                className="absolute top-6 right-6 z-20 w-10 h-10 bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shadow-sm rounded-none border border-slate-200 cursor-pointer"
                             >
                                 <IconX />
                             </button>
 
                             {/* LEFT: CANDIDATI */}
-                            <div className="flex-1 p-8 md:p-12 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-slate-100 bg-slate-50/50">
-                                <div className="w-12 h-12 rounded-2xl bg-[#0038A5]/10 flex items-center justify-center mb-6 text-[#0038A5]">
+                            <div className="flex-1 p-8 md:p-12 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-slate-200/50 bg-[#F6F7FB]">
+                                <div className="w-12 h-12 bg-[var(--brand-navy)]/10 flex items-center justify-center mb-6 text-[var(--brand-navy)] rounded-none">
                                     <IconUser size={24} />
                                 </div>
-                                <h3 className="text-xl md:text-2xl font-normal text-slate-900 mb-2 tracking-[0.2em] uppercase font-sans opacity-70">
+                                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2 tracking-[0.2em] uppercase font-sans">
                                     Candidati
                                 </h3>
                                 <p className="text-slate-500 text-sm mb-8 max-w-[240px]">Accedi al tuo profilo per gestire le candidature e il tuo CV.</p>
                                 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
-                                    <a
+                                    <motion.a
+                                        whileHover={{ scale: 1.03 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                         href="https://jobroom.jobcourier.ch/job-seekers-login.php?language=it"
-                                        className="w-full bg-[#0038A5] text-white font-bold py-4 rounded-2xl transition-all shadow-[0_8px_20px_rgba(0,56,165,0.2)] btn-shiny hover-lift text-center"
+                                        className="w-full bg-[var(--brand-navy)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase"
                                     >
                                         Accedi al Profilo
-                                    </a>
-                                    <a
+                                    </motion.a>
+                                    <motion.a
+                                        whileHover={{ scale: 1.03 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                         href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it"
-                                        className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 rounded-2xl transition-all hover:border-[#0038A5] hover:text-[#0038A5] hover-lift text-center"
+                                        className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 transition-all hover:border-[var(--brand-navy)] hover:text-[var(--brand-navy)] text-center rounded-none tracking-[0.1em] text-xs uppercase"
                                     >
                                         Carica il tuo CV
-                                    </a>
+                                    </motion.a>
                                 </div>
                             </div>
 
                             {/* RIGHT: AZIENDE */}
-                            <div className="flex-1 p-8 md:p-12 flex flex-col items-center justify-center text-center">
-                                <div className="w-12 h-12 rounded-2xl bg-slate-900/5 flex items-center justify-center mb-6 text-slate-800">
+                            <div className="flex-1 p-8 md:p-12 flex flex-col items-center justify-center text-center bg-[var(--brand-navy)] text-white">
+                                <div className="w-12 h-12 bg-white/10 flex items-center justify-center mb-6 text-white rounded-none">
                                     <IconBuilding size={24} />
                                 </div>
-                                <h3 className="text-xl md:text-2xl font-normal text-slate-900 mb-2 tracking-[0.2em] uppercase font-sans opacity-70">
+                                <h3 className="text-lg md:text-xl font-bold text-white mb-2 tracking-[0.2em] uppercase font-sans">
                                     Aziende
                                 </h3>
-                                <p className="text-slate-500 text-sm mb-8 max-w-[240px]">Pubblica le tue offerte e trova i migliori talenti.</p>
+                                <p className="text-slate-300 text-sm mb-8 max-w-[240px]">Pubblica le tue offerte e trova i migliori talenti.</p>
                                 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
-                                    <a
+                                    <motion.a
+                                        whileHover={{ scale: 1.03 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                         href="https://jobroom.jobcourier.ch/job-seekers-login.php?language=it"
-                                        className="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl transition-all shadow-[0_8px_20px_rgba(0,0,0,0.2)] btn-shiny hover-lift text-center"
+                                        className="w-full bg-[var(--brand-fuchsia)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase"
                                     >
                                         Login Azienda
-                                    </a>
-                                    <a
+                                    </motion.a>
+                                    <motion.a
+                                        whileHover={{ scale: 1.03 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                         href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it&_gl=1*e5uej*_gcl_au*MjA5NDU5ODA3Ni4xNzE4MDA1NjYy"
-                                        className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 rounded-2xl transition-all hover:border-slate-800 hover:text-slate-800 hover-lift text-center px-4"
+                                        className="w-full bg-transparent border-2 border-white/20 text-white font-bold py-4 transition-all hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] text-center px-4 rounded-none tracking-[0.1em] text-xs uppercase"
                                     >
                                         Registra la tua azienda
-                                    </a>
+                                    </motion.a>
                                 </div>
                             </div>
 
                             {/* Accent bottom bar */}
-                            <div className="absolute bottom-0 left-0 right-0 h-1.5 flex">
-                                <div className="flex-1 bg-[#0038A5]"></div>
-                                <div className="flex-1 bg-slate-900"></div>
-                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-[var(--brand-fuchsia)]" />
                         </motion.div>
                     </motion.div>
                 )}

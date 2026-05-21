@@ -103,19 +103,48 @@ export default async function handler(req, res) {
       // SECTOR & ROLE EXTRACTION
       let sector = $el.find('.sector, .category, .details span:contains("Settore"), .detailsHead label:contains("Settore:")').next('span').text().trim();
       if (!sector) {
-          // Fallback check for common sector types mentioned in text
           const text = $el.text().toLowerCase();
           if (text.includes('trasporti')) sector = 'Trasporti';
           else if (text.includes('logistica')) sector = 'Logistica';
           else if (text.includes('amministrazione')) sector = 'Amministrazione';
           else if (text.includes('vendita')) sector = 'Vendita';
-          else sector = 'Generale';
+          else sector = 'Non specificato';
       }
 
       let role = $el.find('.role, .details span:contains("Ruolo"), .detailsHead label:contains("Ruolo:")').next('span').text().trim();
-      if (!role) {
-          // Fallback to job type or generic role
-          role = title.toLowerCase().includes('responsabile') ? 'Manager' : 'Specialist';
+      if (!role) role = 'Non specificato';
+
+      // ─── REDIRECT DETECTION (meeting 2026-05-20) ───
+      // Look for externalLink.php anchors on listing row → indicates external ATS (Randstad, GiGroup, etc.)
+      let redirect = false;
+      let external_url = null;
+      const externalAnchor = $el.find('a[href*="externalLink.php"]').first();
+      if (externalAnchor.length > 0) {
+        const externalHref = externalAnchor.attr('href') || '';
+        try {
+          const u = new URL(externalHref, 'https://jobroom.jobcourier.ch/job/');
+          const target = u.searchParams.get('redirect');
+          if (target) {
+            redirect = true;
+            external_url = decodeURIComponent(target);
+          }
+        } catch (e) {
+          redirect = false;
+        }
+      }
+
+      // Default apply URL → JobRoom view-job page (internal flow handles login + apply)
+      const jobIdMatch = absoluteLink.match(/[?&]id=(\d+)/) || absoluteLink.match(/view-job\.php\?id=(\d+)/);
+      const jobRoomId = jobIdMatch ? jobIdMatch[1] : null;
+      const apply_url = jobRoomId
+        ? `https://jobroom.jobcourier.ch/job-seekers-login.php?job_post_id=${jobRoomId}&skipAn24=1&lan=it&language=it`
+        : absoluteLink;
+
+      // Published date — try common selectors, else today as fallback
+      let published_at = $el.find('.publishedDate, .date, time, .details .data').first().text().trim();
+      if (!published_at) {
+        const dateMatch = $el.text().match(/(\d{1,2}[./-]\d{1,2}[./-]\d{2,4})/);
+        published_at = dateMatch ? dateMatch[1] : null;
       }
 
       // LOGO EXTRACTION: Look for JobRoom's specific logo containers
@@ -145,8 +174,13 @@ export default async function handler(req, res) {
 
       jobs.push({
         id: i,
+        jobroom_id: jobRoomId,
         title,
         link: absoluteLink,
+        apply_url,
+        redirect,
+        external_url,
+        published_at,
         sector,
         role,
         company: {

@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { fetchLatestJobs } from '../services/api';
 import AdBanner from './AdBanner';
+import useRegistrationWall from '../hooks/useRegistrationWall';
+import RegistrationWallModal from './RegistrationWallModal';
 
 const Filters = () => {
     // eslint-disable-next-line no-unused-vars
@@ -16,56 +18,8 @@ const Filters = () => {
     const sliderRef = useRef(null);
     const animationRef = useRef(null);
     const isPausedRef = useRef(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
-
-    // Click Tracker Logic
-    const checkClickLimit = () => {
-        // Bypass for admin/developer
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('admin_bypass') === '1') {
-            localStorage.setItem('jc_admin_bypass', 'true');
-        }
-        if (localStorage.getItem('jc_admin_bypass') === 'true') {
-            return false;
-        }
-
-        const STORAGE_KEY = 'jc_click_tracker';
-        const LIMIT = 3;
-        const EXPIRY_MS = 24 * 60 * 60 * 1000;
-
-        const stored = localStorage.getItem(STORAGE_KEY);
-        const now = Date.now();
-
-        if (!stored) {
-            const initialData = { count: 1, expiry: now + EXPIRY_MS };
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
-            return false;
-        }
-
-        const data = JSON.parse(stored);
-
-        if (now > data.expiry) {
-            const resetData = { count: 1, expiry: now + EXPIRY_MS };
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(resetData));
-            return false;
-        }
-
-        if (data.count >= LIMIT) {
-            return true;
-        }
-
-        data.count += 1;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        return false;
-    };
-
-    const handleJobClick = (e) => {
-        if (checkClickLimit()) {
-            e.preventDefault();
-            setIsModalOpen(true);
-        }
-    };
+    const wall = useRegistrationWall();
 
     useEffect(() => {
         setTimeout(() => {
@@ -280,14 +234,8 @@ const Filters = () => {
                         ) : (
                             latestJobs.map((job, idx) => (
                                 <motion.div
-                                    onClick={(e) => {
-                                        if (checkClickLimit()) {
-                                            e.preventDefault();
-                                            e.stopPropagation();
-                                            setIsModalOpen(true);
-                                        } else {
-                                            navigate(`/offerte?jobId=${job.id}`);
-                                        }
+                                    onClick={() => {
+                                        wall.guard(() => navigate(`/offerte?jobId=${job.id}`));
                                     }}
                                     key={`${job.id}-${idx}`}
                                     initial={{ opacity: 0, y: 8 }}
@@ -393,103 +341,7 @@ const Filters = () => {
                     </div>
                 </div>
             </div>
-            {/* Registration Wall Modal */}
-            <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        </div>
-    );
-};
-
-const RegistrationModal = ({ isOpen, onClose }) => {
-    const modalRef = useRef(null);
-    const overlayRef = useRef(null);
-
-    useEffect(() => {
-        if (isOpen) {
-            const ctx = gsap.context(() => {
-                gsap.fromTo(overlayRef.current, 
-                    { opacity: 0 }, 
-                    { opacity: 1, duration: 0.5, ease: "power2.out" }
-                );
-                gsap.fromTo(modalRef.current, 
-                    { scale: 0.9, opacity: 0, y: 20 }, 
-                    { scale: 1, opacity: 1, y: 0, duration: 0.6, delay: 0.1, ease: "back.out(1.7)" }
-                );
-            });
-            return () => ctx.revert();
-        }
-    }, [isOpen]);
-
-    if (!isOpen) return null;
-
-    return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <div
-                ref={overlayRef}
-                className="absolute inset-0 backdrop-blur-2xl"
-                style={{ background: 'rgba(5,11,43,0.92)' }}
-                onClick={onClose}
-            />
-            
-            <div
-                ref={modalRef}
-                className="relative bg-white max-w-md w-full shadow-2xl overflow-hidden"
-                style={{ padding: '48px 40px' }}
-            >
-                <button
-                    onClick={onClose}
-                    className="absolute top-5 right-5 transition-opacity hover:opacity-60"
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
-                >
-                    <X className="w-5 h-5" style={{ color: 'var(--brand-gray-mid)' }} />
-                </button>
-
-                <div className="flex flex-col items-center text-center">
-                    {/* Fuchsia dot accent */}
-                    <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--brand-fuchsia)', display: 'inline-block', marginBottom: 24 }} />
-
-                    <h2 style={{
-                        fontFamily: 'var(--font-brand)',
-                        fontWeight: 900,
-                        fontSize: 28,
-                        color: 'var(--brand-navy)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '-0.02em',
-                        marginBottom: 12
-                    }}>
-                        Accesso Limitato
-                    </h2>
-
-                    <p style={{
-                        fontFamily: 'var(--font-body)',
-                        fontSize: 14,
-                        color: 'var(--brand-gray-mid)',
-                        marginBottom: 32,
-                        lineHeight: 1.6,
-                        maxWidth: 280
-                    }}>
-                        Per continuare a visualizzare gli annunci, iscriviti gratuitamente al portale.
-                    </p>
-
-                    <a
-                        href="https://jobroom.jobcourier.ch/job-seekers-login.php?lan=it&language=it"
-                        className="transition-opacity hover:opacity-80 w-full flex items-center justify-center gap-3"
-                        style={{
-                            background: 'var(--brand-fuchsia)',
-                            color: '#FFFFFF',
-                            padding: '15px 24px',
-                            fontFamily: 'var(--font-brand)',
-                            fontWeight: 700,
-                            fontSize: 11,
-                            letterSpacing: '0.14em',
-                            textTransform: 'uppercase',
-                            textDecoration: 'none',
-                            display: 'flex'
-                        }}
-                    >
-                        ISCRIVITI ORA →
-                    </a>
-                </div>
-            </div>
+            <RegistrationWallModal isOpen={wall.isOpen} onClose={() => wall.setIsOpen(false)} />
         </div>
     );
 };

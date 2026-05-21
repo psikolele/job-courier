@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #01498C;
-  --color-accent: #2f9de5;
-  --color-background: #F5FBFC;
-  --color-foreground: #0B132B;
-  --color-surface: #1A244D;
+  --color-primary: #050B2B;
+  --color-accent: #FF1F7A;
+  --color-background: #FFFFFF;
+  --color-foreground: #050B2B;
+  --color-surface: #FFFFFF;
+  --color-slate-mid: #8B8FA8;
+  --color-gray-light: #F6F7FB;
 
-  --font-sans: "Inter", sans-serif;
-  --font-display: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Satoshi", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "Inter", sans-serif;
 }
 
 :root {
@@ -18,7 +20,7 @@
   --brand-white: #FFFFFF;
   --brand-gray-light: #F6F7FB;
   --brand-gray-mid: #8B8FA8;
-  --font-brand: 'DM Sans', sans-serif;
+  --font-brand: 'Satoshi', sans-serif;
   --font-editorial: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
 }
