@@ -1,38 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Gärtner:in 100% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704169-g%C3%A4rtner-in-100-m-w-d-bern-be&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Kundengipser/in (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704172-kundengipser-in-m-w-d-100-frauenfeld-tg&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Mitarbeiter/in Innendienst (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704164-mitarbeiter-in-innendienst-m-w-d-100-frauenfeld-tg&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Hauswart mit eidg. Fachausweis (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704170-hauswart-mit-eidg-fachausweis-m-w-d-100-frauenfeld-tg&language=en"
-  },
-  {
-    "id": 4,
     "title": "Tecnico del legno - Project Manager",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,7 +8,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704178-tecnico-del-legno-project-manager-bellinzona&language=en"
   },
   {
-    "id": 5,
+    "id": 1,
+    "title": "Operatore per smerigliatura / lucidatura a specchio",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704179-operatore-per-smerigliatura-lucidatura-a-specchio-sopraceneri&language=en"
+  },
+  {
+    "id": 2,
     "title": "Kundengipser/in (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,15 +24,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704168-kundengipser-in-m-w-d-100-winterthur-zh&language=en"
   },
   {
-    "id": 6,
-    "title": "Hauswart Facility Management (m/w/d) 100% temporär",
+    "id": 3,
+    "title": "Kundengipser/in (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704165-hauswart-facility-management-m-w-d-100-tempor%C3%A4r-winterthur-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704172-kundengipser-in-m-w-d-100-frauenfeld-tg&language=en"
   },
   {
-    "id": 7,
+    "id": 4,
     "title": "Projektleiter Elektrotechnik m/w/d 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,7 +40,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704174-projektleiter-elektrotechnik-m-w-d-100-basel-basel&language=en"
   },
   {
-    "id": 8,
+    "id": 5,
     "title": "Tecnico di Produzione biotech (Downstream Processing)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,27 +48,51 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704177-tecnico-di-produzione-biotech-downstream-processing-lugano-lugano&language=en"
   },
   {
+    "id": 6,
+    "title": "Metalcostruttore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704180-metalcostruttore-sottoceneri&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Montatore di carpenteria pesante",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704181-montatore-di-carpenteria-pesante-sottoceneri&language=en"
+  },
+  {
+    "id": 8,
+    "title": "RIF. 587 - METROLOGO",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "E-Work Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704182-rif-587-metrologo-mendrisio&language=en"
+  },
+  {
     "id": 9,
-    "title": "Vertriebsmitarbeiter/in Aussendienst (m/w/d)",
+    "title": "Hauswart mit eidg. Fachausweis (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704166-vertriebsmitarbeiter-in-aussendienst-m-w-d-frick-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704170-hauswart-mit-eidg-fachausweis-m-w-d-100-frauenfeld-tg&language=en"
   },
   {
     "id": 10,
+    "title": "Gärtner:in 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704169-g%C3%A4rtner-in-100-m-w-d-bern-be&language=en"
+  },
+  {
+    "id": 11,
     "title": "Technischer Hauswart (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704175-technischer-hauswart-m-w-d-100-frauenfeld-tg&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Automobildiagnostiker (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6704173-automobildiagnostiker-m-w-d-100-m%C3%B6nchaltorf-zh&language=en"
   }
 ]
