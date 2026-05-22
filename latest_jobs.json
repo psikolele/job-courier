@@ -1,62 +1,14 @@
 [
   {
     "id": 0,
-    "title": "Sachbearbeiter Finanzen (CFO Support) 80-100% (a)",
+    "title": "Immobilienbewirtschafter/in ? Gestalten Sie Ihre Zukunft!",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705242-sachbearbeiter-finanzen-cfo-support-80-100-a-schaffhausen-sh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705246-immobilienbewirtschafter-in-gestalten-sie-ihre-zukunft-aarau-ag&language=en"
   },
   {
     "id": 1,
-    "title": "Schlosser (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705244-schlosser-m-w-d-100-oberentfelden-aargau&language=en"
-  },
-  {
-    "id": 2,
-    "title": "CNC Programmierer (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705234-cnc-programmierer-m-w-d-100-lenzburg-aargau&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Mechaniker (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705243-mechaniker-m-w-d-100-suhr-aargau&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Sachbearbeiter mit Fachwissen in Mechanik und Schweisstechnik (w/m/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705236-sachbearbeiter-mit-fachwissen-in-mechanik-und-schweisstechnik-w-m-d-100-meisterschwanden-aargau&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Mitarbeiter/in Kundendienst - Customer Care Representative 100% (w/m/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705237-mitarbeiter-in-kundendienst-customer-care-representative-100-w-m-d-lenzburg-aargau&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Senior Private Banker - Hunter Profile",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Finders SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705248-senior-private-banker-hunter-profile-geneva&language=en"
-  },
-  {
-    "id": 7,
     "title": "Sachbearbeiter Innendienst (w/m/d) (D/F/I) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,15 +16,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705245-sachbearbeiter-innendienst-w-m-d-d-f-i-100-sch%C3%B6nenwerd-aargau&language=en"
   },
   {
-    "id": 8,
-    "title": "Sachbearbeiter Treuhand (m/w/d) 80 ? 100 %",
+    "id": 2,
+    "title": "Schlosser (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705238-sachbearbeiter-treuhand-m-w-d-80-100-aarau-aargau&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705244-schlosser-m-w-d-100-oberentfelden-aargau&language=en"
   },
   {
-    "id": 9,
+    "id": 3,
+    "title": "Senior Private Banker - Hunter Profile",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Finders SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705248-senior-private-banker-hunter-profile-geneva&language=en"
+  },
+  {
+    "id": 4,
     "title": "Cameriere/a di sala disponibile da subito - Locarno",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,12 +40,52 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705247-cameriere-a-di-sala-disponibile-da-subito-locarno-locarno-bellinzona&language=en"
   },
   {
-    "id": 10,
+    "id": 5,
+    "title": "CNC Programmierer (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705234-cnc-programmierer-m-w-d-100-lenzburg-aargau&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Mitarbeiter/in Kundendienst - Customer Care Representative 100% (w/m/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705237-mitarbeiter-in-kundendienst-customer-care-representative-100-w-m-d-lenzburg-aargau&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Mechaniker (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705243-mechaniker-m-w-d-100-suhr-aargau&language=en"
+  },
+  {
+    "id": 8,
     "title": "Lagermitarbeiter Frischprodukte (Nachmittagschicht) ab sofort (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705235-lagermitarbeiter-frischprodukte-nachmittagschicht-ab-sofort-m-w-d-rickenbach-so&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Un·e Gestionnaire LPP (français?italien)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705241-un%C2%B7e-gestionnaire-lpp-fran%C3%A7ais-italien-lausanne-vd&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Sachbearbeiter mit Fachwissen in Mechanik und Schweisstechnik (w/m/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705236-sachbearbeiter-mit-fachwissen-in-mechanik-und-schweisstechnik-w-m-d-100-meisterschwanden-aargau&language=en"
   },
   {
     "id": 11,
