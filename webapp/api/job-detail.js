@@ -23,24 +23,41 @@ export default async function handler(req, res) {
     return;
   }
 
-  const jobUrl = `https://jobroom.jobcourier.ch/job/view-job.php?id=${id}&lan=it&language=it`;
-
   try {
-    const response = await fetch(jobUrl, {
-      headers: {
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-        'Accept-Language': 'it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7',
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-        'Referer': 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php',
-        'Sec-Fetch-Dest': 'document',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'same-origin',
-        'Sec-Fetch-User': '?1',
-        'Upgrade-Insecure-Requests': '1',
-      }
-    });
+    // 1. Fetch a latest-and-all-job-ads.php per estrarre i cookie di sessione reali del server
+    const sessionUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?language=it&country=214&source=https%3A%2F%2Fwww.jobcourier.ch%2F';
+    const sessionHeaders = {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+      'Accept-Language': 'it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7',
+    };
+
+    let cookiesStr = '';
+    try {
+      const sessionResponse = await fetch(sessionUrl, { headers: sessionHeaders });
+      const rawCookies = sessionResponse.headers.raw()['set-cookie'] || [];
+      cookiesStr = rawCookies.map(cookie => cookie.split(';')[0]).join('; ');
+    } catch (sessionErr) {
+      console.warn('Session cookie fetch failed:', sessionErr.message);
+    }
+
+    // 2. Fetch a view-job.php passando i cookie estratti e il parametro source non vuoto
+    const jobUrl = `https://jobroom.jobcourier.ch/job/view-job.php?id=${id}&lan=it&source=https%3A%2F%2Fwww.jobcourier.ch%2F`;
+    
+    const headers = {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+      'Accept-Language': 'it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Referer': 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php',
+    };
+
+    if (cookiesStr) {
+      headers['Cookie'] = cookiesStr;
+    }
+
+    const response = await fetch(jobUrl, { headers });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch job details from JobRoom: ${response.status}`);
@@ -49,15 +66,24 @@ export default async function handler(req, res) {
     const html = await response.text();
     const $ = cheerio.load(html);
 
-    // ESTRAZIONE DATI PRINCIPALI
-    const title = $('.detailsHead h1, h1, .job-title').first().text().trim() || 'Titolo Annuncio';
-    const companyName = $('.company, .firm, .detailsHead label:contains("Azienda:")').next('span').text().trim() || 
-                        $('.companyLink span, .detailsHead img').prev('span').text().trim() || 
+    // ESTRAZIONE DATI PRINCIPALI CON SELETTORI SEMANTICI
+    const title = $('h1[itemprop="title"], .detailsHead h1, h1, .title, .job-title').first().text().replace(/\s+/g, ' ').trim() || 'Titolo Annuncio';
+    
+    const companyName = $('span[itemprop="name"], .companyLink h2, .companyLink span, .company, .firm').first().text().replace(/\s+/g, ' ').trim() || 
+                        $('.company, .firm, .detailsHead label:contains("Azienda:")').next('span').text().trim() || 
                         'Azienda Riservata';
     
-    const location = $('.location, .place, .detailsHead label:contains("Sede:")').next('span').text().trim() || 'Svizzera';
-    const sector = $('.sector, .category, .detailsHead label:contains("Settore:")').next('span').text().trim() || 'Non specificato';
-    const role = $('.role, .detailsHead label:contains("Ruolo:")').next('span').text().trim() || 'Non specificato';
+    const location = $('span[itemprop="addressLocality"], h2[itemprop="address"], .location, .place').first().text().replace(/\s+/g, ' ').trim() || 
+                     $('.location, .place, .detailsHead label:contains("Sede:")').next('span').text().trim() || 
+                     'Svizzera';
+    
+    const sector = $('h2[itemprop="industry"], .sector, .category').first().text().replace(/\s+/g, ' ').trim() || 
+                   $('.sector, .category, .detailsHead label:contains("Settore:")').next('span').text().trim() || 
+                   'Non specificato';
+    
+    const role = $('h2[itemprop="occupationalCategory"], .role').first().text().replace(/\s+/g, ' ').trim() || 
+                 $('.role, .detailsHead label:contains("Ruolo:")').next('span').text().trim() || 
+                 'Non specificato';
     
     // Dettagli contrattuali aggiuntivi
     const duration = $('.detailsHead label:contains("Durata:")').next('span').text().trim() || '';
@@ -65,7 +91,7 @@ export default async function handler(req, res) {
     const entryDate = $('.detailsHead label:contains("Entrata:")').next('span').text().trim() || '';
 
     // ESTRAZIONE LOGO AZIENDA
-    let logoUrl = $('.detailsHead img, img.companyImg, img.companyLogo, .moreDataContainer img').first().attr('src');
+    let logoUrl = $('.companyLogo, .detailsHead img, img.companyImg, img.companyLogo, .moreDataContainer img').first().attr('src');
     let absoluteLogo = '';
     if (logoUrl) {
       if (logoUrl.startsWith('..')) {
@@ -82,13 +108,12 @@ export default async function handler(req, res) {
     }
 
     // ESTRAZIONE DESCRIZIONE ESTESA (JOB DESCRIPTION)
-    // Cerchiamo i container di descrizione comuni su JobRoom
     let descriptionHtml = '';
-    const descContainer = $('.jobDescription, .vacancy-description, .description, .moreDataContainer, .dataContainer').first();
+    const descContainer = $('div[itemprop="description"], .jobDescription, .vacancy-description, .description, .moreDataContainer, .dataContainer').first();
     
     if (descContainer.length > 0) {
-      // Rimuoviamo elementi non necessari o bottoni
-      descContainer.find('button, script, style, a[href*="login"], .social-share').remove();
+      // Rimuoviamo elementi non necessari o bottoni, incluso il widget di compatibilità
+      descContainer.find('button, script, style, a[href*="login"], .social-share, #compVerify, .thenApply').remove();
       descriptionHtml = descContainer.html().trim();
     } else {
       // Fallback: se non c'è un container specifico, prendiamo il blocco centrale del contenuto principale
@@ -108,8 +133,27 @@ export default async function handler(req, res) {
       }
     }
 
-    if (!descriptionHtml) {
+    if (!descriptionHtml || descriptionHtml.includes('localStorage.clear') || descriptionHtml.includes('window.location.reload')) {
       descriptionHtml = '<p>La descrizione dettagliata per questa offerta di lavoro è consultabile premendo il tasto "Candidati ora".</p>';
+    }
+
+    // RILEVAMENTO REDIRECT E CANDIDATURA ESTERNA
+    let redirect = false;
+    let external_url = null;
+    
+    const externalAnchor = $('a[href*="externalLink.php"]').first();
+    if (externalAnchor.length > 0) {
+      const externalHref = externalAnchor.attr('href') || '';
+      try {
+        const u = new URL(externalHref, 'https://jobroom.jobcourier.ch/job/');
+        const target = u.searchParams.get('redirect');
+        if (target) {
+          redirect = true;
+          external_url = decodeURIComponent(target);
+        }
+      } catch (e) {
+        redirect = false;
+      }
     }
 
     // Link esterno per la candidatura
@@ -132,6 +176,8 @@ export default async function handler(req, res) {
       },
       description: descriptionHtml,
       apply_url,
+      redirect,
+      external_url,
       original_link: jobUrl
     });
 
