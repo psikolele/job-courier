@@ -12,6 +12,7 @@ import Pricing from './pages/Pricing';
 import Contact from './pages/Contact';
 import ComeFunziona from './pages/ComeFunziona';
 import Offerte from './pages/Offerte';
+import OffertaDettaglio from './pages/OffertaDettaglio';
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -57,6 +58,7 @@ function App() {
         <Route path="/contatti" element={<Contact />} />
         <Route path="/come-funziona" element={<ComeFunziona />} />
         <Route path="/offerte" element={<Offerte />} />
+        <Route path="/offerta/:id" element={<OffertaDettaglio />} />
       </Routes>
       <Footer />
     </div>

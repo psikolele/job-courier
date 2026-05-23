@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { MapPin, Briefcase, ChevronLeft, Calendar, Search, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import useRegistrationWall from '../hooks/useRegistrationWall';
@@ -16,6 +16,7 @@ const body = 'var(--font-body)';
 
 const Offerte = () => {
     const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
 
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -77,7 +78,16 @@ const Offerte = () => {
     }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location')]);
 
     const handleSelectJob = (id) => {
-        // Gate behind registration wall (skip block on already-selected job → allows nav within detail)
+        const selected = jobs.find(j => j.id === id);
+        const jobroomId = selected?.jobroom_id || id;
+
+        if (isMobile) {
+            // Su mobile navighiamo alla pagina di dettaglio a schermo intero
+            navigate(`/offerta/${jobroomId}`);
+            return;
+        }
+
+        // Su desktop manteniamo lo split con query param
         if (selectedJobId !== id.toString()) {
             const allowed = wall.guard();
             if (!allowed) return;
@@ -346,6 +356,22 @@ const Offerte = () => {
                                                 Questa posizione è offerta da {selectedJob.company?.name || 'un\'azienda riservata'}.
                                                 Per visualizzare la descrizione completa del lavoro, i requisiti e per candidarti, visita l'annuncio originale tramite il pulsante sopra.
                                             </p>
+
+                                            <div style={{ marginTop: 20 }}>
+                                                <button
+                                                    onClick={() => navigate(`/offerta/${selectedJob.jobroom_id || selectedJob.id}`)}
+                                                    style={{
+                                                        background: 'transparent', color: N, border: `1.5px solid ${N}`,
+                                                        padding: '10px 24px',
+                                                        fontFamily: brand, fontWeight: 700, fontSize: 11,
+                                                        letterSpacing: '0.14em', textTransform: 'uppercase',
+                                                        cursor: 'pointer', borderRadius: 0
+                                                    }}
+                                                    className="hover:bg-slate-50 transition-colors"
+                                                >
+                                                    Visualizza Annuncio Completo →
+                                                </button>
+                                            </div>
 
                                             <div style={{
                                                 marginTop: 32, padding: '24px 28px',

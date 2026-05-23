@@ -86,16 +86,20 @@ const Filters = () => {
                 const data = await fetchLatestJobs();
                 if (data && data.length > 0) {
                     // Adapt API data to the Filters component structure
-                    const formattedJobs = data.map(job => ({
-                        id: job.id,
-                        title: job.title,
-                        location: job.location,
-                        sector: job.sector || 'Other',
-                        role: job.role || 'Other',
-                        company: job.company?.name || job.company,
-                        companyLogo: job.company?.logo || job.companyLogo || `https://www.google.com/s2/favicons?domain=${job.company?.domain || 'jobcourier.ch'}&sz=128`,
-                        link: job.link
-                    }));
+                    const formattedJobs = data.map(job => {
+                        const linkId = job.link?.match(/[?&]id=(\d+)/)?.[1] || job.id;
+                        return {
+                            id: job.id,
+                            jobroom_id: job.jobroom_id || linkId,
+                            title: job.title,
+                            location: job.location,
+                            sector: job.sector || 'Other',
+                            role: job.role || 'Other',
+                            company: job.company?.name || job.company,
+                            companyLogo: job.company?.logo || job.companyLogo || `https://www.google.com/s2/favicons?domain=${job.company?.domain || 'jobcourier.ch'}&sz=128`,
+                            link: job.link
+                        };
+                    });
                     setLatestJobs(formattedJobs);
                 } else {
                     throw new Error('No data from API');
@@ -103,10 +107,10 @@ const Filters = () => {
             } catch (err) {
                 console.warn('API error in Filters:', err.message, 'Using graceful local mock data.');
                 setLatestJobs([
-                    { id: 1, title: 'Validation Engineer', location: 'Mezzovico TI, Svizzera', sector: 'Generale', role: 'Specialist', company: 'Randstad Svizzera SA', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244729.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en' },
-                    { id: 2, title: 'Parchettista', location: 'Sottoceneri, Svizzera', sector: 'Costruzioni/Mestieri', role: 'Specialist', company: 'Team Personnel Solutions SA', companyLogo: 'https://www.google.com/s2/favicons?domain=team.jobs&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688871-parchettista-sottoceneri&language=en' },
-                    { id: 3, title: 'Responsabile Magazzino', location: 'Schönbühl BE, Svizzera', sector: 'Logistica', role: 'Manager', company: 'TechSwiss Distribution', companyLogo: 'https://www.google.com/s2/favicons?domain=techswiss.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6680678-assistant-warehouse-manager-a-schönbuhl-be&language=en' },
-                    { id: 4, title: 'Chauffeur / Chauffeuse Kat. B, Region Luzern 80%-100% (m/w/d)', location: 'Switzerland, 6003 Luzern', sector: 'Other', role: 'Other', company: 'DasTeam', companyLogo: 'https://www.google.com/s2/favicons?domain=dasteam.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675564-chauffeur-chauffeuse-kat-b-region-luzern-80-100-m-w-d-6003-luzern&language=en' }
+                    { id: 1, jobroom_id: '6688865', title: 'Validation Engineer', location: 'Mezzovico TI, Svizzera', sector: 'Generale', role: 'Specialist', company: 'Randstad Svizzera SA', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244729.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en' },
+                    { id: 2, jobroom_id: '6688871', title: 'Parchettista', location: 'Sottoceneri, Svizzera', sector: 'Costruzioni/Mestieri', role: 'Specialist', company: 'Team Personnel Solutions SA', companyLogo: 'https://www.google.com/s2/favicons?domain=team.jobs&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688871-parchettista-sottoceneri&language=en' },
+                    { id: 3, jobroom_id: '6680678', title: 'Responsabile Magazzino', location: 'Schönbühl BE, Svizzera', sector: 'Logistica', role: 'Manager', company: 'TechSwiss Distribution', companyLogo: 'https://www.google.com/s2/favicons?domain=techswiss.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6680678-assistant-warehouse-manager-a-schönbuhl-be&language=en' },
+                    { id: 4, jobroom_id: '6675564', title: 'Chauffeur / Chauffeuse Kat. B, Region Luzern 80%-100% (m/w/d)', location: 'Switzerland, 6003 Luzern', sector: 'Other', role: 'Other', company: 'DasTeam', companyLogo: 'https://www.google.com/s2/favicons?domain=dasteam.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675564-chauffeur-chauffeuse-kat-b-region-luzern-80-100-m-w-d-6003-luzern&language=en' }
                 ]);
             } finally {
                 setJobsLoading(false);
@@ -235,7 +239,7 @@ const Filters = () => {
                             latestJobs.map((job, idx) => (
                                 <motion.div
                                     onClick={() => {
-                                        wall.guard(() => navigate(`/offerte?jobId=${job.id}`));
+                                        navigate(`/offerta/${job.jobroom_id || job.id}`);
                                     }}
                                     key={`${job.id}-${idx}`}
                                     initial={{ opacity: 0, y: 8 }}
