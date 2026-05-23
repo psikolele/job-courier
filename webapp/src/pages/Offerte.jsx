@@ -23,6 +23,10 @@ const Offerte = () => {
     const [error, setError] = useState(null);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [searchQuery, setSearchQuery] = useState(searchParams.get('keyword') || '');
+    
+    // States for extended job description scraping
+    const [selectedJobDetail, setSelectedJobDetail] = useState(null);
+    const [detailLoading, setDetailLoading] = useState(false);
 
     const selectedJobId = searchParams.get('jobId');
 
@@ -77,6 +81,30 @@ const Offerte = () => {
         fetchJobs();
     }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location')]);
 
+    const selectedJob = jobs.find(j => j.id.toString() === selectedJobId) || jobs[0];
+
+    useEffect(() => {
+        if (selectedJob) {
+            const fetchDetail = async () => {
+                setDetailLoading(true);
+                setSelectedJobDetail(null);
+                try {
+                    const jobId = selectedJob.jobroom_id || selectedJob.id;
+                    const response = await fetch(`/api/job-detail?id=${jobId}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setSelectedJobDetail(data);
+                    }
+                } catch (err) {
+                    console.error("Errore caricamento dettagli posizione:", err);
+                } finally {
+                    setDetailLoading(false);
+                }
+            };
+            fetchDetail();
+        }
+    }, [selectedJob?.id, jobs]);
+
     const handleSelectJob = (id) => {
         const selected = jobs.find(j => j.id === id);
         const jobroomId = selected?.jobroom_id || id;
@@ -114,7 +142,6 @@ const Offerte = () => {
         setSearchParams(newParams);
     };
 
-    const selectedJob = jobs.find(j => j.id.toString() === selectedJobId) || jobs[0];
     const showList = !isMobile || (isMobile && !selectedJobId);
     const showDetail = !isMobile || (isMobile && selectedJobId);
 
@@ -352,26 +379,47 @@ const Offerte = () => {
                                                     Dettagli posizione
                                                 </span>
                                             </div>
-                                            <p style={{ fontFamily: body, fontSize: 14, color: N, lineHeight: 1.7, opacity: 0.8 }}>
-                                                Questa posizione è offerta da {selectedJob.company?.name || 'un\'azienda riservata'}.
-                                                Per visualizzare la descrizione completa del lavoro, i requisiti e per candidarti, visita l'annuncio originale tramite il pulsante sopra.
-                                            </p>
-
-                                            <div style={{ marginTop: 20 }}>
-                                                <button
-                                                    onClick={() => navigate(`/offerta/${selectedJob.jobroom_id || selectedJob.id}`)}
-                                                    style={{
-                                                        background: 'transparent', color: N, border: `1.5px solid ${N}`,
-                                                        padding: '10px 24px',
-                                                        fontFamily: brand, fontWeight: 700, fontSize: 11,
-                                                        letterSpacing: '0.14em', textTransform: 'uppercase',
-                                                        cursor: 'pointer', borderRadius: 0
-                                                    }}
-                                                    className="hover:bg-slate-50 transition-colors"
-                                                >
-                                                    Visualizza Annuncio Completo →
-                                                </button>
-                                            </div>
+                                            {detailLoading ? (
+                                                <div className="flex flex-col gap-3 animate-pulse py-4">
+                                                    <div className="h-4 bg-[#050B2B]/5 w-3/4 rounded-none"></div>
+                                                    <div className="h-4 bg-[#050B2B]/5 w-full rounded-none"></div>
+                                                    <div className="h-4 bg-[#050B2B]/5 w-5/6 rounded-none"></div>
+                                                    <div className="h-4 bg-[#050B2B]/5 w-2/3 rounded-none"></div>
+                                                </div>
+                                            ) : selectedJobDetail ? (
+                                                <div className="flex flex-col gap-6">
+                                                    <div 
+                                                        className="job-description-content text-sm font-normal leading-relaxed text-slate-800"
+                                                        style={{ fontFamily: body, paddingRight: '4px' }}
+                                                        dangerouslySetInnerHTML={{ __html: selectedJobDetail.description }}
+                                                    />
+                                                    
+                                                    {/* Candidati Link/Button in basso col medesimo stile */}
+                                                    <div style={{ borderTop: '1px solid rgba(5,11,43,0.07)', paddingTop: 20, marginTop: 10 }}>
+                                                        <button onClick={() => handleApply(selectedJob)}
+                                                            style={{
+                                                                background: F, color: '#FFFFFF', border: 'none',
+                                                                padding: '14px 32px',
+                                                                fontFamily: brand, fontWeight: 700, fontSize: 11,
+                                                                letterSpacing: '0.14em', textTransform: 'uppercase',
+                                                                cursor: 'pointer', borderRadius: 0,
+                                                                display: 'inline-flex', alignItems: 'center', gap: 8,
+                                                                width: 'fit-content'
+                                                            }} className="hover:opacity-80 transition-opacity">
+                                                            {selectedJob.redirect ? (
+                                                                <>Candidati <ExternalLink size={13} /></>
+                                                            ) : (
+                                                                <>Candidati su Job Courier →</>
+                                                            )}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <p style={{ fontFamily: body, fontSize: 14, color: N, lineHeight: 1.7, opacity: 0.8 }}>
+                                                    Questa posizione è offerta da {selectedJob.company?.name || 'Azienda Riservata'}.
+                                                    Seleziona un annuncio per caricarne i dettagli qui.
+                                                </p>
+                                            )}
 
                                             <div style={{
                                                 marginTop: 32, padding: '24px 28px',
