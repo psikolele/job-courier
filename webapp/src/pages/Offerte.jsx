@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import useRegistrationWall from '../hooks/useRegistrationWall';
 import RegistrationWallModal from '../components/RegistrationWallModal';
 import ApplyRedirectModal from '../components/ApplyRedirectModal';
+import { getApplyData } from '../utils/applyHelper';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -82,6 +83,7 @@ const Offerte = () => {
     }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location')]);
 
     const selectedJob = jobs.find(j => j.id.toString() === selectedJobId) || jobs[0];
+    const applyData = getApplyData(selectedJob, selectedJobDetail);
 
     useEffect(() => {
         if (selectedJob) {
@@ -127,13 +129,18 @@ const Offerte = () => {
 
     const handleApply = (job) => {
         if (!job) return;
-        if (job.redirect && job.external_url) {
-            setRedirectModal({ open: true, url: job.external_url, company: job.company?.name || '' });
+        
+        // Combine list job parameters with scraped detail parameters if available
+        const isCurrentlySelected = selectedJobDetail && (selectedJobDetail.id === job.jobroom_id || selectedJobDetail.id === job.id.toString());
+        const applyInfo = getApplyData(job, isCurrentlySelected ? selectedJobDetail : null);
+
+        if (applyInfo.redirect && applyInfo.url) {
+            setRedirectModal({ open: true, url: applyInfo.url, company: job.company?.name || '' });
             return;
         }
+        
         // Internal flow → open JobRoom view-job (login + apply handled there)
-        const url = job.apply_url || job.link;
-        window.open(url, '_blank', 'noopener,noreferrer');
+        window.open(applyInfo.url, '_blank', 'noopener,noreferrer');
     };
 
     const handleBackToList = () => {
@@ -358,13 +365,13 @@ const Offerte = () => {
                                                         display: 'inline-flex', alignItems: 'center', gap: 8,
                                                         width: 'fit-content'
                                                     }} className="hover:opacity-80 transition-opacity">
-                                                    {selectedJob.redirect ? (
+                                                    {applyData.redirect ? (
                                                         <>Candidati <ExternalLink size={13} /></>
                                                     ) : (
                                                         <>Candidati →</>
                                                     )}
                                                 </button>
-                                                {selectedJob.redirect && (
+                                                {applyData.redirect && (
                                                     <span style={{ fontFamily: body, fontSize: 11, color: GM, fontStyle: 'italic' }}>
                                                         Candidatura gestita su sito esterno
                                                     </span>
@@ -406,7 +413,7 @@ const Offerte = () => {
                                                                 display: 'inline-flex', alignItems: 'center', gap: 8,
                                                                 width: 'fit-content'
                                                             }} className="hover:opacity-80 transition-opacity">
-                                                            {selectedJob.redirect ? (
+                                                            {applyData.redirect ? (
                                                                 <>Candidati <ExternalLink size={13} /></>
                                                             ) : (
                                                                 <>Candidati →</>

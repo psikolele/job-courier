@@ -53,9 +53,10 @@ const OffertaDettaglio = () => {
         
         if (isLoggedIn) {
             // Se loggato -> mostra il popup di reindirizzamento
+            const targetUrl = job.redirect && job.external_url ? job.external_url : (job.apply_url || job.original_link);
             setRedirectModal({
                 open: true,
-                url: job.apply_url || job.original_link,
+                url: targetUrl,
                 company: job.company?.name || ''
             });
         } else {
