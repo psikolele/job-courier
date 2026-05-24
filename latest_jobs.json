@@ -1,11 +1,11 @@
 [
   {
     "id": 0,
-    "title": "Strassenbauer  (m/w/d)",
+    "title": "Küchenchef/-in 100% (m/w/d) in einem à la carte Betrieb im Durchdienst",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705632-strassenbauer-m-w-d-birmensdorf-zh&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705625-kuchenchef-in-100-m-w-d-in-einem-%C3%A0-la-carte-betrieb-im-durchdienst-zug-zg&language=en"
   },
   {
     "id": 1,
@@ -17,14 +17,6 @@
   },
   {
     "id": 2,
-    "title": "Zimmermann (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705631-zimmermann-m-w-d-raperswilen&language=en"
-  },
-  {
-    "id": 3,
     "title": "Technischer Support Spezialist mit DE, IT (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,20 +24,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705623-technischer-support-spezialist-mit-de-it-m-w-d-100-kriens-luzern&language=en"
   },
   {
-    "id": 4,
-    "title": "Küchenchef/-in 100% (m/w/d) in einem à la carte Betrieb im Durchdienst",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705625-kuchenchef-in-100-m-w-d-in-einem-%C3%A0-la-carte-betrieb-im-durchdienst-zug-zg&language=en"
-  },
-  {
-    "id": 5,
+    "id": 3,
     "title": "Technische/r Vertriebsmitarbeiter/in (m/w/d) im Aussendienst 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705621-technische-r-vertriebsmitarbeiter-in-m-w-d-im-aussendienst-100-ebikon-luzern&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Zimmermann (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705631-zimmermann-m-w-d-raperswilen&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Servicetechniker Industrieanlagen & Automatisierung 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705624-servicetechniker-industrieanlagen-automatisierung-100-m-w-d-wetzikon-zh&language=en"
   },
   {
     "id": 6,
@@ -57,22 +57,14 @@
   },
   {
     "id": 7,
-    "title": "Maler  (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705630-maler-m-w-d-opfikon&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Servicetechniker Industrieanlagen & Automatisierung 100% (m/w/d)",
+    "title": "Entwicklungsingenieur Elektrotechnik (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705624-servicetechniker-industrieanlagen-automatisierung-100-m-w-d-wetzikon-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705619-entwicklungsingenieur-elektrotechnik-m-w-d-100-luzern-luzern&language=en"
   },
   {
-    "id": 9,
+    "id": 8,
     "title": "Gerüstmonteur (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +72,27 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705629-gerustmonteur-m-w-d-winterthur&language=en"
   },
   {
+    "id": 9,
+    "title": "Fachfrau Gesundheit EFZ / Dipl. Pflegefachmann HF (m,w,d) im Tag- oder Nachtdienst 50-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705622-fachfrau-gesundheit-efz-dipl-pflegefachmann-hf-m-w-d-im-tag-oder-nachtdienst-50-100-dussnang-tg&language=en"
+  },
+  {
     "id": 10,
+    "title": "Strassenbauer  (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705632-strassenbauer-m-w-d-birmensdorf-zh&language=en"
+  },
+  {
+    "id": 11,
     "title": "Technischer Projektleiter Prozesse (m/w) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705620-technischer-projektleiter-prozesse-m-w-100-kriens-luzern&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Entwicklungsingenieur Elektrotechnik (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705619-entwicklungsingenieur-elektrotechnik-m-w-d-100-luzern-luzern&language=en"
   }
 ]
