@@ -237,7 +237,7 @@ const OffertaDettaglio = () => {
                                 borderRadius: 0
                             }}
                         >
-                            <span>Candidati ora</span>
+                            <span>Candidati</span>
                             <ExternalLink size={13} style={{ color: F }} />
                         </button>
 

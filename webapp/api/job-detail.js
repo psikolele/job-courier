@@ -73,9 +73,23 @@ export default async function handler(req, res) {
                         $('.company, .firm, .detailsHead label:contains("Azienda:")').next('span').text().trim() || 
                         'Azienda Riservata';
     
-    const location = $('span[itemprop="addressLocality"], h2[itemprop="address"], .location, .place').first().text().replace(/\s+/g, ' ').trim() || 
-                     $('.location, .place, .detailsHead label:contains("Sede:")').next('span').text().trim() || 
-                     'Svizzera';
+    // Estrazione potenziata del luogo completo (es. Svizzera, Ticino, Bellinzona)
+    let location = '';
+    const addressBlock = $('h2[itemprop="address"], div[itemprop="jobLocation"] h2').first();
+    if (addressBlock.length > 0) {
+      location = addressBlock.text().replace(/\s+/g, ' ').trim();
+    } else {
+      const labelSede = $('.detailsHead label:contains("Sede:"), div:contains("Sede:") label');
+      if (labelSede.length > 0) {
+        const parentDiv = labelSede.parent();
+        const clone = parentDiv.clone();
+        clone.find('label, span.glyphicon').remove();
+        location = clone.text().replace(/\s+/g, ' ').trim().replace(/^[,\s-]+/, '').trim();
+      }
+    }
+    if (!location) {
+      location = $('span[itemprop="addressLocality"], .location, .place').first().text().replace(/\s+/g, ' ').trim() || 'Svizzera';
+    }
     
     const sector = $('h2[itemprop="industry"], .sector, .category').first().text().replace(/\s+/g, ' ').trim() || 
                    $('.sector, .category, .detailsHead label:contains("Settore:")').next('span').text().trim() || 
@@ -156,8 +170,8 @@ export default async function handler(req, res) {
       }
     }
 
-    // Link esterno per la candidatura
-    const apply_url = `https://jobroom.jobcourier.ch/job-seekers-login.php?job_post_id=${id}&skipAn24=1&lan=it&language=it`;
+    // Link originale di candidatura diretta per gli annunci interni
+    const apply_url = `https://jobroom.jobcourier.ch/job/view-job.php?id=${id}&language=it&lan=it`;
 
     res.status(200).json({
       id,

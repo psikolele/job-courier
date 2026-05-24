@@ -361,7 +361,7 @@ const Offerte = () => {
                                                     {selectedJob.redirect ? (
                                                         <>Candidati <ExternalLink size={13} /></>
                                                     ) : (
-                                                        <>Candidati su Job Courier →</>
+                                                        <>Candidati →</>
                                                     )}
                                                 </button>
                                                 {selectedJob.redirect && (
@@ -409,7 +409,7 @@ const Offerte = () => {
                                                             {selectedJob.redirect ? (
                                                                 <>Candidati <ExternalLink size={13} /></>
                                                             ) : (
-                                                                <>Candidati su Job Courier →</>
+                                                                <>Candidati →</>
                                                             )}
                                                         </button>
                                                     </div>

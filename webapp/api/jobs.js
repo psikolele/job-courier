@@ -98,7 +98,19 @@ export default async function handler(req, res) {
       }
 
       const companyName = $el.find('.company, .firm, .details span:first-child, .companyLink span').first().text().trim() || 'Azienda Riservata';
-      const location = $el.find('.location, .place, .details span:last-child, .detailsHead label:contains("Sede:")').next('span').text().trim() || 'Svizzera';
+      
+      // Estrazione potenziata del luogo completo (es. Svizzera, Ticino, Bellinzona)
+      let location = '';
+      const labelSede = $el.find('.detailsHead label:contains("Sede:")');
+      if (labelSede.length > 0) {
+        const parentSpan = labelSede.parent();
+        const clone = parentSpan.clone();
+        clone.find('label').remove();
+        location = clone.text().replace(/\s+/g, ' ').trim().replace(/^[,\s-]+/, '').trim();
+      }
+      if (!location) {
+        location = $el.find('.location, .place, .details span:last-child').first().text().trim() || 'Svizzera';
+      }
       
       // SECTOR & ROLE EXTRACTION
       let sector = $el.find('.sector, .category, .details span:contains("Settore"), .detailsHead label:contains("Settore:")').next('span').text().trim();
@@ -133,12 +145,8 @@ export default async function handler(req, res) {
         }
       }
 
-      // Default apply URL → JobRoom view-job page (internal flow handles login + apply)
-      const jobIdMatch = absoluteLink.match(/[?&]id=(\d+)/) || absoluteLink.match(/view-job\.php\?id=(\d+)/);
-      const jobRoomId = jobIdMatch ? jobIdMatch[1] : null;
-      const apply_url = jobRoomId
-        ? `https://jobroom.jobcourier.ch/job-seekers-login.php?job_post_id=${jobRoomId}&skipAn24=1&lan=it&language=it`
-        : absoluteLink;
+      // Default apply URL → JobRoom view-job page (internal flow is now direct as requested)
+      const apply_url = absoluteLink;
 
       // Published date — try common selectors, else today as fallback
       let published_at = $el.find('.publishedDate, .date, time, .details .data').first().text().trim();
