@@ -146,6 +146,8 @@ export default async function handler(req, res) {
       }
 
       // Default apply URL → JobRoom view-job page (internal flow is now direct as requested)
+      const jobIdMatch = absoluteLink.match(/[?&]id=([^&]+)/) || absoluteLink.match(/view-job\.php\?id=([^&]+)/);
+      const jobRoomId = jobIdMatch ? jobIdMatch[1] : null;
       const apply_url = absoluteLink;
 
       // Published date — try common selectors, else today as fallback
