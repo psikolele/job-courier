@@ -120,22 +120,12 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                 }}
             >
                 {/* Logo mark */}
-                <Link to="/" className="flex items-center gap-2.5 group">
-                    <span style={{
-                        width: 9, height: 9, borderRadius: '50%',
-                        background: 'var(--brand-fuchsia)', display: 'inline-block', flexShrink: 0
-                    }} />
-                    <span style={{
-                        fontFamily: 'var(--font-brand)',
-                        fontWeight: 900,
-                        fontSize: 18,
-                        letterSpacing: '0.15em',
-                        textTransform: 'uppercase',
-                        color: 'var(--brand-navy)',
-                        lineHeight: 1
-                    }}>
-                        JOBCOURIER<span style={{ color: 'var(--brand-fuchsia)' }}>.CH</span>
-                    </span>
+                <Link to="/" className="flex items-center group">
+                    <img 
+                        src="/logo-full.png" 
+                        alt="JobCourier" 
+                        className="h-8 md:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                    />
                 </Link>
 
                 {/* Right side actions */}
