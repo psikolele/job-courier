@@ -20,6 +20,7 @@ export const HoverButton = ({
   target,
   title,
   type = "button",
+  style = {},
   ...props
 }) => {
   const buttonRef = useRef(null);
@@ -111,6 +112,7 @@ export const HoverButton = ({
     style: {
       backgroundColor: backgroundColor,
       ...(textColor || hoverTextColor ? { color: isHovered ? determinedHoverTextColor : textColor } : {}),
+      ...style,
     },
     ...props
   };
