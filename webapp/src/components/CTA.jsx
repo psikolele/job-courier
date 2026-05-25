@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { AnimatedButton } from './ui/animated-button';
 
 const CTA = () => {
     const [activeSide, setActiveSide] = useState(null); // 'left' or 'right'
@@ -40,9 +41,12 @@ const CTA = () => {
                         <p className="text-gray-600 mb-10 max-w-md text-lg">
                             Crea il tuo profilo, imposta gli alert per le posizioni desiderate e candidati con un singolo click.
                         </p>
-                        <button className="relative overflow-hidden rounded-full bg-primary px-8 py-4 font-semibold text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg">
+                        <AnimatedButton 
+                            href="/offerte"
+                            className="relative overflow-hidden rounded-full bg-primary px-8 py-4 font-semibold text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg"
+                        >
                             Cerca Offerte
-                        </button>
+                        </AnimatedButton>
                     </div>
                 </div>
             </div>
@@ -80,9 +84,12 @@ const CTA = () => {
                         <p className="text-gray-400 mb-10 max-w-md text-lg">
                             Pubblica le tue posizioni aperte, gestisci le candidature e incontra i professionisti che cerchi nel mercato svizzero.
                         </p>
-                        <button className="relative overflow-hidden rounded-full bg-accent px-8 py-4 font-semibold text-foreground transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg">
+                        <AnimatedButton 
+                            href="/soluzioni-e-tariffe"
+                            className="relative overflow-hidden rounded-full bg-accent px-8 py-4 font-semibold text-foreground transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg"
+                        >
                             Pubblica un'Offerta
-                        </button>
+                        </AnimatedButton>
                     </div>
                 </div>
             </div>

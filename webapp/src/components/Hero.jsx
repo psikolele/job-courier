@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Search, MapPin, Briefcase, ChevronRight, Mail, ArrowRight } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
+import { AnimatedButton } from './ui/animated-button';
 
 import heroBg1 from '../assets/hero-bg.jpg';
 
@@ -246,18 +247,16 @@ const Hero = ({ setShowLoginModal }) => {
                                 <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none rotate-90 text-slate-400" />
                             </div>
 
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                            <AnimatedButton
                                 type="submit"
-                                className="w-full py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer transition-colors"
+                                className="w-full py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer"
                                 style={{
                                     background: 'var(--brand-navy)',
                                     borderRadius: 0,
                                 }}
                             >
                                 Trova Offerte →
-                            </motion.button>
+                            </AnimatedButton>
                         </form>
                     </div>
 
@@ -351,11 +350,9 @@ const Hero = ({ setShowLoginModal }) => {
 
                     <div className="w-full max-w-lg md:h-[288px] md:pb-6 flex flex-col justify-end mb-10">
                         <div>
-                            <motion.button
-                                whileHover={{ scale: 1.03 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                            <AnimatedButton
                                 onClick={() => setShowLoginModal(true)}
-                                className="px-8 py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer transition-colors"
+                                className="px-8 py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer"
                                 style={{
                                     background: 'var(--brand-fuchsia)',
                                     borderRadius: 0,
@@ -363,7 +360,7 @@ const Hero = ({ setShowLoginModal }) => {
                                 }}
                             >
                                 {t('hero.companies.cta') || 'PUBBLICA ANNUNCIO'} →
-                            </motion.button>
+                            </AnimatedButton>
                         </div>
                     </div>
 

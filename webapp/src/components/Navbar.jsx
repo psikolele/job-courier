@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
+import { AnimatedButton } from './ui/animated-button';
+
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -205,11 +207,9 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     </button>
 
                     {/* NAVY BLOCK CTA */}
-                    <motion.button
-                        whileHover={{ scale: 1.03 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                    <AnimatedButton
                         onClick={() => setShowLoginModal(true)}
-                        className="hidden md:block whitespace-nowrap flex-shrink-0 transition-colors cursor-pointer"
+                        className="hidden md:block whitespace-nowrap flex-shrink-0"
                         style={{
                             background: 'var(--brand-navy)',
                             color: '#FFFFFF',
@@ -224,7 +224,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         }}
                     >
                         PUBBLICA ANNUNCIO →
-                    </motion.button>
+                    </AnimatedButton>
 
                     {/* HAMBURGER Toggle */}
                     <button
