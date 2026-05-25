@@ -1,22 +1,14 @@
 [
   {
     "id": 0,
-    "title": "Bauspengler/in (m/w/d) 100%",
+    "title": "Maler/in (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705694-bauspengler-in-m-w-d-100-winterthur-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705695-maler-in-m-w-d-100-frauenfeld-tg&language=en"
   },
   {
     "id": 1,
-    "title": "Carpentieri per Tetti",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705703-carpentieri-per-tetti-bellinzona&language=en"
-  },
-  {
-    "id": 2,
     "title": "Zimmermann/Zimmerin (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,15 +16,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705699-zimmermann-zimmerin-m-w-d-100-frauenfeld-tg&language=en"
   },
   {
-    "id": 3,
-    "title": "Gärtner/in (Unterhalt) (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705697-g%C3%A4rtner-in-unterhalt-m-w-d-100-uster-zh&language=en"
-  },
-  {
-    "id": 4,
+    "id": 2,
     "title": "Mandatsleiter Treuhand 80?100% (a)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,12 +24,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705696-mandatsleiter-treuhand-80-100-a-ittigen-be&language=en"
   },
   {
-    "id": 5,
-    "title": "Ferraiolo",
+    "id": 3,
+    "title": "Carpentieri per Tetti",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705702-ferraiolo-bellinzona&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705703-carpentieri-per-tetti-bellinzona&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Lattonieri",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705704-lattonieri-bellinzona&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Gipser/in (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705700-gipser-in-m-w-d-100-winterthur-zh&language=en"
   },
   {
     "id": 6,
@@ -65,6 +65,14 @@
   },
   {
     "id": 8,
+    "title": "Ingénieur civil spécialisé en réhabilitation F/H",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705692-ingenieur-civil-specialise-en-rehabilitation-f-h-gen%C3%A8ve-ge&language=en"
+  },
+  {
+    "id": 9,
     "title": "Macchinisti / Escavatoristi",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,27 +80,19 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705701-macchinisti-escavatoristi%E2%80%AF-bellinzona&language=en"
   },
   {
-    "id": 9,
-    "title": "Junior Mandatsleiter Treuhand / Steuern (m/w/d) 60-80%",
+    "id": 10,
+    "title": "Gärtner/in (Unterhalt) (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705693-junior-mandatsleiter-treuhand-steuern-m-w-d-60-80-baden-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705697-g%C3%A4rtner-in-unterhalt-m-w-d-100-uster-zh&language=en"
   },
   {
-    "id": 10,
+    "id": 11,
     "title": "Assistant commercial dans le secteur de la construction (F/H)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705698-assistant-commercial-dans-le-secteur-de-la-construction-f-h-gen%C3%A8ve-ge&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Lattonieri",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705704-lattonieri-bellinzona&language=en"
   }
 ]
