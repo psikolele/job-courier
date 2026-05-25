@@ -122,37 +122,44 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                 {/* Logo mark */}
                 <Link to="/" className="flex items-center h-full group relative">
                     <motion.div
-                        className="relative flex items-center h-full overflow-hidden"
+                        className="relative flex items-center h-full"
                         whileHover="hover"
                     >
-                        {/* Sleek Sweep Shimmer Effect */}
-                        <motion.div 
-                            className="absolute inset-0 z-10 w-[50%] h-full pointer-events-none"
-                            style={{
-                                background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%)',
-                                skewX: -20,
-                                top: 0,
-                                left: '-100%',
-                            }}
-                            variants={{
-                                hover: {
-                                    left: '200%',
-                                    transition: { duration: 1.0, ease: "easeInOut" }
-                                }
-                            }}
-                        />
-                        {/* Logo Image with Magnetic Lift & Drop Shadow */}
+                        {/* Sleek Sweep Shimmer Effect - Isolated in overflow-hidden box to prevent logo clipping */}
+                        <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none rounded-md">
+                            <motion.div 
+                                className="absolute inset-y-0 w-[50%] pointer-events-none"
+                                style={{
+                                    background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%)',
+                                    skewX: -20,
+                                    top: 0,
+                                    left: '-100%',
+                                }}
+                                variants={{
+                                    hover: {
+                                        left: '200%',
+                                        transition: { duration: 0.9, ease: "easeInOut" }
+                                    }
+                                }}
+                            />
+                        </div>
+                        {/* Logo Image with Magnetic Lift & Drop Shadow - Scaled up to bypass asset padding */}
                         <motion.img 
                             src="/logo-full.png" 
                             alt="JobCourier" 
-                            className="h-full py-2.5 md:py-2 w-auto object-contain"
+                            className="h-[140%] md:h-[150%] w-auto object-contain py-1"
+                            initial={{ scale: 1, y: 0, filter: "drop-shadow(0 2px 4px rgba(38, 54, 123, 0.0))" }}
                             variants={{
                                 hover: {
-                                    scale: 1.04,
-                                    y: -2,
-                                    filter: "drop-shadow(0 6px 16px rgba(38, 54, 123, 0.12))",
-                                    transition: { type: "spring", stiffness: 350, damping: 14 }
+                                    scale: 1.05,
+                                    y: -3,
+                                    filter: "drop-shadow(0 8px 24px rgba(38, 54, 123, 0.16))"
                                 }
+                            }}
+                            transition={{ 
+                                type: "spring", 
+                                stiffness: 280, 
+                                damping: 18 
                             }}
                         />
                     </motion.div>
