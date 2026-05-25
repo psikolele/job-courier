@@ -49,15 +49,20 @@ export const HoverButton = ({
   const BRAND_WHITE = '#FFFFFF';
 
   // Detect button variants based on Tailwind classes or background color props
-  const isNavyBg = className.includes('bg-primary') || className.includes('bg-[#050B2B]') || className.includes('bg-navy') || backgroundColor === BRAND_NAVY;
-  const isFuchsiaBg = className.includes('bg-accent') || className.includes('bg-[#FF1F7A]') || className.includes('bg-fuchsia') || backgroundColor === BRAND_FUCHSIA;
+  const isNavyBg = className.includes('bg-primary') || className.includes('bg-[#050B2B]') || className.includes('bg-navy') || backgroundColor === BRAND_NAVY || (style && (style.background === BRAND_NAVY || style.backgroundColor === BRAND_NAVY));
+  const isFuchsiaBg = className.includes('bg-accent') || className.includes('bg-[#FF1F7A]') || className.includes('bg-fuchsia') || backgroundColor === BRAND_FUCHSIA || (style && (style.background === BRAND_FUCHSIA || style.background === 'var(--brand-fuchsia)' || style.backgroundColor === BRAND_FUCHSIA));
 
-  // Determine glow color strictly following brand contrast rules:
-  // - Fuchsia buttons on Navy/dark backgrounds get a brilliant WHITE glow so it is visible.
-  // - Navy and Outline buttons get a highly vibrant FUCHSIA glow so it pops on dark/light backgrounds.
-  // Determine glow color strictly following brand contrast rules:
-  // - Fuchsia glow is highly vibrant and looks fantastic on dark blue (Navy) and light backgrounds alike.
-  const determinedGlowColor = glowColor || BRAND_FUCHSIA;
+  // Determine glow color strictly following user contrast rules:
+  // - Fuchsia buttons get a Navy Blue (#050B2B) effect/glow.
+  // - Navy/Blue buttons get a Fuchsia (#FF1F7A) effect/glow.
+  let determinedGlowColor = glowColor;
+  if (!determinedGlowColor) {
+    if (isFuchsiaBg) {
+      determinedGlowColor = BRAND_NAVY;
+    } else {
+      determinedGlowColor = BRAND_FUCHSIA;
+    }
+  }
   const determinedHoverTextColor = hoverTextColor || '';
 
   const baseClasses = `
@@ -70,7 +75,9 @@ export const HoverButton = ({
   // Radial gradient opacity adjustments for high-contrast cinematic glow
   const outerRgba = determinedGlowColor === BRAND_WHITE 
     ? 'rgba(255, 255, 255, 0.2)' 
-    : 'rgba(255, 31, 122, 0.35)';
+    : determinedGlowColor === BRAND_NAVY
+      ? 'rgba(5, 11, 43, 0.55)'
+      : 'rgba(255, 31, 122, 0.35)';
 
   const renderContent = () => (
     <>

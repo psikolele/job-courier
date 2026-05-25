@@ -1,6 +1,0 @@
-# JobCourier Redesign & Migration
-
-Un ecosistema applicativo front-end diviso tra Candidati e Aziende, ingegnerizzato su Vite + React. 
-Include integrazioni con Google AdSense, mappe i18n per la localizzazione (IT/DE/FR) e logica ottimizzata per SEO/Performance.
-
-*Progetto generato con Cinematic Landing Page Builder*

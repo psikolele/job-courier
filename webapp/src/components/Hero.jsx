@@ -383,7 +383,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     key={idx}
                                     href={item.href}
                                     external={item.external}
-                                    className="px-4 py-2 border border-white/20 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-colors duration-200"
+                                    className="px-4 py-2 border border-white/20 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-white transition-colors duration-200"
                                     style={{ textDecoration: 'none', borderRadius: 0 }}
                                 >
                                     {getHeroLabel(item)}

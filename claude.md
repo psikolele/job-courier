@@ -202,6 +202,62 @@ Before EVERY tool call:
 
 ---
 
+## 📝 Recap Riunioni e Feedback Relatore
+
+### Contenuto chiave 1: Miglioramenti Interfaccia Utente e Funzionalità Sito
+*Punto principale: Il relatore ha fornito feedback e suggerimenti per migliorare l'esperienza utente e l'estetica del sito web.*
+1. **Inversione Colori Barra Navigazione:** Inversione dei colori della barra di navigazione e dello sfondo, rendendo la barra bianca e lo sfondo un grigio diverso da quello attuale.
+2. **Dinamizzazione Offerte di Lavoro:** Rendere la lista di offerte di lavoro più interattiva e coinvolgente per gli utenti.
+3. **Ottimizzazione Visualizzazione Offerte:** Proposta di layout simile a quello di Indeed, che mantiene la lista delle offerte sulla sinistra e il dettaglio sulla destra, per una navigazione più fluida.
+4. **Login/Registrazione Forzata:** Implementare un sistema di login/registrazione forzato dopo un certo numero di visualizzazioni di offerte, per aumentare il numero di candidati registrati.
+5. **Revisione Menu di Navigazione:** Includere voci come "Vedi tutte le offerte", "Pubblica il tuo curriculum", "Vedi tutte le aziende" e "Suggerimenti per la carriera", con un'uniformità grafica.
+6. **Aggiornamento Sezione Blog:** Dividere i contenuti in "Suggerimenti per la carriera" e "Suggerimenti per il recruiting", con una chiara identificazione e uno stile coerente con il menu.
+7. **Miglioramento Visualizzazione Offerte Lista:** Standardizzare dimensioni, allineare elementi e includere informazioni come nome azienda, logo, location, titolo e tag di settore e ruolo.
+8. **Standardizzazione Elementi Grafici:** Scegliere un unico stile e colore per tutti i bottoni e gli elementi interattivi.
+9. **Velocizzazione Slider Homepage:** Velocizzare lo slider delle immagini nella parte superiore della homepage e aggiungere pallini/frecce direzionali.
+
+### Contenuto chiave 2: Progettazione e implementazione Nuove API e Dashboard
+*Punto principale: Il relatore ha espresso la necessità di sviluppare API per la raccolta dati e la creazione di dashboard analitiche.*
+1. **Sviluppo API Raccolta Dati:** Creazione di API per la raccolta di dati pubblici, escludendo inizialmente i dati personali, per costruire dashboard che monitorino metriche come il numero di clic, le offerte e i candidati.
+2. **Database Dati Personali:** Sviluppo di un database separato per la gestione dei dati personali (conforme al GDPR), come backup e per future analisi più approfondite, pianificando l'implementazione in un secondo momento con un focus sulla sicurezza.
+3. **Automatizzazione Importazione Dati:** Automatizzazione dell'importazione dei dati da file CSV forniti tramite FTP, per alimentare le dashboard e garantire un aggiornamento costante delle informazioni.
+
+### Contenuto chiave 3: Struttura Organizzativa e Gestione Personale
+*Punto principale: Il relatore ha discusso l'integrazione di nuove risorse nel team e la loro gestione per ottimizzare lo sviluppo dei progetti.*
+1. **Assegnazione Michelle ai Nuovi Progetti:** Assegnazione di Michelle ai nuovi progetti, concentrandosi inizialmente sul nuovo sito web e sull'automazione, data la minore urgenza dei tempi.
+2. **Pianificazione Formazione:** Pianificazione della formazione per Michelle e Javier, possibilmente in sessioni congiunte per facilitare lo scambio di idee e accelerare il progresso.
+3. **Collaborazione Figure Esterne:** Collaborazione con figure esterne per compiti specifici, come la gestione dei social media per BLC e Job Courier.
+4. **Gestione Credenziali e Pagamenti:** Sviluppo di un piano per la gestione delle credenziali e dei pagamenti relativi alle nuove piattaforme e servizi.
+
+### 🗺️ Mappa Mentale dei Miglioramenti
+
+```mermaid
+mindmap
+  root((Miglioramenti Sito Web, API e Gestione Progetti))
+    Miglioramenti Interfaccia Utente e Funzionalita Sito
+      Feedback e Suggerimenti
+      Inversione Colori Barra Navigazione
+      Dinamizzazione Offerte di Lavoro
+      Ottimizzazione Visualizzazione Offerte
+      Login/Registrazione Forzata
+      Revisione Menu di Navigazione
+      Aggiornamento Sezione Blog
+      Miglioramento Visualizzazione Offerte Lista
+      Standardizzazione Elementi Grafici
+      Velocizzazione Slider Homepage
+    Progettazione e implementazione Nuove API e Dashboard
+      Sviluppo API Raccolta Dati
+      Database Dati Personali
+      Automatizzazione Importazione Dati
+    Struttura Organizzativa e Gestione Personale
+      Assegnazione Michelle Ai Nuovi Progetti
+      Pianificazione Formazione
+      Collaborazione Figure Esterne
+      Gestione Credenziali e Pagamenti
+```
+
+---
+
 ## 📚 References
 
 - **[PROMPT_ENGINEERING.md](../../PROMPT_ENGINEERING.md)** — Optimize prompts for marketplace features

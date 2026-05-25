@@ -14,9 +14,9 @@
 
 ## 🚀 Prossime Operazioni da Fare
 
-1. **Job Cards (Lista Annunci):** 
+1. **Job Cards (Lista Annunci):** ✅ *DONE — 03 Mag 2026*
    - Logo azienda grande in alto a sx.
-   - Sotto il logo, layout stringato con: Titolo Annuncio (Prominente), Cantone + Comune, e solo per ultimi i tag Settore / Ruolo.
+   - Layout: Titolo prominente → Cantone+Comune → Tag Settore/Ruolo per ultimi.
 
 2. **AdSlots (Spazi Pubblicitari):**
    - Devono estendersi per tutta la larghezza (full-width) disponibile.

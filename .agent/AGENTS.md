@@ -11,6 +11,7 @@ This profile adapts Superpowers workflows for Antigravity with strict single-flo
 3. Use `browser_subagent` only for browser automation tasks.
 4. Track checklist progress in `<project-root>/docs/plans/task.md` (table-only live tracker).
 5. Keep changes scoped to the requested task and verify before completion claims.
+6. **CRITICAL DEPLOY RULE**: Non fare MAI la promozione/deploy in produzione (ramo `main`) su Vercel o altri provider senza l'esplicito e preventivo consenso dell'utente. I deploy automatici devono essere limitati ad ambienti di preview o di staging, a meno di esplicita richiesta.
 
 ## Tool Translation Contract
 
