@@ -120,12 +120,42 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                 }}
             >
                 {/* Logo mark */}
-                <Link to="/" className="flex items-center group">
-                    <img 
-                        src="/logo-full.png" 
-                        alt="JobCourier" 
-                        className="h-8 md:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                    />
+                <Link to="/" className="flex items-center h-full group relative">
+                    <motion.div
+                        className="relative flex items-center h-full overflow-hidden"
+                        whileHover="hover"
+                    >
+                        {/* Sleek Sweep Shimmer Effect */}
+                        <motion.div 
+                            className="absolute inset-0 z-10 w-[50%] h-full pointer-events-none"
+                            style={{
+                                background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%)',
+                                skewX: -20,
+                                top: 0,
+                                left: '-100%',
+                            }}
+                            variants={{
+                                hover: {
+                                    left: '200%',
+                                    transition: { duration: 1.0, ease: "easeInOut" }
+                                }
+                            }}
+                        />
+                        {/* Logo Image with Magnetic Lift & Drop Shadow */}
+                        <motion.img 
+                            src="/logo-full.png" 
+                            alt="JobCourier" 
+                            className="h-full py-2.5 md:py-2 w-auto object-contain"
+                            variants={{
+                                hover: {
+                                    scale: 1.04,
+                                    y: -2,
+                                    filter: "drop-shadow(0 6px 16px rgba(38, 54, 123, 0.12))",
+                                    transition: { type: "spring", stiffness: 350, damping: 14 }
+                                }
+                            }}
+                        />
+                    </motion.div>
                 </Link>
 
                 {/* Right side actions */}
