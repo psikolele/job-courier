@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 /**
  * HoverButton / AnimatedButton
  * Purely fluid, hardware-accelerated, lightweight cursor-following glow button.
- * Inspired by https://21st.dev/community/components/easemize/hover-glow-button/default
+ * Custom built strictly following the JobCourier Brand Identity Guidelines.
  */
 export const HoverButton = ({ 
   children, 
@@ -43,12 +43,28 @@ export const HoverButton = ({
     setIsHovered(false);
   };
 
-  // Detect if the button is dark/navy to apply fuchsia guidelines
-  const isDarkButton = className.includes('bg-primary') || className.includes('bg-surface') || className.includes('bg-[#050B2B]') || className.includes('bg-navy') || backgroundColor === '#000' || backgroundColor === '#050B2B';
+  // Strict Brand Guidelines Colors
+  const BRAND_NAVY = '#050B2B';
+  const BRAND_FUCHSIA = '#FF1F7A';
+  const BRAND_WHITE = '#FFFFFF';
 
-  // Determine standard colors following brand guidelines
-  const determinedGlowColor = glowColor || (isDarkButton ? '#FF1F7A' : '#2f9de5');
-  const determinedHoverTextColor = hoverTextColor || '#ffffff';
+  // Detect button variants based on Tailwind classes or background color props
+  const isNavyBg = className.includes('bg-primary') || className.includes('bg-[#050B2B]') || className.includes('bg-navy') || backgroundColor === BRAND_NAVY;
+  const isFuchsiaBg = className.includes('bg-accent') || className.includes('bg-[#FF1F7A]') || className.includes('bg-fuchsia') || backgroundColor === BRAND_FUCHSIA;
+
+  // Determine glow color strictly following brand guidelines (Navy button -> Fuchsia glow, Fuchsia button -> Navy/White glow)
+  let determinedGlowColor = glowColor;
+  if (!determinedGlowColor) {
+    if (isNavyBg) {
+      determinedGlowColor = BRAND_FUCHSIA;
+    } else if (isFuchsiaBg) {
+      determinedGlowColor = BRAND_NAVY;
+    } else {
+      determinedGlowColor = BRAND_NAVY; // Fallback
+    }
+  }
+
+  const determinedHoverTextColor = hoverTextColor || BRAND_WHITE;
 
   const baseClasses = `
     relative inline-block border-none cursor-pointer overflow-hidden transition-all duration-300 
@@ -59,7 +75,7 @@ export const HoverButton = ({
 
   const renderContent = () => (
     <>
-      {/* Glow effect div */}
+      {/* Glow effect div using strict brand colors */}
       <div
         className={`
           absolute w-[200px] h-[200px] rounded-full opacity-45 pointer-events-none 
@@ -69,7 +85,7 @@ export const HoverButton = ({
         style={{
           left: `${glowPosition.x}px`,
           top: `${glowPosition.y}px`,
-          background: `radial-gradient(circle, ${determinedGlowColor} 10%, rgba(255,31,122,0.15) 40%, transparent 70%)`,
+          background: `radial-gradient(circle, ${determinedGlowColor} 10%, ${determinedGlowColor === BRAND_FUCHSIA ? 'rgba(255, 31, 122, 0.15)' : 'rgba(5, 11, 43, 0.15)'} 40%, transparent 70%)`,
           zIndex: 0,
         }}
       />
@@ -116,6 +132,5 @@ export const HoverButton = ({
   );
 };
 
-// Aliasing HoverButton as AnimatedButton so existing components consume this ultra-fluid hover glow transparently!
 export const AnimatedButton = HoverButton;
-export const RippleButton = HoverButton; // Backwards compatibility for easemize schema
+export const RippleButton = HoverButton;
