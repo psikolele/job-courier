@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { X, UserPlus } from 'lucide-react';
+import { X } from 'lucide-react';
+import { AnimatedButton } from './ui/animated-button';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -51,18 +52,16 @@ const RegistrationWallModal = ({ isOpen, onClose }) => {
                         Per continuare a visualizzare gli annunci, iscriviti gratuitamente al portale.
                     </p>
 
-                    <a href="https://jobroom.jobcourier.ch/job-seekers-login.php?lan=it&language=it"
-                        className="transition-opacity hover:opacity-80 w-full flex items-center justify-center gap-3"
+                    <AnimatedButton 
+                        href="https://jobroom.jobcourier.ch/job-seekers-login.php?lan=it&language=it"
+                        external={true}
+                        className="w-full py-4 text-xs font-bold tracking-[0.14em] uppercase"
                         style={{
                             background: F, color: '#FFFFFF',
-                            padding: '15px 24px',
-                            fontFamily: brand, fontWeight: 700, fontSize: 11,
-                            letterSpacing: '0.14em', textTransform: 'uppercase',
-                            textDecoration: 'none', display: 'flex',
                             borderRadius: 0
                         }}>
                         Iscriviti Ora →
-                    </a>
+                    </AnimatedButton>
                 </div>
             </div>
         </div>

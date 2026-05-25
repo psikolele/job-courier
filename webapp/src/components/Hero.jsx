@@ -274,18 +274,19 @@ const Hero = ({ setShowLoginModal }) => {
                         </p>
                         <div className="flex flex-wrap gap-3">
                             {[
-                                { label: t('nav.all_offers'), href: '/offerte' },
-                                { label: t('nav.all_companies'), href: 'https://jobroom.jobcourier.ch/jobs-by-company.php' },
-                                { label: t('nav.blog'), href: '#blog' }
-                            ].map(({ label, href }) => (
-                                <a
+                                { label: t('nav.all_offers'), href: '/offerte', external: false },
+                                { label: t('nav.all_companies'), href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
+                                { label: t('nav.blog'), href: '#blog', external: false }
+                            ].map(({ label, href, external }) => (
+                                <AnimatedButton
                                     key={label}
                                     href={href}
+                                    external={external}
                                     className="px-4 py-2 border border-slate-200/80 font-mono text-xs text-[var(--brand-navy)] hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-colors duration-200"
                                     style={{ textDecoration: 'none', borderRadius: 0 }}
                                 >
                                     {label}
-                                </a>
+                                </AnimatedButton>
                             ))}
                         </div>
                     </div>
@@ -378,25 +379,15 @@ const Hero = ({ setShowLoginModal }) => {
                         </p>
                         <div className="flex flex-wrap gap-3">
                             {companyLinks.map((item, idx) => (
-                                item.external ? (
-                                    <a
-                                        key={idx}
-                                        href={item.href}
-                                        className="px-4 py-2 border border-white/20 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-colors duration-200"
-                                        style={{ textDecoration: 'none', borderRadius: 0 }}
-                                    >
-                                        {getHeroLabel(item)}
-                                    </a>
-                                ) : (
-                                    <Link
-                                        key={idx}
-                                        to={item.href}
-                                        className="px-4 py-2 border border-white/20 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-colors duration-200"
-                                        style={{ textDecoration: 'none', borderRadius: 0 }}
-                                    >
-                                        {getHeroLabel(item)}
-                                    </Link>
-                                )
+                                <AnimatedButton
+                                    key={idx}
+                                    href={item.href}
+                                    external={item.external}
+                                    className="px-4 py-2 border border-white/20 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-colors duration-200"
+                                    style={{ textDecoration: 'none', borderRadius: 0 }}
+                                >
+                                    {getHeroLabel(item)}
+                                </AnimatedButton>
                             ))}
                         </div>
                     </div>

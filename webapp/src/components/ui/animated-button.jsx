@@ -52,19 +52,13 @@ export const HoverButton = ({
   const isNavyBg = className.includes('bg-primary') || className.includes('bg-[#050B2B]') || className.includes('bg-navy') || backgroundColor === BRAND_NAVY;
   const isFuchsiaBg = className.includes('bg-accent') || className.includes('bg-[#FF1F7A]') || className.includes('bg-fuchsia') || backgroundColor === BRAND_FUCHSIA;
 
-  // Determine glow color strictly following brand guidelines (Navy button -> Fuchsia glow, Fuchsia button -> Navy/White glow)
-  let determinedGlowColor = glowColor;
-  if (!determinedGlowColor) {
-    if (isNavyBg) {
-      determinedGlowColor = BRAND_FUCHSIA;
-    } else if (isFuchsiaBg) {
-      determinedGlowColor = BRAND_NAVY;
-    } else {
-      determinedGlowColor = BRAND_NAVY; // Fallback
-    }
-  }
-
-  const determinedHoverTextColor = hoverTextColor || BRAND_WHITE;
+  // Determine glow color strictly following brand contrast rules:
+  // - Fuchsia buttons on Navy/dark backgrounds get a brilliant WHITE glow so it is visible.
+  // - Navy and Outline buttons get a highly vibrant FUCHSIA glow so it pops on dark/light backgrounds.
+  // Determine glow color strictly following brand contrast rules:
+  // - Fuchsia glow is highly vibrant and looks fantastic on dark blue (Navy) and light backgrounds alike.
+  const determinedGlowColor = glowColor || BRAND_FUCHSIA;
+  const determinedHoverTextColor = hoverTextColor || '';
 
   const baseClasses = `
     relative inline-block border-none cursor-pointer overflow-hidden transition-all duration-300 
@@ -73,19 +67,24 @@ export const HoverButton = ({
     ${className}
   `;
 
+  // Radial gradient opacity adjustments for high-contrast cinematic glow
+  const outerRgba = determinedGlowColor === BRAND_WHITE 
+    ? 'rgba(255, 255, 255, 0.2)' 
+    : 'rgba(255, 31, 122, 0.35)';
+
   const renderContent = () => (
     <>
-      {/* Glow effect div using strict brand colors */}
+      {/* Glow effect div using strict brand colors with larger 250px radius */}
       <div
         className={`
-          absolute w-[200px] h-[200px] rounded-full opacity-45 pointer-events-none 
+          absolute w-[250px] h-[250px] rounded-full pointer-events-none 
           transition-transform duration-500 ease-out -translate-x-1/2 -translate-y-1/2 z-[0]
-          ${isHovered ? 'scale-120 opacity-75' : 'scale-0 opacity-0'}
+          ${isHovered ? 'scale-120 opacity-100' : 'scale-0 opacity-0'}
         `}
         style={{
           left: `${glowPosition.x}px`,
           top: `${glowPosition.y}px`,
-          background: `radial-gradient(circle, ${determinedGlowColor} 10%, ${determinedGlowColor === BRAND_FUCHSIA ? 'rgba(255, 31, 122, 0.15)' : 'rgba(5, 11, 43, 0.15)'} 40%, transparent 70%)`,
+          background: `radial-gradient(circle, ${determinedGlowColor} 10%, ${outerRgba} 45%, transparent 70%)`,
           zIndex: 0,
         }}
       />
@@ -104,7 +103,7 @@ export const HoverButton = ({
     title: title,
     style: {
       backgroundColor: backgroundColor,
-      color: isHovered ? determinedHoverTextColor : textColor,
+      ...(textColor || hoverTextColor ? { color: isHovered ? determinedHoverTextColor : textColor } : {}),
     },
     ...props
   };

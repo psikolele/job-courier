@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ExternalLink } from 'lucide-react';
+import { AnimatedButton } from './ui/animated-button';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -88,28 +89,22 @@ const ApplyRedirectModal = ({ isOpen, onClose, externalUrl, companyName = '', au
                     </p>
 
                     <div className="flex flex-col w-full gap-3">
-                        <button onClick={handleGoNow}
-                            className="transition-opacity hover:opacity-80 w-full flex items-center justify-center gap-2"
+                        <AnimatedButton onClick={handleGoNow}
+                            className="w-full flex items-center justify-center gap-2 py-4 font-bold tracking-[0.14em] text-xs uppercase"
                             style={{
                                 background: F, color: '#FFFFFF', border: 'none',
-                                padding: '15px 24px',
-                                fontFamily: brand, fontWeight: 700, fontSize: 11,
-                                letterSpacing: '0.14em', textTransform: 'uppercase',
-                                cursor: 'pointer', borderRadius: 0
+                                borderRadius: 0
                             }}>
                             Vai subito <ExternalLink size={13} />
-                        </button>
-                        <button onClick={handleCancel}
-                            className="transition-opacity hover:opacity-60 w-full"
+                        </AnimatedButton>
+                        <AnimatedButton onClick={handleCancel}
+                            className="w-full py-4 text-xs font-bold tracking-[0.14em] uppercase border border-slate-200 text-slate-500 hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)]"
                             style={{
-                                background: 'transparent', color: GM, border: '1.5px solid rgba(5,11,43,0.1)',
-                                padding: '13px 24px',
-                                fontFamily: brand, fontWeight: 700, fontSize: 11,
-                                letterSpacing: '0.14em', textTransform: 'uppercase',
-                                cursor: 'pointer', borderRadius: 0
+                                background: 'transparent',
+                                borderRadius: 0
                             }}>
                             Annulla
-                        </button>
+                        </AnimatedButton>
                     </div>
                 </div>
             </div>
