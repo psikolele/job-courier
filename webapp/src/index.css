@@ -12,6 +12,14 @@
   --font-sans: "Satoshi", sans-serif;
   --font-serif: "Playfair Display", serif;
   --font-mono: "Inter", sans-serif;
+
+  --radius-none: 0px;
+  --radius-xs: 0.125rem;
+  --radius-default: 0.375rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 1.875rem;
+  --radius-full: 9999px;
+  --color-button-ripple-color: var(--button-ripple-color);
 }
 
 :root {
@@ -23,6 +31,11 @@
   --font-brand: 'Satoshi', sans-serif;
   --font-editorial: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
+  --button-ripple-color: oklch(0.145 0 0 / 0.3);
+}
+
+.dark {
+  --button-ripple-color: oklch(0.985 0 0 / 0.5);
 }
 
 @layer base {
