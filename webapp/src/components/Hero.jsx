@@ -153,17 +153,28 @@ const Hero = ({ setShowLoginModal }) => {
 
     return (
         <section
-            className="relative w-full min-h-screen flex flex-col md:flex-row overflow-hidden"
+            className="relative w-full min-h-screen max-h-screen md:h-screen flex flex-col md:flex-row overflow-hidden"
             style={{ background: 'var(--brand-gray-light)' }}
         >
             {/* ── LEFT: CANDIDATES PANEL (60% Width) ── */}
-            <div className="relative w-full md:w-[60%] flex flex-col justify-start px-6 md:px-12 lg:px-20 pt-32 md:pt-40 pb-16 md:pb-24 bg-white z-10 border-r border-slate-200/50">
+            <div className="relative w-full md:w-[50%] flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24 md:pt-0 pb-16 md:pb-24 bg-[var(--brand-navy)] z-10 border-r border-slate-800/30">
                 <div className="max-w-2xl">
+                    {/* Prominent high-res logo above the title */}
+                    <div className="mb-10 block">
+                        <Link to="/">
+                            <img 
+                                src="/logo-full.png" 
+                                alt="JobCourier Logo" 
+                                className="h-10 md:h-12 w-auto object-contain brightness-0 invert" 
+                            />
+                        </Link>
+                    </div>
+
                     <p style={{
                         fontFamily: 'var(--font-brand)',
                         fontWeight: 700,
                         fontSize: 11,
-                        color: 'var(--brand-gray-mid)',
+                        color: 'rgba(255, 255, 255, 0.45)',
                         textTransform: 'uppercase',
                         letterSpacing: '0.2em',
                         marginBottom: 16
@@ -175,7 +186,7 @@ const Hero = ({ setShowLoginModal }) => {
                         fontFamily: 'var(--font-brand)',
                         fontWeight: 900,
                         fontSize: isMobile ? 36 : 56,
-                        color: 'var(--brand-navy)',
+                        color: '#FFFFFF',
                         textTransform: 'uppercase',
                         letterSpacing: '-0.02em',
                         lineHeight: 0.95,
@@ -207,7 +218,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     placeholder={t('hero.candidates.search_placeholder')}
                                     value={keyword}
                                     onChange={(e) => setKeyword(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-3.5 border border-slate-200 font-mono text-sm focus:border-[var(--brand-navy)] outline-none transition-colors"
+                                    className="w-full pl-10 pr-4 py-3.5 border-0 border-b-2 border-b-[var(--brand-fuchsia)] font-mono text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors"
                                     style={{ borderRadius: 0 }}
                                 />
                                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -217,9 +228,9 @@ const Hero = ({ setShowLoginModal }) => {
                                 <select
                                     value={selectedSector}
                                     onChange={(e) => setSelectedSector(e.target.value)}
-                                    className="w-full pl-10 pr-10 py-3.5 border border-slate-200 font-mono text-sm focus:border-[var(--brand-navy)] outline-none transition-colors appearance-none cursor-pointer"
-                                    style={{ 
-                                        borderRadius: 0, 
+                                    className="w-full pl-10 pr-10 py-3.5 border-0 border-b-2 border-b-[var(--brand-fuchsia)] font-mono text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors appearance-none cursor-pointer"
+                                    style={{
+                                        borderRadius: 0,
                                         color: selectedSector ? 'var(--brand-navy)' : '#8B8FA8'
                                     }}
                                 >
@@ -234,9 +245,9 @@ const Hero = ({ setShowLoginModal }) => {
                                 <select
                                     value={selectedCanton}
                                     onChange={(e) => setSelectedCanton(e.target.value)}
-                                    className="w-full pl-10 pr-10 py-3.5 border border-slate-200 font-mono text-sm focus:border-[var(--brand-navy)] outline-none transition-colors appearance-none cursor-pointer"
-                                    style={{ 
-                                        borderRadius: 0, 
+                                    className="w-full pl-10 pr-10 py-3.5 border-0 border-b-2 border-b-[var(--brand-fuchsia)] font-mono text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors appearance-none cursor-pointer"
+                                    style={{
+                                        borderRadius: 0,
                                         color: selectedCanton ? 'var(--brand-navy)' : '#8B8FA8'
                                     }}
                                 >
@@ -265,7 +276,7 @@ const Hero = ({ setShowLoginModal }) => {
                         <p style={{
                             fontFamily: 'var(--font-mono)',
                             fontSize: 10,
-                            color: 'var(--brand-gray-mid)',
+                            color: 'rgba(255, 255, 255, 0.45)',
                             textTransform: 'uppercase',
                             letterSpacing: '0.15em',
                             marginBottom: 12
@@ -282,7 +293,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     key={label}
                                     href={href}
                                     external={external}
-                                    className="px-4 py-2 border border-slate-200/80 font-mono text-xs text-[var(--brand-navy)] hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-colors duration-200"
+                                    className="px-4 py-2 border border-white/40 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-white transition-colors duration-200"
                                     style={{ textDecoration: 'none', borderRadius: 0 }}
                                 >
                                     {label}
@@ -294,7 +305,7 @@ const Hero = ({ setShowLoginModal }) => {
             </div>
 
             {/* ── RIGHT: EMPLOYERS PANEL (40% Width) ── */}
-            <div className="relative w-full md:w-[40%] flex flex-col justify-start px-6 md:px-12 lg:px-16 pt-20 md:pt-40 pb-16 md:pb-24 bg-[var(--brand-navy)] text-white z-0 overflow-hidden">
+            <div className="relative w-full md:w-[50%] flex flex-col justify-center px-6 md:px-12 lg:px-16 pt-24 md:pt-0 pb-16 md:pb-24 bg-[var(--brand-navy)] text-white z-0 overflow-hidden">
                 {/* Slidable background image with Navy Overlay */}
                 <div className="absolute inset-0 w-full h-full opacity-15 pointer-events-none z-0">
                     <AnimatePresence initial={false}>
@@ -335,7 +346,7 @@ const Hero = ({ setShowLoginModal }) => {
                         lineHeight: 0.95,
                         marginBottom: 6
                     }}>
-                        {t('hero.companies.h1') || 'Trova il tuo Miglior'}
+                        {t('hero.companies.h1') || 'Trova il tuo'}
                     </h1>
                     <h1 style={{
                         fontFamily: 'var(--font-editorial)',
@@ -346,7 +357,7 @@ const Hero = ({ setShowLoginModal }) => {
                         lineHeight: 1.1,
                         marginBottom: 36
                     }}>
-                        {t('hero.companies.h1_sub') || 'Talento Subito.'}
+                        {t('hero.companies.h1_sub') || 'Miglior Talento.'}
                     </h1>
 
                     <div className="w-full max-w-lg md:h-[288px] md:pb-6 flex flex-col justify-end mb-10">
@@ -383,7 +394,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     key={idx}
                                     href={item.href}
                                     external={item.external}
-                                    className="px-4 py-2 border border-white/20 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-white transition-colors duration-200"
+                                    className="px-4 py-2 border border-white/40 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-white transition-colors duration-200"
                                     style={{ textDecoration: 'none', borderRadius: 0 }}
                                 >
                                     {getHeroLabel(item)}

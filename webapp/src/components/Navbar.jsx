@@ -149,7 +149,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         <motion.img 
                             src="/logo-full.png" 
                             alt="JobCourier" 
-                            className="h-12 md:h-15 w-auto object-contain py-0.5"
+                            className="h-14 md:h-16 w-auto object-contain py-0.5"
                             initial={{ scale: 1, y: 0, filter: "drop-shadow(0 2px 4px rgba(38, 54, 123, 0.0))" }}
                             variants={{
                                 hover: {
@@ -197,7 +197,8 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         style={{
                             fontFamily: 'var(--font-body)',
                             fontSize: 13,
-                            color: 'var(--brand-gray-mid)',
+                            color: 'var(--brand-fuchsia)',
+                            fontWeight: 700,
                             background: 'none',
                             border: 'none',
                             padding: 0
@@ -205,26 +206,6 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     >
                         {t('nav.login')}
                     </button>
-
-                    {/* NAVY BLOCK CTA */}
-                    <AnimatedButton
-                        onClick={() => setShowLoginModal(true)}
-                        className="hidden md:block whitespace-nowrap flex-shrink-0"
-                        style={{
-                            background: 'var(--brand-navy)',
-                            color: '#FFFFFF',
-                            border: 'none',
-                            padding: '11px 24px',
-                            fontFamily: 'var(--font-brand)',
-                            fontSize: 10,
-                            fontWeight: 700,
-                            letterSpacing: '0.14em',
-                            textTransform: 'uppercase',
-                            borderRadius: 0
-                        }}
-                    >
-                        PUBBLICA ANNUNCIO →
-                    </AnimatedButton>
 
                     {/* HAMBURGER Toggle */}
                     <button
@@ -351,14 +332,14 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[120] flex items-center justify-center bg-slate-900/60 backdrop-blur-md p-4 md:p-8"
+                        className="fixed inset-0 z-[120] flex items-center justify-center bg-white/40 backdrop-blur-[3px] p-4 md:p-8"
                         onClick={(e) => { if (e.target === e.currentTarget) setShowLoginModal(false); }}
                     >
                         <motion.div
                             initial={{ scale: 0.95, opacity: 0, y: 15 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.95, opacity: 0, y: 15 }}
-                            className="bg-white shadow-2xl w-full max-w-4xl relative overflow-hidden flex flex-col md:flex-row min-h-[500px] rounded-none border border-slate-200"
+                            className="bg-white shadow-2xl w-full max-w-4xl relative overflow-hidden flex flex-col md:flex-row min-h-[500px] rounded-none"
                         >
                             <button
                                 onClick={() => setShowLoginModal(false)}
@@ -427,8 +408,6 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 </div>
                             </div>
 
-                            {/* Accent bottom bar */}
-                            <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-[var(--brand-fuchsia)]" />
                         </motion.div>
                     </motion.div>
                 )}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { MapPin, Briefcase, ChevronLeft, Calendar, Search, ExternalLink } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import useRegistrationWall from '../hooks/useRegistrationWall';
 import RegistrationWallModal from '../components/RegistrationWallModal';
 import ApplyRedirectModal from '../components/ApplyRedirectModal';
@@ -15,9 +15,23 @@ const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
-const Offerte = () => {
+const Offerte = ({ setShowLoginModal }) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
+
+    const [showAutoPopup, setShowAutoPopup] = useState(false);
+
+    useEffect(() => {
+        // Automatic registration/login popup after 2 seconds
+        const hasSeen = sessionStorage.getItem('hasSeenAutoPopup');
+        if (!hasSeen) {
+            const timer = setTimeout(() => {
+                setShowAutoPopup(true);
+                sessionStorage.setItem('hasSeenAutoPopup', 'true');
+            }, 2000);
+            return () => clearTimeout(timer);
+        }
+    }, []);
 
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -477,6 +491,81 @@ const Offerte = () => {
                 companyName={redirectModal.company}
                 onClose={() => setRedirectModal({ open: false, url: null, company: '' })}
             />
+
+            {/* ── AUTOMATIC POPUP (2 SECONDS DELAY) ── */}
+            <AnimatePresence>
+                {showAutoPopup && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[120] flex items-center justify-center bg-slate-900/60 backdrop-blur-md p-4 md:p-8"
+                        onClick={(e) => { if (e.target === e.currentTarget) setShowAutoPopup(false); }}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0, y: 15 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.95, opacity: 0, y: 15 }}
+                            className="bg-white shadow-2xl w-full max-w-lg relative overflow-hidden flex flex-col p-8 md:p-10 rounded-none border border-slate-200"
+                        >
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setShowAutoPopup(false)}
+                                className="absolute top-6 right-6 w-10 h-10 bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shadow-sm rounded-none border border-slate-200 cursor-pointer"
+                                aria-label="Chiudi"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+
+                            <div className="flex flex-col items-center text-center mt-4">
+                                <div className="w-12 h-12 bg-[var(--brand-fuchsia)]/10 flex items-center justify-center mb-6 text-[var(--brand-fuchsia)] rounded-none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                </div>
+
+                                <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 tracking-[0.15em] uppercase font-sans">
+                                    Accedi o Registrati
+                                </h2>
+                                
+                                <p className="text-slate-500 text-sm mb-8 max-w-sm" style={{ fontFamily: 'var(--font-body)', lineHeight: 1.6 }}>
+                                    Crea subito il tuo account gratuito per candidarti in un click, impostare alert personalizzati e monitorare lo stato delle tue ricerche sul mercato elvetico.
+                                </p>
+
+                                <div className="flex flex-col gap-3 w-full max-w-xs">
+                                    {/* REGISTRATI (Candidato) */}
+                                    <motion.a
+                                        whileHover={{ scale: 1.03 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                        href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full bg-[var(--brand-fuchsia)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
+                                        onClick={() => setShowAutoPopup(false)}
+                                        style={{ textDecoration: 'none' }}
+                                    >
+                                        Iscriviti Ora
+                                    </motion.a>
+
+                                    {/* ACCEDI (Login) */}
+                                    <motion.button
+                                        whileHover={{ scale: 1.03 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                        onClick={() => {
+                                            setShowAutoPopup(false);
+                                            setShowLoginModal(true);
+                                        }}
+                                        className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 transition-all hover:border-[var(--brand-navy)] hover:text-[var(--brand-navy)] text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
+                                    >
+                                        Accedi al Profilo
+                                    </motion.button>
+                                </div>
+                            </div>
+
+                            {/* Fuchsia bottom accent bar */}
+                            <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-[var(--brand-fuchsia)]" />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

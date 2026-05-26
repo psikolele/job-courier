@@ -57,7 +57,7 @@ function App() {
         <Route path="/soluzioni-e-tariffe" element={<Pricing />} />
         <Route path="/contatti" element={<Contact />} />
         <Route path="/come-funziona" element={<ComeFunziona />} />
-        <Route path="/offerte" element={<Offerte />} />
+        <Route path="/offerte" element={<Offerte setShowLoginModal={setShowLoginModal} />} />
         <Route path="/offerta/:id" element={<OffertaDettaglio />} />
       </Routes>
       <Footer />
