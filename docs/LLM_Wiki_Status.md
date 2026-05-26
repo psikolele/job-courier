@@ -1,44 +1,57 @@
-# LLM Wiki: Job Courier Redesign (27 Apr 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 26 Maggio 2026)
 
-## 📌 Stato Attuale: Cosa abbiamo fatto oggi
+## 📌 Stato Attuale: Operazioni Completate
 
-1. **Hero & Navbar: Visual Refinement**
-   - Reso lo sfondo Navbar `FAFAFA` e quello Candidates `F4F6F8` per un distacco più elegante rispetto all'originale grigio.
-   - Istituito il colore rosso `#e63946` per il tasto LOGIN.
-   - Sostituito lo slider immagini base lato aziende con una versione più dinamica, introducendo l'interazione manuale tramite **Pill-style Dots** animati e riducendo il tempo tra le slide a 4s.
+### 1. Brand Identity & Visual Alignment (Maggio 2026) — ✅ *COMPLETED*
+* **Palette Istituzionale**: Applicazione rigorosa dei colori ufficiali da Brand Guidelines:
+  * Primary Navy: `#050B2B`
+  * Accent Fuchsia: `#FF1F7A`
+  * White: `#FFFFFF`
+  * Light Gray: `#F6F7FB`
+* **Loghi ad Alta Risoluzione**:
+  * Sostituiti tutti i vecchi asset raster a bassa risoluzione con i nuovi file ufficiali HD: `logo-full.png` (esteso, **625x278px**) e `logo-square.png` (**1000x1000px**).
+  * Ripristinati i tag immagine (`motion.img`) in Navbar e Footer con un'altezza ottimizzata di `h-12 md:h-15` (48px-60px), assicurando una visualizzazione imponente, nitida e priva di margini trasparenti superflui anche su schermi Retina/4K.
+  * Favicon aggiornata con successo all'asset ad alta risoluzione `/logo-square.png`.
 
-2. **Blog: Redesign 50/50 Split**
-   - Distrutto il vecchio layout a sfondo scuro `#1a2554` con le tre card fisse.
-   - Creato un nuovo layout "Clinical Boutique" totalmente bianco, spezzato in due colonne a metà esatta per mantenere il dualismo (Candidati a sx, Aziende a dx).
-   - Introdotto in ogni colonna un carosello indipendente per le card (che a loro volta sono state stilizzate in bianco e bordo tenue) con controllo Pill-style e tempi sfasati (5s e 5.3s) per evitare un effetto eccessivamente sincronizzato.
+### 2. Sistema di Interazione: Hover-Glow Dinamico (Maggio 2026) — ✅ *COMPLETED*
+* **Componente `AnimatedButton`**: Sviluppato un pulsante a puntatore magnetico tracciato da cursore (60fps fluido), esente da lag da griglia grazie a proprietà CSS accelerate via hardware.
+* **Regole di Contrasto Dinamico (Speculari)**:
+  * **SU BOTTONI BLU/NAVY (e Outline su Sfondo Blu)**: l'effetto hover proietta un glow **Fucsia di Brand (`#FF1F7A`)**. All'hover il testo dei pulsanti outline (es. *"Come funziona"*, *"Soluzioni e tariffe"*) rimane rigidamente **Bianco (`#FFFFFF`)** per evitare impasti cromatici e garantire leggibilità 1:1.
+  * **SU BOTTONI FUCHSIA**: l'effetto hover proietta un glow **Blu/Navy di Brand (`#050B2B`)**, preservando il testo bianco brillante ed esaltando il contrasto.
+* **Integrazione Globale**: Sostituiti tutti i bottoni tradizionali/link all'interno delle modali critiche dell'applicazione per garantire uniformità:
+  * `Navbar.jsx` (Navy CTA)
+  * `Hero.jsx` (Selettori di ricerca, CTA ed outline *"Altri Link"*)
+  * `ApplyRedirectModal.jsx` (CTAs di candidatura esterna)
+  * `RegistrationWallModal.jsx` (CTA paywall di registrazione)
 
-## 🚀 Prossime Operazioni da Fare
+### 3. Debugging & Stabilità a Runtime — ✅ *COMPLETED*
+* **Hotfix ReferenceError**: Risolto crash a runtime sul deploy di produzione (`style is not defined`) in `animated-button.jsx` inserendo la destrutturazione di `style` nella firma di `HoverButton` ed eseguendo il merge corretto con l'oggetto di stile interno, prevenendo sovrascritture causate dallo spread operator (`...props`).
 
-1. **Job Cards (Lista Annunci):** ✅ *DONE — 03 Mag 2026*
-   - Logo azienda grande in alto a sx.
-   - Layout: Titolo prominente → Cantone+Comune → Tag Settore/Ruolo per ultimi.
+### 4. Hero, Navbar & UI Layout (Aprile 2026) — ✅ *COMPLETED*
+* **Navbar Sempre Visibile**: Rimosso lo stato trasparente allo scroll di partenza. Navbar sempre attiva con sfondo `white/98`, shrinkage di altezza `72px -> 60px` ed attivazione progressiva di ombra all'aumentare dello scroll.
+* **Spazi Pubblicitari (AdSlots)**: Eliminata la vecchia sezione CTA ridondante e sostituita con due ampi spazi AdSlot flex-row 50%/50% a caricamento lazy per massimizzare la monetizzazione.
+* **Blog 50/50 Split**: Layout "Clinical Boutique" totalmente bianco spezzato in due colonne asincrone (Candidati a sx con carosello 5s, Aziende a dx con carosello 5.3s).
 
-2. **AdSlots (Spazi Pubblicitari):**
-   - Devono estendersi per tutta la larghezza (full-width) disponibile.
-   - Ridurre il totale a 4 slot posizionati correttamente (probabilmente in una griglia 2x2 o 4 colonne).
-   - Rimuovere curve eccessive per restare nello stile "rettangolare" concordato.
+---
 
-3. **Menu e Rotte:**
-   - Creazione della rotta `/come-funziona` (Pagina Statica Step-by-Step).
-   - Controllare label del menu candidati (Deve essere "Pubblica il tuo curriculum").
+## 🚀 Prossime Operazioni & Task Rimasti (Missing Tasks)
 
-4. **Meccanismo di Paywall / Ingaggio:**
-   - Sviluppare un sistema di blocco ("Barriera") per cui l'utente, giunto al terzo click su un annuncio, riceve un popup per registrarsi o fare login.
+1. **Paywall Incrementale a 3 Click**:
+   * Sviluppare nello state globale (o local storage) il contatore di click sugli annunci: giunto al terzo click, l'utente visualizza `RegistrationWallModal` per costringerlo alla registrazione gratuita.
 
-5. **Template Annuncio Interno:**
-   - La Job Card non porterà più direttamente fuori (su JobRoom), ma aprirà una pagina template di JobCourier `/offerta/:id`. L'unica via d'uscita sarà premere "Candidati ora".
+2. **Template Dettaglio Annuncio Interno**:
+   * Completare la rotta `/offerta/:id` in sostituzione dei redirect esterni diretti di JobRoom. Il template deve presentare le informazioni strutturate dell'offerta e mostrare come unica CTA il pulsante *"Candidati Ora"* (gestito tramite `ApplyRedirectModal`).
 
-6. **Home Add-ons:**
-   - Montare il componente `<Vetrini />` sulla home per mostrare le aziende premium.
-   - Prevedere un nuovo blocco per due grandi "Referenze/Testimonial".
+3. **Integrazione Componente Vetrini**:
+   * Integrare il componente `<Vetrini />` per le aziende premium direttamente in homepage sotto la sezione delle statistiche o del manifesto.
 
-7. **Hero H1:**
-   - Uniformare l'animazione di scale in modo che gli H1 candidati e aziende abbiano sempre le stesse identiche dimensioni a riposo.
+4. **Sezione Referenze / Testimonianze**:
+   * Creare una sezione dedicata in fondo alla homepage per accogliere due grandi card per i testimonial/referenze aziendali.
+
+5. **Uniformità Dimensioni H1**:
+   * Controllare che l'animazione GSAP / CSS di ridimensionamento degli H1 Candidati e Aziende mantenga dimensioni rigorosamente speculari e simmetriche anche a riposo.
+
+---
 
 ## 📝 Notion Documentation Standard
 
