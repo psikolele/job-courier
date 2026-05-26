@@ -366,19 +366,18 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 </h3>
                                 <p className="text-slate-500 text-sm mb-8 max-w-[240px]">Accedi al tuo profilo per gestire le candidature e il tuo CV.</p>
                                 <p style={{ color: 'var(--brand-fuchsia)', fontSize: 11, marginTop: -12, marginBottom: 20, fontWeight: 700, letterSpacing: '0.05em' }}>
-                                  Dopo il login ritornerai automaticamente qui.
+                                  Il login si apre in una finestra separata — resti sempre qui.
                                 </p>
 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
-                                    <motion.a
+                                    <motion.button
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                                        href="https://jobroom.jobcourier.ch/job-seekers-login.php?language=it"
-                                        className="w-full bg-[var(--brand-navy)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase"
-                                        onClick={saveReturnUrl}
+                                        className="w-full bg-[var(--brand-navy)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
+                                        onClick={() => { window.open('https://jobroom.jobcourier.ch/job-seekers-login.php?language=it', 'jobroom-login', 'width=620,height=720,left=300,top=100,resizable=yes,scrollbars=yes'); }}
                                     >
                                         Accedi al Profilo
-                                    </motion.a>
+                                    </motion.button>
                                     <motion.a
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
@@ -400,19 +399,18 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 </h3>
                                 <p className="text-slate-300 text-sm mb-8 max-w-[240px]">Pubblica le tue offerte e trova i migliori talenti.</p>
                                 <p style={{ color: 'var(--brand-fuchsia)', fontSize: 11, marginTop: -12, marginBottom: 20, fontWeight: 700, letterSpacing: '0.05em' }}>
-                                  Dopo il login ritornerai automaticamente qui.
+                                  Il login si apre in una finestra separata — resti sempre qui.
                                 </p>
 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
-                                    <motion.a
+                                    <motion.button
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                                        href="https://jobroom.jobcourier.ch/job-seekers-login.php?language=it"
-                                        className="w-full bg-[var(--brand-fuchsia)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase"
-                                        onClick={saveReturnUrl}
+                                        className="w-full bg-[var(--brand-fuchsia)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
+                                        onClick={() => { window.open('https://jobroom.jobcourier.ch/job-seekers-login.php?language=it', 'jobroom-login', 'width=620,height=720,left=300,top=100,resizable=yes,scrollbars=yes'); }}
                                     >
                                         Login Azienda
-                                    </motion.a>
+                                    </motion.button>
                                     <motion.a
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
