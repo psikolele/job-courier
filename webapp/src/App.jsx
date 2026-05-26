@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { consumeReturnUrl, cameFromJobRoom } from './hooks/useReturnUrl';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -36,6 +37,17 @@ const ScrollToTop = () => {
 
 function App() {
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const navigate = useNavigate();
+
+  // Return-from-JobRoom redirect
+  useEffect(() => {
+    if (cameFromJobRoom()) {
+      const returnUrl = consumeReturnUrl();
+      if (returnUrl) {
+        requestAnimationFrame(() => navigate(returnUrl, { replace: true }));
+      }
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     // Add noise overlay dynamically to ensure it stays on top

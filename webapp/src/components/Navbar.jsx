@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
 import { AnimatedButton } from './ui/animated-button';
+import { saveReturnUrl } from '../hooks/useReturnUrl';
 
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -364,13 +365,17 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                     Candidati
                                 </h3>
                                 <p className="text-slate-500 text-sm mb-8 max-w-[240px]">Accedi al tuo profilo per gestire le candidature e il tuo CV.</p>
-                                
+                                <p style={{ color: 'var(--brand-fuchsia)', fontSize: 11, marginTop: -12, marginBottom: 20, fontWeight: 700, letterSpacing: '0.05em' }}>
+                                  Dopo il login ritornerai automaticamente qui.
+                                </p>
+
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <motion.a
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                         href="https://jobroom.jobcourier.ch/job-seekers-login.php?language=it"
                                         className="w-full bg-[var(--brand-navy)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase"
+                                        onClick={saveReturnUrl}
                                     >
                                         Accedi al Profilo
                                     </motion.a>
@@ -394,13 +399,17 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                     Aziende
                                 </h3>
                                 <p className="text-slate-300 text-sm mb-8 max-w-[240px]">Pubblica le tue offerte e trova i migliori talenti.</p>
-                                
+                                <p style={{ color: 'var(--brand-fuchsia)', fontSize: 11, marginTop: -12, marginBottom: 20, fontWeight: 700, letterSpacing: '0.05em' }}>
+                                  Dopo il login ritornerai automaticamente qui.
+                                </p>
+
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <motion.a
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                         href="https://jobroom.jobcourier.ch/job-seekers-login.php?language=it"
                                         className="w-full bg-[var(--brand-fuchsia)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase"
+                                        onClick={saveReturnUrl}
                                     >
                                         Login Azienda
                                     </motion.a>
