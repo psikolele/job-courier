@@ -145,36 +145,25 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 }}
                             />
                         </div>
-                        {/* High-Definition Vector Logo - Infinite sharpness, no raster padding, perfect legibility */}
-                        <motion.div 
-                            className="flex items-center gap-2.5 select-none"
-                            initial={{ scale: 1, y: 0 }}
+                        {/* Logo Image with Magnetic Lift & Drop Shadow - Infinitely sharp high-resolution raster asset */}
+                        <motion.img 
+                            src="/logo-full.png" 
+                            alt="JobCourier" 
+                            className="h-12 md:h-15 w-auto object-contain py-0.5"
+                            initial={{ scale: 1, y: 0, filter: "drop-shadow(0 2px 4px rgba(38, 54, 123, 0.0))" }}
                             variants={{
                                 hover: {
-                                    scale: 1.03,
-                                    y: -1.5,
+                                    scale: 1.05,
+                                    y: -2,
+                                    filter: "drop-shadow(0 8px 24px rgba(38, 54, 123, 0.12))"
                                 }
                             }}
                             transition={{ 
                                 type: "spring", 
-                                stiffness: 300, 
-                                damping: 20 
+                                stiffness: 280, 
+                                damping: 18 
                             }}
-                        >
-                            <span 
-                                className="w-3.5 h-3.5 md:w-4.5 md:h-4.5 rounded-full bg-[var(--brand-fuchsia)] shrink-0 shadow-[0_0_12px_rgba(255,31,122,0.35)]" 
-                                style={{ display: 'inline-block' }}
-                            />
-                            <span 
-                                className="text-2xl md:text-3xl font-bold uppercase tracking-[0.06em] text-[var(--brand-navy)]"
-                                style={{ 
-                                    fontFamily: 'var(--font-brand)',
-                                    lineHeight: 1
-                                }}
-                            >
-                                JOBCOURIER<span className="text-[var(--brand-fuchsia)]">.CH</span>
-                            </span>
-                        </motion.div>
+                        />
                     </motion.div>
                 </Link>
 

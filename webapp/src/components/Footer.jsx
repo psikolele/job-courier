@@ -37,17 +37,12 @@ const Footer = () => {
             }}>
                 {/* Brand col */}
                 <div>
-                    <div style={{ marginBottom: 16 }} className="flex items-center gap-2.5 select-none opacity-85 hover:opacity-100 transition-opacity duration-300">
-                        <span className="w-3 h-3 rounded-full bg-[var(--brand-fuchsia)] shrink-0 shadow-[0_0_8px_rgba(255,31,122,0.25)]" />
-                        <span 
-                            className="text-xl font-bold uppercase tracking-[0.06em] text-white"
-                            style={{ 
-                                fontFamily: 'var(--font-brand)',
-                                lineHeight: 1
-                            }}
-                        >
-                            JOBCOURIER<span className="text-[var(--brand-fuchsia)]">.CH</span>
-                        </span>
+                    <div style={{ marginBottom: 16 }}>
+                        <img 
+                            src="/logo-full.png" 
+                            alt="JobCourier" 
+                            className="h-10 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity duration-300"
+                        />
                     </div>
                     <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 16, color: 'rgba(255,255,255,0.35)', lineHeight: 1.55, maxWidth: 240 }}>
                         Il job board professionale di riferimento per la Svizzera.
