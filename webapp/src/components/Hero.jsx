@@ -153,28 +153,17 @@ const Hero = ({ setShowLoginModal }) => {
 
     return (
         <section
-            className="relative w-full min-h-screen max-h-screen md:h-screen flex flex-col md:flex-row overflow-hidden"
-            style={{ background: 'var(--brand-gray-light)' }}
+            className="relative w-full flex flex-col md:flex-row overflow-hidden"
+            style={{ background: 'var(--brand-gray-light)', marginTop: '80px', minHeight: 'calc(100vh - 80px)', maxHeight: 'calc(100vh - 80px)' }}
         >
             {/* ── LEFT: CANDIDATES PANEL (60% Width) ── */}
-            <div className="relative w-full md:w-[50%] flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-24 md:pt-0 pb-16 md:pb-24 bg-[var(--brand-navy)] z-10 border-r border-slate-800/30">
+            <div className="relative w-full md:w-[50%] flex flex-col justify-center px-8 md:px-16 py-12 bg-white z-10 border-r border-slate-200">
                 <div className="max-w-2xl">
-                    {/* Prominent high-res logo above the title */}
-                    <div className="mb-10 block">
-                        <Link to="/">
-                            <img 
-                                src="/logo-full.png" 
-                                alt="JobCourier Logo" 
-                                className="h-10 md:h-12 w-auto object-contain brightness-0 invert" 
-                            />
-                        </Link>
-                    </div>
-
                     <p style={{
                         fontFamily: 'var(--font-brand)',
                         fontWeight: 700,
                         fontSize: 11,
-                        color: 'rgba(255, 255, 255, 0.45)',
+                        color: 'rgba(5, 11, 43, 0.5)',
                         textTransform: 'uppercase',
                         letterSpacing: '0.2em',
                         marginBottom: 16
@@ -186,7 +175,7 @@ const Hero = ({ setShowLoginModal }) => {
                         fontFamily: 'var(--font-brand)',
                         fontWeight: 900,
                         fontSize: isMobile ? 36 : 56,
-                        color: '#FFFFFF',
+                        color: 'var(--brand-navy)',
                         textTransform: 'uppercase',
                         letterSpacing: '-0.02em',
                         lineHeight: 0.95,
@@ -276,7 +265,7 @@ const Hero = ({ setShowLoginModal }) => {
                         <p style={{
                             fontFamily: 'var(--font-mono)',
                             fontSize: 10,
-                            color: 'rgba(255, 255, 255, 0.45)',
+                            color: 'rgba(5, 11, 43, 0.5)',
                             textTransform: 'uppercase',
                             letterSpacing: '0.15em',
                             marginBottom: 12
@@ -293,7 +282,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     key={label}
                                     href={href}
                                     external={external}
-                                    className="px-4 py-2 border border-white/40 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-white transition-colors duration-200"
+                                    className="px-4 py-2 border border-[var(--brand-navy)]/25 font-mono text-xs text-[var(--brand-navy)] hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-colors duration-200"
                                     style={{ textDecoration: 'none', borderRadius: 0 }}
                                 >
                                     {label}
@@ -305,7 +294,7 @@ const Hero = ({ setShowLoginModal }) => {
             </div>
 
             {/* ── RIGHT: EMPLOYERS PANEL (40% Width) ── */}
-            <div className="relative w-full md:w-[50%] flex flex-col justify-center px-6 md:px-12 lg:px-16 pt-24 md:pt-0 pb-16 md:pb-24 bg-[var(--brand-navy)] text-white z-0 overflow-hidden">
+            <div className="relative w-full md:w-[50%] flex flex-col justify-center px-8 md:px-16 py-12 bg-[var(--brand-navy)] text-white z-0 overflow-hidden">
                 {/* Slidable background image with Navy Overlay */}
                 <div className="absolute inset-0 w-full h-full opacity-15 pointer-events-none z-0">
                     <AnimatePresence initial={false}>
@@ -371,7 +360,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     border: 'none',
                                 }}
                             >
-                                {t('hero.companies.cta') || 'PUBBLICA ANNUNCIO'} →
+                                Accedi →
                             </AnimatedButton>
                         </div>
                     </div>

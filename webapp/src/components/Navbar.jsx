@@ -240,7 +240,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         </button>
 
                         {/* LEFT SECTION: CANDIDATI */}
-                        <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 border-b md:border-b-0 md:border-r border-slate-200/50 bg-[#F6F7FB] relative group">
+                        <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 border-b md:border-b-0 md:border-r border-slate-200/50 bg-[#F6F7FB] relative group" style={{ borderBottom: '2px solid var(--brand-fuchsia)' }}>
                             <div className="mb-4 text-[var(--brand-navy)]/40 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
                                 <IconUser size={32} />
                             </div>
@@ -275,12 +275,12 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         </div>
 
                         {/* RIGHT SECTION: AZIENDE */}
-                        <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 relative group bg-white">
+                        <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 relative group bg-white" style={{ borderBottom: '2px solid var(--brand-fuchsia)' }}>
                             <div className="mb-4 text-slate-400/40 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
                                 <IconBuilding size={32} />
                             </div>
                             <div className="relative z-10 flex flex-col items-center">
-                                <h2 className="text-lg md:text-xl font-bold text-slate-500 tracking-[0.2em] uppercase font-sans mb-4">
+                                <h2 className="text-lg md:text-xl font-bold text-[var(--brand-navy)] tracking-[0.2em] uppercase font-sans mb-4">
                                     {companyTitle}
                                 </h2>
                                 <div className="flex flex-col items-center gap-4">
