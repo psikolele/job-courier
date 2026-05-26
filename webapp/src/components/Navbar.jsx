@@ -191,21 +191,40 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     </div>
 
                     {/* Accedi link */}
-                    <button
+                    <motion.button
                         onClick={() => setShowLoginModal(true)}
-                        className="hidden md:block transition-colors cursor-pointer"
+                        className="hidden md:flex items-center cursor-pointer"
                         style={{
                             fontFamily: 'var(--font-body)',
                             fontSize: 13,
                             color: 'var(--brand-fuchsia)',
                             fontWeight: 700,
                             background: 'none',
-                            border: 'none',
-                            padding: 0
+                            border: '1.5px solid var(--brand-fuchsia)',
+                            padding: '7px 18px',
+                            borderRadius: 0,
+                            letterSpacing: '0.05em',
+                        }}
+                        animate={{
+                            boxShadow: [
+                                '0 0 0px rgba(255,31,122,0)',
+                                '0 0 8px rgba(255,31,122,0.35)',
+                                '0 0 0px rgba(255,31,122,0)',
+                            ]
+                        }}
+                        transition={{
+                            duration: 2.5,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                        }}
+                        whileHover={{
+                            backgroundColor: 'var(--brand-fuchsia)',
+                            color: '#FFFFFF',
+                            transition: { duration: 0.15 }
                         }}
                     >
                         {t('nav.login')}
-                    </button>
+                    </motion.button>
 
                     {/* HAMBURGER Toggle */}
                     <button

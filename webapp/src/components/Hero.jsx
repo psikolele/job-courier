@@ -282,7 +282,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     key={label}
                                     href={href}
                                     external={external}
-                                    className="px-4 py-2 border border-[var(--brand-navy)]/25 font-mono text-xs text-[var(--brand-navy)] hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-colors duration-200"
+                                    className="px-4 py-2 border border-[var(--brand-navy)]/40 font-mono text-xs text-[var(--brand-navy)] hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-all duration-200"
                                     style={{ textDecoration: 'none', borderRadius: 0 }}
                                 >
                                     {label}
@@ -349,20 +349,18 @@ const Hero = ({ setShowLoginModal }) => {
                         {t('hero.companies.h1_sub') || 'Miglior Talento.'}
                     </h1>
 
-                    <div className="w-full max-w-lg md:h-[288px] md:pb-6 flex flex-col justify-end mb-10">
-                        <div>
-                            <AnimatedButton
-                                onClick={() => setShowLoginModal(true)}
-                                className="px-8 py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer"
-                                style={{
-                                    background: 'var(--brand-fuchsia)',
-                                    borderRadius: 0,
-                                    border: 'none',
-                                }}
-                            >
-                                Accedi →
-                            </AnimatedButton>
-                        </div>
+                    <div className="w-full max-w-lg mb-10">
+                        <AnimatedButton
+                            onClick={() => setShowLoginModal(true)}
+                            className="w-full py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer"
+                            style={{
+                                background: 'var(--brand-fuchsia)',
+                                borderRadius: 0,
+                                border: 'none',
+                            }}
+                        >
+                            Accedi →
+                        </AnimatedButton>
                     </div>
 
                     {/* ALTRI LINK - AZIENDE */}
@@ -383,7 +381,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     key={idx}
                                     href={item.href}
                                     external={item.external}
-                                    className="px-4 py-2 border border-white/40 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-white transition-colors duration-200"
+                                    className="px-4 py-2 border border-white/40 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-all duration-200"
                                     style={{ textDecoration: 'none', borderRadius: 0 }}
                                 >
                                     {getHeroLabel(item)}
