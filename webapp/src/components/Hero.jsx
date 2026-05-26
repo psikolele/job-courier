@@ -158,7 +158,7 @@ const Hero = ({ setShowLoginModal }) => {
         >
             {/* ── LEFT: CANDIDATES PANEL (60% Width) ── */}
             <div className="relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-16 pb-12 bg-white z-10 border-r border-slate-200">
-                <div className="max-w-2xl">
+                <div className="max-w-2xl flex flex-col flex-1">
                     <p style={{
                         fontFamily: 'var(--font-brand)',
                         fontWeight: 700,
@@ -261,7 +261,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
 
                     {/* ALTRI LINK */}
-                    <div>
+                    <div style={{ marginTop: 'auto' }}>
                         <p style={{
                             fontFamily: 'var(--font-mono)',
                             fontSize: 10,
@@ -312,7 +312,7 @@ const Hero = ({ setShowLoginModal }) => {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-navy)] via-[var(--brand-navy)]/80 to-[var(--brand-navy)]/20 pointer-events-none z-0" />
 
-                <div className="relative z-10 max-w-md">
+                <div className="relative z-10 max-w-md flex flex-col flex-1">
                     <p style={{
                         fontFamily: 'var(--font-brand)',
                         fontWeight: 700,
@@ -349,7 +349,7 @@ const Hero = ({ setShowLoginModal }) => {
                         {t('hero.companies.h1_sub') || 'Miglior Talento.'}
                     </h1>
 
-                    <div className="w-full max-w-lg mb-10">
+                    <div className="w-full max-w-lg mb-10" style={{ marginTop: 'auto' }}>
                         <AnimatedButton
                             onClick={() => setShowLoginModal(true)}
                             className="w-full py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer"
