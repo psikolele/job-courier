@@ -207,7 +207,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     placeholder={t('hero.candidates.search_placeholder')}
                                     value={keyword}
                                     onChange={(e) => setKeyword(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-3.5 border-0 border-b-2 border-b-[var(--brand-fuchsia)] font-mono text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors"
+                                    className="w-full pl-10 pr-4 py-3.5 border-0 border-b border-b-[var(--brand-fuchsia)] font-mono text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors"
                                     style={{ borderRadius: 0 }}
                                 />
                                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -217,7 +217,7 @@ const Hero = ({ setShowLoginModal }) => {
                                 <select
                                     value={selectedSector}
                                     onChange={(e) => setSelectedSector(e.target.value)}
-                                    className="w-full pl-10 pr-10 py-3.5 border-0 border-b-2 border-b-[var(--brand-fuchsia)] font-mono text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors appearance-none cursor-pointer"
+                                    className="w-full pl-10 pr-10 py-3.5 border-0 border-b border-b-[var(--brand-fuchsia)] font-mono text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors appearance-none cursor-pointer"
                                     style={{
                                         borderRadius: 0,
                                         color: selectedSector ? 'var(--brand-navy)' : '#8B8FA8'
@@ -234,7 +234,7 @@ const Hero = ({ setShowLoginModal }) => {
                                 <select
                                     value={selectedCanton}
                                     onChange={(e) => setSelectedCanton(e.target.value)}
-                                    className="w-full pl-10 pr-10 py-3.5 border-0 border-b-2 border-b-[var(--brand-fuchsia)] font-mono text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors appearance-none cursor-pointer"
+                                    className="w-full pl-10 pr-10 py-3.5 border-0 border-b border-b-[var(--brand-fuchsia)] font-mono text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors appearance-none cursor-pointer"
                                     style={{
                                         borderRadius: 0,
                                         color: selectedCanton ? 'var(--brand-navy)' : '#8B8FA8'
@@ -391,45 +391,6 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
                 </div>
 
-                {/* SLIDER CONTROLS (Arrows & dots matching brand) */}
-                <div className="absolute bottom-8 left-6 md:left-12 lg:left-16 right-6 md:right-12 lg:right-16 flex items-center justify-between z-20">
-                    <div className="flex gap-2">
-                        {sliderImages.map((_, idx) => (
-                            <button
-                                key={idx}
-                                onClick={() => handleDotClick(idx)}
-                                className="transition-all duration-300 focus:outline-none cursor-pointer"
-                                style={{
-                                    width: currentImageIndex === idx ? 24 : 6,
-                                    height: 6,
-                                    borderRadius: 0,
-                                    background: currentImageIndex === idx ? 'var(--brand-fuchsia)' : 'rgba(255, 255, 255, 0.25)',
-                                    border: 'none'
-                                }}
-                                aria-label={`Go to slide ${idx + 1}`}
-                            />
-                        ))}
-                    </div>
-
-                    <div className="flex gap-2">
-                        <button
-                            onClick={handlePrevImage}
-                            className="w-10 h-10 border border-white/20 bg-black/10 flex items-center justify-center text-white hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-colors cursor-pointer"
-                            style={{ borderRadius: 0 }}
-                            aria-label="Previous slide"
-                        >
-                            ←
-                        </button>
-                        <button
-                            onClick={handleNextImage}
-                            className="w-10 h-10 border border-white/20 bg-black/10 flex items-center justify-center text-white hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-colors cursor-pointer"
-                            style={{ borderRadius: 0 }}
-                            aria-label="Next slide"
-                        >
-                            →
-                        </button>
-                    </div>
-                </div>
             </div>
         </section>
     );

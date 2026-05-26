@@ -260,11 +260,12 @@ const Filters = () => {
                                 >
                                     {/* Fuchsia dot + role */}
                                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 12 }}>
-                                        <span style={{
-                                            width: 7, height: 7, borderRadius: '50%',
-                                            background: 'var(--brand-fuchsia)',
-                                            flexShrink: 0, marginTop: 6
-                                        }} />
+                                        <img
+                                            src={job.companyLogo}
+                                            alt={job.company}
+                                            onError={e => { e.currentTarget.style.display='none'; }}
+                                            style={{ width: 32, height: 32, objectFit: 'contain', flexShrink: 0, borderRadius: 4 }}
+                                        />
                                         <div>
                                             <div style={{
                                                 fontFamily: 'var(--font-brand)',
@@ -286,7 +287,7 @@ const Filters = () => {
                                     {/* Tags + arrow row */}
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)' }}>
                                         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                                            {[job.sector, job.role].filter(Boolean).map(tag => (
+                                            {[job.sector, job.role].filter(tag => tag && !['Non specificato','Other','Altro','ALTRO','other'].includes(tag)).map(tag => (
                                                 <span key={tag} style={{
                                                     fontFamily: 'var(--font-body)',
                                                     fontSize: 10,

@@ -149,7 +149,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         <motion.img 
                             src="/logo-full.png" 
                             alt="JobCourier" 
-                            className="h-14 md:h-16 w-auto object-contain py-0.5"
+                            className="h-[72px] w-auto object-contain"
                             initial={{ scale: 1, y: 0, filter: "drop-shadow(0 2px 4px rgba(38, 54, 123, 0.0))" }}
                             variants={{
                                 hover: {
@@ -204,18 +204,6 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                             padding: '7px 18px',
                             borderRadius: 0,
                             letterSpacing: '0.05em',
-                        }}
-                        animate={{
-                            boxShadow: [
-                                '0 0 0px rgba(255,31,122,0)',
-                                '0 0 8px rgba(255,31,122,0.35)',
-                                '0 0 0px rgba(255,31,122,0)',
-                            ]
-                        }}
-                        transition={{
-                            duration: 2.5,
-                            repeat: Infinity,
-                            ease: 'easeInOut',
                         }}
                         whileHover={{
                             backgroundColor: 'var(--brand-fuchsia)',
