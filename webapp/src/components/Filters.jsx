@@ -224,8 +224,8 @@ const Filters = () => {
                     onTouchEnd={handleTouchEnd}
                 >
                     {/* Edge fade */}
-                    <div className="absolute top-0 left-0 w-12 md:w-24 h-full z-10 pointer-events-none hidden md:block" style={{ background: 'linear-gradient(to right, var(--brand-gray-light), transparent)' }}></div>
-                    <div className="absolute top-0 right-0 w-12 md:w-24 h-full z-10 pointer-events-none hidden md:block" style={{ background: 'linear-gradient(to left, var(--brand-gray-light), transparent)' }}></div>
+                    <div className="absolute top-0 left-0 w-12 md:w-24 h-full z-10 pointer-events-none block" style={{ background: 'linear-gradient(to right, var(--brand-gray-light), transparent)' }}></div>
+                    <div className="absolute top-0 right-0 w-12 md:w-24 h-full z-10 pointer-events-none block" style={{ background: 'linear-gradient(to left, var(--brand-gray-light), transparent)' }}></div>
                     <div
                         ref={sliderRef}
                         className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x w-full"

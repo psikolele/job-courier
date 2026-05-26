@@ -130,7 +130,7 @@ const Pricing = () => {
                         </p>
                         <h1 className="hero-line" style={{
                             fontFamily: brand, fontWeight: 900,
-                            fontSize: 64,
+                            fontSize: 'clamp(2rem, 8vw, 4rem)',
                             color: '#FFFFFF',
                             textTransform: 'uppercase',
                             letterSpacing: '-0.025em',
@@ -139,7 +139,7 @@ const Pricing = () => {
                         }}>{t('pricing.hero_title')}</h1>
                         <h1 className="hero-line" style={{
                             fontFamily: brand, fontWeight: 900,
-                            fontSize: 64,
+                            fontSize: 'clamp(2rem, 8vw, 4rem)',
                             color: F,
                             textTransform: 'uppercase',
                             letterSpacing: '-0.025em',
@@ -148,7 +148,7 @@ const Pricing = () => {
                         }}>{t('pricing.hero_em')}</h1>
 
                         <div className="hero-line flex flex-col sm:flex-row items-start gap-4">
-                            <FuchsiaButton href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it">
+                            <FuchsiaButton href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it" fullWidth>
                                 {t('pricing.cta_register')} →
                             </FuchsiaButton>
                             <a href="#soluzioni" style={{
@@ -206,7 +206,7 @@ const Pricing = () => {
 
                                     <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 1, background: 'rgba(5,11,43,0.06)' }}>
                                         {section.items.map((plan, pIdx) => (
-                                            <div key={pIdx} className="group relative transition-colors flex flex-col"
+                                            <div key={pIdx} className="group relative transition-colors flex flex-col min-w-0"
                                                 style={{
                                                     background: plan.highlight ? GL : '#FFFFFF',
                                                     padding: '40px 36px',
@@ -273,7 +273,7 @@ const Pricing = () => {
 
                                     <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 1, background: 'rgba(5,11,43,0.06)' }}>
                                         {section.items.map((plan, pIdx) => (
-                                            <div key={pIdx} className="flex flex-col" style={{ background: '#FFFFFF', padding: '36px 32px' }}>
+                                            <div key={pIdx} className="flex flex-col min-w-0" style={{ background: '#FFFFFF', padding: '36px 32px' }}>
                                                 <div className="mb-6">
                                                     <h4 style={{ fontFamily: brand, fontWeight: 900, fontSize: 24, color: N, letterSpacing: '-0.02em', textTransform: 'uppercase', marginBottom: 6 }}>{plan.name}</h4>
                                                     <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: F }}>{plan.monthly}</p>

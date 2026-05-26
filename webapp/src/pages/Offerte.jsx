@@ -222,7 +222,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                     Nessuna offerta trovata con i filtri attuali.
                                 </div>
                             ) : (
-                                <div className="flex flex-col gap-1 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 280px)', background: 'rgba(5,11,43,0.04)' }}>
+                                <div className="flex flex-col gap-1 overflow-y-auto" style={{ maxHeight: 'calc(100svh - 280px)', background: 'rgba(5,11,43,0.04)' }}>
                                     {jobs.map(job => {
                                         const isSelected = selectedJobId === job.id.toString();
                                         return (

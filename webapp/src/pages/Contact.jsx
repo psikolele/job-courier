@@ -75,12 +75,12 @@ const Contact = () => {
                             color: 'rgba(255,255,255,0.5)', marginBottom: 20, lineHeight: 1.2
                         }}>{t('contact.hero_sub')}</p>
                         <h1 className="hero-line" style={{
-                            fontFamily: brand, fontWeight: 900, fontSize: 84,
+                            fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 10vw, 5.25rem)',
                             color: '#FFFFFF', textTransform: 'uppercase',
                             letterSpacing: '-0.03em', lineHeight: 0.88, marginBottom: 6
                         }}>{t('contact.hero_title')}</h1>
                         <h1 className="hero-line" style={{
-                            fontFamily: brand, fontWeight: 900, fontSize: 84,
+                            fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 10vw, 5.25rem)',
                             color: F, textTransform: 'uppercase',
                             letterSpacing: '-0.03em', lineHeight: 0.88
                         }}>{t('contact.hero_em')}</h1>
@@ -157,7 +157,7 @@ const Contact = () => {
 
                     {/* RIGHT FORM */}
                     <div className="lg:col-span-7 section-reveal">
-                        <div className="sticky top-32" style={{ background: '#FFFFFF', padding: '48px 40px', border: '1px solid rgba(5,11,43,0.07)' }}>
+                        <div className="md:sticky md:top-32" style={{ background: '#FFFFFF', padding: '48px 40px', border: '1px solid rgba(5,11,43,0.07)' }}>
                             <SectionLabel>{t('contact.form_title')}</SectionLabel>
                             <h2 style={{
                                 fontFamily: brand, fontWeight: 900, fontSize: 36,

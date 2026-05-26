@@ -70,12 +70,12 @@ const ComeFunziona = () => {
                             {t('come_funziona.hero_sub')}
                         </p>
                         <h1 className="hero-line" style={{
-                            fontFamily: brand, fontWeight: 900, fontSize: 64,
+                            fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 8vw, 4rem)',
                             color: '#FFFFFF', textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 8
                         }}>{t('come_funziona.hero_title')}</h1>
                         <h1 className="hero-line" style={{
-                            fontFamily: brand, fontWeight: 900, fontSize: 64,
+                            fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 8vw, 4rem)',
                             color: F, textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 40
                         }}>{t('come_funziona.hero_em')}</h1>
@@ -120,7 +120,7 @@ const ComeFunziona = () => {
                     </div>
 
                     <HoverSlider className="w-full">
-                        <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-16">
+                        <div className="flex flex-col lg:flex-row items-stretch gap-6 md:gap-10 lg:gap-16">
                             <div className="flex flex-col justify-center lg:w-[45%]">
                                 {SLIDER_STEPS.map((slide, index) => (
                                     <div key={slide.id} style={{ display: 'flex', alignItems: 'baseline', gap: 16 }}>

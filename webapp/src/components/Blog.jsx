@@ -25,7 +25,7 @@ const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
 const BlogCard = ({ article, readArticleText }) => (
-    <div className="w-[280px] md:w-[340px] shrink-0">
+    <div className="w-[85vw] sm:w-[280px] md:w-[340px] shrink-0">
         <motion.a
             href="#"
             whileHover={{ y: -4 }}

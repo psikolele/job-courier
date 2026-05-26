@@ -149,7 +149,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         <motion.img 
                             src="/logo-full.png" 
                             alt="JobCourier" 
-                            className="h-[72px] w-auto object-contain"
+                            className="h-10 md:h-[72px] w-auto object-contain"
                             initial={{ scale: 1, y: 0, filter: "drop-shadow(0 2px 4px rgba(38, 54, 123, 0.0))" }}
                             variants={{
                                 hover: {
@@ -232,7 +232,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed top-0 left-0 right-0 z-[90] flex flex-col md:flex-row border-b border-[#050B2B]/10 h-[85vh] md:h-[52vh] overflow-y-auto md:overflow-hidden"
+                        className="fixed top-0 left-0 right-0 z-[90] flex flex-col md:flex-row border-b border-[#050B2B]/10 h-[85vh] md:h-[52vh] overflow-y-auto md:overflow-y-hidden"
                         style={{
                             backgroundColor: 'rgba(255, 255, 255, 0.98)',
                             paddingTop: navHeight,
