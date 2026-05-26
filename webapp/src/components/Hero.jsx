@@ -157,7 +157,7 @@ const Hero = ({ setShowLoginModal }) => {
             style={{ background: 'var(--brand-gray-light)', marginTop: '80px', minHeight: 'calc(100svh - 80px)', maxHeight: 'none', overflow: 'hidden' }}
         >
             {/* ── LEFT: CANDIDATES PANEL (60% Width) ── */}
-            <div className="relative w-full md:w-[50%] flex flex-col justify-center px-4 sm:px-8 md:px-16 py-12 bg-white z-10 border-r border-slate-200">
+            <div className="relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-16 pb-12 bg-white z-10 border-r border-slate-200">
                 <div className="max-w-2xl">
                     <p style={{
                         fontFamily: 'var(--font-brand)',
@@ -294,7 +294,7 @@ const Hero = ({ setShowLoginModal }) => {
             </div>
 
             {/* ── RIGHT: EMPLOYERS PANEL (40% Width) ── */}
-            <div className="relative w-full md:w-[50%] flex flex-col justify-center px-4 sm:px-8 md:px-16 py-12 min-h-[50vh] md:min-h-0 bg-[var(--brand-navy)] text-white z-0 overflow-hidden">
+            <div className="relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-16 pb-12 min-h-[50vh] md:min-h-0 bg-[var(--brand-navy)] text-white z-0 overflow-hidden">
                 {/* Slidable background image with Navy Overlay */}
                 <div className="absolute inset-0 w-full h-full opacity-15 pointer-events-none z-0">
                     <AnimatePresence initial={false}>
