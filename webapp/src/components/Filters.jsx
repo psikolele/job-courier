@@ -18,6 +18,9 @@ const Filters = () => {
     const sliderRef = useRef(null);
     const animationRef = useRef(null);
     const isPausedRef = useRef(false);
+    const isDraggingRef = useRef(false);
+    const dragStartXRef = useRef(0);
+    const dragScrollLeftRef = useRef(0);
     const navigate = useNavigate();
     const wall = useRegistrationWall();
 
@@ -196,7 +199,7 @@ const Filters = () => {
                         gap: 12
                     }}>
                         <span style={{ width: 28, height: 2, background: 'var(--brand-fuchsia)', display: 'inline-block' }} />
-                        Ultime inserite
+                        Ultime offerte inserite
                     </h3>
                     <button
                         onClick={() => navigate('/offerte')}
@@ -229,7 +232,38 @@ const Filters = () => {
                     <div
                         ref={sliderRef}
                         className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x w-full"
-                        style={{ scrollBehavior: animationRef.current ? 'auto' : 'smooth' }}
+                        style={{ scrollBehavior: animationRef.current ? 'auto' : 'smooth', cursor: 'grab' }}
+                        onMouseDown={(e) => {
+                            isDraggingRef.current = true;
+                            dragStartXRef.current = e.pageX - sliderRef.current.offsetLeft;
+                            dragScrollLeftRef.current = sliderRef.current.scrollLeft;
+                            isPausedRef.current = true;
+                            if (animationRef.current) animationRef.current.pause();
+                            sliderRef.current.style.cursor = 'grabbing';
+                        }}
+                        onMouseMove={(e) => {
+                            if (!isDraggingRef.current) return;
+                            e.preventDefault();
+                            const x = e.pageX - sliderRef.current.offsetLeft;
+                            const walk = (x - dragStartXRef.current) * 1.5;
+                            sliderRef.current.scrollLeft = dragScrollLeftRef.current - walk;
+                        }}
+                        onMouseUp={() => {
+                            isDraggingRef.current = false;
+                            sliderRef.current.style.cursor = 'grab';
+                            setTimeout(() => {
+                                isPausedRef.current = false;
+                                if (animationRef.current) animationRef.current.play();
+                            }, 1000);
+                        }}
+                        onMouseLeave={() => {
+                            if (isDraggingRef.current) {
+                                isDraggingRef.current = false;
+                                sliderRef.current.style.cursor = 'grab';
+                                isPausedRef.current = false;
+                                if (animationRef.current) animationRef.current.play();
+                            }
+                        }}
                     >
                         {jobsLoading ? (
                             [...Array(12)].map((_, i) => (
@@ -239,7 +273,7 @@ const Filters = () => {
                             latestJobs.map((job, idx) => (
                                 <motion.div
                                     onClick={() => {
-                                        navigate(`/offerta/${job.jobroom_id || job.id}`);
+                                        navigate(`/offerte?global=1&jobId=${job.id}`);
                                     }}
                                     key={`${job.id}-${idx}`}
                                     initial={{ opacity: 0, y: 8 }}
@@ -260,13 +294,8 @@ const Filters = () => {
                                 >
                                     {/* Fuchsia dot + role */}
                                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 12 }}>
-                                        <img
-                                            src={job.companyLogo}
-                                            alt={job.company}
-                                            onError={e => { e.currentTarget.style.display='none'; }}
-                                            style={{ width: 32, height: 32, objectFit: 'contain', flexShrink: 0, borderRadius: 4 }}
-                                        />
-                                        <div>
+                                        {/* Left: title + company + location */}
+                                        <div style={{ flex: 1, minWidth: 0 }}>
                                             <div style={{
                                                 fontFamily: 'var(--font-brand)',
                                                 fontWeight: 700,
@@ -276,12 +305,19 @@ const Filters = () => {
                                                 marginBottom: 5,
                                                 lineHeight: 1.3
                                             }}>{job.title}</div>
-                                            <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                                            <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
                                                 <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>{job.company}</span>
                                                 <span style={{ color: 'rgba(139,143,168,0.4)', fontSize: 12 }}>·</span>
                                                 <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>{job.location}</span>
                                             </div>
                                         </div>
+                                        {/* Right: logo, large */}
+                                        <img
+                                            src={job.companyLogo}
+                                            alt={job.company}
+                                            onError={e => { e.currentTarget.style.display='none'; }}
+                                            style={{ width: 48, height: 48, objectFit: 'contain', flexShrink: 0, borderRadius: 6, background: '#f8f8f8', padding: 4 }}
+                                        />
                                     </div>
 
                                     {/* Tags + arrow row */}
