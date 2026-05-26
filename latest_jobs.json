@@ -1,6 +1,54 @@
 [
   {
     "id": 0,
+    "title": "Zimmermann 100% (a)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705713-zimmermann-100-a-solothurn-solothurn&language=en"
+  },
+  {
+    "id": 1,
+    "title": "Technischer Einkäufer Medizinaltechnik 100% (m/w)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705714-technischer-eink%C3%A4ufer-medizinaltechnik-100-m-w-zurich-zh&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Sachbearbeiter Treuhand D/E (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705716-sachbearbeiter-treuhand-d-e-m-w-d-100-baar-zug&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Sachbearbeiter Export D/E/F (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705715-sachbearbeiter-export-d-e-f-m-w-d-100-steinhausen-zug&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Junior Sachbearbeiter Treuhand D/E (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705712-junior-sachbearbeiter-treuhand-d-e-m-w-d-100-cham-zug&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Betriebsmitarbeiter mit technischer Ausbildung 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705711-betriebsmitarbeiter-mit-technischer-ausbildung-100-m-w-d-wangen-bei-olten-olten-trimb&language=en"
+  },
+  {
+    "id": 6,
     "title": "Impermeabilizzatori",
     "location": "Svizzera",
     "sector": "Generale",
@@ -8,15 +56,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705705-impermeabilizzatori-bellinzona&language=en"
   },
   {
-    "id": 1,
-    "title": "Ferraiolo",
+    "id": 7,
+    "title": "Kommissionierer:in  KÄLTERESISTENT (2°C) 60-80%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705702-ferraiolo-bellinzona&language=en"
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705708-kommissionierer-in-k%C3%A4lteresistent-2%C2%B0c-60-80-dietikon&language=en"
   },
   {
-    "id": 2,
+    "id": 8,
     "title": "Lattonieri",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,75 +72,27 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705704-lattonieri-bellinzona&language=en"
   },
   {
-    "id": 3,
-    "title": "Macchinisti / Escavatoristi",
+    "id": 9,
+    "title": "Mitarbeiter Gebäudeunterhalt",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705701-macchinisti-escavatoristi%E2%80%AF-bellinzona&language=en"
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705710-mitarbeiter-geb%C3%A4udeunterhalt-emmenbrucke&language=en"
   },
   {
-    "id": 4,
+    "id": 10,
+    "title": "Abkanter / Blechfachmann",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705709-abkanter-blechfachmann-ennetburgen&language=en"
+  },
+  {
+    "id": 11,
     "title": "Carpentieri per Tetti",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705703-carpentieri-per-tetti-bellinzona&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Gärtner/in (Unterhalt) (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705697-g%C3%A4rtner-in-unterhalt-m-w-d-100-uster-zh&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Bauspengler/in (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705694-bauspengler-in-m-w-d-100-winterthur-zh&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Ingénieur civil spécialisé en réhabilitation F/H",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705692-ingenieur-civil-specialise-en-rehabilitation-f-h-gen%C3%A8ve-ge&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Directeur de travaux 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705691-directeur-de-travaux-100-cdi-h-f-d-monthey-vs&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Junior Mandatsleiter Treuhand / Steuern (m/w/d) 60-80%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705693-junior-mandatsleiter-treuhand-steuern-m-w-d-60-80-baden-ag&language=en"
-  },
-  {
-    "id": 10,
-    "title": "Maler/in (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705695-maler-in-m-w-d-100-frauenfeld-tg&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Gipser/in (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6705700-gipser-in-m-w-d-100-winterthur-zh&language=en"
   }
 ]
