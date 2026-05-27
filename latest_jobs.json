@@ -9,22 +9,14 @@
   },
   {
     "id": 1,
-    "title": "Machiniste M2 100% CDD (H/F/D)",
+    "title": "Serramentista",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706084-machiniste-m2-100-cdd-h-f-d-sion-vs&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706099-serramentista-sottoceneri&language=en"
   },
   {
     "id": 2,
-    "title": "Servicetechniker Verkehrtechnik 100% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706092-servicetechniker-verkehrtechnik-100-m-w-d-dietikon-zh&language=en"
-  },
-  {
-    "id": 3,
     "title": "Mitarbeiter/in Früchte- & Gemüsesortierung (m, w, d) (100%)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,7 +24,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706095-mitarbeiter-in-fruchte-gemusesortierung-m-w-d-100-frauenfeld-tg&language=en"
   },
   {
+    "id": 3,
+    "title": "Muratore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706100-muratore-sopraceneri&language=en"
+  },
+  {
     "id": 4,
+    "title": "Immobilienbewirtschafter/in 100% (a)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706090-immobilienbewirtschafter-in-100-a-w%C3%A4denswil-zh&language=en"
+  },
+  {
+    "id": 5,
     "title": "Dipl. Pflegefachperson Psychiatrie",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,20 +48,12 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706094-dipl-pflegefachperson-psychiatrie-bern-be&language=en"
   },
   {
-    "id": 5,
-    "title": "Technischen Verkaufsberater",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706089-technischen-verkaufsberater-farvagny-le-grand-fr&language=en"
-  },
-  {
     "id": 6,
-    "title": "Elektroinstallateur EFZ",
+    "title": "Servicetechniker Verkehrtechnik 100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706096-elektroinstallateur-efz-lachen-schwyz&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706092-servicetechniker-verkehrtechnik-100-m-w-d-dietikon-zh&language=en"
   },
   {
     "id": 7,
@@ -81,18 +81,18 @@
   },
   {
     "id": 10,
-    "title": "Immobilienbewirtschafter/in 100% (a)",
+    "title": "Technischen Verkaufsberater",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706090-immobilienbewirtschafter-in-100-a-w%C3%A4denswil-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706089-technischen-verkaufsberater-farvagny-le-grand-fr&language=en"
   },
   {
     "id": 11,
-    "title": "Strassenbauer (a) 100%",
+    "title": "Shipbroker – Physical & Paper (Dry Bulk / FFA)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706086-strassenbauer-a-100-bern-be&language=en"
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706101-shipbroker-?-physical-paper-dry-bulk-ffa-geneva&language=en"
   }
 ]
