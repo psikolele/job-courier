@@ -1,26 +1,37 @@
-import { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { useState } from 'react';
 
 const STORAGE_KEY = 'jc_click_tracker';
 const LIMIT = 3;
 const EXPIRY_MS = 24 * 60 * 60 * 1000;
 
-/**
- * Returns true if click should be blocked (limit reached, not authed, not admin).
- * Otherwise increments counter and returns false.
- */
+export const isUserLoggedIn = () => {
+    if (typeof window === 'undefined') return false;
+
+    // 1. Admin bypass via query string or localStorage
+    if (localStorage.getItem('jc_admin_bypass') === 'true') return true;
+
+    // 2. Control of the jobroom_session cookie (wildcard domain sharing in production)
+    const hasSessionCookie = document.cookie.includes('jobroom_session');
+    if (hasSessionCookie) return true;
+
+    // 3. Control of local session persistence (synchronized from redirect callbacks)
+    const hasLocalSession = localStorage.getItem('jc_user_session') === 'true';
+    if (hasLocalSession) return true;
+
+    return false;
+};
+
 export const checkClickLimit = () => {
     if (typeof window === 'undefined') return false;
 
-    // Admin bypass via query string
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('admin_bypass') === '1') {
         localStorage.setItem('jc_admin_bypass', 'true');
     }
     if (localStorage.getItem('jc_admin_bypass') === 'true') return false;
 
-    // TODO: replace with real session check (cookie jobroom_session or /api/check-auth)
-    // if (isUserLoggedIn()) return false;
+    // TOTAL BYPASS IF LOGGED IN
+    if (isUserLoggedIn()) return false;
 
     const stored = localStorage.getItem(STORAGE_KEY);
     const now = Date.now();
@@ -46,11 +57,13 @@ export const checkClickLimit = () => {
 export const useRegistrationWall = () => {
     const [isOpen, setIsOpen] = useState(false);
 
-    /**
-     * Guard an action — call before performing job click/navigation.
-     * Returns true if allowed, false if blocked (modal opened).
-     */
     const guard = (callback) => {
+        // If already logged in, bypass limit immediately
+        if (isUserLoggedIn()) {
+            if (typeof callback === 'function') callback();
+            return true;
+        }
+
         if (checkClickLimit()) {
             setIsOpen(true);
             return false;
@@ -59,7 +72,7 @@ export const useRegistrationWall = () => {
         return true;
     };
 
-    return { isOpen, setIsOpen, guard };
+    return { isOpen, setIsOpen, guard, isAuthed: isUserLoggedIn() };
 };
 
 export default useRegistrationWall;
