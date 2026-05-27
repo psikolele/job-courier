@@ -4,6 +4,8 @@ import { MapPin, Briefcase, Calendar, ChevronLeft, ExternalLink, Clock, Building
 import { motion } from 'framer-motion';
 import RegistrationWallModal from '../components/RegistrationWallModal';
 import ApplyRedirectModal from '../components/ApplyRedirectModal';
+import { isUserLoggedIn } from '../hooks/useRegistrationWall';
+import { saveReturnUrl } from '../hooks/useReturnUrl';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -13,13 +15,22 @@ const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
-const OffertaDettaglio = () => {
+const OffertaDettaglio = ({ setShowLoginModal }) => {
     const { id } = useParams();
     const navigate = useNavigate();
 
     const [job, setJob] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const formatLocation = (loc) => {
+        if (!loc) return '';
+        let clean = loc
+            .replace(/\b(Svizzera|Switzerland|Suisse|Schweiz)\b/gi, '')
+            .trim();
+        clean = clean.replace(/^,\s*/, '').replace(/,\s*$/, '').replace(/\s*,\s*,/g, ',').trim();
+        return clean;
+    };
 
     // Modal states
     const [wallOpen, setWallOpen] = useState(false);
@@ -47,21 +58,19 @@ const OffertaDettaglio = () => {
 
     const handleApplyClick = () => {
         if (!job) return;
-        
-        // Verifica del cookie jobroom_session per bypassare il wall
-        const isLoggedIn = document.cookie.includes('jobroom_session');
-        
-        if (isLoggedIn) {
-            // Se loggato -> mostra il popup di reindirizzamento
-            const targetUrl = job.redirect && job.external_url ? job.external_url : (job.apply_url || job.original_link);
-            setRedirectModal({
-                open: true,
-                url: targetUrl,
-                company: job.company?.name || ''
-            });
-        } else {
-            // Se NON loggato -> mostra il Registration Wall modal obbligatorio
+
+        if (!isUserLoggedIn()) {
+            saveReturnUrl();
             setWallOpen(true);
+            return;
+        }
+
+        // Logged in: external job → redirect modal, internal → open directly
+        if (job.redirect && job.external_url) {
+            setRedirectModal({ open: true, url: job.external_url, company: job.company?.name || '' });
+        } else {
+            const targetUrl = job.apply_url || job.original_link;
+            window.open(targetUrl, '_blank', 'noopener,noreferrer');
         }
     };
 
@@ -147,7 +156,7 @@ const OffertaDettaglio = () => {
                             </div>
                             <div className="flex items-center gap-2 text-sm" style={{ fontFamily: body, color: GM }}>
                                 <MapPin size={16} style={{ color: F }} />
-                                <span>{job.location}</span>
+                                <span>Sede: {formatLocation(job.location)}</span>
                             </div>
                             {job.details?.percentage && (
                                 <div className="flex items-center gap-2 text-sm" style={{ fontFamily: body, color: GM }}>
@@ -195,15 +204,15 @@ const OffertaDettaglio = () => {
                             <div className="flex flex-col gap-3">
                                 <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
                                     <span style={{ fontFamily: body, color: GM }}>Sede</span>
-                                    <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">{job.location}</span>
+                                    <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">Sede: {formatLocation(job.location)}</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
                                     <span style={{ fontFamily: body, color: GM }}>Settore</span>
-                                    <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">{job.sector || "Non specificato"}</span>
+                                    <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">Settore: {job.sector || "Non specificato"}</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
                                     <span style={{ fontFamily: body, color: GM }}>Ruolo</span>
-                                    <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">{job.role || "Non specificato"}</span>
+                                    <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">Ruolo: {job.role || "Non specificato"}</span>
                                 </div>
                                 {job.details?.percentage && (
                                     <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
@@ -249,9 +258,10 @@ const OffertaDettaglio = () => {
             </div>
 
             {/* MODALS */}
-            <RegistrationWallModal 
-                isOpen={wallOpen} 
-                onClose={() => setWallOpen(false)} 
+            <RegistrationWallModal
+                isOpen={wallOpen}
+                onClose={() => setWallOpen(false)}
+                onOpenLogin={setShowLoginModal ? () => setShowLoginModal(true) : undefined}
             />
 
             <ApplyRedirectModal 

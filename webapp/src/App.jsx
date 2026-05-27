@@ -41,10 +41,26 @@ function App() {
 
   // Return-from-JobRoom redirect
   useEffect(() => {
-    if (cameFromJobRoom()) {
-      const returnUrl = consumeReturnUrl();
-      if (returnUrl) {
-        requestAnimationFrame(() => navigate(returnUrl, { replace: true }));
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const hasSuccessParam = params.get('auth_success') === '1' || params.get('registered') === '1' || params.get('login_success') === '1';
+
+      if (cameFromJobRoom() || hasSuccessParam) {
+        localStorage.setItem('jc_user_session', 'true');
+        
+        if (hasSuccessParam) {
+          params.delete('auth_success');
+          params.delete('registered');
+          params.delete('login_success');
+          const newSearch = params.toString();
+          const cleanUrl = window.location.pathname + (newSearch ? `?${newSearch}` : '') + window.location.hash;
+          window.history.replaceState({}, '', cleanUrl);
+        }
+
+        const returnUrl = consumeReturnUrl();
+        if (returnUrl) {
+          requestAnimationFrame(() => navigate(returnUrl, { replace: true }));
+        }
       }
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -70,7 +86,7 @@ function App() {
         <Route path="/contatti" element={<Contact />} />
         <Route path="/come-funziona" element={<ComeFunziona />} />
         <Route path="/offerte" element={<Offerte setShowLoginModal={setShowLoginModal} />} />
-        <Route path="/offerta/:id" element={<OffertaDettaglio />} />
+        <Route path="/offerta/:id" element={<OffertaDettaglio setShowLoginModal={setShowLoginModal} />} />
       </Routes>
       <Footer />
     </div>
