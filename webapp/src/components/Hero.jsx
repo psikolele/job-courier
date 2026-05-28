@@ -12,8 +12,6 @@ const Hero = ({ setShowLoginModal }) => {
     const { t, i18n } = useTranslation();
     const [hoveredSide, setHoveredSide] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [timerKey, setTimerKey] = useState(0);
     const navigate = useNavigate();
 
     const [cantons, setCantons] = useState([]);
@@ -116,12 +114,6 @@ const Hero = ({ setShowLoginModal }) => {
         navigate(`/offerte?${queryParams.toString()}`);
     };
 
-    const sliderImages = [
-        heroBg1,
-        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
-    ];
-
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
         checkMobile();
@@ -129,35 +121,103 @@ const Hero = ({ setShowLoginModal }) => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prev) => (prev + 1) % sliderImages.length);
-        }, 4000);
-        return () => clearInterval(interval);
-    }, [timerKey, sliderImages.length]);
-
-    const handlePrevImage = () => {
-        setCurrentImageIndex((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
-        setTimerKey(prev => prev + 1);
-    };
-
-    const handleNextImage = () => {
-        setCurrentImageIndex((prev) => (prev + 1) % sliderImages.length);
-        setTimerKey(prev => prev + 1);
-    };
-
-    const handleDotClick = (idx) => {
-        setCurrentImageIndex(idx);
-        setTimerKey(prev => prev + 1);
-    };
-
     return (
         <section
-            className="relative w-full flex flex-col md:flex-row overflow-hidden"
-            style={{ background: 'var(--brand-gray-light)', marginTop: '80px', minHeight: 'calc(100svh - 80px)', maxHeight: 'none', overflow: 'hidden' }}
+            className="relative w-full flex flex-col md:flex-row overflow-hidden h-auto md:h-[calc(100vh-80px)] min-h-[calc(100vh-80px)]"
+            style={{ background: 'var(--brand-gray-light)', marginTop: '80px', overflow: 'hidden' }}
         >
-            {/* ── LEFT: CANDIDATES PANEL (60% Width) ── */}
-            <div className="relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-16 pb-12 bg-white z-10 border-r border-slate-200">
+            <style>{`
+                /* General Desktop scaling adjustments */
+                @media (min-width: 768px) {
+                    .hero-h1, .hero-h1-sub {
+                        transition: font-size 0.2s ease, margin-bottom 0.2s ease;
+                    }
+                    .hero-panel {
+                        transition: padding-top 0.2s ease, padding-bottom 0.2s ease;
+                    }
+                    .hero-card-box {
+                        transition: height 0.2s ease, padding 0.2s ease, margin-bottom 0.2s ease;
+                    }
+                }
+
+                /* Laptops / Smaller monitors (height <= 950px) */
+                @media (max-height: 950px) and (min-width: 768px) {
+                    .hero-panel {
+                        padding-top: 2.5rem !important;
+                        padding-bottom: 1.5rem !important;
+                    }
+                    .hero-h1 {
+                        font-size: 52px !important;
+                    }
+                    .hero-h1-sub {
+                        font-size: 52px !important;
+                        margin-bottom: 2.75rem !important;
+                    }
+                    .hero-card-box {
+                        height: 290px !important;
+                        padding: 1.25rem !important;
+                        margin-bottom: 1.5rem !important;
+                    }
+                }
+
+                /* Mid-small laptops / Typical Browser Viewport (height <= 850px) */
+                @media (max-height: 850px) and (min-width: 768px) {
+                    .hero-panel {
+                        padding-top: 2.25rem !important;
+                        padding-bottom: 1.25rem !important;
+                    }
+                    .hero-h1 {
+                        font-size: 48px !important;
+                    }
+                    .hero-h1-sub {
+                        font-size: 48px !important;
+                        margin-bottom: 2.5rem !important;
+                    }
+                    .hero-card-box {
+                        height: 260px !important;
+                        padding: 1rem !important;
+                        margin-bottom: 1.25rem !important;
+                    }
+                    .hero-card-box input, .hero-card-box select {
+                        padding-top: 0.65rem !important;
+                        padding-bottom: 0.65rem !important;
+                    }
+                    .hero-card-box button, .hero-card-box .animated-btn {
+                        padding-top: 0.8rem !important;
+                        padding-bottom: 0.8rem !important;
+                    }
+                }
+
+                /* Compact viewports / Zoomed-in laptops / Developer tools open (height <= 720px) */
+                @media (max-height: 720px) and (min-width: 768px) {
+                    .hero-panel {
+                        padding-top: 1.75rem !important;
+                        padding-bottom: 1rem !important;
+                    }
+                    .hero-h1 {
+                        font-size: 42px !important;
+                    }
+                    .hero-h1-sub {
+                        font-size: 42px !important;
+                        margin-bottom: 2rem !important;
+                    }
+                    .hero-card-box {
+                        height: 230px !important;
+                        padding: 0.75rem !important;
+                        margin-bottom: 1rem !important;
+                    }
+                    .hero-card-box input, .hero-card-box select {
+                        padding-top: 0.55rem !important;
+                        padding-bottom: 0.55rem !important;
+                    }
+                    .hero-card-box button, .hero-card-box .animated-btn {
+                        padding-top: 0.7rem !important;
+                        padding-bottom: 0.7rem !important;
+                    }
+                }
+            `}</style>
+            {/* ── LEFT: CANDIDATES PANEL (50% Width) ── */}
+            <div className="hero-panel relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-12 md:pt-8 pb-8 md:pb-6 bg-white z-10 border-r border-slate-200">
                 <div className="max-w-2xl flex flex-col flex-1">
                     <p style={{
                         fontFamily: 'var(--font-brand)',
@@ -170,37 +230,43 @@ const Hero = ({ setShowLoginModal }) => {
                     }}>
                         {t('hero.candidates.subtitle') || 'PER I CANDIDATI'}
                     </p>
-
-                    <h1 style={{
-                        fontFamily: 'var(--font-brand)',
-                        fontWeight: 900,
-                        fontSize: isMobile ? 36 : 56,
-                        color: 'var(--brand-navy)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '-0.02em',
-                        lineHeight: 0.95,
-                        marginBottom: 6
-                    }}>
+ 
+                    <h1 
+                        className="hero-h1"
+                        style={{
+                            fontFamily: 'var(--font-brand)',
+                            fontWeight: 900,
+                            fontSize: isMobile ? 36 : 56,
+                            color: 'var(--brand-navy)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '-0.02em',
+                            lineHeight: 0.95,
+                            marginBottom: 6
+                        }}
+                    >
                         {t('hero.candidates.h1') || 'Accedi al tuo'}
                     </h1>
-                    <h1 style={{
-                        fontFamily: 'var(--font-editorial)',
-                        fontStyle: 'italic',
-                        fontWeight: 400,
-                        fontSize: isMobile ? 36 : 56,
-                        color: 'var(--brand-fuchsia)',
-                        lineHeight: 1.1,
-                        marginBottom: 36
-                    }}>
+                    <h1 
+                        className="hero-h1-sub"
+                        style={{
+                            fontFamily: 'var(--font-editorial)',
+                            fontStyle: 'italic',
+                            fontWeight: 400,
+                            fontSize: isMobile ? 36 : 56,
+                            color: '#FF1F7A',
+                            lineHeight: 1.1,
+                            marginBottom: isMobile ? 24 : 48
+                        }}
+                    >
                         {t('hero.candidates.h1_sub') || 'Prossimo Lavoro.'}
                     </h1>
-
+ 
                     {/* SEARCH CARD */}
                     <div 
-                        className="bg-white p-6 border border-slate-200/70 shadow-sm w-full max-w-lg mb-10"
+                        className="hero-card-box bg-white p-6 border border-slate-200/70 shadow-sm w-full max-w-lg mb-6 md:mb-8 md:h-[312px]"
                         style={{ borderRadius: 0 }}
                     >
-                        <form onSubmit={handleSearch} className="flex flex-col gap-4">
+                        <form onSubmit={handleSearch} className="flex flex-col h-full justify-between">
                             <div className="relative">
                                 <input
                                     type="text"
@@ -212,7 +278,7 @@ const Hero = ({ setShowLoginModal }) => {
                                 />
                                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                             </div>
-
+ 
                             <div className="relative">
                                 <select
                                     value={selectedSector}
@@ -229,7 +295,7 @@ const Hero = ({ setShowLoginModal }) => {
                                 <Briefcase className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                                 <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none rotate-90 text-slate-400" />
                             </div>
-
+ 
                             <div className="relative">
                                 <select
                                     value={selectedCanton}
@@ -246,7 +312,7 @@ const Hero = ({ setShowLoginModal }) => {
                                 <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                                 <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none rotate-90 text-slate-400" />
                             </div>
-
+ 
                             <AnimatedButton
                                 type="submit"
                                 className="w-full py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer"
@@ -259,7 +325,7 @@ const Hero = ({ setShowLoginModal }) => {
                             </AnimatedButton>
                         </form>
                     </div>
-
+ 
                     {/* ALTRI LINK */}
                     <div style={{ marginTop: 'auto' }}>
                         <p style={{
@@ -277,42 +343,38 @@ const Hero = ({ setShowLoginModal }) => {
                                 { label: t('nav.all_offers'), href: '/offerte', external: false },
                                 { label: t('nav.all_companies'), href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
                                 { label: t('nav.blog'), href: '#blog', external: false }
-                            ].map(({ label, href, external }) => (
-                                <AnimatedButton
-                                    key={label}
-                                    href={href}
-                                    external={external}
-                                    className="px-4 py-2 border border-[var(--brand-navy)]/40 font-mono text-xs text-[var(--brand-navy)] hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-all duration-200"
-                                    style={{ textDecoration: 'none', borderRadius: 0 }}
-                                >
-                                    {label}
-                                </AnimatedButton>
-                            ))}
+                            ].map(({ label, href, external }) => {
+                                const btnClass = "px-5 py-3 border border-[var(--brand-navy)]/25 text-[13px] tracking-[0.04em] text-[var(--brand-navy)] hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200";
+                                return external ? (
+                                    <a
+                                        key={label}
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={btnClass}
+                                        style={{ textDecoration: 'none', borderRadius: 0 }}
+                                    >
+                                        {label}
+                                    </a>
+                                ) : (
+                                    <Link
+                                        key={label}
+                                        to={href}
+                                        className={btnClass}
+                                        style={{ textDecoration: 'none', borderRadius: 0 }}
+                                    >
+                                        {label}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* ── RIGHT: EMPLOYERS PANEL (40% Width) ── */}
-            <div className="relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-16 pb-12 min-h-[50vh] md:min-h-0 bg-[var(--brand-navy)] text-white z-0 overflow-hidden">
-                {/* Slidable background image with Navy Overlay */}
-                <div className="absolute inset-0 w-full h-full opacity-15 pointer-events-none z-0">
-                    <AnimatePresence initial={false}>
-                        <motion.img
-                            key={currentImageIndex}
-                            src={sliderImages[currentImageIndex]}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 1.5 }}
-                            className="absolute inset-0 w-full h-full object-cover"
-                            alt=""
-                        />
-                    </AnimatePresence>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-navy)] via-[var(--brand-navy)]/80 to-[var(--brand-navy)]/20 pointer-events-none z-0" />
-
-                <div className="relative z-10 max-w-md flex flex-col flex-1">
+            {/* ── RIGHT: EMPLOYERS PANEL (50% Width) ── */}
+            <div className="hero-panel relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-12 md:pt-8 pb-8 md:pb-6 bg-[#050B2B] text-white z-0 overflow-hidden">
+                <div className="relative z-10 max-w-2xl flex flex-col flex-1">
                     <p style={{
                         fontFamily: 'var(--font-brand)',
                         fontWeight: 700,
@@ -325,36 +387,42 @@ const Hero = ({ setShowLoginModal }) => {
                         {t('hero.companies.subtitle') || 'PER LE AZIENDE'}
                     </p>
 
-                    <h1 style={{
-                        fontFamily: 'var(--font-brand)',
-                        fontWeight: 900,
-                        fontSize: isMobile ? 36 : 56,
-                        color: '#FFFFFF',
-                        textTransform: 'uppercase',
-                        letterSpacing: '-0.02em',
-                        lineHeight: 0.95,
-                        marginBottom: 6
-                    }}>
+                    <h1 
+                        className="hero-h1"
+                        style={{
+                            fontFamily: 'var(--font-brand)',
+                            fontWeight: 900,
+                            fontSize: isMobile ? 36 : 56,
+                            color: '#FFFFFF',
+                            textTransform: 'uppercase',
+                            letterSpacing: '-0.02em',
+                            lineHeight: 0.95,
+                            marginBottom: 6
+                        }}
+                    >
                         {t('hero.companies.h1') || 'Trova il tuo'}
                     </h1>
-                    <h1 style={{
-                        fontFamily: 'var(--font-editorial)',
-                        fontStyle: 'italic',
-                        fontWeight: 400,
-                        fontSize: isMobile ? 36 : 56,
-                        color: 'var(--brand-fuchsia)',
-                        lineHeight: 1.1,
-                        marginBottom: 36
-                    }}>
+                    <h1 
+                        className="hero-h1-sub"
+                        style={{
+                            fontFamily: 'var(--font-editorial)',
+                            fontStyle: 'italic',
+                            fontWeight: 400,
+                            fontSize: isMobile ? 36 : 56,
+                            color: '#FF1F7A',
+                            lineHeight: 1.1,
+                            marginBottom: isMobile ? 24 : 48
+                        }}
+                    >
                         {t('hero.companies.h1_sub') || 'Miglior Talento.'}
                     </h1>
 
-                    <div className="w-full max-w-lg mb-10" style={{ marginTop: 'auto' }}>
+                    <div className="hero-card-box w-full max-w-lg mb-6 md:mb-8 md:h-[312px] p-6 flex flex-col justify-end" style={{ borderRadius: 0 }}>
                         <AnimatedButton
                             onClick={() => setShowLoginModal(true)}
                             className="w-full py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer"
                             style={{
-                                background: 'var(--brand-fuchsia)',
+                                background: '#FF1F7A',
                                 borderRadius: 0,
                                 border: 'none',
                             }}
@@ -364,7 +432,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
 
                     {/* ALTRI LINK - AZIENDE */}
-                    <div>
+                    <div style={{ marginTop: 'auto' }}>
                         <p style={{
                             fontFamily: 'var(--font-mono)',
                             fontSize: 10,
@@ -376,21 +444,34 @@ const Hero = ({ setShowLoginModal }) => {
                             ALTRI LINK
                         </p>
                         <div className="flex flex-wrap gap-3">
-                            {companyLinks.map((item, idx) => (
-                                <AnimatedButton
-                                    key={idx}
-                                    href={item.href}
-                                    external={item.external}
-                                    className="px-4 py-2 border border-white/40 font-mono text-xs text-white hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] transition-all duration-200"
-                                    style={{ textDecoration: 'none', borderRadius: 0 }}
-                                >
-                                    {getHeroLabel(item)}
-                                </AnimatedButton>
-                            ))}
+                            {companyLinks.map((item, idx) => {
+                                const label = getHeroLabel(item);
+                                const btnClass = "px-5 py-3 border border-white/25 text-[13px] tracking-[0.04em] text-white/90 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200";
+                                return item.external ? (
+                                    <a
+                                        key={idx}
+                                        href={item.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={btnClass}
+                                        style={{ textDecoration: 'none', borderRadius: 0 }}
+                                    >
+                                        {label}
+                                    </a>
+                                ) : (
+                                    <Link
+                                        key={idx}
+                                        to={item.href}
+                                        className={btnClass}
+                                        style={{ textDecoration: 'none', borderRadius: 0 }}
+                                    >
+                                        {label}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
     );
