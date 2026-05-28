@@ -1,30 +1,6 @@
 [
   {
     "id": 0,
-    "title": "MAINTENANCE COORDINATOR",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706609-maintenance-coordinator-lugano-lugano&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Manufacturing Engineer",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706612-manufacturing-engineer-mezzovico-ti-mezzovico&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Operaio/a metalmeccanico/a",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706602-operaio-a-metalmeccanico-a-lugano-bellinzona&language=en"
-  },
-  {
-    "id": 3,
     "title": "Chef de rang",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,23 +8,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706614-chef-de-rang-locarno-bellinzona&language=en"
   },
   {
-    "id": 4,
-    "title": "Real Estate Sales & Development Manager",
+    "id": 1,
+    "title": "Cuoco/a con (part-time 60% diurno) Bellinzona",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706603-real-estate-sales-development-manager-manno-lugano&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706615-cuoco-a-con-part-time-60-diurno-bellinzona-bellinzona-bellinzona&language=en"
   },
   {
-    "id": 5,
-    "title": "Operatore linee produzione settore logistico 16h/ settimanali h. 05-09",
+    "id": 2,
+    "title": "Chemical Engineer",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706604-operatore-linee-produzione-settore-logistico-16h-settimanali-h-05-09-lugano-lugano&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706611-chemical-engineer-mezzovico-ti-mezzovico&language=en"
   },
   {
-    "id": 6,
+    "id": 3,
     "title": "Junior Inside Technical Sales - Settore Cosmetico",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,20 +32,44 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706613-junior-inside-technical-sales-settore-cosmetico-balerna-lugano&language=en"
   },
   {
-    "id": 7,
-    "title": "Inside Sales B2B e B2C - Energy",
+    "id": 4,
+    "title": "Operatore di produzione in camera bianca (fixed term)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706608-inside-sales-b2b-e-b2c-energy-mendrisio-lugano&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706616-operatore-di-produzione-in-camera-bianca-fixed-term-lugano-lugano&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Elettricista AFC",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706619-elettricista-afc-sottoceneri&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Idraulico AFC",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706618-idraulico-afc-sopraceneri&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Manufacturing Engineer",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706612-manufacturing-engineer-mezzovico-ti-mezzovico&language=en"
   },
   {
     "id": 8,
-    "title": "Quality Engineer",
+    "title": "MAINTENANCE COORDINATOR",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706610-quality-engineer-mezzovico-ti-mezzovico&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706609-maintenance-coordinator-lugano-lugano&language=en"
   },
   {
     "id": 9,
@@ -89,10 +89,10 @@
   },
   {
     "id": 11,
-    "title": "Cuoco/a con (part-time 60% diurno) Bellinzona",
+    "title": "Inside Sales B2B e B2C - Energy",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706615-cuoco-a-con-part-time-60-diurno-bellinzona-bellinzona-bellinzona&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706608-inside-sales-b2b-e-b2c-energy-mendrisio-lugano&language=en"
   }
 ]
