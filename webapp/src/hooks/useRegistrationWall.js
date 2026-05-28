@@ -42,7 +42,16 @@ export const checkClickLimit = () => {
         return false;
     }
 
-    const data = JSON.parse(stored);
+    let data;
+    try {
+        data = JSON.parse(stored);
+    } catch {
+        data = null;
+    }
+    if (!data || typeof data.expiry !== 'number') {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ count: 1, expiry: now + EXPIRY_MS }));
+        return false;
+    }
     if (now > data.expiry) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({ count: 1, expiry: now + EXPIRY_MS }));
         return false;

@@ -16,6 +16,8 @@ const markLoggedIn = () => {
  * @param {string} url - JobRoom auth URL
  * @param {string} name - window name
  */
+const MAX_WATCH_MS = 15 * 60 * 1000; // stop polling after 15 min to avoid leaked timers
+
 export const openAuthPopup = (url, name = 'jobroom-auth') => {
     const popup = window.open(
         url,
@@ -23,18 +25,29 @@ export const openAuthPopup = (url, name = 'jobroom-auth') => {
         'width=640,height=760,left=300,top=80,resizable=yes,scrollbars=yes'
     );
 
-    // Popup blocked → fall back to same-tab navigation
+    // Popup blocked → fall back to same-tab navigation (App.jsx referrer flow handles return)
     if (!popup) {
         window.location.href = url;
         return null;
     }
 
+    let done = false;
+    const stop = () => {
+        if (done) return;
+        done = true;
+        clearInterval(timer);
+        clearTimeout(safety);
+    };
+
     const timer = setInterval(() => {
         if (popup.closed) {
-            clearInterval(timer);
+            stop();
             markLoggedIn();
         }
     }, 500);
+
+    // Safety net: never poll forever
+    const safety = setTimeout(stop, MAX_WATCH_MS);
 
     return popup;
 };
