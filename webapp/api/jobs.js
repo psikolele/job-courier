@@ -97,7 +97,7 @@ export default async function handler(req, res) {
         if (!absoluteLink.includes('lan=it')) absoluteLink += '&lan=it';
       }
 
-      const companyName = $el.find('.company, .firm, .details span:first-child, .companyLink span').first().text().trim() || 'Azienda Riservata';
+      const companyName = $el.find('.companyLink span, .company, .firm').first().text().trim() || 'Azienda Riservata';
       
       // Estrazione potenziata del luogo completo (es. Svizzera, Ticino, Bellinzona)
       let location = '';
