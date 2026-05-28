@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
 import { AnimatedButton } from './ui/animated-button';
-import { saveReturnUrl } from '../hooks/useReturnUrl';
+import { openLoginPopup, AUTH_EVENT } from '../hooks/useAuthPopup';
 
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -96,6 +96,13 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Close login modal automatically once auth completes (popup closed)
+    useEffect(() => {
+        const onAuth = () => setShowLoginModal(false);
+        window.addEventListener(AUTH_EVENT, onAuth);
+        return () => window.removeEventListener(AUTH_EVENT, onAuth);
+    }, [setShowLoginModal]);
 
     useEffect(() => {
         if (menuOpen) document.body.style.overflow = 'hidden';
@@ -374,7 +381,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                         className="w-full bg-[var(--brand-navy)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
-                                        onClick={() => { window.open('https://jobroom.jobcourier.ch/job-seekers-login.php?language=it', 'jobroom-login', 'width=620,height=720,left=300,top=100,resizable=yes,scrollbars=yes'); }}
+                                        onClick={() => { openLoginPopup(); setShowLoginModal(false); }}
                                     >
                                         Accedi al Profilo
                                     </motion.button>
@@ -407,7 +414,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                         className="w-full bg-[var(--brand-fuchsia)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
-                                        onClick={() => { window.open('https://jobroom.jobcourier.ch/job-seekers-login.php?language=it', 'jobroom-login', 'width=620,height=720,left=300,top=100,resizable=yes,scrollbars=yes'); }}
+                                        onClick={() => { openLoginPopup(); setShowLoginModal(false); }}
                                     >
                                         Login Azienda
                                     </motion.button>

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { AUTH_EVENT } from './useAuthPopup';
 
 const STORAGE_KEY = 'jc_click_tracker';
 const LIMIT = 3;
@@ -56,6 +57,22 @@ export const checkClickLimit = () => {
 
 export const useRegistrationWall = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [authed, setAuthed] = useState(isUserLoggedIn());
+
+    // React to login completion (popup-close event) and tab refocus
+    useEffect(() => {
+        const refresh = () => {
+            const next = isUserLoggedIn();
+            setAuthed(next);
+            if (next) setIsOpen(false);
+        };
+        window.addEventListener(AUTH_EVENT, refresh);
+        window.addEventListener('focus', refresh);
+        return () => {
+            window.removeEventListener(AUTH_EVENT, refresh);
+            window.removeEventListener('focus', refresh);
+        };
+    }, []);
 
     const guard = (callback) => {
         // If already logged in, bypass limit immediately
@@ -72,7 +89,7 @@ export const useRegistrationWall = () => {
         return true;
     };
 
-    return { isOpen, setIsOpen, guard, isAuthed: isUserLoggedIn() };
+    return { isOpen, setIsOpen, guard, isAuthed: authed };
 };
 
 export default useRegistrationWall;

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
-import { saveReturnUrl } from '../hooks/useReturnUrl';
+import { openRegisterPopup, openLoginPopup } from '../hooks/useAuthPopup';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -74,40 +74,26 @@ const RegistrationWallModal = ({ isOpen, onClose, onOpenLogin }) => {
 
                     {/* Action buttons */}
                     <div className="flex flex-col gap-3 w-full max-w-xs">
-                        {/* REGISTRATI (Sign Up) — popup so user never leaves Job Courier */}
+                        {/* REGISTRATI (Sign Up) — popup auto-closes & logs in on completion */}
                         <motion.button
                             whileHover={{ scale: 1.03 }}
                             transition={{ type: "spring", stiffness: 400, damping: 15 }}
                             className="w-full bg-[var(--brand-fuchsia)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
                             onClick={() => {
-                                saveReturnUrl();
-                                window.open(
-                                    'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it',
-                                    'jobroom-register',
-                                    'width=640,height=760,left=300,top=80,resizable=yes,scrollbars=yes'
-                                );
+                                openRegisterPopup();
                                 onClose();
                             }}
                         >
                             Iscriviti Ora
                         </motion.button>
 
-                        {/* ACCEDI (Login) — popup via Navbar modal or direct popup */}
+                        {/* ACCEDI (Login) — popup auto-closes & logs in on completion */}
                         <motion.button
                             whileHover={{ scale: 1.03 }}
                             transition={{ type: "spring", stiffness: 400, damping: 15 }}
                             onClick={() => {
-                                saveReturnUrl();
+                                openLoginPopup();
                                 onClose();
-                                if (onOpenLogin) {
-                                    onOpenLogin();
-                                } else {
-                                    window.open(
-                                        'https://jobroom.jobcourier.ch/job-seekers-login.php?language=it',
-                                        'jobroom-login',
-                                        'width=620,height=720,left=300,top=100,resizable=yes,scrollbars=yes'
-                                    );
-                                }
                             }}
                             className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 transition-all hover:border-[var(--brand-navy)] hover:text-[var(--brand-navy)] text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
                         >

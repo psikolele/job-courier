@@ -44,20 +44,6 @@ const Offerte = ({ setShowLoginModal }) => {
     // Registration wall (shared logic with Filters.jsx)
     const wall = useRegistrationWall();
 
-    useEffect(() => {
-        // Do not trigger if already authenticated
-        if (wall.isAuthed) return;
-
-        const hasSeen = sessionStorage.getItem('hasSeenAutoPopup');
-        if (!hasSeen) {
-            const timer = setTimeout(() => {
-                wall.setIsOpen(true);
-                sessionStorage.setItem('hasSeenAutoPopup', 'true');
-            }, 2000);
-            return () => clearTimeout(timer);
-        }
-    }, [wall.isAuthed, wall.setIsOpen]);
-
     // External redirect modal
     const [redirectModal, setRedirectModal] = useState({ open: false, url: null, company: '' });
 
