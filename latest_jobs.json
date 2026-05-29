@@ -1,38 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Macchinista per la pavimentazione edile",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706885-macchinista-per-la-pavimentazione-edile-sopraceneri&language=en"
-  },
-  {
-    "id": 1,
-    "title": "HR-Recruiter / Talent Acquisition Lead 80-100% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706872-hr-recruiter-talent-acquisition-lead-80-100-m-w-d-schlieren-zh&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Manutentore Elettroutensili (bellinzonese)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706879-manutentore-elettroutensili-bellinzonese-riazzino-bellinzona&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Assistenzärztin Psychiatrie (m,w,d) 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706874-assistenz%C3%A4rztin-psychiatrie-m-w-d-80-100-pf%C3%A4fers-sg&language=en"
-  },
-  {
-    "id": 4,
     "title": "Metalcostruttore",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,7 +8,55 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706884-metalcostruttore-sottoceneri&language=en"
   },
   {
+    "id": 1,
+    "title": "Macchinista per la pavimentazione edile",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706885-macchinista-per-la-pavimentazione-edile-sopraceneri&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Leiter Ersatzteillager Reg. Limmattal 100% (m/w)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706877-leiter-ersatzteillager-reg-limmattal-100-m-w-zurich-zh&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Executive Personal Assistant, International Travel, Lugano",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706882-executive-personal-assistant-international-travel-lugano-lugano&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Manutentore Elettroutensili (bellinzonese)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706879-manutentore-elettroutensili-bellinzonese-riazzino-bellinzona&language=en"
+  },
+  {
     "id": 5,
+    "title": "Carpentiere del legno",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706887-carpentiere-del-legno-sopraceneri&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Annonce d'emploi - RH Généraliste (H/F)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706878-annonce-d-emploi-rh-generaliste-h-f-bienne-be&language=en"
+  },
+  {
+    "id": 7,
     "title": "Landschaftsgärtner/in Neubau (100%)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,7 +64,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706875-landschaftsg%C3%A4rtner-in-neubau-100-baden-ag&language=en"
   },
   {
-    "id": 6,
+    "id": 8,
     "title": "Fresatore cnc",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,43 +72,27 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706886-fresatore-cnc-sottoceneri&language=en"
   },
   {
-    "id": 7,
-    "title": "Servicetechniker (m/w/d)",
+    "id": 9,
+    "title": "Assistenzärztin Psychiatrie (m,w,d) 80-100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706873-servicetechniker-m-w-d-chur-gr&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Asfaltatore",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706883-asfaltatore-sopraceneri&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Saldatrice su tavola rotante",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706880-saldatrice-su-tavola-rotante-lugano-lugano&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706874-assistenz%C3%A4rztin-psychiatrie-m-w-d-80-100-pf%C3%A4fers-sg&language=en"
   },
   {
     "id": 10,
+    "title": "Verkäufer schwere Nutzfahrzeuge 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706876-verk%C3%A4ufer-schwere-nutzfahrzeuge-100-m-w-d-kloten-zh&language=en"
+  },
+  {
+    "id": 11,
     "title": "Operaio edile - Madrelingua tedesca",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Team Personnel Solutions SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706881-operaio-edile-madrelingua-tedesca-zermatt&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Leiter Ersatzteillager Reg. Limmattal 100% (m/w)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6706877-leiter-ersatzteillager-reg-limmattal-100-m-w-zurich-zh&language=en"
   }
 ]
