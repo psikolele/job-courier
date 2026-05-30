@@ -1,14 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Lagermitarbeiter (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707092-lagermitarbeiter-m-w-d-100-niederbipp-bern&language=en"
-  },
-  {
-    "id": 1,
     "title": "Lagermitarbeiter mit Staplerausweis im Tagesbetrieb (Lebensmittel, Getränke) m/w/d ab sofort",
     "location": "Svizzera",
     "sector": "Generale",
@@ -16,12 +8,20 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707096-lagermitarbeiter-mit-staplerausweis-im-tagesbetrieb-lebensmittel-getr%C3%A4nke-m-w-d-ab-sofort-oensingen-solothurn&language=en"
   },
   {
-    "id": 2,
-    "title": "Electricien industriel - monteur câbleur (H/F/A)",
+    "id": 1,
+    "title": "Lagermitarbeiter (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707093-electricien-industriel-monteur-c%C3%A2bleur-h-f-a-villeneuve-vd-vaud&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707092-lagermitarbeiter-m-w-d-100-niederbipp-bern&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Endoskopie-Assistentin (m/w/d) 60?100 %",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707099-endoskopie-assistentin-m-w-d-60-100-sursee-lu&language=en"
   },
   {
     "id": 3,
@@ -33,43 +33,43 @@
   },
   {
     "id": 4,
-    "title": "Staplerfahrer/in (m/w/d) 100%",
+    "title": "Team Leader Cleaning (F/H/D)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707102-staplerfahrer-in-m-w-d-100-luterbach-solothurn&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707091-team-leader-cleaning-f-h-d-neuch%C3%A2tel-ne&language=en"
   },
   {
     "id": 5,
-    "title": "Endoskopie-Assistentin (m/w/d) 60?100 %",
+    "title": "8 Lagermitarbeiter für Lebensmittel im Frischelager + 8 Grad (Tagesbetrieb)  Start ab sofort, m/w/d",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707099-endoskopie-assistentin-m-w-d-60-100-sursee-lu&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707101-8-lagermitarbeiter-fur-lebensmittel-im-frischelager-8-grad-tagesbetrieb-start-ab-sofort-m-w-d-oensingen-solothurn&language=en"
   },
   {
     "id": 6,
-    "title": "Machiniste de chantier (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707100-machiniste-de-chantier-h-f-d-conthey-vs&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Opérateur de production sur machines automatisées à 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707097-operateur-de-production-sur-machines-automatisees-%C3%A0-100-payerne-vd&language=en"
-  },
-  {
-    "id": 8,
     "title": "Mandatsleiter/in (100%) ? Region Basel",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707094-mandatsleiter-in-100-region-basel-basel-bs&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Impiegata/o in logistica AFC",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707098-impiegata-o-in-logistica-afc-bellinzona-bellinzona&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Machiniste de chantier (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707100-machiniste-de-chantier-h-f-d-conthey-vs&language=en"
   },
   {
     "id": 9,
@@ -81,18 +81,18 @@
   },
   {
     "id": 10,
-    "title": "Team Leader Cleaning (F/H/D)",
+    "title": "Opérateur de production sur machines automatisées à 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707091-team-leader-cleaning-f-h-d-neuch%C3%A2tel-ne&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707097-operateur-de-production-sur-machines-automatisees-%C3%A0-100-payerne-vd&language=en"
   },
   {
     "id": 11,
-    "title": "Stationskellner·in 60?100 % ? Saison oder Ganzjahr mit Auto und Fahrausweis",
+    "title": "Electricien industriel - monteur câbleur (H/F/A)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707090-stationskellner%C2%B7in-60-100%E2%80%AF-saison-oder-ganzjahr-mit-auto-und-fahrausweis-wil-sg&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707093-electricien-industriel-monteur-c%C3%A2bleur-h-f-a-villeneuve-vd-vaud&language=en"
   }
 ]
