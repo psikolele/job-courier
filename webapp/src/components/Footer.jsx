@@ -41,7 +41,7 @@ const Footer = () => {
                         <img
                             src="/logo-full-dark.png"
                             alt="JobCourier"
-                            className="h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                            className="h-[60px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                         />
                     </div>
                     <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 16, color: 'rgba(255,255,255,0.35)', lineHeight: 1.55, maxWidth: 240 }}>

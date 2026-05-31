@@ -157,7 +157,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         <motion.img 
                             src="/logo-full.png" 
                             alt="JobCourier" 
-                            className="h-14 md:h-[52px] w-auto object-contain"
+                            className={`${scrolled ? 'h-[54px]' : 'h-[68px]'} w-auto object-contain transition-all duration-300`}
                             initial={{ scale: 1, y: 0, filter: "drop-shadow(0 2px 4px rgba(38, 54, 123, 0.0))" }}
                             variants={{
                                 hover: {
