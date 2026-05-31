@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MapPin, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight } from 'lucide-react';
+import { MapPin, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight, ChevronLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
@@ -7,6 +7,40 @@ import { fetchLatestJobs } from '../services/api';
 import AdBanner from './AdBanner';
 import useRegistrationWall from '../hooks/useRegistrationWall';
 import RegistrationWallModal from './RegistrationWallModal';
+
+const extractArea = (location) => {
+    if (!location) return null;
+    const match = location.match(/\b(AG|AI|AR|BE|BL|BS|FR|GE|GL|GR|JU|LU|NE|NW|OW|SG|SH|SO|SZ|TG|TI|UR|VD|VS|ZG|ZH)\b/);
+    if (match) return match[1];
+    const loc = location.toLowerCase();
+    if (/z[üu]rich|zurigo/.test(loc)) return 'ZH';
+    if (/gen[eè]ve|ginevra|geneva/.test(loc)) return 'GE';
+    if (/bern[ae]/.test(loc)) return 'BE';
+    if (/lausanne|losanna/.test(loc)) return 'VD';
+    if (/luzern|lucerna/.test(loc)) return 'LU';
+    if (/lugano|locarno|bellinzona|ticino/.test(loc)) return 'TI';
+    if (/basel|basilea/.test(loc)) return 'BS';
+    if (/san gallo|st\.?\s*gallen/.test(loc)) return 'SG';
+    return null;
+};
+
+const deriveSector = (title, sector) => {
+    const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
+    if (sector && !skip.includes(sector)) return sector;
+    if (!title) return null;
+    const t = title.toLowerCase();
+    if (/trasport|autista|camion|courier|spediz|logist|magazz|driver|corriere/.test(t)) return 'Logistica';
+    if (/inferm|medic|farmac|salute|dental|fisio|cura|health|clinica/.test(t)) return 'Medicina';
+    if (/sviluppa|programm|developer|software|engineer|devops|cloud|\.net|java|python|frontend|backend|fullstack/.test(t)) return 'IT';
+    if (/contab|finanz|paghe|banca|audit|fiscal|revisio|accounting/.test(t)) return 'Finanza';
+    if (/vendita|commerc|sales|account|business dev/.test(t)) return 'Commerciale';
+    if (/amministr|segret|assistente|reception|back.?office/.test(t)) return 'Amministrazione';
+    if (/costruzion|edil|parchett|muratore|idraulic|elettric|carpent|impianti/.test(t)) return 'Costruzioni';
+    if (/ristora|chef|cuoc|camerier|pasticcier|hotell/.test(t)) return 'Ristorazione';
+    if (/marketing|social media|communic|brand|digital/.test(t)) return 'Marketing';
+    if (/risorse umane|\bhr\b|human resource|selezione|reclutament/.test(t)) return 'HR';
+    return null;
+};
 
 const Filters = () => {
     // eslint-disable-next-line no-unused-vars
@@ -21,6 +55,7 @@ const Filters = () => {
     const isDraggingRef = useRef(false);
     const dragStartXRef = useRef(0);
     const dragScrollLeftRef = useRef(0);
+    const resumeTimeoutRef = useRef(null);
     const navigate = useNavigate();
     const wall = useRegistrationWall();
 
@@ -88,7 +123,6 @@ const Filters = () => {
             try {
                 const data = await fetchLatestJobs();
                 if (data && data.length > 0) {
-                    // Adapt API data to the Filters component structure
                     const formattedJobs = data.map(job => {
                         const linkId = job.link?.match(/[?&]id=(\d+)/)?.[1] || job.id;
                         return {
@@ -120,35 +154,47 @@ const Filters = () => {
             }
         };
         fetchJobs();
+
+        return () => {
+            if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+        };
     }, []);
+
+    const resumeAutoScroll = () => {
+        if (!sliderRef.current) return;
+        const slider = sliderRef.current;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        if (maxScroll <= 0) return;
+
+        if (animationRef.current) {
+            animationRef.current.kill();
+        }
+
+        animationRef.current = gsap.to(slider, {
+            scrollLeft: maxScroll,
+            duration: (maxScroll - slider.scrollLeft) / 40 || 0.1,
+            ease: "none",
+            onComplete: () => {
+                animationRef.current = gsap.to(slider, {
+                    scrollLeft: 0,
+                    duration: maxScroll / 40,
+                    ease: "none",
+                    repeat: -1,
+                    yoyo: true
+                });
+            }
+        });
+
+        if (isPausedRef.current) {
+            animationRef.current.pause();
+        }
+    };
 
     useEffect(() => {
         if (!jobsLoading && latestJobs.length > 0 && sliderRef.current) {
-            const slider = sliderRef.current;
-            
             const ctx = gsap.context(() => {
-                // We calculate the total width to scroll
-                // For a smooth infinite-like feel, we'll just auto-scroll back and forth or 
-                // use a linear move if we had duplicated items. 
-                // Let's do a slow linear crawl that resets or yoyos.
-                
-                const startAutoScroll = () => {
-                    const maxScroll = slider.scrollWidth - slider.clientWidth;
-                    if (maxScroll <= 0) return;
-
-                    animationRef.current = gsap.to(slider, {
-                        scrollLeft: maxScroll,
-                        duration: maxScroll / 40, // Adjust speed here
-                        ease: "none",
-                        repeat: -1,
-                        yoyo: true,
-                        paused: isPausedRef.current
-                    });
-                };
-
-                startAutoScroll();
+                resumeAutoScroll();
             });
-
             return () => ctx.revert();
         }
     }, [jobsLoading, latestJobs]);
@@ -156,28 +202,61 @@ const Filters = () => {
     const handleMouseEnter = () => {
         isPausedRef.current = true;
         if (animationRef.current) animationRef.current.pause();
+        if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     };
 
     const handleMouseLeave = () => {
         isPausedRef.current = false;
-        if (animationRef.current) animationRef.current.play();
+        resumeAutoScroll();
     };
 
     const handleTouchStart = () => {
         isPausedRef.current = true;
         if (animationRef.current) animationRef.current.pause();
+        if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     };
 
     const handleTouchEnd = () => {
-        // Resume after a short delay
         setTimeout(() => {
             if (!isPausedRef.current) {
-                 if (animationRef.current) animationRef.current.play();
+                resumeAutoScroll();
             }
         }, 2000);
     };
 
+    const handleManualScroll = (direction) => {
+        if (!sliderRef.current) return;
+        
+        isPausedRef.current = true;
+        if (animationRef.current) animationRef.current.pause();
+        
+        const scrollAmount = sliderRef.current.clientWidth / 2;
+        const currentScroll = sliderRef.current.scrollLeft;
+        const targetScroll = direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount;
+        
+        sliderRef.current.scrollTo({
+            left: targetScroll,
+            behavior: 'smooth'
+        });
+        
+        if (resumeTimeoutRef.current) {
+            clearTimeout(resumeTimeoutRef.current);
+        }
+        
+        resumeTimeoutRef.current = setTimeout(() => {
+            isPausedRef.current = false;
+            resumeAutoScroll();
+        }, 3000);
+    };
 
+    const formatLocation = (loc) => {
+        if (!loc) return '';
+        let clean = loc
+            .replace(/\b(Svizzera|Switzerland|Suisse|Schweiz)\b/gi, '')
+            .trim();
+        clean = clean.replace(/^,\s*/, '').replace(/,\s*$/, '').replace(/\s*,\s*,/g, ',').trim();
+        return clean;
+    };
 
     return (
         <div id="filters" className="w-full relative z-20 pb-20 pt-8" style={{ background: 'var(--brand-gray-light)' }}>
@@ -201,22 +280,43 @@ const Filters = () => {
                         <span style={{ width: 28, height: 2, background: 'var(--brand-fuchsia)', display: 'inline-block' }} />
                         Ultime offerte inserite
                     </h3>
-                    <button
-                        onClick={() => navigate('/offerte')}
-                        className="hidden md:flex items-center gap-1 transition-opacity hover:opacity-60"
-                        style={{
-                            fontFamily: 'var(--font-body)',
-                            fontSize: 12,
-                            color: 'var(--brand-navy)',
-                            background: 'none',
-                            border: 'none',
-                            cursor: 'pointer',
-                            letterSpacing: '0.1em',
-                            textTransform: 'uppercase'
-                        }}
-                    >
-                        Vedi tutte <ChevronRight className="w-4 h-4" />
-                    </button>
+                    
+                    <div className="flex items-center gap-6">
+                        {/* Scroll arrows */}
+                        <div className="flex items-center gap-2">
+                            <button
+                                onClick={() => handleManualScroll('left')}
+                                className="w-8 h-8 rounded-full border border-slate-200/80 flex items-center justify-center text-slate-500 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/5 transition-all duration-200 cursor-pointer"
+                                title="Precedente"
+                            >
+                                <ChevronLeft className="w-4 h-4" />
+                            </button>
+                            <button
+                                onClick={() => handleManualScroll('right')}
+                                className="w-8 h-8 rounded-full border border-slate-200/80 flex items-center justify-center text-slate-500 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/5 transition-all duration-200 cursor-pointer"
+                                title="Successiva"
+                            >
+                                <ChevronRight className="w-4 h-4" />
+                            </button>
+                        </div>
+                        
+                        <button
+                            onClick={() => navigate('/offerte')}
+                            className="hidden md:flex items-center gap-1 transition-opacity hover:opacity-60"
+                            style={{
+                                fontFamily: 'var(--font-body)',
+                                fontSize: 12,
+                                color: 'var(--brand-navy)',
+                                background: 'none',
+                                border: 'none',
+                                cursor: 'pointer',
+                                letterSpacing: '0.1em',
+                                textTransform: 'uppercase'
+                            }}
+                        >
+                            Vedi tutte <ChevronRight className="w-4 h-4" />
+                        </button>
+                    </div>
                 </div>
 
                 <div
@@ -231,14 +331,15 @@ const Filters = () => {
                     <div className="absolute top-0 right-0 w-12 md:w-24 h-full z-10 pointer-events-none block" style={{ background: 'linear-gradient(to left, var(--brand-gray-light), transparent)' }}></div>
                     <div
                         ref={sliderRef}
-                        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide touch-pan-x w-full"
-                        style={{ scrollBehavior: animationRef.current ? 'auto' : 'smooth', cursor: 'grab' }}
+                        className="flex gap-4 overflow-x-auto scrollbar-hide touch-pan-x w-full"
+                        style={{ scrollBehavior: 'auto', cursor: 'grab' }}
                         onMouseDown={(e) => {
                             isDraggingRef.current = true;
                             dragStartXRef.current = e.pageX - sliderRef.current.offsetLeft;
                             dragScrollLeftRef.current = sliderRef.current.scrollLeft;
                             isPausedRef.current = true;
                             if (animationRef.current) animationRef.current.pause();
+                            if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
                             sliderRef.current.style.cursor = 'grabbing';
                         }}
                         onMouseMove={(e) => {
@@ -253,7 +354,7 @@ const Filters = () => {
                             sliderRef.current.style.cursor = 'grab';
                             setTimeout(() => {
                                 isPausedRef.current = false;
-                                if (animationRef.current) animationRef.current.play();
+                                resumeAutoScroll();
                             }, 1000);
                         }}
                         onMouseLeave={() => {
@@ -261,13 +362,13 @@ const Filters = () => {
                                 isDraggingRef.current = false;
                                 sliderRef.current.style.cursor = 'grab';
                                 isPausedRef.current = false;
-                                if (animationRef.current) animationRef.current.play();
+                                resumeAutoScroll();
                             }
                         }}
                     >
                         {jobsLoading ? (
                             [...Array(12)].map((_, i) => (
-                                <div key={i} className="w-[280px] md:w-[340px] shrink-0 flex-none animate-pulse bg-white p-6 h-[200px] snap-center" style={{ border: '1px solid rgba(5,11,43,0.07)' }}></div>
+                                <div key={i} className="w-[290px] md:w-[340px] shrink-0 flex-none animate-pulse bg-white p-6 h-[235px] snap-center" style={{ borderBottom: '2.5px solid var(--brand-fuchsia)' }}></div>
                             ))
                         ) : (
                             latestJobs.map((job, idx) => (
@@ -280,10 +381,12 @@ const Filters = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.4, delay: (idx % 4) * 0.08 }}
-                                    className="cursor-pointer w-[280px] md:w-[340px] shrink-0 group snap-center"
+                                    className="cursor-pointer w-[290px] md:w-[340px] shrink-0 group snap-center"
                                     style={{
                                         background: '#FFFFFF',
-                                        border: '1px solid rgba(5,11,43,0.07)',
+                                        border: 'none',
+                                        borderBottom: '2.5px solid var(--brand-fuchsia)',
+                                        height: '235px',
                                         padding: '24px 28px',
                                         display: 'flex',
                                         flexDirection: 'column',
@@ -308,7 +411,9 @@ const Filters = () => {
                                             <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
                                                 <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>{job.company}</span>
                                                 <span style={{ color: 'rgba(139,143,168,0.4)', fontSize: 12 }}>·</span>
-                                                <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>{job.location}</span>
+                                                <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>
+                                                    Sede: {formatLocation(job.location)}
+                                                </span>
                                             </div>
                                         </div>
                                         {/* Right: logo, large */}
@@ -316,35 +421,42 @@ const Filters = () => {
                                             src={job.companyLogo}
                                             alt={job.company}
                                             onError={e => { e.currentTarget.style.display='none'; }}
-                                            style={{ width: 48, height: 48, objectFit: 'contain', flexShrink: 0, borderRadius: 6, background: '#f8f8f8', padding: 4 }}
+                                            style={{ width: 64, height: 64, objectFit: 'contain', flexShrink: 0, borderRadius: 6, background: '#f8f8f8', padding: 4 }}
                                         />
                                     </div>
 
-                                    {/* Tags + arrow row */}
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)' }}>
-                                        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                                            {[job.sector, job.role].filter(tag => tag && !['Non specificato','Other','Altro','ALTRO','other'].includes(tag)).map(tag => (
-                                                <span key={tag} style={{
-                                                    fontFamily: 'var(--font-body)',
-                                                    fontSize: 10,
-                                                    fontWeight: 600,
-                                                    letterSpacing: '0.08em',
-                                                    textTransform: 'uppercase',
-                                                    border: '1px solid rgba(5,11,43,0.1)',
-                                                    padding: '3px 10px',
-                                                    color: 'var(--brand-gray-mid)'
-                                                }}>{tag}</span>
-                                            ))}
-                                        </div>
-                                        <span style={{
-                                            fontFamily: 'var(--font-brand)',
-                                            fontSize: 18,
-                                            color: 'var(--brand-gray-mid)',
-                                            transition: 'color 0.15s',
-                                            flexShrink: 0
-                                        }}
-                                        className="group-hover:text-[var(--brand-fuchsia)]"
-                                        >→</span>
+                                    {/* Tags row */}
+                                    <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6 }}>
+                                        {(() => {
+                                            const area = extractArea(job.location);
+                                            const settore = deriveSector(job.title, job.sector);
+                                            const tagBase = {
+                                                fontFamily: 'var(--font-body)',
+                                                fontSize: 10,
+                                                fontWeight: 600,
+                                                letterSpacing: '0.08em',
+                                                textTransform: 'uppercase',
+                                                padding: '0 10px',
+                                                height: '22px',
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                borderRadius: 2,
+                                            };
+                                            return (
+                                                <>
+                                                    {area && (
+                                                        <span style={{ ...tagBase, border: '1px solid var(--brand-fuchsia)', color: 'var(--brand-fuchsia)' }}>
+                                                            {area}
+                                                        </span>
+                                                    )}
+                                                    {settore && (
+                                                        <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.12)', color: 'var(--brand-navy)', opacity: 0.6 }}>
+                                                            {settore}
+                                                        </span>
+                                                    )}
+                                                </>
+                                            );
+                                        })()}
                                     </div>
                                 </motion.div>
                             ))
