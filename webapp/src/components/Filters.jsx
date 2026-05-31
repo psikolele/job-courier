@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MapPin, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight, ChevronLeft } from 'lucide-react';
+import { MapPin, Briefcase, User, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight, ChevronLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
@@ -40,6 +40,12 @@ const deriveSector = (title, sector) => {
     if (/marketing|social media|communic|brand|digital/.test(t)) return 'Marketing';
     if (/risorse umane|\bhr\b|human resource|selezione|reclutament/.test(t)) return 'HR';
     return null;
+};
+
+const deriveRole = (role) => {
+    const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
+    if (!role || skip.includes(role)) return null;
+    return role;
 };
 
 const Filters = () => {
@@ -426,38 +432,27 @@ const Filters = () => {
                                     </div>
 
                                     {/* Tags row */}
-                                    <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6 }}>
-                                        {(() => {
-                                            const area = extractArea(job.location);
-                                            const settore = deriveSector(job.title, job.sector);
-                                            const tagBase = {
-                                                fontFamily: 'var(--font-body)',
-                                                fontSize: 10,
-                                                fontWeight: 600,
-                                                letterSpacing: '0.08em',
-                                                textTransform: 'uppercase',
-                                                padding: '0 10px',
-                                                height: '22px',
-                                                display: 'inline-flex',
-                                                alignItems: 'center',
-                                                borderRadius: 2,
-                                            };
-                                            return (
-                                                <>
-                                                    {area && (
-                                                        <span style={{ ...tagBase, border: '1px solid var(--brand-fuchsia)', color: 'var(--brand-fuchsia)' }}>
-                                                            {area}
-                                                        </span>
-                                                    )}
-                                                    {settore && (
-                                                        <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.12)', color: 'var(--brand-navy)', opacity: 0.6 }}>
-                                                            {settore}
-                                                        </span>
-                                                    )}
-                                                </>
-                                            );
-                                        })()}
-                                    </div>
+                                    {(() => {
+                                        const area = extractArea(job.location);
+                                        const settore = deriveSector(job.title, job.sector);
+                                        const ruolo = deriveRole(job.role);
+                                        if (!area && !settore && !ruolo) return null;
+                                        const tagBase = {
+                                            fontFamily: 'var(--font-body)',
+                                            fontSize: 10, fontWeight: 600,
+                                            letterSpacing: '0.06em', textTransform: 'uppercase',
+                                            padding: '0 8px', height: '22px',
+                                            display: 'inline-flex', alignItems: 'center',
+                                            gap: 4, borderRadius: 2,
+                                        };
+                                        return (
+                                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'wrap' }}>
+                                                {area && <span style={{ ...tagBase, border: '1px solid var(--brand-fuchsia)', color: 'var(--brand-fuchsia)' }}><MapPin size={9} />{area}</span>}
+                                                {settore && <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.15)', color: 'var(--brand-navy)', opacity: 0.65 }}><Briefcase size={9} />{settore}</span>}
+                                                {ruolo && <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.12)', color: 'var(--brand-navy)', opacity: 0.5 }}><User size={9} />{ruolo}</span>}
+                                            </div>
+                                        );
+                                    })()}
                                 </motion.div>
                             ))
                         )}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { MapPin, Briefcase, ChevronLeft, Calendar, Search, ExternalLink } from 'lucide-react';
+import { MapPin, Briefcase, User, ChevronLeft, Calendar, Search, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useRegistrationWall from '../hooks/useRegistrationWall';
 import RegistrationWallModal from '../components/RegistrationWallModal';
@@ -15,6 +15,46 @@ const GM = 'var(--brand-gray-mid)';
 const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
+
+const extractArea = (location) => {
+    if (!location) return null;
+    const match = location.match(/\b(AG|AI|AR|BE|BL|BS|FR|GE|GL|GR|JU|LU|NE|NW|OW|SG|SH|SO|SZ|TG|TI|UR|VD|VS|ZG|ZH)\b/);
+    if (match) return match[1];
+    const loc = location.toLowerCase();
+    if (/z[üu]rich|zurigo/.test(loc)) return 'ZH';
+    if (/gen[eè]ve|ginevra|geneva/.test(loc)) return 'GE';
+    if (/bern[ae]/.test(loc)) return 'BE';
+    if (/lausanne|losanna/.test(loc)) return 'VD';
+    if (/luzern|lucerna/.test(loc)) return 'LU';
+    if (/lugano|locarno|bellinzona|ticino/.test(loc)) return 'TI';
+    if (/basel|basilea/.test(loc)) return 'BS';
+    if (/san gallo|st\.?\s*gallen/.test(loc)) return 'SG';
+    return null;
+};
+
+const deriveSector = (title, sector) => {
+    const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
+    if (sector && !skip.includes(sector)) return sector;
+    if (!title) return null;
+    const t = title.toLowerCase();
+    if (/trasport|autista|camion|courier|spediz|logist|magazz|driver|corriere/.test(t)) return 'Logistica';
+    if (/inferm|medic|farmac|salute|dental|fisio|cura|health|clinica/.test(t)) return 'Medicina';
+    if (/sviluppa|programm|developer|software|engineer|devops|cloud|\.net|java|python|frontend|backend|fullstack/.test(t)) return 'IT';
+    if (/contab|finanz|paghe|banca|audit|fiscal|revisio|accounting|treuhand/.test(t)) return 'Finanza';
+    if (/vendita|commerc|sales|account|business dev/.test(t)) return 'Commerciale';
+    if (/amministr|segret|assistente|reception|back.?office/.test(t)) return 'Amministrazione';
+    if (/costruzion|edil|parchett|muratore|idraulic|elettric|carpent|impianti|architett|projekt/.test(t)) return 'Costruzioni';
+    if (/ristora|chef|cuoc|camerier|pasticcier|hotell/.test(t)) return 'Ristorazione';
+    if (/marketing|social media|communic|brand|digital/.test(t)) return 'Marketing';
+    if (/risorse umane|\bhr\b|human resource|selezione|reclutament/.test(t)) return 'HR';
+    return null;
+};
+
+const deriveRole = (role) => {
+    const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
+    if (!role || skip.includes(role)) return null;
+    return role;
+};
 
 const Offerte = ({ setShowLoginModal }) => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -234,74 +274,69 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 onClick={() => handleSelectJob(job.id)}
                                                 style={{
                                                     cursor: 'pointer',
-                                                    padding: '20px 18px',
+                                                    padding: '20px 24px',
                                                     background: isSelected ? GL : '#FFFFFF',
                                                     borderLeft: isSelected ? `3px solid ${F}` : '3px solid transparent',
-                                                    transition: 'all 0.15s'
+                                                    borderBottom: '1px solid rgba(5,11,43,0.05)',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    transition: 'background 0.15s'
                                                 }}
+                                                whileHover={{ backgroundColor: 'var(--brand-gray-light)' }}
                                             >
-                                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                                                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: F, marginTop: 7, flexShrink: 0, display: 'inline-block' }} />
+                                                {/* Title + logo */}
+                                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 10 }}>
                                                     <div style={{ flex: 1, minWidth: 0 }}>
                                                         <h3 style={{
                                                             fontFamily: brand, fontWeight: 700, fontSize: 14,
                                                             color: N, lineHeight: 1.3,
-                                                            letterSpacing: '-0.01em', marginBottom: 4
+                                                            letterSpacing: '-0.01em', marginBottom: 5
                                                         }}>{job.title}</h3>
-                                                        <p style={{ fontFamily: body, fontSize: 12, color: GM, marginBottom: 6 }}>
-                                                            {job.company?.name || 'Azienda Riservata'}
-                                                        </p>
-                                                        {job.published_at && (
-                                                            <p style={{ fontFamily: body, fontSize: 10, color: GM, marginBottom: 8, display: 'flex', alignItems: 'center', gap: 4, opacity: 0.7 }}>
-                                                                <Calendar size={10} /> {job.published_at}
-                                                            </p>
-                                                        )}
-                                                        {job.redirect && (
-                                                            <span style={{
-                                                                display: 'inline-block',
-                                                                fontFamily: brand, fontWeight: 700, fontSize: 8,
-                                                                letterSpacing: '0.18em', textTransform: 'uppercase',
-                                                                color: F, marginBottom: 6
-                                                            }}>● Esterno</span>
-                                                        )}
-
-                                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                                                            {job.location && (
-                                                                <span style={{
-                                                                    fontFamily: body, fontSize: 10, fontWeight: 600,
-                                                                    letterSpacing: '0.08em', textTransform: 'uppercase',
-                                                                    color: GM,
-                                                                    border: '1px solid rgba(5,11,43,0.1)',
-                                                                    padding: '2px 8px'
-                                                                }}>
-                                                                    Sede: {formatLocation(job.location)}
-                                                                </span>
+                                                        <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                                                            <span style={{ fontFamily: body, fontSize: 12, color: GM }}>{job.company?.name || 'Azienda Riservata'}</span>
+                                                            {job.published_at && (
+                                                                <>
+                                                                    <span style={{ color: 'rgba(139,143,168,0.4)', fontSize: 12 }}>·</span>
+                                                                    <span style={{ fontFamily: body, fontSize: 11, color: GM, opacity: 0.7, display: 'flex', alignItems: 'center', gap: 3 }}>
+                                                                        <Calendar size={10} />{job.published_at}
+                                                                    </span>
+                                                                </>
                                                             )}
-                                                            {job.sector && (
-                                                                <span style={{
-                                                                    fontFamily: body, fontSize: 10, fontWeight: 600,
-                                                                    letterSpacing: '0.08em', textTransform: 'uppercase',
-                                                                    color: GM,
-                                                                    border: '1px solid rgba(5,11,43,0.1)',
-                                                                    padding: '2px 8px'
-                                                                }}>
-                                                                    Settore: {job.sector}
-                                                                </span>
-                                                            )}
-                                                            {job.role && (
-                                                                <span style={{
-                                                                    fontFamily: body, fontSize: 10, fontWeight: 600,
-                                                                    letterSpacing: '0.08em', textTransform: 'uppercase',
-                                                                    color: GM,
-                                                                    border: '1px solid rgba(5,11,43,0.1)',
-                                                                    padding: '2px 8px'
-                                                                }}>
-                                                                    Ruolo: {job.role}
-                                                                </span>
+                                                            {job.redirect && (
+                                                                <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 8, letterSpacing: '0.18em', textTransform: 'uppercase', color: F }}>● Esterno</span>
                                                             )}
                                                         </div>
                                                     </div>
+                                                    {job.company?.logo && (
+                                                        <img
+                                                            src={job.company.logo}
+                                                            alt={job.company?.name}
+                                                            onError={e => { e.currentTarget.style.display = 'none'; }}
+                                                            style={{ width: 48, height: 48, objectFit: 'contain', flexShrink: 0, borderRadius: 6, background: '#f8f8f8', padding: 3 }}
+                                                        />
+                                                    )}
                                                 </div>
+                                                {/* Tags */}
+                                                {(() => {
+                                                    const area = extractArea(job.location);
+                                                    const settore = deriveSector(job.title, job.sector);
+                                                    const ruolo = deriveRole(job.role);
+                                                    if (!area && !settore && !ruolo) return null;
+                                                    const tagBase = {
+                                                        fontFamily: body, fontSize: 10, fontWeight: 600,
+                                                        letterSpacing: '0.06em', textTransform: 'uppercase',
+                                                        padding: '0 8px', height: '22px',
+                                                        display: 'inline-flex', alignItems: 'center',
+                                                        gap: 4, borderRadius: 2,
+                                                    };
+                                                    return (
+                                                        <div style={{ display: 'flex', alignItems: 'center', paddingTop: 10, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'wrap' }}>
+                                                            {area && <span style={{ ...tagBase, border: '1px solid var(--brand-fuchsia)', color: F }}><MapPin size={9} />{area}</span>}
+                                                            {settore && <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.15)', color: N, opacity: 0.65 }}><Briefcase size={9} />{settore}</span>}
+                                                            {ruolo && <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.12)', color: N, opacity: 0.5 }}><User size={9} />{ruolo}</span>}
+                                                        </div>
+                                                    );
+                                                })()}
                                             </motion.div>
                                         );
                                     })}
