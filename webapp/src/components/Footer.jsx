@@ -40,7 +40,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer style={{ background: N, padding: '48px 40px 28px' }}>
+        <footer style={{ background: N }} className="px-5 md:px-10 pt-12 pb-7">
             <div style={{
                 borderBottom: '1px solid rgba(255,255,255,0.07)',
                 paddingBottom: 40,

@@ -24,6 +24,9 @@ const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
+const prefersReducedMotion = () =>
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 const MarqueeSlider = ({ title, articles, readArticleText, speed = 35 }) => {
     const sliderRef = useRef(null);
     const timelineRef = useRef(null);
@@ -33,7 +36,7 @@ const MarqueeSlider = ({ title, articles, readArticleText, speed = 35 }) => {
     const duplicatedArticles = [...articles, ...articles, ...articles];
 
     useEffect(() => {
-        if (!sliderRef.current || articles.length === 0) return;
+        if (!sliderRef.current || articles.length === 0 || prefersReducedMotion()) return;
 
         const slider = sliderRef.current;
         
@@ -97,10 +100,10 @@ const MarqueeSlider = ({ title, articles, readArticleText, speed = 35 }) => {
                 <div className="absolute top-0 left-0 w-16 md:w-32 h-full z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #FFFFFF, transparent)' }} />
                 <div className="absolute top-0 right-0 w-16 md:w-32 h-full z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #FFFFFF, transparent)' }} />
 
-                <div 
+                <div
                     ref={sliderRef}
                     className="flex gap-6 overflow-x-auto scrollbar-none w-full py-2"
-                    style={{ WebkitOverflowScrolling: 'touch' }}
+                    style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
                 >
                     {duplicatedArticles.map((article, idx) => (
                         <div key={`${article.id}-${idx}`} className="w-[280px] md:w-[350px] shrink-0 flex-none">

@@ -244,7 +244,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed top-0 left-0 right-0 z-[90] flex flex-col md:flex-row border-b border-[#050B2B]/10 overflow-y-auto"
+                        className="fixed top-0 left-0 right-0 z-[90] flex flex-col md:flex-row border-b border-[#050B2B]/10 overflow-y-auto max-h-[85vh] md:max-h-none"
                         style={{
                             paddingTop: navHeight,
                         }}
@@ -357,7 +357,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                             initial={{ scale: 0.95, opacity: 0, y: 15 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.95, opacity: 0, y: 15 }}
-                            className="bg-white shadow-2xl w-full max-w-4xl relative overflow-hidden flex flex-col md:flex-row min-h-[500px] rounded-none"
+                            className="bg-white shadow-2xl w-full max-w-4xl relative overflow-y-auto flex flex-col md:flex-row rounded-none"
                         >
                             <button
                                 onClick={() => setShowLoginModal(false)}

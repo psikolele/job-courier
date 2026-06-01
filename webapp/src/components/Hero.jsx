@@ -123,7 +123,7 @@ const Hero = ({ setShowLoginModal }) => {
 
     return (
         <section
-            className="relative w-full flex flex-col md:flex-row overflow-hidden h-auto md:h-[calc(100vh-80px)] min-h-[calc(100vh-80px)]"
+            className="relative w-full flex flex-col md:flex-row overflow-hidden h-auto md:h-[calc(100svh-80px)] min-h-[calc(100svh-80px)]"
             style={{ background: 'var(--brand-gray-light)', marginTop: '80px', overflow: 'hidden' }}
         >
             <style>{`
