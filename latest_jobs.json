@@ -1,30 +1,22 @@
 [
   {
     "id": 0,
-    "title": "Operaio per posa pavimentazioni sportive in erba sintetica",
+    "title": "Progettista elettrico",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707304-operaio-per-posa-pavimentazioni-sportive-in-erba-sintetica-bellinzona-bellinzona&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707318-progettista-elettrico-lugano&language=en"
   },
   {
     "id": 1,
-    "title": "Real Estate Sales & Development Manager",
+    "title": "Impiegato/a Amministrativo/a Contabile",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707306-real-estate-sales-development-manager-manno-lugano&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707317-impiegato-a-amministrativo-a-contabile-locarno&language=en"
   },
   {
     "id": 2,
-    "title": "MAINTENANCE COORDINATOR",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707312-maintenance-coordinator-lugano-lugano&language=en"
-  },
-  {
-    "id": 3,
     "title": "Autista con Patente CE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,15 +24,31 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707316-autista-con-patente-ce-locarno&language=en"
   },
   {
-    "id": 4,
-    "title": "Chemical Engineer",
+    "id": 3,
+    "title": "MAINTENANCE COORDINATOR",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707314-chemical-engineer-mezzovico-ti-mezzovico&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707312-maintenance-coordinator-lugano-lugano&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Operaio/a metalmeccanico/a",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707305-operaio-a-metalmeccanico-a-lugano-bellinzona&language=en"
   },
   {
     "id": 5,
+    "title": "Real Estate Sales & Development Manager",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707306-real-estate-sales-development-manager-manno-lugano&language=en"
+  },
+  {
+    "id": 6,
     "title": "Addetto alle pulizie",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,31 +56,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707309-addetto-alle-pulizie-rivera-tessin-bellinzona&language=en"
   },
   {
-    "id": 6,
-    "title": "Operatore linee produzione settore logistico 16h/ settimanali h. 05-09",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707307-operatore-linee-produzione-settore-logistico-16h-settimanali-h-05-09-lugano-lugano&language=en"
-  },
-  {
     "id": 7,
-    "title": "Operaio per posa pavimentazioni sportive per palestre in poliuretano",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707302-operaio-per-posa-pavimentazioni-sportive-per-palestre-in-poliuretano-bellinzona-bellinzona&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Operaio specializzato in pavimentazioni sportive e resine",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707303-operaio-specializzato-in-pavimentazioni-sportive-e-resine-bellinzona-bellinzona&language=en"
-  },
-  {
-    "id": 9,
     "title": "Manufacturing Engineer",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707315-manufacturing-engineer-mezzovico-ti-mezzovico&language=en"
   },
   {
-    "id": 10,
-    "title": "Inside Sales B2B e B2C - Energy",
+    "id": 8,
+    "title": "Chemical Engineer",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707311-inside-sales-b2b-e-b2c-energy-mendrisio-lugano&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707314-chemical-engineer-mezzovico-ti-mezzovico&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Operaio per posa pavimentazioni sportive in erba sintetica",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707304-operaio-per-posa-pavimentazioni-sportive-in-erba-sintetica-bellinzona-bellinzona&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Addetto/a ristorante a tempo parziale 10%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707308-addetto-a-ristorante-a-tempo-parziale-10-lugano-lugano&language=en"
   },
   {
     "id": 11,
-    "title": "Quality Engineer",
+    "title": "Rappresentante commerciale settore Ferramenta (Bellinzonese)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707313-quality-engineer-mezzovico-ti-mezzovico&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6707310-rappresentante-commerciale-settore-ferramenta-bellinzonese-bellinzona-bellinzona&language=en"
   }
 ]
