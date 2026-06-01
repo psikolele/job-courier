@@ -259,7 +259,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         </button>
 
                         {/* LEFT SECTION: CANDIDATI */}
-                        <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 border-b md:border-b-0 md:border-r border-slate-200/50 bg-[#F6F7FB] relative group" style={{ borderBottom: '2px solid var(--brand-fuchsia)' }}>
+                        <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 border-b md:border-b-0 md:border-r border-[var(--brand-navy)]/10 bg-[var(--brand-gray-light)] relative group" style={{ borderBottom: '2px solid var(--brand-fuchsia)' }}>
                             <div className="mb-4 text-[var(--brand-navy)]/40 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
                                 <IconUser size={32} />
                             </div>
@@ -273,7 +273,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-slate-500 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -282,7 +282,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-slate-500 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -295,7 +295,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
 
                         {/* RIGHT SECTION: AZIENDE */}
                         <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 relative group bg-white" style={{ borderBottom: '2px solid var(--brand-fuchsia)' }}>
-                            <div className="mb-4 text-slate-400/40 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
+                            <div className="mb-4 text-[var(--brand-gray-mid)]/40 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
                                 <IconBuilding size={32} />
                             </div>
                             <div className="relative z-10 flex flex-col items-center">
@@ -308,7 +308,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-slate-500 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -317,7 +317,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-slate-500 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -362,20 +362,20 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         >
                             <button
                                 onClick={() => setShowLoginModal(false)}
-                                className="absolute top-6 right-6 z-20 w-10 h-10 bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shadow-sm rounded-none border border-slate-200 cursor-pointer"
+                                className="absolute top-6 right-6 z-20 w-10 h-10 bg-[var(--brand-gray-light)] flex items-center justify-center text-[var(--brand-gray-mid)] hover:text-[var(--brand-navy)] transition-colors shadow-sm rounded-none border border-[var(--brand-navy)]/10 cursor-pointer"
                             >
                                 <IconX />
                             </button>
 
                             {/* LEFT: CANDIDATI */}
-                            <div className="flex-1 p-8 md:p-12 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-slate-200/50 bg-[#F6F7FB]">
+                            <div className="flex-1 p-8 md:p-12 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-[var(--brand-navy)]/10 bg-[var(--brand-gray-light)]">
                                 <div className="w-12 h-12 bg-[var(--brand-navy)]/10 flex items-center justify-center mb-6 text-[var(--brand-navy)] rounded-none">
                                     <IconUser size={24} />
                                 </div>
-                                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2 tracking-[0.2em] uppercase font-sans">
+                                <h3 className="text-lg md:text-xl font-bold text-[var(--brand-navy)] mb-2 tracking-[0.2em] uppercase font-sans">
                                     Candidati
                                 </h3>
-                                <p className="text-slate-500 text-sm mb-8 max-w-[240px]">Accedi a migliaia di offerte di lavoro in tutta la Svizzera. Crea il tuo profilo e candidati in pochi click.</p>
+                                <p className="text-[var(--brand-gray-mid)] text-sm mb-8 max-w-[240px]">Accedi a migliaia di offerte di lavoro in tutta la Svizzera. Crea il tuo profilo e candidati in pochi click.</p>
                                 <p style={{ color: 'var(--brand-fuchsia)', fontSize: 11, marginTop: -12, marginBottom: 20, fontWeight: 700, letterSpacing: '0.05em' }}>
                                   Il login si apre in una finestra separata — resti sempre qui.
                                 </p>
@@ -393,7 +393,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                         href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it"
-                                        className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 transition-all hover:border-[var(--brand-navy)] hover:text-[var(--brand-navy)] text-center rounded-none tracking-[0.1em] text-xs uppercase"
+                                        className="w-full bg-white border-2 border-[var(--brand-navy)]/20 text-[var(--brand-navy)] font-bold py-4 transition-all hover:border-[var(--brand-navy)] text-center rounded-none tracking-[0.1em] text-xs uppercase"
                                     >
                                         Carica il tuo CV
                                     </motion.a>
@@ -408,7 +408,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 <h3 className="text-lg md:text-xl font-bold text-white mb-2 tracking-[0.2em] uppercase font-sans">
                                     Aziende
                                 </h3>
-                                <p className="text-slate-300 text-sm mb-8 max-w-[240px]">Pubblica una posizione e visualizza subito i candidati compatibili. Accedi a oltre 120'000 candidati registrati.</p>
+                                <p className="text-white/55 text-sm mb-8 max-w-[240px]">Pubblica una posizione e visualizza subito i candidati compatibili. Accedi a oltre 120'000 candidati registrati.</p>
                                 <p style={{ color: 'var(--brand-fuchsia)', fontSize: 11, marginTop: -12, marginBottom: 20, fontWeight: 700, letterSpacing: '0.05em' }}>
                                   Il login si apre in una finestra separata — resti sempre qui.
                                 </p>
