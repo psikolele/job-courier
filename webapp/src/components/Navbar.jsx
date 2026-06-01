@@ -158,7 +158,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                             src="/logo-full.svg"
                             onError={(e) => { e.currentTarget.src = '/logo-full.png'; }}
                             alt="JobCourier"
-                            className={`${scrolled ? 'h-[81px]' : 'h-[102px]'} w-auto object-contain transition-all duration-300`}
+                            className={`${scrolled ? 'h-[56px]' : 'h-[72px]'} w-auto object-contain transition-all duration-300`}
                             initial={{ scale: 1, y: 0, filter: "drop-shadow(0 2px 4px rgba(38, 54, 123, 0.0))" }}
                             variants={{
                                 hover: {

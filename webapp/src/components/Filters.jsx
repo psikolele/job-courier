@@ -251,6 +251,9 @@ const Filters = () => {
 
     return (
         <div id="filters" className="w-full relative z-20 pb-20 pt-8" style={{ background: 'var(--brand-gray-light)' }}>
+            {/* Ads top (slot 1+2) */}
+            <AdBanner startIndex={0} />
+
             {/* Latest Jobs Feed from Vercel Proxy */}
             <div className="pt-4 w-[98%] mx-auto">
                 <div className="flex items-center justify-between mb-10 px-4 md:px-8">
@@ -413,22 +416,36 @@ const Filters = () => {
                                         />
                                     </div>
 
-                                    {/* Tags row — always shown, fallback "Altro" */}
+                                    {/* Tags row — always shown, label outside chip */}
                                     {(() => {
                                         const settore = deriveSector(job.title, job.sector) || 'Altro';
                                         const ruolo = deriveRole(job.role) || 'Altro';
-                                        const tagBase = {
+                                        const chip = {
                                             fontFamily: 'var(--font-body)',
                                             fontSize: 10, fontWeight: 600,
                                             letterSpacing: '0.06em', textTransform: 'uppercase',
-                                            padding: '0 8px', height: '22px',
+                                            padding: '0 7px', height: '20px',
                                             display: 'inline-flex', alignItems: 'center',
-                                            gap: 4, borderRadius: 2,
+                                            gap: 3, borderRadius: 2,
+                                            border: '1px solid rgba(5,11,43,0.14)',
+                                            color: 'var(--brand-navy)',
+                                        };
+                                        const lbl = {
+                                            fontFamily: 'var(--font-body)',
+                                            fontSize: 9, fontWeight: 700,
+                                            letterSpacing: '0.1em', textTransform: 'uppercase',
+                                            color: 'var(--brand-gray-mid)',
                                         };
                                         return (
-                                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'wrap' }}>
-                                                <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.15)', color: 'var(--brand-navy)', opacity: 0.65 }}><Briefcase size={9} />{settore}</span>
-                                                <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.12)', color: 'var(--brand-navy)', opacity: 0.5 }}><User size={9} />{ruolo}</span>
+                                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 8, flexWrap: 'wrap' }}>
+                                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                                                    <span style={lbl}>Settore</span>
+                                                    <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} />{settore}</span>
+                                                </span>
+                                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                                                    <span style={lbl}>Ruolo</span>
+                                                    <span style={{ ...chip, opacity: 0.55 }}><User size={9} />{ruolo}</span>
+                                                </span>
                                             </div>
                                         );
                                     })()}
@@ -444,8 +461,8 @@ const Filters = () => {
                     </button>
                 </div>
 
-                {/* Advertisement Section — below job slider */}
-                <AdBanner />
+                {/* Ads bottom (slot 3+4) */}
+                <AdBanner startIndex={2} />
             </div>
             <RegistrationWallModal isOpen={wall.isOpen} onClose={() => wall.setIsOpen(false)} />
         </div>
