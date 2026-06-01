@@ -244,27 +244,26 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed top-0 left-0 right-0 z-[90] flex flex-col md:flex-row border-b border-[#050B2B]/10 h-[85vh] md:h-[52vh] overflow-y-auto md:overflow-y-hidden"
+                        className="fixed top-0 left-0 right-0 z-[90] flex flex-col md:flex-row border-b border-[#050B2B]/10 overflow-y-auto"
                         style={{
-                            backgroundColor: 'rgba(255, 255, 255, 0.98)',
                             paddingTop: navHeight,
                         }}
                     >
                         {/* CLOSE Button Overlay (Mobile focus) */}
-                        <button 
+                        <button
                             onClick={() => setMenuOpen(false)}
-                            className="absolute top-20 right-6 md:hidden text-slate-400 cursor-pointer"
+                            className="absolute top-20 right-6 md:hidden text-[var(--brand-gray-mid)] cursor-pointer"
                         >
                             <IconX />
                         </button>
 
                         {/* LEFT SECTION: CANDIDATI */}
-                        <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 border-b md:border-b-0 md:border-r border-[var(--brand-navy)]/10 bg-[var(--brand-gray-light)] relative group" style={{ borderBottom: '2px solid var(--brand-fuchsia)' }}>
-                            <div className="mb-4 text-[var(--brand-navy)]/40 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
-                                <IconUser size={32} />
+                        <div className="flex-1 flex flex-col items-center pt-10 pb-10 px-8 border-b md:border-b-0 md:border-r border-[var(--brand-navy)]/10 bg-[var(--brand-gray-light)] relative group">
+                            <div className="w-12 h-12 bg-[var(--brand-navy)]/10 flex items-center justify-center mb-6 text-[var(--brand-navy)] group-hover:bg-[var(--brand-fuchsia)]/10 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
+                                <IconUser size={24} />
                             </div>
-                            <div className="relative z-10 flex flex-col items-center">
-                                <h2 className="text-lg md:text-xl font-bold text-[var(--brand-navy)] tracking-[0.2em] uppercase font-sans mb-4">
+                            <div className="flex flex-col items-center">
+                                <h2 className="text-lg md:text-xl font-bold text-[var(--brand-navy)] tracking-[0.2em] uppercase font-sans mb-6">
                                     {candidateTitle}
                                 </h2>
                                 <div className="flex flex-col items-center gap-4">
@@ -294,12 +293,12 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                         </div>
 
                         {/* RIGHT SECTION: AZIENDE */}
-                        <div className="flex-1 flex flex-col items-center pt-8 md:pt-10 px-8 relative group bg-white" style={{ borderBottom: '2px solid var(--brand-fuchsia)' }}>
-                            <div className="mb-4 text-[var(--brand-gray-mid)]/40 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
-                                <IconBuilding size={32} />
+                        <div className="flex-1 flex flex-col items-center pt-10 pb-10 px-8 bg-[var(--brand-navy)] relative group">
+                            <div className="w-12 h-12 bg-white/10 flex items-center justify-center mb-6 text-white group-hover:bg-[var(--brand-fuchsia)]/20 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
+                                <IconBuilding size={24} />
                             </div>
-                            <div className="relative z-10 flex flex-col items-center">
-                                <h2 className="text-lg md:text-xl font-bold text-[var(--brand-navy)] tracking-[0.2em] uppercase font-sans mb-4">
+                            <div className="flex flex-col items-center">
+                                <h2 className="text-lg md:text-xl font-bold text-white tracking-[0.2em] uppercase font-sans mb-6">
                                     {companyTitle}
                                 </h2>
                                 <div className="flex flex-col items-center gap-4">
@@ -308,7 +307,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-white/55 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -317,7 +316,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-white/55 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
