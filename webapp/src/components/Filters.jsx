@@ -429,6 +429,7 @@ const Filters = () => {
                                             gap: 3, borderRadius: 2,
                                             border: '1px solid rgba(5,11,43,0.14)',
                                             color: 'var(--brand-navy)',
+                                            whiteSpace: 'nowrap', flexShrink: 0,
                                         };
                                         const lbl = {
                                             fontFamily: 'var(--font-body)',
@@ -437,7 +438,7 @@ const Filters = () => {
                                             color: 'var(--brand-gray-mid)',
                                         };
                                         return (
-                                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 8, flexWrap: 'wrap' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'nowrap', overflowX: 'auto' }}>
                                                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                                                     <span style={lbl}>Settore</span>
                                                     <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} />{settore}</span>

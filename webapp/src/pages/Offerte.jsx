@@ -320,7 +320,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         color: GM,
                                                     };
                                                     return (
-                                                        <div style={{ display: 'flex', alignItems: 'center', paddingTop: 10, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 8, flexWrap: 'wrap' }}>
+                                                        <div style={{ display: 'flex', alignItems: 'center', paddingTop: 10, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'nowrap', overflowX: 'auto' }}>
                                                             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                                                                 <span style={lbl}>Settore</span>
                                                                 <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} />{settore}</span>
@@ -373,10 +373,11 @@ const Offerte = ({ setShowLoginModal }) => {
                                                             {selectedJob.company?.name || 'Azienda Riservata'}
                                                         </span>
                                                     </div>
-                                                    <h1 style={{
-                                                        fontFamily: brand, fontWeight: 900, fontSize: 32,
+                                                    <h1 className="text-[22px] md:text-[32px]" style={{
+                                                        fontFamily: brand, fontWeight: 900,
                                                         color: N, textTransform: 'uppercase',
-                                                        letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 20
+                                                        letterSpacing: '-0.025em', lineHeight: 1.05, marginBottom: 20,
+                                                        wordBreak: 'break-word'
                                                     }}>{selectedJob.title}</h1>
 
                                                     {/* Meta row — label outside chip */}
@@ -393,9 +394,9 @@ const Offerte = ({ setShowLoginModal }) => {
                                                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                             borderRadius: 2, flexShrink: 0
                                                         });
-                                                        const val = { fontFamily: body, fontSize: 11, fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: GM };
+                                                        const val = { fontFamily: body, fontSize: 11, fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: GM, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100px' };
                                                         return (
-                                                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                                                            <div style={{ display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: 6, paddingBottom: 2 }}>
                                                                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                                                                     <span style={metaLbl}>Sede</span>
                                                                     <span style={metaChip()}>
