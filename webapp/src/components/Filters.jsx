@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MapPin, Briefcase, User, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight, ChevronLeft } from 'lucide-react';
+import { Briefcase, User, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight, ChevronLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
@@ -8,21 +8,6 @@ import AdBanner from './AdBanner';
 import useRegistrationWall from '../hooks/useRegistrationWall';
 import RegistrationWallModal from './RegistrationWallModal';
 
-const extractArea = (location) => {
-    if (!location) return null;
-    const match = location.match(/\b(AG|AI|AR|BE|BL|BS|FR|GE|GL|GR|JU|LU|NE|NW|OW|SG|SH|SO|SZ|TG|TI|UR|VD|VS|ZG|ZH)\b/);
-    if (match) return match[1];
-    const loc = location.toLowerCase();
-    if (/z[üu]rich|zurigo/.test(loc)) return 'ZH';
-    if (/gen[eè]ve|ginevra|geneva/.test(loc)) return 'GE';
-    if (/bern[ae]/.test(loc)) return 'BE';
-    if (/lausanne|losanna/.test(loc)) return 'VD';
-    if (/luzern|lucerna/.test(loc)) return 'LU';
-    if (/lugano|locarno|bellinzona|ticino/.test(loc)) return 'TI';
-    if (/basel|basilea/.test(loc)) return 'BS';
-    if (/san gallo|st\.?\s*gallen/.test(loc)) return 'SG';
-    return null;
-};
 
 const deriveSector = (title, sector) => {
     const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
@@ -266,9 +251,6 @@ const Filters = () => {
 
     return (
         <div id="filters" className="w-full relative z-20 pb-20 pt-8" style={{ background: 'var(--brand-gray-light)' }}>
-            {/* ADVERTISEMENT SECTION */}
-            <AdBanner />
-
             {/* Latest Jobs Feed from Vercel Proxy */}
             <div className="pt-4 w-[98%] mx-auto">
                 <div className="flex items-center justify-between mb-10 px-4 md:px-8">
@@ -431,12 +413,10 @@ const Filters = () => {
                                         />
                                     </div>
 
-                                    {/* Tags row */}
+                                    {/* Tags row — always shown, fallback "Altro" */}
                                     {(() => {
-                                        const area = extractArea(job.location);
-                                        const settore = deriveSector(job.title, job.sector);
-                                        const ruolo = deriveRole(job.role);
-                                        if (!area && !settore && !ruolo) return null;
+                                        const settore = deriveSector(job.title, job.sector) || 'Altro';
+                                        const ruolo = deriveRole(job.role) || 'Altro';
                                         const tagBase = {
                                             fontFamily: 'var(--font-body)',
                                             fontSize: 10, fontWeight: 600,
@@ -447,9 +427,8 @@ const Filters = () => {
                                         };
                                         return (
                                             <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'wrap' }}>
-                                                {area && <span style={{ ...tagBase, border: '1px solid var(--brand-fuchsia)', color: 'var(--brand-fuchsia)' }}><MapPin size={9} />{area}</span>}
-                                                {settore && <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.15)', color: 'var(--brand-navy)', opacity: 0.65 }}><Briefcase size={9} />{settore}</span>}
-                                                {ruolo && <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.12)', color: 'var(--brand-navy)', opacity: 0.5 }}><User size={9} />{ruolo}</span>}
+                                                <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.15)', color: 'var(--brand-navy)', opacity: 0.65 }}><Briefcase size={9} />{settore}</span>
+                                                <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.12)', color: 'var(--brand-navy)', opacity: 0.5 }}><User size={9} />{ruolo}</span>
                                             </div>
                                         );
                                     })()}
@@ -465,29 +444,8 @@ const Filters = () => {
                     </button>
                 </div>
 
-                {/* 2-Column Lower Advertisement Section */}
-                <div className="w-full mt-16 max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 overflow-hidden" style={{ border: '1px solid rgba(5,11,43,0.07)', background: '#FFFFFF' }}>
-                        {[1, 2].map((num) => (
-                            <div key={num} className="relative group h-28 flex items-center justify-center cursor-pointer transition-all duration-200" style={{ borderRight: num === 1 ? '1px solid rgba(5,11,43,0.07)' : 'none' }}>
-                                <span style={{
-                                    position: 'absolute', top: 10, right: 14,
-                                    fontFamily: 'var(--font-body)',
-                                    fontSize: 8,
-                                    fontWeight: 600,
-                                    letterSpacing: '0.15em',
-                                    textTransform: 'uppercase',
-                                    color: 'var(--brand-gray-mid)',
-                                    opacity: 0.6
-                                }}>ADV</span>
-                                <div className="text-center">
-                                    <p style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10, color: 'var(--brand-navy)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Spazio Sponsorizzato</p>
-                                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 10, color: 'var(--brand-fuchsia)', marginTop: 6, letterSpacing: '0.2em', fontWeight: 600 }}>PREMIUM</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                {/* Advertisement Section — below job slider */}
+                <AdBanner />
             </div>
             <RegistrationWallModal isOpen={wall.isOpen} onClose={() => wall.setIsOpen(false)} />
         </div>

@@ -154,10 +154,11 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                             />
                         </div>
                         {/* Logo Image with Magnetic Lift & Drop Shadow - Infinitely sharp high-resolution raster asset */}
-                        <motion.img 
-                            src="/logo-full.png" 
-                            alt="JobCourier" 
-                            className={`${scrolled ? 'h-[54px]' : 'h-[68px]'} w-auto object-contain transition-all duration-300`}
+                        <motion.img
+                            src="/logo-full.svg"
+                            onError={(e) => { e.currentTarget.src = '/logo-full.png'; }}
+                            alt="JobCourier"
+                            className={`${scrolled ? 'h-[81px]' : 'h-[102px]'} w-auto object-contain transition-all duration-300`}
                             initial={{ scale: 1, y: 0, filter: "drop-shadow(0 2px 4px rgba(38, 54, 123, 0.0))" }}
                             variants={{
                                 hover: {

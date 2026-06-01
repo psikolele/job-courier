@@ -9,7 +9,8 @@ const AdBanner = () => {
             href: 'https://ated.ch/corsi-di-formazione-ict?hsCtaAttrib=188270968997',
             img: '/img/banner-forma-academy.png',
             alt: 'Forma Academy — Corsi ICT',
-            fit: 'cover'
+            fit: 'cover',
+            position: 'right center'
         },
         {
             href: 'https://www.blc-sa.ch',
@@ -66,6 +67,7 @@ const AdBanner = () => {
                                     src={ad.img}
                                     alt={ad.alt}
                                     className={`w-full h-full object-${ad.fit} transition-transform duration-500 group-hover:scale-[1.02]`}
+                                    style={ad.position ? { objectPosition: ad.position } : undefined}
                                 />
                             </a>
                         </div>

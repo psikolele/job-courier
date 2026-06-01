@@ -16,21 +16,7 @@ const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
-const extractArea = (location) => {
-    if (!location) return null;
-    const match = location.match(/\b(AG|AI|AR|BE|BL|BS|FR|GE|GL|GR|JU|LU|NE|NW|OW|SG|SH|SO|SZ|TG|TI|UR|VD|VS|ZG|ZH)\b/);
-    if (match) return match[1];
-    const loc = location.toLowerCase();
-    if (/z[üu]rich|zurigo/.test(loc)) return 'ZH';
-    if (/gen[eè]ve|ginevra|geneva/.test(loc)) return 'GE';
-    if (/bern[ae]/.test(loc)) return 'BE';
-    if (/lausanne|losanna/.test(loc)) return 'VD';
-    if (/luzern|lucerna/.test(loc)) return 'LU';
-    if (/lugano|locarno|bellinzona|ticino/.test(loc)) return 'TI';
-    if (/basel|basilea/.test(loc)) return 'BS';
-    if (/san gallo|st\.?\s*gallen/.test(loc)) return 'SG';
-    return null;
-};
+
 
 const deriveSector = (title, sector) => {
     const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
@@ -316,12 +302,10 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         />
                                                     )}
                                                 </div>
-                                                {/* Tags */}
+                                                {/* Tags — always shown, fallback "Altro" */}
                                                 {(() => {
-                                                    const area = extractArea(job.location);
-                                                    const settore = deriveSector(job.title, job.sector);
-                                                    const ruolo = deriveRole(job.role);
-                                                    if (!area && !settore && !ruolo) return null;
+                                                    const settore = deriveSector(job.title, job.sector) || 'Altro';
+                                                    const ruolo = deriveRole(job.role) || 'Altro';
                                                     const tagBase = {
                                                         fontFamily: body, fontSize: 10, fontWeight: 600,
                                                         letterSpacing: '0.06em', textTransform: 'uppercase',
@@ -331,9 +315,8 @@ const Offerte = ({ setShowLoginModal }) => {
                                                     };
                                                     return (
                                                         <div style={{ display: 'flex', alignItems: 'center', paddingTop: 10, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'wrap' }}>
-                                                            {area && <span style={{ ...tagBase, border: '1px solid var(--brand-fuchsia)', color: F }}><MapPin size={9} />{area}</span>}
-                                                            {settore && <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.15)', color: N, opacity: 0.65 }}><Briefcase size={9} />{settore}</span>}
-                                                            {ruolo && <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.12)', color: N, opacity: 0.5 }}><User size={9} />{ruolo}</span>}
+                                                            <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.15)', color: N, opacity: 0.65 }}><Briefcase size={9} />{settore}</span>
+                                                            <span style={{ ...tagBase, border: '1px solid rgba(5,11,43,0.12)', color: N, opacity: 0.5 }}><User size={9} />{ruolo}</span>
                                                         </div>
                                                     );
                                                 })()}
@@ -385,40 +368,48 @@ const Offerte = ({ setShowLoginModal }) => {
                                                     }}>{selectedJob.title}</h1>
 
                                                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                                                        {/* Sede */}
                                                         <span style={{
-                                                            fontFamily: body, fontSize: 11, fontWeight: 600,
-                                                            letterSpacing: '0.08em', textTransform: 'uppercase',
-                                                            color: GM,
+                                                            display: 'inline-flex', alignItems: 'center', gap: 8,
                                                             border: '1px solid rgba(5,11,43,0.1)',
-                                                            padding: '4px 12px',
-                                                            display: 'inline-flex', alignItems: 'center', gap: 6
+                                                            padding: '5px 12px 5px 5px',
+                                                            background: '#FAFAFA'
                                                         }}>
-                                                            <MapPin size={12} /> Sede: {formatLocation(selectedJob.location)}
+                                                            <span style={{ width: 22, height: 22, background: 'rgba(255,31,122,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 2, flexShrink: 0 }}>
+                                                                <MapPin size={12} color="var(--brand-fuchsia)" />
+                                                            </span>
+                                                            <span style={{ fontFamily: body, fontSize: 11, fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: GM }}>
+                                                                Sede: {formatLocation(selectedJob.location)}
+                                                            </span>
                                                         </span>
-                                                        {selectedJob.sector && (
-                                                            <span style={{
-                                                                fontFamily: body, fontSize: 11, fontWeight: 600,
-                                                                letterSpacing: '0.08em', textTransform: 'uppercase',
-                                                                color: GM,
-                                                                border: '1px solid rgba(5,11,43,0.1)',
-                                                                padding: '4px 12px',
-                                                                display: 'inline-flex', alignItems: 'center', gap: 6
-                                                            }}>
-                                                                <Briefcase size={12} /> Settore: {selectedJob.sector}
+                                                        {/* Settore */}
+                                                        <span style={{
+                                                            display: 'inline-flex', alignItems: 'center', gap: 8,
+                                                            border: '1px solid rgba(5,11,43,0.1)',
+                                                            padding: '5px 12px 5px 5px',
+                                                            background: '#FAFAFA'
+                                                        }}>
+                                                            <span style={{ width: 22, height: 22, background: 'rgba(5,11,43,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 2, flexShrink: 0 }}>
+                                                                <Briefcase size={12} color="var(--brand-navy)" />
                                                             </span>
-                                                        )}
-                                                        {selectedJob.role && (
-                                                            <span style={{
-                                                                fontFamily: body, fontSize: 11, fontWeight: 600,
-                                                                letterSpacing: '0.08em', textTransform: 'uppercase',
-                                                                color: GM,
-                                                                border: '1px solid rgba(5,11,43,0.1)',
-                                                                padding: '4px 12px',
-                                                                display: 'inline-flex', alignItems: 'center', gap: 6
-                                                            }}>
-                                                                <Briefcase size={12} /> Ruolo: {selectedJob.role}
+                                                            <span style={{ fontFamily: body, fontSize: 11, fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: GM }}>
+                                                                Settore: {deriveSector(selectedJob.title, selectedJob.sector) || selectedJob.sector || 'Altro'}
                                                             </span>
-                                                        )}
+                                                        </span>
+                                                        {/* Ruolo */}
+                                                        <span style={{
+                                                            display: 'inline-flex', alignItems: 'center', gap: 8,
+                                                            border: '1px solid rgba(5,11,43,0.1)',
+                                                            padding: '5px 12px 5px 5px',
+                                                            background: '#FAFAFA'
+                                                        }}>
+                                                            <span style={{ width: 22, height: 22, background: 'rgba(5,11,43,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 2, flexShrink: 0 }}>
+                                                                <User size={12} color="var(--brand-navy)" />
+                                                            </span>
+                                                            <span style={{ fontFamily: body, fontSize: 11, fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: GM }}>
+                                                                Ruolo: {deriveRole(selectedJob.role) || selectedJob.role || 'Altro'}
+                                                            </span>
+                                                        </span>
                                                     </div>
                                                 </div>
                                                 {selectedJob.company?.logo && (
