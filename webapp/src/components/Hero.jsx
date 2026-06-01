@@ -22,9 +22,9 @@ const Hero = ({ setShowLoginModal }) => {
 
     const lang = i18n?.language || 'it';
     const companyLinks = [
-        { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
-        { label: t('nav.pricing'), href: '/soluzioni-e-tariffe' },
-        { label: t('nav.register_company'), href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true }
+        { label: 'Come funziona', href: '/come-funziona' },
+        { label: 'Soluzioni e tariffe', href: '/soluzioni-e-tariffe' },
+        { label: 'Consigli di recruiting', href: '#blog' }
     ];
     
     const getHeroLabel = (item) => {
@@ -231,7 +231,7 @@ const Hero = ({ setShowLoginModal }) => {
                         {t('hero.candidates.subtitle') || 'PER I CANDIDATI'}
                     </p>
  
-                    <h1 
+                    <h1
                         className="hero-h1"
                         style={{
                             fontFamily: 'var(--font-brand)',
@@ -244,7 +244,7 @@ const Hero = ({ setShowLoginModal }) => {
                             marginBottom: 6
                         }}
                     >
-                        {t('hero.candidates.h1') || 'Accedi al tuo'}
+                        {t('hero.candidates.h1') || 'Trova il tuo'}
                     </h1>
                     <h1 
                         className="hero-h1-sub"
@@ -326,23 +326,13 @@ const Hero = ({ setShowLoginModal }) => {
                         </form>
                     </div>
  
-                    {/* ALTRI LINK */}
+                    {/* QUICK LINKS */}
                     <div style={{ marginTop: 'auto' }}>
-                        <p style={{
-                            fontFamily: 'var(--font-mono)',
-                            fontSize: 10,
-                            color: 'rgba(5, 11, 43, 0.5)',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.15em',
-                            marginBottom: 12
-                        }}>
-                            ALTRI LINK
-                        </p>
                         <div className="flex flex-wrap gap-3">
                             {[
-                                { label: t('nav.all_offers'), href: '/offerte', external: false },
-                                { label: t('nav.all_companies'), href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
-                                { label: t('nav.blog'), href: '#blog', external: false }
+                                { label: 'Vedi tutte le offerte', href: '/offerte', external: false },
+                                { label: 'Aziende che assumono', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
+                                { label: 'Consigli di Carriera', href: '#blog', external: false }
                             ].map(({ label, href, external }) => {
                                 const btnClass = "px-5 py-3 border border-[var(--brand-navy)]/25 text-[13px] tracking-[0.04em] text-[var(--brand-navy)] hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200";
                                 return external ? (
@@ -400,9 +390,9 @@ const Hero = ({ setShowLoginModal }) => {
                             marginBottom: 6
                         }}
                     >
-                        {t('hero.companies.h1') || 'Trova il tuo'}
+                        {t('hero.companies.h1') || 'I candidati giusti'}
                     </h1>
-                    <h1 
+                    <h1
                         className="hero-h1-sub"
                         style={{
                             fontFamily: 'var(--font-editorial)',
@@ -414,7 +404,7 @@ const Hero = ({ setShowLoginModal }) => {
                             marginBottom: isMobile ? 24 : 48
                         }}
                     >
-                        {t('hero.companies.h1_sub') || 'Miglior Talento.'}
+                        {t('hero.companies.h1_sub') || 'sono già qui.'}
                     </h1>
 
                     <div className="hero-card-box w-full max-w-lg mb-6 md:mb-8 md:h-[312px] p-6 flex flex-col justify-end" style={{ borderRadius: 0 }}>
@@ -427,48 +417,23 @@ const Hero = ({ setShowLoginModal }) => {
                                 border: 'none',
                             }}
                         >
-                            Accedi →
+                            Pubblica annuncio →
                         </AnimatedButton>
                     </div>
 
-                    {/* ALTRI LINK - AZIENDE */}
+                    {/* QUICK LINKS - AZIENDE */}
                     <div style={{ marginTop: 'auto' }}>
-                        <p style={{
-                            fontFamily: 'var(--font-mono)',
-                            fontSize: 10,
-                            color: 'rgba(255, 255, 255, 0.45)',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.15em',
-                            marginBottom: 12
-                        }}>
-                            ALTRI LINK
-                        </p>
                         <div className="flex flex-wrap gap-3">
-                            {companyLinks.map((item, idx) => {
-                                const label = getHeroLabel(item);
-                                const btnClass = "px-5 py-3 border border-white/25 text-[13px] tracking-[0.04em] text-white/90 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200";
-                                return item.external ? (
-                                    <a
-                                        key={idx}
-                                        href={item.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={btnClass}
-                                        style={{ textDecoration: 'none', borderRadius: 0 }}
-                                    >
-                                        {label}
-                                    </a>
-                                ) : (
-                                    <Link
-                                        key={idx}
-                                        to={item.href}
-                                        className={btnClass}
-                                        style={{ textDecoration: 'none', borderRadius: 0 }}
-                                    >
-                                        {label}
-                                    </Link>
-                                );
-                            })}
+                            {companyLinks.map((item, idx) => (
+                                <Link
+                                    key={idx}
+                                    to={item.href}
+                                    className="px-5 py-3 border border-white/25 text-[13px] tracking-[0.04em] text-white/90 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200"
+                                    style={{ textDecoration: 'none', borderRadius: 0 }}
+                                >
+                                    {item.label}
+                                </Link>
+                            ))}
                         </div>
                     </div>
                 </div>

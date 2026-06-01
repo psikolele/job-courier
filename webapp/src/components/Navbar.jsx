@@ -55,15 +55,18 @@ const IconMenu = () => (
 );
 
 const getCandidateLinks = () => [
-    { label: 'Vedi tutte le offerte', labelEn: 'View all offers', labelDe: 'Alle Angebote ansehen', labelFr: 'Voir toutes les offres', href: '/offerte' },
-    { label: 'Pubblica il tuo curriculum', labelEn: 'Publish your CV', labelDe: 'Lebenslauf veröffentlichen', labelFr: 'Publiez votre CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
-    { label: 'Vedi tutte le aziende', labelEn: 'View all companies', labelDe: 'Alle Unternehmen ansehen', labelFr: 'Voir toutes les entreprises', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
+    { label: 'Offerte di lavoro', labelEn: 'Job offers', labelDe: 'Stellenangebote', labelFr: 'Offres d\'emploi', href: '/offerte' },
+    { label: 'Carica il tuo CV', labelEn: 'Upload your CV', labelDe: 'Lebenslauf hochladen', labelFr: 'Déposez votre CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
+    { label: 'Aziende che assumono', labelEn: 'Hiring companies', labelDe: 'Einstellende Unternehmen', labelFr: 'Entreprises qui recrutent', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
+    { label: 'Consigli di carriera', labelEn: 'Career tips', labelDe: 'Karrieretipps', labelFr: 'Conseils carrière', href: '#blog' },
 ];
 
 const getCompanyLinks = () => [
+    { label: 'Pubblica annuncio', labelEn: 'Post a job', labelDe: 'Stelle ausschreiben', labelFr: 'Publier une annonce', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
+    { label: 'Trova candidati', labelEn: 'Find candidates', labelDe: 'Kandidaten finden', labelFr: 'Trouver des candidats', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
     { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
-    { label: 'Soluzioni e Tariffe', labelEn: 'Solutions and Prices', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
-    { label: 'Registra Azienda', labelEn: 'Register Company', labelDe: 'Unternehmen registrieren', labelFr: 'Enregistrer une entreprise', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
+    { label: 'Soluzioni e tariffe', labelEn: 'Solutions and Prices', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
+    { label: 'Consigli di recruiting', labelEn: 'Recruiting tips', labelDe: 'Recruiting-Tipps', labelFr: 'Conseils de recrutement', href: '#blog' },
 ];
 
 const getLabel = (item, lang) => {
@@ -372,7 +375,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2 tracking-[0.2em] uppercase font-sans">
                                     Candidati
                                 </h3>
-                                <p className="text-slate-500 text-sm mb-8 max-w-[240px]">Accedi al tuo profilo per gestire le candidature e il tuo CV.</p>
+                                <p className="text-slate-500 text-sm mb-8 max-w-[240px]">Accedi a migliaia di offerte di lavoro in tutta la Svizzera. Crea il tuo profilo e candidati in pochi click.</p>
                                 <p style={{ color: 'var(--brand-fuchsia)', fontSize: 11, marginTop: -12, marginBottom: 20, fontWeight: 700, letterSpacing: '0.05em' }}>
                                   Il login si apre in una finestra separata — resti sempre qui.
                                 </p>
@@ -405,7 +408,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 <h3 className="text-lg md:text-xl font-bold text-white mb-2 tracking-[0.2em] uppercase font-sans">
                                     Aziende
                                 </h3>
-                                <p className="text-slate-300 text-sm mb-8 max-w-[240px]">Pubblica le tue offerte e trova i migliori talenti.</p>
+                                <p className="text-slate-300 text-sm mb-8 max-w-[240px]">Pubblica una posizione e visualizza subito i candidati compatibili. Accedi a oltre 120'000 candidati registrati.</p>
                                 <p style={{ color: 'var(--brand-fuchsia)', fontSize: 11, marginTop: -12, marginBottom: 20, fontWeight: 700, letterSpacing: '0.05em' }}>
                                   Il login si apre in una finestra separata — resti sempre qui.
                                 </p>
@@ -425,7 +428,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                         href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it&_gl=1*e5uej*_gcl_au*MjA5NDU5ODA3Ni4xNzE4MDA1NjYy"
                                         className="w-full bg-transparent border-2 border-white/20 text-white font-bold py-4 transition-all hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] text-center px-4 rounded-none tracking-[0.1em] text-xs uppercase"
                                     >
-                                        Registra la tua azienda
+                                        Registra Azienda
                                     </motion.a>
                                 </div>
                             </div>
