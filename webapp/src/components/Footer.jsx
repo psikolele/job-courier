@@ -1,5 +1,17 @@
 import React from 'react';
 
+const IconLinkedIn = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+    </svg>
+);
+
+const IconRSS = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/>
+    </svg>
+);
+
 const Footer = () => {
     const N = 'var(--brand-navy)';
     const F = 'var(--brand-fuchsia)';
@@ -8,20 +20,22 @@ const Footer = () => {
     const body = 'var(--font-body)';
 
     const cols = [
+        { title: 'Area Legale', links: [
+            { label: 'Condizioni Generali', href: '#' },
+            { label: 'Cookie Policy', href: '#' },
+        ]},
         { title: 'Candidati', links: [
-            { label: 'Cerca lavoro', href: '/#filters' },
-            { label: 'Newsletter', href: '#' },
-            { label: 'Salva annunci', href: '#' }
+            { label: 'Offerte di lavoro', href: '/offerte' },
+            { label: 'Carica il CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it' },
+            { label: 'Login', href: '#login' },
+            { label: 'FAQ / Aiuto', href: '#' },
         ]},
         { title: 'Aziende', links: [
-            { label: 'Pubblica annuncio', href: '/soluzioni-e-tariffe' },
-            { label: 'Come funziona', href: '/come-funziona' },
-            { label: 'Piani e tariffe', href: '/soluzioni-e-tariffe' }
-        ]},
-        { title: 'Info', links: [
-            { label: 'Chi siamo', href: '#' },
-            { label: 'Privacy Policy', href: '#' },
-            { label: 'Contatti', href: '/contatti' }
+            { label: 'Pubblica annuncio', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
+            { label: 'Trova Candidati', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it' },
+            { label: 'Registra Azienda', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
+            { label: 'Login', href: '#login' },
+            { label: 'Contatti', href: '/contatti' },
         ]},
     ];
 
@@ -45,9 +59,21 @@ const Footer = () => {
                             className="h-[90px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                         />
                     </div>
-                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 16, color: 'rgba(255,255,255,0.35)', lineHeight: 1.55, maxWidth: 240 }}>
-                        Il job board professionale di riferimento per la Svizzera.
+                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 16, color: 'rgba(255,255,255,0.35)', lineHeight: 1.55, maxWidth: 240, marginBottom: 20 }}>
+                        Dove aziende e candidati si incontrano.
                     </p>
+                    <div style={{ display: 'flex', gap: 12 }}>
+                        <a href="#" aria-label="LinkedIn" style={{ color: 'rgba(255,255,255,0.35)', transition: 'color 0.15s' }}
+                            onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.8)'}
+                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}>
+                            <IconLinkedIn />
+                        </a>
+                        <a href="#" aria-label="RSS" style={{ color: 'rgba(255,255,255,0.35)', transition: 'color 0.15s' }}
+                            onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.8)'}
+                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}>
+                            <IconRSS />
+                        </a>
+                    </div>
                 </div>
 
                 {/* Link cols */}
@@ -61,8 +87,8 @@ const Footer = () => {
                                 <a
                                     href={l.href}
                                     style={{ fontFamily: body, fontSize: 13, color: 'rgba(255,255,255,0.35)', textDecoration: 'none', transition: 'color 0.15s' }}
-                                    onMouseEnter={e => e.target.style.color = 'rgba(255,255,255,0.7)'}
-                                    onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.35)'}
+                                    onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+                                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}
                                 >
                                     {l.label}
                                 </a>
