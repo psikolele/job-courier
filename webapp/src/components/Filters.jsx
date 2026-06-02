@@ -250,7 +250,7 @@ const Filters = () => {
     };
 
     return (
-        <div id="filters" className="w-full relative z-20 pb-20 pt-8" style={{ background: 'var(--brand-gray-light)' }}>
+        <div id="filters" className="w-full relative z-20 pb-20 pt-8 overflow-x-hidden" style={{ background: 'var(--brand-gray-light)' }}>
             {/* Ads top (slot 1+2) */}
             <AdBanner startIndex={0} />
 
@@ -311,7 +311,7 @@ const Filters = () => {
                 </div>
 
                 <div
-                    className="overflow-hidden pb-12 -mx-4 relative px-4"
+                    className="overflow-x-hidden pb-12 -mx-4 relative px-4"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     onTouchStart={handleTouchStart}
@@ -439,14 +439,8 @@ const Filters = () => {
                                         };
                                         return (
                                             <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'nowrap', overflowX: 'auto' }}>
-                                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                                                    <span style={lbl}>Settore</span>
-                                                    <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} />{settore}</span>
-                                                </span>
-                                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                                                    <span style={lbl}>Ruolo</span>
-                                                    <span style={{ ...chip, opacity: 0.55 }}><User size={9} />{ruolo}</span>
-                                                </span>
+                                                <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} /><span style={lbl}>Settore:</span>{settore}</span>
+                                                <span style={{ ...chip, opacity: 0.55 }}><User size={9} /><span style={lbl}>Ruolo:</span>{ruolo}</span>
                                             </div>
                                         );
                                     })()}

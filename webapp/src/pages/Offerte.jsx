@@ -321,14 +321,8 @@ const Offerte = ({ setShowLoginModal }) => {
                                                     };
                                                     return (
                                                         <div style={{ display: 'flex', alignItems: 'center', paddingTop: 10, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'nowrap', overflowX: 'auto' }}>
-                                                            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                                                                <span style={lbl}>Settore</span>
-                                                                <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} />{settore}</span>
-                                                            </span>
-                                                            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                                                                <span style={lbl}>Ruolo</span>
-                                                                <span style={{ ...chip, opacity: 0.55 }}><User size={9} />{ruolo}</span>
-                                                            </span>
+                                                            <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} /><span style={lbl}>Settore:</span>{settore}</span>
+                                                            <span style={{ ...chip, opacity: 0.55 }}><User size={9} /><span style={lbl}>Ruolo:</span>{ruolo}</span>
                                                         </div>
                                                     );
                                                 })()}
@@ -397,26 +391,20 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         const val = { fontFamily: body, fontSize: 11, fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: GM, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100px' };
                                                         return (
                                                             <div style={{ display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: 6, paddingBottom: 2 }}>
-                                                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                                                                    <span style={metaLbl}>Sede</span>
-                                                                    <span style={metaChip()}>
-                                                                        <span style={iconBox('rgba(255,31,122,0.08)')}><MapPin size={11} color="var(--brand-fuchsia)" /></span>
-                                                                        <span style={val}>{formatLocation(selectedJob.location)}</span>
-                                                                    </span>
+                                                                <span style={metaChip()}>
+                                                                    <span style={iconBox('rgba(255,31,122,0.08)')}><MapPin size={11} color="var(--brand-fuchsia)" /></span>
+                                                                    <span style={metaLbl}>Sede:</span>
+                                                                    <span style={val}>{formatLocation(selectedJob.location)}</span>
                                                                 </span>
-                                                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                                                                    <span style={metaLbl}>Settore</span>
-                                                                    <span style={metaChip()}>
-                                                                        <span style={iconBox('rgba(5,11,43,0.06)')}><Briefcase size={11} color="var(--brand-navy)" /></span>
-                                                                        <span style={val}>{deriveSector(selectedJob.title, selectedJob.sector) || selectedJob.sector || 'Altro'}</span>
-                                                                    </span>
+                                                                <span style={metaChip()}>
+                                                                    <span style={iconBox('rgba(5,11,43,0.06)')}><Briefcase size={11} color="var(--brand-navy)" /></span>
+                                                                    <span style={metaLbl}>Settore:</span>
+                                                                    <span style={val}>{deriveSector(selectedJob.title, selectedJob.sector) || selectedJob.sector || 'Altro'}</span>
                                                                 </span>
-                                                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                                                                    <span style={metaLbl}>Ruolo</span>
-                                                                    <span style={metaChip()}>
-                                                                        <span style={iconBox('rgba(5,11,43,0.06)')}><User size={11} color="var(--brand-navy)" /></span>
-                                                                        <span style={val}>{deriveRole(selectedJob.role) || selectedJob.role || 'Altro'}</span>
-                                                                    </span>
+                                                                <span style={metaChip()}>
+                                                                    <span style={iconBox('rgba(5,11,43,0.06)')}><User size={11} color="var(--brand-navy)" /></span>
+                                                                    <span style={metaLbl}>Ruolo:</span>
+                                                                    <span style={val}>{deriveRole(selectedJob.role) || selectedJob.role || 'Altro'}</span>
                                                                 </span>
                                                             </div>
                                                         );
