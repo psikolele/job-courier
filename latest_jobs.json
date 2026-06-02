@@ -1,70 +1,6 @@
 [
   {
     "id": 0,
-    "title": "GOMMISTI",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708221-gommisti-locarno&language=en"
-  },
-  {
-    "id": 1,
-    "title": "GIARDINIERE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708213-giardiniere-locarno&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Compliance Officer - Periodic Review Specialist",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Finders SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708217-compliance-officer-periodic-review-specialist-geneva&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Operaio edile - Madrelingua tedesco",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708220-operaio-edile-madrelingua-tedesco-zermatt&language=en"
-  },
-  {
-    "id": 4,
-    "title": "PROGETTISTA ELETTRICO",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "ER Services Sagl",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708210-progettista-elettrico-mendrisio&language=en"
-  },
-  {
-    "id": 5,
-    "title": "DevSecOps Engineer – Mobile Access Services",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708219-devsecops-engineer-?-mobile-access-services-bern&language=en"
-  },
-  {
-    "id": 6,
-    "title": "PITTORE CAPPOTTISTA",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708212-pittore-cappottista-locarno&language=en"
-  },
-  {
-    "id": 7,
-    "title": "FALEGNAME",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708215-falegname-locarno&language=en"
-  },
-  {
-    "id": 8,
     "title": "METALCOSTRUTTORE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,12 +8,76 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708218-metalcostruttore-locarno&language=en"
   },
   {
-    "id": 9,
-    "title": "Production Planner (Francese e SAP)",
+    "id": 1,
+    "title": "Operaio edile - Madrelingua tedesco",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708208-production-planner-francese-e-sap-stabio-lugano&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708220-operaio-edile-madrelingua-tedesco-zermatt&language=en"
+  },
+  {
+    "id": 2,
+    "title": "FALEGNAME",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708215-falegname-locarno&language=en"
+  },
+  {
+    "id": 3,
+    "title": "PROGETTISTA ELETTRICO",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "ER Services Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708210-progettista-elettrico-mendrisio&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Compliance Officer - Periodic Review Specialist",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Finders SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708217-compliance-officer-periodic-review-specialist-geneva&language=en"
+  },
+  {
+    "id": 5,
+    "title": "SELVICOLTORE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708214-selvicoltore-locarno&language=en"
+  },
+  {
+    "id": 6,
+    "title": "GIARDINIERE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708213-giardiniere-locarno&language=en"
+  },
+  {
+    "id": 7,
+    "title": "GOMMISTI",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708221-gommisti-locarno&language=en"
+  },
+  {
+    "id": 8,
+    "title": "INSTALLATORI E COLLAUDATORI ELETTRICI",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708211-installatori-e-collaudatori-elettrici-locarno&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Segretario/a Medico/a o Assistente Medico/a (contratto interinale)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708209-segretario-a-medico-a-o-assistente-medico-a-contratto-interinale-biasca&language=en"
   },
   {
     "id": 10,
@@ -89,10 +89,10 @@
   },
   {
     "id": 11,
-    "title": "SELVICOLTORE",
+    "title": "Post CH AG - MA Rotation mit Schnuppern - INSERAT",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708214-selvicoltore-locarno&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708207-post-ch-ag-ma-rotation-mit-schnuppern-inserat-schlieren-zh&language=en"
   }
 ]
