@@ -320,7 +320,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         color: GM,
                                                     };
                                                     return (
-                                                        <div style={{ display: 'flex', alignItems: 'center', paddingTop: 10, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'nowrap', overflowX: 'auto' }}>
+                                                        <div className="flex flex-col sm:flex-row items-start sm:items-center" style={{ paddingTop: 10, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6 }}>
                                                             <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} /><span style={lbl}>Settore:</span>{settore}</span>
                                                             <span style={{ ...chip, opacity: 0.55 }}><User size={9} /><span style={lbl}>Ruolo:</span>{ruolo}</span>
                                                         </div>
@@ -390,7 +390,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         });
                                                         const val = { fontFamily: body, fontSize: 11, fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: GM, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100px' };
                                                         return (
-                                                            <div style={{ display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: 6, paddingBottom: 2 }}>
+                                                            <div className="flex flex-col sm:flex-row items-start sm:items-center" style={{ gap: 6, paddingBottom: 2 }}>
                                                                 <span style={metaChip()}>
                                                                     <span style={iconBox('rgba(255,31,122,0.08)')}><MapPin size={11} color="var(--brand-fuchsia)" /></span>
                                                                     <span style={metaLbl}>Sede:</span>

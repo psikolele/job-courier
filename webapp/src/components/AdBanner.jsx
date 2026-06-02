@@ -36,14 +36,13 @@ const AdBanner = ({ startIndex = 0 }) => {
     return (
         <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 w-full my-6">
             <div
-                className="w-full grid grid-cols-1 md:grid-cols-2"
-                style={{ border: '1px solid rgba(5,11,43,0.07)', background: '#FFFFFF' }}
+                className="w-full grid grid-cols-1 md:grid-cols-2 gap-[1px]"
+                style={{ border: '1px solid rgba(5,11,43,0.07)', background: 'rgba(5,11,43,0.07)' }}
             >
                 {visibleAds.map((ad, i) => (
                     <div
                         key={startIndex + i}
-                        className="overflow-hidden relative group"
-                        style={{ borderRight: i === 0 ? '1px solid rgba(5,11,43,0.07)' : 'none' }}
+                        className="overflow-hidden relative group bg-white"
                     >
                         <span style={{
                             position: 'absolute', top: 10, right: 14,

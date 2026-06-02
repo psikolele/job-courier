@@ -217,7 +217,7 @@ const Hero = ({ setShowLoginModal }) => {
                 }
             `}</style>
             {/* ── LEFT: CANDIDATES PANEL (50% Width) ── */}
-            <div className="hero-panel relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-12 md:pt-8 pb-8 md:pb-6 bg-white z-10 border-r border-slate-200">
+            <div className="hero-panel relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-12 md:pt-8 pb-8 md:pb-6 bg-white z-10 border-r border-slate-200 min-h-[calc(100svh-80px)] md:min-h-0">
                 <div className="max-w-2xl flex flex-col flex-1">
                     <p style={{
                         fontFamily: 'var(--font-brand)',
@@ -262,8 +262,8 @@ const Hero = ({ setShowLoginModal }) => {
                     </h1>
  
                     {/* SEARCH CARD */}
-                    <div 
-                        className="hero-card-box bg-white p-6 border border-slate-200/70 shadow-sm w-full max-w-lg mb-6 md:mb-8 md:h-[312px]"
+                    <div
+                        className="hero-card-box bg-white p-6 shadow-sm w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px]"
                         style={{ borderRadius: 0 }}
                     >
                         <form onSubmit={handleSearch} className="flex flex-col h-full justify-between">
@@ -328,7 +328,7 @@ const Hero = ({ setShowLoginModal }) => {
  
                     {/* QUICK LINKS */}
                     <div style={{ marginTop: 'auto' }}>
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                             {[
                                 { label: 'Vedi tutte le offerte', href: '/offerte', external: false },
                                 { label: 'Aziende che assumono', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },

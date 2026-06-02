@@ -372,12 +372,11 @@ const Filters = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.4, delay: (idx % 4) * 0.08 }}
-                                    className="cursor-pointer w-[290px] md:w-[340px] shrink-0 group snap-center"
+                                    className="cursor-pointer w-[290px] md:w-[340px] shrink-0 group snap-center md:h-[235px]"
                                     style={{
                                         background: '#FFFFFF',
                                         border: 'none',
                                         borderBottom: '2.5px solid var(--brand-fuchsia)',
-                                        height: '235px',
                                         padding: '24px 28px',
                                         display: 'flex',
                                         flexDirection: 'column',
@@ -438,7 +437,7 @@ const Filters = () => {
                                             color: 'var(--brand-gray-mid)',
                                         };
                                         return (
-                                            <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6, flexWrap: 'nowrap', overflowX: 'auto' }}>
+                                            <div className="flex flex-col sm:flex-row items-start sm:items-center" style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6 }}>
                                                 <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} /><span style={lbl}>Settore:</span>{settore}</span>
                                                 <span style={{ ...chip, opacity: 0.55 }}><User size={9} /><span style={lbl}>Ruolo:</span>{ruolo}</span>
                                             </div>

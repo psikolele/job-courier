@@ -205,7 +205,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                     {/* Accedi link */}
                     <motion.button
                         onClick={() => setShowLoginModal(true)}
-                        className="hidden md:flex items-center cursor-pointer"
+                        className="flex items-center cursor-pointer"
                         style={{
                             fontFamily: 'var(--font-body)',
                             fontSize: 13,
