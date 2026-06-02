@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import { ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const candidateImages = {
@@ -27,83 +27,116 @@ const body = 'var(--font-body)';
 const prefersReducedMotion = () =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const MarqueeSlider = ({ title, articles, readArticleText, speed = 35 }) => {
+const Blog = () => {
+    const { t } = useTranslation();
     const sliderRef = useRef(null);
     const timelineRef = useRef(null);
-    const [isHovered, setIsHovered] = useState(false);
+    const resumeTimeoutRef = useRef(null);
 
-    // Triple the articles to ensure seamless wrapping on wider viewports
-    const duplicatedArticles = [...articles, ...articles, ...articles];
+    const candidateArticles = (t('blog.candidateArticles', { returnObjects: true }) || []).map(art => ({ ...art, image: candidateImages[art.id] }));
+    const companyArticles = (t('blog.companyArticles', { returnObjects: true }) || []).map(art => ({ ...art, image: companyImages[art.id] }));
+    const allArticles = [...candidateArticles, ...companyArticles];
+    const duplicatedArticles = [...allArticles, ...allArticles, ...allArticles];
 
     useEffect(() => {
-        if (!sliderRef.current || articles.length === 0 || prefersReducedMotion()) return;
-
+        if (!sliderRef.current || allArticles.length === 0 || prefersReducedMotion()) return;
         const slider = sliderRef.current;
-        
-        // Setup GSAP context
         const ctx = gsap.context(() => {
-            const totalWidth = slider.scrollWidth;
-            const singleSetWidth = totalWidth / 3;
-            
-            // Set scrollLeft back to 0
-            slider.scrollLeft = 0;
-
+            const singleSetWidth = slider.scrollWidth / 3;
             timelineRef.current = gsap.to(slider, {
                 scrollLeft: singleSetWidth,
-                duration: singleSetWidth / speed,
+                duration: singleSetWidth / 28,
                 ease: 'none',
                 repeat: -1,
                 modifiers: {
-                    scrollLeft: (value) => {
-                        return parseFloat(value) % singleSetWidth;
-                    }
+                    scrollLeft: (value) => parseFloat(value) % singleSetWidth
                 }
             });
         });
-
         return () => ctx.revert();
-    }, [articles, speed]);
+    }, [allArticles.length]);
 
-    useEffect(() => {
-        if (!timelineRef.current) return;
-        if (isHovered) {
-            timelineRef.current.pause();
-        } else {
-            timelineRef.current.play();
-        }
-    }, [isHovered]);
+    const handleArrow = (direction) => {
+        if (!sliderRef.current) return;
+        if (timelineRef.current) timelineRef.current.pause();
+        if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+        const amount = sliderRef.current.clientWidth / 2;
+        sliderRef.current.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
+        resumeTimeoutRef.current = setTimeout(() => {
+            if (timelineRef.current) timelineRef.current.play();
+        }, 3000);
+    };
+
+    const pauseAuto = () => { if (timelineRef.current) timelineRef.current.pause(); };
+    const resumeAuto = () => { if (timelineRef.current) timelineRef.current.play(); };
 
     return (
-        <div 
-            className="w-full py-10 bg-[#FFFFFF] relative overflow-hidden flex flex-col"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-            {/* Header section with label */}
-            <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 w-full flex items-center">
-                <div className="flex items-center gap-3">
-                    <span className="w-7 h-[2px]" style={{ background: F }} />
-                    <h2 style={{
-                        fontFamily: brand,
-                        fontWeight: 700,
-                        fontSize: 11,
-                        letterSpacing: '0.2em',
-                        textTransform: 'uppercase',
-                        color: F
-                    }}>{title}</h2>
+        <section id="blog" className="w-full relative z-10 py-16" style={{ background: GL }}>
+            {/* Header row: breadcrumb + arrows */}
+            <div className="max-w-7xl mx-auto px-6 md:px-12 pb-8">
+                <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-3">
+                        <span style={{ width: 28, height: 2, background: F, display: 'inline-block', flexShrink: 0 }} />
+                        <h2 style={{
+                            fontFamily: brand,
+                            fontWeight: 700,
+                            fontSize: 11,
+                            letterSpacing: '0.2em',
+                            textTransform: 'uppercase',
+                            color: F
+                        }}>
+                            {t('blog.title_unified') || 'Suggerimenti per la carriera e per il recruiting'}
+                        </h2>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={() => handleArrow('left')}
+                            className="w-8 h-8 rounded-full border border-slate-200/80 flex items-center justify-center transition-all duration-200 cursor-pointer"
+                            style={{ color: 'var(--brand-gray-mid)' }}
+                            onMouseEnter={e => { e.currentTarget.style.borderColor = F; e.currentTarget.style.color = F; }}
+                            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(226,232,240,0.8)'; e.currentTarget.style.color = 'var(--brand-gray-mid)'; }}
+                        >
+                            <ChevronLeft className="w-4 h-4" />
+                        </button>
+                        <button
+                            onClick={() => handleArrow('right')}
+                            className="w-8 h-8 rounded-full border border-slate-200/80 flex items-center justify-center transition-all duration-200 cursor-pointer"
+                            style={{ color: 'var(--brand-gray-mid)' }}
+                            onMouseEnter={e => { e.currentTarget.style.borderColor = F; e.currentTarget.style.color = F; }}
+                            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(226,232,240,0.8)'; e.currentTarget.style.color = 'var(--brand-gray-mid)'; }}
+                        >
+                            <ChevronRight className="w-4 h-4" />
+                        </button>
+                    </div>
                 </div>
+
+                <p style={{
+                    fontFamily: editorial,
+                    fontStyle: 'italic',
+                    fontSize: 28,
+                    color: N,
+                    maxWidth: 640,
+                    lineHeight: 1.3
+                }}>
+                    Suggerimenti editoriali per candidati e aziende, dal team Job Courier.
+                </p>
             </div>
 
-            {/* Carousel track */}
-            <div className="relative overflow-hidden w-full">
-                {/* Edge overlays for premium fade in/out */}
+            {/* Single carousel */}
+            <div
+                className="w-full bg-[#FFFFFF] relative overflow-hidden py-10"
+                onMouseEnter={pauseAuto}
+                onMouseLeave={resumeAuto}
+                onTouchStart={pauseAuto}
+                onTouchEnd={() => setTimeout(resumeAuto, 2000)}
+            >
                 <div className="absolute top-0 left-0 w-16 md:w-32 h-full z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #FFFFFF, transparent)' }} />
                 <div className="absolute top-0 right-0 w-16 md:w-32 h-full z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #FFFFFF, transparent)' }} />
 
                 <div
                     ref={sliderRef}
-                    className="flex gap-6 overflow-x-auto scrollbar-none w-full py-2"
-                    style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
+                    className="flex gap-6 overflow-x-auto scrollbar-hide w-full px-4"
+                    style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
                 >
                     {duplicatedArticles.map((article, idx) => (
                         <div key={`${article.id}-${idx}`} className="w-[280px] md:w-[350px] shrink-0 flex-none">
@@ -121,7 +154,6 @@ const MarqueeSlider = ({ title, articles, readArticleText, speed = 35 }) => {
                                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                                         loading="lazy"
                                     />
-                                    {/* Glass reflection */}
                                     <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                                 </div>
 
@@ -157,7 +189,7 @@ const MarqueeSlider = ({ title, articles, readArticleText, speed = 35 }) => {
                                         color: F,
                                         marginTop: 14
                                     }}>
-                                        <span>{readArticleText}</span>
+                                        <span>{t('blog.read_article') || 'Leggi Articolo'}</span>
                                         <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-200" />
                                     </div>
                                 </div>
@@ -165,47 +197,6 @@ const MarqueeSlider = ({ title, articles, readArticleText, speed = 35 }) => {
                         </div>
                     ))}
                 </div>
-            </div>
-        </div>
-    );
-};
-
-const Blog = () => {
-    const { t } = useTranslation();
-
-    const candidateArticles = (t('blog.candidateArticles', { returnObjects: true }) || []).map(art => ({ ...art, image: candidateImages[art.id] }));
-    const companyArticles = (t('blog.companyArticles', { returnObjects: true }) || []).map(art => ({ ...art, image: companyImages[art.id] }));
-
-    return (
-        <section id="blog" className="w-full relative z-10 py-16" style={{ background: GL }}>
-            {/* Editorial intro */}
-            <div className="max-w-7xl mx-auto px-6 md:px-12 pb-12">
-                <p style={{
-                    fontFamily: editorial,
-                    fontStyle: 'italic',
-                    fontSize: 28,
-                    color: N,
-                    maxWidth: 640,
-                    lineHeight: 1.3
-                }}>
-                    Suggerimenti editoriali per candidati e aziende, dal team Job Courier.
-                </p>
-            </div>
-
-            {/* Stacked rows/marquees layout */}
-            <div className="w-full flex flex-col gap-1" style={{ background: 'var(--brand-gray-light)' }}>
-                <MarqueeSlider
-                    title={t('blog.title_candidates') || 'Suggerimenti per la carriera'}
-                    articles={candidateArticles}
-                    readArticleText={t('blog.read_article') || 'Leggi Articolo'}
-                    speed={30}
-                />
-                <MarqueeSlider
-                    title={t('blog.title_companies') || 'Suggerimenti per il recruiting'}
-                    articles={companyArticles}
-                    readArticleText={t('blog.read_article') || 'Leggi Articolo'}
-                    speed={25} // slightly offset speed for organic layered depth
-                />
             </div>
         </section>
     );

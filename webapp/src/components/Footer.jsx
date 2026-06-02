@@ -51,17 +51,17 @@ const Footer = () => {
             }}>
                 {/* Brand col */}
                 <div>
-                    <div style={{ marginBottom: 16 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
                         <img
                             src="/logo-full-dark.svg"
                             onError={(e) => { e.currentTarget.src = '/logo-full-dark.png'; }}
                             alt="JobCourier"
-                            className="h-[90px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                            className="h-[52px] w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                         />
+                        <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 15, color: '#FFFFFF', lineHeight: 1.4, maxWidth: 200 }}>
+                            Dove aziende e candidati si incontrano.
+                        </p>
                     </div>
-                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 16, color: 'rgba(255,255,255,0.35)', lineHeight: 1.55, maxWidth: 240, marginBottom: 20 }}>
-                        Dove aziende e candidati si incontrano.
-                    </p>
                     <div style={{ display: 'flex', gap: 12 }}>
                         <a href="#" aria-label="LinkedIn" style={{ color: 'rgba(255,255,255,0.35)', transition: 'color 0.15s' }}
                             onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.8)'}
@@ -79,16 +79,16 @@ const Footer = () => {
                 {/* Link cols */}
                 {cols.map(col => (
                     <div key={col.title}>
-                        <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: F, marginBottom: 16 }}>
+                        <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 15, letterSpacing: '0.12em', textTransform: 'uppercase', color: F, marginBottom: 16 }}>
                             {col.title}
                         </div>
                         {col.links.map(l => (
                             <div key={l.label} style={{ marginBottom: 10 }}>
                                 <a
                                     href={l.href}
-                                    style={{ fontFamily: body, fontSize: 13, color: 'rgba(255,255,255,0.35)', textDecoration: 'none', transition: 'color 0.15s' }}
-                                    onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
-                                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}
+                                    style={{ fontFamily: body, fontSize: 13, color: '#FFFFFF', textDecoration: 'none', transition: 'color 0.15s' }}
+                                    onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.65)'}
+                                    onMouseLeave={e => e.currentTarget.style.color = '#FFFFFF'}
                                 >
                                     {l.label}
                                 </a>

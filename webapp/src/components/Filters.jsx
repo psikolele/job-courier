@@ -372,7 +372,7 @@ const Filters = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.4, delay: (idx % 4) * 0.08 }}
-                                    className="cursor-pointer w-[290px] md:w-[340px] shrink-0 group snap-center md:h-[235px]"
+                                    className="cursor-pointer w-[290px] md:w-[340px] shrink-0 group snap-center md:h-[235px] relative overflow-hidden"
                                     style={{
                                         background: '#FFFFFF',
                                         border: 'none',
@@ -396,9 +396,11 @@ const Filters = () => {
                                                 color: 'var(--brand-navy)',
                                                 letterSpacing: '-0.01em',
                                                 marginBottom: 5,
-                                                lineHeight: 1.3
+                                                lineHeight: 1.3,
+                                                whiteSpace: 'nowrap',
+                                                overflow: 'hidden'
                                             }}>{job.title}</div>
-                                            <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+                                            <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'nowrap', overflow: 'hidden' }}>
                                                 <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>{job.company}</span>
                                                 <span style={{ color: 'rgba(139,143,168,0.4)', fontSize: 12 }}>·</span>
                                                 <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>
@@ -437,9 +439,12 @@ const Filters = () => {
                                             color: 'var(--brand-gray-mid)',
                                         };
                                         return (
-                                            <div className="flex flex-col sm:flex-row items-start sm:items-center" style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6 }}>
-                                                <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} /><span style={lbl}>Settore:</span>{settore}</span>
-                                                <span style={{ ...chip, opacity: 0.55 }}><User size={9} /><span style={lbl}>Ruolo:</span>{ruolo}</span>
+                                            <div className="relative" style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)' }}>
+                                                <div className="flex flex-col sm:flex-row items-start sm:items-center" style={{ gap: 6, overflow: 'hidden' }}>
+                                                    <span style={{ ...chip, opacity: 0.7, maxWidth: '100%', overflow: 'hidden' }}><Briefcase size={9} /><span style={lbl}>Settore:</span>{settore}</span>
+                                                    <span style={{ ...chip, opacity: 0.55, maxWidth: '100%', overflow: 'hidden' }}><User size={9} /><span style={lbl}>Ruolo:</span>{ruolo}</span>
+                                                </div>
+                                                <div className="absolute top-0 right-0 h-full w-10 pointer-events-none sm:hidden" style={{ background: 'linear-gradient(to right, transparent, #FFFFFF)' }} />
                                             </div>
                                         );
                                     })()}
