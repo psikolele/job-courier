@@ -35,7 +35,7 @@ const Vetrini = () => {
                     fontSize: 38,
                     color: N,
                     marginBottom: 56,
-                    whiteSpace: 'nowrap',
+                    overflowWrap: 'break-word',
                     lineHeight: 1.2
                 }}>
                     Aziende e società di selezione di riferimento in Svizzera.

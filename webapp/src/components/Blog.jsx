@@ -27,7 +27,7 @@ const body = 'var(--font-body)';
 const prefersReducedMotion = () =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const MarqueeSlider = ({ title, articles, readArticleText, speed = 35 }) => {
+const MarqueeSlider = ({ articles, readArticleText, speed = 35 }) => {
     const sliderRef = useRef(null);
     const timelineRef = useRef(null);
     const resumeTimeoutRef = useRef(null);
@@ -74,19 +74,8 @@ const MarqueeSlider = ({ title, articles, readArticleText, speed = 35 }) => {
             onTouchStart={pauseAuto}
             onTouchEnd={() => setTimeout(resumeAuto, 2000)}
         >
-            {/* Header: label + arrows */}
-            <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 w-full flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                    <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                    <h3 style={{
-                        fontFamily: brand,
-                        fontWeight: 700,
-                        fontSize: 11,
-                        letterSpacing: '0.2em',
-                        textTransform: 'uppercase',
-                        color: F
-                    }}>{title}</h3>
-                </div>
+            {/* Header: arrows only */}
+            <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 w-full flex items-center justify-end">
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => handleArrow('left')}
@@ -211,7 +200,7 @@ const Blog = () => {
                     fontStyle: 'italic',
                     fontSize: 28,
                     color: N,
-                    whiteSpace: 'nowrap',
+                    overflowWrap: 'break-word',
                     lineHeight: 1.3
                 }}>
                     Suggerimenti editoriali per candidati e aziende, dal team Job Courier.
@@ -221,13 +210,11 @@ const Blog = () => {
             {/* Two separate sliders */}
             <div className="w-full flex flex-col gap-1" style={{ background: GL }}>
                 <MarqueeSlider
-                    title={t('blog.title_candidates') || 'Suggerimenti per la carriera'}
                     articles={candidateArticles}
                     readArticleText={t('blog.read_article') || 'Leggi Articolo'}
                     speed={30}
                 />
                 <MarqueeSlider
-                    title={t('blog.title_companies') || 'Suggerimenti per il recruiting'}
                     articles={companyArticles}
                     readArticleText={t('blog.read_article') || 'Leggi Articolo'}
                     speed={25}
