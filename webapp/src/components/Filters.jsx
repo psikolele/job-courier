@@ -440,7 +440,7 @@ const Filters = () => {
                                         };
                                         return (
                                             <div className="relative" style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)' }}>
-                                                <div className="flex flex-col sm:flex-row items-start sm:items-center" style={{ gap: 6, overflow: 'hidden' }}>
+                                                <div className="flex flex-col items-start" style={{ gap: 6, overflow: 'hidden' }}>
                                                     <span style={{ ...chip, opacity: 0.7, maxWidth: '100%', overflow: 'hidden' }}><Briefcase size={9} /><span style={lbl}>Settore:</span>{settore}</span>
                                                     <span style={{ ...chip, opacity: 0.55, maxWidth: '100%', overflow: 'hidden' }}><User size={9} /><span style={lbl}>Ruolo:</span>{ruolo}</span>
                                                 </div>

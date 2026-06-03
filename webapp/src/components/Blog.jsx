@@ -85,7 +85,7 @@ const Blog = () => {
                             textTransform: 'uppercase',
                             color: F
                         }}>
-                            {t('blog.title_unified') || 'Suggerimenti per la carriera e per il recruiting'}
+                            Suggerimenti per la carriera e per il recruiting
                         </h2>
                     </div>
                     <div className="flex items-center gap-2">
@@ -115,7 +115,7 @@ const Blog = () => {
                     fontStyle: 'italic',
                     fontSize: 28,
                     color: N,
-                    maxWidth: 640,
+                    whiteSpace: 'nowrap',
                     lineHeight: 1.3
                 }}>
                     Suggerimenti editoriali per candidati e aziende, dal team Job Courier.

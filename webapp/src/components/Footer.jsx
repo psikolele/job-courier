@@ -41,36 +41,29 @@ const Footer = () => {
 
     return (
         <footer style={{ background: N }} className="px-5 md:px-10 pt-12 pb-7">
-            <div style={{
-                borderBottom: '1px solid rgba(255,255,255,0.07)',
-                paddingBottom: 40,
-                marginBottom: 28,
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                gap: 40
-            }}>
-                {/* Brand col */}
-                <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pb-10 mb-7" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+                {/* Brand col — spans full width on mobile */}
+                <div className="col-span-2 md:col-span-1">
+                    <div style={{ marginBottom: 12 }}>
                         <img
                             src="/logo-full-dark.svg"
                             onError={(e) => { e.currentTarget.src = '/logo-full-dark.png'; }}
                             alt="JobCourier"
                             className="h-[52px] w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                         />
-                        <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 15, color: '#FFFFFF', lineHeight: 1.4, maxWidth: 200 }}>
-                            Dove aziende e candidati si incontrano.
-                        </p>
                     </div>
+                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 15, color: '#FFFFFF', lineHeight: 1.5, marginBottom: 20 }}>
+                        Dove aziende e candidati si incontrano.
+                    </p>
                     <div style={{ display: 'flex', gap: 12 }}>
-                        <a href="#" aria-label="LinkedIn" style={{ color: 'rgba(255,255,255,0.35)', transition: 'color 0.15s' }}
-                            onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.8)'}
-                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}>
+                        <a href="#" aria-label="LinkedIn" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.15s' }}
+                            onMouseEnter={e => e.currentTarget.style.color = '#FFFFFF'}
+                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
                             <IconLinkedIn />
                         </a>
-                        <a href="#" aria-label="RSS" style={{ color: 'rgba(255,255,255,0.35)', transition: 'color 0.15s' }}
-                            onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.8)'}
-                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}>
+                        <a href="#" aria-label="RSS" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.15s' }}
+                            onMouseEnter={e => e.currentTarget.style.color = '#FFFFFF'}
+                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
                             <IconRSS />
                         </a>
                     </div>
@@ -87,7 +80,7 @@ const Footer = () => {
                                 <a
                                     href={l.href}
                                     style={{ fontFamily: body, fontSize: 13, color: '#FFFFFF', textDecoration: 'none', transition: 'color 0.15s' }}
-                                    onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.65)'}
+                                    onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}
                                     onMouseLeave={e => e.currentTarget.style.color = '#FFFFFF'}
                                 >
                                     {l.label}
