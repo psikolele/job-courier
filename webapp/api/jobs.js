@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 
-const PAGES_TO_FETCH = 7;   // 7 pages × 15 jobs = 105, trimmed to 100
-const MAX_JOBS = 100;
+const PAGES_TO_FETCH = 3;   // 3 pages × 15 jobs = 45 — faster default load
+const MAX_JOBS = 45;
 const BATCH_SIZE = 3;       // max concurrent fetches to avoid upstream rate-limit
 
 function parseJobsFromHtml(html, offset = 0) {
@@ -141,13 +141,16 @@ export default async function handler(req, res) {
 
   try {
     const baseUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php';
+    const singlePage = req.query?.singlePage === '1';
+    const pagesToFetch = singlePage ? 1 : PAGES_TO_FETCH;
+    const maxJobs = singlePage ? 15 : MAX_JOBS;
 
     // Build per-page params, forwarding any caller query params
     const callerParams = req.query ? Object.fromEntries(
-      Object.entries(req.query).filter(([k]) => !['page'].includes(k))
+      Object.entries(req.query).filter(([k]) => !['page', 'singlePage'].includes(k))
     ) : {};
 
-    const pageUrls = Array.from({ length: PAGES_TO_FETCH }, (_, idx) => {
+    const pageUrls = Array.from({ length: pagesToFetch }, (_, idx) => {
       const url = new URL(baseUrl);
       url.searchParams.set('language', callerParams.language || 'it');
       url.searchParams.set('country', callerParams.country || '214');
@@ -181,9 +184,9 @@ export default async function handler(req, res) {
           seen.add(key);
           allJobs.push(job);
         }
-        if (allJobs.length >= MAX_JOBS) break;
+        if (allJobs.length >= maxJobs) break;
       }
-      if (allJobs.length >= MAX_JOBS) break;
+      if (allJobs.length >= maxJobs) break;
     }
 
     res.status(200).json(allJobs);

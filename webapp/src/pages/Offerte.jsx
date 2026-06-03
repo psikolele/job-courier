@@ -96,22 +96,33 @@ const Offerte = ({ setShowLoginModal }) => {
     useEffect(() => {
         const fetchJobs = async () => {
             setLoading(true);
+            setError(null);
             try {
                 const apiParams = new URLSearchParams(searchParams);
                 apiParams.delete('jobId');
-                const response = await fetch(`/api/jobs?${apiParams.toString()}`);
-                if (!response.ok) throw new Error('Failed to fetch jobs');
-                const data = await response.json();
-                setJobs(data);
-                if (!isMobile && !selectedJobId && data.length > 0) {
+                const qs = apiParams.toString();
+
+                // Phase 1: first page fast (~15 jobs, immediate render)
+                const r1 = await fetch(`/api/jobs?${qs}&singlePage=1`);
+                if (!r1.ok) throw new Error('Failed to fetch jobs');
+                const firstData = await r1.json();
+                setJobs(firstData);
+                setLoading(false);
+                if (!isMobile && !selectedJobId && firstData.length > 0) {
                     const newParams = new URLSearchParams(searchParams);
-                    newParams.set('jobId', data[0].id.toString());
+                    newParams.set('jobId', firstData[0].id.toString());
                     setSearchParams(newParams, { replace: true });
+                }
+
+                // Phase 2: full load silently in background
+                const r2 = await fetch(`/api/jobs?${qs}`);
+                if (r2.ok) {
+                    const allData = await r2.json();
+                    setJobs(allData);
                 }
             } catch (err) {
                 console.error(err);
                 setError(err.message);
-            } finally {
                 setLoading(false);
             }
         };
@@ -211,7 +222,7 @@ const Offerte = ({ setShowLoginModal }) => {
                         color: N, textTransform: 'uppercase',
                         letterSpacing: '-0.025em', lineHeight: 0.95
                     }}>
-                        {jobs.length} <span style={{ color: F }}>annunci</span> live
+                        {jobs.length} annunci live
                     </h1>
                 </div>
 
@@ -302,14 +313,14 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         />
                                                     )}
                                                 </div>
-                                                {/* Tags — always shown, label outside chip */}
+                                                {/* Tags */}
                                                 {(() => {
                                                     const settore = deriveSector(job.title, job.sector) || 'Altro';
                                                     const ruolo = deriveRole(job.role) || 'Altro';
                                                     const chip = {
-                                                        fontFamily: body, fontSize: 10, fontWeight: 600,
+                                                        fontFamily: body, fontSize: 11, fontWeight: 600,
                                                         letterSpacing: '0.06em', textTransform: 'uppercase',
-                                                        padding: '0 7px', height: '20px',
+                                                        padding: '0 9px', height: '24px',
                                                         display: 'inline-flex', alignItems: 'center',
                                                         gap: 3, borderRadius: 2,
                                                         border: '1px solid rgba(5,11,43,0.14)', color: N,
@@ -320,7 +331,10 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         color: GM,
                                                     };
                                                     return (
-                                                        <div className="flex flex-col items-start" style={{ paddingTop: 10, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 6 }}>
+                                                        <div className="flex flex-col items-start" style={{ paddingTop: 10, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 5 }}>
+                                                            {job.location && (
+                                                                <span style={{ ...chip, opacity: 0.6 }}><MapPin size={9} /><span style={lbl}>Sede:</span>{formatLocation(job.location)}</span>
+                                                            )}
                                                             <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} /><span style={lbl}>Settore:</span>{settore}</span>
                                                             <span style={{ ...chip, opacity: 0.55 }}><User size={9} /><span style={lbl}>Ruolo:</span>{ruolo}</span>
                                                         </div>
@@ -390,7 +404,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         });
                                                         const val = { fontFamily: body, fontSize: 11, fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: GM, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100px' };
                                                         return (
-                                                            <div className="flex flex-col items-start" style={{ gap: 6, paddingBottom: 2 }}>
+                                                            <div className="flex flex-col sm:flex-row items-start sm:items-center flex-wrap" style={{ gap: 6, paddingBottom: 2 }}>
                                                                 <span style={metaChip()}>
                                                                     <span style={iconBox('rgba(255,31,122,0.08)')}><MapPin size={11} color="var(--brand-fuchsia)" /></span>
                                                                     <span style={metaLbl}>Sede:</span>

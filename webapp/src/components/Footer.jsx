@@ -41,9 +41,9 @@ const Footer = () => {
 
     return (
         <footer style={{ background: N }} className="px-5 md:px-10 pt-12 pb-7">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pb-10 mb-7" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-                {/* Brand col — spans full width on mobile */}
-                <div className="col-span-2 md:col-span-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 mb-7" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+                {/* Brand col — full width on mobile, 2-col on sm, 1-col on lg */}
+                <div className="col-span-1 sm:col-span-2 lg:col-span-1">
                     <div style={{ marginBottom: 12 }}>
                         <img
                             src="/logo-full-dark.svg"
