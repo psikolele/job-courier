@@ -1,27 +1,27 @@
 [
   {
     "id": 0,
-    "title": "Automatikmonteur:in / Automatiker:in / Elektromonteur:in / Elektroinstallateur:in",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708535-automatikmonteur-in-automatiker-in-elektromonteur-in-elektroinstallateur-in-solothurn-be&language=en"
-  },
-  {
-    "id": 1,
-    "title": "RESPONSABILE AMMINISTRATIVO/A",
+    "title": "BACK OFFICE ADMINISTRATOR",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "4 U Consulting",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708542-responsabile-amministrativo-a-lugano&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708541-back-office-administrator-lugano&language=en"
+  },
+  {
+    "id": 1,
+    "title": "Technicien Service Froid - Lausanne H/F",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708540-technicien-service-froid-lausanne-h-f-lausanne&language=en"
   },
   {
     "id": 2,
-    "title": "Operatore pulizie e pulizie speciali",
+    "title": "Bauleiter Elektro (a) 100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708538-operatore-pulizie-e-pulizie-speciali-manno-lugano&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708534-bauleiter-elektro-a-100-bern-be&language=en"
   },
   {
     "id": 3,
@@ -33,14 +33,6 @@
   },
   {
     "id": 4,
-    "title": "Team Leader And Senior Relationship Manager",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Finders SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708543-team-leader-and-senior-relationship-manager-geneva&language=en"
-  },
-  {
-    "id": 5,
     "title": "Leiter operatives Geschäft Elektro (a) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,28 +40,36 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708536-leiter-operatives-gesch%C3%A4ft-elektro-a-100-bern-bern&language=en"
   },
   {
-    "id": 6,
-    "title": "Logistikfachmann/frau",
+    "id": 5,
+    "title": "Team Leader And Senior Relationship Manager",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708537-logistikfachmann-frau-chur-gr&language=en"
+    "company": "Finders SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708543-team-leader-and-senior-relationship-manager-geneva&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Operatore pulizie e pulizie speciali",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708538-operatore-pulizie-e-pulizie-speciali-manno-lugano&language=en"
   },
   {
     "id": 7,
-    "title": "Bauleiter Elektro (a) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708534-bauleiter-elektro-a-100-bern-be&language=en"
-  },
-  {
-    "id": 8,
     "title": "Baumaschinenführer/in",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708533-baumaschinenfuhrer-in-chur-gr&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Sachbearbeiter Innendienst 60% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708532-sachbearbeiter-innendienst-60-m-w-d-wohlen-ag&language=en"
   },
   {
     "id": 9,
@@ -81,18 +81,18 @@
   },
   {
     "id": 10,
-    "title": "Technicien Service Froid - Lausanne H/F",
+    "title": "RESPONSABILE AMMINISTRATIVO/A",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Approach People Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708540-technicien-service-froid-lausanne-h-f-lausanne&language=en"
+    "company": "4 U Consulting",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708542-responsabile-amministrativo-a-lugano&language=en"
   },
   {
     "id": 11,
-    "title": "Comptable Bancaire",
+    "title": "Automatikmonteur:in / Automatiker:in / Elektromonteur:in / Elektroinstallateur:in",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Finders SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708544-comptable-bancaire-gen%C3%A8ve&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6708535-automatikmonteur-in-automatiker-in-elektromonteur-in-elektroinstallateur-in-solothurn-be&language=en"
   }
 ]
