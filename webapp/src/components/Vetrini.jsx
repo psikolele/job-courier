@@ -8,7 +8,16 @@ const Vetrini = () => {
         { name: "Manpower", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244661.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244661&company-name=manpower" },
         { name: "PKB Private Bank SA", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244624.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244624&company-name=pkb-private-bank-sa" },
         { name: "Finders SA", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243489.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243489&company-name=finders-sa" },
-        { name: "FISIOTERAPIA IGEA SAGL", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244807.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244807&company-name=fisioterapia-igea-sagl" }
+        { name: "FISIOTERAPIA IGEA SAGL", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244807.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244807&company-name=fisioterapia-igea-sagl" },
+        { name: "Aposto Personal GmbH", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244399.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244399&company-name=aposto-personal-gmbh" },
+        { name: "Approach People Recruitment", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244226.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244226&company-name=approach-people-recruitment" },
+        { name: "Team Personnel Solutions SA", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243352.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243352&company-name=team-personnel-solutions-sa" },
+        { name: "Work Selection AG", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243557.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243557&company-name=work-selection-ag" },
+        { name: "4 U Consulting", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243389.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243389&company-name=4-u-consulting" },
+        { name: "Rapelli - ORIOR Food AG", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244679.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244679&company-name=rapelli---orior-food-ag" },
+        { name: "Lares Sagl", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244801.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244801&company-name=lares-sagl" },
+        { name: "E-Work Sagl", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244738.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244738&company-name=e-work-sagl" },
+        { name: "ER Services Sagl", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243694.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243694&company-name=er-services-sagl" }
     ];
 
     const N = 'var(--brand-navy)';
@@ -41,7 +50,7 @@ const Vetrini = () => {
                     Aziende e società di selezione di riferimento in Svizzera.
                 </h2>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6" style={{ gap: 1, background: 'rgba(5,11,43,0.06)' }}>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" style={{ gap: 1, background: 'rgba(5,11,43,0.06)' }}>
                     {companies.map((company, idx) => (
                         <motion.a
                             key={idx}
