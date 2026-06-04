@@ -136,14 +136,24 @@
   justify-content: center;
   flex-shrink: 0;
 }
+.jc-dot-border-container {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  top: 7.5%;
+  left: 7.5%;
+  pointer-events: none;
+  z-index: 3;
+}
 .jc-dot-dot {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: #fff;
   animation: moveDot 4s linear infinite;
-  z-index: 3;
   box-shadow: 0 0 8px rgba(255,255,255,0.85);
 }
 .jc-dot-card {
@@ -203,11 +213,24 @@
 .jc-dot-rightl  { right: 0;  top: 12px;  bottom: 12px; width: 1px; }
 
 @keyframes moveDot {
-  /* Traces the card border clockwise. Card: 162×136px centered in 190×160px outer.
-     Card edges: top=12px, bottom=148px, left=14px, right=176px.
-     Dot (10px): subtract 5px to center on border line. */
-  0%, 100% { top: 7px;   right: 9px;   }   /* top-right corner  */
-  25%      { top: 7px;   right: 171px; }   /* top-left corner   */
-  50%      { top: 143px; right: 171px; }   /* bottom-left corner*/
-  75%      { top: 143px; right: 9px;   }   /* bottom-right corner */
+  0%, 100% {
+    top: 0%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+  }
+  25% {
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    top: 100%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+  }
+  75% {
+    top: 100%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+  }
 }

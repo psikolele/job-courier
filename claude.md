@@ -278,10 +278,58 @@ mindmap
 - [ ] Token usage tracked (stayed under 50k?)
 - [ ] No console.log/debugger in production code
 - [ ] Tests written for critical paths
+- [ ] **Temp files eliminati** — script `_*_tmp.*`, output intermedi, screenshot diagnostici cancellati a fine sessione
+
+## 🗑️ Temp File Rule
+
+Script Python/JS/Bash per task singolo → **eliminare subito dopo uso**.  
+Prefisso `_` = temporaneo = cancellare.  
+Asset finali, sorgente React, wiki → conservare.  
+Ref: `00_Wiki/concepts/token-optimization.md` § Temporary File Policy
 
 ---
 
 **Model:** Haiku 4.5  
 **Status:** 🔴 CRITICAL  
 **Deadline:** URGENT  
-**Last Updated:** 2026-04-13
+**Last Updated:** 2026-05-27
+
+---
+
+## 📋 Notion — Formato Sessioni di Lavoro (OBBLIGATORIO)
+
+**Database:** `collection://6ba19f86-ee14-46b1-b082-7ad1363711f9`  
+**Progetto Collegato Job Courier (dev):** `https://www.notion.so/32cfa85c0d0381babb25e98a05c98279`  
+**Progetto Collegato Job Courier (generale):** `https://www.notion.so/317fa85c0d0380faa38ecb41059d5e74`
+
+### Struttura ESATTA del contenuto pagina (Notion-flavored Markdown)
+
+```
+## 🎯 Obiettivo della sessione
+**Conclusione:** [frase singola riassuntiva di cosa è stato fatto e perché]
+**📋 Attività svolte:**
+- [attività 1]
+- [attività 2]
+- [attività N]
+---
+## ✅ Risultati raggiunti
+- **[Etichetta breve]:** [descrizione risultato concreto]
+- **[Etichetta breve]:** [descrizione risultato concreto]
+---
+## 📋 Prossimi passi
+- [azione futura 1]
+- [azione futura 2]
+---
+## [Sezione specifica opzionale — es. 🗺️ Implementation Plan / 🔍 Logica / 📅 Timeline]
+[tabelle, codice, dettagli tecnici]
+```
+
+### Regole
+- **NO callout block** (`<callout>`) come blocco introduttivo — inizia SEMPRE con `## 🎯`
+- **NO `# 🛠️ Dev Log`** come titolo interno — è uno stile vecchio
+- Sezioni separate sempre da `---`
+- Bullet list con `**Label:**` prefix per risultati
+- Tabelle Notion con `<table header-row="true">` solo per implementation plan / timeline / task list
+- Proprietà `Minuti Lavorati`: numero intero (es. 120, non "120 minuti")
+- Proprietà `Categoria`: uno tra `Sviluppo | Bug Fix | Meeting | Preparazione Corsi | Erogazione corso | Formazione | Debug | Altro`
+- Se sessione copre sia sviluppo che meeting → `Categoria: Sviluppo`, dettaglio meeting nella sezione Attività svolte

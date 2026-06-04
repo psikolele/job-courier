@@ -27,13 +27,16 @@ export default function DotCard({ target = 777000, duration = 2000, label = 'Vie
     return `${thousands}'${String(remainder).padStart(3, '0')}`;
   };
   const display = `${formatSwiss(count)}${count >= target ? '+' : ''}`;
+  const isLongText = display.length > 7;
 
   return (
     <div className="jc-dot-outer">
-      <div className="jc-dot-dot" />
+      <div className="jc-dot-border-container">
+        <div className="jc-dot-dot" />
+      </div>
       <div className="jc-dot-card">
         <div className="jc-dot-ray" />
-        <div className="jc-dot-text">{display}</div>
+        <div className="jc-dot-text" style={{ fontSize: isLongText ? '1.9rem' : '2.4rem' }}>{display}</div>
         <div className="jc-dot-label">{label}</div>
         <div className="jc-dot-line jc-dot-topl" />
         <div className="jc-dot-line jc-dot-leftl" />
