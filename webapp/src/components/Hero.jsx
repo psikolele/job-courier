@@ -407,6 +407,19 @@ const Hero = ({ setShowLoginModal }) => {
                         {t('hero.companies.h1_sub') || 'sono già qui.'}
                     </h1>
 
+                    {/* Stat aziende — var(--brand-white) su bg navy */}
+                    <div style={{ marginBottom: isMobile ? 20 : 32, display: 'flex', flexWrap: 'wrap', gap: isMobile ? 12 : 24 }}>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <span style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: isMobile ? 22 : 28, color: 'var(--brand-white)', letterSpacing: '-0.02em', lineHeight: 1 }}>120'000+</span>
+                            <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--brand-white)', opacity: 0.6, letterSpacing: '0.06em', textTransform: 'uppercase', marginTop: 4 }}>candidati registrati</span>
+                        </div>
+                        <span style={{ color: 'var(--brand-fuchsia)', fontWeight: 700, fontSize: 20, alignSelf: 'center' }}>•</span>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <span style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: isMobile ? 22 : 28, color: 'var(--brand-white)', letterSpacing: '-0.02em', lineHeight: 1 }}>3'000+</span>
+                            <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--brand-white)', opacity: 0.6, letterSpacing: '0.06em', textTransform: 'uppercase', marginTop: 4 }}>candidature al mese</span>
+                        </div>
+                    </div>
+
                     <div className="hero-card-box w-full max-w-lg mb-6 md:mb-8 md:h-[312px] p-6 flex flex-col justify-end" style={{ borderRadius: 0 }}>
                         <AnimatedButton
                             onClick={() => setShowLoginModal(true)}
