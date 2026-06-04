@@ -20,7 +20,13 @@ export default function DotCard({ target = 777000, duration = 2000, label = 'Vie
     return () => clearInterval(timer);
   }, [target, duration]);
 
-  const display = count < 1000 ? count : `${Math.floor(count / 1000)}k`;
+  const formatSwiss = (n) => {
+    if (n < 1000) return `${n}`;
+    const thousands = Math.floor(n / 1000);
+    const remainder = n % 1000;
+    return `${thousands}'${String(remainder).padStart(3, '0')}`;
+  };
+  const display = `${formatSwiss(count)}${count >= target ? '+' : ''}`;
 
   return (
     <div className="jc-dot-outer">

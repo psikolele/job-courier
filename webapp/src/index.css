@@ -143,10 +143,8 @@
   border-radius: 50%;
   background: #fff;
   animation: moveDot 4s linear infinite;
-  z-index: 2;
-  top: 10%;
-  right: 10%;
-  box-shadow: 0 0 6px rgba(255,255,255,0.7);
+  z-index: 3;
+  box-shadow: 0 0 8px rgba(255,255,255,0.85);
 }
 .jc-dot-card {
   position: relative;
@@ -185,8 +183,8 @@
 .jc-dot-label {
   font-family: var(--font-brand);
   font-weight: 700;
-  font-size: 0.42rem;
-  letter-spacing: 0.2em;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.45);
   margin-top: 8px;
@@ -205,8 +203,11 @@
 .jc-dot-rightl  { right: 0;  top: 12px;  bottom: 12px; width: 1px; }
 
 @keyframes moveDot {
-  0%, 100% { top: 10%; right: 10%; }
-  25%  { top: 10%; right: calc(100% - 35px); }
-  50%  { top: calc(100% - 30px); right: calc(100% - 35px); }
-  75%  { top: calc(100% - 30px); right: 10%; }
+  /* Traces the card border clockwise. Card: 162×136px centered in 190×160px outer.
+     Card edges: top=12px, bottom=148px, left=14px, right=176px.
+     Dot (10px): subtract 5px to center on border line. */
+  0%, 100% { top: 7px;   right: 9px;   }   /* top-right corner  */
+  25%      { top: 7px;   right: 171px; }   /* top-left corner   */
+  50%      { top: 143px; right: 171px; }   /* bottom-left corner*/
+  75%      { top: 143px; right: 9px;   }   /* bottom-right corner */
 }

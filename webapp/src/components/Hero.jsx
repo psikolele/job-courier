@@ -329,13 +329,13 @@ const Hero = ({ setShowLoginModal }) => {
  
                     {/* QUICK LINKS */}
                     <div className="w-full max-w-lg mx-auto" style={{ marginTop: 16 }}>
-                        <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+                        <div className="flex gap-2">
                             {[
                                 { label: 'Vedi tutte le offerte', href: '/offerte', external: false },
                                 { label: 'Aziende che assumono', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
                                 { label: 'Consigli di Carriera', href: '#blog', external: false }
                             ].map(({ label, href, external }) => {
-                                const btnClass = "px-5 py-3 border border-[var(--brand-navy)]/25 text-[13px] tracking-[0.04em] text-[var(--brand-navy)] hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200";
+                                const btnClass = "flex-1 py-3 border border-[var(--brand-navy)]/25 text-[11px] tracking-[0.04em] text-center text-[var(--brand-navy)] hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200";
                                 return external ? (
                                     <a
                                         key={label}
@@ -409,7 +409,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </h1>
 
                     {/* Stat aziende + CTA — same container as candidati form */}
-                    <div className="hero-card-box w-full max-w-lg mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between" style={{ borderRadius: 0 }}>
+                    <div className="hero-card-box w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between" style={{ borderRadius: 0 }}>
                         {/* DotCards row — fixed size, centered */}
                         <div style={{ display: 'flex', gap: 16, flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 8 }}>
                             <DotCard target={120000} duration={2200} label="Candidati registrati" />
@@ -426,13 +426,13 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
 
                     {/* QUICK LINKS - AZIENDE */}
-                    <div className="w-full max-w-lg" style={{ marginTop: 16 }}>
-                        <div className="flex flex-wrap gap-3">
+                    <div className="w-full max-w-lg mx-auto" style={{ marginTop: 16 }}>
+                        <div className="flex gap-2">
                             {companyLinks.map((item, idx) => (
                                 <Link
                                     key={idx}
                                     to={item.href}
-                                    className="px-5 py-3 border border-white/25 text-[13px] tracking-[0.04em] text-white/90 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200"
+                                    className="flex-1 py-3 border border-white/25 text-[11px] tracking-[0.04em] text-center text-white/90 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200"
                                     style={{ textDecoration: 'none', borderRadius: 0 }}
                                 >
                                     {item.label}
