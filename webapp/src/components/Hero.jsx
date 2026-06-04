@@ -409,7 +409,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </h1>
 
                     {/* Stat aziende + CTA — same container as candidati form */}
-                    <div className="w-full max-w-lg mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between" style={{ borderRadius: 0 }}>
+                    <div className="hero-card-box w-full max-w-lg mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between" style={{ borderRadius: 0 }}>
                         {/* DotCards row — fill available height */}
                         <div style={{ display: 'flex', gap: 12, flex: 1, paddingBottom: 16 }}>
                             <DotCard target={120000} duration={2200} label="Candidati registrati" />
