@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { fetchLatestJobs } from '../services/api';
-import AdBanner from './AdBanner';
 import useRegistrationWall from '../hooks/useRegistrationWall';
 import RegistrationWallModal from './RegistrationWallModal';
 
@@ -456,9 +455,6 @@ const Filters = () => {
                         Vedi tutte le offerte <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>
-
-                {/* AdBanner 2×2 BLC */}
-                <AdBanner />
             </div>
             <RegistrationWallModal isOpen={wall.isOpen} onClose={() => wall.setIsOpen(false)} />
         </div>

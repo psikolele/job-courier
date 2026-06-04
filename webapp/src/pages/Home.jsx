@@ -14,7 +14,11 @@ const Home = ({ setShowLoginModal }) => {
       <div style={{display:'none'}}><Stats /></div>
       <Filters />
 
+      <AdBanner type="top" />
+
       <Vetrini />
+
+      <AdBanner type="bottom" />
 
       <Blog />
     </main>
