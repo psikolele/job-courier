@@ -82,7 +82,7 @@ const Vetrini = () => {
                                 />
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                                <span style={{ width: 5, height: 5, borderRadius: '50%', background: F, display: 'inline-block' }} />
+                                <span style={{ width: 6, height: 6, background: F, display: 'inline-block' }} />
                                 <span style={{
                                     fontFamily: body,
                                     fontSize: 10,

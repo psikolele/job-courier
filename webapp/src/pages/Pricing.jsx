@@ -238,7 +238,7 @@ const Pricing = () => {
                                                 <ul className="space-y-3 mb-8 flex-grow">
                                                     {plan.features.map((f, fIdx) => (
                                                         <li key={fIdx} className="flex items-start gap-3" style={{ fontFamily: body, fontSize: 13, color: N }}>
-                                                            <span style={{ width: 5, height: 5, borderRadius: '50%', background: F, marginTop: 8, flexShrink: 0, display: 'inline-block' }} />
+                                                            <span style={{ width: 8, height: 8, background: F, marginTop: 4, flexShrink: 0, display: 'inline-block' }} />
                                                             <span>{f}</span>
                                                         </li>
                                                     ))}
@@ -267,7 +267,7 @@ const Pricing = () => {
                             {requested.map((section, idx) => (
                                 <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.08 * idx }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-                                        <span style={{ width: 7, height: 7, borderRadius: '50%', background: F, display: 'inline-block' }} />
+                                        <span style={{ width: 8, height: 8, background: F, display: 'inline-block' }} />
                                         <h3 style={{ fontFamily: brand, fontWeight: 700, fontSize: 14, color: N, letterSpacing: '0.16em', textTransform: 'uppercase' }}>{section.category}</h3>
                                     </div>
 
@@ -287,7 +287,7 @@ const Pricing = () => {
                                                 <ul className="space-y-3 mb-8 flex-grow">
                                                     {plan.features.map((f, fIdx) => (
                                                         <li key={fIdx} className="flex items-start gap-3" style={{ fontFamily: body, fontSize: 13, color: N }}>
-                                                            <span style={{ width: 5, height: 5, borderRadius: '50%', background: F, marginTop: 8, flexShrink: 0, display: 'inline-block' }} />
+                                                            <span style={{ width: 8, height: 8, background: F, marginTop: 4, flexShrink: 0, display: 'inline-block' }} />
                                                             <span>{f}</span>
                                                         </li>
                                                     ))}
