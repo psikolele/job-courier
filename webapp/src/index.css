@@ -126,7 +126,84 @@
   scrollbar-width: none;
 }
 
-/* Moving Dot Card — keyframe only (component uses inline styles) */
+/* Moving Dot Card — namespaced CSS classes */
+.jc-dot-outer {
+  position: relative;
+  width: 190px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.jc-dot-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  animation: moveDot 4s linear infinite;
+  z-index: 2;
+  top: 10%;
+  right: 10%;
+  box-shadow: 0 0 6px rgba(255,255,255,0.7);
+}
+.jc-dot-card {
+  position: relative;
+  width: 85%;
+  height: 85%;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.jc-dot-ray {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.jc-dot-text {
+  font-family: var(--font-brand);
+  font-weight: 900;
+  font-size: 2.4rem;
+  color: #a8c4e8;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+.jc-dot-label {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 0.42rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 6px;
+}
+.jc-dot-line {
+  position: absolute;
+  background: rgba(255,255,255,0.13);
+}
+.jc-dot-topl    { top: 0;    left: 12px; right: 12px; height: 1px; }
+.jc-dot-bottoml { bottom: 0; left: 12px; right: 12px; height: 1px; }
+.jc-dot-leftl   { left: 0;   top: 12px;  bottom: 12px; width: 1px; }
+.jc-dot-rightl  { right: 0;  top: 12px;  bottom: 12px; width: 1px; }
+
 @keyframes moveDot {
   0%, 100% { top: 10%; right: 10%; }
   25%  { top: 10%; right: calc(100% - 35px); }

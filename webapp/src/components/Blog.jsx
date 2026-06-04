@@ -119,8 +119,8 @@ const MarqueeSlider = ({ title, subtitle, articles, readArticleText, speed = 35 
             )}
             </div>
 
-            {/* Carousel track */}
-            <div className="relative overflow-hidden w-full">
+            {/* Carousel track — margini paralleli al testo sopra */}
+            <div className="relative overflow-hidden w-full px-6 md:px-12">
                 <div className="absolute top-0 left-0 w-16 md:w-32 h-full z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #FFFFFF, transparent)' }} />
                 <div className="absolute top-0 right-0 w-16 md:w-32 h-full z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #FFFFFF, transparent)' }} />
 
@@ -213,7 +213,7 @@ const Blog = () => {
                         textTransform: 'uppercase',
                         color: F
                     }}>
-                        Suggerimenti per la carriera e per il recruiting
+                        Consigli di carriera
                     </h2>
                 </div>
                 <p style={{
@@ -224,7 +224,7 @@ const Blog = () => {
                     overflowWrap: 'break-word',
                     lineHeight: 1.3
                 }}>
-                    Suggerimenti editoriali per candidati e aziende, dal team Job Courier.
+                    Consigli di recruiting.
                 </p>
             </div>
 

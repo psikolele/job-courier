@@ -328,7 +328,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
  
                     {/* QUICK LINKS */}
-                    <div style={{ marginTop: 16 }}>
+                    <div className="w-full max-w-lg mx-auto" style={{ marginTop: 16 }}>
                         <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                             {[
                                 { label: 'Vedi tutte le offerte', href: '/offerte', external: false },
@@ -410,8 +410,8 @@ const Hero = ({ setShowLoginModal }) => {
 
                     {/* Stat aziende + CTA — same container as candidati form */}
                     <div className="hero-card-box w-full max-w-lg mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between" style={{ borderRadius: 0 }}>
-                        {/* DotCards row — fill available height */}
-                        <div style={{ display: 'flex', gap: 12, flex: 1, paddingBottom: 16 }}>
+                        {/* DotCards row — fixed size, centered */}
+                        <div style={{ display: 'flex', gap: 16, flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 8 }}>
                             <DotCard target={120000} duration={2200} label="Candidati registrati" />
                             <DotCard target={3000} duration={1800} label="Candidature al mese" />
                         </div>
@@ -426,7 +426,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
 
                     {/* QUICK LINKS - AZIENDE */}
-                    <div style={{ marginTop: 16 }}>
+                    <div className="w-full max-w-lg" style={{ marginTop: 16 }}>
                         <div className="flex flex-wrap gap-3">
                             {companyLinks.map((item, idx) => (
                                 <Link

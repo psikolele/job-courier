@@ -1,47 +1,27 @@
 import React from 'react';
 
-const ads = [
-    {
-        href: 'https://ated.ch/corsi-di-formazione-ict?hsCtaAttrib=188270968997',
-        img: '/img/banner-forma-academy.png',
-        alt: 'Forma Academy — Corsi ICT',
-        fit: 'cover',
-        position: 'right center'
-    },
-    {
-        href: 'https://www.blc-sa.ch',
-        img: '/img/Gemini_Generated_Image_ape98sape98sape9.png',
-        alt: 'Business Learning Centre SA',
-        fit: 'cover'
-    },
-    {
-        href: 'https://www.svbl.ch/it/',
-        img: '/img/banner-asfl-svbl.png',
-        alt: 'ASFL SVBL — Formazione Professionale Logistica',
-        fit: 'contain'
-    },
-    {
-        href: 'https://www.wallmoss.ch/',
-        img: '/img/Gemini_Generated_Image_lw18o4lw18o4lw18.png',
-        alt: 'Wallmoss Interior Design',
-        fit: 'cover'
-    }
-];
+const blcAd = {
+    href: 'https://www.blc-sa.ch',
+    img: '/img/Gemini_Generated_Image_ape98sape98sape9.png',
+    alt: 'Business Learning Centre SA',
+    fit: 'cover'
+};
 
-const AdBanner = ({ startIndex = 0 }) => {
+const ads = [blcAd, blcAd, blcAd, blcAd];
+
+const AdBanner = () => {
     const GM = 'var(--brand-gray-mid)';
     const body = 'var(--font-body)';
-    const visibleAds = ads.slice(startIndex, startIndex + 2);
 
     return (
         <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 w-full my-6">
             <div
-                className="w-full grid grid-cols-1 md:grid-cols-2 gap-[1px]"
+                className="w-full grid grid-cols-2 gap-[1px]"
                 style={{ border: '1px solid rgba(5,11,43,0.07)', background: 'rgba(5,11,43,0.07)' }}
             >
-                {visibleAds.map((ad, i) => (
+                {ads.map((ad, i) => (
                     <div
-                        key={startIndex + i}
+                        key={i}
                         className="overflow-hidden relative group bg-white"
                     >
                         <span style={{

@@ -251,9 +251,6 @@ const Filters = () => {
 
     return (
         <div id="filters" className="w-full relative z-20 pb-20 pt-8 overflow-x-hidden" style={{ background: 'var(--brand-gray-light)' }}>
-            {/* Ads top (slot 1+2) */}
-            <AdBanner startIndex={0} />
-
             {/* Latest Jobs Feed from Vercel Proxy */}
             <div className="pt-4 w-[98%] mx-auto">
                 <div className="flex items-center justify-between mb-10 px-4 md:px-8">
@@ -460,8 +457,8 @@ const Filters = () => {
                     </button>
                 </div>
 
-                {/* Ads bottom (slot 3+4) */}
-                <AdBanner startIndex={2} />
+                {/* AdBanner 2×2 BLC */}
+                <AdBanner />
             </div>
             <RegistrationWallModal isOpen={wall.isOpen} onClose={() => wall.setIsOpen(false)} />
         </div>
