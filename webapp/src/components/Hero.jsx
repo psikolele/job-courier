@@ -327,7 +327,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
  
                     {/* QUICK LINKS */}
-                    <div style={{ marginTop: 'auto' }}>
+                    <div style={{ marginTop: 16 }}>
                         <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                             {[
                                 { label: 'Vedi tutte le offerte', href: '/offerte', external: false },
@@ -435,7 +435,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
 
                     {/* QUICK LINKS - AZIENDE */}
-                    <div style={{ marginTop: 'auto' }}>
+                    <div style={{ marginTop: 16 }}>
                         <div className="flex flex-wrap gap-3">
                             {companyLinks.map((item, idx) => (
                                 <Link
