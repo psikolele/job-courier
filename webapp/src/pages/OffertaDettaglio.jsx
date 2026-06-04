@@ -321,9 +321,9 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                                 }}>PERCHÉ CANDIDARSI ANCHE SE QUESTA OFFERTA NON FA PER TE</p>
                                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                     {[
-                                        'Il tuo profilo resta visibile a tutte le aziende partner su JobCourier',
-                                        'Le aziende possono trovarti nel database anche senza candidatura diretta',
-                                        'Ogni giorno nuove offerte compatibili con il tuo profilo vengono pubblicate'
+                                        'Accesso diretto a migliaia di offerte in tutta Svizzera',
+                                        'Notifiche sulle nuove offerte pubblicate di tuo interesse',
+                                        'Permetti ai recruiter di vedere il tuo profilo e farti contattare'
                                     ].map((item, i) => (
                                         <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10, fontFamily: body, fontSize: 13, color: N, lineHeight: 1.5 }}>
                                             <span style={{ width: 8, height: 8, background: F, flexShrink: 0, marginTop: 4, display: 'inline-block' }} />

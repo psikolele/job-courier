@@ -231,8 +231,13 @@ const ComeFunziona = () => {
                     <h2 style={{
                         fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 6vw, 4rem)',
                         color: 'var(--brand-white)', textTransform: 'uppercase',
-                        letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 20
+                        letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 12
                     }}>{t('come_funziona.cta_title')}</h2>
+                    <p style={{
+                        fontFamily: brand, fontWeight: 700, fontSize: 13,
+                        color: F, letterSpacing: '0.14em', textTransform: 'uppercase',
+                        marginBottom: 16
+                    }}>TROVA CANDIDATI IN MODO SEMPLICE.</p>
                     <p style={{
                         fontFamily: body, fontSize: 16,
                         color: 'rgba(255,255,255,0.6)', lineHeight: 1.6,
