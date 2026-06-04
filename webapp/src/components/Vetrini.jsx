@@ -35,7 +35,7 @@ const Vetrini = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                     <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
                     <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
-                        Aziende Vetrina
+                        Aziende Partner
                     </span>
                 </div>
                 <h2 style={{
@@ -43,12 +43,21 @@ const Vetrini = () => {
                     fontStyle: 'italic',
                     fontSize: 38,
                     color: N,
-                    marginBottom: 56,
+                    marginBottom: 8,
                     overflowWrap: 'break-word',
                     lineHeight: 1.2
                 }}>
                     Aziende e società di selezione di riferimento in Svizzera.
                 </h2>
+                <p style={{
+                    fontFamily: body,
+                    fontSize: 14,
+                    color: GM,
+                    marginBottom: 48,
+                    overflowWrap: 'break-word'
+                }}>
+                    Aziende e recruiter che si affidano a JobCourier.
+                </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" style={{ gap: 1, background: 'rgba(5,11,43,0.06)' }}>
                     {companies.map((company, idx) => (

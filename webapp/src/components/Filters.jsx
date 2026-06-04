@@ -269,7 +269,7 @@ const Filters = () => {
                         gap: 12
                     }}>
                         <span style={{ width: 28, height: 2, background: 'var(--brand-fuchsia)', display: 'inline-block' }} />
-                        Ultime offerte inserite
+                        Offerte appena pubblicate
                     </h3>
                     
                     <div className="flex items-center gap-6">

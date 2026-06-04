@@ -27,7 +27,7 @@ const body = 'var(--font-body)';
 const prefersReducedMotion = () =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const MarqueeSlider = ({ articles, readArticleText, speed = 35 }) => {
+const MarqueeSlider = ({ title, subtitle, articles, readArticleText, speed = 35 }) => {
     const sliderRef = useRef(null);
     const timelineRef = useRef(null);
     const resumeTimeoutRef = useRef(null);
@@ -74,9 +74,21 @@ const MarqueeSlider = ({ articles, readArticleText, speed = 35 }) => {
             onTouchStart={pauseAuto}
             onTouchEnd={() => setTimeout(resumeAuto, 2000)}
         >
-            {/* Header: arrows only */}
-            <div className="max-w-7xl mx-auto px-6 md:px-12 mb-8 w-full flex items-center justify-end">
-                <div className="flex items-center gap-2">
+            {/* Header: title + subtitle + arrows */}
+            <div className="max-w-7xl mx-auto px-6 md:px-12 mb-6 w-full">
+                <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-3">
+                        <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                        <h3 style={{
+                            fontFamily: brand,
+                            fontWeight: 700,
+                            fontSize: 11,
+                            letterSpacing: '0.2em',
+                            textTransform: 'uppercase',
+                            color: F
+                        }}>{title}</h3>
+                    </div>
+                    <div className="flex items-center gap-2">
                     <button
                         onClick={() => handleArrow('left')}
                         className="w-8 h-8 rounded-full border border-slate-200/80 flex items-center justify-center transition-all duration-200 cursor-pointer"
@@ -96,6 +108,15 @@ const MarqueeSlider = ({ articles, readArticleText, speed = 35 }) => {
                         <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>
+            </div>
+            {subtitle && (
+                <p style={{
+                    fontFamily: body,
+                    fontSize: 13,
+                    color: GM,
+                    marginTop: 4
+                }}>{subtitle}</p>
+            )}
             </div>
 
             {/* Carousel track */}
@@ -210,11 +231,15 @@ const Blog = () => {
             {/* Two separate sliders */}
             <div className="w-full flex flex-col gap-1" style={{ background: GL }}>
                 <MarqueeSlider
+                    title="Suggerimenti per la carriera"
+                    subtitle="Guida e approfondimenti per i candidati dal team Jobcourier"
                     articles={candidateArticles}
                     readArticleText={t('blog.read_article') || 'Leggi Articolo'}
                     speed={30}
                 />
                 <MarqueeSlider
+                    title="Suggerimenti per il recruiting"
+                    subtitle="Guida e approfondimenti per le aziende dal team Jobcourier"
                     articles={companyArticles}
                     readArticleText={t('blog.read_article') || 'Leggi Articolo'}
                     speed={25}
