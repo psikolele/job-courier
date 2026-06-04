@@ -35,8 +35,9 @@ export default async function handler(req, res) {
     let cookiesStr = '';
     try {
       const sessionResponse = await fetch(sessionUrl, { headers: sessionHeaders });
-      const rawCookies = sessionResponse.headers.raw()['set-cookie'] || [];
-      cookiesStr = rawCookies.map(cookie => cookie.split(';')[0]).join('; ');
+      const setCookieHeader = sessionResponse.headers.get('set-cookie') || '';
+      const rawCookies = setCookieHeader.split(/,(?=\s*[a-zA-Z0-9_]+=)/) || [];
+      cookiesStr = rawCookies.map(cookie => cookie.trim().split(';')[0]).join('; ');
     } catch (sessionErr) {
       console.warn('Session cookie fetch failed:', sessionErr.message);
     }
