@@ -1,8 +1,14 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 26 Maggio 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 4 Giugno 2026)
 
 ## 📌 Stato Attuale: Operazioni Completate
 
-### 1. Brand Identity & Visual Alignment (Maggio 2026) — ✅ *COMPLETED*
+### 1. Handoff Refinements & Pricing Redesign (Giugno 2026) — ✅ *COMPLETED*
+* **DotCard Animation & Responsiveness**: Risolto il conflitto con Flexbox introducendo un contenitore assoluto `.jc-dot-border-container` (85% di larghezza/altezza, centrato) per racchiudere il pallino `.jc-dot-dot`. Riscritto `@keyframes moveDot` con coordinate percentuali `left`/`top` e allineamento `transform: translate(-50%, -50%)` per seguire i bordi della card in modo perfettamente responsivo. Rilevamento automatico della lunghezza del testo del contatore (se > 7 caratteri, ad esempio `120'000+`) per ridurre la dimensione del font a `1.9rem` (invece di `2.4rem`), eliminando i problemi di clipping laterale.
+* **Footer Login Modal Trigger**: Risolto il problema del link non funzionante `#login` nel Footer passando la prop `setShowLoginModal` da `App.jsx` a `<Footer />` e aggiungendo un gestore `onClick` per intercettare i click con `href === '#login'`, che apre direttamente il modal del login.
+* **API Cookie Parsing Fix**: Corretto il crash del backend in `webapp/api/job-detail.js:38` (dovuto alla deprecazione/assenza di `headers.raw()` in `node-fetch` v3). Ora viene utilizzato `sessionResponse.headers.get('set-cookie')` ed estratto il token di sessione con una regex robusta `/,(?=\s*[a-zA-Z0-9_]+=)/` per prevenire divisioni errate sulle virgole interne alle date di scadenza dei cookie.
+* **Redesign della Pagina Pricing**: Completato il restyling completo di `Pricing.jsx` nello stile visuale "Organic Tech". Strutturato in 2 tab navigabili: `Aziende & PMI` (con 3 card di prezzo: Job Post Basic a CHF 249, Pack 5 Boost a CHF 890 con fucsia highlight, e Piano Continuo da CHF 1'200; affiancate da una sidebar con i vantaggi di brand) e `Agenzie di selezione` (con una schermata di invito a richiedere offerte personalizzate per volumi massivi tramite bottone verso `/contatti`).
+
+### 2. Brand Identity & Visual Alignment (Maggio 2026) — ✅ *COMPLETED*
 * **Palette Istituzionale**: Applicazione rigorosa dei colori ufficiali da Brand Guidelines:
   * Primary Navy: `#050B2B`
   * Accent Fuchsia: `#FF1F7A`
@@ -13,7 +19,7 @@
   * Ripristinati i tag immagine (`motion.img`) in Navbar e Footer con un'altezza ottimizzata di `h-12 md:h-15` (48px-60px), assicurando una visualizzazione imponente, nitida e priva di margini trasparenti superflui anche su schermi Retina/4K.
   * Favicon aggiornata con successo all'asset ad alta risoluzione `/logo-square.png`.
 
-### 2. Sistema di Interazione: Hover-Glow Dinamico (Maggio 2026) — ✅ *COMPLETED*
+### 3. Sistema di Interazione: Hover-Glow Dinamico (Maggio 2026) — ✅ *COMPLETED*
 * **Componente `AnimatedButton`**: Sviluppato un pulsante a puntatore magnetico tracciato da cursore (60fps fluido), esente da lag da griglia grazie a proprietà CSS accelerate via hardware.
 * **Regole di Contrasto Dinamico (Speculari)**:
   * **SU BOTTONI BLU/NAVY (e Outline su Sfondo Blu)**: l'effetto hover proietta un glow **Fucsia di Brand (`#FF1F7A`)**. All'hover il testo dei pulsanti outline (es. *"Come funziona"*, *"Soluzioni e tariffe"*) rimane rigidamente **Bianco (`#FFFFFF`)** per evitare impasti cromatici e garantire leggibilità 1:1.
@@ -24,10 +30,10 @@
   * `ApplyRedirectModal.jsx` (CTAs di candidatura esterna)
   * `RegistrationWallModal.jsx` (CTA paywall di registrazione)
 
-### 3. Debugging & Stabilità a Runtime — ✅ *COMPLETED*
+### 4. Debugging & Stabilità a Runtime — ✅ *COMPLETED*
 * **Hotfix ReferenceError**: Risolto crash a runtime sul deploy di produzione (`style is not defined`) in `animated-button.jsx` inserendo la destrutturazione di `style` nella firma di `HoverButton` ed eseguendo il merge corretto con l'oggetto di stile interno, prevenendo sovrascritture causate dallo spread operator (`...props`).
 
-### 4. Hero, Navbar & UI Layout (Aprile 2026) — ✅ *COMPLETED*
+### 5. Hero, Navbar & UI Layout (Aprile 2026) — ✅ *COMPLETED*
 * **Navbar Sempre Visibile**: Rimosso lo stato trasparente allo scroll di partenza. Navbar sempre attiva con sfondo `white/98`, shrinkage di altezza `72px -> 60px` ed attivazione progressiva di ombra all'aumentare dello scroll.
 * **Spazi Pubblicitari (AdSlots)**: Eliminata la vecchia sezione CTA ridondante e sostituita con due ampi spazi AdSlot flex-row 50%/50% a caricamento lazy per massimizzare la monetizzazione.
 * **Blog 50/50 Split**: Layout "Clinical Boutique" totalmente bianco spezzato in due colonne asincrone (Candidati a sx con carosello 5s, Aziende a dx con carosello 5.3s).
