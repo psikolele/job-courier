@@ -407,17 +407,6 @@ const Hero = ({ setShowLoginModal }) => {
                         {t('hero.companies.h1_sub') || 'sono già qui.'}
                     </h1>
 
-                    {/* Stat aziende */}
-                    <div style={{ marginBottom: isMobile ? 20 : 32, display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                        <span style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: isMobile ? 18 : 22, color: 'var(--brand-navy)', letterSpacing: '-0.01em' }}>
-                            120'000+ candidati registrati
-                        </span>
-                        <span style={{ color: 'var(--brand-fuchsia)', fontWeight: 700 }}>•</span>
-                        <span style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: isMobile ? 18 : 22, color: 'var(--brand-navy)', letterSpacing: '-0.01em' }}>
-                            3'000+ candidature al mese
-                        </span>
-                    </div>
-
                     <div className="hero-card-box w-full max-w-lg mb-6 md:mb-8 md:h-[312px] p-6 flex flex-col justify-end" style={{ borderRadius: 0 }}>
                         <AnimatedButton
                             onClick={() => setShowLoginModal(true)}
