@@ -52,17 +52,17 @@ const Footer = () => {
                             className="h-[52px] w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                         />
                     </div>
-                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 15, color: '#FFFFFF', lineHeight: 1.5, marginBottom: 20 }}>
+                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 15, color: 'var(--brand-white)', lineHeight: 1.5, marginBottom: 20 }}>
                         Dove aziende e candidati si incontrano.
                     </p>
                     <div style={{ display: 'flex', gap: 12 }}>
                         <a href="#" aria-label="LinkedIn" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.15s' }}
-                            onMouseEnter={e => e.currentTarget.style.color = '#FFFFFF'}
+                            onMouseEnter={e => e.currentTarget.style.color = 'var(--brand-white)'}
                             onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
                             <IconLinkedIn />
                         </a>
                         <a href="#" aria-label="RSS" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.15s' }}
-                            onMouseEnter={e => e.currentTarget.style.color = '#FFFFFF'}
+                            onMouseEnter={e => e.currentTarget.style.color = 'var(--brand-white)'}
                             onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
                             <IconRSS />
                         </a>
@@ -79,9 +79,9 @@ const Footer = () => {
                             <div key={l.label} style={{ marginBottom: 10 }}>
                                 <a
                                     href={l.href}
-                                    style={{ fontFamily: body, fontSize: 13, color: '#FFFFFF', textDecoration: 'none', transition: 'color 0.15s' }}
+                                    style={{ fontFamily: body, fontSize: 13, color: 'var(--brand-white)', textDecoration: 'none', transition: 'color 0.15s' }}
                                     onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}
-                                    onMouseLeave={e => e.currentTarget.style.color = '#FFFFFF'}
+                                    onMouseLeave={e => e.currentTarget.style.color = 'var(--brand-white)'}
                                 >
                                     {l.label}
                                 </a>

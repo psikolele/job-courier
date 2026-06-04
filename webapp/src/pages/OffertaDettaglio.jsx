@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MapPin, Briefcase, Calendar, ChevronLeft, ExternalLink, Clock, Building } from 'lucide-react';
+import { MapPin, Briefcase, Calendar, ChevronLeft, ExternalLink, Clock, Building, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import RegistrationWallModal from '../components/RegistrationWallModal';
 import ApplyRedirectModal from '../components/ApplyRedirectModal';
@@ -14,6 +14,66 @@ const GM = 'var(--brand-gray-mid)';
 const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
+
+const PercheCandidatiWidget = () => {
+    const navigate = useNavigate();
+    const [kw, setKw] = useState('');
+    const [loc, setLoc] = useState('');
+    const [settore, setSettore] = useState('');
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const params = new URLSearchParams();
+        if (kw.trim()) params.set('keyword', kw.trim());
+        if (loc.trim()) params.set('location', loc.trim());
+        if (settore.trim()) params.set('sector', settore.trim());
+        navigate(`/offerte?${params.toString()}`);
+    };
+
+    const inputStyle = {
+        fontFamily: 'var(--font-body)', fontSize: 13,
+        color: 'var(--brand-navy)', background: 'var(--brand-white)',
+        border: '1px solid rgba(5,11,43,0.15)',
+        padding: '10px 14px', outline: 'none', width: '100%',
+        borderRadius: 0
+    };
+
+    return (
+        <div style={{ marginTop: 24, padding: '20px 24px', background: 'var(--brand-navy)' }}>
+            <p style={{
+                fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10,
+                letterSpacing: '0.18em', textTransform: 'uppercase',
+                color: 'var(--brand-fuchsia)', marginBottom: 12
+            }}>Cerca un'altra offerta</p>
+            <form onSubmit={handleSearch} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <input
+                    type="text" placeholder="Professione o parola chiave"
+                    value={kw} onChange={e => setKw(e.target.value)}
+                    style={inputStyle}
+                />
+                <input
+                    type="text" placeholder="Luogo o cantone"
+                    value={loc} onChange={e => setLoc(e.target.value)}
+                    style={inputStyle}
+                />
+                <input
+                    type="text" placeholder="Settore"
+                    value={settore} onChange={e => setSettore(e.target.value)}
+                    style={inputStyle}
+                />
+                <button type="submit" style={{
+                    background: 'var(--brand-fuchsia)', color: 'var(--brand-white)',
+                    border: 'none', padding: '11px 0',
+                    fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10,
+                    letterSpacing: '0.18em', textTransform: 'uppercase',
+                    cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
+                }}>
+                    <Search size={13} /> CERCA OFFERTE
+                </button>
+            </form>
+        </div>
+    );
+};
 
 const OffertaDettaglio = ({ setShowLoginModal }) => {
     const { id } = useParams();
@@ -240,7 +300,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                             onClick={handleApplyClick}
                             className="transition-all duration-300 hover:opacity-90 w-full flex items-center justify-center gap-2 active:scale-[0.98] select-none cursor-pointer"
                             style={{
-                                background: N, color: '#FFFFFF', border: 'none',
+                                background: N, color: 'var(--brand-white)', border: 'none',
                                 padding: '16px 24px',
                                 fontFamily: brand, fontWeight: 700, fontSize: 11,
                                 letterSpacing: '0.15em', textTransform: 'uppercase',
@@ -250,6 +310,30 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                             <span>Candidati</span>
                             <ExternalLink size={13} style={{ color: F }} />
                         </button>
+
+                        {/* PERCHÉ CANDIDARSI */}
+                        <div style={{ marginTop: 24 }}>
+                            <div style={{ padding: '20px 24px', background: GL, borderLeft: `3px solid ${F}` }}>
+                                <p style={{
+                                    fontFamily: brand, fontWeight: 700, fontSize: 10,
+                                    letterSpacing: '0.16em', textTransform: 'uppercase',
+                                    color: F, marginBottom: 14
+                                }}>PERCHÉ CANDIDARSI ANCHE SE QUESTA OFFERTA NON FA PER TE</p>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                    {[
+                                        'Il tuo profilo resta visibile a tutte le aziende partner su JobCourier',
+                                        'Le aziende possono trovarti nel database anche senza candidatura diretta',
+                                        'Ogni giorno nuove offerte compatibili con il tuo profilo vengono pubblicate'
+                                    ].map((item, i) => (
+                                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10, fontFamily: body, fontSize: 13, color: N, lineHeight: 1.5 }}>
+                                            <span style={{ width: 8, height: 8, background: F, flexShrink: 0, marginTop: 4, display: 'inline-block' }} />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <PercheCandidatiWidget />
+                        </div>
 
                     </div>
 
