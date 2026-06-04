@@ -126,82 +126,10 @@
   scrollbar-width: none;
 }
 
-/* Moving Dot Card */
-.dot-card-outer {
-  position: relative;
-  width: 180px;
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dot-card-dot {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.7);
-  animation: moveDotCard 4s linear infinite;
-  z-index: 10;
-}
-
-.dot-card-inner {
-  position: relative;
-  width: 160px;
-  height: 140px;
-  background: linear-gradient(135deg, #0c1032 0%, #1a1f4e 100%);
-  border: 1px solid rgba(255,255,255,0.12);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.dot-card-ray {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.07) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.dot-card-text {
-  font-family: var(--font-brand);
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: #a8c4e8;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  position: relative;
-  z-index: 1;
-}
-
-.dot-card-label {
-  font-family: var(--font-brand);
-  font-weight: 700;
-  font-size: 0.55rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-top: 6px;
-  position: relative;
-  z-index: 1;
-}
-
-.dot-card-line {
-  position: absolute;
-  background: rgba(255,255,255,0.1);
-}
-.dot-card-topl    { top: 0; left: 12px; right: 12px; height: 1px; }
-.dot-card-bottoml { bottom: 0; left: 12px; right: 12px; height: 1px; }
-.dot-card-leftl   { left: 0; top: 12px; bottom: 12px; width: 1px; }
-.dot-card-rightl  { right: 0; top: 12px; bottom: 12px; width: 1px; }
-
-@keyframes moveDotCard {
-  0%   { top: 10%; right: 10%; }
+/* Moving Dot Card — keyframe only (component uses inline styles) */
+@keyframes moveDot {
+  0%, 100% { top: 10%; right: 10%; }
   25%  { top: 10%; right: calc(100% - 35px); }
   50%  { top: calc(100% - 30px); right: calc(100% - 35px); }
   75%  { top: calc(100% - 30px); right: 10%; }
-  100% { top: 10%; right: 10%; }
 }

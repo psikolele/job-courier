@@ -408,21 +408,18 @@ const Hero = ({ setShowLoginModal }) => {
                         {t('hero.companies.h1_sub') || 'sono già qui.'}
                     </h1>
 
-                    {/* Stat aziende — DotCard animated counters */}
-                    <div style={{ marginBottom: isMobile ? 20 : 32, display: 'flex', flexWrap: 'wrap', gap: isMobile ? 8 : 16, alignItems: 'center' }}>
-                        <DotCard target={120000} duration={2200} label="Candidati registrati" />
-                        <DotCard target={3000} duration={1800} label="Candidature al mese" />
-                    </div>
-
-                    <div className="w-full max-w-lg mb-6 md:mb-8" style={{ borderRadius: 0 }}>
+                    {/* Stat aziende + CTA — same container as candidati form */}
+                    <div className="w-full max-w-lg mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between" style={{ borderRadius: 0 }}>
+                        {/* DotCards row — fill available height */}
+                        <div style={{ display: 'flex', gap: 12, flex: 1, paddingBottom: 16 }}>
+                            <DotCard target={120000} duration={2200} label="Candidati registrati" />
+                            <DotCard target={3000} duration={1800} label="Candidature al mese" />
+                        </div>
+                        {/* Button — pinned to bottom, full width */}
                         <AnimatedButton
                             onClick={() => setShowLoginModal(true)}
                             className="w-full py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer"
-                            style={{
-                                background: '#FF1F7A',
-                                borderRadius: 0,
-                                border: 'none',
-                            }}
+                            style={{ background: '#FF1F7A', borderRadius: 0, border: 'none' }}
                         >
                             Pubblica annuncio →
                         </AnimatedButton>
