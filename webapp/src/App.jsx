@@ -88,7 +88,7 @@ function App() {
         <Route path="/offerte" element={<Offerte setShowLoginModal={setShowLoginModal} />} />
         <Route path="/offerta/:id" element={<OffertaDettaglio setShowLoginModal={setShowLoginModal} />} />
       </Routes>
-      <Footer />
+      <Footer setShowLoginModal={setShowLoginModal} />
     </div>
   );
 }

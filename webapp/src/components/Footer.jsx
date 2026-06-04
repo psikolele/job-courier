@@ -12,7 +12,7 @@ const IconRSS = () => (
     </svg>
 );
 
-const Footer = () => {
+const Footer = ({ setShowLoginModal }) => {
     const N = 'var(--brand-navy)';
     const F = 'var(--brand-fuchsia)';
     const brand = 'var(--font-brand)';
@@ -82,6 +82,12 @@ const Footer = () => {
                                     style={{ fontFamily: body, fontSize: 13, color: 'var(--brand-white)', textDecoration: 'none', transition: 'color 0.15s' }}
                                     onMouseEnter={e => e.currentTarget.style.color = F}
                                     onMouseLeave={e => e.currentTarget.style.color = 'var(--brand-white)'}
+                                    onClick={(e) => {
+                                        if (l.href === '#login') {
+                                            e.preventDefault();
+                                            setShowLoginModal?.(true);
+                                        }
+                                    }}
                                 >
                                     {l.label}
                                 </a>
