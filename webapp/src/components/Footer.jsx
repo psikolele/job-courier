@@ -40,30 +40,30 @@ const Footer = () => {
     ];
 
     return (
-        <footer style={{ background: N }} className="px-5 md:px-10 pt-12 pb-7">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 mb-7" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+        <footer style={{ background: 'var(--brand-white)' }} className="px-5 md:px-10 pt-12 pb-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 mb-7" style={{ borderBottom: '1px solid rgba(5,11,43,0.08)' }}>
                 {/* Brand col — full width on mobile, 2-col on sm, 1-col on lg */}
                 <div className="col-span-1 sm:col-span-2 lg:col-span-1">
                     <div style={{ marginBottom: 12 }}>
                         <img
-                            src="/logo-full-dark.svg"
-                            onError={(e) => { e.currentTarget.src = '/logo-full-dark.png'; }}
+                            src="/logo-full.svg"
+                            onError={(e) => { e.currentTarget.src = '/logo-full.png'; }}
                             alt="JobCourier"
                             className="h-[52px] w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                         />
                     </div>
-                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 15, color: 'var(--brand-white)', lineHeight: 1.5, marginBottom: 20 }}>
+                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 15, color: N, lineHeight: 1.5, marginBottom: 20 }}>
                         Dove aziende e candidati si incontrano.
                     </p>
                     <div style={{ display: 'flex', gap: 12 }}>
-                        <a href="#" aria-label="LinkedIn" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.15s' }}
-                            onMouseEnter={e => e.currentTarget.style.color = 'var(--brand-white)'}
-                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
+                        <a href="#" aria-label="LinkedIn" style={{ color: 'rgba(5,11,43,0.35)', transition: 'color 0.15s' }}
+                            onMouseEnter={e => e.currentTarget.style.color = N}
+                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(5,11,43,0.35)'}>
                             <IconLinkedIn />
                         </a>
-                        <a href="#" aria-label="RSS" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.15s' }}
-                            onMouseEnter={e => e.currentTarget.style.color = 'var(--brand-white)'}
-                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
+                        <a href="#" aria-label="RSS" style={{ color: 'rgba(5,11,43,0.35)', transition: 'color 0.15s' }}
+                            onMouseEnter={e => e.currentTarget.style.color = N}
+                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(5,11,43,0.35)'}>
                             <IconRSS />
                         </a>
                     </div>
@@ -72,16 +72,16 @@ const Footer = () => {
                 {/* Link cols */}
                 {cols.map(col => (
                     <div key={col.title}>
-                        <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 15, letterSpacing: '0.12em', textTransform: 'uppercase', color: F, marginBottom: 16 }}>
+                        <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: F, marginBottom: 16 }}>
                             {col.title}
                         </div>
                         {col.links.map(l => (
                             <div key={l.label} style={{ marginBottom: 10 }}>
                                 <a
                                     href={l.href}
-                                    style={{ fontFamily: body, fontSize: 13, color: 'var(--brand-white)', textDecoration: 'none', transition: 'color 0.15s' }}
-                                    onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}
-                                    onMouseLeave={e => e.currentTarget.style.color = 'var(--brand-white)'}
+                                    style={{ fontFamily: body, fontSize: 13, color: N, textDecoration: 'none', transition: 'color 0.15s' }}
+                                    onMouseEnter={e => e.currentTarget.style.color = F}
+                                    onMouseLeave={e => e.currentTarget.style.color = N}
                                 >
                                     {l.label}
                                 </a>
@@ -93,7 +93,7 @@ const Footer = () => {
 
             {/* Copyright row */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-                <span style={{ fontFamily: body, fontSize: 11, color: 'rgba(255,255,255,0.2)' }}>
+                <span style={{ fontFamily: body, fontSize: 11, color: 'rgba(5,11,43,0.3)' }}>
                     © {new Date().getFullYear()} JobCourier.ch — Tutti i diritti riservati
                 </span>
                 <div style={{ width: 36, height: 1, background: F }} />
