@@ -263,7 +263,7 @@ const Hero = ({ setShowLoginModal }) => {
  
                     {/* SEARCH CARD */}
                     <div
-                        className="hero-card-box bg-white p-6 shadow-sm w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px]"
+                        className="hero-card-box bg-white p-6 w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px]"
                         style={{ borderRadius: 0 }}
                     >
                         <form onSubmit={handleSearch} className="flex flex-col h-full justify-between">
@@ -420,7 +420,7 @@ const Hero = ({ setShowLoginModal }) => {
                         </div>
                     </div>
 
-                    <div className="hero-card-box w-full max-w-lg mb-6 md:mb-8 md:h-[312px] p-6 flex flex-col justify-end" style={{ borderRadius: 0 }}>
+                    <div className="w-full max-w-lg mb-6 md:mb-8" style={{ borderRadius: 0 }}>
                         <AnimatedButton
                             onClick={() => setShowLoginModal(true)}
                             className="w-full py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer"
