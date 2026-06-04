@@ -141,6 +141,11 @@ const Hero = ({ setShowLoginModal }) => {
                     }
                 }
 
+                .hero-quick-links {
+                    padding-left: 1.5rem;
+                    padding-right: 1.5rem;
+                }
+
                 /* Laptops / Smaller monitors (height <= 950px) */
                 @media (max-height: 950px) and (min-width: 768px) {
                     .hero-panel {
@@ -158,6 +163,10 @@ const Hero = ({ setShowLoginModal }) => {
                         height: 290px !important;
                         padding: 1.25rem !important;
                         margin-bottom: 1.5rem !important;
+                    }
+                    .hero-quick-links {
+                        padding-left: 1.25rem !important;
+                        padding-right: 1.25rem !important;
                     }
                 }
 
@@ -187,6 +196,10 @@ const Hero = ({ setShowLoginModal }) => {
                         padding-top: 0.8rem !important;
                         padding-bottom: 0.8rem !important;
                     }
+                    .hero-quick-links {
+                        padding-left: 1rem !important;
+                        padding-right: 1rem !important;
+                    }
                 }
 
                 /* Compact viewports / Zoomed-in laptops / Developer tools open (height <= 720px) */
@@ -214,6 +227,10 @@ const Hero = ({ setShowLoginModal }) => {
                     .hero-card-box button, .hero-card-box .animated-btn {
                         padding-top: 0.7rem !important;
                         padding-bottom: 0.7rem !important;
+                    }
+                    .hero-quick-links {
+                        padding-left: 0.75rem !important;
+                        padding-right: 0.75rem !important;
                     }
                 }
             `}</style>
@@ -328,14 +345,14 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
  
                     {/* QUICK LINKS */}
-                    <div className="w-full max-w-lg mx-auto" style={{ marginTop: 16 }}>
+                    <div className="w-full max-w-lg mx-auto hero-quick-links" style={{ marginTop: 16 }}>
                         <div className="flex gap-2">
                             {[
                                 { label: 'Vedi tutte le offerte', href: '/offerte', external: false },
                                 { label: 'Aziende che assumono', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
                                 { label: 'Consigli di Carriera', href: '#blog', external: false }
                             ].map(({ label, href, external }) => {
-                                const btnClass = "flex-1 py-3 border border-[var(--brand-navy)]/25 text-[11px] tracking-[0.04em] text-center text-[var(--brand-navy)] hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200";
+                                const btnClass = "flex-1 py-3 border border-[var(--brand-navy)]/25 text-[13px] tracking-[0.04em] text-center text-[var(--brand-navy)] hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200";
                                 return external ? (
                                     <a
                                         key={label}
@@ -409,7 +426,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </h1>
 
                     {/* Stat aziende + CTA — same container as candidati form */}
-                    <div className="hero-card-box w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between" style={{ borderRadius: 0 }}>
+                    <div className="hero-card-box w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between p-6" style={{ borderRadius: 0 }}>
                         {/* DotCards row — fixed size, centered */}
                         <div style={{ display: 'flex', gap: 16, flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 8 }}>
                             <DotCard target={120000} duration={2200} label="Candidati registrati" />
@@ -426,13 +443,13 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
 
                     {/* QUICK LINKS - AZIENDE */}
-                    <div className="w-full max-w-lg mx-auto" style={{ marginTop: 16 }}>
+                    <div className="w-full max-w-lg mx-auto hero-quick-links" style={{ marginTop: 16 }}>
                         <div className="flex gap-2">
                             {companyLinks.map((item, idx) => (
                                 <Link
                                     key={idx}
                                     to={item.href}
-                                    className="flex-1 py-3 border border-white/25 text-[11px] tracking-[0.04em] text-center text-white/90 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200"
+                                    className="flex-1 py-3 border border-white/25 text-[13px] tracking-[0.04em] text-center text-white/90 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200"
                                     style={{ textDecoration: 'none', borderRadius: 0 }}
                                 >
                                     {item.label}
