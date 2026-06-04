@@ -147,23 +147,24 @@
 }
 .jc-dot-dot {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: #fff;
-  animation: moveDot 4s linear infinite;
+  animation: jcMoveDot 4s linear infinite;
   box-shadow: 0 0 8px rgba(255,255,255,0.85);
+  transform: translate(50%, 50%);
+  z-index: 5;
 }
 .jc-dot-card {
-  position: relative;
-  width: 85%;
-  height: 85%;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  bottom: 30px;
+  left: 35px;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -174,10 +175,10 @@
 .jc-dot-ray {
   position: absolute;
   width: 100%;
-  height: 50%;
+  height: 100%;
   top: 0;
   left: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.12) 0%, transparent 80%);
   pointer-events: none;
 }
 .jc-dot-text {
@@ -212,25 +213,21 @@
 .jc-dot-leftl   { left: 0;   top: 12px;  bottom: 12px; width: 1px; }
 .jc-dot-rightl  { right: 0;  top: 12px;  bottom: 12px; width: 1px; }
 
-@keyframes moveDot {
+@keyframes jcMoveDot {
   0%, 100% {
-    top: 0%;
-    left: 100%;
-    transform: translate(-50%, -50%);
+    top: 10%;
+    right: 10%;
   }
   25% {
-    top: 0%;
-    left: 0%;
-    transform: translate(-50%, -50%);
+    top: 10%;
+    right: calc(100% - 35px);
   }
   50% {
-    top: 100%;
-    left: 0%;
-    transform: translate(-50%, -50%);
+    top: calc(100% - 30px);
+    right: calc(100% - 35px);
   }
   75% {
-    top: 100%;
-    left: 100%;
-    transform: translate(-50%, -50%);
+    top: calc(100% - 30px);
+    right: 10%;
   }
 }
