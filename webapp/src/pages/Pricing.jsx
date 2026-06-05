@@ -4,13 +4,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check, ArrowRight, MessageSquare, Lock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import {
-    HoverSlider,
-    HoverSliderImage,
-    HoverSliderImageWrap,
-    TextStaggerHover,
-    SlideDescription,
-} from '@/components/ui/animated-slideshow';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,12 +16,6 @@ const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
-const PROCESSO_SLIDES = [
-    { id: 'slide-1', title: 'Soluzioni Veloci', subtitle: 'SOLUZIONI. VELOCI.', desc: 'Assumi più velocemente grazie alle nostre soluzioni di reclutamento. La visibilità del nostro portale e l\'ampio database di candidati ti permettono di trovare rapidamente i candidati più qualificati per le tue posizioni aperte.', imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop' },
-    { id: 'slide-2', title: 'Recruiting Semplificato', subtitle: 'RECRUITING SEMPLIFICATO', desc: 'JobCourier ti offre una piattaforma intuitiva e facile da usare, che ti permette di gestire tutte le fasi del tuo processo di recruiting da un unico punto di accesso.', imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop' },
-    { id: 'slide-3', title: 'Più Efficienza, Meno Costi', subtitle: 'PIÙ EFFICIENZA, MENO COSTI', desc: 'Massimizza il tuo tempo. JobCourier trova i candidati giusti per te. Il nostro sistema di matching avanzato ti permette di identificare rapidamente i candidati che possiedono le competenze e le esperienze richieste per il tuo ruolo.', imageUrl: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop' },
-    { id: 'slide-4', title: 'Soluzioni Personalizzate', subtitle: 'SOLUZIONI PERSONALIZZATE', desc: 'Recluta con sicurezza grazie a un partner affidabile e strategico. Il nostro team di esperti è sempre a tua disposizione per offrirti assistenza e supporto personalizzato e studiare insieme strategie di recruiting efficaci.', imageUrl: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop' },
-];
 
 const SectionLabel = ({ children }) => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
@@ -420,74 +407,6 @@ const Pricing = () => {
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </section>
-
-            {/* PROCESSO */}
-            <section className="py-24 px-6 md:px-12 section-trigger overflow-hidden" style={{ background: W }}>
-                <div className="container mx-auto">
-                    <div className="section-reveal mb-16 max-w-2xl">
-                        <SectionLabel>{t('pricing.processo_label') || '/ Processo'}</SectionLabel>
-                        <h3 style={{
-                            fontFamily: brand, fontWeight: 900, fontSize: 56,
-                            color: N, textTransform: 'uppercase',
-                            letterSpacing: '-0.025em', lineHeight: 0.9
-                        }}>{t('pricing.processo_title') || 'Chirurgico.'}</h3>
-                        <p style={{
-                            fontFamily: editorial, fontStyle: 'italic', fontSize: 28,
-                            color: GM, marginTop: 8, lineHeight: 1.3
-                        }}>{t('pricing.processo_sub') || 'Pochi click. Tempo liberato.'}</p>
-                    </div>
-
-                    <HoverSlider className="w-full">
-                        <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-16">
-                            <div className="flex flex-col justify-center lg:w-[45%]">
-                                {PROCESSO_SLIDES.map((slide, index) => (
-                                    <div key={slide.id}>
-                                        <TextStaggerHover
-                                            index={index}
-                                            text={slide.title}
-                                            className="cursor-pointer block whitespace-nowrap overflow-hidden py-4"
-                                            style={{
-                                                fontFamily: brand, fontWeight: 900,
-                                                fontSize: 28,
-                                                color: N,
-                                                textTransform: 'uppercase',
-                                                letterSpacing: '-0.02em'
-                                            }}
-                                        />
-                                        <div style={{ height: 1, width: '100%', background: 'rgba(5,11,43,0.07)' }} />
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="lg:w-[55%] w-full">
-                                <div className="relative overflow-hidden" style={{ height: 460, border: '1px solid rgba(5,11,43,0.07)' }}>
-                                    <HoverSliderImageWrap className="absolute inset-0">
-                                        {PROCESSO_SLIDES.map((slide, index) => (
-                                            <div key={slide.id}>
-                                                <HoverSliderImage
-                                                    index={index}
-                                                    imageUrl={slide.imageUrl}
-                                                    src={slide.imageUrl}
-                                                    alt={slide.title}
-                                                    className="w-full h-full object-cover"
-                                                    loading="eager"
-                                                    decoding="async"
-                                                />
-                                            </div>
-                                        ))}
-                                    </HoverSliderImageWrap>
-
-                                    <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(5,11,43,0.95) 0%, rgba(5,11,43,0.7) 50%, transparent 100%)' }} />
-
-                                    <div className="absolute bottom-0 left-0 right-0 p-10 pt-24">
-                                        <SlideDescription slides={PROCESSO_SLIDES} />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </HoverSlider>
-                </div>
             </section>
 
             {/* CTA */}

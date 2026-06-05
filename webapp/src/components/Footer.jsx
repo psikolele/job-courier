@@ -102,7 +102,6 @@ const Footer = ({ setShowLoginModal }) => {
                 <span style={{ fontFamily: body, fontSize: 11, color: 'rgba(5,11,43,0.35)' }}>
                     © {new Date().getFullYear()} JobCourier.ch — Tutti i diritti riservati
                 </span>
-                <div style={{ width: 36, height: 1, background: F }} />
             </div>
         </footer>
     );

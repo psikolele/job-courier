@@ -201,44 +201,17 @@ const Blog = () => {
 
     return (
         <section id="blog" className="w-full relative z-10 py-16" style={{ background: GL }}>
-            {/* Unified breadcrumb + subtitle */}
-            <div className="max-w-7xl mx-auto px-6 md:px-12 pb-12">
-                <div className="flex items-center gap-3 mb-6">
-                    <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                    <h2 style={{
-                        fontFamily: brand,
-                        fontWeight: 700,
-                        fontSize: 11,
-                        letterSpacing: '0.2em',
-                        textTransform: 'uppercase',
-                        color: F
-                    }}>
-                        Suggerimenti per la carriera e per il recruiting
-                    </h2>
-                </div>
-                <p style={{
-                    fontFamily: editorial,
-                    fontStyle: 'italic',
-                    fontSize: 28,
-                    color: N,
-                    overflowWrap: 'break-word',
-                    lineHeight: 1.3
-                }}>
-                    Suggerimenti editoriali per candidati e aziende, dal team Job Courier.
-                </p>
-            </div>
-
-            {/* Two separate sliders */}
+            {/* Two separate sliders — each with own trattino + title (= menu anchor) + subtitle */}
             <div className="w-full flex flex-col gap-1" style={{ background: GL }}>
                 <MarqueeSlider
-                    title="Suggerimenti per la carriera"
+                    title="Consigli di carriera"
                     subtitle="Guida e approfondimenti per i candidati dal team Jobcourier"
                     articles={candidateArticles}
                     readArticleText={t('blog.read_article') || 'Leggi Articolo'}
                     speed={30}
                 />
                 <MarqueeSlider
-                    title="Suggerimenti per il recruiting"
+                    title="Consigli di recruiting"
                     subtitle="Guida e approfondimenti per le aziende dal team Jobcourier"
                     articles={companyArticles}
                     readArticleText={t('blog.read_article') || 'Leggi Articolo'}
