@@ -150,7 +150,6 @@
 }
 .jc-dot-ccw {
   animation: jcMoveDotCCW 4s linear infinite;
-  animation-delay: -2s;
 }
 .jc-dot-card {
   position: absolute;
@@ -228,18 +227,18 @@
 @keyframes jcMoveDotCCW {
   0%, 100% {
     top: 0;
-    left: 0;
+    left: 100%;
   }
   25% {
-    top: 100%;
+    top: 0;
     left: 0;
   }
   50% {
     top: 100%;
-    left: 100%;
+    left: 0;
   }
   75% {
-    top: 0;
+    top: 100%;
     left: 100%;
   }
 }
