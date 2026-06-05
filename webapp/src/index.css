@@ -129,21 +129,13 @@
 /* Moving Dot Card — namespaced CSS classes */
 .jc-dot-outer {
   position: relative;
-  width: 190px;
+  width: 100%;
+  flex: 1;
   height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-}
-.jc-dot-border-container {
-  position: absolute;
-  width: 85%;
-  height: 85%;
-  top: 7.5%;
-  left: 7.5%;
-  pointer-events: none;
-  z-index: 3;
 }
 .jc-dot-dot {
   position: absolute;
@@ -153,15 +145,12 @@
   background: #fff;
   animation: jcMoveDot 4s linear infinite;
   box-shadow: 0 0 8px rgba(255,255,255,0.85);
-  transform: translate(50%, 50%);
+  transform: translate(-50%, -50%);
   z-index: 5;
 }
 .jc-dot-card {
   position: absolute;
-  top: 10%;
-  right: 10%;
-  bottom: 30px;
-  left: 35px;
+  inset: 0;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -215,19 +204,19 @@
 
 @keyframes jcMoveDot {
   0%, 100% {
-    top: 10%;
-    right: 10%;
+    top: 0;
+    left: 0;
   }
   25% {
-    top: 10%;
-    right: calc(100% - 35px);
+    top: 0;
+    left: 100%;
   }
   50% {
-    top: calc(100% - 30px);
-    right: calc(100% - 35px);
+    top: 100%;
+    left: 100%;
   }
   75% {
-    top: calc(100% - 30px);
-    right: 10%;
+    top: 100%;
+    left: 0;
   }
 }
