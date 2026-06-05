@@ -139,14 +139,18 @@
 }
 .jc-dot-dot {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: #fff;
+  background: #FF1F7A;
   animation: jcMoveDot 4s linear infinite;
-  box-shadow: 0 0 8px rgba(255,255,255,0.85);
+  box-shadow: 0 0 8px rgba(255,31,122,0.85);
   transform: translate(-50%, -50%);
   z-index: 5;
+}
+.jc-dot-ccw {
+  animation: jcMoveDotCCW 4s linear infinite;
+  animation-delay: -2s;
 }
 .jc-dot-card {
   position: absolute;
@@ -218,5 +222,24 @@
   75% {
     top: 100%;
     left: 0;
+  }
+}
+
+@keyframes jcMoveDotCCW {
+  0%, 100% {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 100%;
+    left: 0;
+  }
+  50% {
+    top: 100%;
+    left: 100%;
+  }
+  75% {
+    top: 0;
+    left: 100%;
   }
 }

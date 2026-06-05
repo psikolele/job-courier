@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function DotCard({ target = 777000, duration = 2000, label = 'Views' }) {
+export default function DotCard({ target = 777000, duration = 2000, label = 'Views', direction = 'cw' }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function DotCard({ target = 777000, duration = 2000, label = 'Vie
 
   return (
     <div className="jc-dot-outer">
-      <div className="jc-dot-dot" />
+      <div className={direction === 'ccw' ? 'jc-dot-dot jc-dot-ccw' : 'jc-dot-dot'} />
       <div className="jc-dot-card">
         <div className="jc-dot-ray" />
         <div className="jc-dot-text" style={{ fontSize: isLongText ? '1.9rem' : '2.4rem' }}>{display}</div>

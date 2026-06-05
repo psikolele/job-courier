@@ -429,8 +429,8 @@ const Hero = ({ setShowLoginModal }) => {
                     <div className="hero-card-box w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between p-6" style={{ borderRadius: 0 }}>
                         {/* DotCards row — fixed size, centered */}
                         <div style={{ display: 'flex', gap: 16, flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 8 }}>
-                            <DotCard target={120000} duration={2200} label="Candidati registrati" />
-                            <DotCard target={3000} duration={1800} label="Candidature al mese" />
+                            <DotCard target={120000} duration={2200} label="Candidati registrati" direction="cw" />
+                            <DotCard target={3000} duration={1800} label="Candidature al mese" direction="ccw" />
                         </div>
                         {/* Button — pinned to bottom, full width */}
                         <AnimatedButton
