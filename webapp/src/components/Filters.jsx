@@ -137,7 +137,11 @@ const Filters = () => {
                     { id: 1, jobroom_id: '6688865', title: 'Validation Engineer', location: 'Mezzovico TI, Svizzera', sector: 'Generale', role: 'Specialist', company: 'Randstad Svizzera SA', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244729.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en' },
                     { id: 2, jobroom_id: '6688871', title: 'Parchettista', location: 'Sottoceneri, Svizzera', sector: 'Costruzioni/Mestieri', role: 'Specialist', company: 'Team Personnel Solutions SA', companyLogo: 'https://www.google.com/s2/favicons?domain=team.jobs&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688871-parchettista-sottoceneri&language=en' },
                     { id: 3, jobroom_id: '6680678', title: 'Responsabile Magazzino', location: 'Schönbühl BE, Svizzera', sector: 'Logistica', role: 'Manager', company: 'TechSwiss Distribution', companyLogo: 'https://www.google.com/s2/favicons?domain=techswiss.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6680678-assistant-warehouse-manager-a-schönbuhl-be&language=en' },
-                    { id: 4, jobroom_id: '6675564', title: 'Chauffeur / Chauffeuse Kat. B, Region Luzern 80%-100% (m/w/d)', location: 'Switzerland, 6003 Luzern', sector: 'Other', role: 'Other', company: 'DasTeam', companyLogo: 'https://www.google.com/s2/favicons?domain=dasteam.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675564-chauffeur-chauffeuse-kat-b-region-luzern-80-100-m-w-d-6003-luzern&language=en' }
+                    { id: 4, jobroom_id: '6675564', title: 'Chauffeur / Chauffeuse Kat. B, Region Luzern 80%-100% (m/w/d)', location: 'Switzerland, 6003 Luzern', sector: 'Other', role: 'Other', company: 'DasTeam', companyLogo: 'https://www.google.com/s2/favicons?domain=dasteam.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675564-chauffeur-chauffeuse-kat-b-region-luzern-80-100-m-w-d-6003-luzern&language=en' },
+                    { id: 5, jobroom_id: '6675565', title: 'Impiegato Amministrativo', location: 'Lugano TI, Svizzera', sector: 'Amministrazione/Paghe e contributi', role: 'Specialist', company: 'Adecco Risorse Umane', companyLogo: 'https://www.google.com/s2/favicons?domain=adecco.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675565-impiegato-amministrativo-lugano&language=en' },
+                    { id: 6, jobroom_id: '6675566', title: 'Frontend Developer React', location: 'Bellinzona TI, Svizzera', sector: 'IT/Technology', role: 'Specialist', company: 'Kraken Sviluppo Web', companyLogo: 'https://www.google.com/s2/favicons?domain=kraken.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675566-frontend-developer-react-bellinzona&language=en' },
+                    { id: 7, jobroom_id: '6675567', title: 'Autista Consegnatario Kat. B', location: 'Mendrisio TI, Svizzera', sector: 'Trasporti', role: 'Specialist', company: 'DHL Logistics', companyLogo: 'https://www.google.com/s2/favicons?domain=dhl.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675567-autista-consegnatario-kat-b-mendrisio&language=en' },
+                    { id: 8, jobroom_id: '6675568', title: 'Elettricista Impiantista', location: 'Locarno TI, Svizzera', sector: 'Costruzioni/Mestieri', role: 'Specialist', company: 'Manpower Svizzera', companyLogo: 'https://www.google.com/s2/favicons?domain=manpower.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675568-elettricista-impiantista-locarno&language=en' }
                 ]);
             } finally {
                 setJobsLoading(false);
@@ -154,7 +158,15 @@ const Filters = () => {
         if (!sliderRef.current) return;
         const slider = sliderRef.current;
         const maxScroll = slider.scrollWidth - slider.clientWidth;
-        if (maxScroll <= 0) return;
+        
+        // Se lo spazio scrollabile è minimo, fermiamo l'animazione per evitare tremolii ed usciamo
+        if (maxScroll < 100) {
+            if (animationRef.current) {
+                animationRef.current.kill();
+                animationRef.current = null;
+            }
+            return;
+        }
 
         if (animationRef.current) {
             animationRef.current.kill();
@@ -162,12 +174,12 @@ const Filters = () => {
 
         animationRef.current = gsap.to(slider, {
             scrollLeft: maxScroll,
-            duration: (maxScroll - slider.scrollLeft) / 40 || 0.1,
+            duration: Math.max((maxScroll - slider.scrollLeft) / 40, 1.5),
             ease: "none",
             onComplete: () => {
                 animationRef.current = gsap.to(slider, {
                     scrollLeft: 0,
-                    duration: maxScroll / 40,
+                    duration: Math.max(maxScroll / 40, 1.5),
                     ease: "none",
                     repeat: -1,
                     yoyo: true
@@ -182,10 +194,19 @@ const Filters = () => {
 
     useEffect(() => {
         if (!jobsLoading && latestJobs.length > 0 && sliderRef.current) {
+            const handleResize = () => {
+                resumeAutoScroll();
+            };
+            window.addEventListener('resize', handleResize);
+
             const ctx = gsap.context(() => {
                 resumeAutoScroll();
             });
-            return () => ctx.revert();
+
+            return () => {
+                window.removeEventListener('resize', handleResize);
+                ctx.revert();
+            };
         }
     }, [jobsLoading, latestJobs]);
 
