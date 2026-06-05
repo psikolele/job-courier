@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Briefcase, User, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight, ChevronLeft } from 'lucide-react';
+import { Briefcase, User, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight, ChevronLeft, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
@@ -417,13 +417,26 @@ const Filters = () => {
                                                 whiteSpace: 'nowrap',
                                                 overflow: 'hidden'
                                             }}>{job.title}</div>
-                                            <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'nowrap', overflow: 'hidden' }}>
-                                                <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>{job.company}</span>
-                                                <span style={{ color: 'rgba(139,143,168,0.4)', fontSize: 12 }}>·</span>
-                                                <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)' }}>
-                                                    Sede: {formatLocation(job.location)}
-                                                </span>
+                                            <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)', marginBottom: 6, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                                                {job.company}
                                             </div>
+                                            {/* Sede chip — fuchsia MapPin icon, above separator */}
+                                            <span style={{
+                                                fontFamily: 'var(--font-body)',
+                                                fontSize: 10, fontWeight: 600,
+                                                letterSpacing: '0.06em', textTransform: 'uppercase',
+                                                padding: '0 7px', height: '20px',
+                                                display: 'inline-flex', alignItems: 'center',
+                                                gap: 3, borderRadius: 2,
+                                                border: '1px solid rgba(255,31,122,0.25)',
+                                                color: 'var(--brand-navy)',
+                                                whiteSpace: 'nowrap', maxWidth: '100%', overflow: 'hidden',
+                                                flexShrink: 0
+                                            }}>
+                                                <MapPin size={9} style={{ color: 'var(--brand-fuchsia)', flexShrink: 0 }} />
+                                                <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--brand-gray-mid)' }}>Sede:</span>
+                                                {formatLocation(job.location)}
+                                            </span>
                                         </div>
                                         {/* Right: logo, large */}
                                         <img

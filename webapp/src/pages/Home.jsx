@@ -12,9 +12,9 @@ const Home = ({ setShowLoginModal }) => {
     <main className="flex flex-col w-full">
       <Hero setShowLoginModal={setShowLoginModal} />
       <div style={{display:'none'}}><Stats /></div>
-      <Filters />
-
       <AdBanner type="top" />
+
+      <Filters />
 
       <Vetrini />
 
