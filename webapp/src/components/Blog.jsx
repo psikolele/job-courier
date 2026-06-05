@@ -213,7 +213,7 @@ const Blog = () => {
                         textTransform: 'uppercase',
                         color: F
                     }}>
-                        Consigli di carriera
+                        Suggerimenti per la carriera e per il recruiting
                     </h2>
                 </div>
                 <p style={{
@@ -224,7 +224,7 @@ const Blog = () => {
                     overflowWrap: 'break-word',
                     lineHeight: 1.3
                 }}>
-                    Consigli di recruiting.
+                    Suggerimenti editoriali per candidati e aziende, dal team Job Courier.
                 </p>
             </div>
 
