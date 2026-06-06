@@ -171,6 +171,7 @@ const Pricing = () => {
     const containerRef = useRef(null);
     const [activeTab, setActiveTab] = useState('companies');
     const [hoveredPlan, setHoveredPlan] = useState(1);
+    const [selectedPlan, setSelectedPlan] = useState(null);
     const { t, i18n } = useTranslation();
     const lang = i18n.language || 'it';
     const data = getLocalizedData(lang);
@@ -265,16 +266,29 @@ const Pricing = () => {
                                 {/* PRICING CARDS */}
                                 <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
                                     {data.plans.map((plan, pIdx) => (
-                                        <div key={pIdx}
-                                            className="group relative transition-all duration-300 flex flex-col min-w-0"
+                                        <motion.div key={pIdx}
+                                            className="group relative flex flex-col min-w-0 cursor-pointer"
                                             onMouseEnter={() => setHoveredPlan(pIdx)}
-                                            onMouseLeave={() => setHoveredPlan(1)}
+                                            onMouseLeave={() => setHoveredPlan(selectedPlan ?? 1)}
+                                            onClick={() => setSelectedPlan(pIdx)}
+                                            whileTap={{ scale: 0.97 }}
+                                            animate={{
+                                                boxShadow: selectedPlan === pIdx
+                                                    ? '0 0 0 3px #FF1F7A, 0 16px 48px rgba(255,31,122,0.18)'
+                                                    : plan.highlight
+                                                        ? '0 12px 40px rgba(255,31,122,0.08)'
+                                                        : '0 0 0 0px transparent',
+                                            }}
+                                            transition={{ duration: 0.25, ease: 'easeOut' }}
                                             style={{
                                                 background: W,
                                                 padding: '44px 32px',
-                                                border: plan.highlight ? `2px solid ${F}` : '1px solid rgba(5,11,43,0.06)',
+                                                border: selectedPlan === pIdx
+                                                    ? `2px solid ${F}`
+                                                    : plan.highlight
+                                                        ? `2px solid ${F}`
+                                                        : '1px solid rgba(5,11,43,0.06)',
                                                 borderRadius: 0,
-                                                boxShadow: plan.highlight ? '0 12px 40px rgba(255, 31, 122, 0.08)' : 'none'
                                             }}>
                                             {plan.tag && (
                                                 <span style={{
@@ -284,6 +298,20 @@ const Pricing = () => {
                                                     color: F,
                                                     background: 'transparent'
                                                 }}>■ {plan.tag}</span>
+                                            )}
+                                            {selectedPlan === pIdx && (
+                                                <motion.span
+                                                    initial={{ opacity: 0, scale: 0.8 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
+                                                    style={{
+                                                        position: 'absolute', top: 20, left: 24,
+                                                        fontFamily: brand, fontWeight: 700, fontSize: 8,
+                                                        letterSpacing: '0.18em', textTransform: 'uppercase',
+                                                        color: W, background: F,
+                                                        padding: '3px 8px',
+                                                    }}>
+                                                    ✓ SELEZIONATO
+                                                </motion.span>
                                             )}
 
                                             <div className="mb-6">
@@ -303,10 +331,14 @@ const Pricing = () => {
 
                                             <div className="mb-8">
                                                 {plan.oldPrice && (
-                                                    <span style={{ fontFamily: body, fontSize: 14, color: GM, textDecoration: 'line-through', marginRight: 10 }}>{plan.oldPrice}</span>
+                                                    <div style={{ marginBottom: 4 }}>
+                                                        <span style={{ fontFamily: body, fontSize: 13, color: GM, textDecoration: 'line-through' }}>{plan.oldPrice}</span>
+                                                    </div>
                                                 )}
-                                                <span style={{ fontFamily: brand, fontWeight: 900, fontSize: 38, color: plan.highlight ? F : N, letterSpacing: '-0.02em' }}>{plan.price}</span>
-                                                <span style={{ fontFamily: body, fontSize: 12, color: GM, marginLeft: 6 }}>{plan.note}</span>
+                                                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, whiteSpace: 'nowrap' }}>
+                                                    <span style={{ fontFamily: brand, fontWeight: 900, fontSize: 36, color: plan.highlight ? F : N, letterSpacing: '-0.02em' }}>{plan.price}</span>
+                                                    <span style={{ fontFamily: body, fontSize: 12, color: GM }}>{plan.note}</span>
+                                                </div>
                                             </div>
 
                                             <ul className="space-y-4 mb-10 flex-grow">
@@ -323,7 +355,7 @@ const Pricing = () => {
                                             ) : (
                                                 <OutlineButton href="/contatti" fullWidth>{plan.cta} →</OutlineButton>
                                             )}
-                                        </div>
+                                        </motion.div>
                                     ))}
                                 </div>
 
