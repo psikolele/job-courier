@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Check, ArrowRight, MessageSquare, Lock } from 'lucide-react';
+import { Lock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,27 +16,11 @@ const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
-
 const SectionLabel = ({ children }) => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
         <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
         <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>{children}</span>
     </div>
-);
-
-const NavyButton = ({ href, onClick, children, fullWidth = false }) => (
-    <a href={href} onClick={onClick} className="inline-flex items-center justify-center gap-2 transition-all hover:opacity-85 hover:scale-[1.02] hover-lift"
-        style={{
-            background: N, color: W, border: 'none',
-            padding: '14px 28px',
-            fontFamily: brand, fontWeight: 700, fontSize: 11,
-            letterSpacing: '0.14em', textTransform: 'uppercase',
-            cursor: 'pointer', borderRadius: 0,
-            width: fullWidth ? '100%' : 'auto',
-            textDecoration: 'none'
-        }}>
-        {children}
-    </a>
 );
 
 const FuchsiaButton = ({ href, onClick, children, fullWidth = false }) => (
@@ -74,8 +58,11 @@ const getLocalizedData = (lang) => {
     const isIt = lang === 'it';
     const isDe = lang === 'de';
     const isFr = lang === 'fr';
-    
+
     return {
+        heroTitleMain: isIt ? 'UNA SOLUZIONE PER OGNI' : isDe ? 'EINE LÖSUNG FÜR JEDEN' : isFr ? 'UNE SOLUTION POUR CHAQUE' : 'A SOLUTION FOR EVERY',
+        heroTitleEm: isIt ? 'ESIGENZA.' : isDe ? 'BEDARF.' : isFr ? 'BESOIN.' : 'NEED.',
+        heroSub: isIt ? 'Per una singola assunzione o per una ricerca continua di personale.' : isDe ? 'Für eine einzelne Einstellung oder eine kontinuierliche Personalsuche.' : isFr ? 'Pour un recrutement ponctuel ou une recherche continue de personnel.' : 'For a single hire or continuous staffing needs.',
         tabs: {
             companies: isIt ? 'Aziende & PMI' : isDe ? 'Unternehmen & KMU' : isFr ? 'Entreprises & PME' : 'Companies & SMEs',
             agencies: isIt ? 'Agenzie di selezione' : isDe ? 'Personalvermittlungen' : isFr ? 'Agences de Recrutement' : 'Recruitment Agencies',
@@ -83,91 +70,95 @@ const getLocalizedData = (lang) => {
         sidebar: {
             title: isIt ? 'Vantaggi JobCourier' : isDe ? 'JobCourier Vorteile' : isFr ? 'Avantages JobCourier' : 'JobCourier Benefits',
             subtitle: isIt ? 'Perché sceglierci' : isDe ? 'Warum uns wählen' : isFr ? 'Pourquoi nous choisir' : 'Why choose us',
-            items: [
-                {
-                    title: isIt ? "120'000+ Candidati" : isDe ? "120'000+ Kandidaten" : isFr ? "120'000+ Candidats" : "120,000+ Candidates",
-                    desc: isIt ? "Accedi a uno dei più grandi database di candidati attivi in Svizzera." : isDe ? "Zugriff auf eine der größten Datenbanken aktiver Kandidaten in der Schweiz." : isFr ? "Accédez à l'une des plus grandes bases de données de candidats actifs en Suisse." : "Access one of the largest databases of active candidates in Switzerland."
-                },
-                {
-                    title: isIt ? "Matching Avanzato" : isDe ? "Erweitertes Matching" : isFr ? "Matching Avancé" : "Advanced Matching",
-                    desc: isIt ? "Il nostro algoritmo ti mostra subito i candidati compatibili con le tue ricerche." : isDe ? "Unser Algorithmus zeigt Ihnen sofort kompatible Kandidaten für Ihre Suchen." : isFr ? "Notre algorithme vous montre immédiatement les candidats compatibles avec vos recherches." : "Our algorithm immediately shows you candidates compatible with your searches."
-                },
-                {
-                    title: isIt ? "Presenza Locale" : isDe ? "Lokale Präsenz" : isFr ? "Présence Locale" : "Local Presence",
-                    desc: isIt ? "Supporto dedicato in Ticino e copertura nazionale svizzera." : isDe ? "Engagierter Support im Tessin und nationale Abdeckung in der Schweiz." : isFr ? "Support dédié au Tessin et couverture nationale suisse." : "Dedicated support in Ticino and Swiss national coverage."
-                },
-                {
-                    title: isIt ? "Semplicità d'uso" : isDe ? "Einfache Bedienung" : isFr ? "Simplicité d'utilisation" : "Ease of Use",
-                    desc: isIt ? "Pubblica in 2 minuti e ricevi candidature profilate direttamente nella tua area riservata." : isDe ? "Veröffentlichen Sie in 2 Minuten und erhalten Sie profilierte Bewerbungen direkt in Ihrem Bereich." : isFr ? "Publiez en 2 minutes et recevez des candidatures profilées directement dans votre espace." : "Post in 2 minutes and receive profiled applications directly in your dashboard."
-                }
-            ]
         },
         plans: [
             {
-                name: "Job Post Basic",
-                price: "CHF 249",
-                note: isIt ? "+IVA" : isDe ? "+MwSt." : isFr ? "+TVA" : "+VAT",
-                desc: isIt ? "Per assunzioni sporadiche e ricerca mirata." : isDe ? "Für sporadische Einstellungen und gezielte Suche." : isFr ? "Pour recrutements sporadiques et recherche ciblée." : "For sporadic hiring and targeted search.",
+                label: isIt ? '01 / OCCASIONALE' : isDe ? '01 / GELEGENTLICH' : isFr ? '01 / OCCASIONNEL' : '01 / OCCASIONAL',
+                name: isIt ? 'ANNUNCIO SINGOLO' : isDe ? 'EINZELANZEIGE' : isFr ? 'ANNONCE UNIQUE' : 'SINGLE POST',
+                subname: 'JOB POST',
+                price: 'CHF 249',
+                note: isIt ? '+IVA' : isDe ? '+MwSt.' : isFr ? '+TVA' : '+VAT',
+                desc: isIt ? 'Per ricerche occasionali.' : isDe ? 'Für gelegentliche Einstellungen.' : isFr ? 'Pour recrutements occasionnels.' : 'For occasional hiring.',
                 features: [
-                    isIt ? "1 Annuncio online per 30 giorni" : isDe ? "1 Stellenanzeige online für 30 Tage" : isFr ? "1 annonce en ligne pendant 30 jours" : "1 Job post online for 30 days",
-                    isIt ? "Ricerche illimitate nel DB" : isDe ? "Unbegrenzte Suchen in der Datenbank" : isFr ? "Recherches illimitées dans la base de données" : "Unlimited candidate DB searches",
-                    isIt ? "Supporto clienti via email" : isDe ? "Kundensupport per E-Mail" : isFr ? "Support client par e-mail" : "Email customer support"
+                    isIt ? '1 annuncio di lavoro online 30gg' : isDe ? '1 Stellenanzeige online 30 Tage' : isFr ? '1 annonce en ligne 30 jours' : '1 job post online 30 days',
+                    isIt ? 'Ricerche illimitate in database' : isDe ? 'Unbegrenzte Datenbanksuchen' : isFr ? 'Recherches illimitées en base de données' : 'Unlimited database searches',
+                    isIt ? 'Area aziendale riservata' : isDe ? 'Reservierter Unternehmensbereich' : isFr ? 'Espace entreprise réservé' : 'Reserved company area',
                 ],
-                tag: isIt ? "Agile" : "Agile",
-                cta: isIt ? "Acquista" : isDe ? "Kaufen" : isFr ? "Acheter" : "Buy"
+                vantaggi: [
+                    isIt ? 'Massima visibilità' : isDe ? 'Maximale Sichtbarkeit' : isFr ? 'Visibilité maximale' : 'Maximum visibility',
+                    isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der JobCourier-Datenbank' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base JobCourier' : 'Immediate access to compatible candidates in the JobCourier database',
+                    isIt ? "Area riservata con storico offerte da un'unica area riservata" : isDe ? 'Reservierter Bereich mit vollständiger Angebotshistorie' : isFr ? 'Espace réservé avec historique complet des offres' : 'Reserved area with full offer history',
+                ],
+                tag: isIt ? '01 / OCCASIONALE' : isDe ? '01 / GELEGENTLICH' : isFr ? '01 / OCCASIONNEL' : '01 / OCCASIONAL',
+                cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
             },
             {
-                name: "Pack 5 Boost",
-                price: "CHF 890",
+                label: isIt ? '02 / VOLUME' : isDe ? '02 / VOLUMEN' : isFr ? '02 / VOLUME' : '02 / VOLUME',
+                name: isIt ? 'PACCHETTO 5 ANNUNCI' : isDe ? 'PAKET 5 ANZEIGEN' : isFr ? 'PACK 5 ANNONCES' : 'PACK 5 POSTS',
+                price: 'CHF 890',
                 oldPrice: "CHF 1'245",
-                note: isIt ? "+IVA" : isDe ? "+MwSt." : isFr ? "+TVA" : "+VAT",
-                desc: isIt ? "Massima visibilità con annunci in vetrina." : isDe ? "Maximale Sichtbarkeit mit Premium-Anzeigen." : isFr ? "Visibilité maximale avec annonces en vitrine." : "Maximum visibility with showcased job posts.",
+                note: isIt ? '+IVA' : isDe ? '+MwSt.' : isFr ? '+TVA' : '+VAT',
+                desc: isIt ? 'Massima visibilità con risparmio del 28%.' : isDe ? 'Maximale Sichtbarkeit mit 28% Ersparnis.' : isFr ? "Visibilité maximale avec 28% d'économie." : 'Maximum visibility with 28% savings.',
                 features: [
-                    isIt ? "5 Annunci in vetrina per 30 giorni" : isDe ? "5 Premium-Stellenanzeigen für 30 Tage" : isFr ? "5 annonces en vitrine pendant 30 jours" : "5 Showcased job posts for 30 days",
-                    isIt ? "Risparmio immediato del 28%" : isDe ? "Sofortige Ersparnis von 28%" : isFr ? "Économie immédiate de 28%" : "Immediate 28% savings",
-                    isIt ? "5 Sblocchi profili CV Premium" : isDe ? "5 Premium-CV sichten" : isFr ? "5 déblocages de profils CV Premium" : "5 Premium CV unlocks",
-                    isIt ? "Highlighting grafico prioritario" : isDe ? "Priorisierte grafische Hervorhebung" : isFr ? "Mise en valeur graphique prioritaire" : "Priority graphic highlighting"
+                    isIt ? '5 offerte di lavoro online 30gg' : isDe ? '5 Stellenanzeigen online 30 Tage' : isFr ? '5 annonces en ligne 30 jours' : '5 job posts online 30 days',
+                    isIt ? 'Ricerche illimitate in database' : isDe ? 'Unbegrenzte Datenbanksuchen' : isFr ? 'Recherches illimitées en base de données' : 'Unlimited database searches',
+                    isIt ? 'Area aziendale riservata' : isDe ? 'Reservierter Unternehmensbereich' : isFr ? 'Espace entreprise réservé' : 'Reserved company area',
                 ],
-                tag: isIt ? "Risparmio -28%" : isDe ? "Sparen -28%" : isFr ? "Économie -28%" : "Save 28%",
+                vantaggi: [
+                    isIt ? 'Risparmio -28%' : isDe ? 'Ersparnis -28%' : isFr ? 'Économie -28%' : 'Save -28%',
+                    isIt ? '12 mesi di tempo per utilizzare le offerte' : isDe ? '12 Monate Zeit zur Nutzung der Anzeigen' : isFr ? '12 mois pour utiliser les offres' : '12 months to use the posts',
+                    isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der JobCourier-Datenbank' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base JobCourier' : 'Immediate access to compatible candidates in the JobCourier database',
+                    isIt ? 'Area riservata con storico offerte' : isDe ? 'Reservierter Bereich mit Angebotshistorie' : isFr ? 'Espace réservé avec historique des offres' : 'Reserved area with offer history',
+                ],
+                tag: isIt ? 'Risparmio -28%' : isDe ? 'Sparen -28%' : isFr ? 'Économie -28%' : 'Save 28%',
                 highlight: true,
-                cta: isIt ? "Acquista" : isDe ? "Kaufen" : isFr ? "Acheter" : "Buy"
+                cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
             },
             {
-                name: isIt ? "Piano Continuo" : isDe ? "Fortlaufender Plan" : isFr ? "Plan Continu" : "Continuous Plan",
+                label: isIt ? '03 / CONTINUO' : isDe ? '03 / KONTINUIERLICH' : isFr ? '03 / CONTINU' : '03 / CONTINUOUS',
+                name: isIt ? 'PIANO CONTINUO' : isDe ? 'FORTLAUFENDER PLAN' : isFr ? 'PLAN CONTINU' : 'CONTINUOUS PLAN',
                 price: isIt ? "da CHF 1'200" : isDe ? "ab CHF 1'200" : isFr ? "dès CHF 1'200" : "from CHF 1,200",
-                note: isIt ? "/ mese + IVA" : isDe ? "/ Monat + MwSt." : isFr ? "/ mois + TVA" : "/ month + VAT",
-                desc: isIt ? "Piani flessibili per flussi di ricerca costanti." : isDe ? "Flexible Pläne für konstante Suchen." : isFr ? "Plans flexibles pour des flux de recherche constants." : "Flexible plans for constant search volumes.",
+                note: isIt ? '+IVA' : isDe ? '+MwSt.' : isFr ? '+TVA' : '+VAT',
+                desc: isIt ? 'Piani flessibili per flussi di ricerca costanti.' : isDe ? 'Flexible Pläne für konstante Suchen.' : isFr ? 'Plans flexibles pour des flux de recherche constants.' : 'Flexible plans for constant search volumes.',
                 features: [
-                    isIt ? "Annunci illimitati in vetrina" : isDe ? "Unbegrenzte Premium-Anzeigen" : isFr ? "Annonces illimitées en vitrine" : "Unlimited showcased job posts",
-                    isIt ? "Fino a 1'000 sblocchi CV mensili" : isDe ? "Bis zu 1'000 CV-Freischaltungen/Monat" : isFr ? "Jusqu'à 1'000 déblocages de CV par mois" : "Up to 1,000 monthly CV unlocks",
-                    isIt ? "Data matching automatizzato" : isDe ? "Automatisiertes Daten-Matching" : isFr ? "Matching de données automatisé" : "Automated data matching",
-                    isIt ? "Account manager dedicato" : isDe ? "Dedizierter Account Manager" : isFr ? "Gestionnaire de compte dédié" : "Dedicated account manager"
+                    isIt ? 'Offerte di lavoro online 30gg' : isDe ? 'Stellenanzeigen online 30 Tage' : isFr ? 'Annonces en ligne 30 jours' : 'Job posts online 30 days',
+                    isIt ? 'Ricerche illimitate in database' : isDe ? 'Unbegrenzte Datenbanksuchen' : isFr ? 'Recherches illimitées en base de données' : 'Unlimited database searches',
+                    isIt ? 'Area aziendale riservata' : isDe ? 'Reservierter Unternehmensbereich' : isFr ? 'Espace entreprise réservé' : 'Reserved company area',
                 ],
-                tag: isIt ? "Abbonamento" : isDe ? "Abonnement" : isFr ? "Abonnement" : "Subscription",
-                cta: isIt ? "Acquista" : isDe ? "Kaufen" : isFr ? "Acheter" : "Buy"
-            }
+                vantaggi: [
+                    isIt ? 'Offerta su misura secondo le esigenze' : isDe ? 'Maßgeschneidertes Angebot nach Bedarf' : isFr ? 'Offre sur mesure selon les besoins' : 'Tailor-made offer',
+                    isIt ? 'Offerte di lavoro illimitate per 12 mesi' : isDe ? 'Unbegrenzte Stellenanzeigen für 12 Monate' : isFr ? 'Offres illimitées pendant 12 mois' : 'Unlimited job posts for 12 months',
+                    isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der JobCourier-Datenbank' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base JobCourier' : 'Immediate access to compatible candidates in the JobCourier database',
+                    isIt ? 'Supporto clienti' : isDe ? 'Kundensupport' : isFr ? 'Support client' : 'Customer support',
+                    isIt ? "Gestione candidature e candidati da un'unica area riservata" : isDe ? 'Verwaltung von Bewerbungen aus einem einzigen Bereich' : isFr ? 'Gestion des candidatures depuis un espace unique' : 'Manage applications from one dashboard',
+                ],
+                tag: isIt ? '03 / CONTINUO' : isDe ? '03 / KONTINUIERLICH' : isFr ? '03 / CONTINU' : '03 / CONTINUOUS',
+                cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
+            },
         ],
         agency: {
-            title: isIt ? "Soluzioni per Agenzie di Selezione" : isDe ? "Lösungen für Personalvermittlungen" : isFr ? "Solutions pour Agences de Recrutement" : "Solutions for Recruitment Agencies",
-            subtitle: isIt ? "Flessibilità e potenza di calcolo su volumi massivi." : isDe ? "Flexibilität und Leistung bei massivem Volumen." : isFr ? "Flexibilité et puissance sur des volumes massifs." : "Flexibility and power for massive volumes.",
-            desc: isIt ? "Sblocca il pieno potenziale di JobCourier per la tua agenzia di recruiting con strumenti professionali dedicati e tariffe agevolate sui volumi." : isDe ? "Schalten Sie das volle Potenzial von JobCourier für Ihre Personalvermittlung mit dedizierten professionellen Tools frei." : isFr ? "Débloquez le plein potentiel de JobCourier pour votre agence avec des outils professionnels dédiés." : "Unlock the full potential of JobCourier for your recruitment agency with dedicated professional tools.",
+            title: isIt ? 'Soluzioni per Agenzie di Selezione' : isDe ? 'Lösungen für Personalvermittlungen' : isFr ? 'Solutions pour Agences de Recrutement' : 'Solutions for Recruitment Agencies',
+            subtitle: isIt ? 'Flessibilità e potenza di calcolo su volumi massivi.' : isDe ? 'Flexibilität und Leistung bei massivem Volumen.' : isFr ? 'Flexibilité et puissance sur des volumes massifs.' : 'Flexibility and power for massive volumes.',
+            desc: isIt ? 'Sblocca il pieno potenziale di JobCourier per la tua agenzia di recruiting con strumenti professionali dedicati e tariffe agevolate sui volumi.' : isDe ? 'Schalten Sie das volle Potenzial von JobCourier für Ihre Personalvermittlung mit dedizierten professionellen Tools frei.' : isFr ? 'Débloquez le plein potentiel de JobCourier pour votre agence avec des outils professionnels dédiés.' : 'Unlock the full potential of JobCourier for your recruitment agency with dedicated professional tools.',
             features: [
-                isIt ? "Integrazione API diretta con il tuo ATS" : isDe ? "Direkte API-Integration mit Ihrem ATS" : isFr ? "Intégration API directe avec votre ATS" : "Direct API integration with your ATS",
-                isIt ? "Multi-posting automatizzato di massa" : isDe ? "Massen-Multi-Posting automatisiert" : isFr ? "Multi-diffusion automatisée de masse" : "Automated mass multi-posting",
-                isIt ? "Accesso illimitato al Database Candidati" : isDe ? "Unbegrenzter Zugriff auf die Kandidatendatenbank" : isFr ? "Accès illimité à la base de données candidats" : "Unlimited Candidate Database access",
-                isIt ? "Account manager dedicato e fatturazione mensile" : isDe ? "Dedizierter Account Manager & monatliche Abrechnung" : isFr ? "Gestionnaire de compte dédié et facturation mensuelle" : "Dedicated account manager and monthly invoicing"
+                isIt ? 'Integrazione API diretta con il tuo ATS' : isDe ? 'Direkte API-Integration mit Ihrem ATS' : isFr ? 'Intégration API directe avec votre ATS' : 'Direct API integration with your ATS',
+                isIt ? 'Multi-posting automatizzato di massa' : isDe ? 'Massen-Multi-Posting automatisiert' : isFr ? 'Multi-diffusion automatisée de masse' : 'Automated mass multi-posting',
+                isIt ? 'Accesso illimitato al Database Candidati' : isDe ? 'Unbegrenzter Zugriff auf die Kandidatendatenbank' : isFr ? 'Accès illimité à la base de données candidats' : 'Unlimited Candidate Database access',
+                isIt ? 'Account manager dedicato e fatturazione mensile' : isDe ? 'Dedizierter Account Manager & monatliche Abrechnung' : isFr ? 'Gestionnaire de compte dédié et facturation mensuelle' : 'Dedicated account manager and monthly invoicing',
             ],
-            cta: isIt ? "Richiedi un'offerta su misura" : isDe ? "Fordern Sie ein maßgeschneidertes Angebot an" : isFr ? "Demandez une offre sur mesure" : "Request a custom offer"
-        }
+            cta: isIt ? "Richiedi un'offerta su misura" : isDe ? 'Fordern Sie ein maßgeschneidertes Angebot an' : isFr ? 'Demandez une offre sur mesure' : 'Request a custom offer',
+        },
     };
 };
 
 const Pricing = () => {
     const containerRef = useRef(null);
     const [activeTab, setActiveTab] = useState('companies');
+    const [hoveredPlan, setHoveredPlan] = useState(1);
     const { t, i18n } = useTranslation();
     const lang = i18n.language || 'it';
     const data = getLocalizedData(lang);
+    const activePlan = data.plans[hoveredPlan];
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -186,7 +177,7 @@ const Pricing = () => {
                     <div className="max-w-4xl">
                         <div className="hero-line"><SectionLabel>{t('pricing.subtitle') || 'Soluzioni di Recruitment'}</SectionLabel></div>
                         <p className="hero-line" style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 24, color: 'rgba(255,255,255,0.4)', marginBottom: 16, lineHeight: 1.2 }}>
-                            {t('pricing.hero_sub') || 'Ottimizziamo il tuo tempo e acceleriamo il recruiting con soluzioni basate su visibilità, database e matching avanzato.'}
+                            {data.heroSub}
                         </p>
                         <h1 className="hero-line" style={{
                             fontFamily: brand, fontWeight: 900,
@@ -196,7 +187,7 @@ const Pricing = () => {
                             letterSpacing: '-0.025em',
                             lineHeight: 0.9,
                             marginBottom: 8
-                        }}>{t('pricing.hero_title') || 'Cerchi candidati?'}</h1>
+                        }}>{data.heroTitleMain}</h1>
                         <h1 className="hero-line" style={{
                             fontFamily: brand, fontWeight: 900,
                             fontSize: 'clamp(2rem, 8vw, 4rem)',
@@ -205,7 +196,7 @@ const Pricing = () => {
                             letterSpacing: '-0.025em',
                             lineHeight: 0.9,
                             marginBottom: 40
-                        }}>{t('pricing.hero_em') || 'Noi li troviamo.'}</h1>
+                        }}>{data.heroTitleEm}</h1>
 
                         <div className="hero-line flex flex-col sm:flex-row items-start gap-4">
                             <FuchsiaButton href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it" fullWidth>
@@ -229,7 +220,7 @@ const Pricing = () => {
             <div id="soluzioni" className="sticky top-0 z-40 py-4 px-6" style={{ background: W, borderBottom: '1px solid rgba(5,11,43,0.07)' }}>
                 <div className="max-w-6xl mx-auto flex" style={{ border: `1.5px solid rgba(5,11,43,0.1)`, width: 'fit-content' }}>
                     {[
-                        ['companies', data.tabs.companies], 
+                        ['companies', data.tabs.companies],
                         ['agencies', data.tabs.agencies]
                     ].map(([key, label], i) => (
                         <button key={key} onClick={() => setActiveTab(key)} style={{
@@ -252,19 +243,22 @@ const Pricing = () => {
             <section className="py-20 px-6 md:px-12 container mx-auto">
                 <AnimatePresence mode="wait">
                     {activeTab === 'companies' ? (
-                        <motion.div 
-                            key="companies" 
-                            initial={{ opacity: 0, y: 15 }} 
-                            animate={{ opacity: 1, y: 0 }} 
-                            exit={{ opacity: 0, y: -15 }} 
-                            transition={{ duration: 0.35 }} 
+                        <motion.div
+                            key="companies"
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -15 }}
+                            transition={{ duration: 0.35 }}
                             className="space-y-16"
                         >
                             <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 items-start">
-                                {/* PRICING CARDS - COVERS 3 COLS ON LG */}
+                                {/* PRICING CARDS */}
                                 <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
                                     {data.plans.map((plan, pIdx) => (
-                                        <div key={pIdx} className="group relative transition-all duration-300 flex flex-col min-w-0"
+                                        <div key={pIdx}
+                                            className="group relative transition-all duration-300 flex flex-col min-w-0"
+                                            onMouseEnter={() => setHoveredPlan(pIdx)}
+                                            onMouseLeave={() => setHoveredPlan(1)}
                                             style={{
                                                 background: W,
                                                 padding: '44px 32px',
@@ -283,7 +277,17 @@ const Pricing = () => {
                                             )}
 
                                             <div className="mb-6">
-                                                <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 24, color: N, textTransform: 'uppercase', letterSpacing: '-0.02em', marginBottom: 8 }}>{plan.name}</h3>
+                                                <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, color: GM, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 6 }}>
+                                                    {plan.label}
+                                                </p>
+                                                <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 22, color: N, textTransform: 'uppercase', letterSpacing: '-0.02em', marginBottom: plan.subname ? 2 : 8, lineHeight: 1.1 }}>
+                                                    {plan.name}
+                                                </h3>
+                                                {plan.subname && (
+                                                    <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, color: F, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>
+                                                        {plan.subname}
+                                                    </p>
+                                                )}
                                                 <p style={{ fontFamily: body, fontSize: 13, color: GM, lineHeight: 1.5, minHeight: '40px' }}>{plan.desc}</p>
                                             </div>
 
@@ -313,48 +317,55 @@ const Pricing = () => {
                                     ))}
                                 </div>
 
-                                {/* SIDEBAR VANTAGGI - 1 COL ON LG */}
-                                <div className="lg:col-span-1 p-8" style={{ background: W, border: '1px solid rgba(5,11,43,0.06)' }}>
+                                {/* SIDEBAR VANTAGGI — per-plan */}
+                                <div className="lg:col-span-1 p-8 transition-all duration-300" style={{ background: W, border: '1px solid rgba(5,11,43,0.06)' }}>
                                     <div className="mb-8">
                                         <SectionLabel>{data.sidebar.subtitle}</SectionLabel>
-                                        <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 26, color: N, textTransform: 'uppercase', letterSpacing: '-0.025em', lineHeight: 1 }}>
+                                        <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 22, color: N, textTransform: 'uppercase', letterSpacing: '-0.025em', lineHeight: 1 }}>
                                             {data.sidebar.title}
                                         </h3>
+                                        <p style={{ fontFamily: body, fontSize: 11, color: GM, marginTop: 6, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                                            {activePlan.label}
+                                        </p>
                                     </div>
-                                    <div className="space-y-8">
-                                        {data.sidebar.items.map((item, idx) => (
-                                            <div key={idx} className="space-y-2">
-                                                <div className="flex items-center gap-2">
-                                                    <span style={{ width: 6, height: 6, background: F, display: 'inline-block' }} />
-                                                    <h4 style={{ fontFamily: brand, fontWeight: 700, fontSize: 13, color: N, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                                                        {item.title}
-                                                    </h4>
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={hoveredPlan}
+                                            initial={{ opacity: 0, y: 8 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -8 }}
+                                            transition={{ duration: 0.2 }}
+                                            className="space-y-6"
+                                        >
+                                            {activePlan.vantaggi.map((item, idx) => (
+                                                <div key={idx} className="flex items-start gap-3">
+                                                    <span style={{ width: 6, height: 6, background: F, display: 'inline-block', flexShrink: 0, marginTop: 5 }} />
+                                                    <p style={{ fontFamily: body, fontSize: 12, color: N, lineHeight: 1.5 }}>
+                                                        {item}
+                                                    </p>
                                                 </div>
-                                                <p style={{ fontFamily: body, fontSize: 12, color: GM, lineHeight: 1.5 }}>
-                                                    {item.desc}
-                                                </p>
-                                            </div>
-                                        ))}
-                                    </div>
+                                            ))}
+                                        </motion.div>
+                                    </AnimatePresence>
                                 </div>
                             </div>
                         </motion.div>
                     ) : (
-                        <motion.div 
-                            key="agencies" 
-                            initial={{ opacity: 0, y: 15 }} 
-                            animate={{ opacity: 1, y: 0 }} 
-                            exit={{ opacity: 0, y: -15 }} 
-                            transition={{ duration: 0.35 }} 
+                        <motion.div
+                            key="agencies"
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -15 }}
+                            transition={{ duration: 0.35 }}
                             className="max-w-4xl mx-auto"
                         >
                             <div className="p-10 md:p-14 relative flex flex-col md:flex-row gap-10 items-stretch"
-                                 style={{ 
-                                     background: W, 
-                                     border: `2px solid rgba(5,11,43,0.06)`,
-                                     boxShadow: '0 15px 40px rgba(5, 11, 43, 0.03)'
-                                 }}>
-                                
+                                style={{
+                                    background: W,
+                                    border: `2px solid rgba(5,11,43,0.06)`,
+                                    boxShadow: '0 15px 40px rgba(5, 11, 43, 0.03)'
+                                }}>
+
                                 <div className="flex-grow space-y-6">
                                     <div className="flex items-center gap-3">
                                         <div className="w-10 h-10 flex items-center justify-center text-white" style={{ background: F }}>
@@ -369,11 +380,11 @@ const Pricing = () => {
                                             </h3>
                                         </div>
                                     </div>
-                                    
+
                                     <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 18, color: GM }}>
                                         {data.agency.subtitle}
                                     </p>
-                                    
+
                                     <p style={{ fontFamily: body, fontSize: 13, color: GM, lineHeight: 1.6 }}>
                                         {data.agency.desc}
                                     </p>
@@ -389,7 +400,7 @@ const Pricing = () => {
                                 </div>
 
                                 <div className="flex flex-col justify-between items-center md:items-stretch md:w-[260px] p-8 text-center"
-                                     style={{ background: GL, borderLeft: '1px solid rgba(5,11,43,0.06)' }}>
+                                    style={{ background: GL, borderLeft: '1px solid rgba(5,11,43,0.06)' }}>
                                     <div className="space-y-4 my-auto">
                                         <Lock size={32} className="mx-auto text-slate-300" />
                                         <h4 style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: N }}>
