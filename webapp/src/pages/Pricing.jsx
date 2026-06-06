@@ -93,6 +93,8 @@ const getLocalizedData = (lang) => {
                 name: isIt ? 'ANNUNCIO SINGOLO' : isDe ? 'EINZELANZEIGE' : isFr ? 'ANNONCE UNIQUE' : 'SINGLE POST',
                 subname: 'JOB POST',
                 price: 'CHF 249',
+                pricePrefix: 'CHF',
+                priceNum: '249',
                 note: isIt ? '+IVA' : isDe ? '+MwSt.' : isFr ? '+TVA' : '+VAT',
                 desc: isIt ? 'Per ricerche occasionali.' : isDe ? 'Für gelegentliche Einstellungen.' : isFr ? 'Pour recrutements occasionnels.' : 'For occasional hiring.',
                 features: [
@@ -112,6 +114,8 @@ const getLocalizedData = (lang) => {
                 label: isIt ? '02 / VOLUME' : isDe ? '02 / VOLUMEN' : isFr ? '02 / VOLUME' : '02 / VOLUME',
                 name: isIt ? 'PACCHETTO 5 ANNUNCI' : isDe ? 'PAKET 5 ANZEIGEN' : isFr ? 'PACK 5 ANNONCES' : 'PACK 5 POSTS',
                 price: 'CHF 890',
+                pricePrefix: 'CHF',
+                priceNum: '890',
                 oldPrice: "CHF 1'245",
                 note: isIt ? '+IVA' : isDe ? '+MwSt.' : isFr ? '+TVA' : '+VAT',
                 desc: isIt ? 'Massima visibilità con risparmio del 28%.' : isDe ? 'Maximale Sichtbarkeit mit 28% Ersparnis.' : isFr ? "Visibilité maximale avec 28% d'économie." : 'Maximum visibility with 28% savings.',
@@ -126,7 +130,7 @@ const getLocalizedData = (lang) => {
                     isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der JobCourier-Datenbank' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base JobCourier' : 'Immediate access to compatible candidates in the JobCourier database',
                     isIt ? 'Area riservata con storico offerte' : isDe ? 'Reservierter Bereich mit Angebotshistorie' : isFr ? 'Espace réservé avec historique des offres' : 'Reserved area with offer history',
                 ],
-                tag: isIt ? 'Risparmio -28%' : isDe ? 'Sparen -28%' : isFr ? 'Économie -28%' : 'Save 28%',
+                tag: isIt ? 'PIÙ ACQUISTATO' : isDe ? 'MEISTGEKAUFT' : isFr ? 'PLUS ACHETÉ' : 'BEST SELLER',
                 highlight: true,
                 cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
             },
@@ -134,6 +138,8 @@ const getLocalizedData = (lang) => {
                 label: isIt ? '03 / CONTINUO' : isDe ? '03 / KONTINUIERLICH' : isFr ? '03 / CONTINU' : '03 / CONTINUOUS',
                 name: isIt ? 'PIANO CONTINUO' : isDe ? 'FORTLAUFENDER PLAN' : isFr ? 'PLAN CONTINU' : 'CONTINUOUS PLAN',
                 price: isIt ? "da CHF 1'200" : isDe ? "ab CHF 1'200" : isFr ? "dès CHF 1'200" : "from CHF 1,200",
+                pricePrefix: isIt ? 'da CHF' : isDe ? 'ab CHF' : isFr ? 'dès CHF' : 'from CHF',
+                priceNum: "1'200",
                 note: isIt ? '+IVA' : isDe ? '+MwSt.' : isFr ? '+TVA' : '+VAT',
                 desc: isIt ? 'Piani flessibili per flussi di ricerca costanti.' : isDe ? 'Flexible Pläne für konstante Suchen.' : isFr ? 'Plans flexibles pour des flux de recherche constants.' : 'Flexible plans for constant search volumes.',
                 features: [
@@ -274,20 +280,14 @@ const Pricing = () => {
                                             whileTap={{ scale: 0.97 }}
                                             animate={{
                                                 boxShadow: selectedPlan === pIdx
-                                                    ? '0 0 0 3px #FF1F7A, 0 16px 48px rgba(255,31,122,0.18)'
-                                                    : plan.highlight
-                                                        ? '0 12px 40px rgba(255,31,122,0.08)'
-                                                        : '0 0 0 0px transparent',
+                                                    ? '0 0 0 2px #FF1F7A, 0 12px 32px rgba(255,31,122,0.12)'
+                                                    : '0 0 0 0px transparent',
                                             }}
                                             transition={{ duration: 0.25, ease: 'easeOut' }}
                                             style={{
                                                 background: W,
                                                 padding: '44px 32px',
-                                                border: selectedPlan === pIdx
-                                                    ? `2px solid ${F}`
-                                                    : plan.highlight
-                                                        ? `2px solid ${F}`
-                                                        : '1px solid rgba(5,11,43,0.06)',
+                                                border: '1px solid rgba(5,11,43,0.06)',
                                                 borderRadius: 0,
                                             }}>
                                             {plan.tag && (
@@ -331,13 +331,20 @@ const Pricing = () => {
 
                                             <div className="mb-8">
                                                 {plan.oldPrice && (
-                                                    <div style={{ marginBottom: 4 }}>
+                                                    <div style={{ marginBottom: 6 }}>
                                                         <span style={{ fontFamily: body, fontSize: 13, color: GM, textDecoration: 'line-through' }}>{plan.oldPrice}</span>
                                                     </div>
                                                 )}
-                                                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, whiteSpace: 'nowrap' }}>
-                                                    <span style={{ fontFamily: brand, fontWeight: 900, fontSize: 36, color: plan.highlight ? F : N, letterSpacing: '-0.02em' }}>{plan.price}</span>
-                                                    <span style={{ fontFamily: body, fontSize: 12, color: GM }}>{plan.note}</span>
+                                                <div style={{ lineHeight: 1 }}>
+                                                    <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 12, color: GM, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 4 }}>
+                                                        {plan.pricePrefix}
+                                                    </div>
+                                                    <div style={{ fontFamily: brand, fontWeight: 900, fontSize: 48, color: plan.highlight ? F : N, letterSpacing: '-0.03em', lineHeight: 1, marginBottom: 6 }}>
+                                                        {plan.priceNum}
+                                                    </div>
+                                                    <div style={{ fontFamily: body, fontSize: 12, color: GM }}>
+                                                        {plan.note}
+                                                    </div>
                                                 </div>
                                             </div>
 
