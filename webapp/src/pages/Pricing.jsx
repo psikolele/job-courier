@@ -181,7 +181,7 @@ const Pricing = () => {
     const { t, i18n } = useTranslation();
     const lang = i18n.language || 'it';
     const data = getLocalizedData(lang);
-    const activePlan = data.plans[hoveredPlan];
+    const activePlan = data.plans[selectedPlan ?? hoveredPlan];
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -276,7 +276,7 @@ const Pricing = () => {
                                             className="group relative flex flex-col min-w-0 cursor-pointer"
                                             onMouseEnter={() => setHoveredPlan(pIdx)}
                                             onMouseLeave={() => setHoveredPlan(selectedPlan ?? 1)}
-                                            onClick={() => setSelectedPlan(pIdx)}
+                                            onClick={() => { setSelectedPlan(pIdx); setHoveredPlan(pIdx); }}
                                             whileTap={{ scale: 0.97 }}
                                             animate={{
                                                 boxShadow: selectedPlan === pIdx

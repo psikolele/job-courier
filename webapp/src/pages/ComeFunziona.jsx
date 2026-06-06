@@ -134,13 +134,14 @@ const ComeFunziona = () => {
                                             <TextStaggerHover
                                                 index={index}
                                                 text={slide.title}
-                                                className="cursor-pointer block whitespace-nowrap overflow-hidden py-4"
+                                                className="cursor-pointer block whitespace-nowrap overflow-hidden py-3"
                                                 style={{
                                                     fontFamily: brand, fontWeight: 900,
-                                                    fontSize: 28,
+                                                    fontSize: 24,
                                                     color: N,
                                                     textTransform: 'uppercase',
-                                                    letterSpacing: '-0.02em'
+                                                    letterSpacing: '-0.02em',
+                                                    touchAction: 'manipulation',
                                                 }}
                                             />
                                             <div style={{ height: 1, width: '100%', background: 'rgba(5,11,43,0.07)' }} />
@@ -150,7 +151,7 @@ const ComeFunziona = () => {
                             </div>
 
                             <div className="lg:w-[55%] w-full">
-                                <div className="relative overflow-hidden" style={{ height: 460, border: '1px solid rgba(5,11,43,0.07)' }}>
+                                <div className="relative overflow-hidden" style={{ height: 'clamp(300px, 50vw, 460px)', border: '1px solid rgba(5,11,43,0.07)' }}>
                                     <HoverSliderImageWrap className="absolute inset-0">
                                         {SLIDER_STEPS.map((slide, index) => (
                                             <div key={slide.id}>
