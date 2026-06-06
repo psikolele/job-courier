@@ -54,6 +54,22 @@ const OutlineButton = ({ href, onClick, children, fullWidth = false }) => (
     </a>
 );
 
+const FuchsiaOutlineButton = ({ href, onClick, children, fullWidth = false }) => (
+    <a href={href} onClick={onClick} className="inline-flex items-center justify-center gap-2 transition-all hover:opacity-85 hover:scale-[1.02] hover-lift"
+        style={{
+            background: 'transparent', color: F,
+            border: `1.5px solid ${F}`,
+            padding: '14px 28px',
+            fontFamily: brand, fontWeight: 700, fontSize: 11,
+            letterSpacing: '0.14em', textTransform: 'uppercase',
+            cursor: 'pointer', borderRadius: 0,
+            width: fullWidth ? '100%' : 'auto',
+            textDecoration: 'none'
+        }}>
+        {children}
+    </a>
+);
+
 const getLocalizedData = (lang) => {
     const isIt = lang === 'it';
     const isDe = lang === 'de';
@@ -198,19 +214,13 @@ const Pricing = () => {
                             marginBottom: 40
                         }}>{data.heroTitleEm}</h1>
 
-                        <div className="hero-line flex flex-col sm:flex-row items-start gap-4">
+                        <div className="hero-line flex flex-row gap-4 w-full max-w-lg">
                             <FuchsiaButton href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it" fullWidth>
                                 {t('pricing.cta_register') || 'REGISTRATI GRATIS'} →
                             </FuchsiaButton>
-                            <a href="#soluzioni" style={{
-                                fontFamily: brand, fontWeight: 700, fontSize: 11,
-                                letterSpacing: '0.14em', textTransform: 'uppercase',
-                                color: 'rgba(255,255,255,0.6)',
-                                padding: '14px 0',
-                                textDecoration: 'none'
-                            }} className="hover:opacity-100 transition-opacity">
-                                {t('pricing.cta_discover') || 'Scopri i piani'} →
-                            </a>
+                            <FuchsiaOutlineButton href="#soluzioni" fullWidth>
+                                {t('pricing.cta_discover') || 'SCOPRI I PIANI'} →
+                            </FuchsiaOutlineButton>
                         </div>
                     </div>
                 </div>
