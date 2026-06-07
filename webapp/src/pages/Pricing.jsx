@@ -4,9 +4,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Lock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import {
-    HoverSlider, TextStaggerHover, SlideDescription,
-} from '@/components/ui/animated-slideshow';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -284,7 +281,7 @@ const Pricing = () => {
                             transition={{ duration: 0.35 }}
                             className="space-y-16"
                         >
-                            <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 items-start">
+                            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
                                 {/* PRICING CARDS */}
                                 <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
                                     {data.plans.map((plan, pIdx) => (
@@ -384,46 +381,46 @@ const Pricing = () => {
                                     ))}
                                 </div>
 
-                                {/* SIDEBAR VANTAGGI — hover-slider style */}
-                                <div className="lg:col-span-1 p-8 transition-all duration-300" style={{ background: W, border: '1px solid rgba(5,11,43,0.06)' }}>
-                                    <div className="mb-6">
+                                {/* SIDEBAR VANTAGGI — navy, numerata, stagger on click */}
+                                <div className="lg:col-span-2 p-8" style={{ background: N, borderLeft: `4px solid ${F}` }}>
+                                    <div className="mb-8">
                                         <SectionLabel>{data.sidebar.subtitle}</SectionLabel>
-                                        <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 22, color: N, textTransform: 'uppercase', letterSpacing: '-0.025em', lineHeight: 1 }}>
+                                        <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 22, color: W, textTransform: 'uppercase', letterSpacing: '-0.025em', lineHeight: 1 }}>
                                             {data.sidebar.title}
                                         </h3>
-                                        <p style={{ fontFamily: body, fontSize: 11, color: GM, marginTop: 6, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                                        <p style={{ fontFamily: body, fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 6, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
                                             {activePlan.label}
                                         </p>
                                     </div>
                                     <AnimatePresence mode="wait">
                                         <motion.div
                                             key={selectedPlan ?? hoveredPlan}
-                                            initial={{ opacity: 0, y: 8 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -8 }}
-                                            transition={{ duration: 0.2 }}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0, transition: { duration: 0.12 } }}
+                                            transition={{ duration: 0.12 }}
                                         >
-                                            <HoverSlider>
-                                                <div>
-                                                    {activePlan.vantaggi.map((item, index) => (
-                                                        <div key={index}>
-                                                            <TextStaggerHover
-                                                                index={index}
-                                                                text={item.title}
-                                                                className="cursor-pointer block py-3"
-                                                                style={{ fontFamily: brand, fontWeight: 900, fontSize: 13, color: N, textTransform: 'uppercase', letterSpacing: '0.04em' }}
-                                                            />
-                                                            <div style={{ height: 1, background: 'rgba(5,11,43,0.07)' }} />
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                                <div style={{ marginTop: 20 }}>
-                                                    <SlideDescription
-                                                        slides={activePlan.vantaggi}
-                                                        style={{ fontFamily: body, fontSize: 12, color: GM, lineHeight: 1.6 }}
-                                                    />
-                                                </div>
-                                            </HoverSlider>
+                                            {activePlan.vantaggi.map((item, index) => (
+                                                <motion.div
+                                                    key={index}
+                                                    initial={{ opacity: 0, y: 16 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94], delay: index * 0.06 }}
+                                                >
+                                                    <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 9, color: F, letterSpacing: '0.18em', display: 'block', marginBottom: 4 }}>
+                                                        {String(index + 1).padStart(2, '0')}
+                                                    </span>
+                                                    <p style={{ fontFamily: brand, fontWeight: 900, fontSize: 13, color: W, textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 6 }}>
+                                                        {item.title}
+                                                    </p>
+                                                    <p style={{ fontFamily: body, fontSize: 11, color: 'rgba(255,255,255,0.60)', lineHeight: 1.6 }}>
+                                                        {item.desc}
+                                                    </p>
+                                                    {index < activePlan.vantaggi.length - 1 && (
+                                                        <div style={{ height: 1, background: 'rgba(255,255,255,0.1)', margin: '16px 0' }} />
+                                                    )}
+                                                </motion.div>
+                                            ))}
                                         </motion.div>
                                     </AnimatePresence>
                                 </div>
