@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Lock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import {
-    HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover, SlideDescription,
+    HoverSlider, TextStaggerHover, SlideDescription,
 } from '@/components/ui/animated-slideshow';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -73,12 +73,6 @@ const FuchsiaOutlineButton = ({ href, onClick, children, fullWidth = false }) =>
     </a>
 );
 
-const PRICING_STEPS = [
-    { id: '1', title: 'REGISTRA',   desc: 'Crea gratuitamente il tuo account aziendale e accedi alla tua area riservata JobCourier.', imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop' },
-    { id: '2', title: 'PUBBLICA',   desc: 'Pubblica la tua ricerca di personale e rendila visibile ai candidati in tutta la Svizzera.',  imageUrl: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&auto=format&fit=crop' },
-    { id: '3', title: 'VISUALIZZA', desc: 'JobCourier ti mostra subito i candidati compatibili con la tua ricerca.',                      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop' },
-    { id: '4', title: 'CONTATTA',   desc: 'Valuta i profili ricevuti e contatta quelli di maggiore interesse.',                           imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop' },
-];
 
 const getLocalizedData = (lang) => {
     const isIt = lang === 'it';
@@ -113,9 +107,12 @@ const getLocalizedData = (lang) => {
                     isIt ? 'Area aziendale riservata' : isDe ? 'Reservierter Unternehmensbereich' : isFr ? 'Espace entreprise réservé' : 'Reserved company area',
                 ],
                 vantaggi: [
-                    isIt ? 'Massima visibilità' : isDe ? 'Maximale Sichtbarkeit' : isFr ? 'Visibilité maximale' : 'Maximum visibility',
-                    isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der JobCourier-Datenbank' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base JobCourier' : 'Immediate access to compatible candidates in the JobCourier database',
-                    isIt ? "Area riservata con storico offerte da un'unica area riservata" : isDe ? 'Reservierter Bereich mit vollständiger Angebotshistorie' : isFr ? 'Espace réservé avec historique complet des offres' : 'Reserved area with full offer history',
+                    { title: isIt ? 'VISIBILITÀ' : isDe ? 'SICHTBARKEIT' : isFr ? 'VISIBILITÉ' : 'VISIBILITY',
+                      desc:  isIt ? 'Massima visibilità per le tue offerte di lavoro su JobCourier.' : isDe ? 'Maximale Sichtbarkeit für Ihre Stellenanzeigen.' : isFr ? 'Visibilité maximale pour vos offres d\'emploi.' : 'Maximum visibility for your job posts on JobCourier.' },
+                    { title: isIt ? 'ACCESSO DB' : isDe ? 'DB-ZUGRIFF' : isFr ? 'ACCÈS DB' : 'DB ACCESS',
+                      desc:  isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier.' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der Datenbank.' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base.' : 'Immediate access to compatible candidates in the JobCourier database.' },
+                    { title: isIt ? 'AREA RISERVATA' : isDe ? 'DASHBOARD' : isFr ? 'ESPACE RÉSERVÉ' : 'DASHBOARD',
+                      desc:  isIt ? "Area riservata con storico completo delle offerte da un'unica dashboard." : isDe ? 'Reservierter Bereich mit vollständiger Angebotshistorie.' : isFr ? 'Espace réservé avec historique complet des offres.' : 'Reserved area with full offer history in one dashboard.' },
                 ],
                 tag: isIt ? '01 / OCCASIONALE' : isDe ? '01 / GELEGENTLICH' : isFr ? '01 / OCCASIONNEL' : '01 / OCCASIONAL',
                 cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
@@ -135,10 +132,14 @@ const getLocalizedData = (lang) => {
                     isIt ? 'Area aziendale riservata' : isDe ? 'Reservierter Unternehmensbereich' : isFr ? 'Espace entreprise réservé' : 'Reserved company area',
                 ],
                 vantaggi: [
-                    isIt ? 'Risparmio -28%' : isDe ? 'Ersparnis -28%' : isFr ? 'Économie -28%' : 'Save -28%',
-                    isIt ? '12 mesi di tempo per utilizzare le offerte' : isDe ? '12 Monate Zeit zur Nutzung der Anzeigen' : isFr ? '12 mois pour utiliser les offres' : '12 months to use the posts',
-                    isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der JobCourier-Datenbank' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base JobCourier' : 'Immediate access to compatible candidates in the JobCourier database',
-                    isIt ? 'Area riservata con storico offerte' : isDe ? 'Reservierter Bereich mit Angebotshistorie' : isFr ? 'Espace réservé avec historique des offres' : 'Reserved area with offer history',
+                    { title: isIt ? 'RISPARMIO -28%' : isDe ? 'ERSPARNIS -28%' : isFr ? 'ÉCONOMIE -28%' : 'SAVE 28%',
+                      desc:  isIt ? 'Risparmio immediato del 28% rispetto all\'acquisto di 5 annunci singoli.' : isDe ? 'Sofortige Ersparnis von 28% gegenüber Einzelkauf.' : isFr ? 'Économie immédiate de 28% par rapport à l\'achat individuel.' : 'Immediate 28% saving vs buying 5 single posts.' },
+                    { title: isIt ? '12 MESI' : isDe ? '12 MONATE' : isFr ? '12 MOIS' : '12 MONTHS',
+                      desc:  isIt ? '12 mesi di tempo per utilizzare le offerte acquistate, senza scadenze rigide.' : isDe ? '12 Monate Zeit zur Nutzung der Anzeigen ohne strenge Fristen.' : isFr ? '12 mois pour utiliser les offres sans échéances rigides.' : '12 months to use your purchased posts, no strict deadlines.' },
+                    { title: isIt ? 'ACCESSO DB' : isDe ? 'DB-ZUGRIFF' : isFr ? 'ACCÈS DB' : 'DB ACCESS',
+                      desc:  isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier.' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der Datenbank.' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base.' : 'Immediate access to compatible candidates in the JobCourier database.' },
+                    { title: isIt ? 'AREA RISERVATA' : isDe ? 'DASHBOARD' : isFr ? 'ESPACE RÉSERVÉ' : 'DASHBOARD',
+                      desc:  isIt ? 'Area riservata con storico completo delle offerte pubblicate.' : isDe ? 'Reservierter Bereich mit vollständiger Angebotshistorie.' : isFr ? 'Espace réservé avec historique complet des offres publiées.' : 'Reserved area with full history of published job posts.' },
                 ],
                 tag: isIt ? 'PIÙ ACQUISTATO' : isDe ? 'MEISTGEKAUFT' : isFr ? 'PLUS ACHETÉ' : 'BEST SELLER',
                 highlight: true,
@@ -158,11 +159,16 @@ const getLocalizedData = (lang) => {
                     isIt ? 'Area aziendale riservata' : isDe ? 'Reservierter Unternehmensbereich' : isFr ? 'Espace entreprise réservé' : 'Reserved company area',
                 ],
                 vantaggi: [
-                    isIt ? 'Offerta su misura secondo le esigenze' : isDe ? 'Maßgeschneidertes Angebot nach Bedarf' : isFr ? 'Offre sur mesure selon les besoins' : 'Tailor-made offer',
-                    isIt ? 'Offerte di lavoro illimitate per 12 mesi' : isDe ? 'Unbegrenzte Stellenanzeigen für 12 Monate' : isFr ? 'Offres illimitées pendant 12 mois' : 'Unlimited job posts for 12 months',
-                    isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der JobCourier-Datenbank' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base JobCourier' : 'Immediate access to compatible candidates in the JobCourier database',
-                    isIt ? 'Supporto clienti' : isDe ? 'Kundensupport' : isFr ? 'Support client' : 'Customer support',
-                    isIt ? "Gestione candidature e candidati da un'unica area riservata" : isDe ? 'Verwaltung von Bewerbungen aus einem einzigen Bereich' : isFr ? 'Gestion des candidatures depuis un espace unique' : 'Manage applications from one dashboard',
+                    { title: isIt ? 'SU MISURA' : isDe ? 'MASSGESCHNEIDERT' : isFr ? 'SUR MESURE' : 'CUSTOM',
+                      desc:  isIt ? 'Offerta personalizzata secondo le esigenze specifiche della tua azienda.' : isDe ? 'Maßgeschneidertes Angebot nach Ihren Bedürfnissen.' : isFr ? 'Offre personnalisée selon vos besoins spécifiques.' : 'Tailor-made offer built around your company\'s needs.' },
+                    { title: isIt ? 'ILLIMITATE' : isDe ? 'UNBEGRENZT' : isFr ? 'ILLIMITÉES' : 'UNLIMITED',
+                      desc:  isIt ? 'Offerte di lavoro illimitate per 12 mesi con massima flessibilità.' : isDe ? 'Unbegrenzte Stellenanzeigen für 12 Monate.' : isFr ? 'Offres d\'emploi illimitées pendant 12 mois.' : 'Unlimited job posts for 12 months with full flexibility.' },
+                    { title: isIt ? 'ACCESSO DB' : isDe ? 'DB-ZUGRIFF' : isFr ? 'ACCÈS DB' : 'DB ACCESS',
+                      desc:  isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier.' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der Datenbank.' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base.' : 'Immediate access to compatible candidates in the JobCourier database.' },
+                    { title: isIt ? 'SUPPORTO' : isDe ? 'SUPPORT' : isFr ? 'SUPPORT' : 'SUPPORT',
+                      desc:  isIt ? 'Supporto clienti dedicato in ogni fase del processo di recruiting.' : isDe ? 'Dedizierter Kundensupport in jeder Phase des Recruitings.' : isFr ? 'Support client dédié à chaque étape du recrutement.' : 'Dedicated customer support at every stage of your recruiting.' },
+                    { title: isIt ? 'GESTIONE' : isDe ? 'VERWALTUNG' : isFr ? 'GESTION' : 'MANAGEMENT',
+                      desc:  isIt ? "Gestione centralizzata di candidature e candidati da un'unica area riservata." : isDe ? 'Zentrale Verwaltung von Bewerbungen aus einem einzigen Bereich.' : isFr ? 'Gestion centralisée des candidatures depuis un espace unique.' : 'Centralized management of applications from one dashboard.' },
                 ],
                 tag: isIt ? '03 / CONTINUO' : isDe ? '03 / KONTINUIERLICH' : isFr ? '03 / CONTINU' : '03 / CONTINUOUS',
                 cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
@@ -378,9 +384,9 @@ const Pricing = () => {
                                     ))}
                                 </div>
 
-                                {/* SIDEBAR VANTAGGI — per-plan */}
-                                <div className="lg:col-span-1 lg:row-span-2 p-8 transition-all duration-300" style={{ background: W, border: '1px solid rgba(5,11,43,0.06)' }}>
-                                    <div className="mb-8">
+                                {/* SIDEBAR VANTAGGI — hover-slider style */}
+                                <div className="lg:col-span-1 p-8 transition-all duration-300" style={{ background: W, border: '1px solid rgba(5,11,43,0.06)' }}>
+                                    <div className="mb-6">
                                         <SectionLabel>{data.sidebar.subtitle}</SectionLabel>
                                         <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 22, color: N, textTransform: 'uppercase', letterSpacing: '-0.025em', lineHeight: 1 }}>
                                             {data.sidebar.title}
@@ -391,83 +397,35 @@ const Pricing = () => {
                                     </div>
                                     <AnimatePresence mode="wait">
                                         <motion.div
-                                            key={hoveredPlan}
+                                            key={selectedPlan ?? hoveredPlan}
                                             initial={{ opacity: 0, y: 8 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: -8 }}
                                             transition={{ duration: 0.2 }}
-                                            className="space-y-6"
                                         >
-                                            {activePlan.vantaggi.map((item, idx) => (
-                                                <div key={idx} className="flex items-start gap-3">
-                                                    <span style={{ width: 6, height: 6, background: F, display: 'inline-block', flexShrink: 0, marginTop: 5 }} />
-                                                    <p style={{ fontFamily: body, fontSize: 12, color: N, lineHeight: 1.5 }}>
-                                                        {item}
-                                                    </p>
+                                            <HoverSlider>
+                                                <div>
+                                                    {activePlan.vantaggi.map((item, index) => (
+                                                        <div key={index}>
+                                                            <TextStaggerHover
+                                                                index={index}
+                                                                text={item.title}
+                                                                className="cursor-pointer block py-3"
+                                                                style={{ fontFamily: brand, fontWeight: 900, fontSize: 13, color: N, textTransform: 'uppercase', letterSpacing: '0.04em' }}
+                                                            />
+                                                            <div style={{ height: 1, background: 'rgba(5,11,43,0.07)' }} />
+                                                        </div>
+                                                    ))}
                                                 </div>
-                                            ))}
+                                                <div style={{ marginTop: 20 }}>
+                                                    <SlideDescription
+                                                        slides={activePlan.vantaggi}
+                                                        style={{ fontFamily: body, fontSize: 12, color: GM, lineHeight: 1.6 }}
+                                                    />
+                                                </div>
+                                            </HoverSlider>
                                         </motion.div>
                                     </AnimatePresence>
-                                </div>
-
-                                {/* IL METODO JOBCOURIER — hover slider */}
-                                <div className="lg:col-span-3 overflow-hidden" style={{ background: N, borderLeft: `4px solid ${F}` }}>
-                                    <HoverSlider className="w-full">
-                                        <div className="flex flex-col lg:flex-row items-stretch" style={{ minHeight: 360 }}>
-                                            {/* LEFT — step titles */}
-                                            <div className="flex flex-col justify-center lg:w-[42%] px-8 py-10">
-                                                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-                                                    <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                                                    <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>IL METODO JOBCOURIER</span>
-                                                </div>
-                                                {PRICING_STEPS.map((slide, index) => (
-                                                    <div key={slide.id}>
-                                                        <TextStaggerHover
-                                                            index={index}
-                                                            text={slide.title}
-                                                            className="cursor-pointer block whitespace-nowrap py-3"
-                                                            style={{ fontFamily: brand, fontWeight: 900, fontSize: 26, color: W, textTransform: 'uppercase', letterSpacing: '-0.02em' }}
-                                                        />
-                                                        <div style={{ height: 1, background: 'rgba(255,255,255,0.1)' }} />
-                                                    </div>
-                                                ))}
-                                                <div style={{ marginTop: 28 }}>
-                                                    <a href="/come-funziona" style={{
-                                                        display: 'inline-flex', alignItems: 'center', gap: 8,
-                                                        background: F, color: W, border: 'none',
-                                                        padding: '12px 24px',
-                                                        fontFamily: brand, fontWeight: 700, fontSize: 10,
-                                                        letterSpacing: '0.14em', textTransform: 'uppercase',
-                                                        cursor: 'pointer', borderRadius: 0, textDecoration: 'none',
-                                                    }} className="hover:opacity-85 transition-opacity">
-                                                        SCOPRI IL METODO →
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            {/* RIGHT — image + description */}
-                                            <div className="lg:w-[58%] relative overflow-hidden" style={{ minHeight: 300 }}>
-                                                <HoverSliderImageWrap className="absolute inset-0">
-                                                    {PRICING_STEPS.map((slide, index) => (
-                                                        <HoverSliderImage
-                                                            key={slide.id}
-                                                            index={index}
-                                                            imageUrl={slide.imageUrl}
-                                                            src={slide.imageUrl}
-                                                            alt={slide.title}
-                                                            className="w-full h-full object-cover"
-                                                            loading="lazy"
-                                                            decoding="async"
-                                                        />
-                                                    ))}
-                                                </HoverSliderImageWrap>
-                                                <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(5,11,43,0.92) 0%, rgba(5,11,43,0.55) 55%, transparent 100%)' }} />
-                                                <div className="absolute bottom-0 left-0 right-0 p-8 pt-20">
-                                                    <SlideDescription slides={PRICING_STEPS} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </HoverSlider>
                                 </div>
                             </div>
                         </motion.div>

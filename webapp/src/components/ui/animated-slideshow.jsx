@@ -146,7 +146,7 @@ export const HoverSliderImage = React.forwardRef(
 HoverSliderImage.displayName = 'HoverSliderImage';
 
 // ----- SlideDescription: shows description for active slide -----
-export const SlideDescription = ({ slides }) => {
+export const SlideDescription = ({ slides, style }) => {
     const { activeSlide } = useHoverSliderContext();
     return (
         <motion.p
@@ -156,6 +156,7 @@ export const SlideDescription = ({ slides }) => {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-white/90 text-sm md:text-base leading-relaxed font-sans"
+            style={style}
         >
             {slides[activeSlide]?.desc}
         </motion.p>
