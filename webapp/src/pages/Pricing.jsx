@@ -286,7 +286,7 @@ const Pricing = () => {
                                             transition={{ duration: 0.25, ease: 'easeOut' }}
                                             style={{
                                                 background: W,
-                                                padding: '44px 32px',
+                                                padding: '36px 28px',
                                                 border: '1px solid rgba(5,11,43,0.06)',
                                                 borderRadius: 0,
                                             }}>
@@ -318,23 +318,25 @@ const Pricing = () => {
                                                 <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, color: GM, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 6 }}>
                                                     {plan.label}
                                                 </p>
-                                                <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 22, color: N, textTransform: 'uppercase', letterSpacing: '-0.02em', marginBottom: plan.subname ? 2 : 8, lineHeight: 1.1 }}>
+                                                <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 22, color: N, textTransform: 'uppercase', letterSpacing: '-0.02em', marginBottom: 4, lineHeight: 1.1 }}>
                                                     {plan.name}
                                                 </h3>
-                                                {plan.subname && (
-                                                    <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, color: F, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>
-                                                        {plan.subname}
-                                                    </p>
-                                                )}
-                                                <p style={{ fontFamily: body, fontSize: 13, color: GM, lineHeight: 1.5, minHeight: '40px' }}>{plan.desc}</p>
+                                                <div style={{ minHeight: 22, marginBottom: 8 }}>
+                                                    {plan.subname && (
+                                                        <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, color: F, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                                                            {plan.subname}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                                <p style={{ fontFamily: body, fontSize: 12, color: GM, lineHeight: 1.5, minHeight: '36px' }}>{plan.desc}</p>
                                             </div>
 
-                                            <div className="mb-8">
-                                                {plan.oldPrice && (
-                                                    <div style={{ marginBottom: 6 }}>
+                                            <div className="mb-6">
+                                                <div style={{ marginBottom: 6, minHeight: 22 }}>
+                                                    {plan.oldPrice && (
                                                         <span style={{ fontFamily: body, fontSize: 13, color: GM, textDecoration: 'line-through' }}>{plan.oldPrice}</span>
-                                                    </div>
-                                                )}
+                                                    )}
+                                                </div>
                                                 <div style={{ lineHeight: 1 }}>
                                                     <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 12, color: GM, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 4 }}>
                                                         {plan.pricePrefix}
@@ -348,9 +350,9 @@ const Pricing = () => {
                                                 </div>
                                             </div>
 
-                                            <ul className="space-y-4 mb-10 flex-grow">
+                                            <ul className="space-y-3 mb-8 flex-grow">
                                                 {plan.features.map((f, fIdx) => (
-                                                    <li key={fIdx} className="flex items-start gap-3" style={{ fontFamily: body, fontSize: 13, color: N }}>
+                                                    <li key={fIdx} className="flex items-start gap-3" style={{ fontFamily: body, fontSize: 12, color: N, lineHeight: 1.4 }}>
                                                         <span style={{ width: 8, height: 8, background: F, marginTop: 4, flexShrink: 0, display: 'inline-block' }} />
                                                         <span>{f}</span>
                                                     </li>
