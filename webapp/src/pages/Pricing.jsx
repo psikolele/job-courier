@@ -4,6 +4,9 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Lock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import {
+    HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover, SlideDescription,
+} from '@/components/ui/animated-slideshow';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,6 +72,13 @@ const FuchsiaOutlineButton = ({ href, onClick, children, fullWidth = false }) =>
         {children}
     </a>
 );
+
+const PRICING_STEPS = [
+    { id: '1', title: 'REGISTRA',   desc: 'Crea gratuitamente il tuo account aziendale e accedi alla tua area riservata JobCourier.', imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop' },
+    { id: '2', title: 'PUBBLICA',   desc: 'Pubblica la tua ricerca di personale e rendila visibile ai candidati in tutta la Svizzera.',  imageUrl: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&auto=format&fit=crop' },
+    { id: '3', title: 'VISUALIZZA', desc: 'JobCourier ti mostra subito i candidati compatibili con la tua ricerca.',                      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop' },
+    { id: '4', title: 'CONTATTA',   desc: 'Valuta i profili ricevuti e contatta quelli di maggiore interesse.',                           imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop' },
+];
 
 const getLocalizedData = (lang) => {
     const isIt = lang === 'it';
@@ -369,7 +379,7 @@ const Pricing = () => {
                                 </div>
 
                                 {/* SIDEBAR VANTAGGI — per-plan */}
-                                <div className="lg:col-span-1 p-8 transition-all duration-300" style={{ background: W, border: '1px solid rgba(5,11,43,0.06)' }}>
+                                <div className="lg:col-span-1 lg:row-span-2 p-8 transition-all duration-300" style={{ background: W, border: '1px solid rgba(5,11,43,0.06)' }}>
                                     <div className="mb-8">
                                         <SectionLabel>{data.sidebar.subtitle}</SectionLabel>
                                         <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 22, color: N, textTransform: 'uppercase', letterSpacing: '-0.025em', lineHeight: 1 }}>
@@ -398,6 +408,66 @@ const Pricing = () => {
                                             ))}
                                         </motion.div>
                                     </AnimatePresence>
+                                </div>
+
+                                {/* IL METODO JOBCOURIER — hover slider */}
+                                <div className="lg:col-span-3 overflow-hidden" style={{ background: N, borderLeft: `4px solid ${F}` }}>
+                                    <HoverSlider className="w-full">
+                                        <div className="flex flex-col lg:flex-row items-stretch" style={{ minHeight: 360 }}>
+                                            {/* LEFT — step titles */}
+                                            <div className="flex flex-col justify-center lg:w-[42%] px-8 py-10">
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                                                    <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                                                    <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>IL METODO JOBCOURIER</span>
+                                                </div>
+                                                {PRICING_STEPS.map((slide, index) => (
+                                                    <div key={slide.id}>
+                                                        <TextStaggerHover
+                                                            index={index}
+                                                            text={slide.title}
+                                                            className="cursor-pointer block whitespace-nowrap py-3"
+                                                            style={{ fontFamily: brand, fontWeight: 900, fontSize: 26, color: W, textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                                                        />
+                                                        <div style={{ height: 1, background: 'rgba(255,255,255,0.1)' }} />
+                                                    </div>
+                                                ))}
+                                                <div style={{ marginTop: 28 }}>
+                                                    <a href="/come-funziona" style={{
+                                                        display: 'inline-flex', alignItems: 'center', gap: 8,
+                                                        background: F, color: W, border: 'none',
+                                                        padding: '12px 24px',
+                                                        fontFamily: brand, fontWeight: 700, fontSize: 10,
+                                                        letterSpacing: '0.14em', textTransform: 'uppercase',
+                                                        cursor: 'pointer', borderRadius: 0, textDecoration: 'none',
+                                                    }} className="hover:opacity-85 transition-opacity">
+                                                        SCOPRI IL METODO →
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            {/* RIGHT — image + description */}
+                                            <div className="lg:w-[58%] relative overflow-hidden" style={{ minHeight: 300 }}>
+                                                <HoverSliderImageWrap className="absolute inset-0">
+                                                    {PRICING_STEPS.map((slide, index) => (
+                                                        <HoverSliderImage
+                                                            key={slide.id}
+                                                            index={index}
+                                                            imageUrl={slide.imageUrl}
+                                                            src={slide.imageUrl}
+                                                            alt={slide.title}
+                                                            className="w-full h-full object-cover"
+                                                            loading="lazy"
+                                                            decoding="async"
+                                                        />
+                                                    ))}
+                                                </HoverSliderImageWrap>
+                                                <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(5,11,43,0.92) 0%, rgba(5,11,43,0.55) 55%, transparent 100%)' }} />
+                                                <div className="absolute bottom-0 left-0 right-0 p-8 pt-20">
+                                                    <SlideDescription slides={PRICING_STEPS} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </HoverSlider>
                                 </div>
                             </div>
                         </motion.div>
