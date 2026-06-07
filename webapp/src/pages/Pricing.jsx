@@ -282,10 +282,10 @@ const Pricing = () => {
                         >
                             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
                                 {/* PRICING CARDS */}
-                                <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
                                     {data.plans.map((plan, pIdx) => (
                                         <motion.div key={pIdx}
-                                            className="group relative flex flex-col min-w-0 cursor-pointer"
+                                            className="group relative flex flex-col min-w-0 cursor-pointer h-full"
                                             onClick={() => setSelectedPlan(pIdx)}
                                             whileTap={{ scale: 0.97 }}
                                             animate={{
