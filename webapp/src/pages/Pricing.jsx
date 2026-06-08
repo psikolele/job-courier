@@ -218,9 +218,6 @@ const Pricing = () => {
                                 </span>
                             </div>
                         </div>
-                        <p className="hero-line" style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 24, color: 'rgba(255,255,255,0.4)', marginBottom: 16, lineHeight: 1.2 }}>
-                            {data.heroSub}
-                        </p>
                         <h1 className="hero-line" style={{
                             fontFamily: brand, fontWeight: 900,
                             fontSize: 'clamp(2rem, 8vw, 4rem)',
@@ -237,8 +234,11 @@ const Pricing = () => {
                             textTransform: 'uppercase',
                             letterSpacing: '-0.025em',
                             lineHeight: 0.9,
-                            marginBottom: 40
+                            marginBottom: 16
                         }}>{data.heroTitleEm}</h1>
+                        <p className="hero-line" style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 24, color: 'rgba(255,255,255,0.4)', marginBottom: 40, lineHeight: 1.2 }}>
+                            {data.heroSub}
+                        </p>
 
                         <div className="hero-line flex flex-row gap-4 w-full max-w-lg">
                             <FuchsiaButton href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it" fullWidth>

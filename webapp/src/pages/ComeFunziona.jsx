@@ -65,24 +65,21 @@ const ComeFunziona = () => {
             <section className="relative min-h-[60vh] pt-32 pb-20 px-6 md:px-12 flex flex-col justify-center" style={{ background: N }}>
                 <div className="container mx-auto w-full">
                     <div className="max-w-4xl">
-                        <div className="hero-line"><SectionLabel>{t('come_funziona.subtitle')}</SectionLabel></div>
+                        <div className="hero-line"><SectionLabel>Metodo Jobcourier</SectionLabel></div>
                         <h1 className="hero-line" style={{
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 8vw, 5rem)',
                             color: 'var(--brand-white)', textTransform: 'uppercase',
-                            letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 32
+                            letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 32
                         }}>
-                            {t('come_funziona.hero_title')}{' '}
-                            <span style={{ color: F }}>{t('come_funziona.hero_em')}</span>
+                            Dalla pubblicazione ai candidati<br />
+                            <span style={{ color: F }}>in pochi click.</span>
                         </h1>
-                        <p className="hero-line" style={{ fontFamily: body, fontSize: 16, color: 'rgba(255,255,255,0.7)', marginBottom: 8, lineHeight: 1.6, maxWidth: 560 }}>
-                            {t('come_funziona.hero_sub')}
-                        </p>
                         <p className="hero-line" style={{
-                            fontFamily: brand, fontWeight: 700, fontSize: 13,
-                            color: F, letterSpacing: '0.18em', textTransform: 'uppercase',
-                            marginBottom: 40
+                            fontFamily: editorial, fontStyle: 'italic',
+                            fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
+                            color: 'rgba(255,255,255,0.85)', lineHeight: 1.2, marginBottom: 40
                         }}>
-                            {t('come_funziona.hero_emphasis')}
+                            Semplice. Immediato.
                         </p>
 
                         <div className="hero-line flex flex-col sm:flex-row items-start gap-4">
@@ -117,40 +114,40 @@ const ComeFunziona = () => {
             <section className="py-24 px-6 md:px-12 overflow-hidden" style={{ background: 'var(--brand-white)' }}>
                 <div className="container mx-auto">
                     <div className="mb-16 max-w-3xl">
-                        <SectionLabel>{t('come_funziona.subtitle')}</SectionLabel>
+                        <SectionLabel>4 Semplici Mosse</SectionLabel>
                         <h3 style={{
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(1.6rem, 4vw, 3rem)',
                             color: N, textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 1.05
-                        }}>{t('come_funziona.steps_title')}</h3>
+                        }}>Pubblica una ricerca di personale e accedi immediatamente ai candidati già registrati su JobCourier.</h3>
                     </div>
 
                     <HoverSlider className="w-full">
                         <div className="flex flex-col lg:flex-row items-stretch gap-6 md:gap-10 lg:gap-16">
-                            <div className="flex flex-col justify-center lg:w-[45%]">
+                            <div className="flex flex-col justify-center lg:w-[60%]">
                                 {SLIDER_STEPS.map((slide, index) => (
-                                    <div key={slide.id} style={{ display: 'flex', alignItems: 'baseline', gap: 16 }}>
-                                        <div style={{ flex: 1 }}>
-                                            <TextStaggerHover
-                                                index={index}
-                                                text={slide.title}
-                                                className="cursor-pointer block whitespace-nowrap overflow-hidden py-3"
-                                                style={{
-                                                    fontFamily: brand, fontWeight: 900,
-                                                    fontSize: 24,
-                                                    color: N,
-                                                    textTransform: 'uppercase',
-                                                    letterSpacing: '-0.02em',
-                                                    touchAction: 'manipulation',
-                                                }}
-                                            />
-                                            <div style={{ height: 1, width: '100%', background: 'rgba(5,11,43,0.07)' }} />
-                                        </div>
+                                    <div key={slide.id}>
+                                        <span style={{ fontFamily: brand, fontWeight: 900, fontSize: 11, color: F, letterSpacing: '0.2em' }}>0{index + 1}.</span>
+                                        <TextStaggerHover
+                                            index={index}
+                                            text={slide.title}
+                                            className="cursor-pointer block whitespace-nowrap overflow-hidden py-2"
+                                            style={{
+                                                fontFamily: brand, fontWeight: 900,
+                                                fontSize: 24,
+                                                color: N,
+                                                textTransform: 'uppercase',
+                                                letterSpacing: '-0.02em',
+                                                touchAction: 'manipulation',
+                                            }}
+                                        />
+                                        <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 14, color: GM, lineHeight: 1.5, paddingBottom: 12, marginBottom: 4 }}>{slide.desc}</p>
+                                        <div style={{ height: 1, width: '100%', background: 'rgba(5,11,43,0.07)', marginBottom: 8 }} />
                                     </div>
                                 ))}
                             </div>
 
-                            <div className="lg:w-[55%] w-full">
+                            <div className="lg:w-[40%] w-full">
                                 <div className="relative overflow-hidden" style={{ height: 'clamp(300px, 50vw, 460px)', border: '1px solid rgba(5,11,43,0.07)' }}>
                                     <HoverSliderImageWrap className="absolute inset-0">
                                         {SLIDER_STEPS.map((slide, index) => (
@@ -167,10 +164,6 @@ const ComeFunziona = () => {
                                             </div>
                                         ))}
                                     </HoverSliderImageWrap>
-                                    <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(5,11,43,0.95) 0%, rgba(5,11,43,0.7) 50%, transparent 100%)' }} />
-                                    <div className="absolute bottom-0 left-0 right-0 p-10 pt-24">
-                                        <SlideDescription slides={SLIDER_STEPS} />
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +175,7 @@ const ComeFunziona = () => {
             <section className="py-24 px-6 md:px-12 why-trigger" style={{ background: GL }}>
                 <div className="container mx-auto">
                     <div className="mb-16 max-w-2xl">
-                        <SectionLabel>Perché sceglierci</SectionLabel>
+                        <SectionLabel>Perché Job Courier</SectionLabel>
                         <h2 style={{
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(1.8rem, 5vw, 3rem)',
                             color: N, textTransform: 'uppercase',
@@ -206,11 +199,6 @@ const ComeFunziona = () => {
                                 }}>
                                     {f.icon}
                                 </div>
-                                <span style={{
-                                    fontFamily: brand, fontWeight: 900, fontSize: 14,
-                                    color: F, letterSpacing: '0.16em',
-                                    textTransform: 'uppercase', marginBottom: 12
-                                }}>0{i + 1}</span>
                                 <h4 style={{
                                     fontFamily: brand, fontWeight: 900, fontSize: 22,
                                     color: N, textTransform: 'uppercase',
@@ -228,20 +216,15 @@ const ComeFunziona = () => {
             {/* CTA */}
             <section className="py-24 px-6 md:px-12" style={{ background: N }}>
                 <div className="container mx-auto max-w-4xl">
-                    <SectionLabel>Inizia oggi</SectionLabel>
+                    <SectionLabel>Pronto a iniziare</SectionLabel>
                     <h2 style={{
                         fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 6vw, 4rem)',
                         color: 'var(--brand-white)', textTransform: 'uppercase',
-                        letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 12
-                    }}>{t('come_funziona.cta_title')}</h2>
+                        letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 20
+                    }}>TROVA CANDIDATI IN MODO SEMPLICE</h2>
                     <p style={{
-                        fontFamily: brand, fontWeight: 700, fontSize: 13,
-                        color: F, letterSpacing: '0.14em', textTransform: 'uppercase',
-                        marginBottom: 16
-                    }}>TROVA CANDIDATI IN MODO SEMPLICE.</p>
-                    <p style={{
-                        fontFamily: body, fontSize: 16,
-                        color: 'rgba(255,255,255,0.6)', lineHeight: 1.6,
+                        fontFamily: editorial, fontStyle: 'italic', fontSize: 20,
+                        color: 'rgba(255,255,255,0.65)', lineHeight: 1.4,
                         maxWidth: 520, marginBottom: 40
                     }}>
                         {t('come_funziona.cta_sub')}

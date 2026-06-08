@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const IconLinkedIn = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -21,14 +22,14 @@ const Footer = ({ setShowLoginModal }) => {
 
     const cols = [
         { title: 'Area Legale', links: [
-            { label: 'Condizioni Generali', href: '#' },
-            { label: 'Cookie Policy', href: '#' },
+            { label: 'Condizioni Generali', href: '/condizioni-generali' },
+            { label: 'Cookie Policy', href: '/cookie-policy' },
         ]},
         { title: 'Candidati', links: [
             { label: 'Offerte di lavoro', href: '/offerte' },
             { label: 'Carica il CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it' },
             { label: 'Login', href: '#login' },
-            { label: 'FAQ / Aiuto', href: '#' },
+            { label: 'FAQ / Aiuto', href: '/faq' },
         ]},
         { title: 'Aziende', links: [
             { label: 'Pubblica annuncio', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
@@ -40,7 +41,7 @@ const Footer = ({ setShowLoginModal }) => {
     ];
 
     return (
-        <footer style={{ background: N }} className="px-5 md:px-10 pt-12 pb-0">
+        <footer style={{ background: N, borderTop: '3px solid var(--brand-white)' }} className="px-5 md:px-10 pt-12 pb-0">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 mb-7" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                 {/* Brand col — full width on mobile, 2-col on sm, 1-col on lg */}
                 <div className="col-span-1 sm:col-span-2 lg:col-span-1">
@@ -77,20 +78,31 @@ const Footer = ({ setShowLoginModal }) => {
                         </div>
                         {col.links.map(l => (
                             <div key={l.label} style={{ marginBottom: 10 }}>
-                                <a
-                                    href={l.href}
-                                    style={{ fontFamily: body, fontSize: 13, color: 'var(--brand-white)', textDecoration: 'none', transition: 'color 0.15s' }}
-                                    onMouseEnter={e => e.currentTarget.style.color = F}
-                                    onMouseLeave={e => e.currentTarget.style.color = 'var(--brand-white)'}
-                                    onClick={(e) => {
-                                        if (l.href === '#login') {
-                                            e.preventDefault();
-                                            setShowLoginModal?.(true);
-                                        }
-                                    }}
-                                >
-                                    {l.label}
-                                </a>
+                                {l.href.startsWith('/') && l.href !== '#login' ? (
+                                    <Link
+                                        to={l.href}
+                                        style={{ fontFamily: body, fontSize: 13, color: 'var(--brand-white)', textDecoration: 'none', transition: 'color 0.15s' }}
+                                        onMouseEnter={e => e.currentTarget.style.color = F}
+                                        onMouseLeave={e => e.currentTarget.style.color = 'var(--brand-white)'}
+                                    >
+                                        {l.label}
+                                    </Link>
+                                ) : (
+                                    <a
+                                        href={l.href}
+                                        style={{ fontFamily: body, fontSize: 13, color: 'var(--brand-white)', textDecoration: 'none', transition: 'color 0.15s' }}
+                                        onMouseEnter={e => e.currentTarget.style.color = F}
+                                        onMouseLeave={e => e.currentTarget.style.color = 'var(--brand-white)'}
+                                        onClick={(e) => {
+                                            if (l.href === '#login') {
+                                                e.preventDefault();
+                                                setShowLoginModal?.(true);
+                                            }
+                                        }}
+                                    >
+                                        {l.label}
+                                    </a>
+                                )}
                             </div>
                         ))}
                     </div>
