@@ -62,8 +62,11 @@ const getCandidateLinks = () => [
 ];
 
 const getCompanyLinks = () => [
-    { label: 'Pubblica annuncio', labelEn: 'Post a job', labelDe: 'Stelle ausschreiben', labelFr: 'Publier une annonce', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true },
-    { label: 'Trova candidati', labelEn: 'Find candidates', labelDe: 'Kandidaten finden', labelFr: 'Trouver des candidats', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
+    {
+        label: 'Pubblica annuncio', labelEn: 'Post a job', labelDe: 'Stelle ausschreiben', labelFr: 'Publier une annonce',
+        href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true,
+        combined: { label: 'Trova candidati', labelEn: 'Find candidates', labelDe: 'Kandidaten finden', labelFr: 'Trouver des candidats', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it' },
+    },
     { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
     { label: 'Soluzioni e tariffe', labelEn: 'Solutions and Prices', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
     { label: 'Consigli di recruiting', labelEn: 'Recruiting tips', labelDe: 'Recruiting-Tipps', labelFr: 'Conseils de recrutement', href: '#blog' },
@@ -272,7 +275,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -281,7 +284,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -302,12 +305,25 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                     {companyTitle}
                                 </h2>
                                 <div className="flex flex-col items-center gap-4">
-                                    {companyLinks.map((link, idx) => (
-                                        link.external ? (
+                                    {companyLinks.map((link, idx) => {
+                                        if (link.combined) {
+                                            return (
+                                                <div key={idx} className="flex items-center gap-2 text-sm md:text-[15px] font-medium text-white/55 font-mono text-center">
+                                                    <a href={link.href} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
+                                                        {getLabel(link, lang)}
+                                                    </a>
+                                                    <span className="text-white/25">I</span>
+                                                    <a href={link.combined.href} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
+                                                        {getLabel(link.combined, lang)}
+                                                    </a>
+                                                </div>
+                                            );
+                                        }
+                                        return link.external ? (
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-white/55 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-white/55 font-mono whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -316,13 +332,13 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-white/55 font-mono hover:text-[var(--brand-fuchsia)] transition-all whitespace-normal break-words text-center"
+                                                className="text-sm md:text-[15px] font-medium text-white/55 font-mono whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
                                             </Link>
-                                        )
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </div>

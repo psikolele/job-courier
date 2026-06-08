@@ -236,19 +236,18 @@ const Hero = ({ setShowLoginModal }) => {
             {/* ── LEFT: CANDIDATES PANEL (50% Width) ── */}
             <div className="hero-panel relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-12 md:pt-8 pb-8 md:pb-6 bg-white z-10 border-r border-slate-200 min-h-[calc(100svh-80px)] md:min-h-0">
                 <div className="max-w-2xl flex flex-col flex-1">
-                    <p style={{
-                        fontFamily: 'var(--font-brand)',
-                        fontWeight: 700,
-                        fontSize: 11,
-                        color: 'rgba(5, 11, 43, 0.5)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.2em',
-                        marginBottom: 16
-                    }}>
-                        {t('hero.candidates.subtitle') || 'PER I CANDIDATI'}
-                    </p>
- 
                     <div className="w-full max-w-lg mx-auto" style={{ marginBottom: isMobile ? 24 : 48 }}>
+                        <p style={{
+                            fontFamily: 'var(--font-brand)',
+                            fontWeight: 700,
+                            fontSize: 11,
+                            color: 'rgba(5, 11, 43, 0.5)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.2em',
+                            marginBottom: 16
+                        }}>
+                            {t('hero.candidates.subtitle') || 'PER I CANDIDATI'}
+                        </p>
                         <h1
                             className="hero-h1"
                             style={{
@@ -383,19 +382,18 @@ const Hero = ({ setShowLoginModal }) => {
             {/* ── RIGHT: EMPLOYERS PANEL (50% Width) ── */}
             <div className="hero-panel relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-12 md:pt-8 pb-8 md:pb-6 bg-[#050B2B] text-white z-0 overflow-hidden">
                 <div className="relative z-10 max-w-2xl flex flex-col flex-1">
-                    <p style={{
-                        fontFamily: 'var(--font-brand)',
-                        fontWeight: 700,
-                        fontSize: 11,
-                        color: 'rgba(255, 255, 255, 0.45)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.2em',
-                        marginBottom: 16
-                    }}>
-                        {t('hero.companies.subtitle') || 'PER LE AZIENDE'}
-                    </p>
-
                     <div className="w-full max-w-lg mx-auto" style={{ marginBottom: isMobile ? 24 : 48 }}>
+                        <p style={{
+                            fontFamily: 'var(--font-brand)',
+                            fontWeight: 700,
+                            fontSize: 11,
+                            color: 'rgba(255, 255, 255, 0.45)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.2em',
+                            marginBottom: 16
+                        }}>
+                            {t('hero.companies.subtitle') || 'PER LE AZIENDE'}
+                        </p>
                         <h1
                             className="hero-h1"
                             style={{
