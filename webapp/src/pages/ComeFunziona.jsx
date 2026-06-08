@@ -127,10 +127,9 @@ const ComeFunziona = () => {
                             <div className="flex flex-col justify-center lg:w-[60%]">
                                 {SLIDER_STEPS.map((slide, index) => (
                                     <div key={slide.id}>
-                                        <span style={{ fontFamily: brand, fontWeight: 900, fontSize: 11, color: F, letterSpacing: '0.2em' }}>0{index + 1}.</span>
                                         <TextStaggerHover
                                             index={index}
-                                            text={slide.title}
+                                            text={`0${index + 1}. ${slide.title}`}
                                             className="cursor-pointer block whitespace-nowrap overflow-hidden py-2"
                                             style={{
                                                 fontFamily: brand, fontWeight: 900,
@@ -142,13 +141,13 @@ const ComeFunziona = () => {
                                             }}
                                         />
                                         <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 14, color: GM, lineHeight: 1.5, paddingBottom: 12, marginBottom: 4 }}>{slide.desc}</p>
-                                        <div style={{ height: 1, width: '100%', background: 'rgba(5,11,43,0.07)', marginBottom: 8 }} />
+                                        <div style={{ height: 1, width: '100%', background: 'linear-gradient(to right, transparent, rgba(5,11,43,0.12) 20%, rgba(5,11,43,0.12) 80%, transparent)', marginBottom: 8 }} />
                                     </div>
                                 ))}
                             </div>
 
                             <div className="lg:w-[40%] w-full">
-                                <div className="relative overflow-hidden" style={{ height: 'clamp(300px, 50vw, 460px)', border: '1px solid rgba(5,11,43,0.07)' }}>
+                                <div className="relative overflow-hidden" style={{ height: 'clamp(300px, 50vw, 460px)', border: '1px solid rgba(5,11,43,0.07)', boxShadow: '0 20px 60px rgba(5,11,43,0.18), 0 4px 16px rgba(5,11,43,0.10)' }}>
                                     <HoverSliderImageWrap className="absolute inset-0">
                                         {SLIDER_STEPS.map((slide, index) => (
                                             <div key={slide.id}>
@@ -175,14 +174,14 @@ const ComeFunziona = () => {
             <section className="py-24 px-6 md:px-12 why-trigger" style={{ background: GL }}>
                 <div className="container mx-auto">
                     <div className="mb-16 max-w-2xl">
-                        <SectionLabel>Perché Job Courier</SectionLabel>
+                        <SectionLabel>Perché JobCourier</SectionLabel>
                         <h2 style={{
-                            fontFamily: brand, fontWeight: 900, fontSize: 'clamp(1.8rem, 5vw, 3rem)',
-                            color: N, textTransform: 'uppercase',
-                            letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 12
-                        }}>{t('come_funziona.why_title')}</h2>
+                            fontFamily: brand, fontWeight: 900, fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)',
+                            color: N,
+                            letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: 12
+                        }}>Una piattaforma pensata per aiutarti a trovare candidati in modo semplice,</h2>
                         <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 20, color: GM, lineHeight: 1.4 }}>
-                            {t('come_funziona.why_sub')}
+                            Rapido ed efficace.
                         </p>
                     </div>
 
@@ -221,13 +220,13 @@ const ComeFunziona = () => {
                         fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 6vw, 4rem)',
                         color: 'var(--brand-white)', textTransform: 'uppercase',
                         letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 20
-                    }}>TROVA CANDIDATI IN MODO SEMPLICE</h2>
+                    }}>TROVA CANDIDATI IN MODO <span style={{ color: F }}>SEMPLICE.</span></h2>
                     <p style={{
                         fontFamily: editorial, fontStyle: 'italic', fontSize: 20,
                         color: 'rgba(255,255,255,0.65)', lineHeight: 1.4,
-                        maxWidth: 520, marginBottom: 40
+                        marginBottom: 40
                     }}>
-                        {t('come_funziona.cta_sub')}
+                        Pubblica una ricerca di personale e accedi immediatamente ai candidati già registrati su JobCourier.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
                         <a href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
@@ -249,7 +248,7 @@ const ComeFunziona = () => {
                             letterSpacing: '0.14em', textTransform: 'uppercase',
                             cursor: 'pointer', borderRadius: 0, textDecoration: 'none',
                             display: 'inline-flex', alignItems: 'center', gap: 8
-                        }} className="hover:opacity-80 transition-opacity">
+                        }} className="hover:opacity-80 hover:scale-[1.03] transition-all duration-200">
                             {t('come_funziona.cta_btn2')}
                         </Link>
                     </div>

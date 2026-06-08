@@ -26,7 +26,7 @@ const topAds = [
     }
 ];
 
-const bottomAds = [blcAd, blcAd, blcAd, blcAd];
+const bottomAds = [blcAd, blcAd, blcAd, blcAd, blcAd];
 
 const AdBanner = ({ type = 'bottom' }) => {
     const N = 'var(--brand-navy)';
@@ -57,8 +57,8 @@ const AdBanner = ({ type = 'bottom' }) => {
                 )}
 
                 <div
-                    className={`w-full grid ${isTop ? 'grid-cols-2 gap-4' : 'grid-cols-2 md:grid-cols-4 gap-[1px]'}`}
-                    style={isTop ? {} : { border: '1px solid rgba(5,11,43,0.07)', background: 'rgba(5,11,43,0.07)' }}
+                    className={`w-full grid ${isTop ? 'grid-cols-2 gap-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5'}`}
+                    style={isTop ? {} : { gap: 1, background: 'rgba(5,11,43,0.06)' }}
                 >
                     {adsToRender.map((ad, i) => (
                         <motion.a
