@@ -14,6 +14,9 @@ import Contact from './pages/Contact';
 import ComeFunziona from './pages/ComeFunziona';
 import Offerte from './pages/Offerte';
 import OffertaDettaglio from './pages/OffertaDettaglio';
+import FAQ from './pages/FAQ';
+import CondizioniGenerali from './pages/CondizioniGenerali';
+import CookiePolicy from './pages/CookiePolicy';
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -87,6 +90,9 @@ function App() {
         <Route path="/come-funziona" element={<ComeFunziona />} />
         <Route path="/offerte" element={<Offerte setShowLoginModal={setShowLoginModal} />} />
         <Route path="/offerta/:id" element={<OffertaDettaglio setShowLoginModal={setShowLoginModal} />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/condizioni-generali" element={<CondizioniGenerali />} />
+        <Route path="/cookie-policy" element={<CookiePolicy />} />
       </Routes>
       <Footer setShowLoginModal={setShowLoginModal} />
     </div>
