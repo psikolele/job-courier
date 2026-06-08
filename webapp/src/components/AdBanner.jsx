@@ -42,33 +42,6 @@ const AdBanner = ({ type = 'bottom' }) => {
         <div className="w-full px-6 md:px-12 my-6">
             <div className="max-w-[1400px] mx-auto w-full">
 
-                {/* Section header */}
-                {isTop ? (
-                    <div style={{ marginBottom: 24 }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                            <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                            <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 13, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
-                                Aziende in vetrina
-                            </span>
-                        </div>
-                        <h3 style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 32, color: N, lineHeight: 1.2, margin: 0 }}>
-                            Società di formazione per accrescere le tue competenze
-                        </h3>
-                    </div>
-                ) : (
-                    <div style={{ marginBottom: 24 }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                            <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                            <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 13, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
-                                Aziende Partner
-                            </span>
-                        </div>
-                        <h2 style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 38, color: N, lineHeight: 1.2, margin: 0 }}>
-                            Aziende e società di selezione di riferimento in Svizzera.
-                        </h2>
-                    </div>
-                )}
-
                 <div
                     className={`w-full grid ${isTop ? 'grid-cols-2 gap-4' : 'grid-cols-2 md:grid-cols-4 gap-[1px]'}`}
                     style={isTop ? {} : { border: '1px solid rgba(5,11,43,0.07)', background: 'rgba(5,11,43,0.07)' }}

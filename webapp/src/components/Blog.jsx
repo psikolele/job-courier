@@ -111,10 +111,12 @@ const MarqueeSlider = ({ title, subtitle, articles, readArticleText, speed = 35 
             </div>
             {subtitle && (
                 <p style={{
-                    fontFamily: body,
-                    fontSize: 13,
-                    color: GM,
-                    marginTop: 4
+                    fontFamily: editorial,
+                    fontStyle: 'italic',
+                    fontSize: 32,
+                    color: N,
+                    lineHeight: 1.2,
+                    marginTop: 8
                 }}>{subtitle}</p>
             )}
             </div>

@@ -290,8 +290,8 @@ const Offerte = ({ setShowLoginModal }) => {
                         </h1>
                     </div>
 
-                    {/* Right: search widget — identical to Hero, vertical */}
-                    <div className="flex-1 max-w-[480px] bg-white p-6" style={{ borderRadius: 0 }}>
+                    {/* Right: search widget — identical to Hero, horizontal */}
+                    <div className="flex-1 bg-white" style={{ borderRadius: 0, overflow: 'hidden' }}>
                         <JobSearchWidget
                             initialKeyword={searchParams.get('keyword') || ''}
                             initialSector={searchParams.get('role_id') || ''}

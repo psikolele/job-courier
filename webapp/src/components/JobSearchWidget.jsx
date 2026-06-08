@@ -12,27 +12,41 @@ const JobSearchWidget = ({ onSearch, initialKeyword = '', initialSector = '', in
         onSearch(buildSearchParams({ keyword, selectedSector, selectedCanton }));
     };
 
+    const fieldStyle = {
+        flex: 1,
+        position: 'relative',
+        borderBottom: '1px solid var(--brand-fuchsia)',
+        borderRight: '1px solid rgba(5,11,43,0.07)',
+    };
+
     const inputBase = {
         width: '100%',
         paddingLeft: 40, paddingRight: 16, paddingTop: 14, paddingBottom: 14,
         border: 'none',
-        borderBottom: '1px solid var(--brand-fuchsia)',
         fontFamily: 'var(--font-body)', fontSize: 13,
         outline: 'none', background: 'transparent',
-        borderRadius: 0, transition: 'border-color 0.2s',
+        borderRadius: 0,
         color: 'var(--brand-navy)',
+        height: '100%',
     };
 
     const selectBase = {
         ...inputBase,
-        paddingRight: 40,
+        paddingRight: 36,
         appearance: 'none',
         cursor: 'pointer',
     };
 
+    const iconStyle = {
+        position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)',
+        width: 16, height: 16, color: '#8B8FA8', pointerEvents: 'none',
+    };
+
     return (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-            <div style={{ position: 'relative' }}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'row', alignItems: 'stretch', width: '100%' }}>
+            {/* Keyword */}
+            <div style={{ ...fieldStyle, flex: 2 }}>
+                <Search style={iconStyle} />
                 <input
                     type="text"
                     placeholder="Qualifica, azienda o parola chiave..."
@@ -40,45 +54,46 @@ const JobSearchWidget = ({ onSearch, initialKeyword = '', initialSector = '', in
                     onChange={e => setKeyword(e.target.value)}
                     style={inputBase}
                 />
-                <Search style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', width: 16, height: 16, color: '#8B8FA8', pointerEvents: 'none' }} />
             </div>
 
-            <div style={{ position: 'relative' }}>
+            {/* Sector */}
+            <div style={fieldStyle}>
+                <Briefcase style={iconStyle} />
                 <select
                     value={selectedSector}
                     onChange={e => setSelectedSector(e.target.value)}
                     style={{ ...selectBase, color: selectedSector ? 'var(--brand-navy)' : '#8B8FA8' }}
                 >
-                    <option value="">Qualsiasi settore lavorativo</option>
+                    <option value="">Qualsiasi settore</option>
                     {SECTORS.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                 </select>
-                <Briefcase style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', width: 16, height: 16, color: '#8B8FA8', pointerEvents: 'none' }} />
-                <ChevronRight style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%) rotate(90deg)', width: 16, height: 16, color: '#8B8FA8', pointerEvents: 'none' }} />
+                <ChevronRight style={{ ...iconStyle, left: 'auto', right: 10, transform: 'translateY(-50%) rotate(90deg)' }} />
             </div>
 
-            <div style={{ position: 'relative' }}>
+            {/* Canton */}
+            <div style={{ ...fieldStyle, borderRight: 'none' }}>
+                <MapPin style={iconStyle} />
                 <select
                     value={selectedCanton}
                     onChange={e => setSelectedCanton(e.target.value)}
                     style={{ ...selectBase, color: selectedCanton ? 'var(--brand-navy)' : '#8B8FA8' }}
                 >
-                    <option value="">Tutti i Cantoni (Svizzera)</option>
+                    <option value="">Tutti i Cantoni</option>
                     {CANTONS.map(c => <option key={c.value} value={c.value}>{c.name}</option>)}
                 </select>
-                <MapPin style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', width: 16, height: 16, color: '#8B8FA8', pointerEvents: 'none' }} />
-                <ChevronRight style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%) rotate(90deg)', width: 16, height: 16, color: '#8B8FA8', pointerEvents: 'none' }} />
+                <ChevronRight style={{ ...iconStyle, left: 'auto', right: 10, transform: 'translateY(-50%) rotate(90deg)' }} />
             </div>
 
+            {/* Button */}
             <button
                 type="submit"
                 style={{
                     background: 'var(--brand-navy)', color: '#FFFFFF',
-                    border: 'none', padding: '14px 0',
+                    border: 'none', padding: '0 24px',
                     fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 11,
                     letterSpacing: '0.14em', textTransform: 'uppercase',
-                    cursor: 'pointer', borderRadius: 0, marginTop: 16,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                    width: '100%',
+                    cursor: 'pointer', borderRadius: 0, flexShrink: 0,
+                    whiteSpace: 'nowrap',
                 }}
             >
                 TROVA OFFERTE →
