@@ -7,6 +7,8 @@ import RegistrationWallModal from '../components/RegistrationWallModal';
 import ApplyRedirectModal from '../components/ApplyRedirectModal';
 import { getApplyData } from '../utils/applyHelper';
 import { saveReturnUrl } from '../hooks/useReturnUrl';
+import JobSearchWidget from '../components/JobSearchWidget';
+import { getCantonValueFromParams } from '../utils/searchData';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -270,20 +272,39 @@ const Offerte = ({ setShowLoginModal }) => {
         <div className="pt-24 min-h-screen" style={{ background: GL }}>
             <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-8">
                 {/* Page header */}
-                <div className="mb-8">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                        <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                        <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
-                            Offerte di lavoro
-                        </span>
+                <div className="mb-8 flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
+                    {/* Left: counter */}
+                    <div className="flex-shrink-0">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                            <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                            <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                                Offerte di lavoro
+                            </span>
+                        </div>
+                        <h1 style={{
+                            fontFamily: brand, fontWeight: 900, fontSize: 44,
+                            color: N, textTransform: 'uppercase',
+                            letterSpacing: '-0.025em', lineHeight: 0.95
+                        }}>
+                            {jobs.length} annunci live
+                        </h1>
                     </div>
-                    <h1 style={{
-                        fontFamily: brand, fontWeight: 900, fontSize: 44,
-                        color: N, textTransform: 'uppercase',
-                        letterSpacing: '-0.025em', lineHeight: 0.95
-                    }}>
-                        {jobs.length} annunci live
-                    </h1>
+
+                    {/* Right: search widget — identical to Hero, vertical */}
+                    <div className="flex-1 max-w-[480px] bg-white p-6" style={{ borderRadius: 0 }}>
+                        <JobSearchWidget
+                            initialKeyword={searchParams.get('keyword') || ''}
+                            initialSector={searchParams.get('role_id') || ''}
+                            initialCanton={getCantonValueFromParams(
+                                searchParams.get('region') || '',
+                                searchParams.get('location') || ''
+                            )}
+                            onSearch={(params) => {
+                                params.delete('jobId');
+                                setSearchParams(params);
+                            }}
+                        />
+                    </div>
                 </div>
 
                 <div className="flex flex-col md:flex-row gap-1" style={{ background: 'rgba(5,11,43,0.06)' }}>
