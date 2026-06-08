@@ -390,7 +390,9 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 <h3 className="text-lg md:text-xl font-bold text-[var(--brand-navy)] mb-2 tracking-[0.2em] uppercase font-sans">
                                     Candidati
                                 </h3>
-                                <p className="text-[var(--brand-gray-mid)] text-sm mb-8 max-w-[240px]">Accedi a migliaia di offerte di lavoro in tutta la Svizzera. Crea il tuo profilo e candidati in pochi click.</p>
+                                <p className="text-[var(--brand-gray-mid)] text-sm mb-4 max-w-[240px]">Accedi a migliaia di offerte di lavoro in tutta la Svizzera. Crea il tuo profilo e candidati in pochi click.</p>
+                                <hr className="w-full border-t border-[var(--brand-navy)]/10 mb-4" />
+                                <p className="text-[var(--brand-gray-mid)] text-sm mb-8 max-w-[240px]">Il login si apre in una finestra separata — resti sempre qui.</p>
 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <motion.button
@@ -420,7 +422,9 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 <h3 className="text-lg md:text-xl font-bold text-white mb-2 tracking-[0.2em] uppercase font-sans">
                                     Aziende
                                 </h3>
-                                <p className="text-white/55 text-sm mb-8 max-w-[240px]">Pubblica una posizione e visualizza subito i candidati compatibili. Accedi a oltre 120'000 candidati registrati.</p>
+                                <p className="text-white/55 text-sm mb-4 max-w-[240px]">Pubblica una posizione e visualizza subito i candidati compatibili. Accedi a oltre 120'000 candidati registrati.</p>
+                                <hr className="w-full border-t border-white/10 mb-4" />
+                                <p className="text-white/55 text-sm mb-8 max-w-[240px]">Il login si apre in una finestra separata — resti sempre qui.</p>
 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <motion.button
