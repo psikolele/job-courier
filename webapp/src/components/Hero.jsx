@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { Search, MapPin, Briefcase, ChevronRight, Mail, ArrowRight } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AnimatedButton } from './ui/animated-button';
-import DotCard from './ui/moving-dot-card';
 
 import heroBg1 from '../assets/hero-bg.jpg';
 
@@ -249,35 +248,36 @@ const Hero = ({ setShowLoginModal }) => {
                         {t('hero.candidates.subtitle') || 'PER I CANDIDATI'}
                     </p>
  
-                    <h1
-                        className="hero-h1"
-                        style={{
-                            fontFamily: 'var(--font-brand)',
-                            fontWeight: 900,
-                            fontSize: isMobile ? 36 : 56,
-                            color: 'var(--brand-navy)',
-                            textTransform: 'uppercase',
-                            letterSpacing: '-0.02em',
-                            lineHeight: 0.95,
-                            marginBottom: 6
-                        }}
-                    >
-                        {t('hero.candidates.h1') || 'Trova il tuo'}
-                    </h1>
-                    <h1 
-                        className="hero-h1-sub"
-                        style={{
-                            fontFamily: 'var(--font-editorial)',
-                            fontStyle: 'italic',
-                            fontWeight: 400,
-                            fontSize: isMobile ? 36 : 56,
-                            color: '#FF1F7A',
-                            lineHeight: 1.1,
-                            marginBottom: isMobile ? 24 : 48
-                        }}
-                    >
-                        {t('hero.candidates.h1_sub') || 'Prossimo Lavoro.'}
-                    </h1>
+                    <div className="w-full max-w-lg mx-auto" style={{ marginBottom: isMobile ? 24 : 48 }}>
+                        <h1
+                            className="hero-h1"
+                            style={{
+                                fontFamily: 'var(--font-brand)',
+                                fontWeight: 900,
+                                fontSize: isMobile ? 36 : 56,
+                                color: 'var(--brand-navy)',
+                                textTransform: 'uppercase',
+                                letterSpacing: '-0.02em',
+                                lineHeight: 0.95,
+                                marginBottom: 6
+                            }}
+                        >
+                            {t('hero.candidates.h1') || 'Trova il tuo'}
+                        </h1>
+                        <h1
+                            className="hero-h1-sub"
+                            style={{
+                                fontFamily: 'var(--font-editorial)',
+                                fontStyle: 'italic',
+                                fontWeight: 400,
+                                fontSize: isMobile ? 36 : 56,
+                                color: '#FF1F7A',
+                                lineHeight: 1.1,
+                            }}
+                        >
+                            {t('hero.candidates.h1_sub') || 'Prossimo Lavoro.'}
+                        </h1>
+                    </div>
  
                     {/* SEARCH CARD */}
                     <div
@@ -395,42 +395,50 @@ const Hero = ({ setShowLoginModal }) => {
                         {t('hero.companies.subtitle') || 'PER LE AZIENDE'}
                     </p>
 
-                    <h1 
-                        className="hero-h1"
-                        style={{
-                            fontFamily: 'var(--font-brand)',
-                            fontWeight: 900,
-                            fontSize: isMobile ? 36 : 56,
-                            color: '#FFFFFF',
-                            textTransform: 'uppercase',
-                            letterSpacing: '-0.02em',
-                            lineHeight: 0.95,
-                            marginBottom: 6
-                        }}
-                    >
-                        {t('hero.companies.h1') || 'I candidati giusti'}
-                    </h1>
-                    <h1
-                        className="hero-h1-sub"
-                        style={{
-                            fontFamily: 'var(--font-editorial)',
-                            fontStyle: 'italic',
-                            fontWeight: 400,
-                            fontSize: isMobile ? 36 : 56,
-                            color: '#FF1F7A',
-                            lineHeight: 1.1,
-                            marginBottom: isMobile ? 24 : 48
-                        }}
-                    >
-                        {t('hero.companies.h1_sub') || 'sono già qui.'}
-                    </h1>
+                    <div className="w-full max-w-lg mx-auto" style={{ marginBottom: isMobile ? 24 : 48 }}>
+                        <h1
+                            className="hero-h1"
+                            style={{
+                                fontFamily: 'var(--font-brand)',
+                                fontWeight: 900,
+                                fontSize: isMobile ? 36 : 56,
+                                color: '#FFFFFF',
+                                textTransform: 'uppercase',
+                                letterSpacing: '-0.02em',
+                                lineHeight: 0.95,
+                                marginBottom: 6
+                            }}
+                        >
+                            {t('hero.companies.h1') || 'I candidati giusti'}
+                        </h1>
+                        <h1
+                            className="hero-h1-sub"
+                            style={{
+                                fontFamily: 'var(--font-editorial)',
+                                fontStyle: 'italic',
+                                fontWeight: 400,
+                                fontSize: isMobile ? 36 : 56,
+                                color: '#FF1F7A',
+                                lineHeight: 1.1,
+                            }}
+                        >
+                            {t('hero.companies.h1_sub') || 'sono già qui.'}
+                        </h1>
+                    </div>
 
                     {/* Stat aziende + CTA — same container as candidati form */}
                     <div className="hero-card-box w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between p-6" style={{ borderRadius: 0 }}>
-                        {/* DotCards row — fixed size, centered */}
-                        <div style={{ display: 'flex', gap: 16, flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center', paddingBottom: 8 }}>
-                            <DotCard target={120000} duration={2200} label="Candidati registrati" direction="cw" />
-                            <DotCard target={3000} duration={1800} label="Candidature al mese" direction="ccw" />
+                        {/* Stats row — numero prominente, testo piccolo */}
+                        <div style={{ display: 'flex', gap: 32, flex: 1, width: '100%', alignItems: 'center', paddingBottom: 8 }}>
+                            <div>
+                                <div style={{ fontFamily: 'var(--font-brand)', fontWeight: 900, fontSize: 52, color: 'var(--brand-white)', lineHeight: 1, letterSpacing: '-0.02em' }}>120'000+</div>
+                                <div style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: 8 }}>Candidati registrati</div>
+                            </div>
+                            <div style={{ width: 1, height: 52, background: 'rgba(255,255,255,0.12)', flexShrink: 0 }} />
+                            <div>
+                                <div style={{ fontFamily: 'var(--font-brand)', fontWeight: 900, fontSize: 52, color: 'var(--brand-white)', lineHeight: 1, letterSpacing: '-0.02em' }}>3'000+</div>
+                                <div style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: 8 }}>Candidature al mese</div>
+                            </div>
                         </div>
                         {/* Button — pinned to bottom, full width */}
                         <AnimatedButton
