@@ -273,23 +273,30 @@ const Filters = () => {
         <div id="filters" className="w-full relative z-20 pb-20 pt-8 overflow-x-hidden" style={{ background: 'var(--brand-gray-light)' }}>
             {/* Latest Jobs Feed from Vercel Proxy */}
             <div className="pt-4 w-[98%] mx-auto">
-                <div className="flex items-center justify-between mb-10 px-4 md:px-8">
-                    <h3 style={{
-                        fontFamily: 'var(--font-brand)',
-                        fontWeight: 700,
-                        fontSize: 11,
-                        letterSpacing: '0.2em',
-                        textTransform: 'uppercase',
-                        color: 'var(--brand-fuchsia)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 12
-                    }}>
-                        <span style={{ width: 28, height: 2, background: 'var(--brand-fuchsia)', display: 'inline-block' }} />
-                        Offerte appena pubblicate
-                    </h3>
-                    
-                    <div className="flex items-center gap-6">
+                <div className="flex items-start justify-between mb-10 px-4 md:px-8">
+                    <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+                            <span style={{ width: 28, height: 2, background: 'var(--brand-fuchsia)', display: 'inline-block' }} />
+                            <span style={{
+                                fontFamily: 'var(--font-brand)',
+                                fontWeight: 700,
+                                fontSize: 13,
+                                letterSpacing: '0.2em',
+                                textTransform: 'uppercase',
+                                color: 'var(--brand-fuchsia)'
+                            }}>Offerte appena pubblicate</span>
+                        </div>
+                        <h2 style={{
+                            fontFamily: 'var(--font-editorial)',
+                            fontStyle: 'italic',
+                            fontSize: 32,
+                            color: 'var(--brand-navy)',
+                            lineHeight: 1.15,
+                            margin: 0
+                        }}>Ogni giorno centinaia di nuove offerte di lavoro</h2>
+                    </div>
+
+                    <div className="flex items-center gap-6" style={{ flexShrink: 0, marginTop: 6 }}>
                         {/* Scroll arrows */}
                         <div className="flex items-center gap-2">
                             <button

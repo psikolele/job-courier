@@ -240,7 +240,7 @@ const Hero = ({ setShowLoginModal }) => {
                         <p style={{
                             fontFamily: 'var(--font-brand)',
                             fontWeight: 700,
-                            fontSize: 11,
+                            fontSize: 13,
                             color: 'rgba(5, 11, 43, 0.5)',
                             textTransform: 'uppercase',
                             letterSpacing: '0.2em',
@@ -386,7 +386,7 @@ const Hero = ({ setShowLoginModal }) => {
                         <p style={{
                             fontFamily: 'var(--font-brand)',
                             fontWeight: 700,
-                            fontSize: 11,
+                            fontSize: 13,
                             color: 'rgba(255, 255, 255, 0.45)',
                             textTransform: 'uppercase',
                             letterSpacing: '0.2em',
