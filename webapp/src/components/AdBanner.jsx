@@ -39,8 +39,22 @@ const AdBanner = ({ type = 'bottom' }) => {
     const adsToRender = isTop ? topAds : bottomAds;
 
     return (
-        <div className="w-full px-6 md:px-12 my-6">
+        <div className="w-full px-6 md:px-12 mt-2 mb-6">
             <div className="max-w-[1400px] mx-auto w-full">
+
+                {isTop && (
+                    <div style={{ marginBottom: 16 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+                            <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                            <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 13, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                                Aziende in vetrina
+                            </span>
+                        </div>
+                        <h3 style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 32, color: N, lineHeight: 1.2, margin: 0 }}>
+                            Società di formazione di riferimento in Svizzera
+                        </h3>
+                    </div>
+                )}
 
                 <div
                     className={`w-full grid ${isTop ? 'grid-cols-2 gap-4' : 'grid-cols-2 md:grid-cols-4 gap-[1px]'}`}
