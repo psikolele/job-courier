@@ -375,9 +375,6 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                     Candidati
                                 </h3>
                                 <p className="text-[var(--brand-gray-mid)] text-sm mb-8 max-w-[240px]">Accedi a migliaia di offerte di lavoro in tutta la Svizzera. Crea il tuo profilo e candidati in pochi click.</p>
-                                <p style={{ color: 'var(--brand-fuchsia)', fontSize: 11, marginTop: -12, marginBottom: 20, fontWeight: 700, letterSpacing: '0.05em' }}>
-                                  Il login si apre in una finestra separata — resti sempre qui.
-                                </p>
 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <motion.button
@@ -408,9 +405,6 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                     Aziende
                                 </h3>
                                 <p className="text-white/55 text-sm mb-8 max-w-[240px]">Pubblica una posizione e visualizza subito i candidati compatibili. Accedi a oltre 120'000 candidati registrati.</p>
-                                <p style={{ color: 'var(--brand-fuchsia)', fontSize: 11, marginTop: -12, marginBottom: 20, fontWeight: 700, letterSpacing: '0.05em' }}>
-                                  Il login si apre in una finestra separata — resti sempre qui.
-                                </p>
 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <motion.button
