@@ -210,7 +210,14 @@ const Pricing = () => {
             <section className="relative min-h-[60vh] pt-32 pb-20 px-6 md:px-12 flex flex-col justify-center animate-fade-in" style={{ background: N }}>
                 <div className="container mx-auto w-full">
                     <div className="max-w-4xl">
-                        <div className="hero-line"><SectionLabel>{t('pricing.subtitle') || 'Soluzioni di Recruitment'}</SectionLabel></div>
+                        <div className="hero-line">
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                                <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                                <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 13, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#FEFEFE' }}>
+                                    {t('pricing.subtitle') || 'Soluzioni e tariffe'}
+                                </span>
+                            </div>
+                        </div>
                         <p className="hero-line" style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 24, color: 'rgba(255,255,255,0.4)', marginBottom: 16, lineHeight: 1.2 }}>
                             {data.heroSub}
                         </p>
@@ -246,25 +253,27 @@ const Pricing = () => {
             </section>
 
             {/* TAB CONTROL */}
-            <div id="soluzioni" className="sticky top-0 z-40 py-4 px-6" style={{ background: W, borderBottom: '1px solid rgba(5,11,43,0.07)' }}>
-                <div className="max-w-6xl mx-auto flex" style={{ border: `1.5px solid rgba(5,11,43,0.1)`, width: 'fit-content' }}>
-                    {[
-                        ['companies', data.tabs.companies],
-                        ['agencies', data.tabs.agencies]
-                    ].map(([key, label], i) => (
-                        <button key={key} onClick={() => setActiveTab(key)} style={{
-                            background: activeTab === key ? N : 'transparent',
-                            color: activeTab === key ? W : GM,
-                            border: 'none',
-                            padding: '12px 28px',
-                            fontFamily: brand, fontWeight: 700, fontSize: 10,
-                            letterSpacing: '0.14em', textTransform: 'uppercase',
-                            cursor: 'pointer',
-                            borderRight: i === 0 ? '1.5px solid rgba(5,11,43,0.1)' : 'none'
-                        }} className="transition-all duration-200">
-                            {label}
-                        </button>
-                    ))}
+            <div id="soluzioni" className="sticky top-0 z-40 py-6 px-6" style={{ background: W, borderBottom: '1px solid rgba(5,11,43,0.07)' }}>
+                <div className="max-w-6xl mx-auto flex justify-center">
+                    <div style={{ border: `1.5px solid rgba(5,11,43,0.1)`, display: 'flex' }}>
+                        {[
+                            ['companies', data.tabs.companies],
+                            ['agencies', data.tabs.agencies]
+                        ].map(([key, label], i) => (
+                            <button key={key} onClick={() => setActiveTab(key)} style={{
+                                background: activeTab === key ? N : 'transparent',
+                                color: activeTab === key ? W : GM,
+                                border: 'none',
+                                padding: '16px 56px',
+                                fontFamily: brand, fontWeight: 700, fontSize: 11,
+                                letterSpacing: '0.16em', textTransform: 'uppercase',
+                                cursor: 'pointer',
+                                borderRight: i === 0 ? '1.5px solid rgba(5,11,43,0.1)' : 'none'
+                            }} className="transition-all duration-200">
+                                {label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -299,10 +308,11 @@ const Pricing = () => {
                                                 padding: '36px 28px',
                                                 border: '1px solid rgba(5,11,43,0.06)',
                                                 borderRadius: 0,
+                                                overflow: 'hidden',
                                             }}>
                                             {plan.tag && (
                                                 <span style={{
-                                                    position: 'absolute', top: 20, right: 24,
+                                                    position: 'absolute', top: 20, left: 28,
                                                     fontFamily: brand, fontWeight: 700, fontSize: 9,
                                                     letterSpacing: '0.18em', textTransform: 'uppercase',
                                                     color: F,
@@ -310,18 +320,28 @@ const Pricing = () => {
                                                 }}>■ {plan.tag}</span>
                                             )}
                                             {selectedPlan === pIdx && (
-                                                <motion.span
-                                                    initial={{ opacity: 0, scale: 0.8 }}
-                                                    animate={{ opacity: 1, scale: 1 }}
+                                                <motion.div
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
                                                     style={{
-                                                        position: 'absolute', top: 20, left: 24,
-                                                        fontFamily: brand, fontWeight: 700, fontSize: 8,
-                                                        letterSpacing: '0.18em', textTransform: 'uppercase',
-                                                        color: W, background: F,
-                                                        padding: '3px 8px',
+                                                        position: 'absolute',
+                                                        top: 22,
+                                                        right: -30,
+                                                        width: 130,
+                                                        textAlign: 'center',
+                                                        background: F,
+                                                        color: W,
+                                                        fontFamily: brand,
+                                                        fontWeight: 700,
+                                                        fontSize: 7,
+                                                        letterSpacing: '0.14em',
+                                                        textTransform: 'uppercase',
+                                                        padding: '5px 0',
+                                                        transform: 'rotate(45deg)',
+                                                        pointerEvents: 'none',
                                                     }}>
                                                     ✓ SELEZIONATO
-                                                </motion.span>
+                                                </motion.div>
                                             )}
 
                                             <div className="mb-6">

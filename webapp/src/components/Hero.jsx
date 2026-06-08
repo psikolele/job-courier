@@ -427,7 +427,7 @@ const Hero = ({ setShowLoginModal }) => {
                     {/* Stat aziende + CTA — same container as candidati form */}
                     <div className="hero-card-box w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between p-6" style={{ borderRadius: 0 }}>
                         {/* Stats row — numero prominente, testo piccolo */}
-                        <div style={{ display: 'flex', gap: 32, flex: 1, width: '100%', alignItems: 'center', paddingBottom: 8 }}>
+                        <div style={{ display: 'flex', gap: 32, flex: 1, width: '100%', alignItems: 'flex-start', paddingTop: 4, paddingBottom: 8 }}>
                             <div>
                                 <div style={{ fontFamily: 'var(--font-brand)', fontWeight: 900, fontSize: 52, color: 'var(--brand-white)', lineHeight: 1, letterSpacing: '-0.02em' }}>120'000+</div>
                                 <div style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: 8 }}>Candidati registrati</div>
