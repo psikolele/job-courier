@@ -1,14 +1,30 @@
 [
   {
     "id": 0,
-    "title": "Formulation Pilot Plant Operator",
+    "title": "METALCOSTRUTTORE",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709931-formulation-pilot-plant-operator-munchwilen-ag&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709949-metalcostruttore-locarno&language=en"
   },
   {
     "id": 1,
+    "title": "Teamleitung Elektro (m/w) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709939-teamleitung-elektro-m-w-100-pratteln-bl&language=en"
+  },
+  {
+    "id": 2,
+    "title": "SELVICOLTORE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709947-selvicoltore-locarno&language=en"
+  },
+  {
+    "id": 3,
     "title": "Operatore addetto al carico e scarico merce",
     "location": "Svizzera",
     "sector": "Generale",
@@ -16,36 +32,20 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709943-operatore-addetto-al-carico-e-scarico-merce-cadenazzo-bellinzona&language=en"
   },
   {
-    "id": 2,
-    "title": "Accounting & Controls Specialist-Senior 100% (w/m/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709940-accounting-controls-specialist-senior-100-w-m-d-k%C3%B6lliken-aargau&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Automatikmonteur EFZ als Betriebselektriker Gebäudetechniker Region ZH",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709930-automatikmonteur-efz-als-betriebselektriker-geb%C3%A4udetechniker-region-zh-zurich-zurich&language=en"
-  },
-  {
     "id": 4,
-    "title": "Installateur/Monteur chauffage CFC 100% CDI (H/F/D)",
+    "title": "Export Sachbearbeiter/in 80%-100% (w/m/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709933-installateur-monteur-chauffage-cfc-100-cdi-h-f-d-sion-vs&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709936-export-sachbearbeiter-in-80-100-w-m-d-brugg-aargau&language=en"
   },
   {
     "id": 5,
-    "title": "Montageelektriker EFZ für Smartmeter Region Luzern m/w/d 100%",
+    "title": "Elektrochemazeichner m/w/d 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709937-montageelektriker-efz-fur-smartmeter-region-luzern-m-w-d-100-sursee-luzern&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709941-elektrochemazeichner-m-w-d-100-basel-basel&language=en"
   },
   {
     "id": 6,
@@ -57,6 +57,22 @@
   },
   {
     "id": 7,
+    "title": "Chef de projets - Systèmes de sécurité - Genève",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709944-chef-de-projets-syst%C3%A8mes-de-securite-gen%C3%A8ve-ginevra&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Accounting & Controls Specialist-Senior 100% (w/m/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709940-accounting-controls-specialist-senior-100-w-m-d-k%C3%B6lliken-aargau&language=en"
+  },
+  {
+    "id": 9,
     "title": "Gebäudetechniker für hochmodernes Immobilienportfolio 100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,35 +80,19 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709942-geb%C3%A4udetechniker-fur-hochmodernes-immobilienportfolio-100-m-w-d-zurich-zurich&language=en"
   },
   {
-    "id": 8,
-    "title": "Contremaître Charpentier 100% CDI (H/F/D)",
+    "id": 10,
+    "title": "GIARDINIERE",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709934-contrema%C3%AEtre-charpentier-100-cdi-h-f-d-sion-vs&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709946-giardiniere-locarno&language=en"
   },
   {
-    "id": 9,
+    "id": 11,
     "title": "FTTH Monteur Inhouse für die Region Brugg (m/w) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709935-ftth-monteur-inhouse-fur-die-region-brugg-m-w-100-birmenstorf-ag-aargau&language=en"
-  },
-  {
-    "id": 10,
-    "title": "Betriebselektriker m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709932-betriebselektriker-m-w-d-100-basel-basel&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Elektrochemazeichner m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709941-elektrochemazeichner-m-w-d-100-basel-basel&language=en"
   }
 ]
