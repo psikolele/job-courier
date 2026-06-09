@@ -122,7 +122,8 @@ const Offerte = ({ setShowLoginModal }) => {
     const [error, setError] = useState(null);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [searchQuery, setSearchQuery] = useState(searchParams.get('keyword') || '');
-    
+    const [activeTab, setActiveTab] = useState('list');
+
     // States for extended job description scraping
     const [selectedJobDetail, setSelectedJobDetail] = useState(null);
     const [detailLoading, setDetailLoading] = useState(false);
@@ -270,7 +271,7 @@ const Offerte = ({ setShowLoginModal }) => {
 
     return (
         <div className="pt-24 min-h-screen" style={{ background: GL }}>
-            <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-8">
+            <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-8 pb-24 md:pb-32">
                 {/* Page header */}
                 <div className="mb-8 flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
                     {/* Left: counter */}
@@ -307,28 +308,46 @@ const Offerte = ({ setShowLoginModal }) => {
                     </div>
                 </div>
 
+                {/* Mobile tab toggle */}
+                {isMobile && (
+                    <div className="flex gap-1 mb-4" style={{ background: 'transparent' }}>
+                        <button
+                            onClick={() => setActiveTab('list')}
+                            style={{
+                                flex: 1, padding: '12px 16px',
+                                background: activeTab === 'list' ? '#FFFFFF' : 'transparent',
+                                border: activeTab === 'list' ? 'none' : '1px solid rgba(5,11,43,0.1)',
+                                fontFamily: brand, fontWeight: 700, fontSize: 12,
+                                letterSpacing: '0.06em', textTransform: 'uppercase',
+                                color: activeTab === 'list' ? F : GM,
+                                cursor: 'pointer', borderRadius: 0,
+                                transition: 'all 0.2s'
+                            }}
+                        >
+                            Lista
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('detail')}
+                            style={{
+                                flex: 1, padding: '12px 16px',
+                                background: activeTab === 'detail' ? '#FFFFFF' : 'transparent',
+                                border: activeTab === 'detail' ? 'none' : '1px solid rgba(5,11,43,0.1)',
+                                fontFamily: brand, fontWeight: 700, fontSize: 12,
+                                letterSpacing: '0.06em', textTransform: 'uppercase',
+                                color: activeTab === 'detail' ? F : GM,
+                                cursor: 'pointer', borderRadius: 0,
+                                transition: 'all 0.2s'
+                            }}
+                        >
+                            Dettagli
+                        </button>
+                    </div>
+                )}
+
                 <div className="flex flex-col md:flex-row gap-1" style={{ background: 'rgba(5,11,43,0.06)' }}>
                     {/* LIST */}
-                    {showList && (
+                    {showList && (isMobile ? activeTab === 'list' : true) && (
                         <div className="w-full md:w-[40%] lg:w-[35%] flex flex-col" style={{ background: '#FFFFFF', padding: '28px 24px' }}>
-                            <div className="relative mb-6">
-                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: GM }} />
-                                <input
-                                    type="text"
-                                    placeholder="Cerca per professione, azienda..."
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    style={{
-                                        width: '100%',
-                                        padding: '12px 16px 12px 42px',
-                                        background: '#FFFFFF',
-                                        border: '1.5px solid rgba(5,11,43,0.1)',
-                                        fontFamily: body, fontSize: 14,
-                                        outline: 'none', color: N,
-                                        borderRadius: 0
-                                    }}
-                                />
-                            </div>
 
                             {loading ? (
                                 <div className="space-y-2">
@@ -343,7 +362,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                     Nessuna offerta trovata con i filtri attuali.
                                 </div>
                             ) : (
-                                <div className="flex flex-col gap-1 overflow-y-auto" style={{ maxHeight: 'calc(100svh - 280px)', background: 'rgba(5,11,43,0.04)' }}>
+                                <div className="flex flex-col gap-1 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 320px)', background: 'rgba(5,11,43,0.04)' }}>
                                     {jobs.map(job => {
                                         const isSelected = selectedJobId === job.id.toString();
                                         return (
@@ -430,7 +449,7 @@ const Offerte = ({ setShowLoginModal }) => {
                     )}
 
                     {/* DETAIL */}
-                    {showDetail && (
+                    {showDetail && (isMobile ? activeTab === 'detail' : true) && (
                         <div className="w-full md:w-[60%] lg:w-[65%]">
                             <div className="md:sticky md:top-[100px] flex flex-col" style={{
                                 background: '#FFFFFF',
