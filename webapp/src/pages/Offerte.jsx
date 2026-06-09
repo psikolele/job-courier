@@ -566,7 +566,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                         <div style={{ padding: '32px 36px', overflowY: 'auto', flex: 1 }}>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                                                 <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                                                <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                                                <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
                                                     Dettagli posizione
                                                 </span>
                                             </div>

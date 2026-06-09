@@ -195,8 +195,8 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                         
                         {/* Header Details */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-                            <span style={{ width: 24, height: 2, background: F, display: 'inline-block' }} />
-                            <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                            <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                            <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
                                 {job.sector || "Lavoro"}
                             </span>
                         </div>

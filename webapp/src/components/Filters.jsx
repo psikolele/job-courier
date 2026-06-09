@@ -280,7 +280,7 @@ const Filters = () => {
                             <span style={{
                                 fontFamily: 'var(--font-brand)',
                                 fontWeight: 700,
-                                fontSize: 13,
+                                fontSize: 11,
                                 letterSpacing: '0.2em',
                                 textTransform: 'uppercase',
                                 color: 'var(--brand-fuchsia)'

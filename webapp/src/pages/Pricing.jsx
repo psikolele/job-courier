@@ -213,7 +213,7 @@ const Pricing = () => {
                         <div className="hero-line">
                             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                                 <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                                <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 13, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#FEFEFE' }}>
+                                <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#FEFEFE' }}>
                                     {t('pricing.subtitle') || 'Soluzioni e tariffe'}
                                 </span>
                             </div>
