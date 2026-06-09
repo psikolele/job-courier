@@ -34,14 +34,14 @@ const Vetrini = () => {
                 {/* Section label */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                     <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                    <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 13, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                    <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
                         Aziende Partner
                     </span>
                 </div>
                 <h2 style={{
                     fontFamily: editorial,
                     fontStyle: 'italic',
-                    fontSize: 38,
+                    fontSize: 32,
                     color: N,
                     marginBottom: 8,
                     overflowWrap: 'break-word',

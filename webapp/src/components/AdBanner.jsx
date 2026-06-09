@@ -46,7 +46,7 @@ const AdBanner = ({ type = 'bottom' }) => {
                     <div style={{ marginBottom: 16 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
                             <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                            <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 13, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                            <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
                                 Aziende in vetrina
                             </span>
                         </div>
@@ -67,7 +67,7 @@ const AdBanner = ({ type = 'bottom' }) => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="overflow-hidden relative group block"
-                            style={{ backgroundColor: ad.bg, height: 235, position: 'relative', display: 'block' }}
+                            style={{ backgroundColor: ad.bg, height: 235, position: 'relative', display: 'block', ...(!isTop && { border: '1.5px solid rgba(255,31,122,0.22)' }) }}
                             whileHover={{ boxShadow: '0 0 0 2px rgba(255,31,122,0.35), inset 0 0 0 1px rgba(255,31,122,0.12)' }}
                             transition={{ duration: 0.2, ease: 'easeOut' }}
                         >

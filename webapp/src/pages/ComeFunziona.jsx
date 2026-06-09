@@ -6,8 +6,13 @@ import { useTranslation } from 'react-i18next';
 import { ArrowRight, UserPlus, CreditCard, FileText, Users, MapPin, Zap, Headphones } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import {
-    HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover, SlideDescription,
+    HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover,
 } from '@/components/ui/animated-slideshow';
+
+const fadeVariants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+};
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -118,8 +123,13 @@ const ComeFunziona = () => {
                         <h3 style={{
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(1.6rem, 4vw, 3rem)',
                             color: N, textTransform: 'uppercase',
-                            letterSpacing: '-0.025em', lineHeight: 1.05
-                        }}>Pubblica una ricerca di personale e accedi immediatamente ai candidati già registrati su JobCourier.</h3>
+                            letterSpacing: '-0.025em', lineHeight: 1.05, marginBottom: 12
+                        }}>Pubblica una ricerca di <span style={{ color: F }}>personale</span></h3>
+                        <p style={{
+                            fontFamily: editorial, fontStyle: 'italic',
+                            fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
+                            color: GM, lineHeight: 1.3
+                        }}>accedi immediatamente ai candidati già registrati su JobCourier</p>
                     </div>
 
                     <HoverSlider className="w-full">
@@ -159,10 +169,13 @@ const ComeFunziona = () => {
                                                     className="w-full h-full object-cover"
                                                     loading="eager"
                                                     decoding="async"
+                                                    variants={fadeVariants}
+                                                    transition={{ duration: 0.6, ease: 'easeInOut' }}
                                                 />
                                             </div>
                                         ))}
                                     </HoverSliderImageWrap>
+                                    <div className="absolute inset-0 pointer-events-none" style={{ background: 'rgba(0,0,0,0.22)', zIndex: 10 }} />
                                 </div>
                             </div>
                         </div>
