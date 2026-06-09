@@ -41,7 +41,8 @@ const Footer = ({ setShowLoginModal }) => {
     ];
 
     return (
-        <footer style={{ background: N, borderTop: '3px solid var(--brand-white)' }} className="px-5 md:px-10 pt-12 pb-0">
+        <footer style={{ background: N }} className="px-5 md:px-10 pb-0">
+            <div style={{ height: 1, background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.4) 18%, rgba(255,255,255,0.4) 82%, transparent)', marginBottom: 48 }} />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 mb-7" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                 {/* Brand col — full width on mobile, 2-col on sm, 1-col on lg */}
                 <div className="col-span-1 sm:col-span-2 lg:col-span-1">

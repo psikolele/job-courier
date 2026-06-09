@@ -124,12 +124,12 @@ const ComeFunziona = () => {
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(1.6rem, 4vw, 3rem)',
                             color: N, textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 1.05, marginBottom: 12
-                        }}>Pubblica una ricerca di <span style={{ color: F }}>personale</span></h3>
+                        }}>Pubblica una ricerca di <span style={{ color: F }}>personale.</span></h3>
                         <p style={{
                             fontFamily: editorial, fontStyle: 'italic',
                             fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
                             color: GM, lineHeight: 1.3
-                        }}>accedi immediatamente ai candidati già registrati su JobCourier</p>
+                        }}>Accedi immediatamente ai candidati già registrati su JobCourier</p>
                     </div>
 
                     <HoverSlider className="w-full">
@@ -190,10 +190,10 @@ const ComeFunziona = () => {
                         <SectionLabel>Perché JobCourier</SectionLabel>
                         <h2 style={{
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)',
-                            color: N,
+                            color: N, textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: 12
-                        }}>Una piattaforma pensata per aiutarti a trovare candidati in modo semplice,</h2>
-                        <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 20, color: GM, lineHeight: 1.4 }}>
+                        }}>Una piattaforma pensata per aiutarti a trovare candidati in modo semplice.</h2>
+                        <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1rem, 2vw, 1.35rem)', color: GM, lineHeight: 1.4 }}>
                             Rapido ed efficace.
                         </p>
                     </div>

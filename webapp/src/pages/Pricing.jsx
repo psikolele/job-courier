@@ -291,7 +291,7 @@ const Pricing = () => {
                         >
                             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
                                 {/* PRICING CARDS */}
-                                <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                                <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch h-full">
                                     {data.plans.map((plan, pIdx) => (
                                         <motion.div key={pIdx}
                                             className="group relative flex flex-col min-w-0 cursor-pointer h-full"
@@ -399,7 +399,7 @@ const Pricing = () => {
                                 </div>
 
                                 {/* SIDEBAR VANTAGGI — navy, numerata, stagger on click */}
-                                <div className="lg:col-span-2 p-8" style={{ background: N, borderLeft: `4px solid ${F}` }}>
+                                <div className="lg:col-span-2 p-8" style={{ background: N, borderLeft: `4px solid ${F}`, minHeight: '750px' }}>
                                     <div className="mb-8">
                                         <SectionLabel>{data.sidebar.subtitle}</SectionLabel>
                                         <h3 style={{ fontFamily: brand, fontWeight: 900, fontSize: 22, color: W, textTransform: 'uppercase', letterSpacing: '-0.025em', lineHeight: 1 }}>
