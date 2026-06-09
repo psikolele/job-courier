@@ -108,17 +108,16 @@ const MarqueeSlider = ({ title, subtitle, articles, readArticleText, speed = 35 
                         <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>
-            </div>
-            {subtitle && (
-                <p style={{
-                    fontFamily: editorial,
-                    fontStyle: 'italic',
-                    fontSize: 32,
-                    color: N,
-                    lineHeight: 1.2,
-                    marginTop: 8
-                }}>{subtitle}</p>
-            )}
+                {subtitle && (
+                    <p style={{
+                        fontFamily: editorial,
+                        fontStyle: 'italic',
+                        fontSize: 32,
+                        color: N,
+                        lineHeight: 1.2,
+                        marginTop: 8
+                    }}>{subtitle}</p>
+                )}
             </div>
 
             {/* Carousel track — margini paralleli al testo sopra */}
