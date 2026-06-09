@@ -1,22 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Senior System Engineer",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709945-senior-system-engineer-lenzburg&language=en"
-  },
-  {
-    "id": 1,
-    "title": "INSTALLATORI E COLLAUDATORI ELETTRICI",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709950-installatori-e-collaudatori-elettrici-locarno&language=en"
-  },
-  {
-    "id": 2,
     "title": "RIF. 588 - ANALISTA DI LABORATORIO CQ",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,47 +8,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709952-rif-588-analista-di-laboratorio-cq-mendrisio&language=en"
   },
   {
-    "id": 3,
-    "title": "SELVICOLTORE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709947-selvicoltore-locarno&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Chef de projets - Systèmes de sécurité - Genève",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Approach People Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709944-chef-de-projets-syst%C3%A8mes-de-securite-gen%C3%A8ve-ginevra&language=en"
-  },
-  {
-    "id": 5,
-    "title": "FALEGNAME",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709948-falegname-locarno&language=en"
-  },
-  {
-    "id": 6,
-    "title": "PITTORE CAPPOTTISTA",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709951-pittore-cappottista-locarno&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Pistrellista",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709953-pistrellista-sottoceneri&language=en"
-  },
-  {
-    "id": 8,
+    "id": 1,
     "title": "GIARDINIERE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,7 +16,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709946-giardiniere-locarno&language=en"
   },
   {
-    "id": 9,
+    "id": 2,
     "title": "METALCOSTRUTTORE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,7 +24,31 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709949-metalcostruttore-locarno&language=en"
   },
   {
-    "id": 10,
+    "id": 3,
+    "title": "FALEGNAME",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709948-falegname-locarno&language=en"
+  },
+  {
+    "id": 4,
+    "title": "INSTALLATORI E COLLAUDATORI ELETTRICI",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709950-installatori-e-collaudatori-elettrici-locarno&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Gebäudetechniker für hochmodernes Immobilienportfolio 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709942-geb%C3%A4udetechniker-fur-hochmodernes-immobilienportfolio-100-m-w-d-zurich-zurich&language=en"
+  },
+  {
+    "id": 6,
     "title": "OPERAIO SPECIALIZZATO IN PAVIMENTI E RIVESTIMENTI",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +56,43 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709954-operaio-specializzato-in-pavimenti-e-rivestimenti-bellinzona&language=en"
   },
   {
-    "id": 11,
+    "id": 7,
+    "title": "SELVICOLTORE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709947-selvicoltore-locarno&language=en"
+  },
+  {
+    "id": 8,
+    "title": "PITTORE CAPPOTTISTA",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709951-pittore-cappottista-locarno&language=en"
+  },
+  {
+    "id": 9,
     "title": "Accounting & Controls Specialist-Senior 100% (w/m/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709940-accounting-controls-specialist-senior-100-w-m-d-k%C3%B6lliken-aargau&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Elektrochemazeichner m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709941-elektrochemazeichner-m-w-d-100-basel-basel&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Operatore addetto al carico e scarico merce",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6709943-operatore-addetto-al-carico-e-scarico-merce-cadenazzo-bellinzona&language=en"
   }
 ]
