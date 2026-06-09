@@ -43,21 +43,12 @@ const Vetrini = () => {
                     fontStyle: 'italic',
                     fontSize: 32,
                     color: N,
-                    marginBottom: 8,
+                    marginBottom: 48,
                     overflowWrap: 'break-word',
                     lineHeight: 1.2
                 }}>
                     Aziende recruiter che si affidano a Job Courier
                 </h2>
-                <p style={{
-                    fontFamily: body,
-                    fontSize: 14,
-                    color: GM,
-                    marginBottom: 48,
-                    overflowWrap: 'break-word'
-                }}>
-                    Aziende e recruiter che si affidano a JobCourier.
-                </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" style={{ gap: 1, background: 'rgba(5,11,43,0.06)' }}>
                     {companies.map((company, idx) => (
