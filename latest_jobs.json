@@ -9,6 +9,30 @@
   },
   {
     "id": 1,
+    "title": "Cappottista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710498-cappottista-sottoceneri&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Senior Windows System Engineer – Level 2 (Microsoft Infrastructure / Cloud)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710502-senior-windows-system-engineer-?-level-2-microsoft-infrastructure-cloud-bern&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Schaltanlagenmonteur im Raum Basel m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710491-schaltanlagenmonteur-im-raum-basel-m-w-d-100-muttenz-baselland&language=en"
+  },
+  {
+    "id": 4,
     "title": "Segretaria/o Amministrativa/o con Attestato Formatore Apprendisti (AFC)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -16,36 +40,12 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710501-segretaria-o-amministrativa-o-con-attestato-formatore-apprendisti-afc-prosito&language=en"
   },
   {
-    "id": 2,
-    "title": "Senior Windows System Engineer – Level 3 (Azure / Automation / Cloud Infrastructure)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710503-senior-windows-system-engineer-?-level-3-azure-automation-cloud-infrastructure-bern&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Senior Cloud Project Manager",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710505-senior-cloud-project-manager-bern&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Senior Cloud Project Manager",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710504-senior-cloud-project-manager-bern&language=en"
-  },
-  {
     "id": 5,
-    "title": "Cappottista",
+    "title": "Industrie Elektriker (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710498-cappottista-sottoceneri&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710490-industrie-elektriker-m-w-d-basel-basel-stadt&language=en"
   },
   {
     "id": 6,
@@ -57,30 +57,14 @@
   },
   {
     "id": 7,
-    "title": "Intonacatore",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710500-intonacatore-sottoceneri&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Senior Windows System Engineer – Level 2 (Microsoft Infrastructure / Cloud)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710502-senior-windows-system-engineer-?-level-2-microsoft-infrastructure-cloud-bern&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Schaltanlagenmonteur im Raum Basel m/w/d 100%",
+    "title": "Aktivierungsfachperson 50-100% (m,w,d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710491-schaltanlagenmonteur-im-raum-basel-m-w-d-100-muttenz-baselland&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710492-aktivierungsfachperson-50-100-m-w-d-burglen-tg&language=en"
   },
   {
-    "id": 10,
+    "id": 8,
     "title": "Cuoco/a con (part-time 60% diurno) Bellinzona",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +72,27 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710495-cuoco-a-con-part-time-60-diurno-bellinzona-bellinzona-bellinzona&language=en"
   },
   {
-    "id": 11,
+    "id": 9,
+    "title": "Senior Cloud Project Manager",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710505-senior-cloud-project-manager-bern&language=en"
+  },
+  {
+    "id": 10,
     "title": "Personalberater/In 100% (m,w,d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710494-personalberater-in-100-m-w-d-basel-bs&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Senior Windows System Engineer – Level 3 (Azure / Automation / Cloud Infrastructure)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710503-senior-windows-system-engineer-?-level-3-azure-automation-cloud-infrastructure-bern&language=en"
   }
 ]
