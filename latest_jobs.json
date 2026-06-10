@@ -1,22 +1,54 @@
 [
   {
     "id": 0,
-    "title": "Elektriker/in",
+    "title": "Giardiniere",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710481-elektriker-in-dubendorf-uster&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710497-giardiniere-locarno&language=en"
   },
   {
     "id": 1,
-    "title": "Schaler 100% (a)",
+    "title": "ASSEMBLAGGIO OROLOGI",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710483-schaler-100-a-langenthal-be&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710496-assemblaggio-orologi-sottoceneri&language=en"
   },
   {
     "id": 2,
+    "title": "Segretaria/o Amministrativa/o con Attestato Formatore Apprendisti (AFC)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710501-segretaria-o-amministrativa-o-con-attestato-formatore-apprendisti-afc-prosito&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Intonacatore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710500-intonacatore-sottoceneri&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Cappottista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710498-cappottista-sottoceneri&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Industrie Elektriker (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710490-industrie-elektriker-m-w-d-basel-basel-stadt&language=en"
+  },
+  {
+    "id": 6,
     "title": "Aktivierungsfachperson 50-100% (m,w,d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,7 +56,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710492-aktivierungsfachperson-50-100-m-w-d-burglen-tg&language=en"
   },
   {
-    "id": 3,
+    "id": 7,
+    "title": "Personalberater/In 100% (m,w,d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710494-personalberater-in-100-m-w-d-basel-bs&language=en"
+  },
+  {
+    "id": 8,
     "title": "Sachbearbeiter Buchhaltung (a) 80-100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,39 +72,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710486-sachbearbeiter-buchhaltung-a-80-100-basel-bs&language=en"
   },
   {
-    "id": 4,
-    "title": "Verbrauchsdatenerfasser m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710493-verbrauchsdatenerfasser-m-w-d-100-aarau-aargau&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Aktivierungsfachperson 50-100% (m,w,d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710482-aktivierungsfachperson-50-100-m-w-d-liestal-bl&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Stv. Leitung Pflege und Betreuung (m,w,d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710484-stv-leitung-pflege-und-betreuung-m-w-d-100-zurich-zh&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Schaltanlagenmonteur im Raum Basel m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710491-schaltanlagenmonteur-im-raum-basel-m-w-d-100-muttenz-baselland&language=en"
-  },
-  {
-    "id": 8,
+    "id": 9,
     "title": "Planificateur électricien - Industrie 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,27 +80,19 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710488-planificateur-electricien-industrie-100-cdi-h-f-d-martigny-valais&language=en"
   },
   {
-    "id": 9,
-    "title": "Cuoco/a con (part-time 60% diurno) Bellinzona",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710495-cuoco-a-con-part-time-60-diurno-bellinzona-bellinzona-bellinzona&language=en"
-  },
-  {
     "id": 10,
-    "title": "Junior Mandatsleiter Treuhand D/E (m/w/d) 80?100%",
+    "title": "Verbrauchsdatenerfasser m/w/d 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710489-junior-mandatsleiter-treuhand-d-e-m-w-d-80-100-zug-zg&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710493-verbrauchsdatenerfasser-m-w-d-100-aarau-aargau&language=en"
   },
   {
     "id": 11,
-    "title": "Chef de projet génie civil 80-100% CDI (H/F/D)",
+    "title": "Schaltanlagenmonteur im Raum Basel m/w/d 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710487-chef-de-projet-genie-civil-80-100-cdi-h-f-d-montreux-vd&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710491-schaltanlagenmonteur-im-raum-basel-m-w-d-100-muttenz-baselland&language=en"
   }
 ]
