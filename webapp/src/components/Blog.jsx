@@ -108,6 +108,7 @@ const MarqueeSlider = ({ title, subtitle, articles, readArticleText, speed = 35 
                         <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>
+                </div>
                 {subtitle && (
                     <p style={{
                         fontFamily: editorial,
