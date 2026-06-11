@@ -1,46 +1,30 @@
 [
   {
     "id": 0,
-    "title": "Sales associates 50 -100%",
+    "title": "Responsable Documentation & Formation Clients Industrie (H/F)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710924-sales-associates-50-100-biel-bienne-be&language=en"
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710939-responsable-documentation-formation-clients-industrie-h-f-jura-bernois&language=en"
   },
   {
     "id": 1,
-    "title": "MTRA 50-100% (m,w,d)",
+    "title": "Développeur Robotique (H/F)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710937-mtra-50-100-m-w-d-kussnacht-sz&language=en"
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710941-developpeur-robotique-h-f-jura-bernois&language=en"
   },
   {
     "id": 2,
-    "title": "Technischer Kundenberater (m/w/d) ? Chromatographie & Analytik 100%",
+    "title": "Senior Databank Engineer",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710925-technischer-kundenberater-m-w-d-chromatographie-analytik-100-sursee-lu&language=en"
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710940-senior-databank-engineer-bern&language=en"
   },
   {
     "id": 3,
-    "title": "Elektroingenieur (m/w) 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710930-elektroingenieur-m-w-80-100-luzern-luzern&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Elektroplaner:in EFZ (80?100%)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710933-elektroplaner-in-efz-80-100-st-gallen-sg&language=en"
-  },
-  {
-    "id": 5,
     "title": "Automatiker EFZ",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,7 +32,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710932-automatiker-efz-emmen-luzern&language=en"
   },
   {
-    "id": 6,
+    "id": 4,
     "title": "Autolackierer in der Aufbereitung m/w 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,23 +40,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710934-autolackierer-in-der-aufbereitung-m-w-100-lupfig-ag&language=en"
   },
   {
-    "id": 7,
-    "title": "Fachfrau Gesundheit EFZ (m,w,d) 60-100%",
+    "id": 5,
+    "title": "Unterhaltsmechaniker (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710935-fachfrau-gesundheit-efz-m-w-d-60-100-salenstein-thurgau&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710929-unterhaltsmechaniker-m-w-d-100-kriens-lu&language=en"
   },
   {
-    "id": 8,
-    "title": "HR Transformation Manager (AI & Process Optimization) (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710936-hr-transformation-manager-ai-process-optimization-m-w-d-st-gallen-sg&language=en"
-  },
-  {
-    "id": 9,
+    "id": 6,
     "title": "Monteur (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +56,43 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710931-monteur-m-w-d-100-hergiswil-nidwalden&language=en"
   },
   {
-    "id": 10,
-    "title": "Elektroinstallateur im Solarbereich m/w/d 100%",
+    "id": 7,
+    "title": "Contabile con conoscenza del tedesco",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710928-elektroinstallateur-im-solarbereich-m-w-d-100-baden-aargau&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710927-contabile-con-conoscenza-del-tedesco-mendrisio-ti&language=en"
+  },
+  {
+    "id": 8,
+    "title": "MTRA 50-100% (m,w,d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710937-mtra-50-100-m-w-d-kussnacht-sz&language=en"
+  },
+  {
+    "id": 9,
+    "title": "HR Transformation Manager (AI & Process Optimization) (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710936-hr-transformation-manager-ai-process-optimization-m-w-d-st-gallen-sg&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Fachfrau Gesundheit EFZ (m,w,d) 60-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710935-fachfrau-gesundheit-efz-m-w-d-60-100-salenstein-thurgau&language=en"
   },
   {
     "id": 11,
-    "title": "Montageelektriker EFZ mit top Konditionen m/w/d 100%",
+    "title": "Elektroingenieur (m/w) 80-100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710938-montageelektriker-efz-mit-top-konditionen-m-w-d-100-sursee-luzern&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6710930-elektroingenieur-m-w-80-100-luzern-luzern&language=en"
   }
 ]
