@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { consumeReturnUrl, cameFromJobRoom } from './hooks/useReturnUrl';
 import { gsap } from 'gsap';
@@ -83,6 +84,10 @@ function App() {
 
   return (
     <div className="relative w-full min-h-screen" style={{ background: 'var(--brand-gray-light)', color: 'var(--brand-navy)' }}>
+      <Helmet>
+        <title>JobCourier - Il portale svizzero per il lavoro</title>
+        <meta name="description" content="Trova il lavoro dei tuoi sogni in Svizzera o pubblica un annuncio per i migliori talenti su JobCourier." />
+      </Helmet>
       <ScrollToTop />
       <Navbar showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
       <Routes>

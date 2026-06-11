@@ -34,14 +34,38 @@
     "title_companies": "Suggerimenti per il Recruiting",
     "read_article": "Leggi l'articolo",
     "candidateArticles": [
-      { "id": 1, "title": "Come superare il colloquio tecnico nel 2026", "description": "Scopri le strategie migliori per affrontare le technical interviews nelle top tech companies svizzere..." },
-      { "id": 2, "title": "Il formato CV perfetto per il mercato svizzero", "description": "Cosa guardano i recruiter nei primi 6 secondi? La guida definitiva per strutturare il tuo curriculum..." },
-      { "id": 3, "title": "Negoziare lo stipendio: errori da evitare", "description": "Le tre frasi da non dire mai quando si parla di compensation package durante l'ultimo round..." }
+      {
+        "id": 1,
+        "title": "Come scrivere un CV che ottiene colloqui",
+        "description": "La struttura, gli errori da evitare e gli esempi pratici per superare i primi 30 secondi di screening."
+      },
+      {
+        "id": 2,
+        "title": "Come affrontare un colloquio di lavoro con successo",
+        "description": "Preparazione, domande frequenti e comunicazione non verbale: la guida completa al colloquio."
+      },
+      {
+        "id": 3,
+        "title": "I settori con più opportunità di lavoro oggi",
+        "description": "Sanità, tech, logistica e costruzioni: dove cresce la domanda e quali competenze contano."
+      }
     ],
     "companyArticles": [
-      { "id": 1, "title": "I trend del remote working in Svizzera", "description": "Come attrarre talenti da tutta la confederazione offrendo flessibilità garantendo la produttività..." },
-      { "id": 2, "title": "Employer Branding: perché i candidati vi scartano", "description": "Analisi sui dati di rimbalzo: cosa cercano veramente i top performer quando leggono i vostri annunci..." },
-      { "id": 3, "title": "Intelligenza Artificiale nello screening", "description": "Come implementare soluzioni AI nel processo di recruiting senza perdere il tocco umano essenziale..." }
+      {
+        "id": 1,
+        "title": "Come scrivere un annuncio di lavoro efficace",
+        "description": "Le sei sezioni di un annuncio che attira le candidature giuste, con esempio prima e dopo."
+      },
+      {
+        "id": 2,
+        "title": "Perché non ricevi candidature qualificate?",
+        "description": "Le sette cause più comuni e un piano pratico di 30 giorni per invertire la tendenza."
+      },
+      {
+        "id": 3,
+        "title": "Perché i candidati scelgono alcune aziende e non altre",
+        "description": "I sette fattori che i candidati valutano davvero e come le PMI possono comunicarli."
+      }
     ]
   },
   "come_funziona": {

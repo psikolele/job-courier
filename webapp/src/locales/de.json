@@ -34,14 +34,38 @@
     "title_companies": "Recruiting-Tipps",
     "read_article": "Artikel lesen",
     "candidateArticles": [
-      { "id": 1, "title": "Wie man technische Vorstellungsgespräche im Jahr 2026 besteht", "description": "Entdecken Sie die besten Strategien, um technische Interviews bei Top-Tech-Unternehmen in der Schweiz zu meistern..." },
-      { "id": 2, "title": "Das perfekte CV-Format für den Schweizer Markt", "description": "Worauf achten Personalvermittler in den ersten 6 Sekunden? Der ultimative Leitfaden zur Strukturierung Ihres Lebenslaufs..." },
-      { "id": 3, "title": "Gehaltsverhandlung: Fehler vermeiden", "description": "Die drei Sätze, die Sie bei der Besprechung des Vergütungspakets in der Endrunde niemals sagen sollten..." }
+      {
+        "id": 1,
+        "title": "Wie man einen Lebenslauf schreibt, der zu Vorstellungsgesprächen führt",
+        "description": "Die Struktur, die zu vermeidenden Fehler und praktische Beispiele, um die ersten 30 Sekunden des Screenings zu bestehen."
+      },
+      {
+        "id": 2,
+        "title": "Wie man ein Vorstellungsgespräch erfolgreich meistert",
+        "description": "Vorbereitung, häufige Fragen und nonverbale Kommunikation: der komplette Leitfaden zum Vorstellungsgespräch."
+      },
+      {
+        "id": 3,
+        "title": "Die Branchen mit den meisten Jobchancen heute",
+        "description": "Gesundheitswesen, Tech, Logistik und Bau: wo die Nachfrage wächst und welche Kompetenzen zählen."
+      }
     ],
     "companyArticles": [
-      { "id": 1, "title": "Trends bei Remote-Arbeit in der Schweiz", "description": "Wie man Talente aus der ganzen Konföderation anzieht, indem man Flexibilität bietet und gleichzeitig Produktivität gewährleistet..." },
-      { "id": 2, "title": "Employer Branding: Warum Kandidaten Sie ablehnen", "description": "Analyse von Absprungdaten: Was Top-Performer beim Lesen Ihrer Stellenanzeigen wirklich suchen..." },
-      { "id": 3, "title": "Künstliche Intelligenz im Screening", "description": "Wie man KI-Lösungen im Rekrutierungsprozess implementiert, ohne die wesentliche menschliche Note zu verlieren..." }
+      {
+        "id": 1,
+        "title": "Wie man eine wirksame Stellenanzeige schreibt",
+        "description": "Die sechs Abschnitte einer Anzeige, die die richtigen Bewerbungen anzieht, mit Vorher-Nachher-Beispiel."
+      },
+      {
+        "id": 2,
+        "title": "Warum erhalten Sie keine qualifizierten Bewerbungen?",
+        "description": "Die sieben häufigsten Ursachen und ein praktischer 30-Tage-Plan, um den Trend umzukehren."
+      },
+      {
+        "id": 3,
+        "title": "Warum Kandidaten manche Unternehmen wählen und andere nicht",
+        "description": "Die sieben Faktoren, die Kandidaten wirklich bewerten, und wie KMU sie kommunizieren können."
+      }
     ]
   },
   "come_funziona": {

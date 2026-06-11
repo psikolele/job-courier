@@ -34,14 +34,38 @@
     "title_companies": "Conseils de recrutement",
     "read_article": "Lire l'article",
     "candidateArticles": [
-      { "id": 1, "title": "Comment réussir les entretiens techniques en 2026", "description": "Découvrez les meilleures stratégies pour les entretiens techniques dans les meilleures entreprises tech suisses..." },
-      { "id": 2, "title": "Le format CV parfait pour le marché suisse", "description": "Que regardent les recruteurs dans les 6 premières secondes? Le guide ultime pour structurer votre CV..." },
-      { "id": 3, "title": "Négocier son salaire: erreurs à éviter", "description": "Les trois phrases à ne jamais dire lors de la discussion du package de rémunération..." }
+      {
+        "id": 1,
+        "title": "Comment rédiger un CV qui obtient des entretiens",
+        "description": "La structure, les erreurs à éviter et des exemples pratiques pour passer les 30 premières secondes de tri."
+      },
+      {
+        "id": 2,
+        "title": "Comment réussir un entretien d'embauche",
+        "description": "Préparation, questions fréquentes et communication non verbale: le guide complet de l'entretien."
+      },
+      {
+        "id": 3,
+        "title": "Les secteurs offrant le plus d'opportunités d'emploi aujourd'hui",
+        "description": "Santé, tech, logistique et construction: où la demande croît et quelles compétences comptent."
+      }
     ],
     "companyArticles": [
-      { "id": 1, "title": "Tendances du télétravail en Suisse", "description": "Comment attirer des talents de toute la confédération en offrant flexibilité et productivité..." },
-      { "id": 2, "title": "Employer Branding: pourquoi les candidats vous rejettent", "description": "Analyse des données: ce que les top performers recherchent vraiment dans vos annonces..." },
-      { "id": 3, "title": "Intelligence Artificielle dans le tri des candidatures", "description": "Comment implémenter l'IA dans le processus de recrutement sans perdre la touche humaine essentielle..." }
+      {
+        "id": 1,
+        "title": "Comment rédiger une annonce d'emploi efficace",
+        "description": "Les six sections d'une annonce qui attire les bonnes candidatures, avec exemple avant/après."
+      },
+      {
+        "id": 2,
+        "title": "Pourquoi ne recevez-vous pas de candidatures qualifiées?",
+        "description": "Les sept causes les plus courantes et un plan pratique de 30 jours pour inverser la tendance."
+      },
+      {
+        "id": 3,
+        "title": "Pourquoi les candidats choisissent certaines entreprises et pas d'autres",
+        "description": "Les sept facteurs que les candidats évaluent vraiment et comment les PME peuvent les communiquer."
+      }
     ]
   },
   "come_funziona": {

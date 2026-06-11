@@ -34,14 +34,38 @@
     "title_companies": "Recruiting Tips",
     "read_article": "Read article",
     "candidateArticles": [
-      { "id": 1, "title": "How to pass technical interviews in 2026", "description": "Discover the best strategies to tackle technical interviews in top Swiss tech companies..." },
-      { "id": 2, "title": "The perfect CV format for the Swiss market", "description": "What do recruiters look for in the first 6 seconds? The ultimate guide to structuring your resume..." },
-      { "id": 3, "title": "Negotiating salary: mistakes to avoid", "description": "The three phrases you should never say when discussing the compensation package during the final round..." }
+      {
+        "id": 1,
+        "title": "How to write a CV that gets interviews",
+        "description": "The structure, the mistakes to avoid and practical examples to pass the first 30 seconds of screening."
+      },
+      {
+        "id": 2,
+        "title": "How to succeed in a job interview",
+        "description": "Preparation, common questions and non-verbal communication: the complete interview guide."
+      },
+      {
+        "id": 3,
+        "title": "The sectors with the most job opportunities today",
+        "description": "Healthcare, tech, logistics and construction: where demand is growing and which skills matter."
+      }
     ],
     "companyArticles": [
-      { "id": 1, "title": "Remote working trends in Switzerland", "description": "How to attract talent from across the confederation by offering flexibility while ensuring productivity..." },
-      { "id": 2, "title": "Employer Branding: why candidates reject you", "description": "Analysis on bounce data: what top performers are really looking for when reading your job ads..." },
-      { "id": 3, "title": "Artificial Intelligence in screening", "description": "How to implement AI solutions in the recruiting process without losing the essential human touch..." }
+      {
+        "id": 1,
+        "title": "How to write an effective job ad",
+        "description": "The six sections of a job ad that attracts the right applications, with a before-and-after example."
+      },
+      {
+        "id": 2,
+        "title": "Why aren't you receiving qualified applications?",
+        "description": "The seven most common causes and a practical 30-day plan to turn things around."
+      },
+      {
+        "id": 3,
+        "title": "Why candidates choose some companies and not others",
+        "description": "The seven factors candidates really evaluate and how SMEs can communicate them."
+      }
     ]
   },
   "come_funziona": {
