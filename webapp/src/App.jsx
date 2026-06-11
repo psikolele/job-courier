@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { consumeReturnUrl, cameFromJobRoom } from './hooks/useReturnUrl';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -17,6 +17,8 @@ import OffertaDettaglio from './pages/OffertaDettaglio';
 import FAQ from './pages/FAQ';
 import CondizioniGenerali from './pages/CondizioniGenerali';
 import CookiePolicy from './pages/CookiePolicy';
+import BlogCategoria from './pages/BlogCategoria';
+import BlogArticolo from './pages/BlogArticolo';
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -90,6 +92,9 @@ function App() {
         <Route path="/come-funziona" element={<ComeFunziona />} />
         <Route path="/offerte" element={<Offerte setShowLoginModal={setShowLoginModal} />} />
         <Route path="/offerta/:id" element={<OffertaDettaglio setShowLoginModal={setShowLoginModal} />} />
+        <Route path="/blog" element={<Navigate to="/blog/carriera" replace />} />
+        <Route path="/blog/:categoria" element={<BlogCategoria />} />
+        <Route path="/blog/:categoria/:slug" element={<BlogArticolo />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/condizioni-generali" element={<CondizioniGenerali />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />

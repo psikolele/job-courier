@@ -58,7 +58,7 @@ const getCandidateLinks = () => [
     { label: 'Offerte di lavoro', labelEn: 'Job offers', labelDe: 'Stellenangebote', labelFr: 'Offres d\'emploi', href: '/offerte' },
     { label: 'Carica il tuo CV', labelEn: 'Upload your CV', labelDe: 'Lebenslauf hochladen', labelFr: 'Déposez votre CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
     { label: 'Aziende che assumono', labelEn: 'Hiring companies', labelDe: 'Einstellende Unternehmen', labelFr: 'Entreprises qui recrutent', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
-    { label: 'Consigli di carriera', labelEn: 'Career tips', labelDe: 'Karrieretipps', labelFr: 'Conseils carrière', href: '#blog' },
+    { label: 'Consigli di carriera', labelEn: 'Career tips', labelDe: 'Karrieretipps', labelFr: 'Conseils carrière', href: '/blog/carriera' },
 ];
 
 const getCompanyLinks = () => [
@@ -69,7 +69,7 @@ const getCompanyLinks = () => [
     },
     { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
     { label: 'Soluzioni e tariffe', labelEn: 'Solutions and Prices', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
-    { label: 'Consigli di recruiting', labelEn: 'Recruiting tips', labelDe: 'Recruiting-Tipps', labelFr: 'Conseils de recrutement', href: '#blog' },
+    { label: 'Consigli di recruiting', labelEn: 'Recruiting tips', labelDe: 'Recruiting-Tipps', labelFr: 'Conseils de recrutement', href: '/blog/recruiting' },
 ];
 
 const getLabel = (item, lang) => {
