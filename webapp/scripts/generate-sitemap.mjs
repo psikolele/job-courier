@@ -12,11 +12,13 @@ const urls = [];
 for (const p of STATIC) urls.push({ loc: `${SITE}${p}` });
 for (const catId of Object.keys(CATEGORIES)) {
   const alts = LANGS.map((l) => ({ l, href: `${SITE}/blog/${categorySegmentFor(catId, l)}` }));
+  alts.push({ l: 'x-default', href: alts[0].href });
   urls.push({ loc: alts[0].href, alts });
 }
 for (const e of blogIndex.it) {
   const seg = (l) => categorySegmentFor(e.category, l);
   const alts = LANGS.map((l) => ({ l, href: `${SITE}/blog/${seg(l)}/${slugFor(e.slug, l)}` }));
+  alts.push({ l: 'x-default', href: alts[0].href });
   urls.push({ loc: alts[0].href, alts });
 }
 

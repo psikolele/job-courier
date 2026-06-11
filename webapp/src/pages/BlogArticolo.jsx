@@ -27,15 +27,17 @@ const BlogArticolo = () => {
     return () => { alive = false; };
   }, [slug, lang]);
 
-  // slug di altra lingua → redirect a slug lingua attiva
+  // Normalizza URL: segmento categoria + slug nella lingua attiva
+  // (copre slug di altra lingua, categoria errata nell'URL, cambio lingua)
   useEffect(() => {
     const hit = findBySlug(slug);
-    if (hit && hit.lang !== lang) {
-      const target = slugFor(hit.lang === 'it' ? slug : hit.entry.slug, lang);
-      const seg = categorySegmentFor(hit.entry.category, lang);
-      if (target !== slug) navigate(`/blog/${seg}/${target}`, { replace: true });
+    if (!hit) return;
+    const targetSlug = slugFor(hit.lang === 'it' ? slug : hit.entry.slug, lang);
+    const targetSeg = categorySegmentFor(hit.entry.category, lang);
+    if (targetSlug !== slug || targetSeg !== categoria) {
+      navigate(`/blog/${targetSeg}/${targetSlug}`, { replace: true });
     }
-  }, [slug, lang, navigate]);
+  }, [slug, categoria, lang, navigate]);
 
   if (!categoryId) return <Navigate to="/blog/carriera" replace />;
   if (article === undefined) return <div style={{ minHeight: '60vh' }} />;
