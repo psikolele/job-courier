@@ -41,4 +41,24 @@ describe('getArticle', () => {
   it('null per slug inesistente', async () => {
     expect(await getArticle('non-esiste', 'it')).toBe(null);
   });
+  it('carica articolo DE tradotto senza fallback', async () => {
+    const a = await getArticle('lebenslauf-schreiben-der-zum-vorstellungsgespraech-fuehrt', 'de');
+    expect(a).toBeTruthy();
+    expect(a._fallback).toBeUndefined();
+    expect(a.metaTitle).toBeTruthy();
+  });
+});
+
+describe('slugTranslations', () => {
+  it('contiene mapping per tutti gli articoli IT e tutte le lingue', async () => {
+    const { slugTranslations } = await import('../blogIndex.js');
+    const { blogIndex: idx } = await import('../blogIndex.js');
+    for (const e of idx.it) {
+      const map = slugTranslations[e.slug];
+      expect(map).toBeTruthy();
+      expect(map.en).toBeTruthy();
+      expect(map.de).toBeTruthy();
+      expect(map.fr).toBeTruthy();
+    }
+  });
 });
