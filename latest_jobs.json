@@ -1,30 +1,14 @@
 [
   {
     "id": 0,
-    "title": "Secrétaire (h/f/d)",
+    "title": "Quality Assurance & Food  Safety Specialist",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711051-secretaire-h-f-d-lausanne-vd&language=en"
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711047-quality-assurance-food-safety-specialist-burgdorf&language=en"
   },
   {
     "id": 1,
-    "title": "IT continuity manager",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711040-it-continuity-manager-lausanne&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Chef d'équipe",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711041-chef-d-equipe-delemont&language=en"
-  },
-  {
-    "id": 3,
     "title": "Rouliste enrobé",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,7 +16,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711042-rouliste-enrobe-delemont&language=en"
   },
   {
-    "id": 4,
+    "id": 2,
     "title": "Category Buyer",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,12 +24,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711050-category-buyer-lugano&language=en"
   },
   {
-    "id": 5,
-    "title": "Machiniste Chantier",
+    "id": 3,
+    "title": "Machiniste M1 ou / + M2",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711039-machiniste-chantier-delemont&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711046-machiniste-m1-ou-m2-lausanne&language=en"
+  },
+  {
+    "id": 4,
+    "title": "IT continuity manager",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711040-it-continuity-manager-lausanne&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Aide comptable",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711045-aide-comptable-porrentruy&language=en"
   },
   {
     "id": 6,
@@ -57,42 +57,42 @@
   },
   {
     "id": 7,
-    "title": "Constructeur de routes",
+    "title": "Chef d'équipe",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711043-constructeur-de-routes-delemont&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711041-chef-d-equipe-delemont&language=en"
   },
   {
     "id": 8,
-    "title": "Aide comptable",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711045-aide-comptable-porrentruy&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Menuisier / Ébéniste CFC (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711044-menuisier-ebeniste-cfc-h-f-d-lausanne&language=en"
-  },
-  {
-    "id": 10,
-    "title": "Machiniste M1 ou / + M2",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711046-machiniste-m1-ou-m2-lausanne&language=en"
-  },
-  {
-    "id": 11,
     "title": "Mitarbeiter Baugruppenmontage (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711053-mitarbeiter-baugruppenmontage-m-w-d-100-dagmersellen-lu&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Assistant administratif FR-ALL (H/F)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711048-assistant-administratif-fr-all-h-f-gen%C3%A8ve&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Customer Advisor 100% - IT, DE, FR, EN",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711055-customer-advisor-100-it-de-fr-en-lugano-lugano&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Secrétaire (h/f/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711051-secretaire-h-f-d-lausanne-vd&language=en"
   }
 ]
