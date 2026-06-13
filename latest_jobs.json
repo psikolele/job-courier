@@ -1,98 +1,98 @@
 [
   {
     "id": 0,
-    "title": "Idraulico",
+    "title": "Rectifieur",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711056-idraulico-sottoceneri&language=en"
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711150-rectifieur-gen%C3%A8ve&language=en"
   },
   {
     "id": 1,
-    "title": "Assistant administratif FR-ALL (H/F)",
+    "title": "Technicien de maintenance H/F",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711048-assistant-administratif-fr-all-h-f-gen%C3%A8ve&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711159-technicien-de-maintenance-h-f-gen%C3%A8ve&language=en"
   },
   {
     "id": 2,
-    "title": "Mitarbeiter Baugruppenmontage (m/w/d) 100%",
+    "title": "Charpentier H/F",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711053-mitarbeiter-baugruppenmontage-m-w-d-100-dagmersellen-lu&language=en"
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711158-charpentier-h-f-delemont&language=en"
   },
   {
     "id": 3,
-    "title": "Menuisier / Ébéniste CFC (H/F/D)",
+    "title": "Peintre en batiment H/F",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711044-menuisier-ebeniste-cfc-h-f-d-lausanne&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711153-peintre-en-batiment-h-f-delemont&language=en"
   },
   {
     "id": 4,
-    "title": "Quality Assurance & Food  Safety Specialist",
+    "title": "Mécanicien-régleur tournage CNC",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711047-quality-assurance-food-safety-specialist-burgdorf&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711148-mecanicien-regleur-tournage-cnc-gen%C3%A8ve&language=en"
   },
   {
     "id": 5,
-    "title": "Rouliste enrobé",
+    "title": "Mécanicien-régleur fraisage CNC",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711042-rouliste-enrobe-delemont&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711149-mecanicien-regleur-fraisage-cnc-gen%C3%A8ve&language=en"
   },
   {
     "id": 6,
-    "title": "Aide comptable",
+    "title": "Ingénieur Sécurité des Procédés H/F",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711045-aide-comptable-porrentruy&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711162-ingenieur-securite-des-procedes-h-f-gen%C3%A8ve&language=en"
   },
   {
     "id": 7,
-    "title": "Livreur/Livreuse de colis 100% à Brig (VS)",
+    "title": "Plâtrier-plaquiste",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711049-livreur-livreuse-de-colis-100-%C3%A0-brig-vs-gamsen&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711154-pl%C3%A2trier-plaquiste-delemont&language=en"
   },
   {
     "id": 8,
-    "title": "Constructeur de routes",
+    "title": "Mécanicien-Régleur CNC Électroérosion H/F",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711043-constructeur-de-routes-delemont&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711151-mecanicien-regleur-cnc-electroerosion-h-f-gen%C3%A8ve&language=en"
   },
   {
     "id": 9,
-    "title": "Chef d'équipe",
+    "title": "Technicien méthodes terminaison automatique (H/F)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711041-chef-d-equipe-delemont&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711161-technicien-methodes-terminaison-automatique-h-f-gen%C3%A8ve&language=en"
   },
   {
     "id": 10,
-    "title": "Secrétaire (h/f/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711051-secretaire-h-f-d-lausanne-vd&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Machiniste M1 ou / + M2",
+    "title": "Couvreur H/F",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711046-machiniste-m1-ou-m2-lausanne&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711157-couvreur-h-f-delemont&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Tôlier-Chaudronnier H/F",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6711160-t%C3%B4lier-chaudronnier-h-f-gen%C3%A8ve&language=en"
   }
 ]
