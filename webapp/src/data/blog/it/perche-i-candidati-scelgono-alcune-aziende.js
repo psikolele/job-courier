@@ -25,10 +25,7 @@ export default {
       heading: 'I candidati sono più informati',
       blocks: [
         'Prima di candidarsi molte persone verificano:',
-        'sito web aziendale;',
-        'presenza online;',
-        'recensioni;',
-        'notizie sull\'azienda.',
+        { list: ['Sito web aziendale.', 'Presenza online.', 'Recensioni.', 'Notizie sull\'azienda.'] },
         'Anche una PMI locale viene spesso analizzata con attenzione.',
       ],
     },
@@ -39,11 +36,7 @@ export default {
         'Lo stipendio continua a essere importante.',
         'Ma non è più l\'unico criterio di scelta.',
         'Sempre più professionisti valutano:',
-        'ambiente di lavoro;',
-        'stabilità;',
-        'prospettive di crescita;',
-        'flessibilità;',
-        'qualità della leadership.',
+        { list: ['Ambiente di lavoro.', 'Stabilità.', 'Prospettive di crescita.', 'Flessibilità.', 'Qualità della leadership.'] },
       ],
     },
     {
@@ -69,11 +62,7 @@ export default {
       blocks: [
         'Quando un professionista confronta due opportunità, prende in considerazione molti elementi.',
         'Ad esempio:',
-        'sicurezza;',
-        'prospettive;',
-        'ambiente;',
-        'equilibrio tra vita privata e lavoro;',
-        'qualità delle relazioni.',
+        { list: ['Sicurezza.', 'Prospettive.', 'Ambiente.', 'Equilibrio tra vita privata e lavoro.', 'Qualità delle relazioni.'] },
       ],
     },
     {
@@ -101,16 +90,13 @@ export default {
     {
       heading: 'Comunicazione',
       blocks: [
-        'Il sito è aggiornato?',
-        'Le informazioni sono chiare?',
-        'L\'azienda appare professionale?',
+        { list: ['Il sito è aggiornato?', 'Le informazioni sono chiare?', 'L\'azienda appare professionale?'] },
       ],
     },
     {
       heading: 'Coerenza',
       blocks: [
-        'Ciò che viene comunicato è coerente con ciò che emerge online?',
-        'Le incoerenze generano dubbi.',
+        'Ciò che viene comunicato è coerente con ciò che emerge online? Le incoerenze, anche piccole, generano dubbi nella mente di chi sta valutando l\'azienda.',
       ],
     },
     {
@@ -130,44 +116,33 @@ export default {
     {
       heading: 'Segnali che trasmettono stabilità',
       blocks: [
-        'presenza consolidata sul mercato;',
-        'crescita;',
-        'chiarezza organizzativa;',
-        'solidità percepita.',
+        { list: ['Presenza consolidata sul mercato.', 'Crescita.', 'Chiarezza organizzativa.', 'Solidità percepita.'] },
       ],
     },
     {
       heading: 'Perché è importante',
       blocks: [
-        'Cambiare lavoro rappresenta sempre una scelta impegnativa.',
-        'Le persone vogliono ridurre il rischio.',
+        'Cambiare lavoro rappresenta sempre una scelta impegnativa, e le persone vogliono ridurre il rischio scegliendo realtà che diano garanzie di continuità.',
       ],
     },
     {
       heading: '3. Ambiente di lavoro',
       blocks: [
-        'Uno degli aspetti più sottovalutati dalle aziende.',
-        'E uno dei più valutati dai candidati.',
+        'È uno degli aspetti più sottovalutati dalle aziende, ma è anche uno dei più valutati dai candidati.',
       ],
     },
     {
       heading: 'Come si lavora davvero?',
       blocks: [
         'Le persone cercano di capire:',
-        'come vengono trattati i collaboratori;',
-        'quale clima si respira;',
-        'come vengono gestiti i rapporti interni.',
+        { list: ['Come vengono trattati i collaboratori.', 'Quale clima si respira.', 'Come vengono gestiti i rapporti interni.'] },
       ],
     },
     {
       heading: 'Il passaparola conta',
       blocks: [
-        'Spesso le informazioni più influenti non arrivano dai siti aziendali.',
-        'Arrivano dalle persone.',
-        'Ex collaboratori.',
-        'Clienti.',
-        'Fornitori.',
-        'Conoscenti.',
+        'Spesso le informazioni più influenti non arrivano dai siti aziendali, ma dalle persone.',
+        { list: ['Ex collaboratori.', 'Clienti.', 'Fornitori.', 'Conoscenti.'] },
       ],
     },
     {
@@ -180,9 +155,7 @@ export default {
     {
       heading: 'Le domande che si pongono',
       blocks: [
-        'Potrò imparare?',
-        'Potrò assumere nuove responsabilità?',
-        'Potrò crescere professionalmente?',
+        { list: ['Potrò imparare?', 'Potrò assumere nuove responsabilità?', 'Potrò crescere professionalmente?'] },
       ],
     },
     {
@@ -205,9 +178,7 @@ export default {
       heading: 'I candidati cercano segnali',
       blocks: [
         'Anche prima di entrare in azienda, molte persone cercano di capire:',
-        'come vengono gestiti i collaboratori;',
-        'quanto è accessibile il management;',
-        'quale stile di leadership caratterizza l\'organizzazione.',
+        { list: ['Come vengono gestiti i collaboratori.', 'Quanto è accessibile il management.', 'Quale stile di leadership caratterizza l\'organizzazione.'] },
       ],
     },
     {
@@ -228,17 +199,13 @@ export default {
     {
       heading: 'Cosa valutano i candidati',
       blocks: [
-        'orari;',
-        'autonomia;',
-        'organizzazione del lavoro;',
-        'fiducia.',
+        { list: ['Orari.', 'Autonomia.', 'Organizzazione del lavoro.', 'Fiducia.'] },
       ],
     },
     {
       heading: 'La flessibilità non è solo una questione organizzativa',
       blocks: [
-        'È anche un segnale culturale.',
-        'Comunica il modo in cui l\'azienda considera i propri collaboratori.',
+        'È anche un segnale culturale: comunica il modo in cui l\'azienda considera i propri collaboratori e quanto si fida del loro giudizio.',
       ],
     },
     {
@@ -310,16 +277,10 @@ export default {
       heading: 'Un esempio tipico',
       blocks: [
         'Un\'impresa offre:',
-        'ambiente positivo;',
-        'stabilità;',
-        'autonomia;',
-        'crescita.',
+        { list: ['Ambiente positivo.', 'Stabilità.', 'Autonomia.', 'Crescita.'] },
         'Ma il candidato non lo sa. Perché?',
         'Perché queste informazioni non compaiono:',
-        'sul sito;',
-        'negli annunci;',
-        'nei social;',
-        'nella comunicazione aziendale.',
+        { list: ['Sul sito.', 'Negli annunci.', 'Nei social.', 'Nella comunicazione aziendale.'] },
       ],
     },
     {
@@ -338,23 +299,19 @@ export default {
     {
       heading: 'Il sito web',
       blocks: [
-        'Trasmette professionalità?',
-        'È aggiornato?',
-        'Racconta l\'azienda in modo autentico?',
+        { list: ['Trasmette professionalità?', 'È aggiornato?', 'Racconta l\'azienda in modo autentico?'] },
       ],
     },
     {
       heading: 'I profili social',
       blocks: [
-        'Mostrano qualcosa della realtà aziendale?',
-        'Oppure risultano abbandonati?',
+        'Mostrano qualcosa della realtà aziendale, delle persone e dei progetti? Oppure risultano abbandonati, con l\'ultimo post di anni fa?',
       ],
     },
     {
       heading: 'Gli annunci di lavoro',
       blocks: [
-        'Comunicano soltanto requisiti?',
-        'Oppure spiegano perché quella opportunità è interessante?',
+        'Comunicano soltanto requisiti e mansioni? Oppure spiegano anche perché quella opportunità è davvero interessante per chi la legge?',
       ],
     },
     {
@@ -410,36 +367,15 @@ export default {
     {
       heading: 'Piano pratico di 30 giorni',
       blocks: [
-      ],
-    },
-    {
-      heading: 'Settimana 1',
-      blocks: [
-        'Analizza la tua comunicazione.',
-        'sito;',
-        'annunci;',
-        'profili social.',
-      ],
-    },
-    {
-      heading: 'Settimana 2',
-      blocks: [
-        'Parla con i collaboratori.',
-        'Chiedi: Perché lavorate qui?',
-        'Le risposte possono essere sorprendenti.',
-      ],
-    },
-    {
-      heading: 'Settimana 3',
-      blocks: [
-        'Identifica i veri punti di forza dell\'azienda.',
-        'Non quelli teorici, quelli reali.',
-      ],
-    },
-    {
-      heading: 'Settimana 4',
-      blocks: [
-        'Inizia a comunicarli in modo coerente.',
+        'Per iniziare a colmare il divario tra ciò che la tua azienda offre davvero e ciò che i candidati percepiscono, puoi seguire un piano semplice.',
+        {
+          weekPlan: [
+            { week: 'Settimana 1', title: 'Analizza la tua comunicazione', items: ['Sito web.', 'Annunci di lavoro.', 'Profili social.'] },
+            { week: 'Settimana 2', title: 'Parla con i collaboratori', items: ['Chiedi loro: "Perché lavorate qui?"', 'Le risposte possono essere sorprendenti.'] },
+            { week: 'Settimana 3', title: 'Identifica i veri punti di forza', items: ['Non quelli teorici, ma quelli reali dell\'azienda.'] },
+            { week: 'Settimana 4', title: 'Comunica in modo coerente', items: ['Inizia a raccontare questi punti di forza su tutti i canali.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'Vuoi costruire un’immagine aziendale attrattiva? Parti dall’employer branding.', slug: 'employer-branding-pmi-guida-pratica' } },
@@ -452,7 +388,7 @@ export default {
         'Molto spesso sono quelle che hanno compreso una verità semplice:',
         'le persone vogliono sapere perché dovrebbero scegliere proprio quell\'azienda.',
         'Le PMI possiedono spesso caratteristiche straordinarie:',
-        'Vicinanza – Autonomia – Rapidità - Relazioni autentiche.',
+        { list: ['Vicinanza.', 'Autonomia.', 'Rapidità.', 'Relazioni autentiche.'] },
         'La sfida non è crearle, la sfida è comunicarle.',
         'E quando questo accade, il recruiting cambia profondamente.',
       ],

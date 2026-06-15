@@ -14,8 +14,7 @@ export default {
       heading: 'Perché molte persone cercano lavoro nel modo sbagliato',
       blocks: [
         'Quando si perde un impiego o si decide di cambiare azienda, la reazione più comune è iniziare a candidarsi ovunque.',
-        'Dal punto di vista emotivo è comprensibile.',
-        'Dal punto di vista strategico è spesso controproducente.',
+        'Dal punto di vista emotivo è comprensibile: serve a sentirsi attivi e a riprendere il controllo della situazione. Dal punto di vista strategico, però, è spesso controproducente.',
       ],
     },
     {
@@ -55,10 +54,7 @@ export default {
         'Un buon CV è fondamentale.',
         'Ma da solo non basta.',
         'La ricerca di lavoro richiede:',
-        'visibilità;',
-        'strategia;',
-        'networking;',
-        'costanza.',
+        { list: ['Visibilità.', 'Strategia.', 'Networking.', 'Costanza.'] },
       ],
     },
     {
@@ -73,10 +69,7 @@ export default {
       blocks: [
         'L\'esperienza è importante.',
         'Tuttavia le aziende valutano anche:',
-        'motivazione;',
-        'attitudine;',
-        'capacità di apprendimento;',
-        'adattabilità.',
+        { list: ['Motivazione.', 'Attitudine.', 'Capacità di apprendimento.', 'Adattabilità.'] },
       ],
     },
     {
@@ -90,9 +83,7 @@ export default {
       heading: 'Hanno obiettivi chiari',
       blocks: [
         'Sanno esattamente:',
-        'quale ruolo cercano;',
-        'quali aziende li interessano;',
-        'quali competenze vogliono valorizzare.',
+        { list: ['Quale ruolo cercano.', 'Quali aziende li interessano.', 'Quali competenze vogliono valorizzare.'] },
       ],
     },
     {
@@ -106,18 +97,14 @@ export default {
       blocks: [
         'Non si limitano agli annunci online.',
         'Sfruttano:',
-        'contatti professionali;',
-        'networking;',
-        'candidature spontanee;',
-        'LinkedIn.',
+        { list: ['Contatti professionali.', 'Networking.', 'Candidature spontanee.', 'LinkedIn.'] },
       ],
     },
     {
       heading: 'Sono costanti',
       blocks: [
-        'La ricerca di lavoro è una maratona.',
-        'Non uno sprint.',
-        'Chi mantiene continuità ottiene generalmente risultati migliori.',
+        'La ricerca di lavoro è una maratona, non uno sprint.',
+        'Chi mantiene continuità nel tempo, dedicando ogni settimana un po\' di energia alla ricerca, ottiene generalmente risultati migliori di chi alterna fasi di grande attività a lunghi periodi di stallo.',
       ],
     },
     {
@@ -131,10 +118,7 @@ export default {
       blocks: [
         'Più sei specifico, più sarà facile individuare opportunità coerenti.',
         'Ad esempio:',
-        'impiegato amministrativo;',
-        'tecnico manutentore;',
-        'commerciale B2B;',
-        'sviluppatore software.',
+        { list: ['Impiegato amministrativo.', 'Tecnico manutentore.', 'Commerciale B2B.', 'Sviluppatore software.'] },
         'Sono obiettivi molto diversi tra loro.',
       ],
     },
@@ -210,10 +194,7 @@ export default {
       heading: 'Mantieni il profilo aggiornato',
       blocks: [
         'Verifica che siano presenti:',
-        'esperienza professionale;',
-        'competenze;',
-        'formazione;',
-        'informazioni di contatto.',
+        { list: ['Esperienza professionale.', 'Competenze.', 'Formazione.', 'Informazioni di contatto.'] },
         'Il profilo dovrebbe essere coerente con il curriculum.',
       ],
     },
@@ -227,9 +208,7 @@ export default {
       heading: 'Segui aziende e professionisti',
       blocks: [
         'Questo permette di:',
-        'conoscere nuove opportunità;',
-        'comprendere meglio il mercato;',
-        'rimanere aggiornati sulle tendenze del settore.',
+        { list: ['Conoscere nuove opportunità.', 'Comprendere meglio il mercato.', 'Rimanere aggiornati sulle tendenze del settore.'] },
       ],
     },
     {
@@ -255,10 +234,7 @@ export default {
       blocks: [
         'Non è necessario riscrivere completamente il curriculum per ogni candidatura.',
         'Tuttavia è utile adattare:',
-        'profilo professionale;',
-        'competenze evidenziate;',
-        'parole chiave;',
-        'lettera di presentazione.',
+        { list: ['Profilo professionale.', 'Competenze evidenziate.', 'Parole chiave.', 'Lettera di presentazione.'] },
       ],
     },
     {
@@ -270,17 +246,15 @@ export default {
     {
       heading: 'Organizzare la ricerca come un progetto',
       blocks: [
-        'Molte persone cercano lavoro in modo casuale.',
-        'Le attività non pianificate tendono a produrre risultati incostanti.',
+        'Molte persone cercano lavoro in modo casuale, candidandosi quando capita senza un piano alle spalle.',
+        'Le attività non pianificate tendono però a produrre risultati incostanti, con momenti di grande slancio seguiti da settimane di stallo. Trattare la ricerca come un piccolo progetto, con obiettivi e scadenze, aiuta a mantenere il ritmo.',
       ],
     },
     {
       heading: 'Definisci obiettivi settimanali',
       blocks: [
         'Ad esempio:',
-        'candidature inviate;',
-        'nuove aziende individuate;',
-        'contatti professionali attivati.',
+        { list: ['Candidature inviate.', 'Nuove aziende individuate.', 'Contatti professionali attivati.'] },
       ],
     },
     {
@@ -288,11 +262,7 @@ export default {
       blocks: [
         'Un semplice foglio di calcolo può essere sufficiente.',
         'Annota:',
-        'data candidatura;',
-        'azienda;',
-        'posizione;',
-        'stato della selezione;',
-        'eventuali follow-up.',
+        { list: ['Data candidatura.', 'Azienda.', 'Posizione.', 'Stato della selezione.', 'Eventuali follow-up.'] },
       ],
     },
     {
@@ -335,10 +305,7 @@ export default {
       heading: 'Chiedi feedback',
       blocks: [
         'Quando possibile confrontati con:',
-        'recruiter;',
-        'professionisti HR;',
-        'colleghi;',
-        'persone di fiducia.',
+        { list: ['Recruiter.', 'Professionisti HR.', 'Colleghi.', 'Persone di fiducia.'] },
         'Uno sguardo esterno può individuare aspetti che non noti.',
       ],
     },
@@ -346,58 +313,14 @@ export default {
       heading: 'Piano pratico di 30 giorni',
       blocks: [
         'Se vuoi rendere più efficace la tua ricerca, puoi seguire un piano semplice.',
-      ],
-    },
-    {
-      heading: 'Settimana 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analisi',
-      blocks: [
-        'aggiornamento CV;',
-        'aggiornamento LinkedIn;',
-        'definizione degli obiettivi professionali.',
-      ],
-    },
-    {
-      heading: 'Settimana 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Ricerca',
-      blocks: [
-        'individuazione aziende target;',
-        'monitoraggio opportunità;',
-        'invio candidature mirate.',
-      ],
-    },
-    {
-      heading: 'Settimana 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Networking',
-      blocks: [
-        'contatto con professionisti;',
-        'partecipazione a eventi;',
-        'sviluppo della rete professionale.',
-      ],
-    },
-    {
-      heading: 'Settimana 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Valutazione',
-      blocks: [
-        'analisi dei risultati;',
-        'correzione della strategia;',
-        'pianificazione del mese successivo.',
+        {
+          weekPlan: [
+            { week: 'Settimana 1', title: 'Analisi', items: ['Aggiornamento del CV.', 'Aggiornamento del profilo LinkedIn.', 'Definizione degli obiettivi professionali.'] },
+            { week: 'Settimana 2', title: 'Ricerca', items: ['Individuazione delle aziende target.', 'Monitoraggio delle opportunità.', 'Invio di candidature mirate.'] },
+            { week: 'Settimana 3', title: 'Networking', items: ['Contatto con professionisti del settore.', 'Partecipazione a eventi.', 'Sviluppo della rete professionale.'] },
+            { week: 'Settimana 4', title: 'Valutazione', items: ['Analisi dei risultati ottenuti.', 'Correzione della strategia.', 'Pianificazione del mese successivo.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'Non sai dove cercare? Scopri i settori con più opportunità.', slug: 'settori-con-piu-opportunita-di-lavoro' } },
@@ -406,10 +329,7 @@ export default {
       blocks: [
         'Trovare lavoro non è soltanto una questione di fortuna.',
         'È il risultato di una combinazione di fattori:',
-        'preparazione;',
-        'strategia;',
-        'costanza;',
-        'capacità di adattamento.',
+        { list: ['Preparazione.', 'Strategia.', 'Costanza.', 'Capacità di adattamento.'] },
         'Le persone che ottengono risultati migliori non sono necessariamente quelle che inviano più candidature.',
         'Sono spesso quelle che riescono a costruire un approccio più consapevole e organizzato.',
         'Tratta la ricerca di lavoro come un progetto professionale.',

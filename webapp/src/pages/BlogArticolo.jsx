@@ -12,6 +12,7 @@ import ArticleCtaBox from '../components/blog/ArticleCtaBox.jsx';
 import ArticleRelatedBox from '../components/blog/ArticleRelatedBox.jsx';
 import ArticleSignature from '../components/blog/ArticleSignature.jsx';
 import ArticleFaq from '../components/blog/ArticleFaq.jsx';
+import WeekPlanTable from '../components/blog/WeekPlanTable.jsx';
 
 const BlogArticolo = () => {
   const { categoria, slug } = useParams();
@@ -90,7 +91,9 @@ const BlogArticolo = () => {
                 <section key={i} style={{ marginBottom: 32 }}>
                   <h2 style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 26, color: 'var(--brand-navy)', margin: '0 0 14px' }}>{s.heading}</h2>
                   {(s.blocks || []).map((b, j) => (
-                    b?.list ? (
+                    b?.weekPlan ? (
+                      <WeekPlanTable key={j} weeks={b.weekPlan} />
+                    ) : b?.list ? (
                       <ul key={j} style={{ listStyle: 'none', margin: '0 0 14px', padding: 0 }}>
                         {b.list.map((item, k) => (
                           <motion.li
