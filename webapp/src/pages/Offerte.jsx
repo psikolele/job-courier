@@ -362,7 +362,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                     Nessuna offerta trovata con i filtri attuali.
                                 </div>
                             ) : (
-                                <div className="flex flex-col gap-1 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 320px)', background: 'rgba(5,11,43,0.04)' }}>
+                                <div className="flex flex-col gap-1 overflow-y-auto scroll-fade" style={{ maxHeight: 'calc(100vh - 320px)', background: 'rgba(5,11,43,0.04)' }}>
                                     {jobs.map(job => {
                                         const isSelected = selectedJobId === job.id.toString();
                                         return (
@@ -563,7 +563,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                             </div>
                                         </div>
 
-                                        <div style={{ padding: '32px 36px', overflowY: 'auto', flex: 1 }}>
+                                        <div className="scroll-fade" style={{ padding: '32px 36px', overflowY: 'auto', flex: 1 }}>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                                                 <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
                                                 <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>

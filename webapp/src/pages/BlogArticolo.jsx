@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useParams, Link, Navigate, useNavigate } from 'react-router-dom';
 import { Clock, ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -89,7 +90,25 @@ const BlogArticolo = () => {
                 <section key={i} style={{ marginBottom: 32 }}>
                   <h2 style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 26, color: 'var(--brand-navy)', margin: '0 0 14px' }}>{s.heading}</h2>
                   {(s.blocks || []).map((b, j) => (
-                    <p key={j} style={{ fontFamily: 'var(--font-body)', fontSize: 15.5, lineHeight: 1.8, color: 'var(--brand-navy)', opacity: 0.85, margin: '0 0 14px' }}>{b}</p>
+                    b?.list ? (
+                      <ul key={j} style={{ listStyle: 'none', margin: '0 0 14px', padding: 0 }}>
+                        {b.list.map((item, k) => (
+                          <motion.li
+                            key={k}
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: k * 0.08 }}
+                            style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 8 }}
+                          >
+                            <span style={{ width: 6, height: 6, marginTop: 8, background: 'var(--brand-fuchsia)', display: 'inline-block', flexShrink: 0 }} />
+                            <span style={{ fontFamily: 'var(--font-body)', fontSize: 15.5, lineHeight: 1.8, color: 'var(--brand-navy)', opacity: 0.85 }}>{item}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p key={j} style={{ fontFamily: 'var(--font-body)', fontSize: 15.5, lineHeight: 1.8, color: 'var(--brand-navy)', opacity: 0.85, margin: '0 0 14px' }}>{b}</p>
+                    )
                   ))}
                 </section>
               );

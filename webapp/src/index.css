@@ -126,6 +126,24 @@
   scrollbar-width: none;
 }
 
+/* Scrollbar nascosta finché non si passa col mouse sul contenitore (overlay-style) */
+.scroll-fade {
+  scrollbar-width: none;
+}
+.scroll-fade::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-fade::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.scroll-fade:hover {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-fuchsia) transparent;
+}
+.scroll-fade:hover::-webkit-scrollbar-thumb {
+  background: var(--brand-fuchsia);
+}
+
 /* Moving Dot Card — namespaced CSS classes */
 .jc-dot-outer {
   position: relative;

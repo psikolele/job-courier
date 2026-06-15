@@ -82,7 +82,7 @@ const AdBanner = ({ type = 'bottom' }) => {
                             <img
                                 src={ad.img}
                                 alt={ad.alt}
-                                className={`w-full h-full object-${ad.fit} transition-all duration-500 grayscale group-hover:grayscale-0`}
+                                className={`w-full h-full object-${ad.fit}`}
                                 style={ad.position ? { objectPosition: ad.position } : undefined}
                             />
                         </motion.a>
