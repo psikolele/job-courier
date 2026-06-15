@@ -1,11 +1,11 @@
 [
   {
     "id": 0,
-    "title": "GIARDINIERE",
+    "title": "MECCANICO MEZZI PESANTI E AGRICOLI",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716989-giardiniere-locarno&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716983-meccanico-mezzi-pesanti-e-agricoli-locarno&language=en"
   },
   {
     "id": 1,
@@ -25,14 +25,6 @@
   },
   {
     "id": 3,
-    "title": "MECCANICO MEZZI PESANTI E AGRICOLI",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716983-meccanico-mezzi-pesanti-e-agricoli-locarno&language=en"
-  },
-  {
-    "id": 4,
     "title": "Cloud & IoT Solution Engineer 100% (f/m/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,15 +32,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716987-cloud-iot-solution-engineer-100-f-m-d-bubikon&language=en"
   },
   {
-    "id": 5,
-    "title": "SELVICOLTORE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716985-selvicoltore-locarno&language=en"
-  },
-  {
-    "id": 6,
+    "id": 4,
     "title": "OPERAIO SPECIALIZZATO IN PAVIMENTI E RIVESTIMENTI",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,12 +40,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716984-operaio-specializzato-in-pavimenti-e-rivestimenti-locarno&language=en"
   },
   {
-    "id": 7,
-    "title": "Gerüstmonteur (m/w/d)",
+    "id": 5,
+    "title": "GIARDINIERE",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716978-gerustmonteur-m-w-d-winterthur&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716989-giardiniere-locarno&language=en"
+  },
+  {
+    "id": 6,
+    "title": "SELVICOLTORE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716985-selvicoltore-locarno&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Réceptionniste (H/F/D) - 60%-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "DasTeam",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716981-receptionniste-h-f-d-60-100-1400-yverdon-les-bains&language=en"
   },
   {
     "id": 8,
@@ -69,23 +69,23 @@
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716977-bauarbeiter-m-w-d-zurich&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716976-bauarbeiter-m-w-d-h%C3%B6ri&language=en"
   },
   {
     "id": 9,
-    "title": "Schaler (m/w/d)",
+    "title": "Gerüstmonteur (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716975-schaler-m-w-d-bulach&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716978-gerustmonteur-m-w-d-winterthur&language=en"
   },
   {
     "id": 10,
-    "title": "Réceptionniste (H/F/D) - 60%-100%",
+    "title": "Bauarbeiter (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "DasTeam",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716981-receptionniste-h-f-d-60-100-1400-yverdon-les-bains&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716977-bauarbeiter-m-w-d-zurich&language=en"
   },
   {
     "id": 11,
