@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import ArticleCard from './blog/ArticleCard.jsx';
 
 const candidateSlugs = {
     1: 'come-scrivere-un-cv-che-ottiene-colloqui',
@@ -35,13 +35,11 @@ const GL = 'var(--brand-gray-light)';
 const GM = 'var(--brand-gray-mid)';
 const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
-const body = 'var(--font-body)';
 
 const prefersReducedMotion = () =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const MarqueeSlider = ({ title, subtitle, articles, readArticleText, speed = 35, categorySegment, slugMap }) => {
-    const navigate = useNavigate();
     const sliderRef = useRef(null);
     const timelineRef = useRef(null);
     const resumeTimeoutRef = useRef(null);
@@ -148,62 +146,13 @@ const MarqueeSlider = ({ title, subtitle, articles, readArticleText, speed = 35,
                     style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
                 >
                     {duplicatedArticles.map((article, idx) => (
-                        <div key={`${article.id}-${idx}`} className="w-[280px] md:w-[350px] shrink-0 flex-none">
-                            <motion.a
-                                href={`/blog/${categorySegment}/${slugMap[article.id]}`}
-                                onClick={e => { e.preventDefault(); navigate(`/blog/${categorySegment}/${slugMap[article.id]}`); }}
-                                className="flex flex-col h-[350px] overflow-hidden group transition-all duration-300 cursor-pointer"
-                                style={{ background: '#FFFFFF', border: '1px solid rgba(5,11,43,0.07)' }}
-                                whileHover={{ y: -4, borderColor: 'rgba(255, 31, 122, 0.2)' }}
-                            >
-                                <div className="h-44 overflow-hidden relative" style={{ background: GL }}>
-                                    <img
-                                        src={article.image}
-                                        alt={article.title}
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                                        loading="lazy"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                                </div>
-
-                                <div className="p-6 flex flex-col flex-1 whitespace-normal">
-                                    <h4 style={{
-                                        fontFamily: brand,
-                                        fontWeight: 700,
-                                        fontSize: 16,
-                                        color: N,
-                                        letterSpacing: '-0.01em',
-                                        lineHeight: 1.3,
-                                        marginBottom: 8
-                                    }} className="line-clamp-2 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-200">
-                                        {article.title}
-                                    </h4>
-                                    <p style={{
-                                        fontFamily: body,
-                                        fontSize: 12.5,
-                                        color: GM,
-                                        lineHeight: 1.5,
-                                        flex: 1
-                                    }} className="line-clamp-3">
-                                        {article.description}
-                                    </p>
-
-                                    <div style={{
-                                        display: 'flex', alignItems: 'center', gap: 6,
-                                        fontFamily: brand,
-                                        fontWeight: 700,
-                                        fontSize: 9,
-                                        letterSpacing: '0.18em',
-                                        textTransform: 'uppercase',
-                                        color: F,
-                                        marginTop: 14
-                                    }}>
-                                        <span>{readArticleText}</span>
-                                        <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-200" />
-                                    </div>
-                                </div>
-                            </motion.a>
-                        </div>
+                        <ArticleCard
+                            key={`${article.id}-${idx}`}
+                            article={article}
+                            to={`/blog/${categorySegment}/${slugMap[article.id]}`}
+                            size="carousel"
+                            readArticleText={readArticleText}
+                        />
                     ))}
                 </div>
             </div>
@@ -218,7 +167,7 @@ const Blog = () => {
     const companyArticles = (t('blog.companyArticles', { returnObjects: true }) || []).map(art => ({ ...art, image: companyImages[art.id] }));
 
     return (
-        <section id="blog" className="w-full relative z-10 py-16" style={{ background: GL }}>
+        <section id="blog" className="w-full relative z-10 py-16 md:py-20" style={{ background: GL }}>
             {/* Two separate sliders — each with own trattino + title (= menu anchor) + subtitle */}
             <div className="w-full flex flex-col gap-1" style={{ background: GL }}>
                 <MarqueeSlider

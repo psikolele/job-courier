@@ -29,7 +29,7 @@ const Vetrini = () => {
     const body = 'var(--font-body)';
 
     return (
-        <section className="py-20 md:py-28 px-6 md:px-12 w-full" id="vetrini" style={{ background: '#FFFFFF' }}>
+        <section className="py-16 md:py-20 px-6 md:px-12 w-full" id="vetrini" style={{ background: '#FFFFFF' }}>
             <div className="max-w-[1400px] mx-auto w-full">
                 {/* Section label */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>

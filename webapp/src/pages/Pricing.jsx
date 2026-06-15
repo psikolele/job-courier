@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Lock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import SectionLabel from '../components/ui/SectionLabel.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,13 +16,6 @@ const W = 'var(--brand-white)';
 const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
-
-const SectionLabel = ({ children }) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-        <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-        <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>{children}</span>
-    </div>
-);
 
 const FuchsiaButton = ({ href, onClick, children, fullWidth = false }) => (
     <a href={href} onClick={onClick} className="inline-flex items-center justify-center gap-2 transition-all hover:opacity-85 hover:scale-[1.02] hover-lift"
@@ -211,32 +205,18 @@ const Pricing = () => {
                 <div className="container mx-auto w-full">
                     <div className="max-w-4xl">
                         <div className="hero-line">
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                                <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                                <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#FEFEFE' }}>
-                                    {t('pricing.subtitle') || 'Soluzioni e tariffe'}
-                                </span>
-                            </div>
+                            <SectionLabel>{t('pricing.subtitle') || 'Soluzioni e tariffe'}</SectionLabel>
                         </div>
                         <h1 className="hero-line" style={{
                             fontFamily: brand, fontWeight: 900,
-                            fontSize: 'clamp(2rem, 8vw, 4rem)',
+                            fontSize: 'clamp(2rem, 8vw, 4.5rem)',
                             color: W,
                             textTransform: 'uppercase',
                             letterSpacing: '-0.025em',
-                            lineHeight: 0.9,
-                            marginBottom: 8
-                        }}>{data.heroTitleMain}</h1>
-                        <h1 className="hero-line" style={{
-                            fontFamily: brand, fontWeight: 900,
-                            fontSize: 'clamp(2rem, 8vw, 4rem)',
-                            color: F,
-                            textTransform: 'uppercase',
-                            letterSpacing: '-0.025em',
-                            lineHeight: 0.9,
-                            marginBottom: 16
-                        }}>{data.heroTitleEm}</h1>
-                        <p className="hero-line" style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 24, color: 'rgba(255,255,255,0.4)', marginBottom: 40, lineHeight: 1.2 }}>
+                            lineHeight: 0.95,
+                            marginBottom: 24
+                        }}>{data.heroTitleMain}<br /><span style={{ color: F }}>{data.heroTitleEm}</span></h1>
+                        <p className="hero-line" style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1.2rem, 3vw, 1.8rem)', color: 'rgba(255,255,255,0.75)', marginBottom: 40, lineHeight: 1.4 }}>
                             {data.heroSub}
                         </p>
 

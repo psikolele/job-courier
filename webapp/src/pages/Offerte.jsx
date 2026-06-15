@@ -271,7 +271,7 @@ const Offerte = ({ setShowLoginModal }) => {
 
     return (
         <div className="pt-24 min-h-screen" style={{ background: GL }}>
-            <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-8 pb-24 md:pb-32">
+            <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-8 pb-24 md:pb-32">
                 {/* Page header */}
                 <div className="mb-8 flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
                     {/* Left: counter */}

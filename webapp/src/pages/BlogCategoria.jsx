@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { ArrowRight, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { listByCategory } from '../data/blog/blogIndex.js';
 import { resolveCategorySegment, categorySegmentFor } from '../data/blog/categories.js';
 import BlogSeo from '../components/blog/BlogSeo.jsx';
+import SectionLabel from '../components/ui/SectionLabel.jsx';
+import ArticleCard from '../components/blog/ArticleCard.jsx';
 
 const LABELS = {
   carriera: { breadcrumb: 'Blog — Carriera', title: 'Suggerimenti per la carriera', subtitle: 'Consigli pratici per chi cerca lavoro.' },
@@ -24,44 +25,47 @@ const BlogCategoria = () => {
   const otherId = categoryId === 'carriera' ? 'recruiting' : 'carriera';
   const L = LABELS[categoryId];
 
+  const lastSpace = L.title.lastIndexOf(' ');
+  const titleLead = lastSpace > -1 ? L.title.slice(0, lastSpace + 1) : null;
+  const titleEmphasis = lastSpace > -1 ? L.title.slice(lastSpace + 1) : null;
+
   return (
-    <div className="w-full px-6 md:px-12 pt-28 pb-20" style={{ background: 'var(--brand-gray-light)' }}>
-      <div className="max-w-[1400px] mx-auto w-full">
-        <BlogSeo type="category" lang={lang} categoryId={categoryId} title={`${L.title} | JobCourier`} description={L.subtitle} />
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-          <span style={{ width: 28, height: 2, background: 'var(--brand-fuchsia)' }} />
-          <span style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--brand-fuchsia)' }}>{L.breadcrumb}</span>
-        </div>
-        <h1 style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 38, color: 'var(--brand-navy)', margin: '0 0 8px' }}>{L.title}</h1>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'var(--brand-gray-mid)', margin: '0 0 36px' }}>{L.subtitle}</p>
+    <>
+      <BlogSeo type="category" lang={lang} categoryId={categoryId} title={`${L.title} | JobCourier`} description={L.subtitle} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.map((e) => (
-            <Link key={e.slug} to={`/blog/${categorySegmentFor(categoryId, lang)}/${e.slug}`}
-              className="group" style={{ background: '#fff', border: '1px solid rgba(5,11,43,0.08)', textDecoration: 'none', display: 'flex', flexDirection: 'column' }}>
-              <img src={e.image} alt={e.title} style={{ width: '100%', height: 180, objectFit: 'cover', filter: 'grayscale(1)', transition: 'filter .3s' }}
-                onMouseEnter={(ev) => (ev.currentTarget.style.filter = 'none')} onMouseLeave={(ev) => (ev.currentTarget.style.filter = 'grayscale(1)')} />
-              <div style={{ padding: '22px 22px 26px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--brand-gray-mid)', marginBottom: 10 }}>
-                  <Clock size={12} /> {e.readingTime} min di lettura
-                </span>
-                <h2 style={{ fontFamily: 'var(--font-brand)', fontWeight: 900, fontSize: 19, textTransform: 'uppercase', color: 'var(--brand-navy)', lineHeight: 1.15, margin: '0 0 10px' }}>{e.title}</h2>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.6, color: 'var(--brand-navy)', opacity: 0.7, margin: '0 0 16px', flex: 1 }}>{e.abstract}</p>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--brand-fuchsia)' }}>
-                  Leggi articolo <ArrowRight size={13} />
-                </span>
-              </div>
+      <section className="relative min-h-[40vh] pt-32 pb-16 px-6 md:px-12 flex flex-col justify-center" style={{ background: 'var(--brand-navy)' }}>
+        <div className="container mx-auto w-full">
+          <div className="max-w-3xl">
+            <SectionLabel>{L.breadcrumb}</SectionLabel>
+            <h1 style={{ fontFamily: 'var(--font-brand)', fontWeight: 900, fontSize: 'clamp(2rem, 8vw, 4.5rem)', color: 'var(--brand-white)', textTransform: 'uppercase', letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 24 }}>
+              {titleLead ? (
+                <>
+                  {titleLead}
+                  <span style={{ color: 'var(--brand-fuchsia)' }}>{titleEmphasis}</span>
+                </>
+              ) : L.title}
+            </h1>
+            <p style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: 'rgba(255,255,255,0.75)', lineHeight: 1.4 }}>{L.subtitle}</p>
+          </div>
+        </div>
+      </section>
+
+      <div className="w-full px-6 md:px-12 py-16 md:py-20" style={{ background: 'var(--brand-gray-light)' }}>
+        <div className="max-w-[1400px] mx-auto w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articles.map((e) => (
+              <ArticleCard key={e.slug} article={e} to={`/blog/${categorySegmentFor(categoryId, lang)}/${e.slug}`} size="grid" />
+            ))}
+          </div>
+
+          <div style={{ marginTop: 48, textAlign: 'center' }}>
+            <Link to={`/blog/${categorySegmentFor(otherId, lang)}`} style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 12, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--brand-navy)', textDecoration: 'none', borderBottom: '2px solid var(--brand-fuchsia)', paddingBottom: 4 }}>
+              {categoryId === 'carriera' ? 'Sei un’azienda? Suggerimenti per il recruiting →' : 'Cerchi lavoro? Suggerimenti per la carriera →'}
             </Link>
-          ))}
-        </div>
-
-        <div style={{ marginTop: 48, textAlign: 'center' }}>
-          <Link to={`/blog/${categorySegmentFor(otherId, lang)}`} style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 12, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--brand-navy)', textDecoration: 'none', borderBottom: '2px solid var(--brand-fuchsia)', paddingBottom: 4 }}>
-            {categoryId === 'carriera' ? 'Sei un’azienda? Suggerimenti per il recruiting →' : 'Cerchi lavoro? Suggerimenti per la carriera →'}
-          </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default BlogCategoria;

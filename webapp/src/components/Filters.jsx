@@ -270,7 +270,7 @@ const Filters = () => {
     };
 
     return (
-        <div id="filters" className="w-full relative z-20 pb-20 pt-8 overflow-x-hidden" style={{ background: 'var(--brand-gray-light)' }}>
+        <div id="filters" className="w-full relative z-20 py-16 md:py-20 overflow-x-hidden" style={{ background: 'var(--brand-gray-light)' }}>
             {/* Latest Jobs Feed from Vercel Proxy */}
             <div className="pt-4 w-[98%] mx-auto">
                 <div className="flex items-start justify-between mb-10 px-4 md:px-8">

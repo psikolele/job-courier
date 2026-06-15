@@ -39,7 +39,7 @@ const AdBanner = ({ type = 'bottom' }) => {
     const adsToRender = isTop ? topAds : bottomAds;
 
     return (
-        <div className="w-full px-6 md:px-12 mt-2 mb-6">
+        <div className="w-full px-6 md:px-12">
             <div className="max-w-[1400px] mx-auto w-full">
 
                 {isTop && (

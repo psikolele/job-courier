@@ -70,20 +70,15 @@ const Contact = () => {
                 <div className="container mx-auto relative z-10 w-full">
                     <div className="max-w-5xl">
                         <div className="hero-line"><SectionLabel>{t('contact.protocol_label')}</SectionLabel></div>
-                        <p className="hero-line" style={{
-                            fontFamily: editorial, fontStyle: 'italic', fontSize: 28,
-                            color: 'rgba(255,255,255,0.5)', marginBottom: 20, lineHeight: 1.2
-                        }}>{t('contact.hero_sub')}</p>
                         <h1 className="hero-line" style={{
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 10vw, 5.25rem)',
                             color: '#FFFFFF', textTransform: 'uppercase',
-                            letterSpacing: '-0.03em', lineHeight: 0.88, marginBottom: 6
-                        }}>{t('contact.hero_title')}</h1>
-                        <h1 className="hero-line" style={{
-                            fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 10vw, 5.25rem)',
-                            color: F, textTransform: 'uppercase',
-                            letterSpacing: '-0.03em', lineHeight: 0.88
-                        }}>{t('contact.hero_em')}</h1>
+                            letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 24
+                        }}>{t('contact.hero_title')}<br /><span style={{ color: F }}>{t('contact.hero_em')}</span></h1>
+                        <p className="hero-line" style={{
+                            fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
+                            color: 'rgba(255,255,255,0.75)', lineHeight: 1.4
+                        }}>{t('contact.hero_sub')}</p>
                     </div>
                 </div>
             </section>
