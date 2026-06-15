@@ -14,9 +14,7 @@ export default {
       heading: 'Il mercato del lavoro è cambiato',
       blocks: [
         'Per molti anni il processo di assunzione è stato percepito come un percorso a senso unico.',
-        'L\'azienda pubblicava un\'offerta.',
-        'I candidati si proponevano.',
-        'L\'organizzazione sceglieva.',
+        { list: ['L\'azienda pubblicava un\'offerta.', 'I candidati si proponevano.', 'L\'organizzazione sceglieva.'] },
         'Oggi il contesto è molto diverso.',
         'Le persone hanno accesso a una quantità enorme di informazioni.',
         'Possono confrontare opportunità, raccogliere opinioni, visitare siti aziendali e valutare diversi aspetti prima ancora di inviare una candidatura.',

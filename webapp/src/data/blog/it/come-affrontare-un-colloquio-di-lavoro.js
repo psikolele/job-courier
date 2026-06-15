@@ -119,7 +119,7 @@ export default {
       heading: 'Prepara alcune domande',
       blocks: [
         'Molti candidati pensano che il colloquio finisca quando il recruiter chiede:',
-        'Ha qualche domanda?',
+        { list: ['Ha qualche domanda?'] },
         'In realtà quella è una delle parti più importanti dell\'incontro.',
         'Fare domande dimostra:',
         'interesse;',

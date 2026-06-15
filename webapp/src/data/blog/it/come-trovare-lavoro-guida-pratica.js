@@ -22,7 +22,7 @@ export default {
       heading: 'L\'errore della quantità',
       blocks: [
         'Molti candidati pensano:',
-        'Più candidature invio, più possibilità avrò.',
+        { list: ['Più candidature invio, più possibilità avrò.'] },
         'Non sempre è vero.',
         'Inviare 100 candidature generiche produce spesso risultati peggiori rispetto a 20 candidature ben mirate.',
       ],
@@ -142,9 +142,7 @@ export default {
       heading: 'Identifica i tuoi punti di forza',
       blocks: [
         'Chiediti:',
-        'quali competenze possiedo?',
-        'quali risultati ho ottenuto?',
-        'cosa mi distingue da altri candidati?',
+        { list: ['quali competenze possiedo?', 'quali risultati ho ottenuto?', 'cosa mi distingue da altri candidati?'] },
       ],
     },
     {
@@ -301,9 +299,7 @@ export default {
       heading: 'Analizza i risultati',
       blocks: [
         'Dopo alcune settimane chiediti:',
-        'quali candidature generano colloqui?',
-        'quali no?',
-        'quali settori rispondono maggiormente?',
+        { list: ['quali candidature generano colloqui?', 'quali no?', 'quali settori rispondono maggiormente?'] },
         'Questo permette di migliorare progressivamente l\'approccio.',
       ],
     },
@@ -320,9 +316,7 @@ export default {
       blocks: [
         'Il CV continua a essere il primo elemento da verificare.',
         'Chiediti:',
-        'comunica chiaramente il mio valore?',
-        'evidenzia risultati concreti?',
-        'è aggiornato?',
+        { list: ['comunica chiaramente il mio valore?', 'evidenzia risultati concreti?', 'è aggiornato?'] },
       ],
     },
     {
@@ -334,8 +328,7 @@ export default {
     {
       heading: 'Analizza la strategia',
       blocks: [
-        'Stai utilizzando più canali?',
-        'Oppure ti stai affidando esclusivamente agli annunci?',
+        { list: ['Stai utilizzando più canali?', 'Oppure ti stai affidando esclusivamente agli annunci?'] },
       ],
     },
     {

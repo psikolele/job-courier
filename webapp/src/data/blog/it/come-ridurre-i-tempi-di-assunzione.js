@@ -124,8 +124,7 @@ export default {
     {
       heading: 'Una domanda utile',
       blocks: [
-        'Quali competenze sono davvero indispensabili?',
-        'Quali possono essere sviluppate attraverso formazione e affiancamento?',
+        { list: ['Quali competenze sono davvero indispensabili?', 'Quali possono essere sviluppate attraverso formazione e affiancamento?'] },
       ],
     },
     {
@@ -212,10 +211,7 @@ export default {
     {
       heading: 'Cosa succede spesso',
       blocks: [
-        'Un candidato invia il curriculum.',
-        'Passano giorni.',
-        'Talvolta settimane.',
-        'Prima di ricevere un riscontro.',
+        { list: ['Un candidato invia il curriculum.', 'Passano giorni.', 'Talvolta settimane.', 'Prima di ricevere un riscontro.'] },
         'Nel frattempo può aver già avviato altri processi di selezione.',
       ],
     },

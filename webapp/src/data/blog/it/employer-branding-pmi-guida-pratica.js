@@ -124,9 +124,7 @@ export default {
     {
       heading: 'Alcune domande utili',
       blocks: [
-        'Le persone si sentono ascoltate?',
-        'Le responsabilità sono chiare?',
-        'Esiste collaborazione?',
+        { list: ['Le persone si sentono ascoltate?', 'Le responsabilità sono chiare?', 'Esiste collaborazione?'] },
       ],
     },
     {

@@ -15,7 +15,7 @@ export default {
       blocks: [
         'Prima di cercare soluzioni è importante capire quale sia il problema reale.',
         'Molti candidati utilizzano l\'espressione:',
-        'Nessuno mi risponde.',
+        { list: ['Nessuno mi risponde.'] },
         'Ma situazioni diverse richiedono soluzioni differenti.',
       ],
     },
@@ -84,7 +84,7 @@ export default {
       blocks: [
         'Uno degli errori più diffusi consiste nel candidarsi a qualsiasi posizione disponibile.',
         'L\'idea è semplice:',
-        'Più candidature invio, maggiori saranno le probabilità.',
+        { list: ['Più candidature invio, maggiori saranno le probabilità.'] },
         'In pratica accade spesso il contrario.',
       ],
     },
@@ -185,10 +185,7 @@ export default {
     {
       heading: 'Le domande da porti',
       blocks: [
-        'Le mie competenze sono ancora richieste?',
-        'Il settore sta cambiando?',
-        'Sto investendo nella formazione?',
-        'Gli annunci richiedono strumenti che non conosco?',
+        { list: ['Le mie competenze sono ancora richieste?', 'Il settore sta cambiando?', 'Sto investendo nella formazione?', 'Gli annunci richiedono strumenti che non conosco?'] },
       ],
     },
     {
@@ -203,9 +200,7 @@ export default {
       heading: 'Motivo 7: le candidature non sono abbastanza personalizzate',
       blocks: [
         'Molti candidati dedicano pochi secondi alla candidatura.',
-        'Caricano il curriculum.',
-        'Premono "Invia".',
-        'Passano all\'annuncio successivo.',
+        { list: ['Caricano il curriculum.', 'Premono "Invia".', 'Passano all\'annuncio successivo.'] },
         'Dal punto di vista dell\'efficienza sembra una buona strategia.',
         'Dal punto di vista dei risultati, spesso non lo è.',
       ],

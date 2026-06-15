@@ -332,7 +332,7 @@ export default {
       heading: 'Come scegliere il settore giusto',
       blocks: [
         'Molti candidati si chiedono:',
-        'Dove dovrei orientare la mia carriera?',
+        { list: ['Dove dovrei orientare la mia carriera?'] },
         'La risposta non dipende soltanto dalla domanda del mercato.',
       ],
     },

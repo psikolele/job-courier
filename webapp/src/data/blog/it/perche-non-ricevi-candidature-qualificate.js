@@ -15,7 +15,7 @@ export default {
       blocks: [
         'Prima di cercare soluzioni è importante identificare il problema corretto.',
         'Molte aziende utilizzano l\'espressione:',
-        'Riceviamo candidature non qualificate.',
+        { list: ['Riceviamo candidature non qualificate.'] },
         'Ma dietro questa affermazione possono nascondersi situazioni molto diverse.',
       ],
     },
