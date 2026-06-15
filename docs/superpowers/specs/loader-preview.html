@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobCourier — Loader Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --navy:#050B2B; --fuchsia:#FF1F7A; }
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background:#eceef3; color:var(--navy); min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; gap:24px; padding:40px 20px;
+  }
+  h1 { font-size:15px; letter-spacing:.18em; text-transform:uppercase; font-weight:700; opacity:.6; }
+  .controls { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+  button {
+    font-family:inherit; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+    background:#fff; color:var(--navy); border:1px solid rgba(5,11,43,.18);
+    padding:10px 18px; border-radius:6px; cursor:pointer; transition:all .2s;
+  }
+  button:hover { border-color:var(--fuchsia); color:var(--fuchsia); }
+  button.active { background:var(--fuchsia); border-color:var(--fuchsia); color:#fff; }
+  .stage {
+    position:relative; width:min(720px,92vw); height:420px; background:#FFFFFF;
+    border:1px solid rgba(5,11,43,.07); border-radius:14px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .corner-l { position:absolute; top:20px; left:22px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(5,11,43,.35); }
+  .corner-r { position:absolute; top:20px; right:22px; font-size:11px; letter-spacing:.14em; color:rgba(5,11,43,.30); }
+  .top-line { position:absolute; top:0; left:0; height:2px; background:var(--fuchsia); width:0; }
+  .hidden { display:none !important; }
+  .fuchsia { color:var(--fuchsia); }
+  .note { font-size:12px; opacity:.5; max-width:540px; text-align:center; line-height:1.6; }
+  .run .top-line { animation: cTop 2.4s ease-in-out forwards; }
+
+  /* ===== COURIER DOT (default) — fondo bianco, testo sale dopo ===== */
+  #courier { position:relative; width:min(440px,80%); height:120px; }
+  #courier .route-bg { position:absolute; top:50%; left:0; right:0; height:1px; background:rgba(5,11,43,.12); }
+  #courier .route-fill { position:absolute; top:50%; left:0; height:1px; background:var(--fuchsia); width:0; transform:translateY(-50%); }
+  #courier .dot { position:absolute; top:50%; left:0; width:8px; height:8px; border-radius:50%; background:var(--fuchsia); box-shadow:0 0 9px rgba(255,31,122,.55); transform:translate(-50%,-50%); }
+  #courier .lockwrap { position:absolute; left:50%; bottom:calc(50% + 2px); transform:translateX(-50%); }
+  #courier .lockup { display:flex; align-items:center; gap:12px; transform-origin:center bottom; opacity:0; transform:translateY(30px); }
+  #courier .bdot { width:11px; height:11px; border-radius:50%; background:var(--fuchsia); box-shadow:0 0 9px rgba(255,31,122,.55); }
+  #courier .wm { font-weight:900; font-size:30px; letter-spacing:-.01em; color:var(--navy); }
+  .run #courier .route-fill { animation: cRoute 2.4s cubic-bezier(.6,0,.2,1) forwards; }
+  .run #courier .dot { animation: cDot 2.4s cubic-bezier(.6,0,.2,1) forwards; }
+  .run #courier .lockup { animation: hbLock 2.4s ease-in-out forwards; }
+  @keyframes cTop   { 0%{width:0} 24%{width:100%} 100%{width:100%} }
+  @keyframes cRoute { 0%{width:0} 24%{width:100%} 100%{width:100%} }
+  @keyframes cDot   { 0%{left:0;opacity:1} 24%{left:100%;opacity:1} 29%{opacity:0} 100%{left:100%;opacity:0} }
+  @keyframes hbLock {
+    0%,26%{opacity:0;transform:translateY(30px) scale(1)}
+    48%{opacity:1;transform:translateY(0) scale(1)}
+    60%{transform:translateY(0) scale(1.06)}
+    74%{transform:translateY(0) scale(1)}
+    88%{transform:translateY(0) scale(1.06)}
+    100%{opacity:1;transform:translateY(0) scale(1)}
+  }
+
+  /* ===== MONOGRAM DRAW — fondo bianco, monogramma navy ===== */
+  #monogram { display:flex; flex-direction:column; align-items:center; gap:22px; }
+  #monogram svg { overflow:visible; }
+  #monogram .j,#monogram .c { stroke-dasharray:1; stroke-dashoffset:1; }
+  #monogram .sq { transform-box:fill-box; transform-origin:center; transform:scale(0); }
+  #monogram .word { opacity:0; color:var(--navy); }
+  .run #monogram .j   { animation: jcJ .7s ease-in-out forwards; }
+  .run #monogram .c   { animation: jcC .7s ease-in-out forwards; }
+  .run #monogram .sq  { animation: jcSq .7s ease-in-out forwards; }
+  .run #monogram .word{ animation: jcWord .7s ease-in-out forwards; }
+  @keyframes jcJ   { 0%{stroke-dashoffset:1} 36%{stroke-dashoffset:0} 100%{stroke-dashoffset:0} }
+  @keyframes jcC   { 0%,18%{stroke-dashoffset:1} 54%{stroke-dashoffset:0} 100%{stroke-dashoffset:0} }
+  @keyframes jcSq  { 0%,54%{transform:scale(0)} 70%{transform:scale(1.15)} 80%{transform:scale(1)} 100%{transform:scale(1)} }
+  @keyframes jcWord{ 0%,55%{opacity:0; transform:translateY(6px)} 78%{opacity:1; transform:translateY(0)} 100%{opacity:1} }
+</style>
+</head>
+<body>
+  <h1>JobCourier · Loader Preview</h1>
+
+  <div class="controls">
+    <button id="btn-cour" class="active" onclick="select('courier')">Courier Dot (fondo bianco)</button>
+    <button id="btn-mono" onclick="select('monogram')">Monogram Draw</button>
+    <button onclick="replay()">▶ Replay</button>
+  </div>
+
+  <div class="stage" id="stage">
+    <span class="corner-l">JOBCOURIER.CH</span>
+    <span class="corner-r">00 / 01</span>
+    <div class="top-line"></div>
+
+    <div id="courier">
+      <div class="route-bg"></div>
+      <div class="route-fill"></div>
+      <div class="dot"></div>
+      <div class="lockwrap">
+        <div class="lockup"><span class="bdot"></span><span class="wm">JOBCOURIER<span class="fuchsia">.CH</span></span></div>
+      </div>
+    </div>
+
+    <div id="monogram" class="hidden">
+      <svg width="150" height="120" viewBox="0 0 150 120" fill="none">
+        <path class="j" d="M52 18 L52 78 Q52 100 30 100 Q14 100 12 84" stroke="#050B2B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+        <path class="c" d="M132 36 Q110 12 86 28 Q66 42 72 70 Q78 96 106 96 Q126 96 134 80" stroke="#050B2B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+        <rect class="sq" x="116" y="92" width="20" height="20" fill="#FF1F7A"/>
+      </svg>
+      <div class="word" style="display:flex;align-items:center;gap:10px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#FF1F7A;"></span>
+        <span style="font-weight:900;font-size:18px;letter-spacing:.06em;">JOBCOURIER<span class="fuchsia">.CH</span></span>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">Fondo bianco brand. Courier Dot: il dot fuchsia percorre la rotta, poi il wordmark sale dal basso.
+  Monogramma/forme indicativi — in produzione i path reali di <code>logo-square.svg</code>. Premi Replay per rivedere.</p>
+
+<script>
+  let current = 'courier';
+  const stage = document.getElementById('stage');
+  function select(which){
+    current = which;
+    document.getElementById('courier').classList.toggle('hidden', which!=='courier');
+    document.getElementById('monogram').classList.toggle('hidden', which!=='monogram');
+    document.getElementById('btn-cour').classList.toggle('active', which==='courier');
+    document.getElementById('btn-mono').classList.toggle('active', which==='monogram');
+    replay();
+  }
+  function replay(){
+    stage.classList.remove('run');
+    void stage.offsetWidth;
+    stage.classList.add('run');
+  }
+  window.addEventListener('load', replay);
+</script>
+</body>
+</html>

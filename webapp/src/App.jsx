@@ -9,6 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import RouteLoader from './components/ui/RouteLoader';
+import useRouteLoader from './hooks/useRouteLoader';
 import Home from './pages/Home';
 import Pricing from './pages/Pricing';
 import Contact from './pages/Contact';
@@ -44,6 +46,7 @@ const ScrollToTop = () => {
 function App() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const navigate = useNavigate();
+  const routeLoaderVisible = useRouteLoader();
 
   // Return-from-JobRoom redirect
   useEffect(() => {
@@ -105,6 +108,7 @@ function App() {
         <Route path="/cookie-policy" element={<CookiePolicy />} />
       </Routes>
       <Footer setShowLoginModal={setShowLoginModal} />
+      {routeLoaderVisible && <RouteLoader />}
     </div>
   );
 }

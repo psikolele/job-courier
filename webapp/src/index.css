@@ -74,6 +74,102 @@
   100% { transform: translateX(-50%); }
 }
 
+/* ===== ROUTE LOADER — concept "Courier Dot" (fondo bianco) ===== */
+.jcl-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--brand-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: jclOverlay 2400ms ease-in-out forwards;
+}
+.jcl-top {
+  position: absolute;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--brand-fuchsia);
+  animation: jclTop 2400ms cubic-bezier(.6,0,.2,1) forwards;
+}
+.jcl-corner {
+  position: absolute;
+  top: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(5,11,43,.32);
+}
+.jcl-corner-l { left: 24px; letter-spacing: .18em; }
+.jcl-corner-r { right: 24px; letter-spacing: .14em; }
+.jcl-stage { position: relative; width: min(440px, 80vw); height: 130px; }
+.jcl-route-bg {
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  height: 1px;
+  background: rgba(5,11,43,.12);
+}
+.jcl-route {
+  position: absolute;
+  top: 50%; left: 0;
+  height: 1px;
+  width: 0;
+  background: var(--brand-fuchsia);
+  transform: translateY(-50%);
+  animation: jclRoute 2400ms cubic-bezier(.6,0,.2,1) forwards;
+}
+.jcl-dot {
+  position: absolute;
+  top: 50%; left: 0;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--brand-fuchsia);
+  box-shadow: 0 0 9px rgba(255,31,122,.55);
+  transform: translate(-50%, -50%);
+  animation: jclDot 2400ms cubic-bezier(.6,0,.2,1) forwards;
+}
+.jcl-lockwrap {
+  position: absolute;
+  left: 50%;
+  bottom: calc(50% + 2px);
+  transform: translateX(-50%);
+}
+.jcl-logo {
+  display: block;
+  height: 46px;
+  width: auto;
+  transform-origin: center bottom;
+  opacity: 0;
+  animation: jclRise 2400ms ease-in-out forwards;
+}
+
+@keyframes jclOverlay { 0%{opacity:0} 3%{opacity:1} 92%{opacity:1} 100%{opacity:0} }
+@keyframes jclTop { 0%{width:0} 24%{width:100%} 100%{width:100%} }
+@keyframes jclRoute { 0%{width:0} 24%{width:100%} 100%{width:100%} }
+@keyframes jclDot {
+  0%{left:0; opacity:1}
+  24%{left:100%; opacity:1}
+  29%{left:100%; opacity:0}
+  100%{left:100%; opacity:0}
+}
+@keyframes jclRise {
+  0%,26%{opacity:0; transform:translateY(30px) scale(1)}
+  48%{opacity:1; transform:translateY(0) scale(1)}
+  60%{transform:translateY(0) scale(1.06)}
+  74%{transform:translateY(0) scale(1)}
+  88%{transform:translateY(0) scale(1.06)}
+  100%{opacity:1; transform:translateY(0) scale(1)}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jcl-top, .jcl-route, .jcl-dot { display: none; }
+  .jcl-lockwrap { bottom: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .jcl-logo { animation: jclFadeStatic 400ms ease-out forwards; }
+  @keyframes jclFadeStatic { 0%{opacity:0} 100%{opacity:1} }
+}
+
 .animate-marquee {
   animation: marquee 40s linear infinite;
 }

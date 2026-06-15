@@ -190,3 +190,28 @@ Il logo reale è un **fill complesso** (path multi-subpath), non uno stroke sing
    - Aggancio in `App.jsx` + `prefers-reduced-motion`.
    - Test (vitest) sul mount/unmount del loader e sul timer.
 3. Approvazione MP4 di anteprima da parte di Gabriele prima del merge.
+
+---
+
+## 11. AGGIORNAMENTO 2026-06-15 — concept finale: Courier Dot (implementato)
+
+Dopo iterazione visiva con l'utente, il concept è cambiato da **Monogram Draw** a
+**Courier Dot** (fondo bianco). Animazione finale approvata e implementata:
+
+- **Fondo bianco** brand (`--brand-white`). Dot fuchsia, logo navy reale (`/logo-full.svg`).
+- **Sequenza:** linea fuchsia 1px in cima + micro `00/01` → il dot fuchsia percorre la rotta
+  (sx→dx, ~24% timeline) → il dot svanisce → il **logo sale lentamente** fino a **2px sopra la
+  linea** → **2 battiti di cuore lenti** (scale 1.06, ease-in-out) → fade-out overlay.
+- **Durata:** `LOADER_DURATION_MS = 2400ms` a durata fissa, per ogni cambio pathname.
+  ⚠️ Lunga per navigazione frequente — costante singola facile da ridurre.
+- **Reveal logo:** usato l'asset reale `logo-full.svg` (no mask-wipe/stroke — superato).
+- **`prefers-reduced-motion`:** niente rotta/dot/salita, solo fade del logo centrato (≤400ms).
+
+**File implementati (webapp):**
+- `src/components/ui/RouteLoader.jsx` — overlay (struttura).
+- `src/hooks/useRouteLoader.js` — visibilità derivata (`pathname !== hiddenPath`), timer durata fissa.
+- `src/index.css` — keyframes `.jcl-*` (jclOverlay/Top/Route/Dot/Rise) + reduced-motion.
+- `src/App.jsx` — aggancio `useRouteLoader()` + `<RouteLoader />`.
+
+Build ✓, test 15/15 ✓, lint ✓. Preview standalone: `loader-preview.html`.
+Remotion (studio + MP4) resta deliverable opzionale separato, non nel bundle web.
