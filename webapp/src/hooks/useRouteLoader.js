@@ -3,10 +3,9 @@ import { useLocation } from 'react-router-dom';
 
 /**
  * Durata del loader di transizione (ms). Costante singola e facile da tarare.
- * NOTA: 2400ms a ogni cambio pagina è volutamente lento (salita testo + 2
- * battiti, come da design approvato). Ridurre qui se risulta troppo lungo.
+ * Deve restare allineata alle durate delle animazioni .jcl-* in index.css.
  */
-export const LOADER_DURATION_MS = 2400;
+export const LOADER_DURATION_MS = 1200;
 
 /**
  * Mostra il loader a ogni cambio di pathname (e al primo caricamento) per una

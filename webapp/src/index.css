@@ -83,7 +83,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: jclOverlay 2400ms ease-in-out forwards;
+  animation: jclOverlay 1200ms ease-in-out forwards;
 }
 .jcl-top {
   position: absolute;
@@ -91,7 +91,7 @@
   height: 2px;
   width: 0;
   background: var(--brand-fuchsia);
-  animation: jclTop 2400ms cubic-bezier(.6,0,.2,1) forwards;
+  animation: jclTop 1200ms cubic-bezier(.6,0,.2,1) forwards;
 }
 .jcl-corner {
   position: absolute;
@@ -118,7 +118,7 @@
   width: 0;
   background: var(--brand-fuchsia);
   transform: translateY(-50%);
-  animation: jclRoute 2400ms cubic-bezier(.6,0,.2,1) forwards;
+  animation: jclRoute 1200ms cubic-bezier(.6,0,.2,1) forwards;
 }
 .jcl-dot {
   position: absolute;
@@ -128,7 +128,7 @@
   background: var(--brand-fuchsia);
   box-shadow: 0 0 9px rgba(255,31,122,.55);
   transform: translate(-50%, -50%);
-  animation: jclDot 2400ms cubic-bezier(.6,0,.2,1) forwards;
+  animation: jclDot 1200ms cubic-bezier(.6,0,.2,1) forwards;
 }
 .jcl-lockwrap {
   position: absolute;
@@ -142,7 +142,7 @@
   width: auto;
   transform-origin: center bottom;
   opacity: 0;
-  animation: jclRise 2400ms ease-in-out forwards;
+  animation: jclRise 1200ms ease-in-out forwards;
 }
 
 @keyframes jclOverlay { 0%{opacity:0} 3%{opacity:1} 92%{opacity:1} 100%{opacity:0} }

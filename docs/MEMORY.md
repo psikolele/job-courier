@@ -1,5 +1,5 @@
 # Job Courier — Persistent Project Memory
-**Last updated:** 2026-05-26
+**Last updated:** 2026-06-16
 **Maintained by:** Claude Code + Emanuele Serra
 
 ---
@@ -95,6 +95,26 @@ webapp/src/
 - ApplyRedirectModal: modal "candidatura su sito esterno"
 - useRegistrationWall hook: counter 3-click in localStorage
 - **Hotfix produzione:** `style is not defined` in `animated-button.jsx` → destrutturazione `style` in firma `HoverButton` + merge corretto con spread operator
+
+---
+
+### Giugno 2026
+- **Sezione Blog completata e mergiata in `main`** (branch `feature/blog-section`, ff-merge `1894c70`, 91 file):
+  - 40 articoli (10 IT + 10 EN + 10 DE + 10 FR), pagine `BlogArticolo.jsx` / `BlogCategoria.jsx`, sidebar, FAQ, CTA/related box, firma articolo
+  - Sitemap build-time con hreflang/x-default + robots.txt, canonical URL normalizzati
+  - Nuovo block-type `{ list: [...] }` nel renderer articoli: marker quadrato fuchsia 6×6px + fade-in animato on-scroll (motion.li, stagger 0.08s)
+  - Conversione a `{ list: [...] }` applicata a 19 sequenze (domande/citazioni/step) su tutti i 10 articoli IT
+- **UI Consistency Audit** (su tutte le pagine): margini/spacing H1 e testo principale uniformati, ritmo sezioni Home standardizzato, blog list ridisegnata su brand identity
+  - Nuovi componenti riusabili: `SectionLabel`, `ArticleCard` (estratto da Blog.jsx)
+  - `AdBanner`: rimosso filtro grayscale-on-hover, immagini ADV ora a colori pieni
+  - `Offerte.jsx`: scrollbar hover-reveal (`.scroll-fade`) su lista e dettaglio annunci
+- Italiano impostato come lingua di lavoro globale (root `CLAUDE.md`, tutti i 20 progetti Antigravity)
+- **Route Loader "Courier Dot"** implementato e mergiato in `main` (branch `feature/route-loader`, commit `cd8fbf2`):
+  - Overlay full-screen CSS-only ad ogni cambio pathname, durata fissa 1200ms
+  - Sequenza: linea fuchsia 1px top → dot fuchsia percorre rotta sx→dx → logo reale `/logo-full.svg` sale lentamente 2px sopra la linea → 2 battiti di cuore lenti (scale 1.06) → fade-out
+  - File: `webapp/src/components/ui/RouteLoader.jsx`, `webapp/src/hooks/useRouteLoader.js`, keyframes `.jcl-*` in `index.css`, aggancio in `App.jsx`
+  - `prefers-reduced-motion`: solo fade del logo centrato (≤400ms), niente movimento
+  - Zero dipendenze Remotion in bundle; Remotion resta studio separato opzionale
 
 ---
 
@@ -216,7 +236,9 @@ webapp/src/
 
 ---
 
-## 📰 Sezione Blog — Requisiti (Mail Gabriele 2026-06-09 "I: Articoli Blog")
+## 📰 Sezione Blog — ✅ COMPLETATO E LIVE (live su `main` dal 2026-06-15)
+
+**Requisiti originali (Mail Gabriele 2026-06-09 "I: Articoli Blog"):**
 
 **Contenuti:** 10 articoli .docx in `Blog/` — 5 Candidati (Art.1-5.Cand_) + 5 Aziende (Art.1-5.Az_), speculari tra loro. ~1.300-1.600 parole ciascuno (~14.4k totali). Template identico: Meta Title + Meta Description (SEO già pronta), "In sintesi", sezioni body (bold paragraphs, non heading styles Word), "Piano pratico 30 giorni" (quasi tutti), "Checklist finale", "FAQ" (5-6 domande), "Conclusione".
 
@@ -231,7 +253,7 @@ webapp/src/
 
 **Spunti aperti (Laura):** banner target candidati/aziende dentro articolo; riquadri immagine o "riquadri domande" CTA che spezzano il testo.
 
-**Stato attuale codice:** `Blog.jsx` = solo carosello homepage doppio (candidateArticles/companyArticles da i18n), card display-only senza routing. Nessuna pagina blog né dettaglio articolo. Pattern da riusare: OffertaDettaglio 65/35 split con sidebar sticky, breadcrumb 28px dash + fontSize 11 fuchsia, font Satoshi/Playfair/Inter.
+**Stato attuale codice (✅ implementato):** `Blog.jsx` = carosello homepage (MarqueeSlider career/recruiting). `BlogCategoria.jsx` = lista articoli per categoria. `BlogArticolo.jsx` = dettaglio articolo (sections/heading/blocks, CTA, related, FAQ, checklist, firma, sidebar). Dati in `data/blog/{it,en,de,fr}/<slug>.js`, indice in `blogIndex.js`, loader in `loader.js`. Tutti i requisiti sopra soddisfatti (speculari Cand/Az, firme, cross-linking via `related`, SEO via `BlogSeo.jsx` + sitemap hreflang, reading time).
 
 ---
 

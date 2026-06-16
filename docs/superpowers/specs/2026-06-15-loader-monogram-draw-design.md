@@ -202,8 +202,8 @@ Dopo iterazione visiva con l'utente, il concept è cambiato da **Monogram Draw**
 - **Sequenza:** linea fuchsia 1px in cima + micro `00/01` → il dot fuchsia percorre la rotta
   (sx→dx, ~24% timeline) → il dot svanisce → il **logo sale lentamente** fino a **2px sopra la
   linea** → **2 battiti di cuore lenti** (scale 1.06, ease-in-out) → fade-out overlay.
-- **Durata:** `LOADER_DURATION_MS = 2400ms` a durata fissa, per ogni cambio pathname.
-  ⚠️ Lunga per navigazione frequente — costante singola facile da ridurre.
+- **Durata:** `LOADER_DURATION_MS = 1200ms` a durata fissa, per ogni cambio pathname
+  (snappy; costante singola allineata alle animazioni `.jcl-*` in `index.css`).
 - **Reveal logo:** usato l'asset reale `logo-full.svg` (no mask-wipe/stroke — superato).
 - **`prefers-reduced-motion`:** niente rotta/dot/salita, solo fade del logo centrato (≤400ms).
 
