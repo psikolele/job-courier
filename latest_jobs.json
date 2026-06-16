@@ -9,14 +9,6 @@
   },
   {
     "id": 1,
-    "title": "GIARDINIERE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716989-giardiniere-locarno&language=en"
-  },
-  {
-    "id": 2,
     "title": "INSTALLATORI E COLLAUDATORI ELETTRICI",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,7 +16,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716988-installatori-e-collaudatori-elettrici-locarno&language=en"
   },
   {
-    "id": 3,
+    "id": 2,
     "title": "OPERAIO SPECIALIZZATO IN PAVIMENTI E RIVESTIMENTI",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,23 +24,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716984-operaio-specializzato-in-pavimenti-e-rivestimenti-locarno&language=en"
   },
   {
-    "id": 4,
-    "title": "MECCANICO MEZZI PESANTI E AGRICOLI",
+    "id": 3,
+    "title": "GIARDINIERE",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716983-meccanico-mezzi-pesanti-e-agricoli-locarno&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716989-giardiniere-locarno&language=en"
   },
   {
-    "id": 5,
-    "title": "Cloud & IoT Solution Engineer 100% (f/m/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716987-cloud-iot-solution-engineer-100-f-m-d-bubikon&language=en"
-  },
-  {
-    "id": 6,
+    "id": 4,
     "title": "PITTORE CAPPOTTISTA",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,12 +40,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716986-pittore-cappottista-locarno&language=en"
   },
   {
-    "id": 7,
-    "title": "Réceptionniste (H/F/D) - 60%-100%",
+    "id": 5,
+    "title": "MECCANICO MEZZI PESANTI E AGRICOLI",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "DasTeam",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716981-receptionniste-h-f-d-60-100-1400-yverdon-les-bains&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716983-meccanico-mezzi-pesanti-e-agricoli-locarno&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Cloud & IoT Solution Engineer 100% (f/m/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716987-cloud-iot-solution-engineer-100-f-m-d-bubikon&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Schaler (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716975-schaler-m-w-d-bulach&language=en"
   },
   {
     "id": 8,
@@ -73,11 +73,11 @@
   },
   {
     "id": 9,
-    "title": "Bauarbeiter (m/w/d)",
+    "title": "Reinigungsmitarbeiter",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716977-bauarbeiter-m-w-d-zurich&language=en"
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716982-reinigungsmitarbeiter-schwarzenburg&language=en"
   },
   {
     "id": 10,
@@ -85,14 +85,14 @@
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Work Selection AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716976-bauarbeiter-m-w-d-h%C3%B6ri&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716977-bauarbeiter-m-w-d-zurich&language=en"
   },
   {
     "id": 11,
-    "title": "Reinigungsmitarbeiter",
+    "title": "Gerüstmonteur (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716982-reinigungsmitarbeiter-schwarzenburg&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6716978-gerustmonteur-m-w-d-winterthur&language=en"
   }
 ]
