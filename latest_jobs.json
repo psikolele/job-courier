@@ -1,6 +1,38 @@
 [
   {
     "id": 0,
+    "title": "Muratore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717730-muratore-sopraceneri&language=en"
+  },
+  {
+    "id": 1,
+    "title": "Senior Banking Systems Integration Engineer (Avaloq Experience)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Finders SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717735-senior-banking-systems-integration-engineer-avaloq-experience-zurich&language=en"
+  },
+  {
+    "id": 2,
+    "title": "GOMMISTI",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717733-gommisti-locarno&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Chef de Projet Hydraulicien / Expert Hydraulique Fluviale",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717736-chef-de-projet-hydraulicien-expert-hydraulique-fluviale-geneva&language=en"
+  },
+  {
+    "id": 4,
     "title": "Carpentiere edile",
     "location": "Svizzera",
     "sector": "Generale",
@@ -8,44 +40,12 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717729-carpentiere-edile-sopraceneri&language=en"
   },
   {
-    "id": 1,
-    "title": "Tornitore /trice CNC",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717725-tornitore-trice-cnc-lugano-lugano&language=en"
-  },
-  {
-    "id": 2,
-    "title": "METALCOSTRUTTORE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717734-metalcostruttore-locarno&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Sabbiatore industriale",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717728-sabbiatore-industriale-bellinzona-lugano&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Tester industriale elettronico",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717726-tester-industriale-elettronico-bellinzona-lugano&language=en"
-  },
-  {
     "id": 5,
-    "title": "Senior Banking Systems Integration Engineer (Avaloq Experience)",
+    "title": "IT Support & Service Delivery Lead (m/f/d) - 100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Finders SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717735-senior-banking-systems-integration-engineer-avaloq-experience-zurich&language=en"
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717737-it-support-service-delivery-lead-m-f-d-100-zurich&language=en"
   },
   {
     "id": 6,
@@ -57,42 +57,42 @@
   },
   {
     "id": 7,
-    "title": "GOMMISTI",
+    "title": "METALCOSTRUTTORE",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717733-gommisti-locarno&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717734-metalcostruttore-locarno&language=en"
   },
   {
     "id": 8,
+    "title": "Serramentista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717731-serramentista-sottoceneri&language=en"
+  },
+  {
+    "id": 9,
+    "title": "MANUTENTORE ELETTROMECCANICO",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "ER Services Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717738-manutentore-elettromeccanico-chiasso&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Polimeccanico",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717724-polimeccanico-bellinzona-lugano&language=en"
+  },
+  {
+    "id": 11,
     "title": "Assembler elettronico",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717727-assembler-elettronico-bellinzona-lugano&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Muratore",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717730-muratore-sopraceneri&language=en"
-  },
-  {
-    "id": 10,
-    "title": "Accountant 100% w/m",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717722-accountant-100-w-m-oberrieden-zh&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Immobilienbewirtschafter STWEG / Immobilienbuchhalter (m/w/d) 80?100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6717721-immobilienbewirtschafter-stweg-immobilienbuchhalter-m-w-d-80-100-hunenberg-zg&language=en"
   }
 ]
