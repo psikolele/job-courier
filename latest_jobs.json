@@ -1,14 +1,6 @@
 [
   {
     "id": 0,
-    "title": "ELETTRICISTA",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718162-elettricista-locarno&language=en"
-  },
-  {
-    "id": 1,
     "title": "Tornitore CNC",
     "location": "Svizzera",
     "sector": "Generale",
@@ -16,7 +8,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718160-tornitore-cnc-arbedo-castione&language=en"
   },
   {
-    "id": 2,
+    "id": 1,
     "title": "Poseur de Sols en Résine (H/F) – Suisse romande",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,20 +16,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718161-poseur-de-sols-en-resine-h-f-?-suisse-romande-moudon&language=en"
   },
   {
-    "id": 3,
-    "title": "Polimeccanico",
+    "id": 2,
+    "title": "ELETTRICISTA",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718159-polimeccanico-bellinzona-lugano&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718162-elettricista-locarno&language=en"
   },
   {
-    "id": 4,
-    "title": "Sachbearbeiter/in Finanzen und Rechnungswesen 100% (w/m/d)",
+    "id": 3,
+    "title": "Elektroinstallateur:in / Montage-Elektriker (alle)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718156-sachbearbeiter-in-finanzen-und-rechnungswesen-100-w-m-d-wallisellen-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718151-elektroinstallateur-in-montage-elektriker-alle-zurich-zh&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Opérateur de production à 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718149-operateur-de-production-%C3%A0-100-cdi-h-f-d-martigny-vs&language=en"
   },
   {
     "id": 5,
@@ -49,38 +49,14 @@
   },
   {
     "id": 6,
-    "title": "Infirmier (h/f/d) CDD en soins à domicile 50-70%",
+    "title": "Manovale/Aiuto Idraulico",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718155-infirmier-h-f-d-cdd-en-soins-%C3%A0-domicile-50-70-region-de-la-broye-fr&language=en"
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718158-manovale-aiuto-idraulico-balerna-bellinzona&language=en"
   },
   {
     "id": 7,
-    "title": "Chef d'équipe maçonnerie bâtiment/GC 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718148-chef-d-equipe-ma%C3%A7onnerie-b%C3%A2timent-gc-100-cdi-h-f-d-martigny-vs&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Elektroinstallateur:in / Montage-Elektriker (alle)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718151-elektroinstallateur-in-montage-elektriker-alle-zurich-zh&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Opérateur de production à 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718149-operateur-de-production-%C3%A0-100-cdi-h-f-d-martigny-vs&language=en"
-  },
-  {
-    "id": 10,
     "title": "Immobilienbewirtschafter 80-100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718153-immobilienbewirtschafter-80-100-m-w-d-baden-ag&language=en"
   },
   {
-    "id": 11,
+    "id": 8,
     "title": "Contrôleur/euse qualité 2x8",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718154-contr%C3%B4leur-euse-qualite-2x8-la-chaux-de-fonds-ne&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Isoleur‑Spengler/in (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718150-isoleur%E2%80%91spengler-in-m-w-d-100-winterthur-zh&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Heizungsinstallateur/in (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718157-heizungsinstallateur-in-m-w-d-100-frauenfeld-tg&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Infirmier (h/f/d) CDD en soins à domicile 50-70%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718155-infirmier-h-f-d-cdd-en-soins-%C3%A0-domicile-50-70-region-de-la-broye-fr&language=en"
   }
 ]
