@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Search, MapPin, Briefcase, ChevronRight, Mail, ArrowRight } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AnimatedButton } from './ui/animated-button';
+import SpotlightCard from './ui/spotlight-card';
 
 import heroBg1 from '../assets/hero-bg.jpg';
 
@@ -426,17 +427,10 @@ const Hero = ({ setShowLoginModal }) => {
 
                     {/* Stat aziende + CTA — same container as candidati form */}
                     <div className="hero-card-box w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between p-6" style={{ borderRadius: 0 }}>
-                        {/* Stats row — numero prominente, testo piccolo */}
-                        <div style={{ display: 'flex', gap: 32, flex: 1, width: '100%', alignItems: 'flex-start', paddingTop: 4, paddingBottom: 8 }}>
-                            <div>
-                                <div style={{ fontFamily: 'var(--font-brand)', fontWeight: 900, fontSize: 52, color: 'var(--brand-white)', lineHeight: 1, letterSpacing: '-0.02em' }}>120'000+</div>
-                                <div style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: 8 }}>Candidati registrati</div>
-                            </div>
-                            <div style={{ width: 1, height: 52, background: 'rgba(255,255,255,0.12)', flexShrink: 0 }} />
-                            <div>
-                                <div style={{ fontFamily: 'var(--font-brand)', fontWeight: 900, fontSize: 52, color: 'var(--brand-white)', lineHeight: 1, letterSpacing: '-0.02em' }}>3'000+</div>
-                                <div style={{ fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: 8 }}>Candidature al mese</div>
-                            </div>
+                        {/* Stats Spotlight Cards row */}
+                        <div className="flex gap-4 w-full pb-2" style={{ flex: 1, alignItems: 'center' }}>
+                            <SpotlightCard target={120000} duration={2200} label="Candidati registrati" />
+                            <SpotlightCard target={3000} duration={1800} label="Candidature al mese" />
                         </div>
                         {/* Button — pinned to bottom, full width */}
                         <AnimatedButton
