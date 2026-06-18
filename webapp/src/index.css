@@ -240,119 +240,57 @@
   background: var(--brand-fuchsia);
 }
 
-/* Moving Dot Card — namespaced CSS classes */
-.jc-dot-outer {
+/* Spotlight Card — glassmorphic with mouse tracking */
+.jc-spotlight-card {
   position: relative;
-  width: 100%;
   flex: 1;
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.jc-dot-dot {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #FF1F7A;
-  animation: jcMoveDot 4s linear infinite;
-  box-shadow: 0 0 8px rgba(255,31,122,0.85);
-  transform: translate(-50%, -50%);
-  z-index: 5;
-}
-.jc-dot-ccw {
-  animation: jcMoveDotCCW 4s linear infinite;
-}
-.jc-dot-card {
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.05);
+  height: 140px;
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
-.jc-dot-ray {
+.jc-spotlight-card:hover {
+  border-color: rgba(255, 31, 122, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+.jc-spotlight-glow {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.12) 0%, transparent 80%);
+  inset: 0;
   pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
 }
-.jc-dot-text {
+.jc-spotlight-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.jc-spotlight-text {
   font-family: var(--font-brand);
   font-weight: 900;
-  font-size: 2.4rem;
-  color: #a8c4e8;
-  letter-spacing: -0.03em;
+  font-size: 2.2rem;
+  color: var(--brand-white);
+  letter-spacing: -0.02em;
   line-height: 1;
-  position: relative;
-  z-index: 1;
 }
-.jc-dot-label {
+.jc-spotlight-label {
   font-family: var(--font-brand);
   font-weight: 700;
   font-size: 0.58rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.5);
   margin-top: 8px;
-  position: relative;
-  z-index: 1;
   text-align: center;
-  padding: 0 6px;
-}
-.jc-dot-line {
-  position: absolute;
-  background: rgba(255,255,255,0.13);
-}
-.jc-dot-topl    { top: 0;    left: 12px; right: 12px; height: 1px; }
-.jc-dot-bottoml { bottom: 0; left: 12px; right: 12px; height: 1px; }
-.jc-dot-leftl   { left: 0;   top: 12px;  bottom: 12px; width: 1px; }
-.jc-dot-rightl  { right: 0;  top: 12px;  bottom: 12px; width: 1px; }
-
-@keyframes jcMoveDot {
-  0%, 100% {
-    top: 0;
-    left: 0;
-  }
-  25% {
-    top: 0;
-    left: 100%;
-  }
-  50% {
-    top: 100%;
-    left: 100%;
-  }
-  75% {
-    top: 100%;
-    left: 0;
-  }
-}
-
-@keyframes jcMoveDotCCW {
-  0%, 100% {
-    top: 0;
-    left: 100%;
-  }
-  25% {
-    top: 0;
-    left: 0;
-  }
-  50% {
-    top: 100%;
-    left: 0;
-  }
-  75% {
-    top: 100%;
-    left: 100%;
-  }
 }
