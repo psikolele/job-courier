@@ -8,26 +8,21 @@ export default {
   readingTime: 8,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&q=80',
-  intro: 'Il curriculum vitae continua a essere il documento più importante dell\'intero processo di candidatura.\n\nPuoi avere esperienza, competenze solide e ottime referenze, ma se il tuo CV non riesce a comunicare rapidamente il tuo valore professionale rischi di non arrivare nemmeno alla fase del colloquio.\n\nMolti candidati inviano decine di candidature senza ricevere risposta e pensano che il problema sia la concorrenza, il mercato o la mancanza di opportunità.\n\nSpesso il primo ostacolo è il curriculum stesso.\n\nUn buon CV non serve a raccontare tutta la tua storia professionale.\n\nServe a convincere un recruiter a dedicarti più tempo.\n\nL\'obiettivo del curriculum non è ottenere un lavoro.\n\nL\'obiettivo è ottenere un colloquio.\n\nIn questa guida vedremo come costruire un curriculum efficace, quali errori evitare e quali elementi fanno davvero la differenza durante una selezione.',
+  intro: 'Il curriculum vitae continua a essere il documento più importante dell\'intero processo di candidatura: puoi avere esperienza, competenze solide e ottime referenze, ma se il tuo CV non riesce a comunicare rapidamente il tuo valore professionale rischi di non arrivare nemmeno alla fase del colloquio.\n\nMolti candidati inviano decine di candidature senza ricevere risposta e pensano che il problema sia la concorrenza, il mercato o la mancanza di opportunità, ma spesso il primo ostacolo è il curriculum stesso.\n\nUn buon CV non serve a raccontare tutta la tua storia professionale, serve a convincere un recruiter a dedicarti più tempo: l\'obiettivo del curriculum non è ottenere un lavoro, ma ottenere un colloquio.\n\nIn questa guida vedremo come costruire un curriculum efficace, quali errori evitare e quali elementi fanno davvero la differenza durante una selezione.',
   sections: [
     {
       heading: 'I primi 30 secondi contano',
       blocks: [
-        'Molti candidati immaginano che il recruiter legga attentamente ogni parola del curriculum.',
-        'Nella realtà il primo screening è spesso molto rapido.',
+        'Molti candidati immaginano che il recruiter legga attentamente ogni parola del curriculum, ma nella realtà il primo screening è spesso molto rapido.',
         'Chi seleziona il personale cerca risposta a poche domande fondamentali:',
         { list: ['Chi è questa persona?', 'Qual è la sua professione?', 'Possiede l\'esperienza richiesta?', 'Ha competenze interessanti per il ruolo?', 'Vale la pena approfondire?'] },
-        'Se queste informazioni non emergono immediatamente, il rischio di esclusione aumenta.',
-        'Non perché il candidato non sia valido.',
-        'Semplicemente perché il suo valore non è stato comunicato in modo efficace.',
+        'Se queste informazioni non emergono immediatamente, il rischio di esclusione aumenta; non perché il candidato non sia valido, ma semplicemente perché il suo valore non è stato comunicato in modo efficace.',
       ],
     },
     {
       heading: 'La struttura ideale di un curriculum moderno',
       blocks: [
-        'Uno degli errori più frequenti consiste nell’utilizzare modelli complessi, poco leggibili o eccessivamente creativi.',
-        'Nella maggior parte dei casi la semplicità funziona meglio.',
-        'Un curriculum efficace dovrebbe seguire una struttura chiara e facilmente consultabile.',
+        'Uno degli errori più frequenti consiste nell\'utilizzare modelli complessi, poco leggibili o eccessivamente creativi. Nella maggior parte dei casi la semplicità funziona meglio, e un curriculum efficace dovrebbe seguire una struttura chiara e facilmente consultabile.',
       ],
     },
     { cta: { question: 'Il tuo CV è pronto? Mettilo alla prova.', action: 'Vedi le offerte', to: '/offerte' } },
@@ -35,24 +30,16 @@ export default {
       heading: 'Dati personali',
       blocks: [
         'Inserisci esclusivamente le informazioni realmente utili:',
-        'nome e cognome;',
-        'numero di telefono;',
-        'indirizzo email professionale;',
-        'località di residenza;',
-        'profilo LinkedIn (se aggiornato).',
+        { list: ['Nome e cognome.', 'Numero di telefono.', 'Indirizzo email professionale.', 'Località di residenza.', 'Profilo LinkedIn (se aggiornato).'] },
         'Evita informazioni superflue che non aggiungono valore alla candidatura.',
       ],
     },
     {
       heading: 'Profilo professionale',
       blocks: [
-        'È probabilmente la sezione più sottovalutata del curriculum.',
-        'Eppure è una delle prime che viene letta.',
+        'È probabilmente la sezione più sottovalutata del curriculum, eppure è una delle prime che viene letta.',
         'Dovrebbe riassumere in poche righe:',
-        'chi sei;',
-        'cosa fai;',
-        'quali competenze ti distinguono;',
-        'quale valore puoi portare.',
+        { list: ['Chi sei.', 'Cosa fai.', 'Quali competenze ti distinguono.', 'Quale valore puoi portare.'] },
       ],
     },
     {
@@ -73,13 +60,8 @@ export default {
       blocks: [
         'Questa sezione rappresenta il cuore del curriculum.',
         'Per ogni esperienza è utile indicare:',
-        'ruolo;',
-        'azienda;',
-        'periodo;',
-        'principali responsabilità;',
-        'risultati ottenuti.',
-        'Molti candidati descrivono soltanto attività.',
-        'Le aziende vogliono invece comprendere l\'impatto del tuo lavoro.',
+        { list: ['Ruolo.', 'Azienda.', 'Periodo.', 'Principali responsabilità.', 'Risultati ottenuti.'] },
+        'Molti candidati descrivono soltanto attività, mentre le aziende vogliono comprendere l\'impatto del tuo lavoro.',
       ],
     },
     {
@@ -111,15 +93,13 @@ export default {
       heading: 'Formazione',
       blocks: [
         'Indica: titolo di studio – istituto - anno di conseguimento.',
-        'Se possiedi una lunga esperienza professionale, questa sezione può essere più sintetica.',
-        'Per i profili junior, invece, la formazione assume maggiore importanza.',
+        'Se possiedi una lunga esperienza professionale, questa sezione può essere più sintetica; per i profili junior, invece, la formazione assume maggiore importanza.',
       ],
     },
     {
       heading: 'Competenze',
       blocks: [
-        'Molti curriculum contengono elenchi infiniti di competenze.',
-        'Meglio concentrarsi su quelle realmente rilevanti per il ruolo.',
+        'Molti curriculum contengono elenchi infiniti di competenze; meglio concentrarsi su quelle realmente rilevanti per il ruolo.',
         'Ad esempio:',
       ],
     },
@@ -135,28 +115,20 @@ export default {
     {
       heading: 'Competenze trasversali',
       blocks: [
-        'organizzazione;',
-        'problem solving;',
-        'comunicazione;',
-        'gestione delle priorità.',
+        { list: ['Organizzazione.', 'Problem solving.', 'Comunicazione.', 'Gestione delle priorità.'] },
       ],
     },
     {
       heading: 'Lingue',
       blocks: [
         'Le competenze linguistiche continuano a rappresentare un elemento importante in numerosi contesti professionali.',
-        'Indica il livello in modo chiaro e realistico.',
-        'Meglio evitare valutazioni vaghe come buono - discreto - scolastico.',
-        'Se utilizza livelli riconosciuti come A1, B2 o C1.',
+        'Indica il livello in modo chiaro e realistico, evitando valutazioni vaghe come buono, discreto o scolastico. Utilizza livelli riconosciuti come A1, B2 o C1.',
       ],
     },
     {
       heading: 'Come scrivere un profilo professionale che cattura l\'attenzione',
       blocks: [
-        'Il profilo professionale è spesso la differenza tra un curriculum che viene approfondito e uno che viene scartato.',
-        'Il suo obiettivo è creare immediatamente interesse.',
-        'Non deve essere una biografia.',
-        'Deve essere una sintesi efficace del tuo valore professionale.',
+        'Il profilo professionale è spesso la differenza tra un curriculum che viene approfondito e uno che viene scartato: il suo obiettivo è creare immediatamente interesse, non raccontare una biografia, ma offrire una sintesi efficace del tuo valore professionale.',
       ],
     },
     {
@@ -186,34 +158,24 @@ export default {
     {
       heading: 'Gli errori che fanno scartare un CV',
       blocks: [
-        'Anche candidati con esperienza e competenze solide possono compromettere una candidatura a causa di errori evitabili.',
-        'Molti recruiter individuano gli stessi problemi decine di volte ogni settimana.',
-        'Conoscerli permette di evitarli.',
+        'Anche candidati con esperienza e competenze solide possono compromettere una candidatura a causa di errori evitabili: molti recruiter individuano gli stessi problemi decine di volte ogni settimana, e conoscerli permette di evitarli.',
       ],
     },
     {
       heading: 'Curriculum troppo lungo',
       blocks: [
-        'Uno degli errori più frequenti.',
-        'Molti candidati cercano di inserire ogni esperienza professionale, ogni corso e ogni dettaglio della propria carriera.',
-        'Il risultato è spesso un documento difficile da leggere.',
+        'Uno degli errori più frequenti: molti candidati cercano di inserire ogni esperienza professionale, ogni corso e ogni dettaglio della propria carriera, con il risultato di produrre un documento difficile da leggere.',
         'Nella maggior parte dei casi:',
-        '1 pagina è sufficiente per profili junior;',
-        '2 pagine sono adeguate per la maggior parte dei professionisti;',
-        'oltre 3 pagine raramente aggiungono valore.',
+        { list: ['1 pagina è sufficiente per profili junior.', '2 pagine sono adeguate per la maggior parte dei professionisti.', 'Oltre 3 pagine raramente aggiungono valore.'] },
         'La sintesi è una competenza molto apprezzata.',
       ],
     },
     {
       heading: 'Grafica eccessiva',
       blocks: [
-        'Un curriculum non deve vincere un premio di design.',
-        'Deve essere leggibile.',
-        'Layout complessi, colori eccessivi, icone ovunque o impaginazioni creative possono rendere difficile la lettura.',
+        'Un curriculum non deve vincere un premio di design: deve essere leggibile. Layout complessi, colori eccessivi, icone ovunque o impaginazioni creative possono rendere difficile la lettura.',
         'Meglio privilegiare:',
-        'chiarezza;',
-        'ordine;',
-        'semplicità.',
+        { list: ['Chiarezza.', 'Ordine.', 'Semplicità.'] },
       ],
     },
     {
@@ -221,92 +183,68 @@ export default {
       blocks: [
         'Pochi elementi trasmettono una cattiva impressione quanto errori ortografici o grammaticali.',
         'Prima di inviare il CV:',
-        'rileggilo;',
-        'utilizza un correttore automatico;',
-        'chiedi a una seconda persona di verificare il testo.',
+        { list: ['Rileggilo con attenzione.', 'Utilizza un correttore automatico.', 'Chiedi a una seconda persona di verificare il testo.'] },
       ],
     },
     {
       heading: 'Informazioni incoerenti',
       blocks: [
-        'Date che non coincidono - Esperienze poco chiare - Ruoli descritti in modo contraddittorio.',
-        'Sono tutti elementi che generano dubbi.',
-        'La credibilità è fondamentale.',
+        'Date che non coincidono, esperienze poco chiare, ruoli descritti in modo contraddittorio: sono tutti elementi che generano dubbi. La credibilità è fondamentale.',
       ],
     },
     {
       heading: 'CV e sistemi di selezione: cosa sapere',
       blocks: [
-        'Sempre più aziende utilizzano software di screening per gestire le candidature.',
-        'Questo non significa che il curriculum venga letto esclusivamente da un computer.',
-        'Significa però che la chiarezza è ancora più importante.',
+        'Sempre più aziende utilizzano software di screening per gestire le candidature. Questo non significa che il curriculum venga letto esclusivamente da un computer, ma la chiarezza diventa ancora più importante.',
       ],
     },
     {
       heading: 'Come migliorare la leggibilità',
       blocks: [
         'Utilizza:',
-        'titoli chiari;',
-        'sezioni ben definite;',
-        'terminologia coerente con il ruolo;',
-        'competenze realmente possedute.',
+        { list: ['Titoli chiari.', 'Sezioni ben definite.', 'Terminologia coerente con il ruolo.', 'Competenze realmente possedute.'] },
         'Evita invece:',
-        'immagini inutili;',
-        'tabelle troppo complesse;',
-        'formati difficili da interpretare.',
+        { list: ['Immagini inutili.', 'Tabelle troppo complesse.', 'Formati difficili da interpretare.'] },
       ],
     },
     {
       heading: 'L\'importanza delle parole chiave',
       blocks: [
-        'Se un annuncio richiede:',
-        'contabilità;',
-        'SAP;',
-        'gestione clienti;',
-        'e possiedi queste competenze, dovrebbero emergere chiaramente nel curriculum.',
+        'Se un annuncio richiede competenze specifiche e le possiedi, queste dovrebbero emergere chiaramente nel curriculum. Ad esempio:',
+        { list: ['Contabilità.', 'SAP.', 'Gestione clienti.'] },
         'Molti candidati hanno le competenze richieste ma non le comunicano in modo evidente.',
       ],
     },
     {
       heading: 'Le competenze che oggi fanno la differenza',
       blocks: [
-        'Le competenze tecniche restano fondamentali.',
-        'Tuttavia le aziende valutano sempre più anche la capacità di adattarsi e collaborare.',
+        'Le competenze tecniche restano fondamentali; tuttavia le aziende valutano sempre più anche la capacità di adattarsi e collaborare.',
       ],
     },
     {
       heading: 'Competenze digitali',
       blocks: [
-        'Quasi ogni professione richiede oggi una certa familiarità con strumenti digitali.',
-        'A seconda del settore possono includere:',
-        'ERP;',
-        'CRM;',
-        'strumenti di analisi dati;',
-        'software specialistici.',
+        'Quasi ogni professione richiede oggi una certa familiarità con strumenti digitali. A seconda del settore possono includere:',
+        { list: ['ERP.', 'CRM.', 'Strumenti di analisi dati.', 'Software specialistici.'] },
       ],
     },
     {
       heading: 'Competenze linguistiche',
       blocks: [
-        'Le lingue continuano a rappresentare un importante fattore competitivo.',
-        'Investire nelle competenze linguistiche produce spesso un ritorno significativo nel lungo periodo.',
+        'Le lingue continuano a rappresentare un importante fattore competitivo. Investire nelle competenze linguistiche produce spesso un ritorno significativo nel lungo periodo.',
       ],
     },
     {
       heading: 'Competenze organizzative',
       blocks: [
         'Le aziende apprezzano persone capaci di:',
-        'gestire priorità;',
-        'rispettare scadenze;',
-        'lavorare in autonomia;',
-        'organizzare attività complesse.',
+        { list: ['Gestire priorità.', 'Rispettare scadenze.', 'Lavorare in autonomia.', 'Organizzare attività complesse.'] },
       ],
     },
     {
       heading: 'Problem solving',
       blocks: [
-        'Sempre più organizzazioni cercano persone che sappiano affrontare problemi e trovare soluzioni.',
-        'Quando possibile, mostra esempi concreti all\'interno delle tue esperienze professionali.',
+        'Sempre più organizzazioni cercano persone che sappiano affrontare problemi e trovare soluzioni. Quando possibile, mostra esempi concreti all\'interno delle tue esperienze professionali.',
       ],
     },
     {
@@ -404,13 +342,8 @@ export default {
     {
       heading: 'Conclusione',
       blocks: [
-        'Un curriculum efficace non è quello che contiene più informazioni.',
-        'È quello che comunica meglio il tuo valore professionale.',
-        'Le aziende ricevono numerose candidature e dedicano poco tempo al primo screening.',
-        'Per questo motivo chiarezza, sintesi e rilevanza diventano fattori decisivi.',
-        'Investire qualche ora nella costruzione di un CV ben strutturato può fare una differenza enorme nei risultati della ricerca di lavoro.',
-        'Non pensare al curriculum come a un semplice documento.',
-        'Pensalo come al tuo primo colloquio.',
+        'Un curriculum efficace non è quello che contiene più informazioni: è quello che comunica meglio il tuo valore professionale. Le aziende ricevono numerose candidature e dedicano poco tempo al primo screening, quindi chiarezza, sintesi e rilevanza diventano fattori decisivi.',
+        'Investire qualche ora nella costruzione di un CV ben strutturato può fare una differenza enorme nei risultati della ricerca di lavoro. Non pensare al curriculum come a un semplice documento: pensalo come al tuo primo colloquio.',
       ],
     },
   ],
