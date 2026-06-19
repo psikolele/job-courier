@@ -1,22 +1,6 @@
 [
   {
     "id": 0,
-    "title": "OPERAIO SPECIALIZZATO IN PAVIMENTI E RIVESTIMENTI",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718715-operaio-specializzato-in-pavimenti-e-rivestimenti-locarno&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Contabile con esperienza in gruppi internazionali",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "JARM Technologies SA.",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718718-contabile-con-esperienza-in-gruppi-internazionali-cadro-lugano&language=en"
-  },
-  {
-    "id": 2,
     "title": "SELVICOLTORE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,20 +8,36 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718714-selvicoltore-locarno&language=en"
   },
   {
-    "id": 3,
-    "title": "Senior On-Premises & Cloud Infrastructure Engineer",
+    "id": 1,
+    "title": "Leiter Technik & Infrastruktur 100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718716-senior-on-premises-cloud-infrastructure-engineer-bern&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718706-leiter-technik-infrastruktur-100-m-w-d-kirchberg-be&language=en"
+  },
+  {
+    "id": 2,
+    "title": "KNX Techniker, Netzwerk-Spezialist (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718713-knx-techniker-netzwerk-spezialist-m-w-d-zurich-zh&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Installateur/Monteur sanitaire 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718712-installateur-monteur-sanitaire-100-cdi-h-f-d-sion-vs&language=en"
   },
   {
     "id": 4,
-    "title": "Solution Architect",
+    "title": "Field Engineer / Servicetechniker/In (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718719-solution-architect-bern&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718708-field-engineer-servicetechniker-in-m-w-d-zurich-zh&language=en"
   },
   {
     "id": 5,
@@ -49,6 +49,38 @@
   },
   {
     "id": 6,
+    "title": "Solution Architect",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718719-solution-architect-bern&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Montage Elektriker EFZ mit Aussicht auf Festanstellung m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718709-montage-elektriker-efz-mit-aussicht-auf-festanstellung-m-w-d-100-gelterkinden-baselland&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Installateur/Monteur sanitaire CFC 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718711-installateur-monteur-sanitaire-cfc-100-cdi-h-f-d-sion-vs&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Contabile con esperienza in gruppi internazionali",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "JARM Technologies SA.",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718718-contabile-con-esperienza-in-gruppi-internazionali-cadro-lugano&language=en"
+  },
+  {
+    "id": 10,
     "title": "Automatikmonteur (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,43 +88,11 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718707-automatikmonteur-m-w-d-regensdorf-zh&language=en"
   },
   {
-    "id": 7,
-    "title": "Pflegefachpersonal 50-90% (m,w,d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718710-pflegefachpersonal-50-90-m-w-d-recherswil-so&language=en"
-  },
-  {
-    "id": 8,
-    "title": "KNX Techniker, Netzwerk-Spezialist (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718713-knx-techniker-netzwerk-spezialist-m-w-d-zurich-zh&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Leiter Technik & Infrastruktur 100% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718706-leiter-technik-infrastruktur-100-m-w-d-kirchberg-be&language=en"
-  },
-  {
-    "id": 10,
-    "title": "Installateur/Monteur sanitaire 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718712-installateur-monteur-sanitaire-100-cdi-h-f-d-sion-vs&language=en"
-  },
-  {
     "id": 11,
-    "title": "Installateur/Monteur sanitaire CFC 100% CDI (H/F/D)",
+    "title": "OPERAIO SPECIALIZZATO IN PAVIMENTI E RIVESTIMENTI",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718711-installateur-monteur-sanitaire-cfc-100-cdi-h-f-d-sion-vs&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6718715-operaio-specializzato-in-pavimenti-e-rivestimenti-locarno&language=en"
   }
 ]
