@@ -1,19 +1,19 @@
 [
   {
     "id": 0,
-    "title": "Addetto al Controllo Qualità Meccanico",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719063-addetto-al-controllo-qualit%C3%A0-meccanico-mezzovico-lugano&language=en"
-  },
-  {
-    "id": 1,
     "title": "Autista autotreno patente CE",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719062-autista-autotreno-patente-ce-mendrisiotto-lugano&language=en"
+  },
+  {
+    "id": 1,
+    "title": "Addetto al Controllo Qualità Meccanico",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719063-addetto-al-controllo-qualit%C3%A0-meccanico-mezzovico-lugano&language=en"
   },
   {
     "id": 2,
@@ -25,22 +25,6 @@
   },
   {
     "id": 3,
-    "title": "Automatiker / Elektroniker / Elektromonteur (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719057-automatiker-elektroniker-elektromonteur-m-w-d-100-pfaffnau-luzern&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Assistant médical (h/f/d) à 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719059-assistant-medical-h-f-d-%C3%A0-100-ouest-lausannois-vd&language=en"
-  },
-  {
-    "id": 5,
     "title": "Heizungsinstallateur EFZ (alle)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,39 +32,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719049-heizungsinstallateur-efz-alle-horgen-zh&language=en"
   },
   {
-    "id": 6,
-    "title": "Technischer Vertriebsmitarbeiter F/D 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719054-technischer-vertriebsmitarbeiter-f-d-100-cdi-h-f-d-martigny-vs&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Gérant·e d'immeubles confirmé·e",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719056-gerant%C2%B7e-d-immeubles-confirme%C2%B7e-lausanne-vd&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Verpackungsmitarbeiter mit Staplerausweis (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719050-verpackungsmitarbeiter-mit-staplerausweis-m-w-d-100-ebikon-lu&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Montage-Schreiner",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719053-montage-schreiner-schwyz-sz&language=en"
-  },
-  {
-    "id": 10,
+    "id": 4,
     "title": "5 Produktionsmitarbeiter/innen Lebensmittelbranche (Tagesbetrieb) ab sofort",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +40,59 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719060-5-produktionsmitarbeiter-innen-lebensmittelbranche-tagesbetrieb-ab-sofort-langenthal-bern&language=en"
   },
   {
-    "id": 11,
-    "title": "Chauffeur C/E (m/w)",
+    "id": 5,
+    "title": "Technische/r Sachbearbeiter/in / Kalkulator/in",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719052-chauffeur-c-e-m-w-oberbipp-bern&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719058-technische-r-sachbearbeiter-in-kalkulator-in-dubendorf-zh&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Verpackungsmitarbeiter mit Staplerausweis (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719050-verpackungsmitarbeiter-mit-staplerausweis-m-w-d-100-ebikon-lu&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Technischer Vertriebsmitarbeiter F/D 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719054-technischer-vertriebsmitarbeiter-f-d-100-cdi-h-f-d-martigny-vs&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Assistant médical (h/f/d) à 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719059-assistant-medical-h-f-d-%C3%A0-100-ouest-lausannois-vd&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Opérateur polyvalent support [H/F/X]",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719055-operateur-polyvalent-support-h-f-x-bulle-fr&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Automatiker / Elektroniker / Elektromonteur (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719057-automatiker-elektroniker-elektromonteur-m-w-d-100-pfaffnau-luzern&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Dipl. Pflegefachfrau HF (m,w,d) 40-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719061-dipl-pflegefachfrau-hf-m-w-d-40-100-biberist-so&language=en"
   }
 ]
