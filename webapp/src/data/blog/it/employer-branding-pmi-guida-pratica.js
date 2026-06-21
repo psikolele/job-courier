@@ -8,16 +8,12 @@ export default {
   readingTime: 7,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80',
-  intro: 'Quando si parla di employer branding, molte PMI pensano immediatamente a grandi aziende con budget importanti, campagne di comunicazione elaborate e team HR strutturati.\n\nÈ una percezione comprensibile.\n\nMa anche profondamente sbagliata.\n\nL\'employer branding non è una strategia riservata alle multinazionali.\n\nÈ qualcosa che riguarda qualsiasi azienda che desidera attrarre, assumere e trattenere persone valide.\n\nChe lo si voglia o no, ogni organizzazione possiede già un employer brand.\n\nLa vera domanda è:\n\nL\'immagine che i candidati hanno della nostra azienda ci aiuta o ci penalizza?\n\nIn questa guida vedremo cos\'è realmente l\'employer branding, perché è importante anche per una PMI e quali azioni concrete possono migliorare l\'attrattività aziendale.',
+  intro: 'Quando si parla di employer branding, molte PMI pensano immediatamente a grandi aziende con budget importanti, campagne di comunicazione elaborate e team HR strutturati: è una percezione comprensibile, ma anche profondamente sbagliata.\n\nL\'employer branding non è una strategia riservata alle multinazionali: è qualcosa che riguarda qualsiasi azienda che desidera attrarre, assumere e trattenere persone valide. Che lo si voglia o no, ogni organizzazione possiede già un employer brand. La vera domanda è: l\'immagine che i candidati hanno della nostra azienda ci aiuta o ci penalizza?\n\nIn questa guida vedremo cos\'è realmente l\'employer branding, perché è importante anche per una PMI e quali azioni concrete possono migliorare l\'attrattività aziendale.',
   sections: [
     {
       heading: 'Employer branding spiegato in modo semplice',
       blocks: [
-        'Molti articoli utilizzano definizioni complesse.',
-        'In realtà il concetto può essere sintetizzato in modo molto semplice.',
-        'L\'employer branding è il modo in cui la tua azienda viene percepita come luogo di lavoro.',
-        'Non riguarda soltanto ciò che comunichi.',
-        'Riguarda soprattutto ciò che le persone percepiscono.',
+        'Molti articoli utilizzano definizioni complesse, ma in realtà il concetto può essere sintetizzato in modo molto semplice: l\'employer branding è il modo in cui la tua azienda viene percepita come luogo di lavoro. Non riguarda soltanto ciò che comunichi, ma soprattutto ciò che le persone percepiscono.',
       ],
     },
     {
@@ -42,69 +38,52 @@ export default {
     {
       heading: 'Comunicazione',
       blocks: [
-        'Come racconti chi sei e cosa offri.',
-        'Quando questi tre elementi sono coerenti, l\'attrattività dell\'organizzazione aumenta.',
+        'Come racconti chi sei e cosa offri. Quando questi tre elementi sono coerenti, l\'attrattività dell\'organizzazione aumenta.',
       ],
     },
     {
       heading: 'Perché oggi è diventato così importante',
       blocks: [
-        'Per molti anni le aziende potevano concentrarsi quasi esclusivamente sulla pubblicazione di annunci.',
-        'Oggi il contesto è diverso.',
+        'Per molti anni le aziende potevano concentrarsi quasi esclusivamente sulla pubblicazione di annunci. Oggi il contesto è diverso.',
       ],
     },
     {
       heading: 'I candidati sono più informati',
       blocks: [
-        'Prima di candidarsi molte persone raccolgono informazioni.',
-        'Consultano:',
-        'sito aziendale;',
-        'social;',
-        'recensioni;',
-        'contatti professionali.',
+        'Prima di candidarsi molte persone raccolgono informazioni. Consultano:',
+        { list: ['Sito aziendale.', 'Social.', 'Recensioni.', 'Contatti professionali.'] },
       ],
     },
     {
       heading: 'La concorrenza è aumentata',
       blocks: [
-        'Le aziende non competono soltanto per clienti e mercato.',
-        'Competono anche per le persone.',
+        'Le aziende non competono soltanto per clienti e mercato: competono anche per le persone.',
       ],
     },
     {
       heading: 'Le aspettative sono cambiate',
       blocks: [
         'I professionisti valutano aspetti che un tempo venivano considerati secondari:',
-        'ambiente;',
-        'leadership;',
-        'crescita;',
-        'flessibilità;',
-        'cultura aziendale.',
+        { list: ['Ambiente.', 'Leadership.', 'Crescita.', 'Flessibilità.', 'Cultura aziendale.'] },
       ],
     },
     {
       heading: 'I cinque pilastri dell\'employer branding',
       blocks: [
-        'Molte aziende cercano scorciatoie.',
-        'In realtà un employer brand solido si costruisce lavorando su alcuni elementi fondamentali.',
+        'Molte aziende cercano scorciatoie, ma in realtà un employer brand solido si costruisce lavorando su alcuni elementi fondamentali.',
       ],
     },
     {
       heading: '1. Reputazione',
       blocks: [
-        'La reputazione rappresenta il punto di partenza.',
-        'Prima ancora di leggere un annuncio, molte persone hanno già un\'opinione sull\'azienda.',
+        'La reputazione rappresenta il punto di partenza: prima ancora di leggere un annuncio, molte persone hanno già un\'opinione sull\'azienda.',
       ],
     },
     {
       heading: 'Come si forma',
       blocks: [
         'Attraverso:',
-        'clienti;',
-        'collaboratori;',
-        'ex collaboratori;',
-        'fornitori;',
-        'presenza online.',
+        { list: ['Clienti.', 'Collaboratori.', 'Ex collaboratori.', 'Fornitori.', 'Presenza online.'] },
       ],
     },
     {
@@ -116,9 +95,7 @@ export default {
     {
       heading: '2. Cultura aziendale',
       blocks: [
-        'La cultura è il modo in cui le persone lavorano insieme ogni giorno.',
-        'Non coincide con gli slogan presenti sul sito.',
-        'Coincide con ciò che accade realmente.',
+        'La cultura è il modo in cui le persone lavorano insieme ogni giorno. Non coincide con gli slogan presenti sul sito, ma con ciò che accade realmente.',
       ],
     },
     {
@@ -136,45 +113,25 @@ export default {
     {
       heading: '3. Leadership',
       blocks: [
-        'La qualità della leadership incide profondamente sulla percezione dell\'azienda.',
-        'Molti collaboratori associano l\'esperienza lavorativa principalmente ai propri responsabili.',
-      ],
-    },
-    {
-      heading: 'Nelle PMI ha un impatto enorme',
-      blocks: [
-        'Il contatto diretto con titolari e manager rende la leadership ancora più visibile.',
+        'La qualità della leadership incide profondamente sulla percezione dell\'azienda: molti collaboratori associano l\'esperienza lavorativa principalmente ai propri responsabili. Nelle PMI il contatto diretto con titolari e manager rende la leadership ancora più visibile.',
       ],
     },
     {
       heading: 'Le caratteristiche più apprezzate',
       blocks: [
-        'chiarezza;',
-        'disponibilità;',
-        'coerenza;',
-        'capacità di ascolto.',
+        { list: ['Chiarezza.', 'Disponibilità.', 'Coerenza.', 'Capacità di ascolto.'] },
       ],
     },
     {
       heading: '4. Esperienza candidato',
       blocks: [
-        'Un aspetto spesso sottovalutato.',
-        'Eppure estremamente importante.',
-      ],
-    },
-    {
-      heading: 'Ogni candidatura è un\'esperienza',
-      blocks: [
-        'Dal primo contatto fino alla conclusione del processo di selezione.',
+        'Un aspetto spesso sottovalutato, eppure estremamente importante: ogni candidatura è un\'esperienza, dal primo contatto fino alla conclusione del processo di selezione.',
       ],
     },
     {
       heading: 'Alcuni esempi negativi',
       blocks: [
-        'nessuna risposta;',
-        'attese molto lunghe;',
-        'comunicazioni poco chiare;',
-        'colloqui disorganizzati.',
+        { list: ['Nessuna risposta.', 'Attese molto lunghe.', 'Comunicazioni poco chiare.', 'Colloqui disorganizzati.'] },
       ],
     },
     {
@@ -186,50 +143,38 @@ export default {
     {
       heading: '5. Comunicazione',
       blocks: [
-        'Molte PMI possiedono ottimi argomenti.',
-        'Semplicemente non li comunicano.',
+        'Molte PMI possiedono ottimi argomenti ma semplicemente non li comunicano.',
       ],
     },
     {
       heading: 'Cosa raccontare',
       blocks: [
-        'persone;',
-        'progetti;',
-        'ambiente;',
-        'crescita;',
-        'valori.',
+        { list: ['Persone.', 'Progetti.', 'Ambiente.', 'Crescita.', 'Valori.'] },
       ],
     },
     {
       heading: 'Cosa evitare',
       blocks: [
-        'Comunicazione artificiale.',
-        'Promesse irrealistiche.',
-        'Messaggi che non riflettono la realtà.',
+        { list: ['Comunicazione artificiale.', 'Promesse irrealistiche.', 'Messaggi che non riflettono la realtà.'] },
       ],
     },
     {
       heading: 'Come migliorare il sito aziendale',
       blocks: [
-        'Per molti candidati il sito rappresenta il primo punto di contatto con l\'organizzazione.',
-        'Per questo motivo merita attenzione.',
+        'Per molti candidati il sito rappresenta il primo punto di contatto con l\'organizzazione, e per questo motivo merita attenzione.',
       ],
     },
     {
       heading: 'La pagina "Lavora con noi"',
       blocks: [
         'Dovrebbe rispondere a domande semplici:',
-        'chi siete;',
-        'cosa fate;',
-        'perché lavorare con voi;',
-        'quali opportunità offrite.',
+        { list: ['Chi siete.', 'Cosa fate.', 'Perché lavorare con voi.', 'Quali opportunità offrite.'] },
       ],
     },
     {
       heading: 'Racconta le persone',
       blocks: [
-        'Molte aziende parlano soltanto dei propri prodotti.',
-        'Le persone vogliono conoscere anche chi lavora all\'interno dell\'organizzazione.',
+        'Molte aziende parlano soltanto dei propri prodotti, ma le persone vogliono conoscere anche chi lavora all\'interno dell\'organizzazione.',
       ],
     },
     {
@@ -241,33 +186,26 @@ export default {
     {
       heading: 'Non serve pubblicare ogni giorno',
       blocks: [
-        'Una delle convinzioni più diffuse è che occorra essere costantemente attivi.',
-        'In realtà conta molto di più la qualità della comunicazione.',
+        'Una delle convinzioni più diffuse è che occorra essere costantemente attivi: in realtà conta molto di più la qualità della comunicazione.',
       ],
     },
     {
       heading: 'Racconta ciò che accade davvero',
       blocks: [
         'Le persone sono interessate a conoscere:',
-        'il team;',
-        'i progetti;',
-        'la crescita dell\'azienda;',
-        'le iniziative interne.',
+        { list: ['Il team.', 'I progetti.', 'La crescita dell\'azienda.', 'Le iniziative interne.'] },
       ],
     },
     {
       heading: 'Mostra il lato umano',
       blocks: [
-        'Molti contenuti aziendali risultano impersonali.',
-        'Le persone tendono invece a interessarsi alle persone.',
+        'Molti contenuti aziendali risultano impersonali, mentre le persone tendono a interessarsi alle persone.',
       ],
     },
     {
       heading: 'Il valore delle testimonianze',
       blocks: [
-        'Tra tutti gli strumenti di employer branding, le testimonianze sono spesso tra i più efficaci.',
-        'Per un motivo molto semplice.',
-        'Le persone tendono a fidarsi maggiormente di altre persone.',
+        'Tra tutti gli strumenti di employer branding, le testimonianze sono spesso tra i più efficaci per un motivo molto semplice: le persone tendono a fidarsi maggiormente di altre persone.',
       ],
     },
     {
@@ -280,25 +218,19 @@ export default {
       heading: 'Cosa raccontare',
       blocks: [
         'Le testimonianze più efficaci parlano di:',
-        'percorso professionale;',
-        'crescita;',
-        'ambiente di lavoro;',
-        'esperienze concrete.',
+        { list: ['Percorso professionale.', 'Crescita.', 'Ambiente di lavoro.', 'Esperienze concrete.'] },
       ],
     },
     {
       heading: 'Mantieni autenticità',
       blocks: [
-        'Non servono messaggi perfetti.',
-        'Serve autenticità.',
+        'Non servono messaggi perfetti: serve autenticità.',
       ],
     },
     {
       heading: 'L\'esperienza candidato conta più di quanto si pensi',
       blocks: [
-        'Molte aziende concentrano tutti gli sforzi sull\'attrazione dei candidati.',
-        'Poi trascurano completamente l\'esperienza di selezione.',
-        'È un errore.',
+        'Molte aziende concentrano tutti gli sforzi sull\'attrazione dei candidati, poi trascurano completamente l\'esperienza di selezione. È un errore.',
       ],
     },
     {
@@ -311,19 +243,14 @@ export default {
       heading: 'Le aspettative dei candidati',
       blocks: [
         'Le persone apprezzano:',
-        'chiarezza;',
-        'trasparenza;',
-        'tempi ragionevoli;',
-        'comunicazioni puntuali.',
+        { list: ['Chiarezza.', 'Trasparenza.', 'Tempi ragionevoli.', 'Comunicazioni puntuali.'] },
       ],
     },
     {
       heading: 'Un\'esperienza positiva genera reputazione',
       blocks: [
         'Anche un candidato non selezionato può diventare:',
-        'cliente;',
-        'ambasciatore del brand;',
-        'futuro collaboratore.',
+        { list: ['Cliente.', 'Ambasciatore del brand.', 'Futuro collaboratore.'] },
       ],
     },
     {
@@ -335,8 +262,7 @@ export default {
     {
       heading: 'Comunicare una realtà che non esiste',
       blocks: [
-        'È probabilmente l\'errore più pericoloso.',
-        'Se ciò che viene raccontato non corrisponde alla realtà, la delusione sarà inevitabile.',
+        'È probabilmente l\'errore più pericoloso: se ciò che viene raccontato non corrisponde alla realtà, la delusione sarà inevitabile.',
       ],
     },
     {
@@ -366,85 +292,57 @@ export default {
     {
       heading: 'Piano pratico di 30 giorni',
       blocks: [
-        'Molte PMI credono che servano grandi investimenti.',
-        'In realtà è possibile iniziare con azioni semplici.',
-      ],
-    },
-    {
-      heading: 'Settimana 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analisi',
-      blocks: [
-        'Verifica:',
-        'sito aziendale;',
-        'annunci;',
-        'processo di candidatura.',
-      ],
-    },
-    {
-      heading: 'Settimana 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Raccolta informazioni',
-      blocks: [
-        'Parla con i collaboratori.',
-        'Chiedi:',
-        'cosa apprezzano dell\'azienda;',
-        'perché sono rimasti;',
-        'cosa li rende orgogliosi del proprio lavoro.',
-      ],
-    },
-    {
-      heading: 'Settimana 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Definizione dei messaggi chiave',
-      blocks: [
-        'Identifica tre o quattro elementi distintivi dell\'organizzazione.',
-        'Ad esempio:',
-        'autonomia;',
-        'ambiente familiare;',
-        'crescita;',
-        'flessibilità.',
-      ],
-    },
-    {
-      heading: 'Settimana 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Comunicazione',
-      blocks: [
-        'Inizia a integrare questi elementi in:',
-        'sito;',
-        'annunci;',
-        'colloqui.',
+        'Molte PMI credono che servano grandi investimenti, ma in realtà è possibile iniziare con azioni semplici.',
+        {
+          weekPlan: [
+            {
+              week: 'Settimana 1',
+              title: 'Analisi',
+              items: [
+                'Verifica il sito aziendale e valuta la prima impressione che trasmette.',
+                'Esamina gli annunci di lavoro pubblicati e controlla che siano aggiornati e chiari.',
+                'Percorri il processo di candidatura come farebbe un candidato esterno.',
+              ],
+            },
+            {
+              week: 'Settimana 2',
+              title: 'Raccolta informazioni',
+              items: [
+                'Parla con i collaboratori e chiedi cosa apprezzano dell\'azienda.',
+                'Chiedi perché sono rimasti e cosa li rende orgogliosi del proprio lavoro.',
+                'Raccogli le risposte e identifica i temi ricorrenti.',
+              ],
+            },
+            {
+              week: 'Settimana 3',
+              title: 'Definizione dei messaggi chiave',
+              items: [
+                'Identifica tre o quattro elementi distintivi dell\'organizzazione.',
+                'Ad esempio: autonomia, ambiente familiare, crescita, flessibilità.',
+                'Formulali in messaggi semplici e autentici da usare nella comunicazione.',
+              ],
+            },
+            {
+              week: 'Settimana 4',
+              title: 'Comunicazione',
+              items: [
+                'Inizia a integrare i messaggi chiave nel sito aziendale.',
+                'Aggiorna gli annunci di lavoro con il nuovo linguaggio.',
+                'Porta questi elementi anche nei colloqui di selezione.',
+              ],
+            },
+          ],
+        },
       ],
     },
     { related: { question: 'Cosa guida davvero la scelta dei candidati? Scoprilo qui.', slug: 'perche-i-candidati-scelgono-alcune-aziende' } },
     {
       heading: 'Conclusione',
       blocks: [
-        'L\'employer branding non riguarda la costruzione di un\'immagine artificiale.',
-        'Riguarda la capacità di raccontare in modo autentico ciò che rende unica un\'azienda.',
+        'L\'employer branding non riguarda la costruzione di un\'immagine artificiale: riguarda la capacità di raccontare in modo autentico ciò che rende unica un\'azienda.',
         'Le PMI possiedono spesso vantaggi straordinari:',
-        'vicinanza;',
-        'autonomia;',
-        'rapidità;',
-        'relazioni umane;',
-        'impatto diretto.',
-        'Troppo spesso questi elementi rimangono invisibili.',
-        'Le aziende che attraggono candidati migliori non sono necessariamente quelle che investono di più.',
-        'Sono spesso quelle che riescono a fare una cosa molto semplice: comunicare con chiarezza chi sono, come lavorano e perché vale la pena far parte del loro progetto.',
-        'L\'employer branding inizia proprio da qui.',
+        { list: ['Vicinanza.', 'Autonomia.', 'Rapidità.', 'Relazioni umane.', 'Impatto diretto.'] },
+        'Troppo spesso questi elementi rimangono invisibili. Le aziende che attraggono candidati migliori non sono necessariamente quelle che investono di più: sono spesso quelle che riescono a fare una cosa molto semplice, comunicare con chiarezza chi sono, come lavorano e perché vale la pena far parte del loro progetto. L\'employer branding inizia proprio da qui.',
       ],
     },
   ],

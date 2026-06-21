@@ -1,0 +1,17 @@
+.vercel
+node_modules/
+*.mp4
+*.db
+ruvector.db
+webapp/ruvector.db
+_d*.txt
+_docx_dump.json
+_verify.mjs
+*.png
+!webapp/public/**/*.png
+!webapp/src/assets/**/*.png
+.claude-flow/
+.swarm/
+webapp/.playwright-cli/
+webapp/Web-APP-Brand-Profile/
+create_today_notion_log_fuchsia.py

@@ -55,5 +55,8 @@
     ".env.local",
     "*.mp4",
     "*.docx"
-  ]
+  ],
+  "enabledPlugins": {
+    "andrej-karpathy-skills@karpathy-skills": true
+  }
 }

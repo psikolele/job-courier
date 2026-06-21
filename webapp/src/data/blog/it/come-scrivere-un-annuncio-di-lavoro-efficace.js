@@ -8,13 +8,12 @@ export default {
   readingTime: 8,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
-  intro: 'Molte aziende pensano che pubblicare un annuncio di lavoro sia un\'attività semplice.\n\nSi definisce una posizione.\n\nSi elencano i requisiti.\n\nSi pubblica l\'offerta.\n\nSi attendono le candidature.\n\nNella realtà il processo è molto più complesso.\n\nOggi i candidati hanno accesso a centinaia di opportunità professionali e possono confrontare facilmente aziende, ruoli e condizioni di lavoro.',
+  intro: 'Molte aziende pensano che pubblicare un annuncio di lavoro sia un\'attività semplice: si definisce una posizione, si elencano i requisiti, si pubblica l\'offerta e si attendono le candidature.\n\nNella realtà il processo è molto più complesso: oggi i candidati hanno accesso a centinaia di opportunità professionali e possono confrontare facilmente aziende, ruoli e condizioni di lavoro.',
   sections: [
     {
       heading: 'Per questo motivo un annuncio non è soltanto uno strumento amministrativo. È uno strumento di comunicazione.',
       blocks: [
-        'È spesso il primo contatto tra l\'azienda e un potenziale collaboratore.',
-        'Un annuncio efficace non serve semplicemente a ricevere candidature. Serve ad attirare le candidature giuste.',
+        'È spesso il primo contatto tra l\'azienda e un potenziale collaboratore. Un annuncio efficace non serve semplicemente a ricevere candidature: serve ad attirare le candidature giuste.',
         'In questa guida vedremo come costruire offerte di lavoro più chiare, più attrattive e più efficaci.',
       ],
     },
@@ -23,19 +22,14 @@ export default {
       blocks: [
         'Molte aziende sottovalutano l\'impatto che un annuncio può avere sul risultato finale di una selezione.',
         'Eppure la qualità dell\'offerta influenza direttamente:',
-        'il numero di candidature;',
-        'la qualità dei candidati;',
-        'il tempo necessario per assumere;',
-        'la percezione dell\'azienda.',
+        { list: ['Il numero di candidature.', 'La qualità dei candidati.', 'Il tempo necessario per assumere.', 'La percezione dell\'azienda.'] },
       ],
     },
     { cta: { question: 'Hai un annuncio pronto? Pubblicalo e raggiungi i candidati giusti.', action: 'Pubblica il tuo annuncio', to: '/soluzioni-e-tariffe' } },
     {
       heading: 'La qualità delle candidature',
       blocks: [
-        'Un annuncio poco chiaro tende ad attirare profili poco pertinenti.',
-        'Al contrario, un annuncio ben costruito aiuta i candidati a capire rapidamente se il ruolo è adatto alle loro competenze.',
-        'Questo migliora la qualità delle candidature ricevute.',
+        'Un annuncio poco chiaro tende ad attirare profili poco pertinenti; al contrario, un annuncio ben costruito aiuta i candidati a capire rapidamente se il ruolo è adatto alle loro competenze, migliorando la qualità delle candidature ricevute.',
       ],
     },
     {
@@ -43,16 +37,13 @@ export default {
       blocks: [
         'Quando arrivano candidature più pertinenti, il processo di selezione diventa più efficiente.',
         'Si riducono:',
-        'screening inutili;',
-        'colloqui poco produttivi;',
-        'tempi di ricerca.',
+        { list: ['Screening inutili.', 'Colloqui poco produttivi.', 'Tempi di ricerca.'] },
       ],
     },
     {
       heading: 'L\'immagine aziendale',
       blocks: [
-        'Molti candidati formano una prima impressione dell\'azienda proprio leggendo l\'annuncio.',
-        'Un testo confuso, impersonale o poco curato può trasmettere un\'immagine poco professionale.',
+        'Molti candidati formano una prima impressione dell\'azienda proprio leggendo l\'annuncio. Un testo confuso, impersonale o poco curato può trasmettere un\'immagine poco professionale.',
       ],
     },
     {
@@ -61,16 +52,13 @@ export default {
         'Uno degli errori più frequenti consiste nel costruire l\'annuncio esclusivamente dal punto di vista aziendale.',
         'In pratica il messaggio diventa:',
         { list: ['Cerchiamo una persona che sappia fare questo, questo e questo.', 'Deve possedere queste competenze.', 'Deve avere questa esperienza.', 'Deve essere disponibile a fare questo.'] },
-        'L\'azienda parla soltanto di ciò che desidera ricevere.',
-        'Ma dimentica di spiegare ciò che offre.',
+        'L\'azienda parla soltanto di ciò che desidera ricevere, ma dimentica di spiegare ciò che offre.',
       ],
     },
     {
       heading: 'Il mercato è cambiato',
       blocks: [
-        'Per molti anni le aziende potevano limitarsi a pubblicare un annuncio essenziale.',
-        'Oggi il contesto è differente.',
-        'Molti professionisti qualificati hanno più opzioni tra cui scegliere.',
+        'Per molti anni le aziende potevano limitarsi a pubblicare un annuncio essenziale. Oggi il contesto è differente: molti professionisti qualificati hanno più opzioni tra cui scegliere.',
         'Per questo motivo il candidato si pone alcune domande fondamentali:',
         { list: ['Perché dovrei candidarmi?', 'Cosa rende interessante questa opportunità?', 'Quali prospettive offre?', 'Come sarà l\'ambiente di lavoro?'] },
         'Se l\'annuncio non risponde a queste domande, rischia di perdere efficacia.',
@@ -79,17 +67,14 @@ export default {
     {
       heading: 'Cosa cercano davvero i candidati',
       blocks: [
-        'Molte aziende credono che i candidati guardino soltanto lo stipendio.',
-        'In realtà la valutazione è spesso più articolata.',
+        'Molte aziende credono che i candidati guardino soltanto lo stipendio; in realtà la valutazione è spesso più articolata.',
       ],
     },
     {
       heading: 'Chiarezza',
       blocks: [
         'Le persone vogliono capire rapidamente:',
-        'cosa faranno;',
-        'con chi lavoreranno;',
-        'quali responsabilità avranno.',
+        { list: ['Cosa faranno.', 'Con chi lavoreranno.', 'Quali responsabilità avranno.'] },
       ],
     },
     {
@@ -108,9 +93,7 @@ export default {
       heading: 'Ambiente di lavoro',
       blocks: [
         'Sempre più persone attribuiscono valore a:',
-        'collaborazione;',
-        'cultura aziendale;',
-        'qualità delle relazioni.',
+        { list: ['Collaborazione.', 'Cultura aziendale.', 'Qualità delle relazioni.'] },
       ],
     },
     {
@@ -128,8 +111,7 @@ export default {
     {
       heading: '1. Titolo',
       blocks: [
-        'È la prima cosa che il candidato vede.',
-        'Deve essere chiaro e immediatamente comprensibile.',
+        'È la prima cosa che il candidato vede e deve essere chiaro e immediatamente comprensibile.',
       ],
     },
     {
@@ -151,9 +133,7 @@ export default {
       heading: '2. Introduzione',
       blocks: [
         'Le prime righe devono spiegare:',
-        'chi è l\'azienda;',
-        'cosa rende interessante l\'opportunità;',
-        'perché il candidato dovrebbe continuare a leggere.',
+        { list: ['Chi è l\'azienda.', 'Cosa rende interessante l\'opportunità.', 'Perché il candidato dovrebbe continuare a leggere.'] },
       ],
     },
     {
@@ -165,25 +145,20 @@ export default {
     {
       heading: '3. Responsabilità',
       blocks: [
-        'Descrivere in modo concreto ciò che la persona farà.',
-        'Meglio utilizzare elenchi chiari.',
+        'Descrivere in modo concreto ciò che la persona farà, preferendo elenchi chiari.',
       ],
     },
     {
       heading: 'Esempio',
       blocks: [
         'La persona selezionata si occuperà di:',
-        'gestione clienti;',
-        'preparazione offerte;',
-        'coordinamento documentazione;',
-        'supporto amministrativo.',
+        { list: ['Gestione clienti.', 'Preparazione offerte.', 'Coordinamento documentazione.', 'Supporto amministrativo.'] },
       ],
     },
     {
       heading: '4. Requisiti',
       blocks: [
-        'Qui molte aziende commettono errori.',
-        'Vedremo tra poco perché.',
+        'Qui molte aziende commettono errori; vedremo tra poco perché.',
       ],
     },
     {
@@ -201,8 +176,7 @@ export default {
     {
       heading: 'Come scrivere un titolo che attira attenzione',
       blocks: [
-        'Il titolo rappresenta il primo filtro.',
-        'Se non funziona, il resto dell\'annuncio potrebbe non essere nemmeno letto.',
+        'Il titolo rappresenta il primo filtro: se non funziona, il resto dell\'annuncio potrebbe non essere nemmeno letto.',
       ],
     },
     {
@@ -231,24 +205,19 @@ export default {
     {
       heading: 'Utilizza il linguaggio del mercato',
       blocks: [
-        'I candidati cercano ruoli specifici.',
-        'Utilizzare denominazioni riconoscibili migliora la visibilità e la comprensione dell\'annuncio.',
+        'I candidati cercano ruoli specifici: utilizzare denominazioni riconoscibili migliora la visibilità e la comprensione dell\'annuncio.',
       ],
     },
     {
       heading: 'Come descrivere il ruolo in modo efficace',
       blocks: [
-        'Dopo il titolo, la sezione dedicata alle responsabilità è quella che i candidati leggono con maggiore attenzione.',
-        'L\'obiettivo non è elencare ogni singola attività.',
-        'L\'obiettivo è aiutare il candidato a immaginarsi nel ruolo.',
+        'Dopo il titolo, la sezione dedicata alle responsabilità è quella che i candidati leggono con maggiore attenzione. L\'obiettivo non è elencare ogni singola attività, ma aiutare il candidato a immaginarsi nel ruolo.',
       ],
     },
     {
       heading: 'Concentrati sulle attività principali',
       blocks: [
-        'Molte aziende inseriscono liste interminabili di mansioni.',
-        'Questo rende l\'annuncio più difficile da leggere.',
-        'Meglio evidenziare le responsabilità realmente centrali.',
+        'Molte aziende inseriscono liste interminabili di mansioni, rendendo l\'annuncio più difficile da leggere. Meglio evidenziare le responsabilità realmente centrali.',
       ],
     },
     {
@@ -272,27 +241,20 @@ export default {
     {
       heading: 'Utilizza un linguaggio concreto',
       blocks: [
-        'Più il candidato comprende cosa farà, più sarà in grado di valutare la propria idoneità.',
-        'Questo migliora la qualità delle candidature.',
+        'Più il candidato comprende cosa farà, più sarà in grado di valutare la propria idoneità, migliorando la qualità delle candidature.',
       ],
     },
     {
       heading: 'I requisiti: meno è meglio',
       blocks: [
-        'Questa è probabilmente la sezione che genera più errori.',
-        'Molte aziende costruiscono liste di requisiti che descrivono il candidato perfetto.',
-        'Il problema è che il candidato perfetto raramente esiste.',
+        'Questa è probabilmente la sezione che genera più errori. Molte aziende costruiscono liste di requisiti che descrivono il candidato perfetto, ma il problema è che il candidato perfetto raramente esiste.',
       ],
     },
     {
       heading: 'L\'effetto indesiderato',
       blocks: [
         'Quando un annuncio contiene:',
-        '15 competenze richieste;',
-        '10 anni di esperienza;',
-        '3 lingue;',
-        'disponibilità totale;',
-        'competenze tecniche avanzate;',
+        { list: ['15 competenze richieste.', '10 anni di esperienza.', '3 lingue.', 'Disponibilità totale.', 'Competenze tecniche avanzate.'] },
         'molti candidati validi decidono di non candidarsi.',
       ],
     },
@@ -317,18 +279,13 @@ export default {
     {
       heading: 'Chiediti sempre',
       blocks: [
-        'Questo requisito è davvero necessario?',
-        'Oppure è semplicemente "piacevole da avere"?',
-        'La risposta può fare una grande differenza nel numero di candidature ricevute.',
+        'Questo requisito è davvero necessario oppure è semplicemente "piacevole da avere"? La risposta può fare una grande differenza nel numero di candidature ricevute.',
       ],
     },
     {
       heading: 'Perché i benefit contano sempre di più',
       blocks: [
-        'Molte aziende dedicano poche righe ai benefit.',
-        'Spesso è un errore.',
-        'I candidati non valutano soltanto il lavoro.',
-        'Valutano anche ciò che l\'organizzazione offre.',
+        'Molte aziende dedicano poche righe ai benefit, spesso per errore. I candidati non valutano soltanto il lavoro: valutano anche ciò che l\'organizzazione offre.',
       ],
     },
     {
@@ -364,8 +321,7 @@ export default {
     {
       heading: 'Gli errori che fanno perdere candidati',
       blocks: [
-        'Alcuni errori si ripetono continuamente.',
-        'E spesso compromettono l\'efficacia dell\'annuncio.',
+        'Alcuni errori si ripetono continuamente e spesso compromettono l\'efficacia dell\'annuncio.',
       ],
     },
     {
@@ -377,9 +333,7 @@ export default {
     {
       heading: 'Linguaggio burocratico',
       blocks: [
-        'Le persone vogliono capire.',
-        'Non interpretare.',
-        'Un linguaggio semplice funziona quasi sempre meglio.',
+        'Le persone vogliono capire, non interpretare. Un linguaggio semplice funziona quasi sempre meglio.',
       ],
     },
     {
@@ -429,13 +383,9 @@ export default {
     {
       heading: 'Conclusione',
       blocks: [
-        'Un annuncio di lavoro efficace non è quello che descrive meglio ciò che l\'azienda cerca.',
-        'È quello che riesce a creare un incontro tra le esigenze dell\'organizzazione e le aspettative dei candidati.',
+        'Un annuncio di lavoro efficace non è quello che descrive meglio ciò che l\'azienda cerca: è quello che riesce a creare un incontro tra le esigenze dell\'organizzazione e le aspettative dei candidati.',
         'Le aziende che ottengono i risultati migliori tendono a fare alcune cose molto bene:',
-        'comunicano in modo chiaro;',
-        'definiscono aspettative realistiche;',
-        'valorizzano ciò che offrono;',
-        'facilitano la candidatura.',
+        { list: ['Comunicano in modo chiaro.', 'Definiscono aspettative realistiche.', 'Valorizzano ciò che offrono.', 'Facilitano la candidatura.'] },
         'In un mercato sempre più competitivo, la qualità dell\'annuncio rappresenta uno degli strumenti più efficaci per attirare candidati qualificati.',
         'Un annuncio chiaro, realistico e ben strutturato non migliora soltanto la qualità delle candidature, migliora l\'intero processo di selezione. Per questo motivo vale la pena dedicare tempo alla sua costruzione, misurarne i risultati e ottimizzarlo nel tempo.',
         'Perché trovare la persona giusta non inizia dal colloquio, inizia dall\'annuncio.',

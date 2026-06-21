@@ -292,7 +292,9 @@ Ref: `00_Wiki/concepts/token-optimization.md` § Temporary File Policy
 **Model:** Haiku 4.5  
 **Status:** 🔴 CRITICAL  
 **Deadline:** URGENT  
-**Last Updated:** 2026-05-27
+**Last Updated:** 2026-06-13
+
+**Ultimo handoff:** [docs/handoff-2026-06-13.md](docs/handoff-2026-06-13.md)
 
 ---
 
@@ -301,6 +303,17 @@ Ref: `00_Wiki/concepts/token-optimization.md` § Temporary File Policy
 **Database:** `collection://6ba19f86-ee14-46b1-b082-7ad1363711f9`  
 **Progetto Collegato Job Courier (dev):** `https://www.notion.so/32cfa85c0d0381babb25e98a05c98279`  
 **Progetto Collegato Job Courier (generale):** `https://www.notion.so/317fa85c0d0380faa38ecb41059d5e74`
+
+### ⚠️ REGOLA CRITICA — Progetto Collegato (SEMPRE)
+
+Quando crei/aggiorni sessioni Notion per **Job Courier**, il campo `Progetto Collegato` deve essere:
+```
+"[\"https://app.notion.com/p/317fa85c0d0380faa38ecb41059d5e74\"]"
+```
+- **Nome progetto:** "Create Job Courier Website"
+- **Collection:** `collection://2acfa85c-0d03-81a3-b22f-000b86019b58` (Progetti N8N)
+- **Formato:** JSON array stringificato (NON array nativo — causa errore MCP)
+- **Se hai dubbi su quale progetto collegare → CHIEDI prima di creare la sessione**
 
 ### Struttura ESATTA del contenuto pagina (Notion-flavored Markdown)
 
@@ -333,3 +346,4 @@ Ref: `00_Wiki/concepts/token-optimization.md` § Temporary File Policy
 - Proprietà `Minuti Lavorati`: numero intero (es. 120, non "120 minuti")
 - Proprietà `Categoria`: uno tra `Sviluppo | Bug Fix | Meeting | Preparazione Corsi | Erogazione corso | Formazione | Debug | Altro`
 - Se sessione copre sia sviluppo che meeting → `Categoria: Sviluppo`, dettaglio meeting nella sezione Attività svolte
+- Proprietà `Note`: SEMPRE compilare con breve riassunto (1-2 frasi) — stato finale + eventuali pendenze. Non lasciare vuoto.
