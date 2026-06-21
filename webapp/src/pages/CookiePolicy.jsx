@@ -45,7 +45,7 @@ const Ul = ({ children }) => (
 );
 
 const Li = ({ children }) => (
-    <li style={{ marginBottom: 6, listStyleType: 'disc' }}>{children}</li>
+    <li style={{ marginBottom: 6, listStyleType: 'disc', overflowWrap: 'break-word', wordBreak: 'break-word' }}>{children}</li>
 );
 
 const FuchsiaLine = () => (
