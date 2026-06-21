@@ -1,22 +1,6 @@
 [
   {
     "id": 0,
-    "title": "ImmobilienbewirtschafterIn 100% (w/m/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719250-immobilienbewirtschafterin-100-w-m-d-bulach-zh&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Servicetechniker (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719259-servicetechniker-m-w-d-schlieren-zh&language=en"
-  },
-  {
-    "id": 2,
     "title": "Fassadenisoleur/in (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,15 +8,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719263-fassadenisoleur-in-m-w-d-100-winterthur-zh&language=en"
   },
   {
-    "id": 3,
-    "title": "Landschaftsgärtner EFZ (m/w/d) 100%",
+    "id": 1,
+    "title": "Junior Accountant 100% (a)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719261-landschaftsg%C3%A4rtner-efz-m-w-d-100-winterthur-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719253-junior-accountant-100-a-zurich-altstetten-zh&language=en"
   },
   {
-    "id": 4,
+    "id": 2,
     "title": "Fachspezialist/in Gebäudeautomation (100%)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,12 +24,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719256-fachspezialist-in-geb%C3%A4udeautomation-100-basel-bs&language=en"
   },
   {
-    "id": 5,
-    "title": "Servicetechniker / Inbetriebnehmer (m/w/d) Apotheken-Roboter",
+    "id": 3,
+    "title": "Sachbearbeiter/in Rechnungswesen (m/w/d) 80?100 %",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719258-servicetechniker-inbetriebnehmer-m-w-d-apotheken-roboter-zurich-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719260-sachbearbeiter-in-rechnungswesen-m-w-d-80-100%E2%80%AF-buchs-zh-zh&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Hauswart Facility Management (m/w/d) 100% temporär",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719251-hauswart-facility-management-m-w-d-100-tempor%C3%A4r-frauenfeld-tg&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Werkstattleitung Automobilgewerbe (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719249-werkstattleitung-automobilgewerbe-m-w-d-100-frauenfeld-tg&language=en"
   },
   {
     "id": 6,
@@ -57,22 +57,30 @@
   },
   {
     "id": 7,
-    "title": "Junior Accountant 100% (a)",
+    "title": "Polymécanicien 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719253-junior-accountant-100-a-zurich-altstetten-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719257-polymecanicien-100-cdi-h-f-d-monthey-vs&language=en"
   },
   {
     "id": 8,
-    "title": "Allrounder Logistik im wechselnden Schichtbetrieb (m/w/d) 100%",
+    "title": "ImmobilienbewirtschafterIn 100% (w/m/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719252-allrounder-logistik-im-wechselnden-schichtbetrieb-m-w-d-100-wohlen-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719250-immobilienbewirtschafterin-100-w-m-d-bulach-zh&language=en"
   },
   {
     "id": 9,
+    "title": "Servicetechniker (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719259-servicetechniker-m-w-d-schlieren-zh&language=en"
+  },
+  {
+    "id": 10,
     "title": "Buchhalter/in Projekte, Immobilien & Nebenkosten 80-100% (a)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +88,11 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719262-buchhalter-in-projekte-immobilien-nebenkosten-80-100-a-schlieren-zh&language=en"
   },
   {
-    "id": 10,
-    "title": "Sachbearbeiter/in Rechnungswesen (m/w/d) 80?100 %",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719260-sachbearbeiter-in-rechnungswesen-m-w-d-80-100%E2%80%AF-buchs-zh-zh&language=en"
-  },
-  {
     "id": 11,
-    "title": "Werkstattleitung Automobilgewerbe (m/w/d) 100%",
+    "title": "Teamleitung Kundendienst (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719249-werkstattleitung-automobilgewerbe-m-w-d-100-frauenfeld-tg&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719254-teamleitung-kundendienst-m-w-d-100-frauenfeld-tg&language=en"
   }
 ]
