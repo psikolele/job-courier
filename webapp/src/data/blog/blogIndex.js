@@ -80,6 +80,22 @@ const IT = [
     readingTime: 8,
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80',
   },
+  {
+    slug: 'come-cambiare-lavoro-guida-pratica',
+    category: 'carriera',
+    title: 'Come cambiare lavoro: guida pratica per fare la scelta giusta',
+    abstract: 'Cambiare lavoro è una delle decisioni professionali più importanti. Può rappresentare un\'opportunità di crescita o trasformarsi in una scelta sbagliata se affrontata in modo impulsivo.',
+    readingTime: 8,
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80',
+  },
+  {
+    slug: 'come-trattenere-i-collaboratori-migliori',
+    category: 'recruiting',
+    title: 'Come trattenere i collaboratori migliori',
+    abstract: 'Molte aziende investono tempo, energie e risorse per trovare nuovi collaboratori. Poche dedicano la stessa attenzione a trattenere quelli che hanno già.',
+    readingTime: 8,
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80',
+  },
 ];
 
 const EN = [
@@ -160,6 +176,22 @@ const EN = [
     category: 'recruiting',
     title: 'Why Candidates Choose Some Companies and Not Others',
     abstract: 'Two companies post a job ad for a similar position. Both are looking for a skilled person.',
+    readingTime: 8,
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80',
+  },
+  {
+    slug: 'how-to-change-jobs-practical-guide',
+    category: 'carriera',
+    title: 'How to Change Jobs: A Practical Guide to Making the Right Choice',
+    abstract: 'Changing jobs is one of the most important professional decisions. It can be a growth opportunity or a wrong move if approached impulsively.',
+    readingTime: 8,
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80',
+  },
+  {
+    slug: 'how-to-retain-your-best-employees',
+    category: 'recruiting',
+    title: 'How to Retain Your Best Employees',
+    abstract: 'Many companies invest time, energy and resources to find new hires. Few dedicate the same attention to retaining the ones they already have.',
     readingTime: 8,
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80',
   },
@@ -246,6 +278,22 @@ const DE = [
     readingTime: 8,
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80',
   },
+  {
+    slug: 'jobwechsel-praktischer-leitfaden',
+    category: 'carriera',
+    title: 'Wie Sie den Job wechseln: Praktischer Leitfaden für die richtige Entscheidung',
+    abstract: 'Den Job zu wechseln ist eine der wichtigsten beruflichen Entscheidungen. Es kann eine Wachstumschance sein oder ein Fehler, wenn man impulsiv handelt.',
+    readingTime: 8,
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80',
+  },
+  {
+    slug: 'beste-mitarbeiter-halten-strategien',
+    category: 'recruiting',
+    title: 'Wie Sie Ihre besten Mitarbeiter halten',
+    abstract: 'Viele Unternehmen investieren Zeit, Energie und Ressourcen, um neue Mitarbeiter zu finden. Wenige widmen der Bindung bestehender Mitarbeiter die gleiche Aufmerksamkeit.',
+    readingTime: 8,
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80',
+  },
 ];
 
 const FR = [
@@ -329,6 +377,22 @@ const FR = [
     readingTime: 8,
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80',
   },
+  {
+    slug: 'changer-d-emploi-guide-pratique',
+    category: 'carriera',
+    title: 'Comment changer d\'emploi : guide pratique pour faire le bon choix',
+    abstract: 'Changer d\'emploi est l\'une des décisions professionnelles les plus importantes. Cela peut être une opportunité de croissance ou une erreur si on agit impulsivement.',
+    readingTime: 8,
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80',
+  },
+  {
+    slug: 'comment-retenir-les-meilleurs-collaborateurs',
+    category: 'recruiting',
+    title: 'Comment retenir les meilleurs collaborateurs',
+    abstract: 'De nombreuses entreprises investissent du temps, de l\'énergie et des ressources pour trouver de nouveaux collaborateurs. Peu consacrent la même attention à retenir ceux qu\'elles ont déjà.',
+    readingTime: 8,
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80',
+  },
 ];
 
 export const blogIndex = { it: IT, en: EN, de: DE, fr: FR };
@@ -345,6 +409,8 @@ export const slugTranslations = {
   'come-ridurre-i-tempi-di-assunzione': { en: 'how-to-reduce-time-to-hire', de: 'einstellungsdauer-verkuerzen-strategien-fuer-kmu', fr: 'comment-reduire-le-temps-de-recrutement' },
   'employer-branding-pmi-guida-pratica': { en: 'employer-branding-for-smes-practical-guide', de: 'employer-branding-fuer-kmu-praxisleitfaden', fr: 'marque-employeur-pme-guide-pratique' },
   'perche-i-candidati-scelgono-alcune-aziende': { en: 'why-candidates-choose-some-companies-over-others', de: 'warum-kandidaten-sich-fuer-bestimmte-unternehmen-entscheiden', fr: 'pourquoi-les-candidats-choisissent-certaines-entreprises' },
+  'come-cambiare-lavoro-guida-pratica': { en: 'how-to-change-jobs-practical-guide', de: 'jobwechsel-praktischer-leitfaden', fr: 'changer-d-emploi-guide-pratique' },
+  'come-trattenere-i-collaboratori-migliori': { en: 'how-to-retain-your-best-employees', de: 'beste-mitarbeiter-halten-strategien', fr: 'comment-retenir-les-meilleurs-collaborateurs' },
 };
 
 export function listByCategory(categoryId, lang) {
