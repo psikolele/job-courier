@@ -347,3 +347,7 @@ Quando crei/aggiorni sessioni Notion per **Job Courier**, il campo `Progetto Col
 - Proprietà `Categoria`: uno tra `Sviluppo | Bug Fix | Meeting | Preparazione Corsi | Erogazione corso | Formazione | Debug | Altro`
 - Se sessione copre sia sviluppo che meeting → `Categoria: Sviluppo`, dettaglio meeting nella sezione Attività svolte
 - Proprietà `Note`: SEMPRE compilare con breve riassunto (1-2 frasi) — stato finale + eventuali pendenze. Non lasciare vuoto.
+
+## 🌐 Lingua
+
+Risposte SEMPRE in italiano. Codice e commit in inglese.

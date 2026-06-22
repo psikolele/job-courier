@@ -31,7 +31,7 @@ const Footer = ({ setShowLoginModal }) => {
             { label: 'Login', href: '#login' },
             { label: 'FAQ / Aiuto', href: '/faq' },
         ]},
-        { title: 'Aziende', links: [
+        { title: 'Aziende', inline: ['Pubblica annuncio', 'Trova Candidati'], links: [
             { label: 'Pubblica annuncio', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
             { label: 'Trova Candidati', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it' },
             { label: 'Registra Azienda', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
@@ -72,42 +72,56 @@ const Footer = ({ setShowLoginModal }) => {
                 </div>
 
                 {/* Link cols */}
-                {cols.map(col => (
-                    <div key={col.title}>
-                        <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: F, marginBottom: 16 }}>
-                            {col.title}
-                        </div>
-                        {col.links.map(l => (
-                            <div key={l.label} style={{ marginBottom: 10 }}>
-                                {l.href.startsWith('/') && l.href !== '#login' ? (
-                                    <Link
-                                        to={l.href}
-                                        style={{ fontFamily: body, fontSize: 13, color: 'var(--brand-white)', textDecoration: 'none', transition: 'color 0.15s' }}
-                                        onMouseEnter={e => e.currentTarget.style.color = F}
-                                        onMouseLeave={e => e.currentTarget.style.color = 'var(--brand-white)'}
-                                    >
-                                        {l.label}
-                                    </Link>
-                                ) : (
-                                    <a
-                                        href={l.href}
-                                        style={{ fontFamily: body, fontSize: 13, color: 'var(--brand-white)', textDecoration: 'none', transition: 'color 0.15s' }}
-                                        onMouseEnter={e => e.currentTarget.style.color = F}
-                                        onMouseLeave={e => e.currentTarget.style.color = 'var(--brand-white)'}
-                                        onClick={(e) => {
-                                            if (l.href === '#login') {
-                                                e.preventDefault();
-                                                setShowLoginModal?.(true);
-                                            }
-                                        }}
-                                    >
-                                        {l.label}
-                                    </a>
-                                )}
+                {cols.map(col => {
+                    const inlineSet = new Set(col.inline || []);
+                    const inlineLinks = col.links.filter(l => inlineSet.has(l.label));
+                    const stackLinks = col.links.filter(l => !inlineSet.has(l.label));
+
+                    const renderLink = (l) =>
+                        l.href.startsWith('/') && l.href !== '#login' ? (
+                            <Link
+                                to={l.href}
+                                style={{ fontFamily: body, fontSize: 13, color: 'var(--brand-white)', textDecoration: 'none', transition: 'color 0.15s' }}
+                                onMouseEnter={e => e.currentTarget.style.color = F}
+                                onMouseLeave={e => e.currentTarget.style.color = 'var(--brand-white)'}
+                            >
+                                {l.label}
+                            </Link>
+                        ) : (
+                            <a
+                                href={l.href}
+                                style={{ fontFamily: body, fontSize: 13, color: 'var(--brand-white)', textDecoration: 'none', transition: 'color 0.15s' }}
+                                onMouseEnter={e => e.currentTarget.style.color = F}
+                                onMouseLeave={e => e.currentTarget.style.color = 'var(--brand-white)'}
+                                onClick={(e) => {
+                                    if (l.href === '#login') {
+                                        e.preventDefault();
+                                        setShowLoginModal?.(true);
+                                    }
+                                }}
+                            >
+                                {l.label}
+                            </a>
+                        );
+
+                    return (
+                        <div key={col.title}>
+                            <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: F, marginBottom: 16 }}>
+                                {col.title}
                             </div>
-                        ))}
-                    </div>
-                ))}
+                            {inlineLinks.length > 0 && (
+                                <div style={{ display: 'flex', gap: 16, marginBottom: 10, flexWrap: 'wrap' }}>
+                                    {inlineLinks.map(l => <span key={l.label}>{renderLink(l)}</span>)}
+                                </div>
+                            )}
+                            {stackLinks.map(l => (
+                                <div key={l.label} style={{ marginBottom: 10 }}>
+                                    {renderLink(l)}
+                                </div>
+                            ))}
+                        </div>
+                    );
+                })}
             </div>
 
             {/* Copyright row — fondo bianco separato */}

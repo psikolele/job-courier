@@ -26,7 +26,7 @@ const topAds = [
     }
 ];
 
-const bottomAds = [blcAd, blcAd, blcAd, blcAd, blcAd];
+const bottomAds = [blcAd, blcAd, blcAd, blcAd];
 
 const AdBanner = ({ type = 'bottom' }) => {
     const N = 'var(--brand-navy)';
@@ -42,22 +42,9 @@ const AdBanner = ({ type = 'bottom' }) => {
         <div className="w-full px-6 md:px-12">
             <div className="max-w-[1400px] mx-auto w-full">
 
-                {isTop && (
-                    <div style={{ marginBottom: 16 }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-                            <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
-                            <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
-                                Aziende in vetrina
-                            </span>
-                        </div>
-                        <h3 style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 32, color: N, lineHeight: 1.2, margin: 0 }}>
-                            Società di formazione di riferimento in Svizzera
-                        </h3>
-                    </div>
-                )}
 
                 <div
-                    className={`w-full grid ${isTop ? 'grid-cols-2 gap-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5'}`}
+                    className={`w-full grid ${isTop ? 'grid-cols-2 gap-4' : 'grid-cols-2 md:grid-cols-4'}`}
                     style={isTop ? {} : { gap: 1, background: 'rgba(5,11,43,0.06)' }}
                 >
                     {adsToRender.map((ad, i) => (
