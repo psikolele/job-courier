@@ -74,13 +74,14 @@ const getLocalizedData = (lang) => {
         heroTitleMain: isIt ? 'UNA SOLUZIONE PER OGNI' : isDe ? 'EINE LÖSUNG FÜR JEDEN' : isFr ? 'UNE SOLUTION POUR CHAQUE' : 'A SOLUTION FOR EVERY',
         heroTitleEm: isIt ? 'ESIGENZA.' : isDe ? 'BEDARF.' : isFr ? 'BESOIN.' : 'NEED.',
         heroSub: isIt ? 'Per una singola assunzione o per una ricerca continua di personale.' : isDe ? 'Für eine einzelne Einstellung oder eine kontinuierliche Personalsuche.' : isFr ? 'Pour un recrutement ponctuel ou une recherche continue de personnel.' : 'For a single hire or continuous staffing needs.',
+        heroCta: isIt ? 'REGISTRA AZIENDA' : isDe ? 'UNTERNEHMEN REGISTRIEREN' : isFr ? 'ENREGISTRER ENTREPRISE' : 'REGISTER COMPANY',
         tabs: {
             companies: isIt ? 'Aziende & PMI' : isDe ? 'Unternehmen & KMU' : isFr ? 'Entreprises & PME' : 'Companies & SMEs',
-            agencies: isIt ? 'Agenzie di selezione' : isDe ? 'Personalvermittlungen' : isFr ? 'Agences de Recrutement' : 'Recruitment Agencies',
+            agencies: isIt ? 'Agenzie e Recruiter' : isDe ? 'Agenturen & Recruiter' : isFr ? 'Agences et Recruteurs' : 'Agencies & Recruiters',
         },
         sidebar: {
-            title: isIt ? 'Vantaggi JobCourier' : isDe ? 'JobCourier Vorteile' : isFr ? 'Avantages JobCourier' : 'JobCourier Benefits',
-            subtitle: isIt ? 'Perché sceglierci' : isDe ? 'Warum uns wählen' : isFr ? 'Pourquoi nous choisir' : 'Why choose us',
+            title: isIt ? 'Perché sceglierlo' : isDe ? 'Warum wählen' : isFr ? 'Pourquoi le choisir' : 'Why choose it',
+            subtitle: isIt ? 'Vantaggi' : isDe ? 'Vorteile' : isFr ? 'Avantages' : 'Benefits',
         },
         plans: [
             {
@@ -91,19 +92,20 @@ const getLocalizedData = (lang) => {
                 pricePrefix: 'CHF',
                 priceNum: '249',
                 note: isIt ? '+IVA' : isDe ? '+MwSt.' : isFr ? '+TVA' : '+VAT',
-                desc: isIt ? 'Per ricerche occasionali.' : isDe ? 'Für gelegentliche Einstellungen.' : isFr ? 'Pour recrutements occasionnels.' : 'For occasional hiring.',
+                desc: isIt ? 'La soluzione ideale per assunzioni occasionali.' : isDe ? 'Die ideale Lösung für gelegentliche Einstellungen.' : isFr ? 'La solution idéale pour des recrutements occasionnels.' : 'The ideal solution for occasional hiring.',
                 features: [
-                    isIt ? '1 annuncio di lavoro online 30gg' : isDe ? '1 Stellenanzeige online 30 Tage' : isFr ? '1 annonce en ligne 30 jours' : '1 job post online 30 days',
-                    isIt ? 'Ricerche illimitate in database' : isDe ? 'Unbegrenzte Datenbanksuchen' : isFr ? 'Recherches illimitées en base de données' : 'Unlimited database searches',
+                    isIt ? 'Pubblicazione annuncio 30 giorni' : isDe ? 'Stellenanzeige 30 Tage online' : isFr ? 'Publication annonce 30 jours' : 'Job post online 30 days',
+                    isIt ? 'Accesso ai candidati compatibili già presenti nel database' : isDe ? 'Zugriff auf kompatible Kandidaten in der Datenbank' : isFr ? 'Accès aux candidats compatibles dans la base de données' : 'Access to compatible candidates in the database',
+                    isIt ? 'Gestione candidature' : isDe ? 'Bewerbungsmanagement' : isFr ? 'Gestion des candidatures' : 'Application management',
                     isIt ? 'Area aziendale riservata' : isDe ? 'Reservierter Unternehmensbereich' : isFr ? 'Espace entreprise réservé' : 'Reserved company area',
                 ],
                 vantaggi: [
-                    { title: isIt ? 'VISIBILITÀ' : isDe ? 'SICHTBARKEIT' : isFr ? 'VISIBILITÉ' : 'VISIBILITY',
-                      desc:  isIt ? 'Massima visibilità per le tue offerte di lavoro su JobCourier.' : isDe ? 'Maximale Sichtbarkeit für Ihre Stellenanzeigen.' : isFr ? 'Visibilité maximale pour vos offres d\'emploi.' : 'Maximum visibility for your job posts on JobCourier.' },
-                    { title: isIt ? 'ACCESSO DB' : isDe ? 'DB-ZUGRIFF' : isFr ? 'ACCÈS DB' : 'DB ACCESS',
-                      desc:  isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier.' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der Datenbank.' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base.' : 'Immediate access to compatible candidates in the JobCourier database.' },
-                    { title: isIt ? 'AREA RISERVATA' : isDe ? 'DASHBOARD' : isFr ? 'ESPACE RÉSERVÉ' : 'DASHBOARD',
-                      desc:  isIt ? "Area riservata con storico completo delle offerte da un'unica dashboard." : isDe ? 'Reservierter Bereich mit vollständiger Angebotshistorie.' : isFr ? 'Espace réservé avec historique complet des offres.' : 'Reserved area with full offer history in one dashboard.' },
+                    { title: isIt ? 'VISIBILITÀ IMMEDIATA' : isDe ? 'SOFORTIGE SICHTBARKEIT' : isFr ? 'VISIBILITÉ IMMÉDIATE' : 'IMMEDIATE VISIBILITY',
+                      desc:  isIt ? 'Massima visibilità sul network JobCourier.' : isDe ? 'Maximale Sichtbarkeit im JobCourier-Netzwerk.' : isFr ? 'Visibilité maximale sur le réseau JobCourier.' : 'Maximum visibility on the JobCourier network.' },
+                    { title: isIt ? 'CANDIDATI GIÀ DISPONIBILI' : isDe ? 'BEREITS VERFÜGBARE KANDIDATEN' : isFr ? 'CANDIDATS DÉJÀ DISPONIBLES' : 'CANDIDATES ALREADY AVAILABLE',
+                      desc:  isIt ? 'Non partire da zero: visualizza subito i candidati compatibili già presenti nel database JobCourier.' : isDe ? 'Starten Sie nicht bei Null: sehen Sie sofort kompatible Kandidaten in der JobCourier-Datenbank.' : isFr ? 'Ne partez pas de zéro : consultez immédiatement les candidats compatibles dans la base JobCourier.' : 'Don\'t start from scratch: view compatible candidates already in the JobCourier database.' },
+                    { title: isIt ? 'GESTIONE CENTRALIZZATA' : isDe ? 'ZENTRALISIERTE VERWALTUNG' : isFr ? 'GESTION CENTRALISÉE' : 'CENTRALIZED MANAGEMENT',
+                      desc:  isIt ? "Candidature e candidati in un'unica area riservata." : isDe ? 'Bewerbungen und Kandidaten in einem einzigen reservierten Bereich.' : isFr ? 'Candidatures et candidats dans un seul espace réservé.' : 'Applications and candidates in one reserved area.' },
                 ],
                 tag: isIt ? '01 / OCCASIONALE' : isDe ? '01 / GELEGENTLICH' : isFr ? '01 / OCCASIONNEL' : '01 / OCCASIONAL',
                 cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
@@ -114,68 +116,81 @@ const getLocalizedData = (lang) => {
                 price: 'CHF 890',
                 pricePrefix: 'CHF',
                 priceNum: '890',
-                oldPrice: "CHF 1'245",
                 note: isIt ? '+IVA' : isDe ? '+MwSt.' : isFr ? '+TVA' : '+VAT',
-                desc: isIt ? 'Massima visibilità con risparmio del 28%.' : isDe ? 'Maximale Sichtbarkeit mit 28% Ersparnis.' : isFr ? "Visibilité maximale avec 28% d'économie." : 'Maximum visibility with 28% savings.',
+                desc: isIt ? 'La soluzione ideale per aziende che assumono più volte durante l\'anno.' : isDe ? 'Die ideale Lösung für Unternehmen, die mehrmals im Jahr einstellen.' : isFr ? 'La solution idéale pour les entreprises qui recrutent plusieurs fois par an.' : 'The ideal solution for companies hiring multiple times a year.',
                 features: [
-                    isIt ? '5 offerte di lavoro online 30gg' : isDe ? '5 Stellenanzeigen online 30 Tage' : isFr ? '5 annonces en ligne 30 jours' : '5 job posts online 30 days',
-                    isIt ? 'Ricerche illimitate in database' : isDe ? 'Unbegrenzte Datenbanksuchen' : isFr ? 'Recherches illimitées en base de données' : 'Unlimited database searches',
+                    isIt ? '5 offerte di lavoro online 30 giorni' : isDe ? '5 Stellenanzeigen online 30 Tage' : isFr ? '5 annonces en ligne 30 jours' : '5 job posts online 30 days',
+                    isIt ? 'Accesso ai candidati compatibili già presenti nel database' : isDe ? 'Zugriff auf kompatible Kandidaten in der Datenbank' : isFr ? 'Accès aux candidats compatibles dans la base de données' : 'Access to compatible candidates in the database',
+                    isIt ? 'Gestione candidature' : isDe ? 'Bewerbungsmanagement' : isFr ? 'Gestion des candidatures' : 'Application management',
                     isIt ? 'Area aziendale riservata' : isDe ? 'Reservierter Unternehmensbereich' : isFr ? 'Espace entreprise réservé' : 'Reserved company area',
                 ],
                 vantaggi: [
-                    { title: isIt ? 'RISPARMIO -28%' : isDe ? 'ERSPARNIS -28%' : isFr ? 'ÉCONOMIE -28%' : 'SAVE 28%',
-                      desc:  isIt ? 'Risparmio immediato del 28% rispetto all\'acquisto di 5 annunci singoli.' : isDe ? 'Sofortige Ersparnis von 28% gegenüber Einzelkauf.' : isFr ? 'Économie immédiate de 28% par rapport à l\'achat individuel.' : 'Immediate 28% saving vs buying 5 single posts.' },
-                    { title: isIt ? '12 MESI' : isDe ? '12 MONATE' : isFr ? '12 MOIS' : '12 MONTHS',
-                      desc:  isIt ? '12 mesi di tempo per utilizzare le offerte acquistate, senza scadenze rigide.' : isDe ? '12 Monate Zeit zur Nutzung der Anzeigen ohne strenge Fristen.' : isFr ? '12 mois pour utiliser les offres sans échéances rigides.' : '12 months to use your purchased posts, no strict deadlines.' },
-                    { title: isIt ? 'ACCESSO DB' : isDe ? 'DB-ZUGRIFF' : isFr ? 'ACCÈS DB' : 'DB ACCESS',
-                      desc:  isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier.' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der Datenbank.' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base.' : 'Immediate access to compatible candidates in the JobCourier database.' },
-                    { title: isIt ? 'AREA RISERVATA' : isDe ? 'DASHBOARD' : isFr ? 'ESPACE RÉSERVÉ' : 'DASHBOARD',
-                      desc:  isIt ? 'Area riservata con storico completo delle offerte pubblicate.' : isDe ? 'Reservierter Bereich mit vollständiger Angebotshistorie.' : isFr ? 'Espace réservé avec historique complet des offres publiées.' : 'Reserved area with full history of published job posts.' },
+                    { title: isIt ? 'RISPARMIO IMMEDIATO' : isDe ? 'SOFORTIGE ERSPARNIS' : isFr ? 'ÉCONOMIE IMMÉDIATE' : 'IMMEDIATE SAVINGS',
+                      desc:  isIt ? 'Risparmia rispetto all\'acquisto di 5 annunci singoli.' : isDe ? 'Sparen Sie gegenüber dem Einzelkauf von 5 Anzeigen.' : isFr ? 'Économisez par rapport à l\'achat de 5 annonces individuelles.' : 'Save compared to buying 5 single posts.' },
+                    { title: isIt ? 'MAGGIORE FLESSIBILITÀ' : isDe ? 'MEHR FLEXIBILITÄT' : isFr ? 'PLUS DE FLEXIBILITÉ' : 'MORE FLEXIBILITY',
+                      desc:  isIt ? 'Utilizza gli annunci quando ne hai bisogno durante l\'anno.' : isDe ? 'Nutzen Sie die Anzeigen, wenn Sie sie im Laufe des Jahres brauchen.' : isFr ? 'Utilisez les annonces quand vous en avez besoin pendant l\'année.' : 'Use posts when you need them throughout the year.' },
+                    { title: isIt ? 'CANDIDATI GIÀ DISPONIBILI' : isDe ? 'BEREITS VERFÜGBARE KANDIDATEN' : isFr ? 'CANDIDATS DÉJÀ DISPONIBLES' : 'CANDIDATES ALREADY AVAILABLE',
+                      desc:  isIt ? 'Non partire da zero: visualizza subito i candidati compatibili già presenti nel database JobCourier.' : isDe ? 'Starten Sie nicht bei Null: sehen Sie sofort kompatible Kandidaten in der Datenbank.' : isFr ? 'Ne partez pas de zéro : consultez les candidats compatibles dans la base JobCourier.' : 'Don\'t start from scratch: view compatible candidates in the JobCourier database.' },
+                    { title: isIt ? 'GESTIONE CENTRALIZZATA' : isDe ? 'ZENTRALISIERTE VERWALTUNG' : isFr ? 'GESTION CENTRALISÉE' : 'CENTRALIZED MANAGEMENT',
+                      desc:  isIt ? "Candidature e candidati in un'unica area riservata." : isDe ? 'Bewerbungen und Kandidaten in einem einzigen reservierten Bereich.' : isFr ? 'Candidatures et candidats dans un seul espace réservé.' : 'Applications and candidates in one reserved area.' },
                 ],
-                tag: isIt ? 'PIÙ ACQUISTATO' : isDe ? 'MEISTGEKAUFT' : isFr ? 'PLUS ACHETÉ' : 'BEST SELLER',
+                tag: isIt ? 'CONSIGLIATO' : isDe ? 'EMPFOHLEN' : isFr ? 'RECOMMANDÉ' : 'RECOMMENDED',
                 highlight: true,
-                cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
+                cta: isIt ? 'Contattaci' : isDe ? 'Kontakt' : isFr ? 'Contactez-nous' : 'Contact us',
             },
             {
                 label: isIt ? '03 / CONTINUO' : isDe ? '03 / KONTINUIERLICH' : isFr ? '03 / CONTINU' : '03 / CONTINUOUS',
                 name: isIt ? 'PIANO CONTINUO' : isDe ? 'FORTLAUFENDER PLAN' : isFr ? 'PLAN CONTINU' : 'CONTINUOUS PLAN',
                 price: isIt ? "da CHF 1'200" : isDe ? "ab CHF 1'200" : isFr ? "dès CHF 1'200" : "from CHF 1,200",
-                pricePrefix: isIt ? 'da CHF' : isDe ? 'ab CHF' : isFr ? 'dès CHF' : 'from CHF',
+                pricePrefix: isIt ? 'DA CHF' : isDe ? 'AB CHF' : isFr ? 'DÈS CHF' : 'FROM CHF',
                 priceNum: "1'200",
+                priceSubNote: isIt ? 'CHF 100 al mese' : isDe ? 'CHF 100 pro Monat' : isFr ? 'CHF 100 par mois' : 'CHF 100 per month',
                 note: isIt ? '+IVA' : isDe ? '+MwSt.' : isFr ? '+TVA' : '+VAT',
-                desc: isIt ? 'Piani flessibili per flussi di ricerca costanti.' : isDe ? 'Flexible Pläne für konstante Suchen.' : isFr ? 'Plans flexibles pour des flux de recherche constants.' : 'Flexible plans for constant search volumes.',
+                desc: isIt ? 'La soluzione ideale per aziende che assumono regolarmente.' : isDe ? 'Die ideale Lösung für Unternehmen, die regelmäßig einstellen.' : isFr ? 'La solution idéale pour les entreprises qui recrutent régulièrement.' : 'The ideal solution for companies that hire regularly.',
                 features: [
-                    isIt ? 'Offerte di lavoro online 30gg' : isDe ? 'Stellenanzeigen online 30 Tage' : isFr ? 'Annonces en ligne 30 jours' : 'Job posts online 30 days',
-                    isIt ? 'Ricerche illimitate in database' : isDe ? 'Unbegrenzte Datenbanksuchen' : isFr ? 'Recherches illimitées en base de données' : 'Unlimited database searches',
+                    isIt ? 'Pubblicazione di offerte di lavoro durante tutto l\'anno' : isDe ? 'Stellenanzeigen das ganze Jahr über' : isFr ? 'Publication d\'offres tout au long de l\'année' : 'Job posts throughout the entire year',
+                    isIt ? 'Accesso ai candidati compatibili già presenti nel database' : isDe ? 'Zugriff auf kompatible Kandidaten in der Datenbank' : isFr ? 'Accès aux candidats compatibles dans la base de données' : 'Access to compatible candidates in the database',
+                    isIt ? 'Gestione candidature' : isDe ? 'Bewerbungsmanagement' : isFr ? 'Gestion des candidatures' : 'Application management',
                     isIt ? 'Area aziendale riservata' : isDe ? 'Reservierter Unternehmensbereich' : isFr ? 'Espace entreprise réservé' : 'Reserved company area',
                 ],
                 vantaggi: [
-                    { title: isIt ? 'SU MISURA' : isDe ? 'MASSGESCHNEIDERT' : isFr ? 'SUR MESURE' : 'CUSTOM',
-                      desc:  isIt ? 'Offerta personalizzata secondo le esigenze specifiche della tua azienda.' : isDe ? 'Maßgeschneidertes Angebot nach Ihren Bedürfnissen.' : isFr ? 'Offre personnalisée selon vos besoins spécifiques.' : 'Tailor-made offer built around your company\'s needs.' },
-                    { title: isIt ? 'ILLIMITATE' : isDe ? 'UNBEGRENZT' : isFr ? 'ILLIMITÉES' : 'UNLIMITED',
-                      desc:  isIt ? 'Offerte di lavoro illimitate per 12 mesi con massima flessibilità.' : isDe ? 'Unbegrenzte Stellenanzeigen für 12 Monate.' : isFr ? 'Offres d\'emploi illimitées pendant 12 mois.' : 'Unlimited job posts for 12 months with full flexibility.' },
-                    { title: isIt ? 'ACCESSO DB' : isDe ? 'DB-ZUGRIFF' : isFr ? 'ACCÈS DB' : 'DB ACCESS',
-                      desc:  isIt ? 'Accesso immediato ai candidati compatibili già presenti nel database JobCourier.' : isDe ? 'Sofortiger Zugriff auf kompatible Kandidaten in der Datenbank.' : isFr ? 'Accès immédiat aux candidats compatibles déjà dans la base.' : 'Immediate access to compatible candidates in the JobCourier database.' },
-                    { title: isIt ? 'SUPPORTO' : isDe ? 'SUPPORT' : isFr ? 'SUPPORT' : 'SUPPORT',
-                      desc:  isIt ? 'Supporto clienti dedicato in ogni fase del processo di recruiting.' : isDe ? 'Dedizierter Kundensupport in jeder Phase des Recruitings.' : isFr ? 'Support client dédié à chaque étape du recrutement.' : 'Dedicated customer support at every stage of your recruiting.' },
-                    { title: isIt ? 'GESTIONE' : isDe ? 'VERWALTUNG' : isFr ? 'GESTION' : 'MANAGEMENT',
-                      desc:  isIt ? "Gestione centralizzata di candidature e candidati da un'unica area riservata." : isDe ? 'Zentrale Verwaltung von Bewerbungen aus einem einzigen Bereich.' : isFr ? 'Gestion centralisée des candidatures depuis un espace unique.' : 'Centralized management of applications from one dashboard.' },
+                    { title: isIt ? 'VISIBILITÀ CONTINUA' : isDe ? 'DAUERHAFTE SICHTBARKEIT' : isFr ? 'VISIBILITÉ CONTINUE' : 'CONTINUOUS VISIBILITY',
+                      desc:  isIt ? 'Pubblica le tue offerte durante tutto l\'anno e raggiungi candidati in tutta la Svizzera.' : isDe ? 'Veröffentlichen Sie Ihre Anzeigen das ganze Jahr und erreichen Sie Kandidaten in der ganzen Schweiz.' : isFr ? 'Publiez vos offres toute l\'année et atteignez des candidats dans toute la Suisse.' : 'Publish your posts year-round and reach candidates across Switzerland.' },
+                    { title: isIt ? 'ACCESSO AL DATABASE CANDIDATI' : isDe ? 'ZUGRIFF AUF KANDIDATEN-DB' : isFr ? 'ACCÈS BASE CANDIDATS' : 'CANDIDATE DATABASE ACCESS',
+                      desc:  isIt ? 'Consulta e ricerca i candidati registrati su JobCourier anche senza pubblicare un\'offerta di lavoro.' : isDe ? 'Suchen Sie registrierte Kandidaten auch ohne aktive Stellenanzeige.' : isFr ? 'Consultez les candidats inscrits même sans offre publiée.' : 'Search registered candidates even without an active job post.' },
+                    { title: isIt ? 'CANDIDATI GIÀ DISPONIBILI' : isDe ? 'BEREITS VERFÜGBARE KANDIDATEN' : isFr ? 'CANDIDATS DÉJÀ DISPONIBLES' : 'CANDIDATES ALREADY AVAILABLE',
+                      desc:  isIt ? 'Non partire da zero: visualizza subito i candidati compatibili già presenti nel database JobCourier.' : isDe ? 'Starten Sie nicht bei Null: sehen Sie sofort kompatible Kandidaten.' : isFr ? 'Ne partez pas de zéro : consultez les candidats compatibles.' : 'Don\'t start from scratch: view compatible candidates immediately.' },
+                    { title: isIt ? 'GESTIONE CENTRALIZZATA' : isDe ? 'ZENTRALISIERTE VERWALTUNG' : isFr ? 'GESTION CENTRALISÉE' : 'CENTRALIZED MANAGEMENT',
+                      desc:  isIt ? "Candidature e candidati in un'unica area riservata." : isDe ? 'Bewerbungen und Kandidaten in einem einzigen reservierten Bereich.' : isFr ? 'Candidatures et candidats dans un seul espace réservé.' : 'Applications and candidates in one reserved area.' },
                 ],
-                tag: isIt ? '03 / CONTINUO' : isDe ? '03 / KONTINUIERLICH' : isFr ? '03 / CONTINU' : '03 / CONTINUOUS',
-                cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
+                tag: isIt ? 'PIÙ ACQUISTATO' : isDe ? 'MEISTGEKAUFT' : isFr ? 'PLUS ACHETÉ' : 'BEST SELLER',
+                cta: isIt ? 'Contattaci' : isDe ? 'Kontakt' : isFr ? 'Contactez-nous' : 'Contact us',
             },
         ],
         agency: {
-            title: isIt ? 'Soluzioni per Agenzie di Selezione' : isDe ? 'Lösungen für Personalvermittlungen' : isFr ? 'Solutions pour Agences de Recrutement' : 'Solutions for Recruitment Agencies',
-            subtitle: isIt ? 'Flessibilità e potenza di calcolo su volumi massivi.' : isDe ? 'Flexibilität und Leistung bei massivem Volumen.' : isFr ? 'Flexibilité et puissance sur des volumes massifs.' : 'Flexibility and power for massive volumes.',
-            desc: isIt ? 'Sblocca il pieno potenziale di JobCourier per la tua agenzia di recruiting con strumenti professionali dedicati e tariffe agevolate sui volumi.' : isDe ? 'Schalten Sie das volle Potenzial von JobCourier für Ihre Personalvermittlung mit dedizierten professionellen Tools frei.' : isFr ? 'Débloquez le plein potentiel de JobCourier pour votre agence avec des outils professionnels dédiés.' : 'Unlock the full potential of JobCourier for your recruitment agency with dedicated professional tools.',
+            title: isIt ? 'Soluzioni per Agenzie e Recruiter' : isDe ? 'Lösungen für Agenturen & Recruiter' : isFr ? 'Solutions pour Agences et Recruteurs' : 'Solutions for Agencies & Recruiters',
+            subtitle: isIt ? 'Pensate per chi gestisce più ricerche di personale ogni giorno.' : isDe ? 'Entwickelt für alle, die täglich mehrere Personalsuchen betreuen.' : isFr ? 'Pensées pour ceux qui gèrent plusieurs recherches de personnel chaque jour.' : 'Designed for those managing multiple recruitment searches every day.',
+            desc: isIt ? 'Pubblicazione automatizzata, accesso al database candidati e condizioni dedicate per elevati volumi di ricerca.' : isDe ? 'Automatisierte Veröffentlichung, Zugriff auf die Kandidatendatenbank und dedizierte Konditionen für hohe Suchvolumen.' : isFr ? 'Publication automatisée, accès à la base de données candidats et conditions dédiées pour de gros volumes.' : 'Automated publishing, candidate database access and dedicated conditions for high search volumes.',
             features: [
-                isIt ? 'Integrazione API diretta con il tuo ATS' : isDe ? 'Direkte API-Integration mit Ihrem ATS' : isFr ? 'Intégration API directe avec votre ATS' : 'Direct API integration with your ATS',
-                isIt ? 'Multi-posting automatizzato di massa' : isDe ? 'Massen-Multi-Posting automatisiert' : isFr ? 'Multi-diffusion automatisée de masse' : 'Automated mass multi-posting',
-                isIt ? 'Accesso illimitato al Database Candidati' : isDe ? 'Unbegrenzter Zugriff auf die Kandidatendatenbank' : isFr ? 'Accès illimité à la base de données candidats' : 'Unlimited Candidate Database access',
-                isIt ? 'Account manager dedicato e fatturazione mensile' : isDe ? 'Dedizierter Account Manager & monatliche Abrechnung' : isFr ? 'Gestionnaire de compte dédié et facturation mensuelle' : 'Dedicated account manager and monthly invoicing',
+                isIt ? 'Pubblicazione automatizzata tramite ATS' : isDe ? 'Automatisierte Veröffentlichung über ATS' : isFr ? 'Publication automatisée via ATS' : 'Automated publishing via ATS',
+                isIt ? 'Accesso al database candidati JobCourier' : isDe ? 'Zugriff auf die JobCourier-Kandidatendatenbank' : isFr ? 'Accès à la base de données candidats JobCourier' : 'Access to the JobCourier candidate database',
+                isIt ? 'Soluzioni dedicate per elevati volumi di ricerca' : isDe ? 'Dedizierte Lösungen für hohe Suchvolumen' : isFr ? 'Solutions dédiées pour de gros volumes de recherche' : 'Dedicated solutions for high search volumes',
+                isIt ? 'Condizioni commerciali personalizzate' : isDe ? 'Individuelle Geschäftskonditionen' : isFr ? 'Conditions commerciales personnalisées' : 'Customized commercial conditions',
             ],
-            cta: isIt ? "Richiedi un'offerta su misura" : isDe ? 'Fordern Sie ein maßgeschneidertes Angebot an' : isFr ? 'Demandez une offre sur mesure' : 'Request a custom offer',
+            boxTitle: isIt ? 'SOLUZIONE SU MISURA' : isDe ? 'MASSGESCHNEIDERTE LÖSUNG' : isFr ? 'SOLUTION SUR MESURE' : 'CUSTOM SOLUTION',
+            boxDesc: isIt ? 'Raccontaci le tue esigenze e costruiremo la soluzione più adatta alla tua organizzazione.' : isDe ? 'Erzählen Sie uns von Ihren Anforderungen und wir erstellen die passende Lösung.' : isFr ? 'Décrivez-nous vos besoins et nous construirons la solution adaptée à votre organisation.' : 'Tell us your needs and we\'ll build the right solution for your organization.',
+            cta: isIt ? 'Contattaci' : isDe ? 'Kontakt' : isFr ? 'Contactez-nous' : 'Contact us',
+            cta2: isIt ? 'Richiedi una consulenza' : isDe ? 'Beratung anfordern' : isFr ? 'Demander un conseil' : 'Request a consultation',
+        },
+        stats: {
+            title: isIt ? 'PERCHÉ LE AGENZIE SCELGONO JOBCOURIER' : isDe ? 'WARUM AGENTUREN JOBCOURIER WÄHLEN' : isFr ? 'POURQUOI LES AGENCES CHOISISSENT JOBCOURIER' : 'WHY AGENCIES CHOOSE JOBCOURIER',
+            subtitle: isIt ? 'Da oltre 10 anni mettiamo in contatto candidati, aziende e agenzie di reclutamento in tutta la Svizzera.' : isDe ? 'Seit über 10 Jahren verbinden wir Kandidaten, Unternehmen und Personalvermittlungen in der ganzen Schweiz.' : isFr ? 'Depuis plus de 10 ans, nous mettons en relation candidats, entreprises et agences de recrutement dans toute la Suisse.' : 'For over 10 years we\'ve been connecting candidates, companies and recruitment agencies across Switzerland.',
+            items: [
+                { num: '10+', lines: isIt ? ['ANNI', 'DI ESPERIENZA', 'NEL RECRUITING'] : isDe ? ['JAHRE', 'ERFAHRUNG', 'IM RECRUITING'] : isFr ? ['ANS', 'D\'EXPÉRIENCE', 'EN RECRUTEMENT'] : ['YEARS', 'OF EXPERIENCE', 'IN RECRUITING'] },
+                { num: '', lines: isIt ? ['AUDIENCE', 'QUALIFICATA E', 'IN TARGET'] : isDe ? ['QUALIFIZIERTE', 'ZIELGRUPPEN-', 'AUDIENCE'] : isFr ? ['AUDIENCE', 'QUALIFIÉE ET', 'CIBLÉE'] : ['QUALIFIED', 'TARGETED', 'AUDIENCE'] },
+                { num: "120'000+", lines: isIt ? ['CANDIDATI', 'REGISTRATI'] : isDe ? ['REGISTRIERTE', 'KANDIDATEN'] : isFr ? ['CANDIDATS', 'INSCRITS'] : ['REGISTERED', 'CANDIDATES'] },
+                { num: '', lines: isIt ? ['PARTNER DI', 'AGENZIE E PMI', 'IN TUTTA SVIZZERA'] : isDe ? ['PARTNER VON', 'AGENTUREN & KMU', 'IN DER SCHWEIZ'] : isFr ? ['PARTENAIRE DES', 'AGENCES ET PME', 'EN SUISSE'] : ['PARTNER OF', 'AGENCIES & SMES', 'ACROSS SWITZERLAND'] },
+            ],
         },
     };
 };
@@ -222,7 +237,7 @@ const Pricing = () => {
 
                         <div className="hero-line flex flex-row gap-4 w-full max-w-lg">
                             <FuchsiaButton href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it" fullWidth>
-                                {t('pricing.cta_register') || 'REGISTRATI GRATIS'} →
+                                {data.heroCta} →
                             </FuchsiaButton>
                             <FuchsiaOutlineButton href="#soluzioni" fullWidth>
                                 {t('pricing.cta_discover') || 'SCOPRI I PIANI'} →
@@ -342,11 +357,6 @@ const Pricing = () => {
                                             </div>
 
                                             <div className="mb-6">
-                                                <div style={{ marginBottom: 6, minHeight: 22 }}>
-                                                    {plan.oldPrice && (
-                                                        <span style={{ fontFamily: body, fontSize: 13, color: GM, textDecoration: 'line-through' }}>{plan.oldPrice}</span>
-                                                    )}
-                                                </div>
                                                 <div style={{ lineHeight: 1 }}>
                                                     <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 12, color: GM, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 4 }}>
                                                         {plan.pricePrefix}
@@ -357,6 +367,11 @@ const Pricing = () => {
                                                     <div style={{ fontFamily: body, fontSize: 12, color: GM }}>
                                                         {plan.note}
                                                     </div>
+                                                    {plan.priceSubNote && (
+                                                        <div style={{ fontFamily: body, fontSize: 11, color: F, fontWeight: 600, marginTop: 6 }}>
+                                                            {plan.priceSubNote}
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
 
@@ -477,20 +492,61 @@ const Pricing = () => {
                                     <div className="space-y-4 my-auto">
                                         <Lock size={32} className="mx-auto text-slate-300" />
                                         <h4 style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: N }}>
-                                            Accordo Commerciale
+                                            {data.agency.boxTitle}
                                         </h4>
                                         <p style={{ fontFamily: body, fontSize: 11, color: GM, lineHeight: 1.4 }}>
-                                            Sblocca la pubblicazione automatica massiva integrata con i tuoi sistemi proprietari.
+                                            {data.agency.boxDesc}
                                         </p>
                                     </div>
-                                    <FuchsiaButton href="/contatti" fullWidth>
-                                        {data.agency.cta} →
-                                    </FuchsiaButton>
+                                    <div className="space-y-3 w-full">
+                                        <FuchsiaButton href="/contatti" fullWidth>
+                                            {data.agency.cta} →
+                                        </FuchsiaButton>
+                                        <FuchsiaOutlineButton href="/contatti" fullWidth>
+                                            {data.agency.cta2} →
+                                        </FuchsiaOutlineButton>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
                     )}
                 </AnimatePresence>
+            </section>
+
+            {/* STATS */}
+            <section className="py-20 px-6 md:px-12" style={{ background: W }}>
+                <div className="container mx-auto max-w-5xl text-center">
+                    <div className="mb-6">
+                        <SectionLabel>{data.stats.title}</SectionLabel>
+                    </div>
+                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: GM, lineHeight: 1.5, maxWidth: 640, margin: '0 auto 48px' }}>
+                        {data.stats.subtitle}
+                    </p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        {data.stats.items.map((stat, sIdx) => (
+                            <motion.div
+                                key={sIdx}
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: sIdx * 0.08 }}
+                                className="p-6"
+                                style={{ background: GL, border: '1px solid rgba(5,11,43,0.06)' }}
+                            >
+                                {stat.num && (
+                                    <div style={{ fontFamily: brand, fontWeight: 900, fontSize: 32, color: F, letterSpacing: '-0.02em', marginBottom: 8 }}>
+                                        {stat.num}
+                                    </div>
+                                )}
+                                {stat.lines.map((line, lIdx) => (
+                                    <div key={lIdx} style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, color: N, letterSpacing: '0.1em', textTransform: 'uppercase', lineHeight: 1.6 }}>
+                                        {line}
+                                    </div>
+                                ))}
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
             </section>
 
             {/* CTA */}
