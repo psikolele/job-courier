@@ -1,30 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Sachbearbeiter/in Buchhaltung 50-60% (w/m/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719370-sachbearbeiter-in-buchhaltung-50-60-w-m-d-niederwil-aargau&language=en"
-  },
-  {
-    "id": 1,
-    "title": "SachbearbeiterIn Administration (w/m/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719371-sachbearbeiterin-administration-w-m-d-100-aarau-aargau&language=en"
-  },
-  {
-    "id": 2,
-    "title": "RIF. 590 - AUTISTA PATENTE D",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "E-Work Sagl",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719372-rif-590-autista-patente-d-mendrisio&language=en"
-  },
-  {
-    "id": 3,
     "title": "PITTORE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,12 +8,36 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719374-pittore-locarno&language=en"
   },
   {
-    "id": 4,
+    "id": 1,
+    "title": "Sachbearbeiter/in Buchhaltung 50-60% (w/m/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719370-sachbearbeiter-in-buchhaltung-50-60-w-m-d-niederwil-aargau&language=en"
+  },
+  {
+    "id": 2,
+    "title": "SachbearbeiterIn Administration (w/m/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719371-sachbearbeiterin-administration-w-m-d-100-aarau-aargau&language=en"
+  },
+  {
+    "id": 3,
     "title": "Logistiker/in Haustechnik (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719369-logistiker-in-haustechnik-m-w-d-100-winterthur-zh&language=en"
+  },
+  {
+    "id": 4,
+    "title": "RIF. 590 - AUTISTA PATENTE D",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "E-Work Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719372-rif-590-autista-patente-d-mendrisio&language=en"
   },
   {
     "id": 5,
@@ -49,38 +49,22 @@
   },
   {
     "id": 6,
-    "title": "Mechaniker (m/w/d) 100%",
+    "title": "Kalibriertechniker (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719363-mechaniker-m-w-d-100-suhr-aargau&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719360-kalibriertechniker-m-w-d-solothurn-so&language=en"
   },
   {
     "id": 7,
-    "title": "Sachbearbeiterin / Sachbearbeiter Treuhand 60?100 % (a)",
+    "title": "Immobilienbewirtschafter/in ? Gestalten Sie Ihre Zukunft!",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719368-sachbearbeiterin-sachbearbeiter-treuhand-60-100%E2%80%AF-a-zurich-seefeld-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719367-immobilienbewirtschafter-in-gestalten-sie-ihre-zukunft-aarau-ag&language=en"
   },
   {
     "id": 8,
-    "title": "HR-Fachperson Payroll & Absenzenmanagement (m/w/d) ? 80 %",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719361-hr-fachperson-payroll-absenzenmanagement-m-w-d-80-windisch-aargau&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Servicetechniker (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719364-servicetechniker-m-w-d-muolen-sg&language=en"
-  },
-  {
-    "id": 10,
     "title": "Elektroinstallateur EFZ (a) 100% Thun",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +72,27 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719365-elektroinstallateur-efz-a-100-thun-thun-be&language=en"
   },
   {
-    "id": 11,
+    "id": 9,
+    "title": "Mechaniker (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719363-mechaniker-m-w-d-100-suhr-aargau&language=en"
+  },
+  {
+    "id": 10,
     "title": "Servicetechniker/in (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719362-servicetechniker-in-m-w-d-100-adliswil-zh&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Elektroinstallateur EFZ (a) 100% Bern",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719366-elektroinstallateur-efz-a-100-bern-bern-be&language=en"
   }
 ]
