@@ -14,9 +14,7 @@ export default {
       heading: 'Der Arbeitsmarkt hat sich verändert',
       blocks: [
         'Über viele Jahre wurde der Einstellungsprozess als Einbahnstrasse wahrgenommen.',
-        'Das Unternehmen veröffentlichte eine Stelle.',
-        'Die Kandidaten bewarben sich.',
-        'Die Organisation wählte aus.',
+        { list: ['Das Unternehmen veröffentlichte eine Stelle.', 'Die Kandidaten bewarben sich.', 'Die Organisation wählte aus.'] },
         'Heute sieht der Kontext ganz anders aus.',
         'Menschen haben Zugang zu einer enormen Menge an Informationen.',
         'Sie können Möglichkeiten vergleichen, Meinungen einholen, Unternehmenswebsites besuchen und verschiedene Aspekte bewerten, noch bevor sie überhaupt eine Bewerbung einreichen.',
@@ -27,10 +25,7 @@ export default {
       heading: 'Die Kandidaten sind besser informiert',
       blocks: [
         'Vor einer Bewerbung prüfen viele Personen:',
-        'die Unternehmenswebsite;',
-        'die Online-Präsenz;',
-        'Bewertungen;',
-        'Nachrichten über das Unternehmen.',
+        { list: ['Unternehmenswebsite.', 'Online-Präsenz.', 'Bewertungen.', 'Nachrichten über das Unternehmen.'] },
         'Auch ein lokales KMU wird oft genau unter die Lupe genommen.',
       ],
     },
@@ -41,11 +36,7 @@ export default {
         'Der Lohn bleibt wichtig.',
         'Aber er ist nicht mehr das einzige Auswahlkriterium.',
         'Immer mehr Fachkräfte bewerten:',
-        'das Arbeitsumfeld;',
-        'die Stabilität;',
-        'die Entwicklungsperspektiven;',
-        'die Flexibilität;',
-        'die Qualität der Führung.',
+        { list: ['Arbeitsumfeld.', 'Stabilität.', 'Entwicklungsperspektiven.', 'Flexibilität.', 'Qualität der Führung.'] },
       ],
     },
     {
@@ -71,11 +62,7 @@ export default {
       blocks: [
         'Wenn eine Fachkraft zwei Möglichkeiten vergleicht, berücksichtigt sie viele Elemente.',
         'Zum Beispiel:',
-        'Sicherheit;',
-        'Perspektiven;',
-        'Arbeitsumfeld;',
-        'Vereinbarkeit von Privat- und Berufsleben;',
-        'Qualität der Beziehungen.',
+        { list: ['Sicherheit.', 'Perspektiven.', 'Arbeitsumfeld.', 'Vereinbarkeit von Privat- und Berufsleben.', 'Qualität der Beziehungen.'] },
       ],
     },
     {
@@ -103,16 +90,13 @@ export default {
     {
       heading: 'Kommunikation',
       blocks: [
-        'Ist die Website aktuell?',
-        'Sind die Informationen klar?',
-        'Wirkt das Unternehmen professionell?',
+        { list: ['Ist die Website aktuell?', 'Sind die Informationen klar?', 'Wirkt das Unternehmen professionell?'] },
       ],
     },
     {
       heading: 'Konsistenz',
       blocks: [
-        'Stimmt das, was kommuniziert wird, mit dem überein, was online erscheint?',
-        'Widersprüche erzeugen Zweifel.',
+        'Stimmt das, was kommuniziert wird, mit dem überein, was online erscheint? Widersprüche, auch kleine, erzeugen Zweifel in den Köpfen derjenigen, die das Unternehmen bewerten.',
       ],
     },
     {
@@ -132,44 +116,33 @@ export default {
     {
       heading: 'Signale, die Stabilität vermitteln',
       blocks: [
-        'eine etablierte Marktpräsenz;',
-        'Wachstum;',
-        'organisatorische Klarheit;',
-        'wahrgenommene Solidität.',
+        { list: ['Etablierte Marktpräsenz.', 'Wachstum.', 'Organisatorische Klarheit.', 'Wahrgenommene Solidität.'] },
       ],
     },
     {
       heading: 'Warum das wichtig ist',
       blocks: [
-        'Ein Stellenwechsel ist immer eine anspruchsvolle Entscheidung.',
-        'Die Menschen möchten das Risiko reduzieren.',
+        'Ein Stellenwechsel ist immer eine anspruchsvolle Entscheidung, und die Menschen möchten das Risiko reduzieren, indem sie Unternehmen wählen, die Kontinuität garantieren.',
       ],
     },
     {
       heading: '3. Arbeitsumfeld',
       blocks: [
-        'Einer der von Unternehmen am meisten unterschätzten Aspekte.',
-        'Und einer der von Kandidaten am höchsten bewerteten.',
+        'Einer der von Unternehmen am meisten unterschätzten Aspekte, aber auch einer der von Kandidaten am höchsten bewerteten.',
       ],
     },
     {
       heading: 'Wie wird wirklich gearbeitet?',
       blocks: [
         'Die Menschen versuchen zu verstehen:',
-        'wie die Mitarbeitenden behandelt werden;',
-        'welches Klima herrscht;',
-        'wie die internen Beziehungen gestaltet sind.',
+        { list: ['Wie die Mitarbeitenden behandelt werden.', 'Welches Klima herrscht.', 'Wie die internen Beziehungen gestaltet sind.'] },
       ],
     },
     {
       heading: 'Mund-zu-Mund-Propaganda zählt',
       blocks: [
-        'Oft kommen die einflussreichsten Informationen nicht von Unternehmenswebsites.',
-        'Sie kommen von Menschen.',
-        'Ehemalige Mitarbeitende.',
-        'Kunden.',
-        'Lieferanten.',
-        'Bekannte.',
+        'Oft kommen die einflussreichsten Informationen nicht von Unternehmenswebsites, sondern von Menschen.',
+        { list: ['Ehemalige Mitarbeitende.', 'Kunden.', 'Lieferanten.', 'Bekannte.'] },
       ],
     },
     {
@@ -182,9 +155,7 @@ export default {
     {
       heading: 'Die Fragen, die sie sich stellen',
       blocks: [
-        'Kann ich etwas lernen?',
-        'Kann ich neue Verantwortung übernehmen?',
-        'Kann ich mich beruflich weiterentwickeln?',
+        { list: ['Kann ich etwas lernen?', 'Kann ich neue Verantwortung übernehmen?', 'Kann ich mich beruflich weiterentwickeln?'] },
       ],
     },
     {
@@ -207,9 +178,7 @@ export default {
       heading: 'Kandidaten suchen nach Signalen',
       blocks: [
         'Schon vor dem Eintritt ins Unternehmen versuchen viele Personen zu verstehen:',
-        'wie die Mitarbeitenden geführt werden;',
-        'wie zugänglich das Management ist;',
-        'welcher Führungsstil die Organisation prägt.',
+        { list: ['Wie die Mitarbeitenden geführt werden.', 'Wie zugänglich das Management ist.', 'Welcher Führungsstil die Organisation prägt.'] },
       ],
     },
     {
@@ -230,17 +199,13 @@ export default {
     {
       heading: 'Was Kandidaten bewerten',
       blocks: [
-        'Arbeitszeiten;',
-        'Autonomie;',
-        'Arbeitsorganisation;',
-        'Vertrauen.',
+        { list: ['Arbeitszeiten.', 'Autonomie.', 'Arbeitsorganisation.', 'Vertrauen.'] },
       ],
     },
     {
       heading: 'Flexibilität ist nicht nur eine organisatorische Frage',
       blocks: [
-        'Sie ist auch ein kulturelles Signal.',
-        'Sie kommuniziert, wie das Unternehmen seine Mitarbeitenden betrachtet.',
+        'Sie ist auch ein kulturelles Signal: Sie kommuniziert, wie das Unternehmen seine Mitarbeitenden betrachtet und wie sehr es ihrem Urteil vertraut.',
       ],
     },
     {
@@ -312,16 +277,10 @@ export default {
       heading: 'Ein typisches Beispiel',
       blocks: [
         'Ein Unternehmen bietet:',
-        'ein positives Arbeitsumfeld;',
-        'Stabilität;',
-        'Autonomie;',
-        'Entwicklung.',
+        { list: ['Positives Arbeitsumfeld.', 'Stabilität.', 'Autonomie.', 'Entwicklung.'] },
         'Aber der Kandidat weiss es nicht. Warum?',
         'Weil diese Informationen nicht erscheinen:',
-        'auf der Website;',
-        'in den Stellenanzeigen;',
-        'in den sozialen Medien;',
-        'in der Unternehmenskommunikation.',
+        { list: ['Auf der Website.', 'In den Stellenanzeigen.', 'In den sozialen Medien.', 'In der Unternehmenskommunikation.'] },
       ],
     },
     {
@@ -340,23 +299,19 @@ export default {
     {
       heading: 'Die Website',
       blocks: [
-        'Wirkt sie professionell?',
-        'Ist sie aktuell?',
-        'Erzählt sie das Unternehmen auf authentische Weise?',
+        { list: ['Wirkt sie professionell?', 'Ist sie aktuell?', 'Erzählt sie das Unternehmen auf authentische Weise?'] },
       ],
     },
     {
       heading: 'Die Social-Media-Profile',
       blocks: [
-        'Zeigen sie etwas von der Unternehmensrealität?',
-        'Oder wirken sie verlassen?',
+        'Zeigen sie etwas von der Unternehmensrealität, von den Menschen und den Projekten? Oder wirken sie verlassen, mit dem letzten Beitrag von vor Jahren?',
       ],
     },
     {
       heading: 'Die Stellenanzeigen',
       blocks: [
-        'Kommunizieren sie nur Anforderungen?',
-        'Oder erklären sie, warum diese Möglichkeit interessant ist?',
+        'Kommunizieren sie nur Anforderungen und Aufgaben? Oder erklären sie auch, warum diese Möglichkeit für den Leser wirklich interessant ist?',
       ],
     },
     {
@@ -412,36 +367,15 @@ export default {
     {
       heading: 'Praktischer 30-Tage-Plan',
       blocks: [
-      ],
-    },
-    {
-      heading: 'Woche 1',
-      blocks: [
-        'Analysieren Sie Ihre Kommunikation.',
-        'Website;',
-        'Stellenanzeigen;',
-        'Social-Media-Profile.',
-      ],
-    },
-    {
-      heading: 'Woche 2',
-      blocks: [
-        'Sprechen Sie mit den Mitarbeitenden.',
-        'Fragen Sie: Warum arbeiten Sie hier?',
-        'Die Antworten können überraschend sein.',
-      ],
-    },
-    {
-      heading: 'Woche 3',
-      blocks: [
-        'Identifizieren Sie die wirklichen Stärken des Unternehmens.',
-        'Nicht die theoretischen, die echten.',
-      ],
-    },
-    {
-      heading: 'Woche 4',
-      blocks: [
-        'Beginnen Sie, diese konsistent zu kommunizieren.',
+        'Um die Lücke zwischen dem, was Ihr Unternehmen wirklich bietet, und dem, was die Kandidaten wahrnehmen, zu schliessen, können Sie einem einfachen Plan folgen.',
+        {
+          weekPlan: [
+            { week: 'Woche 1', title: 'Analysieren Sie Ihre Kommunikation', items: ['Website.', 'Stellenanzeigen.', 'Social-Media-Profile.'] },
+            { week: 'Woche 2', title: 'Sprechen Sie mit den Mitarbeitenden', items: ['Fragen Sie: „Warum arbeiten Sie hier?"', 'Die Antworten können überraschend sein.'] },
+            { week: 'Woche 3', title: 'Identifizieren Sie die wirklichen Stärken', items: ['Nicht die theoretischen, sondern die echten Stärken des Unternehmens.'] },
+            { week: 'Woche 4', title: 'Kommunizieren Sie konsistent', items: ['Beginnen Sie, diese Stärken auf allen Kanälen zu erzählen.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'Möchten Sie ein attraktives Unternehmensbild aufbauen? Beginnen Sie mit Employer Branding.', slug: 'employer-branding-pmi-guida-pratica' } },
@@ -454,7 +388,7 @@ export default {
         'Sehr oft sind es jene, die eine einfache Wahrheit verstanden haben:',
         'Die Menschen wollen wissen, warum sie sich gerade für dieses Unternehmen entscheiden sollten.',
         'KMU besitzen oft aussergewöhnliche Eigenschaften:',
-        'Nähe – Autonomie – Schnelligkeit – Authentische Beziehungen.',
+        { list: ['Nähe.', 'Autonomie.', 'Schnelligkeit.', 'Authentische Beziehungen.'] },
         'Die Herausforderung besteht nicht darin, sie zu schaffen, sondern sie zu kommunizieren.',
         'Und wenn das geschieht, verändert sich das Recruiting grundlegend.',
       ],

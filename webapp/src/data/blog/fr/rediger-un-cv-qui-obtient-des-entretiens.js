@@ -8,30 +8,21 @@ export default {
   readingTime: 8,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&q=80',
-  intro: 'Le CV reste le document le plus important de tout le processus de candidature.\n\nVous pouvez avoir de l\'expérience, des compétences solides et d\'excellentes références, mais si votre CV ne communique pas rapidement votre valeur professionnelle, vous risquez de ne même pas atteindre l\'étape de l\'entretien.\n\nDe nombreux candidats envoient des dizaines de candidatures sans recevoir de réponse et pensent que le problème vient de la concurrence, du marché ou du manque d\'opportunités.\n\nSouvent, le premier obstacle est le CV lui-même.\n\nUn bon CV ne sert pas à raconter toute votre histoire professionnelle.\n\nIl sert à convaincre un recruteur de vous accorder plus de temps.\n\nL\'objectif du CV n\'est pas d\'obtenir un emploi.\n\nL\'objectif est d\'obtenir un entretien.\n\nDans ce guide, nous verrons comment construire un CV efficace, quelles erreurs éviter et quels éléments font vraiment la différence lors d\'une sélection.',
+  intro: 'Le CV reste le document le plus important de tout le processus de candidature : vous pouvez avoir de l\'expérience, des compétences solides et d\'excellentes références, mais si votre CV ne communique pas rapidement votre valeur professionnelle, vous risquez de ne même pas atteindre l\'étape de l\'entretien.\n\nDe nombreux candidats envoient des dizaines de candidatures sans recevoir de réponse et pensent que le problème vient de la concurrence, du marché ou du manque d\'opportunités, mais souvent, le premier obstacle est le CV lui-même.\n\nUn bon CV ne sert pas à raconter toute votre histoire professionnelle, il sert à convaincre un recruteur de vous accorder plus de temps : l\'objectif du CV n\'est pas d\'obtenir un emploi, mais d\'obtenir un entretien.\n\nDans ce guide, nous verrons comment construire un CV efficace, quelles erreurs éviter et quels éléments font vraiment la différence lors d\'une sélection.',
   sections: [
     {
       heading: 'Les 30 premières secondes comptent',
       blocks: [
-        'De nombreux candidats imaginent que le recruteur lit attentivement chaque mot du CV.',
-        'En réalité, le premier tri est souvent très rapide.',
+        'De nombreux candidats imaginent que le recruteur lit attentivement chaque mot du CV, mais en réalité, le premier tri est souvent très rapide.',
         'Les responsables du recrutement cherchent une réponse à quelques questions fondamentales :',
-        'Qui est cette personne ?',
-        'Quelle est sa profession ?',
-        'Possède-t-elle l\'expérience requise ?',
-        'A-t-elle des compétences intéressantes pour le poste ?',
-        'Vaut-il la peine d\'approfondir ?',
-        'Si ces informations n\'apparaissent pas immédiatement, le risque d\'exclusion augmente.',
-        'Pas parce que le candidat n\'est pas valable.',
-        'Simplement parce que sa valeur n\'a pas été communiquée de manière efficace.',
+        { list: ['Qui est cette personne ?', 'Quelle est sa profession ?', 'Possède-t-elle l\'expérience requise ?', 'A-t-elle des compétences intéressantes pour le poste ?', 'Vaut-il la peine d\'approfondir ?'] },
+        'Si ces informations n\'apparaissent pas immédiatement, le risque d\'exclusion augmente ; pas parce que le candidat n\'est pas valable, mais simplement parce que sa valeur n\'a pas été communiquée de manière efficace.',
       ],
     },
     {
       heading: 'La structure idéale d\'un CV moderne',
       blocks: [
-        'Une des erreurs les plus fréquentes consiste à utiliser des modèles complexes, peu lisibles ou trop créatifs.',
-        'Dans la plupart des cas, la simplicité fonctionne mieux.',
-        'Un CV efficace devrait suivre une structure claire et facile à consulter.',
+        'Une des erreurs les plus fréquentes consiste à utiliser des modèles complexes, peu lisibles ou trop créatifs. Dans la plupart des cas, la simplicité fonctionne mieux, et un CV efficace devrait suivre une structure claire et facile à consulter.',
       ],
     },
     { cta: { question: 'Votre CV est-il prêt ? Mettez-le à l\'épreuve.', action: 'Voir les offres d\'emploi', to: '/offerte' } },
@@ -39,24 +30,16 @@ export default {
       heading: 'Données personnelles',
       blocks: [
         'Indiquez exclusivement les informations réellement utiles :',
-        'nom et prénom ;',
-        'numéro de téléphone ;',
-        'adresse e-mail professionnelle ;',
-        'lieu de résidence ;',
-        'profil LinkedIn (si à jour).',
+        { list: ['nom et prénom.', 'numéro de téléphone.', 'adresse e-mail professionnelle.', 'lieu de résidence.', 'profil LinkedIn (si à jour).'] },
         'Évitez les informations superflues qui n\'ajoutent pas de valeur à la candidature.',
       ],
     },
     {
       heading: 'Profil professionnel',
       blocks: [
-        'C\'est probablement la section la plus sous-estimée du CV.',
-        'Pourtant, c\'est l\'une des premières qui est lue.',
+        'C\'est probablement la section la plus sous-estimée du CV, pourtant, c\'est l\'une des premières qui est lue.',
         'Elle devrait résumer en quelques lignes :',
-        'qui vous êtes ;',
-        'ce que vous faites ;',
-        'quelles compétences vous distinguent ;',
-        'quelle valeur vous pouvez apporter.',
+        { list: ['qui vous êtes.', 'ce que vous faites.', 'quelles compétences vous distinguent.', 'quelle valeur vous pouvez apporter.'] },
       ],
     },
     {
@@ -77,13 +60,8 @@ export default {
       blocks: [
         'Cette section représente le cœur du CV.',
         'Pour chaque expérience, il est utile d\'indiquer :',
-        'le poste ;',
-        'l\'entreprise ;',
-        'la période ;',
-        'les principales responsabilités ;',
-        'les résultats obtenus.',
-        'De nombreux candidats décrivent uniquement des activités.',
-        'Les entreprises veulent au contraire comprendre l\'impact de votre travail.',
+        { list: ['le poste.', 'l\'entreprise.', 'la période.', 'les principales responsabilités.', 'les résultats obtenus.'] },
+        'De nombreux candidats décrivent uniquement des activités, alors que les entreprises veulent au contraire comprendre l\'impact de votre travail.',
       ],
     },
     {
@@ -115,15 +93,13 @@ export default {
       heading: 'Formation',
       blocks: [
         'Indiquez : titre - établissement - année d\'obtention.',
-        'Si vous possédez une longue expérience professionnelle, cette section peut être plus synthétique.',
-        'Pour les profils juniors, en revanche, la formation prend plus d\'importance.',
+        'Si vous possédez une longue expérience professionnelle, cette section peut être plus synthétique ; pour les profils juniors, en revanche, la formation prend plus d\'importance.',
       ],
     },
     {
       heading: 'Compétences',
       blocks: [
-        'De nombreux CV contiennent des listes interminables de compétences.',
-        'Mieux vaut se concentrer sur celles réellement pertinentes pour le poste.',
+        'De nombreux CV contiennent des listes interminables de compétences ; mieux vaut se concentrer sur celles réellement pertinentes pour le poste.',
         'Par exemple :',
       ],
     },
@@ -139,28 +115,20 @@ export default {
     {
       heading: 'Compétences transversales',
       blocks: [
-        'organisation ;',
-        'résolution de problèmes ;',
-        'communication ;',
-        'gestion des priorités.',
+        { list: ['Organisation.', 'Résolution de problèmes.', 'Communication.', 'Gestion des priorités.'] },
       ],
     },
     {
       heading: 'Langues',
       blocks: [
         'Les compétences linguistiques continuent de représenter un élément important dans de nombreux contextes professionnels.',
-        'Indiquez le niveau de manière claire et réaliste.',
-        'Mieux vaut éviter les évaluations vagues comme bon - moyen - scolaire.',
-        'Utilisez plutôt des niveaux reconnus comme A1, B2 ou C1.',
+        'Indiquez le niveau de manière claire et réaliste, en évitant les évaluations vagues comme bon, moyen ou scolaire. Utilisez plutôt des niveaux reconnus comme A1, B2 ou C1.',
       ],
     },
     {
       heading: 'Comment rédiger un profil professionnel qui capte l\'attention',
       blocks: [
-        'Le profil professionnel fait souvent la différence entre un CV qui est approfondi et un CV qui est écarté.',
-        'Son objectif est de créer immédiatement de l\'intérêt.',
-        'Il ne doit pas être une biographie.',
-        'Il doit être une synthèse efficace de votre valeur professionnelle.',
+        'Le profil professionnel fait souvent la différence entre un CV qui est approfondi et un CV qui est écarté : son objectif est de créer immédiatement de l\'intérêt, non pas une biographie, mais une synthèse efficace de votre valeur professionnelle.',
       ],
     },
     {
@@ -190,34 +158,24 @@ export default {
     {
       heading: 'Les erreurs qui font écarter un CV',
       blocks: [
-        'Même des candidats avec de l\'expérience et des compétences solides peuvent compromettre une candidature à cause d\'erreurs évitables.',
-        'De nombreux recruteurs identifient les mêmes problèmes des dizaines de fois chaque semaine.',
-        'Les connaître permet de les éviter.',
+        'Même des candidats avec de l\'expérience et des compétences solides peuvent compromettre une candidature à cause d\'erreurs évitables : de nombreux recruteurs identifient les mêmes problèmes des dizaines de fois chaque semaine, et les connaître permet de les éviter.',
       ],
     },
     {
       heading: 'CV trop long',
       blocks: [
-        'Une des erreurs les plus fréquentes.',
-        'De nombreux candidats essaient d\'inclure chaque expérience professionnelle, chaque formation et chaque détail de leur carrière.',
-        'Le résultat est souvent un document difficile à lire.',
+        'Une des erreurs les plus fréquentes : de nombreux candidats essaient d\'inclure chaque expérience professionnelle, chaque formation et chaque détail de leur carrière, avec pour résultat un document difficile à lire.',
         'Dans la plupart des cas :',
-        '1 page suffit pour les profils juniors ;',
-        '2 pages conviennent à la plupart des professionnels ;',
-        'au-delà de 3 pages, la valeur ajoutée est rare.',
+        { list: ['1 page suffit pour les profils juniors.', '2 pages conviennent à la plupart des professionnels.', 'Au-delà de 3 pages, la valeur ajoutée est rare.'] },
         'La synthèse est une compétence très appréciée.',
       ],
     },
     {
       heading: 'Graphisme excessif',
       blocks: [
-        'Un CV n\'a pas à remporter un prix de design.',
-        'Il doit être lisible.',
-        'Des mises en page complexes, des couleurs excessives, des icônes partout ou des présentations créatives peuvent rendre la lecture difficile.',
+        'Un CV n\'a pas à remporter un prix de design : il doit être lisible. Des mises en page complexes, des couleurs excessives, des icônes partout ou des présentations créatives peuvent rendre la lecture difficile.',
         'Mieux vaut privilégier :',
-        'la clarté ;',
-        'l\'ordre ;',
-        'la simplicité.',
+        { list: ['la clarté.', 'l\'ordre.', 'la simplicité.'] },
       ],
     },
     {
@@ -225,92 +183,68 @@ export default {
       blocks: [
         'Peu d\'éléments donnent une aussi mauvaise impression que des fautes d\'orthographe ou de grammaire.',
         'Avant d\'envoyer le CV :',
-        'relisez-le ;',
-        'utilisez un correcteur automatique ;',
-        'demandez à une autre personne de vérifier le texte.',
+        { list: ['relisez-le.', 'utilisez un correcteur automatique.', 'demandez à une autre personne de vérifier le texte.'] },
       ],
     },
     {
       heading: 'Informations incohérentes',
       blocks: [
-        'Dates qui ne coïncident pas - Expériences peu claires - Postes décrits de manière contradictoire.',
-        'Ce sont tous des éléments qui suscitent des doutes.',
-        'La crédibilité est fondamentale.',
+        'Dates qui ne coïncident pas, expériences peu claires, postes décrits de manière contradictoire : ce sont tous des éléments qui suscitent des doutes. La crédibilité est fondamentale.',
       ],
     },
     {
       heading: 'CV et systèmes de sélection : ce qu\'il faut savoir',
       blocks: [
-        'De plus en plus d\'entreprises utilisent des logiciels de tri pour gérer les candidatures.',
-        'Cela ne signifie pas que le CV est lu exclusivement par un ordinateur.',
-        'Cela signifie cependant que la clarté est encore plus importante.',
+        'De plus en plus d\'entreprises utilisent des logiciels de tri pour gérer les candidatures. Cela ne signifie pas que le CV est lu exclusivement par un ordinateur, mais la clarté est encore plus importante.',
       ],
     },
     {
       heading: 'Comment améliorer la lisibilité',
       blocks: [
         'Utilisez :',
-        'des titres clairs ;',
-        'des sections bien définies ;',
-        'une terminologie cohérente avec le poste ;',
-        'des compétences réellement possédées.',
+        { list: ['des titres clairs.', 'des sections bien définies.', 'une terminologie cohérente avec le poste.', 'des compétences réellement possédées.'] },
         'Évitez en revanche :',
-        'les images inutiles ;',
-        'les tableaux trop complexes ;',
-        'les formats difficiles à interpréter.',
+        { list: ['les images inutiles.', 'les tableaux trop complexes.', 'les formats difficiles à interpréter.'] },
       ],
     },
     {
       heading: 'L\'importance des mots-clés',
       blocks: [
-        'Si une annonce demande :',
-        'comptabilité ;',
-        'SAP ;',
-        'gestion clientèle ;',
-        'et que vous possédez ces compétences, elles devraient ressortir clairement dans le CV.',
+        'Si une annonce demande des compétences spécifiques et que vous les possédez, elles devraient ressortir clairement dans le CV. Par exemple :',
+        { list: ['Comptabilité.', 'SAP.', 'Gestion clientèle.'] },
         'De nombreux candidats possèdent les compétences requises mais ne les communiquent pas de manière visible.',
       ],
     },
     {
       heading: 'Les compétences qui font la différence aujourd\'hui',
       blocks: [
-        'Les compétences techniques restent fondamentales.',
-        'Cependant, les entreprises évaluent de plus en plus aussi la capacité à s\'adapter et à collaborer.',
+        'Les compétences techniques restent fondamentales ; cependant, les entreprises évaluent de plus en plus aussi la capacité à s\'adapter et à collaborer.',
       ],
     },
     {
       heading: 'Compétences numériques',
       blocks: [
-        'Presque toutes les professions nécessitent aujourd\'hui une certaine familiarité avec les outils numériques.',
-        'Selon le secteur, cela peut inclure :',
-        'ERP ;',
-        'CRM ;',
-        'outils d\'analyse de données ;',
-        'logiciels spécialisés.',
+        'Presque toutes les professions nécessitent aujourd\'hui une certaine familiarité avec les outils numériques. Selon le secteur, cela peut inclure :',
+        { list: ['ERP.', 'CRM.', 'outils d\'analyse de données.', 'logiciels spécialisés.'] },
       ],
     },
     {
       heading: 'Compétences linguistiques',
       blocks: [
-        'Les langues continuent de représenter un facteur compétitif important.',
-        'Investir dans les compétences linguistiques produit souvent un retour significatif sur le long terme.',
+        'Les langues continuent de représenter un facteur compétitif important. Investir dans les compétences linguistiques produit souvent un retour significatif sur le long terme.',
       ],
     },
     {
       heading: 'Compétences organisationnelles',
       blocks: [
         'Les entreprises apprécient les personnes capables de :',
-        'gérer les priorités ;',
-        'respecter les délais ;',
-        'travailler de manière autonome ;',
-        'organiser des activités complexes.',
+        { list: ['gérer les priorités.', 'respecter les délais.', 'travailler de manière autonome.', 'organiser des activités complexes.'] },
       ],
     },
     {
       heading: 'Résolution de problèmes',
       blocks: [
-        'De plus en plus d\'organisations cherchent des personnes capables d\'affronter des problèmes et de trouver des solutions.',
-        'Quand c\'est possible, montrez des exemples concrets dans vos expériences professionnelles.',
+        'De plus en plus d\'organisations cherchent des personnes capables d\'affronter des problèmes et de trouver des solutions. Quand c\'est possible, montrez des exemples concrets dans vos expériences professionnelles.',
       ],
     },
     {
@@ -408,13 +342,8 @@ export default {
     {
       heading: 'Conclusion',
       blocks: [
-        'Un CV efficace n\'est pas celui qui contient le plus d\'informations.',
-        'C\'est celui qui communique le mieux votre valeur professionnelle.',
-        'Les entreprises reçoivent de nombreuses candidatures et consacrent peu de temps au premier tri.',
-        'C\'est pourquoi clarté, synthèse et pertinence deviennent des facteurs décisifs.',
-        'Investir quelques heures dans la construction d\'un CV bien structuré peut faire une énorme différence dans les résultats de votre recherche d\'emploi.',
-        'Ne pensez pas au CV comme à un simple document.',
-        'Pensez-y comme à votre premier entretien.',
+        'Un CV efficace n\'est pas celui qui contient le plus d\'informations : c\'est celui qui communique le mieux votre valeur professionnelle. Les entreprises reçoivent de nombreuses candidatures et consacrent peu de temps au premier tri, c\'est pourquoi clarté, synthèse et pertinence deviennent des facteurs décisifs.',
+        'Investir quelques heures dans la construction d\'un CV bien structuré peut faire une énorme différence dans les résultats de votre recherche d\'emploi. Ne pensez pas au CV comme à un simple document : pensez-y comme à votre premier entretien.',
       ],
     },
   ],

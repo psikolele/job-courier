@@ -8,16 +8,12 @@ export default {
   readingTime: 7,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80',
-  intro: 'Quand on parle de marque employeur, de nombreuses PME pensent immédiatement aux grandes entreprises disposant de budgets importants, de campagnes de communication élaborées et d\'équipes RH structurées.\n\nC\'est une perception compréhensible.\n\nMais profondément erronée.\n\nLa marque employeur n\'est pas une stratégie réservée aux multinationales.\n\nC\'est quelque chose qui concerne toute entreprise souhaitant attirer, recruter et retenir des personnes de valeur.\n\nQu\'on le veuille ou non, chaque organisation possède déjà une marque employeur.\n\nLa vraie question est :\n\nL\'image que les candidats ont de notre entreprise nous aide-t-elle ou nous pénalise-t-elle ?\n\nDans ce guide, nous verrons ce qu\'est réellement la marque employeur, pourquoi elle est importante même pour une PME, et quelles actions concrètes peuvent améliorer l\'attractivité de l\'entreprise.',
+  intro: 'Quand on parle de marque employeur, de nombreuses PME pensent immédiatement aux grandes entreprises disposant de budgets importants, de campagnes de communication élaborées et d\'équipes RH structurées : c\'est une perception compréhensible, mais profondément erronée.\n\nLa marque employeur n\'est pas une stratégie réservée aux multinationales : c\'est quelque chose qui concerne toute entreprise souhaitant attirer, recruter et retenir des personnes de valeur. Qu\'on le veuille ou non, chaque organisation possède déjà une marque employeur. La vraie question est : l\'image que les candidats ont de notre entreprise nous aide-t-elle ou nous pénalise-t-elle ?\n\nDans ce guide, nous verrons ce qu\'est réellement la marque employeur, pourquoi elle est importante même pour une PME, et quelles actions concrètes peuvent améliorer l\'attractivité de l\'entreprise.',
   sections: [
     {
       heading: 'La marque employeur expliquée simplement',
       blocks: [
-        'De nombreux articles utilisent des définitions complexes.',
-        'En réalité, le concept peut être résumé de manière très simple.',
-        'La marque employeur, c\'est la façon dont votre entreprise est perçue comme lieu de travail.',
-        'Cela ne concerne pas seulement ce que vous communiquez.',
-        'Cela concerne avant tout ce que les personnes perçoivent.',
+        'De nombreux articles utilisent des définitions complexes, en réalité, le concept peut être résumé de manière très simple : la marque employeur, c\'est la façon dont votre entreprise est perçue comme lieu de travail. Cela ne concerne pas seulement ce que vous communiquez, mais avant tout ce que les personnes perçoivent.',
       ],
     },
     {
@@ -42,69 +38,52 @@ export default {
     {
       heading: 'Communication',
       blocks: [
-        'Comment vous racontez qui vous êtes et ce que vous offrez.',
-        'Lorsque ces trois éléments sont cohérents, l\'attractivité de l\'organisation augmente.',
+        'Comment vous racontez qui vous êtes et ce que vous offrez. Lorsque ces trois éléments sont cohérents, l\'attractivité de l\'organisation augmente.',
       ],
     },
     {
       heading: 'Pourquoi c\'est devenu si important aujourd\'hui',
       blocks: [
-        'Pendant de nombreuses années, les entreprises pouvaient se concentrer presque exclusivement sur la publication d\'annonces.',
-        'Aujourd\'hui, le contexte est différent.',
+        'Pendant de nombreuses années, les entreprises pouvaient se concentrer presque exclusivement sur la publication d\'annonces. Aujourd\'hui, le contexte est différent.',
       ],
     },
     {
       heading: 'Les candidats sont mieux informés',
       blocks: [
-        'Avant de postuler, de nombreuses personnes rassemblent des informations.',
-        'Elles consultent :',
-        'le site de l\'entreprise ;',
-        'les réseaux sociaux ;',
-        'les avis ;',
-        'leurs contacts professionnels.',
+        'Avant de postuler, de nombreuses personnes rassemblent des informations. Elles consultent :',
+        { list: ['Le site de l\'entreprise.', 'Les réseaux sociaux.', 'Les avis.', 'Leurs contacts professionnels.'] },
       ],
     },
     {
       heading: 'La concurrence a augmenté',
       blocks: [
-        'Les entreprises ne sont pas seulement en concurrence pour les clients et le marché.',
-        'Elles sont aussi en concurrence pour les personnes.',
+        'Les entreprises ne sont pas seulement en concurrence pour les clients et le marché : elles sont aussi en concurrence pour les personnes.',
       ],
     },
     {
       heading: 'Les attentes ont changé',
       blocks: [
         'Les professionnels évaluent des aspects autrefois considérés comme secondaires :',
-        'l\'environnement ;',
-        'le leadership ;',
-        'la croissance ;',
-        'la flexibilité ;',
-        'la culture d\'entreprise.',
+        { list: ['L\'environnement.', 'Le leadership.', 'La croissance.', 'La flexibilité.', 'La culture d\'entreprise.'] },
       ],
     },
     {
       heading: 'Les cinq piliers de la marque employeur',
       blocks: [
-        'De nombreuses entreprises cherchent des raccourcis.',
-        'En réalité, une marque employeur solide se construit en travaillant sur quelques éléments fondamentaux.',
+        'De nombreuses entreprises cherchent des raccourcis, en réalité, une marque employeur solide se construit en travaillant sur quelques éléments fondamentaux.',
       ],
     },
     {
       heading: '1. Réputation',
       blocks: [
-        'La réputation représente le point de départ.',
-        'Avant même de lire une annonce, de nombreuses personnes ont déjà une opinion sur l\'entreprise.',
+        'La réputation représente le point de départ : avant même de lire une annonce, de nombreuses personnes ont déjà une opinion sur l\'entreprise.',
       ],
     },
     {
       heading: 'Comment elle se forme',
       blocks: [
         'À travers :',
-        'les clients ;',
-        'les collaborateurs ;',
-        'les anciens collaborateurs ;',
-        'les fournisseurs ;',
-        'la présence en ligne.',
+        { list: ['Les clients.', 'Les collaborateurs.', 'Les anciens collaborateurs.', 'Les fournisseurs.', 'La présence en ligne.'] },
       ],
     },
     {
@@ -116,17 +95,13 @@ export default {
     {
       heading: '2. Culture d\'entreprise',
       blocks: [
-        'La culture est la façon dont les personnes travaillent ensemble chaque jour.',
-        'Elle ne coïncide pas avec les slogans présents sur le site.',
-        'Elle coïncide avec ce qui se passe réellement.',
+        'La culture est la façon dont les personnes travaillent ensemble chaque jour. Elle ne coïncide pas avec les slogans présents sur le site, mais avec ce qui se passe réellement.',
       ],
     },
     {
       heading: 'Quelques questions utiles',
       blocks: [
-        'Les personnes se sentent-elles écoutées ?',
-        'Les responsabilités sont-elles claires ?',
-        'Existe-t-il une collaboration ?',
+        { list: ['Les personnes se sentent-elles écoutées ?', 'Les responsabilités sont-elles claires ?', 'Existe-t-il une collaboration ?'] },
       ],
     },
     {
@@ -138,45 +113,25 @@ export default {
     {
       heading: '3. Leadership',
       blocks: [
-        'La qualité du leadership influe profondément sur la perception de l\'entreprise.',
-        'De nombreux collaborateurs associent leur expérience professionnelle principalement à leurs responsables.',
-      ],
-    },
-    {
-      heading: 'Dans les PME, l\'impact est énorme',
-      blocks: [
-        'Le contact direct avec les dirigeants et les managers rend le leadership encore plus visible.',
+        'La qualité du leadership influe profondément sur la perception de l\'entreprise : de nombreux collaborateurs associent leur expérience professionnelle principalement à leurs responsables. Dans les PME, le contact direct avec les dirigeants et les managers rend le leadership encore plus visible.',
       ],
     },
     {
       heading: 'Les caractéristiques les plus appréciées',
       blocks: [
-        'la clarté ;',
-        'la disponibilité ;',
-        'la cohérence ;',
-        'la capacité d\'écoute.',
+        { list: ['Clarté.', 'Disponibilité.', 'Cohérence.', 'Capacité d\'écoute.'] },
       ],
     },
     {
       heading: '4. Expérience candidat',
       blocks: [
-        'Un aspect souvent sous-estimé.',
-        'Et pourtant extrêmement important.',
-      ],
-    },
-    {
-      heading: 'Chaque candidature est une expérience',
-      blocks: [
-        'Du premier contact jusqu\'à la conclusion du processus de sélection.',
+        'Un aspect souvent sous-estimé, et pourtant extrêmement important : chaque candidature est une expérience, du premier contact jusqu\'à la conclusion du processus de sélection.',
       ],
     },
     {
       heading: 'Quelques exemples négatifs',
       blocks: [
-        'aucune réponse ;',
-        'des attentes très longues ;',
-        'des communications peu claires ;',
-        'des entretiens désorganisés.',
+        { list: ['Aucune réponse.', 'Des attentes très longues.', 'Des communications peu claires.', 'Des entretiens désorganisés.'] },
       ],
     },
     {
@@ -188,50 +143,38 @@ export default {
     {
       heading: '5. Communication',
       blocks: [
-        'De nombreuses PME possèdent d\'excellents arguments.',
-        'Elles ne les communiquent simplement pas.',
+        'De nombreuses PME possèdent d\'excellents arguments, elles ne les communiquent simplement pas.',
       ],
     },
     {
       heading: 'Quoi raconter',
       blocks: [
-        'les personnes ;',
-        'les projets ;',
-        'l\'environnement ;',
-        'la croissance ;',
-        'les valeurs.',
+        { list: ['Personnes.', 'Projets.', 'Environnement.', 'Croissance.', 'Valeurs.'] },
       ],
     },
     {
       heading: 'Ce qu\'il faut éviter',
       blocks: [
-        'La communication artificielle.',
-        'Les promesses irréalistes.',
-        'Les messages qui ne reflètent pas la réalité.',
+        { list: ['Communication artificielle.', 'Promesses irréalistes.', 'Messages qui ne reflètent pas la réalité.'] },
       ],
     },
     {
       heading: 'Comment améliorer le site de l\'entreprise',
       blocks: [
-        'Pour de nombreux candidats, le site représente le premier point de contact avec l\'organisation.',
-        'C\'est pourquoi il mérite une attention particulière.',
+        'Pour de nombreux candidats, le site représente le premier point de contact avec l\'organisation, c\'est pourquoi il mérite une attention particulière.',
       ],
     },
     {
       heading: 'La page « Travailler avec nous »',
       blocks: [
         'Elle devrait répondre à des questions simples :',
-        'qui vous êtes ;',
-        'ce que vous faites ;',
-        'pourquoi travailler avec vous ;',
-        'quelles opportunités vous offrez.',
+        { list: ['Qui vous êtes.', 'Ce que vous faites.', 'Pourquoi travailler avec vous.', 'Quelles opportunités vous offrez.'] },
       ],
     },
     {
       heading: 'Mettez en avant les personnes',
       blocks: [
-        'De nombreuses entreprises ne parlent que de leurs produits.',
-        'Les gens veulent aussi connaître les personnes qui travaillent au sein de l\'organisation.',
+        'De nombreuses entreprises ne parlent que de leurs produits, les gens veulent aussi connaître les personnes qui travaillent au sein de l\'organisation.',
       ],
     },
     {
@@ -243,33 +186,26 @@ export default {
     {
       heading: 'Il n\'est pas nécessaire de publier tous les jours',
       blocks: [
-        'Une croyance très répandue veut qu\'il faille être constamment actif.',
-        'En réalité, la qualité de la communication compte beaucoup plus.',
+        'Une croyance très répandue veut qu\'il faille être constamment actif : en réalité, la qualité de la communication compte beaucoup plus.',
       ],
     },
     {
       heading: 'Racontez ce qui se passe vraiment',
       blocks: [
         'Les personnes sont intéressées de connaître :',
-        'l\'équipe ;',
-        'les projets ;',
-        'la croissance de l\'entreprise ;',
-        'les initiatives internes.',
+        { list: ['L\'équipe.', 'Les projets.', 'La croissance de l\'entreprise.', 'Les initiatives internes.'] },
       ],
     },
     {
       heading: 'Montrez le côté humain',
       blocks: [
-        'De nombreux contenus d\'entreprise paraissent impersonnels.',
-        'Les personnes ont au contraire tendance à s\'intéresser aux personnes.',
+        'De nombreux contenus d\'entreprise paraissent impersonnels, les personnes ont au contraire tendance à s\'intéresser aux personnes.',
       ],
     },
     {
       heading: 'La valeur des témoignages',
       blocks: [
-        'Parmi tous les outils de marque employeur, les témoignages sont souvent parmi les plus efficaces.',
-        'Pour une raison très simple.',
-        'Les personnes ont tendance à faire davantage confiance à d\'autres personnes.',
+        'Parmi tous les outils de marque employeur, les témoignages sont souvent parmi les plus efficaces pour une raison très simple : les personnes ont tendance à faire davantage confiance à d\'autres personnes.',
       ],
     },
     {
@@ -282,25 +218,19 @@ export default {
       heading: 'Quoi raconter',
       blocks: [
         'Les témoignages les plus efficaces parlent de :',
-        'parcours professionnel ;',
-        'croissance ;',
-        'environnement de travail ;',
-        'expériences concrètes.',
+        { list: ['Parcours professionnel.', 'Croissance.', 'Environnement de travail.', 'Expériences concrètes.'] },
       ],
     },
     {
       heading: 'Restez authentique',
       blocks: [
-        'Il ne faut pas des messages parfaits.',
-        'Il faut de l\'authenticité.',
+        'Il ne faut pas des messages parfaits : il faut de l\'authenticité.',
       ],
     },
     {
       heading: 'L\'expérience candidat compte plus qu\'on ne le pense',
       blocks: [
-        'De nombreuses entreprises concentrent tous leurs efforts sur l\'attraction des candidats.',
-        'Puis négligent complètement l\'expérience de sélection.',
-        'C\'est une erreur.',
+        'De nombreuses entreprises concentrent tous leurs efforts sur l\'attraction des candidats, puis négligent complètement l\'expérience de sélection. C\'est une erreur.',
       ],
     },
     {
@@ -313,19 +243,14 @@ export default {
       heading: 'Les attentes des candidats',
       blocks: [
         'Les personnes apprécient :',
-        'la clarté ;',
-        'la transparence ;',
-        'des délais raisonnables ;',
-        'des communications ponctuelles.',
+        { list: ['Clarté.', 'Transparence.', 'Délais raisonnables.', 'Communications ponctuelles.'] },
       ],
     },
     {
       heading: 'Une expérience positive génère de la réputation',
       blocks: [
         'Même un candidat non sélectionné peut devenir :',
-        'client ;',
-        'ambassadeur de la marque ;',
-        'futur collaborateur.',
+        { list: ['Client.', 'Ambassadeur de la marque.', 'Futur collaborateur.'] },
       ],
     },
     {
@@ -337,8 +262,7 @@ export default {
     {
       heading: 'Communiquer une réalité qui n\'existe pas',
       blocks: [
-        'C\'est probablement l\'erreur la plus dangereuse.',
-        'Si ce qui est raconté ne correspond pas à la réalité, la déception sera inévitable.',
+        'C\'est probablement l\'erreur la plus dangereuse : si ce qui est raconté ne correspond pas à la réalité, la déception sera inévitable.',
       ],
     },
     {
@@ -368,85 +292,57 @@ export default {
     {
       heading: 'Plan pratique sur 30 jours',
       blocks: [
-        'De nombreuses PME pensent que de gros investissements sont nécessaires.',
-        'En réalité, il est possible de commencer avec des actions simples.',
-      ],
-    },
-    {
-      heading: 'Semaine 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analyse',
-      blocks: [
-        'Vérifiez :',
-        'le site de l\'entreprise ;',
-        'les annonces ;',
-        'le processus de candidature.',
-      ],
-    },
-    {
-      heading: 'Semaine 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Collecte d\'informations',
-      blocks: [
-        'Parlez avec vos collaborateurs.',
-        'Demandez-leur :',
-        'ce qu\'ils apprécient dans l\'entreprise ;',
-        'pourquoi ils sont restés ;',
-        'ce qui les rend fiers de leur travail.',
-      ],
-    },
-    {
-      heading: 'Semaine 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Définition des messages clés',
-      blocks: [
-        'Identifiez trois ou quatre éléments distinctifs de l\'organisation.',
-        'Par exemple :',
-        'l\'autonomie ;',
-        'l\'ambiance familiale ;',
-        'la croissance ;',
-        'la flexibilité.',
-      ],
-    },
-    {
-      heading: 'Semaine 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Communication',
-      blocks: [
-        'Commencez à intégrer ces éléments dans :',
-        'le site ;',
-        'les annonces ;',
-        'les entretiens.',
+        'De nombreuses PME pensent que de gros investissements sont nécessaires, en réalité, il est possible de commencer avec des actions simples.',
+        {
+          weekPlan: [
+            {
+              week: 'Semaine 1',
+              title: 'Analyse',
+              items: [
+                'Vérifiez le site de l\'entreprise et évaluez la première impression qu\'il transmet.',
+                'Examinez les annonces d\'emploi publiées et vérifiez qu\'elles sont à jour et claires.',
+                'Parcourez le processus de candidature comme le ferait un candidat extérieur.',
+              ],
+            },
+            {
+              week: 'Semaine 2',
+              title: 'Collecte d\'informations',
+              items: [
+                'Parlez avec vos collaborateurs et demandez-leur ce qu\'ils apprécient dans l\'entreprise.',
+                'Demandez-leur pourquoi ils sont restés et ce qui les rend fiers de leur travail.',
+                'Recueillez les réponses et identifiez les thèmes récurrents.',
+              ],
+            },
+            {
+              week: 'Semaine 3',
+              title: 'Définition des messages clés',
+              items: [
+                'Identifiez trois ou quatre éléments distinctifs de l\'organisation.',
+                'Par exemple : autonomie, ambiance familiale, croissance, flexibilité.',
+                'Formulez-les en messages simples et authentiques à utiliser dans la communication.',
+              ],
+            },
+            {
+              week: 'Semaine 4',
+              title: 'Communication',
+              items: [
+                'Commencez à intégrer les messages clés dans le site de l\'entreprise.',
+                'Mettez à jour les annonces d\'emploi avec le nouveau langage.',
+                'Portez ces éléments aussi dans les entretiens de sélection.',
+              ],
+            },
+          ],
+        },
       ],
     },
     { related: { question: 'Qu\'est-ce qui guide vraiment le choix des candidats ? Découvrez-le ici.', slug: 'perche-i-candidati-scelgono-alcune-aziende' } },
     {
       heading: 'Conclusion',
       blocks: [
-        'La marque employeur ne consiste pas à construire une image artificielle.',
-        'Elle consiste à raconter de manière authentique ce qui rend une entreprise unique.',
+        'La marque employeur ne consiste pas à construire une image artificielle : elle consiste à raconter de manière authentique ce qui rend une entreprise unique.',
         'Les PME possèdent souvent des atouts extraordinaires :',
-        'la proximité ;',
-        'l\'autonomie ;',
-        'la rapidité ;',
-        'les relations humaines ;',
-        'l\'impact direct.',
-        'Trop souvent, ces éléments restent invisibles.',
-        'Les entreprises qui attirent les meilleurs candidats ne sont pas nécessairement celles qui investissent le plus.',
-        'Ce sont souvent celles qui parviennent à faire une chose très simple : communiquer clairement qui elles sont, comment elles travaillent et pourquoi cela vaut la peine de faire partie de leur projet.',
-        'La marque employeur commence précisément ici.',
+        { list: ['Proximité.', 'Autonomie.', 'Rapidité.', 'Relations humaines.', 'Impact direct.'] },
+        'Trop souvent, ces éléments restent invisibles. Les entreprises qui attirent les meilleurs candidats ne sont pas nécessairement celles qui investissent le plus : ce sont souvent celles qui parviennent à faire une chose très simple, communiquer clairement qui elles sont, comment elles travaillent et pourquoi cela vaut la peine de faire partie de leur projet. La marque employeur commence précisément ici.',
       ],
     },
   ],

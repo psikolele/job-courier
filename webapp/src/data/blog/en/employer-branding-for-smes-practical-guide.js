@@ -8,16 +8,12 @@ export default {
   readingTime: 7,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80',
-  intro: 'When people talk about employer branding, many SMEs immediately think of large companies with big budgets, elaborate communication campaigns and structured HR teams.\n\nThat\'s an understandable perception.\n\nBut it\'s also deeply mistaken.\n\nEmployer branding isn\'t a strategy reserved for multinationals.\n\nIt\'s something that concerns any company that wants to attract, hire and retain good people.\n\nWhether you like it or not, every organization already has an employer brand.\n\nThe real question is:\n\nDoes the image candidates have of our company help us or hurt us?\n\nIn this guide we\'ll look at what employer branding really is, why it matters even for an SME, and what concrete actions can improve a company\'s appeal.',
+  intro: 'When people talk about employer branding, many SMEs immediately think of large companies with big budgets, elaborate communication campaigns and structured HR teams: that\'s an understandable perception, but it\'s also deeply mistaken.\n\nEmployer branding isn\'t a strategy reserved for multinationals: it\'s something that concerns any company that wants to attract, hire and retain good people. Whether you like it or not, every organization already has an employer brand. The real question is: does the image candidates have of our company help us or hurt us?\n\nIn this guide we\'ll look at what employer branding really is, why it matters even for an SME, and what concrete actions can improve a company\'s appeal.',
   sections: [
     {
       heading: 'Employer branding explained simply',
       blocks: [
-        'Many articles use complex definitions.',
-        'In reality the concept can be summarized very simply.',
-        'Employer branding is how your company is perceived as a place to work.',
-        'It isn\'t just about what you communicate.',
-        'It\'s mainly about what people perceive.',
+        'Many articles use complex definitions, but in reality the concept can be summarized very simply: employer branding is how your company is perceived as a place to work. It isn\'t just about what you communicate, but mainly about what people perceive.',
       ],
     },
     {
@@ -42,69 +38,52 @@ export default {
     {
       heading: 'Communication',
       blocks: [
-        'How you tell the story of who you are and what you offer.',
-        'When these three elements are consistent, the organization\'s appeal increases.',
+        'How you tell the story of who you are and what you offer. When these three elements are consistent, the organization\'s appeal increases.',
       ],
     },
     {
       heading: 'Why it has become so important today',
       blocks: [
-        'For many years companies could focus almost exclusively on posting job ads.',
-        'Today the context is different.',
+        'For many years companies could focus almost exclusively on posting job ads. Today the context is different.',
       ],
     },
     {
       heading: 'Candidates are better informed',
       blocks: [
-        'Before applying, many people gather information.',
-        'They check:',
-        'the company website;',
-        'social media;',
-        'reviews;',
-        'professional contacts.',
+        'Before applying, many people gather information. They check:',
+        { list: ['The company website.', 'Social media.', 'Reviews.', 'Professional contacts.'] },
       ],
     },
     {
       heading: 'Competition has increased',
       blocks: [
-        'Companies don\'t just compete for clients and market share.',
-        'They also compete for people.',
+        'Companies don\'t just compete for clients and market share: they also compete for people.',
       ],
     },
     {
       heading: 'Expectations have changed',
       blocks: [
         'Professionals now weigh aspects that used to be considered secondary:',
-        'environment;',
-        'leadership;',
-        'growth;',
-        'flexibility;',
-        'company culture.',
+        { list: ['Environment.', 'Leadership.', 'Growth.', 'Flexibility.', 'Company culture.'] },
       ],
     },
     {
       heading: 'The five pillars of employer branding',
       blocks: [
-        'Many companies look for shortcuts.',
-        'In reality, a solid employer brand is built by working on a few fundamental elements.',
+        'Many companies look for shortcuts, but in reality, a solid employer brand is built by working on a few fundamental elements.',
       ],
     },
     {
       heading: '1. Reputation',
       blocks: [
-        'Reputation is the starting point.',
-        'Even before reading a job ad, many people already have an opinion about a company.',
+        'Reputation is the starting point: even before reading a job ad, many people already have an opinion about a company.',
       ],
     },
     {
       heading: 'How it forms',
       blocks: [
         'Through:',
-        'clients;',
-        'employees;',
-        'former employees;',
-        'suppliers;',
-        'online presence.',
+        { list: ['Clients.', 'Employees.', 'Former employees.', 'Suppliers.', 'Online presence.'] },
       ],
     },
     {
@@ -116,17 +95,13 @@ export default {
     {
       heading: '2. Company culture',
       blocks: [
-        'Culture is how people work together every day.',
-        'It isn\'t the same as the slogans on your website.',
-        'It\'s what actually happens.',
+        'Culture is how people work together every day. It isn\'t the same as the slogans on your website, but what actually happens.',
       ],
     },
     {
       heading: 'Some useful questions',
       blocks: [
-        'Do people feel heard?',
-        'Are responsibilities clear?',
-        'Does collaboration exist?',
+        { list: ['Do people feel heard?', 'Are responsibilities clear?', 'Does collaboration exist?'] },
       ],
     },
     {
@@ -138,45 +113,25 @@ export default {
     {
       heading: '3. Leadership',
       blocks: [
-        'The quality of leadership deeply affects how a company is perceived.',
-        'Many employees associate their work experience mainly with their managers.',
-      ],
-    },
-    {
-      heading: 'In SMEs the impact is huge',
-      blocks: [
-        'Direct contact with owners and managers makes leadership even more visible.',
+        'The quality of leadership deeply affects how a company is perceived: many employees associate their work experience mainly with their managers. In SMEs the direct contact with owners and managers makes leadership even more visible.',
       ],
     },
     {
       heading: 'The most appreciated traits',
       blocks: [
-        'clarity;',
-        'availability;',
-        'consistency;',
-        'ability to listen.',
+        { list: ['Clarity.', 'Availability.', 'Consistency.', 'Ability to listen.'] },
       ],
     },
     {
       heading: '4. Candidate experience',
       blocks: [
-        'An aspect that is often underestimated.',
-        'Yet extremely important.',
-      ],
-    },
-    {
-      heading: 'Every application is an experience',
-      blocks: [
-        'From the first contact through to the end of the selection process.',
+        'An aspect that is often underestimated, yet extremely important: every application is an experience, from the first contact through to the end of the selection process.',
       ],
     },
     {
       heading: 'Some negative examples',
       blocks: [
-        'no response;',
-        'very long waits;',
-        'unclear communication;',
-        'disorganized interviews.',
+        { list: ['No response.', 'Very long waits.', 'Unclear communication.', 'Disorganized interviews.'] },
       ],
     },
     {
@@ -188,50 +143,38 @@ export default {
     {
       heading: '5. Communication',
       blocks: [
-        'Many SMEs have great stories to tell.',
-        'They simply don\'t tell them.',
+        'Many SMEs have great stories to tell but they simply don\'t tell them.',
       ],
     },
     {
       heading: 'What to talk about',
       blocks: [
-        'people;',
-        'projects;',
-        'environment;',
-        'growth;',
-        'values.',
+        { list: ['People.', 'Projects.', 'Environment.', 'Growth.', 'Values.'] },
       ],
     },
     {
       heading: 'What to avoid',
       blocks: [
-        'Artificial communication.',
-        'Unrealistic promises.',
-        'Messages that don\'t reflect reality.',
+        { list: ['Artificial communication.', 'Unrealistic promises.', 'Messages that don\'t reflect reality.'] },
       ],
     },
     {
       heading: 'How to improve your company website',
       blocks: [
-        'For many candidates, the website is the first point of contact with the organization.',
-        'For this reason, it deserves attention.',
+        'For many candidates, the website is the first point of contact with the organization, and for this reason, it deserves attention.',
       ],
     },
     {
       heading: 'The "Careers" page',
       blocks: [
         'It should answer simple questions:',
-        'who you are;',
-        'what you do;',
-        'why work with you;',
-        'what opportunities you offer.',
+        { list: ['Who you are.', 'What you do.', 'Why work with you.', 'What opportunities you offer.'] },
       ],
     },
     {
       heading: 'Tell the story of your people',
       blocks: [
-        'Many companies talk only about their products.',
-        'People also want to know who works inside the organization.',
+        'Many companies talk only about their products, but people also want to know who works inside the organization.',
       ],
     },
     {
@@ -243,33 +186,26 @@ export default {
     {
       heading: 'You don\'t need to post every day',
       blocks: [
-        'One of the most common beliefs is that you need to be constantly active.',
-        'In reality, the quality of communication matters far more.',
+        'One of the most common beliefs is that you need to be constantly active: in reality, the quality of communication matters far more.',
       ],
     },
     {
       heading: 'Tell people what is really happening',
       blocks: [
         'People are interested in knowing about:',
-        'the team;',
-        'the projects;',
-        'the company\'s growth;',
-        'internal initiatives.',
+        { list: ['The team.', 'The projects.', 'The company\'s growth.', 'Internal initiatives.'] },
       ],
     },
     {
       heading: 'Show the human side',
       blocks: [
-        'Many corporate content pieces come across as impersonal.',
-        'People, on the other hand, tend to be interested in people.',
+        'Many corporate content pieces come across as impersonal, while people tend to be interested in people.',
       ],
     },
     {
       heading: 'The value of testimonials',
       blocks: [
-        'Among all employer branding tools, testimonials are often among the most effective.',
-        'For a very simple reason.',
-        'People tend to trust other people more.',
+        'Among all employer branding tools, testimonials are often among the most effective for a very simple reason: people tend to trust other people more.',
       ],
     },
     {
@@ -282,25 +218,19 @@ export default {
       heading: 'What to talk about',
       blocks: [
         'The most effective testimonials talk about:',
-        'career path;',
-        'growth;',
-        'work environment;',
-        'concrete experiences.',
+        { list: ['Career path.', 'Growth.', 'Work environment.', 'Concrete experiences.'] },
       ],
     },
     {
       heading: 'Keep it authentic',
       blocks: [
-        'You don\'t need perfect messages.',
-        'You need authenticity.',
+        'You don\'t need perfect messages: you need authenticity.',
       ],
     },
     {
       heading: 'The candidate experience matters more than you think',
       blocks: [
-        'Many companies put all their effort into attracting candidates.',
-        'Then they completely neglect the selection experience.',
-        'That\'s a mistake.',
+        'Many companies put all their effort into attracting candidates, then they completely neglect the selection experience. That\'s a mistake.',
       ],
     },
     {
@@ -313,19 +243,14 @@ export default {
       heading: 'Candidates\' expectations',
       blocks: [
         'People appreciate:',
-        'clarity;',
-        'transparency;',
-        'reasonable timelines;',
-        'timely communication.',
+        { list: ['Clarity.', 'Transparency.', 'Reasonable timelines.', 'Timely communication.'] },
       ],
     },
     {
       heading: 'A positive experience builds reputation',
       blocks: [
         'Even a candidate who isn\'t selected can become:',
-        'a customer;',
-        'a brand ambassador;',
-        'a future employee.',
+        { list: ['A customer.', 'A brand ambassador.', 'A future employee.'] },
       ],
     },
     {
@@ -337,8 +262,7 @@ export default {
     {
       heading: 'Communicating a reality that doesn\'t exist',
       blocks: [
-        'This is probably the most dangerous mistake.',
-        'If what is communicated doesn\'t match reality, disappointment is inevitable.',
+        'This is probably the most dangerous mistake: if what is communicated doesn\'t match reality, disappointment is inevitable.',
       ],
     },
     {
@@ -368,85 +292,57 @@ export default {
     {
       heading: 'A practical 30-day plan',
       blocks: [
-        'Many SMEs believe big investments are needed.',
-        'In reality, you can start with simple actions.',
-      ],
-    },
-    {
-      heading: 'Week 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analysis',
-      blocks: [
-        'Review:',
-        'company website;',
-        'job ads;',
-        'application process.',
-      ],
-    },
-    {
-      heading: 'Week 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Gather information',
-      blocks: [
-        'Talk to your employees.',
-        'Ask:',
-        'what they appreciate about the company;',
-        'why they\'ve stayed;',
-        'what makes them proud of their work.',
-      ],
-    },
-    {
-      heading: 'Week 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Define your key messages',
-      blocks: [
-        'Identify three or four distinctive elements of the organization.',
-        'For example:',
-        'autonomy;',
-        'a family-like environment;',
-        'growth;',
-        'flexibility.',
-      ],
-    },
-    {
-      heading: 'Week 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Communication',
-      blocks: [
-        'Start integrating these elements into:',
-        'your website;',
-        'job ads;',
-        'interviews.',
+        'Many SMEs believe big investments are needed, but in reality, you can start with simple actions.',
+        {
+          weekPlan: [
+            {
+              week: 'Week 1',
+              title: 'Analysis',
+              items: [
+                'Review the company website and assess the first impression it gives.',
+                'Examine published job ads and check that they are up to date and clear.',
+                'Go through the application process as an external candidate would.',
+              ],
+            },
+            {
+              week: 'Week 2',
+              title: 'Gather information',
+              items: [
+                'Talk to your employees and ask what they appreciate about the company.',
+                'Ask why they\'ve stayed and what makes them proud of their work.',
+                'Collect the answers and identify recurring themes.',
+              ],
+            },
+            {
+              week: 'Week 3',
+              title: 'Define your key messages',
+              items: [
+                'Identify three or four distinctive elements of the organization.',
+                'For example: autonomy, a family-like environment, growth, flexibility.',
+                'Turn them into simple, authentic messages to use in your communication.',
+              ],
+            },
+            {
+              week: 'Week 4',
+              title: 'Communication',
+              items: [
+                'Start integrating the key messages into the company website.',
+                'Update job ads with the new language.',
+                'Bring these elements into selection interviews as well.',
+              ],
+            },
+          ],
+        },
       ],
     },
     { related: { question: 'What really drives candidates\' choices? Find out here.', slug: 'perche-i-candidati-scelgono-alcune-aziende' } },
     {
       heading: 'Conclusion',
       blocks: [
-        'Employer branding isn\'t about building an artificial image.',
-        'It\'s about being able to authentically tell the story of what makes a company unique.',
+        'Employer branding isn\'t about building an artificial image: it\'s about being able to authentically tell the story of what makes a company unique.',
         'SMEs often have extraordinary advantages:',
-        'closeness;',
-        'autonomy;',
-        'speed;',
-        'human relationships;',
-        'direct impact.',
-        'Too often these elements remain invisible.',
-        'The companies that attract better candidates aren\'t necessarily the ones that invest the most.',
-        'They\'re often the ones that manage to do one very simple thing: communicate clearly who they are, how they work and why it\'s worth being part of their project.',
-        'Employer branding starts right there.',
+        { list: ['Closeness.', 'Autonomy.', 'Speed.', 'Human relationships.', 'Direct impact.'] },
+        'Too often these elements remain invisible. The companies that attract better candidates aren\'t necessarily the ones that invest the most: they\'re often the ones that manage to do one very simple thing, communicate clearly who they are, how they work and why it\'s worth being part of their project. Employer branding starts right there.',
       ],
     },
   ],

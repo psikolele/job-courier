@@ -15,15 +15,14 @@ export default {
       blocks: [
         'Avant de chercher des solutions, il est important d\'identifier le problème correct.',
         'De nombreuses entreprises utilisent l\'expression :',
-        'Nous recevons des candidatures non qualifiées.',
+        { list: ['Nous recevons des candidatures non qualifiées.'] },
         'Mais derrière cette affirmation peuvent se cacher des situations très différentes.',
       ],
     },
     {
       heading: 'Cas 1 : peu de candidatures arrivent',
       blocks: [
-        'Ici, le problème pourrait être la visibilité.',
-        'Les bonnes personnes pourraient simplement ne pas voir l\'offre.',
+        'Ici, le problème pourrait être la visibilité : les bonnes personnes pourraient simplement ne pas voir l\'offre.',
       ],
     },
     { cta: { question: 'Vous voulez des candidatures plus qualifiées ? Commencez par une meilleure annonce.', action: 'Publier votre annonce', to: '/soluzioni-e-tariffe' } },
@@ -31,9 +30,7 @@ export default {
       heading: 'Cas 2 : de nombreuses candidatures arrivent mais peu sont pertinentes',
       blocks: [
         'Dans ce cas, le problème pourrait concerner :',
-        'l\'annonce ;',
-        'les canaux ;',
-        'le positionnement.',
+        { list: ['l\'annonce.', 'les canaux.', 'le positionnement.'] },
       ],
     },
     {
@@ -60,19 +57,14 @@ export default {
       blocks: [
         'De nombreuses offres utilisent des descriptions vagues.',
         'Par exemple :',
-        'collaborateur dynamique ;',
-        'professionnel motivé ;',
-        'personne flexible.',
+        { list: ['collaborateur dynamique.', 'professionnel motivé.', 'personne flexible.'] },
         'Ces expressions communiquent peu.',
       ],
     },
     {
       heading: 'Ce que le candidat devrait comprendre immédiatement',
       blocks: [
-        'le poste ;',
-        'les responsabilités ;',
-        'les compétences requises ;',
-        'le contexte de travail.',
+        { list: ['le poste.', 'les responsabilités.', 'les compétences requises.', 'le contexte de travail.'] },
         'Plus ces informations sont claires, meilleure sera la qualité des candidatures.',
       ],
     },
@@ -88,11 +80,7 @@ export default {
       blocks: [
         'C\'est probablement l\'un des obstacles les plus fréquents.',
         'De nombreuses entreprises construisent une description idéale qui combine :',
-        'une expérience élevée ;',
-        'des compétences techniques avancées ;',
-        'plusieurs langues ;',
-        'une disponibilité immédiate ;',
-        'une flexibilité élevée.',
+        { list: ['une expérience élevée.', 'des compétences techniques avancées.', 'plusieurs langues.', 'une disponibilité immédiate.', 'une flexibilité élevée.'] },
         'Le résultat est souvent un profil extrêmement rare.',
       ],
     },
@@ -165,44 +153,33 @@ export default {
       heading: 'Comment un candidat raisonne aujourd\'hui',
       blocks: [
         'Avant de postuler, de nombreuses personnes vérifient :',
-        'le site de l\'entreprise ;',
-        'la présence en ligne ;',
-        'les contenus publiés ;',
-        'la réputation générale.',
+        { list: ['le site de l\'entreprise.', 'la présence en ligne.', 'les contenus publiés.', 'la réputation générale.'] },
       ],
     },
     {
       heading: 'Si l\'entreprise est invisible',
       blocks: [
-        'Le candidat dispose de peu d\'informations pour évaluer l\'opportunité.',
-        'Cela peut réduire l\'intérêt pour le poste.',
+        'Le candidat dispose de peu d\'informations pour évaluer l\'opportunité, et cela peut réduire l\'intérêt pour le poste.',
       ],
     },
     {
       heading: 'Marque employeur',
       blocks: [
         'Cela ne signifie pas faire du marketing agressif. Cela signifie raconter de manière authentique :',
-        'qui vous êtes ;',
-        'comment vous travaillez ;',
-        'quelles valeurs vous représentez ;',
-        'ce que votre organisation offre.',
+        { list: ['qui vous êtes.', 'comment vous travaillez.', 'quelles valeurs vous représentez.', 'ce que votre organisation offre.'] },
       ],
     },
     {
       heading: 'Raison 5 : le processus de sélection est trop lent',
       blocks: [
         'De nombreuses entreprises perdent des candidats qualifiés sans s\'en rendre compte.',
-        'Pas parce que le profil n\'était pas adapté.',
-        'Mais parce que le processus demandait trop de temps.',
+        'Pas parce que le profil n\'était pas adapté, mais parce que le processus demandait trop de temps.',
       ],
     },
     {
       heading: 'Ce qui se passe souvent',
       blocks: [
-        'Semaine 1 : réception de la candidature.',
-        'Semaine 3 : premier contact.',
-        'Semaine 5 : entretien.',
-        'Semaine 8 : décision.',
+        { list: ['Semaine 1 : réception de la candidature.', 'Semaine 3 : premier contact.', 'Semaine 5 : entretien.', 'Semaine 8 : décision.'] },
         'Pendant ce temps, le candidat a déjà accepté une autre opportunité.',
       ],
     },
@@ -226,12 +203,7 @@ export default {
         'La rémunération reste importante.',
         'Mais ce n\'est pas le seul élément évalué par les candidats.',
         'De nombreux professionnels considèrent aussi :',
-        'les opportunités de croissance ;',
-        'la formation ;',
-        'l\'autonomie ;',
-        'l\'environnement de travail ;',
-        'la flexibilité ;',
-        'la stabilité de l\'entreprise.',
+        { list: ['les opportunités de croissance.', 'la formation.', 'l\'autonomie.', 'l\'environnement de travail.', 'la flexibilité.', 'la stabilité de l\'entreprise.'] },
       ],
     },
     {
@@ -259,10 +231,7 @@ export default {
       heading: 'Les candidats font des recherches',
       blocks: [
         'Avant de postuler, de nombreuses personnes vérifient :',
-        'le site de l\'entreprise ;',
-        'les profils sociaux ;',
-        'les avis ;',
-        'la réputation générale.',
+        { list: ['le site de l\'entreprise.', 'les profils sociaux.', 'les avis.', 'la réputation générale.'] },
       ],
     },
     {
@@ -277,10 +246,7 @@ export default {
       blocks: [
         'Pas à travers des slogans.',
         'Mais à travers :',
-        'la qualité des relations ;',
-        'la culture d\'entreprise ;',
-        'l\'expérience des collaborateurs ;',
-        'la cohérence entre ce qui est communiqué et ce qui est vécu.',
+        { list: ['la qualité des relations.', 'la culture d\'entreprise.', 'l\'expérience des collaborateurs.', 'la cohérence entre ce qui est communiqué et ce qui est vécu.'] },
       ],
     },
     {
@@ -324,58 +290,14 @@ export default {
       heading: 'Plan pratique d\'amélioration sur 30 jours',
       blocks: [
         'Lorsque la qualité des candidatures n\'est pas satisfaisante, il convient d\'intervenir de manière structurée.',
-      ],
-    },
-    {
-      heading: 'Semaine 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analyse',
-      blocks: [
-        'révision des annonces ;',
-        'vérification des canaux utilisés ;',
-        'collecte des données principales.',
-      ],
-    },
-    {
-      heading: 'Semaine 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Optimisation',
-      blocks: [
-        'amélioration des textes ;',
-        'révision des exigences ;',
-        'mise à jour de la proposition de valeur.',
-      ],
-    },
-    {
-      heading: 'Semaine 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Visibilité',
-      blocks: [
-        'élargissement des canaux ;',
-        'implication de l\'équipe ;',
-        'activation d\'éventuelles recommandations.',
-      ],
-    },
-    {
-      heading: 'Semaine 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Mesure',
-      blocks: [
-        'comparaison des résultats ;',
-        'analyse de la qualité des candidatures ;',
-        'identification des actions les plus efficaces.',
+        {
+          weekPlan: [
+            { week: 'Semaine 1', title: 'Analyse', items: ['révision des annonces.', 'vérification des canaux utilisés.', 'collecte des données principales.'] },
+            { week: 'Semaine 2', title: 'Optimisation', items: ['amélioration des textes.', 'révision des exigences.', 'mise à jour de la proposition de valeur.'] },
+            { week: 'Semaine 3', title: 'Visibilité', items: ['élargissement des canaux.', 'implication de l\'équipe.', 'activation d\'éventuelles recommandations.'] },
+            { week: 'Semaine 4', title: 'Mesure', items: ['comparaison des résultats.', 'analyse de la qualité des candidatures.', 'identification des actions les plus efficaces.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'Tout part de l\'annonce : découvrez comment la rédiger efficacement.', slug: 'come-scrivere-un-annuncio-di-lavoro-efficace' } },
@@ -384,11 +306,7 @@ export default {
       blocks: [
         'Lorsqu\'une entreprise ne reçoit pas de candidatures qualifiées, il existe rarement une seule cause.',
         'Dans la plupart des cas, le résultat dépend d\'une combinaison de facteurs :',
-        'l\'annonce ;',
-        'les canaux ;',
-        'le processus ;',
-        'la réputation ;',
-        'la proposition de valeur.',
+        { list: ['l\'annonce.', 'les canaux.', 'le processus.', 'la réputation.', 'la proposition de valeur.'] },
         'La bonne nouvelle est que nombre de ces éléments peuvent être améliorés.',
         'Avant de conclure que « on ne trouve plus de personnes valables », il convient d\'analyser attentivement son propre système de recrutement.',
         'Les entreprises qui obtiennent les meilleurs résultats ne sont pas nécessairement celles qui investissent le plus.',

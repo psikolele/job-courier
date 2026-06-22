@@ -14,15 +14,14 @@ export default {
       heading: 'Warum viele Menschen auf die falsche Weise Arbeit suchen',
       blocks: [
         'Wenn man eine Anstellung verliert oder beschliesst, das Unternehmen zu wechseln, ist die häufigste Reaktion, sich überall zu bewerben.',
-        'Aus emotionaler Sicht ist das verständlich.',
-        'Aus strategischer Sicht ist es oft kontraproduktiv.',
+        'Aus emotionaler Sicht ist das verständlich. Aus strategischer Sicht ist es oft kontraproduktiv.',
       ],
     },
     {
       heading: 'Der Fehler der Quantität',
       blocks: [
         'Viele Kandidaten denken:',
-        'Je mehr Bewerbungen ich sende, desto mehr Chancen habe ich.',
+        { list: ['Je mehr Bewerbungen ich sende, desto mehr Chancen habe ich.'] },
         'Das stimmt nicht immer.',
         '100 generische Bewerbungen zu senden, führt oft zu schlechteren Ergebnissen als 20 gut gezielte Bewerbungen.',
       ],
@@ -55,10 +54,7 @@ export default {
         'Ein guter Lebenslauf ist von grundlegender Bedeutung.',
         'Aber allein genügt er nicht.',
         'Die Stellensuche erfordert:',
-        'Sichtbarkeit;',
-        'Strategie;',
-        'Networking;',
-        'Beständigkeit.',
+        { list: ['Sichtbarkeit.', 'Strategie.', 'Networking.', 'Beständigkeit.'] },
       ],
     },
     {
@@ -73,10 +69,7 @@ export default {
       blocks: [
         'Erfahrung ist wichtig.',
         'Dennoch bewerten Unternehmen auch:',
-        'Motivation;',
-        'Einstellung;',
-        'Lernfähigkeit;',
-        'Anpassungsfähigkeit.',
+        { list: ['Motivation.', 'Einstellung.', 'Lernfähigkeit.', 'Anpassungsfähigkeit.'] },
       ],
     },
     {
@@ -90,9 +83,7 @@ export default {
       heading: 'Sie haben klare Ziele',
       blocks: [
         'Sie wissen genau:',
-        'welche Rolle sie suchen;',
-        'welche Unternehmen sie interessieren;',
-        'welche Kompetenzen sie hervorheben möchten.',
+        { list: ['welche Rolle sie suchen.', 'welche Unternehmen sie interessieren.', 'welche Kompetenzen sie hervorheben möchten.'] },
       ],
     },
     {
@@ -106,17 +97,13 @@ export default {
       blocks: [
         'Sie beschränken sich nicht auf Online-Stellenanzeigen.',
         'Sie nutzen:',
-        'berufliche Kontakte;',
-        'Networking;',
-        'Initiativbewerbungen;',
-        'LinkedIn.',
+        { list: ['berufliche Kontakte.', 'Networking.', 'Initiativbewerbungen.', 'LinkedIn.'] },
       ],
     },
     {
       heading: 'Sie sind beständig',
       blocks: [
-        'Die Stellensuche ist ein Marathon.',
-        'Kein Sprint.',
+        'Die Stellensuche ist ein Marathon, kein Sprint.',
         'Wer Kontinuität bewahrt, erzielt im Allgemeinen bessere Ergebnisse.',
       ],
     },
@@ -131,10 +118,7 @@ export default {
       blocks: [
         'Je spezifischer Sie sind, desto leichter ist es, passende Möglichkeiten zu identifizieren.',
         'Zum Beispiel:',
-        'kaufmännische/r Sachbearbeiter/in;',
-        'Wartungstechniker/in;',
-        'B2B-Verkäufer/in;',
-        'Softwareentwickler/in.',
+        { list: ['kaufmännische/r Sachbearbeiter/in.', 'Wartungstechniker/in.', 'B2B-Verkäufer/in.', 'Softwareentwickler/in.'] },
         'Das sind sehr unterschiedliche Ziele.',
       ],
     },
@@ -142,9 +126,7 @@ export default {
       heading: 'Identifizieren Sie Ihre Stärken',
       blocks: [
         'Fragen Sie sich:',
-        'welche Kompetenzen besitze ich?',
-        'welche Ergebnisse habe ich erzielt?',
-        'was unterscheidet mich von anderen Kandidaten?',
+        { list: ['welche Kompetenzen besitze ich?', 'welche Ergebnisse habe ich erzielt?', 'was unterscheidet mich von anderen Kandidaten?'] },
       ],
     },
     {
@@ -212,10 +194,7 @@ export default {
       heading: 'Halten Sie das Profil aktuell',
       blocks: [
         'Überprüfen Sie, dass folgendes vorhanden ist:',
-        'Berufserfahrung;',
-        'Kompetenzen;',
-        'Ausbildung;',
-        'Kontaktinformationen.',
+        { list: ['Berufserfahrung.', 'Kompetenzen.', 'Ausbildung.', 'Kontaktinformationen.'] },
         'Das Profil sollte mit dem Lebenslauf übereinstimmen.',
       ],
     },
@@ -229,9 +208,7 @@ export default {
       heading: 'Folgen Sie Unternehmen und Fachleuten',
       blocks: [
         'Dies ermöglicht es:',
-        'neue Möglichkeiten kennenzulernen;',
-        'den Markt besser zu verstehen;',
-        'über Branchentrends auf dem Laufenden zu bleiben.',
+        { list: ['neue Möglichkeiten kennenzulernen.', 'den Markt besser zu verstehen.', 'über Branchentrends auf dem Laufenden zu bleiben.'] },
       ],
     },
     {
@@ -257,10 +234,7 @@ export default {
       blocks: [
         'Es ist nicht notwendig, den Lebenslauf für jede Bewerbung komplett neu zu schreiben.',
         'Es ist jedoch hilfreich anzupassen:',
-        'Berufsprofil;',
-        'hervorgehobene Kompetenzen;',
-        'Schlüsselwörter;',
-        'Bewerbungsschreiben.',
+        { list: ['Berufsprofil.', 'hervorgehobene Kompetenzen.', 'Schlüsselwörter.', 'Bewerbungsschreiben.'] },
       ],
     },
     {
@@ -273,16 +247,14 @@ export default {
       heading: 'Die Suche wie ein Projekt organisieren',
       blocks: [
         'Viele Menschen suchen Arbeit auf zufällige Weise.',
-        'Ungeplante Tätigkeiten führen tendenziell zu unbeständigen Ergebnissen.',
+        'Ungeplante Tätigkeiten führen tendenziell zu unbeständigen Ergebnissen. Die Suche wie ein kleines Projekt zu behandeln, mit Zielen und Fristen, hilft, den Rhythmus zu halten.',
       ],
     },
     {
       heading: 'Definieren Sie wöchentliche Ziele',
       blocks: [
         'Zum Beispiel:',
-        'gesendete Bewerbungen;',
-        'identifizierte neue Unternehmen;',
-        'aktivierte berufliche Kontakte.',
+        { list: ['gesendete Bewerbungen.', 'identifizierte neue Unternehmen.', 'aktivierte berufliche Kontakte.'] },
       ],
     },
     {
@@ -290,20 +262,14 @@ export default {
       blocks: [
         'Eine einfache Tabelle kann ausreichen.',
         'Notieren Sie:',
-        'Bewerbungsdatum;',
-        'Unternehmen;',
-        'Position;',
-        'Status der Auswahl;',
-        'allfällige Follow-ups.',
+        { list: ['Bewerbungsdatum.', 'Unternehmen.', 'Position.', 'Status der Auswahl.', 'allfällige Follow-ups.'] },
       ],
     },
     {
       heading: 'Analysieren Sie die Ergebnisse',
       blocks: [
         'Fragen Sie sich nach einigen Wochen:',
-        'welche Bewerbungen führen zu Vorstellungsgesprächen?',
-        'welche nicht?',
-        'welche Branchen reagieren mehr?',
+        { list: ['welche Bewerbungen führen zu Vorstellungsgesprächen?', 'welche nicht?', 'welche Branchen reagieren mehr?'] },
         'Dies ermöglicht es, den Ansatz schrittweise zu verbessern.',
       ],
     },
@@ -320,9 +286,7 @@ export default {
       blocks: [
         'Der Lebenslauf bleibt das erste zu überprüfende Element.',
         'Fragen Sie sich:',
-        'kommuniziert er meinen Wert klar?',
-        'hebt er konkrete Ergebnisse hervor?',
-        'ist er aktuell?',
+        { list: ['kommuniziert er meinen Wert klar?', 'hebt er konkrete Ergebnisse hervor?', 'ist er aktuell?'] },
       ],
     },
     {
@@ -334,18 +298,14 @@ export default {
     {
       heading: 'Analysieren Sie die Strategie',
       blocks: [
-        'Nutzen Sie mehrere Kanäle?',
-        'Oder verlassen Sie sich ausschliesslich auf Stellenanzeigen?',
+        { list: ['Nutzen Sie mehrere Kanäle?', 'Oder verlassen Sie sich ausschliesslich auf Stellenanzeigen?'] },
       ],
     },
     {
       heading: 'Holen Sie Feedback ein',
       blocks: [
         'Sprechen Sie nach Möglichkeit mit:',
-        'Recruitern;',
-        'HR-Fachleuten;',
-        'Kollegen;',
-        'Vertrauenspersonen.',
+        { list: ['Recruitern.', 'HR-Fachleuten.', 'Kollegen.', 'Vertrauenspersonen.'] },
         'Ein externer Blick kann Aspekte erkennen, die Sie nicht bemerken.',
       ],
     },
@@ -353,58 +313,14 @@ export default {
       heading: '30-Tage-Praxisplan',
       blocks: [
         'Wenn Sie Ihre Suche wirksamer gestalten möchten, können Sie einem einfachen Plan folgen.',
-      ],
-    },
-    {
-      heading: 'Woche 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analyse',
-      blocks: [
-        'Aktualisierung des Lebenslaufs;',
-        'Aktualisierung von LinkedIn;',
-        'Definition der beruflichen Ziele.',
-      ],
-    },
-    {
-      heading: 'Woche 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Suche',
-      blocks: [
-        'Identifizierung von Zielunternehmen;',
-        'Beobachtung von Möglichkeiten;',
-        'Versand gezielter Bewerbungen.',
-      ],
-    },
-    {
-      heading: 'Woche 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Networking',
-      blocks: [
-        'Kontaktaufnahme mit Fachleuten;',
-        'Teilnahme an Veranstaltungen;',
-        'Aufbau des beruflichen Netzwerks.',
-      ],
-    },
-    {
-      heading: 'Woche 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Auswertung',
-      blocks: [
-        'Analyse der Ergebnisse;',
-        'Anpassung der Strategie;',
-        'Planung des Folgemonats.',
+        {
+          weekPlan: [
+            { week: 'Woche 1', title: 'Analyse', items: ['Aktualisierung des Lebenslaufs.', 'Aktualisierung von LinkedIn.', 'Definition der beruflichen Ziele.'] },
+            { week: 'Woche 2', title: 'Suche', items: ['Identifizierung von Zielunternehmen.', 'Beobachtung von Möglichkeiten.', 'Versand gezielter Bewerbungen.'] },
+            { week: 'Woche 3', title: 'Networking', items: ['Kontaktaufnahme mit Fachleuten.', 'Teilnahme an Veranstaltungen.', 'Aufbau des beruflichen Netzwerks.'] },
+            { week: 'Woche 4', title: 'Auswertung', items: ['Analyse der Ergebnisse.', 'Anpassung der Strategie.', 'Planung des Folgemonats.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'Wissen Sie nicht, wo Sie suchen sollen? Entdecken Sie die Branchen mit den meisten Möglichkeiten.', slug: 'settori-con-piu-opportunita-di-lavoro' } },
@@ -413,10 +329,7 @@ export default {
       blocks: [
         'Arbeit zu finden ist nicht nur eine Frage des Glücks.',
         'Es ist das Ergebnis einer Kombination von Faktoren:',
-        'Vorbereitung;',
-        'Strategie;',
-        'Beständigkeit;',
-        'Anpassungsfähigkeit.',
+        { list: ['Vorbereitung.', 'Strategie.', 'Beständigkeit.', 'Anpassungsfähigkeit.'] },
         'Menschen, die bessere Ergebnisse erzielen, sind nicht zwangsläufig diejenigen, die mehr Bewerbungen senden.',
         'Es sind oft diejenigen, die einen bewussteren und organisierteren Ansatz aufbauen können.',
         'Behandeln Sie die Stellensuche als ein berufliches Projekt.',

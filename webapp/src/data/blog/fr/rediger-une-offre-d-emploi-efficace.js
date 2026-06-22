@@ -8,13 +8,12 @@ export default {
   readingTime: 8,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
-  intro: 'De nombreuses entreprises pensent que publier une offre d\'emploi est une activité simple.\n\nOn définit un poste.\n\nOn liste les exigences.\n\nOn publie l\'offre.\n\nOn attend les candidatures.\n\nEn réalité, le processus est beaucoup plus complexe.\n\nAujourd\'hui, les candidats ont accès à des centaines d\'opportunités professionnelles et peuvent facilement comparer entreprises, postes et conditions de travail.',
+  intro: 'De nombreuses entreprises pensent que publier une offre d\'emploi est une activité simple : on définit un poste, on liste les exigences, on publie l\'offre et on attend les candidatures.\n\nEn réalité, le processus est beaucoup plus complexe : aujourd\'hui, les candidats ont accès à des centaines d\'opportunités professionnelles et peuvent facilement comparer entreprises, postes et conditions de travail.',
   sections: [
     {
       heading: 'Pour cette raison, une offre n\'est pas seulement un outil administratif. C\'est un outil de communication.',
       blocks: [
-        'C\'est souvent le premier contact entre l\'entreprise et un collaborateur potentiel.',
-        'Une offre efficace ne sert pas simplement à recevoir des candidatures. Elle sert à attirer les bonnes candidatures.',
+        'C\'est souvent le premier contact entre l\'entreprise et un collaborateur potentiel. Une offre efficace ne sert pas simplement à recevoir des candidatures : elle sert à attirer les bonnes candidatures.',
         'Dans ce guide, nous verrons comment construire des offres d\'emploi plus claires, plus attractives et plus efficaces.',
       ],
     },
@@ -23,19 +22,14 @@ export default {
       blocks: [
         'De nombreuses entreprises sous-estiment l\'impact qu\'une offre peut avoir sur le résultat final d\'une sélection.',
         'Pourtant, la qualité de l\'offre influence directement :',
-        'le nombre de candidatures ;',
-        'la qualité des candidats ;',
-        'le temps nécessaire pour embaucher ;',
-        'la perception de l\'entreprise.',
+        { list: ['Le nombre de candidatures.', 'La qualité des candidats.', 'Le temps nécessaire pour embaucher.', 'La perception de l\'entreprise.'] },
       ],
     },
     { cta: { question: 'Votre annonce est prête ? Publiez-la et atteignez les bons candidats.', action: 'Publier votre annonce', to: '/soluzioni-e-tariffe' } },
     {
       heading: 'La qualité des candidatures',
       blocks: [
-        'Une offre peu claire tend à attirer des profils peu pertinents.',
-        'À l\'inverse, une offre bien construite aide les candidats à comprendre rapidement si le poste correspond à leurs compétences.',
-        'Cela améliore la qualité des candidatures reçues.',
+        'Une offre peu claire tend à attirer des profils peu pertinents ; à l\'inverse, une offre bien construite aide les candidats à comprendre rapidement si le poste correspond à leurs compétences, améliorant la qualité des candidatures reçues.',
       ],
     },
     {
@@ -43,16 +37,13 @@ export default {
       blocks: [
         'Quand des candidatures plus pertinentes arrivent, le processus de sélection devient plus efficace.',
         'On réduit :',
-        'les tris inutiles ;',
-        'les entretiens peu productifs ;',
-        'les délais de recherche.',
+        { list: ['Les tris inutiles.', 'Les entretiens peu productifs.', 'Les délais de recherche.'] },
       ],
     },
     {
       heading: 'L\'image de l\'entreprise',
       blocks: [
-        'De nombreux candidats forment une première impression de l\'entreprise précisément en lisant l\'offre.',
-        'Un texte confus, impersonnel ou peu soigné peut transmettre une image peu professionnelle.',
+        'De nombreux candidats forment une première impression de l\'entreprise précisément en lisant l\'offre. Un texte confus, impersonnel ou peu soigné peut transmettre une image peu professionnelle.',
       ],
     },
     {
@@ -60,42 +51,30 @@ export default {
       blocks: [
         'Une des erreurs les plus fréquentes consiste à construire l\'offre exclusivement du point de vue de l\'entreprise.',
         'En pratique, le message devient :',
-        'Nous cherchons une personne qui sache faire ceci, ceci et ceci.',
-        'Elle doit posséder ces compétences.',
-        'Elle doit avoir cette expérience.',
-        'Elle doit être disponible pour faire ceci.',
-        'L\'entreprise parle uniquement de ce qu\'elle souhaite recevoir.',
-        'Mais oublie d\'expliquer ce qu\'elle offre.',
+        { list: ['Nous cherchons une personne qui sache faire ceci, ceci et ceci.', 'Elle doit posséder ces compétences.', 'Elle doit avoir cette expérience.', 'Elle doit être disponible pour faire ceci.'] },
+        'L\'entreprise parle uniquement de ce qu\'elle souhaite recevoir, mais oublie d\'expliquer ce qu\'elle offre.',
       ],
     },
     {
       heading: 'Le marché a changé',
       blocks: [
-        'Pendant de nombreuses années, les entreprises pouvaient se contenter de publier une offre minimale.',
-        'Aujourd\'hui, le contexte est différent.',
-        'De nombreux professionnels qualifiés ont plus d\'options parmi lesquelles choisir.',
+        'Pendant de nombreuses années, les entreprises pouvaient se contenter de publier une offre minimale. Aujourd\'hui, le contexte est différent : de nombreux professionnels qualifiés ont plus d\'options parmi lesquelles choisir.',
         'C\'est pourquoi le candidat se pose certaines questions fondamentales :',
-        'Pourquoi devrais-je postuler ?',
-        'Qu\'est-ce qui rend cette opportunité intéressante ?',
-        'Quelles perspectives offre-t-elle ?',
-        'Comment sera l\'environnement de travail ?',
+        { list: ['Pourquoi devrais-je postuler ?', 'Qu\'est-ce qui rend cette opportunité intéressante ?', 'Quelles perspectives offre-t-elle ?', 'Comment sera l\'environnement de travail ?'] },
         'Si l\'offre ne répond pas à ces questions, elle risque de perdre en efficacité.',
       ],
     },
     {
       heading: 'Ce que cherchent vraiment les candidats',
       blocks: [
-        'De nombreuses entreprises pensent que les candidats ne regardent que le salaire.',
-        'En réalité, l\'évaluation est souvent plus nuancée.',
+        'De nombreuses entreprises pensent que les candidats ne regardent que le salaire ; en réalité, l\'évaluation est souvent plus nuancée.',
       ],
     },
     {
       heading: 'Clarté',
       blocks: [
         'Les personnes veulent comprendre rapidement :',
-        'ce qu\'elles feront ;',
-        'avec qui elles travailleront ;',
-        'quelles responsabilités elles auront.',
+        { list: ['Ce qu\'elles feront.', 'Avec qui elles travailleront.', 'Quelles responsabilités elles auront.'] },
       ],
     },
     {
@@ -114,9 +93,7 @@ export default {
       heading: 'Environnement de travail',
       blocks: [
         'De plus en plus de personnes attribuent de la valeur à :',
-        'la collaboration ;',
-        'la culture d\'entreprise ;',
-        'la qualité des relations.',
+        { list: ['La collaboration.', 'La culture d\'entreprise.', 'La qualité des relations.'] },
       ],
     },
     {
@@ -134,8 +111,7 @@ export default {
     {
       heading: '1. Titre',
       blocks: [
-        'C\'est la première chose que voit le candidat.',
-        'Il doit être clair et immédiatement compréhensible.',
+        'C\'est la première chose que voit le candidat et il doit être clair et immédiatement compréhensible.',
       ],
     },
     {
@@ -157,9 +133,7 @@ export default {
       heading: '2. Introduction',
       blocks: [
         'Les premières lignes doivent expliquer :',
-        'qui est l\'entreprise ;',
-        'ce qui rend l\'opportunité intéressante ;',
-        'pourquoi le candidat devrait continuer à lire.',
+        { list: ['Qui est l\'entreprise.', 'Ce qui rend l\'opportunité intéressante.', 'Pourquoi le candidat devrait continuer à lire.'] },
       ],
     },
     {
@@ -171,25 +145,20 @@ export default {
     {
       heading: '3. Responsabilités',
       blocks: [
-        'Décrire de manière concrète ce que la personne fera.',
-        'Mieux vaut utiliser des listes claires.',
+        'Décrire de manière concrète ce que la personne fera, en utilisant de préférence des listes claires.',
       ],
     },
     {
       heading: 'Exemple',
       blocks: [
         'La personne sélectionnée se chargera de :',
-        'la gestion clientèle ;',
-        'la préparation d\'offres ;',
-        'la coordination documentaire ;',
-        'le support administratif.',
+        { list: ['La gestion clientèle.', 'La préparation d\'offres.', 'La coordination documentaire.', 'Le support administratif.'] },
       ],
     },
     {
       heading: '4. Exigences',
       blocks: [
-        'C\'est ici que de nombreuses entreprises commettent des erreurs.',
-        'Nous verrons pourquoi dans un instant.',
+        'C\'est ici que de nombreuses entreprises commettent des erreurs ; nous verrons pourquoi dans un instant.',
       ],
     },
     {
@@ -207,8 +176,7 @@ export default {
     {
       heading: 'Comment rédiger un titre qui attire l\'attention',
       blocks: [
-        'Le titre représente le premier filtre.',
-        'S\'il ne fonctionne pas, le reste de l\'offre pourrait même ne pas être lu.',
+        'Le titre représente le premier filtre : s\'il ne fonctionne pas, le reste de l\'offre pourrait même ne pas être lu.',
       ],
     },
     {
@@ -237,24 +205,19 @@ export default {
     {
       heading: 'Utilisez le langage du marché',
       blocks: [
-        'Les candidats recherchent des postes spécifiques.',
-        'Utiliser des dénominations reconnaissables améliore la visibilité et la compréhension de l\'offre.',
+        'Les candidats recherchent des postes spécifiques : utiliser des dénominations reconnaissables améliore la visibilité et la compréhension de l\'offre.',
       ],
     },
     {
       heading: 'Comment décrire le poste de manière efficace',
       blocks: [
-        'Après le titre, la section consacrée aux responsabilités est celle que les candidats lisent avec le plus d\'attention.',
-        'L\'objectif n\'est pas de lister chaque tâche.',
-        'L\'objectif est d\'aider le candidat à s\'imaginer dans le poste.',
+        'Après le titre, la section consacrée aux responsabilités est celle que les candidats lisent avec le plus d\'attention. L\'objectif n\'est pas de lister chaque tâche, mais d\'aider le candidat à s\'imaginer dans le poste.',
       ],
     },
     {
       heading: 'Concentrez-vous sur les activités principales',
       blocks: [
-        'De nombreuses entreprises insèrent des listes interminables de tâches.',
-        'Cela rend l\'offre plus difficile à lire.',
-        'Mieux vaut mettre en avant les responsabilités réellement centrales.',
+        'De nombreuses entreprises insèrent des listes interminables de tâches, rendant l\'offre plus difficile à lire. Mieux vaut mettre en avant les responsabilités réellement centrales.',
       ],
     },
     {
@@ -278,27 +241,20 @@ export default {
     {
       heading: 'Utilisez un langage concret',
       blocks: [
-        'Plus le candidat comprend ce qu\'il fera, plus il sera capable d\'évaluer son adéquation.',
-        'Cela améliore la qualité des candidatures.',
+        'Plus le candidat comprend ce qu\'il fera, plus il sera capable d\'évaluer son adéquation, améliorant la qualité des candidatures.',
       ],
     },
     {
       heading: 'Les exigences : moins c\'est mieux',
       blocks: [
-        'C\'est probablement la section qui génère le plus d\'erreurs.',
-        'De nombreuses entreprises construisent des listes d\'exigences qui décrivent le candidat parfait.',
-        'Le problème est que le candidat parfait existe rarement.',
+        'C\'est probablement la section qui génère le plus d\'erreurs. De nombreuses entreprises construisent des listes d\'exigences qui décrivent le candidat parfait, mais le problème est que le candidat parfait existe rarement.',
       ],
     },
     {
       heading: 'L\'effet indésirable',
       blocks: [
         'Quand une offre contient :',
-        '15 compétences requises ;',
-        '10 ans d\'expérience ;',
-        '3 langues ;',
-        'une disponibilité totale ;',
-        'des compétences techniques avancées ;',
+        { list: ['15 compétences requises.', '10 ans d\'expérience.', '3 langues.', 'Une disponibilité totale.', 'Des compétences techniques avancées.'] },
         'de nombreux candidats valables décident de ne pas postuler.',
       ],
     },
@@ -323,18 +279,13 @@ export default {
     {
       heading: 'Demandez-vous toujours',
       blocks: [
-        'Cette exigence est-elle vraiment nécessaire ?',
-        'Ou est-elle simplement « agréable à avoir » ?',
-        'La réponse peut faire une grande différence dans le nombre de candidatures reçues.',
+        'Cette exigence est-elle vraiment nécessaire ou est-elle simplement « agréable à avoir » ? La réponse peut faire une grande différence dans le nombre de candidatures reçues.',
       ],
     },
     {
       heading: 'Pourquoi les avantages comptent de plus en plus',
       blocks: [
-        'De nombreuses entreprises consacrent peu de lignes aux avantages.',
-        'C\'est souvent une erreur.',
-        'Les candidats n\'évaluent pas seulement le travail.',
-        'Ils évaluent aussi ce que l\'organisation offre.',
+        'De nombreuses entreprises consacrent peu de lignes aux avantages, souvent par erreur. Les candidats n\'évaluent pas seulement le travail : ils évaluent aussi ce que l\'organisation offre.',
       ],
     },
     {
@@ -370,8 +321,7 @@ export default {
     {
       heading: 'Les erreurs qui font perdre des candidats',
       blocks: [
-        'Certaines erreurs se répètent continuellement.',
-        'Et compromettent souvent l\'efficacité de l\'offre.',
+        'Certaines erreurs se répètent continuellement et compromettent souvent l\'efficacité de l\'offre.',
       ],
     },
     {
@@ -383,9 +333,7 @@ export default {
     {
       heading: 'Langage bureaucratique',
       blocks: [
-        'Les personnes veulent comprendre.',
-        'Pas interpréter.',
-        'Un langage simple fonctionne presque toujours mieux.',
+        'Les personnes veulent comprendre, pas interpréter. Un langage simple fonctionne presque toujours mieux.',
       ],
     },
     {
@@ -435,13 +383,9 @@ export default {
     {
       heading: 'Conclusion',
       blocks: [
-        'Une offre d\'emploi efficace n\'est pas celle qui décrit le mieux ce que recherche l\'entreprise.',
-        'C\'est celle qui parvient à créer une rencontre entre les besoins de l\'organisation et les attentes des candidats.',
+        'Une offre d\'emploi efficace n\'est pas celle qui décrit le mieux ce que recherche l\'entreprise : c\'est celle qui parvient à créer une rencontre entre les besoins de l\'organisation et les attentes des candidats.',
         'Les entreprises qui obtiennent les meilleurs résultats ont tendance à très bien faire certaines choses :',
-        'communiquer clairement ;',
-        'définir des attentes réalistes ;',
-        'valoriser ce qu\'elles offrent ;',
-        'faciliter la candidature.',
+        { list: ['Communiquer clairement.', 'Définir des attentes réalistes.', 'Valoriser ce qu\'elles offrent.', 'Faciliter la candidature.'] },
         'Dans un marché de plus en plus compétitif, la qualité de l\'offre représente l\'un des outils les plus efficaces pour attirer des candidats qualifiés.',
         'Une offre claire, réaliste et bien structurée n\'améliore pas seulement la qualité des candidatures, elle améliore tout le processus de sélection. C\'est pourquoi il vaut la peine de consacrer du temps à sa construction, de mesurer ses résultats et de l\'optimiser au fil du temps.',
         'Car trouver la bonne personne ne commence pas à l\'entretien, cela commence par l\'offre.',

@@ -14,15 +14,14 @@ export default {
       heading: 'Why many people search for a job the wrong way',
       blocks: [
         'When someone loses a job or decides to change companies, the most common reaction is to start applying everywhere.',
-        'From an emotional standpoint, this is understandable.',
-        'From a strategic standpoint, it\'s often counterproductive.',
+        'From an emotional standpoint, this is understandable. From a strategic standpoint, it\'s often counterproductive.',
       ],
     },
     {
       heading: 'The quantity mistake',
       blocks: [
         'Many candidates think:',
-        'The more applications I send, the better my chances.',
+        { list: ['The more applications I send, the better my chances.'] },
         'That\'s not always true.',
         'Sending 100 generic applications often produces worse results than 20 well-targeted ones.',
       ],
@@ -55,10 +54,7 @@ export default {
         'A good CV is essential.',
         'But it\'s not enough on its own.',
         'A job search requires:',
-        'visibility;',
-        'strategy;',
-        'networking;',
-        'consistency.',
+        { list: ['visibility;', 'strategy;', 'networking;', 'consistency.'] },
       ],
     },
     {
@@ -73,10 +69,7 @@ export default {
       blocks: [
         'Experience is important.',
         'However, companies also evaluate:',
-        'motivation;',
-        'attitude;',
-        'ability to learn;',
-        'adaptability.',
+        { list: ['motivation;', 'attitude;', 'ability to learn;', 'adaptability.'] },
       ],
     },
     {
@@ -90,9 +83,7 @@ export default {
       heading: 'They have clear goals',
       blocks: [
         'They know exactly:',
-        'what role they\'re looking for;',
-        'which companies interest them;',
-        'which skills they want to highlight.',
+        { list: ['what role they\'re looking for;', 'which companies interest them;', 'which skills they want to highlight.'] },
       ],
     },
     {
@@ -106,18 +97,14 @@ export default {
       blocks: [
         'They don\'t limit themselves to online job ads.',
         'They make use of:',
-        'professional contacts;',
-        'networking;',
-        'speculative applications;',
-        'LinkedIn.',
+        { list: ['professional contacts;', 'networking;', 'speculative applications;', 'LinkedIn.'] },
       ],
     },
     {
       heading: 'They are consistent',
       blocks: [
-        'A job search is a marathon.',
-        'Not a sprint.',
-        'Those who stay consistent generally get better results.',
+        'A job search is a marathon, not a sprint.',
+        'Those who stay consistent over time, dedicating some energy each week to the search, generally get better results than those who alternate between bursts of activity and long periods of stagnation.',
       ],
     },
     {
@@ -131,10 +118,7 @@ export default {
       blocks: [
         'The more specific you are, the easier it will be to find suitable opportunities.',
         'For example:',
-        'administrative employee;',
-        'maintenance technician;',
-        'B2B sales representative;',
-        'software developer.',
+        { list: ['administrative employee;', 'maintenance technician;', 'B2B sales representative;', 'software developer.'] },
         'These are very different goals.',
       ],
     },
@@ -142,9 +126,7 @@ export default {
       heading: 'Identify your strengths',
       blocks: [
         'Ask yourself:',
-        'what skills do I have?',
-        'what results have I achieved?',
-        'what sets me apart from other candidates?',
+        { list: ['what skills do I have?', 'what results have I achieved?', 'what sets me apart from other candidates?'] },
       ],
     },
     {
@@ -212,10 +194,7 @@ export default {
       heading: 'Keep your profile up to date',
       blocks: [
         'Make sure it includes:',
-        'work experience;',
-        'skills;',
-        'education;',
-        'contact information.',
+        { list: ['work experience;', 'skills;', 'education;', 'contact information.'] },
         'The profile should be consistent with your CV.',
       ],
     },
@@ -229,9 +208,7 @@ export default {
       heading: 'Follow companies and professionals',
       blocks: [
         'This lets you:',
-        'discover new opportunities;',
-        'better understand the market;',
-        'stay up to date on industry trends.',
+        { list: ['discover new opportunities;', 'better understand the market;', 'stay up to date on industry trends.'] },
       ],
     },
     {
@@ -257,10 +234,7 @@ export default {
       blocks: [
         'You don\'t need to completely rewrite your CV for every application.',
         'However, it\'s useful to adapt:',
-        'your professional profile;',
-        'the skills you highlight;',
-        'keywords;',
-        'your cover letter.',
+        { list: ['your professional profile;', 'the skills you highlight;', 'keywords;', 'your cover letter.'] },
       ],
     },
     {
@@ -272,17 +246,15 @@ export default {
     {
       heading: 'Treating your search like a project',
       blocks: [
-        'Many people search for a job in a haphazard way.',
-        'Unplanned activities tend to produce inconsistent results.',
+        'Many people search for a job in a haphazard way, applying whenever something comes up without a plan behind it.',
+        'Unplanned activities tend to produce inconsistent results, with moments of great momentum followed by weeks of stagnation. Treating the search like a small project, with goals and deadlines, helps maintain the rhythm.',
       ],
     },
     {
       heading: 'Set weekly goals',
       blocks: [
         'For example:',
-        'applications sent;',
-        'new companies identified;',
-        'professional contacts made.',
+        { list: ['applications sent;', 'new companies identified;', 'professional contacts made.'] },
       ],
     },
     {
@@ -290,20 +262,14 @@ export default {
       blocks: [
         'A simple spreadsheet can be enough.',
         'Note down:',
-        'application date;',
-        'company;',
-        'position;',
-        'selection status;',
-        'any follow-ups.',
+        { list: ['application date;', 'company;', 'position;', 'selection status;', 'any follow-ups.'] },
       ],
     },
     {
       heading: 'Analyze your results',
       blocks: [
         'After a few weeks, ask yourself:',
-        'which applications lead to interviews?',
-        'which don\'t?',
-        'which industries respond the most?',
+        { list: ['which applications lead to interviews?', 'which don\'t?', 'which industries respond the most?'] },
         'This lets you gradually improve your approach.',
       ],
     },
@@ -320,9 +286,7 @@ export default {
       blocks: [
         'The CV remains the first thing to check.',
         'Ask yourself:',
-        'does it clearly communicate my value?',
-        'does it highlight concrete results?',
-        'is it up to date?',
+        { list: ['does it clearly communicate my value?', 'does it highlight concrete results?', 'is it up to date?'] },
       ],
     },
     {
@@ -334,18 +298,14 @@ export default {
     {
       heading: 'Analyze your strategy',
       blocks: [
-        'Are you using multiple channels?',
-        'Or are you relying solely on job ads?',
+        { list: ['Are you using multiple channels?', 'Or are you relying solely on job ads?'] },
       ],
     },
     {
       heading: 'Ask for feedback',
       blocks: [
         'When possible, talk to:',
-        'recruiters;',
-        'HR professionals;',
-        'colleagues;',
-        'people you trust.',
+        { list: ['recruiters;', 'HR professionals;', 'colleagues;', 'people you trust.'] },
         'An outside perspective can spot things you might be missing.',
       ],
     },
@@ -353,58 +313,14 @@ export default {
       heading: 'A practical 30-day plan',
       blocks: [
         'If you want to make your search more effective, you can follow a simple plan.',
-      ],
-    },
-    {
-      heading: 'Week 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analysis',
-      blocks: [
-        'updating your CV;',
-        'updating LinkedIn;',
-        'defining your professional goals.',
-      ],
-    },
-    {
-      heading: 'Week 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Search',
-      blocks: [
-        'identifying target companies;',
-        'monitoring opportunities;',
-        'sending targeted applications.',
-      ],
-    },
-    {
-      heading: 'Week 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Networking',
-      blocks: [
-        'contacting professionals;',
-        'attending events;',
-        'growing your professional network.',
-      ],
-    },
-    {
-      heading: 'Week 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Evaluation',
-      blocks: [
-        'analyzing results;',
-        'adjusting your strategy;',
-        'planning the next month.',
+        {
+          weekPlan: [
+            { week: 'Week 1', title: 'Analysis', items: ['updating your CV;', 'updating LinkedIn;', 'defining your professional goals.'] },
+            { week: 'Week 2', title: 'Search', items: ['identifying target companies;', 'monitoring opportunities;', 'sending targeted applications.'] },
+            { week: 'Week 3', title: 'Networking', items: ['contacting professionals;', 'attending events;', 'growing your professional network.'] },
+            { week: 'Week 4', title: 'Evaluation', items: ['analyzing results;', 'adjusting your strategy;', 'planning the next month.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'Not sure where to look? Discover the industries with the most opportunities.', slug: 'settori-con-piu-opportunita-di-lavoro' } },
@@ -413,10 +329,7 @@ export default {
       blocks: [
         'Finding a job isn\'t just a matter of luck.',
         'It\'s the result of a combination of factors:',
-        'preparation;',
-        'strategy;',
-        'consistency;',
-        'adaptability.',
+        { list: ['preparation;', 'strategy;', 'consistency;', 'adaptability.'] },
         'The people who get the best results aren\'t necessarily the ones who send the most applications.',
         'They\'re often the ones who manage to build a more thoughtful and organized approach.',
         'Treat your job search like a professional project.',

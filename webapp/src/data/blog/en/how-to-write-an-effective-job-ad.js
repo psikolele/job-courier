@@ -8,13 +8,12 @@ export default {
   readingTime: 8,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
-  intro: 'Many companies think publishing a job ad is a simple task.\n\nYou define a position.\n\nYou list the requirements.\n\nYou publish the listing.\n\nYou wait for applications.\n\nIn reality, the process is much more complex.\n\nToday candidates have access to hundreds of professional opportunities and can easily compare companies, roles and working conditions.',
+  intro: 'Many companies think publishing a job ad is a simple task: you define a position, you list the requirements, you publish the listing and you wait for applications.\n\nIn reality, the process is much more complex: today candidates have access to hundreds of professional opportunities and can easily compare companies, roles and working conditions.',
   sections: [
     {
       heading: 'For this reason, a job ad isn\'t just an administrative tool. It\'s a communication tool.',
       blocks: [
-        'It\'s often the first contact between a company and a potential employee.',
-        'An effective job ad doesn\'t just generate applications. It attracts the right applications.',
+        'It\'s often the first contact between a company and a potential employee. An effective job ad doesn\'t just generate applications: it attracts the right applications.',
         'In this guide we\'ll look at how to build clearer, more attractive and more effective job listings.',
       ],
     },
@@ -23,19 +22,14 @@ export default {
       blocks: [
         'Many companies underestimate the impact a job ad can have on the final outcome of a selection process.',
         'Yet the quality of the listing directly affects:',
-        'the number of applications;',
-        'the quality of candidates;',
-        'the time needed to hire;',
-        'how the company is perceived.',
+        { list: ['The number of applications.', 'The quality of candidates.', 'The time needed to hire.', 'How the company is perceived.'] },
       ],
     },
     { cta: { question: 'Have your job ad ready? Publish it and reach the right candidates.', action: 'Post your job ad', to: '/soluzioni-e-tariffe' } },
     {
       heading: 'The quality of applications',
       blocks: [
-        'A vague job ad tends to attract irrelevant profiles.',
-        'On the other hand, a well-built ad helps candidates quickly understand whether the role suits their skills.',
-        'This improves the quality of applications received.',
+        'A vague job ad tends to attract irrelevant profiles; on the other hand, a well-built ad helps candidates quickly understand whether the role suits their skills, improving the quality of applications received.',
       ],
     },
     {
@@ -43,16 +37,13 @@ export default {
       blocks: [
         'When more relevant applications come in, the selection process becomes more efficient.',
         'This reduces:',
-        'unnecessary screening;',
-        'unproductive interviews;',
-        'search times.',
+        { list: ['Unnecessary screening.', 'Unproductive interviews.', 'Search times.'] },
       ],
     },
     {
       heading: 'Company image',
       blocks: [
-        'Many candidates form a first impression of the company simply by reading the job ad.',
-        'A confusing, impersonal or sloppy text can convey an unprofessional image.',
+        'Many candidates form a first impression of the company simply by reading the job ad. A confusing, impersonal or sloppy text can convey an unprofessional image.',
       ],
     },
     {
@@ -60,42 +51,30 @@ export default {
       blocks: [
         'One of the most common mistakes is building the ad purely from the company\'s point of view.',
         'In practice, the message becomes:',
-        'We\'re looking for someone who can do this, this and this.',
-        'They must have these skills.',
-        'They must have this experience.',
-        'They must be available to do this.',
-        'The company only talks about what it wants to receive.',
-        'But forgets to explain what it offers.',
+        { list: ['We\'re looking for someone who can do this, this and this.', 'They must have these skills.', 'They must have this experience.', 'They must be available to do this.'] },
+        'The company only talks about what it wants to receive, but forgets to explain what it offers.',
       ],
     },
     {
       heading: 'The market has changed',
       blocks: [
-        'For many years companies could get away with publishing a bare-bones ad.',
-        'Today the context is different.',
-        'Many qualified professionals have more options to choose from.',
+        'For many years companies could get away with publishing a bare-bones ad. Today the context is different: many qualified professionals have more options to choose from.',
         'For this reason, candidates ask themselves a few key questions:',
-        'Why should I apply?',
-        'What makes this opportunity interesting?',
-        'What prospects does it offer?',
-        'What will the work environment be like?',
+        { list: ['Why should I apply?', 'What makes this opportunity interesting?', 'What prospects does it offer?', 'What will the work environment be like?'] },
         'If the ad doesn\'t answer these questions, it risks losing its effectiveness.',
       ],
     },
     {
       heading: 'What candidates are really looking for',
       blocks: [
-        'Many companies believe candidates only look at the salary.',
-        'In reality, the evaluation is often more nuanced.',
+        'Many companies believe candidates only look at the salary; in reality, the evaluation is often more nuanced.',
       ],
     },
     {
       heading: 'Clarity',
       blocks: [
         'People want to quickly understand:',
-        'what they\'ll be doing;',
-        'who they\'ll be working with;',
-        'what responsibilities they\'ll have.',
+        { list: ['What they\'ll be doing.', 'Who they\'ll be working with.', 'What responsibilities they\'ll have.'] },
       ],
     },
     {
@@ -114,9 +93,7 @@ export default {
       heading: 'Work environment',
       blocks: [
         'More and more people place value on:',
-        'collaboration;',
-        'company culture;',
-        'the quality of relationships.',
+        { list: ['Collaboration.', 'Company culture.', 'The quality of relationships.'] },
       ],
     },
     {
@@ -134,8 +111,7 @@ export default {
     {
       heading: '1. Title',
       blocks: [
-        'It\'s the first thing the candidate sees.',
-        'It must be clear and immediately understandable.',
+        'It\'s the first thing the candidate sees and it must be clear and immediately understandable.',
       ],
     },
     {
@@ -157,9 +133,7 @@ export default {
       heading: '2. Introduction',
       blocks: [
         'The opening lines should explain:',
-        'who the company is;',
-        'what makes the opportunity interesting;',
-        'why the candidate should keep reading.',
+        { list: ['Who the company is.', 'What makes the opportunity interesting.', 'Why the candidate should keep reading.'] },
       ],
     },
     {
@@ -171,25 +145,20 @@ export default {
     {
       heading: '3. Responsibilities',
       blocks: [
-        'Describe concretely what the person will do.',
-        'It\'s best to use clear lists.',
+        'Describe concretely what the person will do, preferring clear lists.',
       ],
     },
     {
       heading: 'Example',
       blocks: [
         'The selected candidate will be responsible for:',
-        'client management;',
-        'preparing quotes;',
-        'document coordination;',
-        'administrative support.',
+        { list: ['Client management.', 'Preparing quotes.', 'Document coordination.', 'Administrative support.'] },
       ],
     },
     {
       heading: '4. Requirements',
       blocks: [
-        'This is where many companies make mistakes.',
-        'We\'ll see why shortly.',
+        'This is where many companies make mistakes; we\'ll see why shortly.',
       ],
     },
     {
@@ -207,8 +176,7 @@ export default {
     {
       heading: 'How to write a title that grabs attention',
       blocks: [
-        'The title is the first filter.',
-        'If it doesn\'t work, the rest of the ad might not even be read.',
+        'The title is the first filter: if it doesn\'t work, the rest of the ad might not even be read.',
       ],
     },
     {
@@ -237,24 +205,19 @@ export default {
     {
       heading: 'Use the language of the market',
       blocks: [
-        'Candidates search for specific roles.',
-        'Using recognizable job titles improves the visibility and clarity of the ad.',
+        'Candidates search for specific roles: using recognizable job titles improves the visibility and clarity of the ad.',
       ],
     },
     {
       heading: 'How to describe the role effectively',
       blocks: [
-        'After the title, the responsibilities section is the one candidates read most carefully.',
-        'The goal isn\'t to list every single task.',
-        'The goal is to help the candidate picture themselves in the role.',
+        'After the title, the responsibilities section is the one candidates read most carefully. The goal isn\'t to list every single task, but to help the candidate picture themselves in the role.',
       ],
     },
     {
       heading: 'Focus on the main tasks',
       blocks: [
-        'Many companies include endless lists of duties.',
-        'This makes the ad harder to read.',
-        'It\'s better to highlight the truly central responsibilities.',
+        'Many companies include endless lists of duties, making the ad harder to read. It\'s better to highlight the truly central responsibilities.',
       ],
     },
     {
@@ -278,27 +241,20 @@ export default {
     {
       heading: 'Use concrete language',
       blocks: [
-        'The better the candidate understands what they\'ll be doing, the better they\'ll be able to assess their own fit.',
-        'This improves the quality of applications.',
+        'The better the candidate understands what they\'ll be doing, the better they\'ll be able to assess their own fit, improving the quality of applications.',
       ],
     },
     {
       heading: 'Requirements: less is more',
       blocks: [
-        'This is probably the section that causes the most mistakes.',
-        'Many companies build lists of requirements that describe the perfect candidate.',
-        'The problem is that the perfect candidate rarely exists.',
+        'This is probably the section that causes the most mistakes. Many companies build lists of requirements that describe the perfect candidate, but the problem is that the perfect candidate rarely exists.',
       ],
     },
     {
       heading: 'The unintended effect',
       blocks: [
         'When an ad contains:',
-        '15 required skills;',
-        '10 years of experience;',
-        '3 languages;',
-        'full availability;',
-        'advanced technical skills;',
+        { list: ['15 required skills.', '10 years of experience.', '3 languages.', 'Full availability.', 'Advanced technical skills.'] },
         'many strong candidates decide not to apply.',
       ],
     },
@@ -323,18 +279,13 @@ export default {
     {
       heading: 'Always ask yourself',
       blocks: [
-        'Is this requirement really necessary?',
-        'Or is it simply "nice to have"?',
-        'The answer can make a big difference in the number of applications you receive.',
+        'Is this requirement really necessary or is it simply "nice to have"? The answer can make a big difference in the number of applications you receive.',
       ],
     },
     {
       heading: 'Why benefits matter more and more',
       blocks: [
-        'Many companies devote just a few lines to benefits.',
-        'This is often a mistake.',
-        'Candidates don\'t just evaluate the job.',
-        'They also evaluate what the organization offers.',
+        'Many companies devote just a few lines to benefits, often by mistake. Candidates don\'t just evaluate the job: they also evaluate what the organization offers.',
       ],
     },
     {
@@ -370,8 +321,7 @@ export default {
     {
       heading: 'Mistakes that cost you candidates',
       blocks: [
-        'Some mistakes come up again and again.',
-        'And they often undermine the effectiveness of the ad.',
+        'Some mistakes come up again and again and they often undermine the effectiveness of the ad.',
       ],
     },
     {
@@ -383,9 +333,7 @@ export default {
     {
       heading: 'Bureaucratic language',
       blocks: [
-        'People want to understand.',
-        'Not interpret.',
-        'Simple language almost always works better.',
+        'People want to understand, not interpret. Simple language almost always works better.',
       ],
     },
     {
@@ -435,13 +383,9 @@ export default {
     {
       heading: 'Conclusion',
       blocks: [
-        'An effective job ad isn\'t the one that best describes what the company is looking for.',
-        'It\'s the one that manages to bring the organization\'s needs and the candidates\' expectations together.',
+        'An effective job ad isn\'t the one that best describes what the company is looking for: it\'s the one that manages to bring the organization\'s needs and the candidates\' expectations together.',
         'Companies that get the best results tend to do a few things very well:',
-        'they communicate clearly;',
-        'they set realistic expectations;',
-        'they highlight what they offer;',
-        'they make it easy to apply.',
+        { list: ['They communicate clearly.', 'They set realistic expectations.', 'They highlight what they offer.', 'They make it easy to apply.'] },
         'In an increasingly competitive market, the quality of the job ad is one of the most effective tools for attracting qualified candidates.',
         'A clear, realistic and well-structured ad doesn\'t just improve the quality of applications, it improves the entire selection process. That\'s why it\'s worth taking the time to build it well, measure its results and optimize it over time.',
         'Because finding the right person doesn\'t start with the interview, it starts with the ad.',

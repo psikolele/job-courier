@@ -15,15 +15,14 @@ export default {
       blocks: [
         'Bevor man nach Lösungen sucht, ist es wichtig, das richtige Problem zu identifizieren.',
         'Viele Unternehmen verwenden den Ausdruck:',
-        'Wir erhalten unqualifizierte Bewerbungen.',
+        { list: ['Wir erhalten unqualifizierte Bewerbungen.'] },
         'Aber hinter dieser Aussage können sich sehr unterschiedliche Situationen verbergen.',
       ],
     },
     {
       heading: 'Fall 1: Es kommen wenige Bewerbungen',
       blocks: [
-        'Hier könnte das Problem die Sichtbarkeit sein.',
-        'Die richtigen Personen sehen die Stelle vielleicht schlichtweg nicht.',
+        'Hier könnte das Problem die Sichtbarkeit sein: Die richtigen Personen sehen die Stelle vielleicht schlichtweg nicht.',
       ],
     },
     { cta: { question: 'Möchten Sie qualifiziertere Bewerbungen? Beginnen Sie mit einer besseren Stellenanzeige.', action: 'Stellenanzeige aufgeben', to: '/soluzioni-e-tariffe' } },
@@ -31,9 +30,7 @@ export default {
       heading: 'Fall 2: Es kommen viele Bewerbungen, aber wenige passende',
       blocks: [
         'In diesem Fall könnte das Problem betreffen:',
-        'die Stellenanzeige;',
-        'die Kanäle;',
-        'die Positionierung.',
+        { list: ['die Stellenanzeige.', 'die Kanäle.', 'die Positionierung.'] },
       ],
     },
     {
@@ -60,19 +57,14 @@ export default {
       blocks: [
         'Viele Stellenanzeigen verwenden vage Beschreibungen.',
         'Zum Beispiel:',
-        'dynamische Mitarbeiterin/dynamischer Mitarbeiter;',
-        'motivierte Fachkraft;',
-        'flexible Person.',
+        { list: ['dynamische Mitarbeiterin/dynamischer Mitarbeiter.', 'motivierte Fachkraft.', 'flexible Person.'] },
         'Diese Ausdrücke kommunizieren wenig.',
       ],
     },
     {
       heading: 'Was der Kandidat sofort verstehen sollte',
       blocks: [
-        'Rolle;',
-        'Verantwortlichkeiten;',
-        'geforderte Kompetenzen;',
-        'Arbeitskontext.',
+        { list: ['Rolle.', 'Verantwortlichkeiten.', 'geforderte Kompetenzen.', 'Arbeitskontext.'] },
         'Je klarer diese Informationen sind, desto höher die Qualität der Bewerbungen.',
       ],
     },
@@ -88,11 +80,7 @@ export default {
       blocks: [
         'Dies ist wahrscheinlich eines der häufigsten Hindernisse.',
         'Viele Unternehmen erstellen ein Idealprofil, das kombiniert:',
-        'umfangreiche Erfahrung;',
-        'fortgeschrittene technische Kompetenzen;',
-        'mehrere Sprachen;',
-        'sofortige Verfügbarkeit;',
-        'hohe Flexibilität.',
+        { list: ['umfangreiche Erfahrung.', 'fortgeschrittene technische Kompetenzen.', 'mehrere Sprachen.', 'sofortige Verfügbarkeit.', 'hohe Flexibilität.'] },
         'Das Ergebnis ist oft ein extrem seltenes Profil.',
       ],
     },
@@ -165,44 +153,33 @@ export default {
       heading: 'Wie ein Kandidat heute denkt',
       blocks: [
         'Vor einer Bewerbung prüfen viele Personen:',
-        'die Unternehmenswebsite;',
-        'die Online-Präsenz;',
-        'veröffentlichte Inhalte;',
-        'den allgemeinen Ruf.',
+        { list: ['die Unternehmenswebsite.', 'die Online-Präsenz.', 'veröffentlichte Inhalte.', 'den allgemeinen Ruf.'] },
       ],
     },
     {
       heading: 'Wenn das Unternehmen unsichtbar ist',
       blocks: [
-        'Der Kandidat hat wenige Informationen, um die Möglichkeit zu bewerten.',
-        'Das kann das Interesse an der Position verringern.',
+        'Der Kandidat hat wenige Informationen, um die Möglichkeit zu bewerten, und das kann das Interesse an der Position verringern, selbst wenn die angebotene Rolle interessant wäre.',
       ],
     },
     {
       heading: 'Employer Branding',
       blocks: [
         'Es bedeutet nicht aggressives Marketing. Es bedeutet, authentisch zu erzählen:',
-        'wer Sie sind;',
-        'wie Sie arbeiten;',
-        'welche Werte Sie vertreten;',
-        'was Ihre Organisation bietet.',
+        { list: ['wer Sie sind.', 'wie Sie arbeiten.', 'welche Werte Sie vertreten.', 'was Ihre Organisation bietet.'] },
       ],
     },
     {
       heading: 'Grund 5: Der Auswahlprozess ist zu langsam',
       blocks: [
         'Viele Unternehmen verlieren qualifizierte Kandidaten, ohne es zu merken.',
-        'Nicht weil das Profil nicht passend war.',
-        'Sondern weil der Prozess zu viel Zeit benötigte.',
+        'Nicht weil das Profil nicht passend war, sondern weil der Prozess zu viel Zeit benötigte: Jede Woche Wartezeit ist eine weitere Gelegenheit für den Kandidaten, ein anderes Angebot anzunehmen.',
       ],
     },
     {
       heading: 'Was oft passiert',
       blocks: [
-        'Woche 1: Eingang der Bewerbung.',
-        'Woche 3: Erster Kontakt.',
-        'Woche 5: Vorstellungsgespräch.',
-        'Woche 8: Entscheidung.',
+        { list: ['Woche 1: Eingang der Bewerbung.', 'Woche 3: Erster Kontakt.', 'Woche 5: Vorstellungsgespräch.', 'Woche 8: Entscheidung.'] },
         'Inzwischen hat der Kandidat bereits eine andere Möglichkeit angenommen.',
       ],
     },
@@ -226,12 +203,7 @@ export default {
         'Die Entlohnung bleibt wichtig.',
         'Aber sie ist nicht das einzige Element, das Kandidaten bewerten.',
         'Viele Fachkräfte berücksichtigen auch:',
-        'Entwicklungsmöglichkeiten;',
-        'Weiterbildung;',
-        'Autonomie;',
-        'Arbeitsumfeld;',
-        'Flexibilität;',
-        'Unternehmensstabilität.',
+        { list: ['Entwicklungsmöglichkeiten.', 'Weiterbildung.', 'Autonomie.', 'Arbeitsumfeld.', 'Flexibilität.', 'Unternehmensstabilität.'] },
       ],
     },
     {
@@ -259,10 +231,7 @@ export default {
       heading: 'Kandidaten recherchieren',
       blocks: [
         'Vor einer Bewerbung prüfen viele Personen:',
-        'die Unternehmenswebsite;',
-        'Social-Media-Profile;',
-        'Bewertungen;',
-        'den allgemeinen Ruf.',
+        { list: ['die Unternehmenswebsite.', 'Social-Media-Profile.', 'Bewertungen.', 'den allgemeinen Ruf.'] },
       ],
     },
     {
@@ -277,10 +246,7 @@ export default {
       blocks: [
         'Nicht durch Slogans.',
         'Sondern durch:',
-        'die Qualität der Beziehungen;',
-        'die Unternehmenskultur;',
-        'die Erfahrung der Mitarbeitenden;',
-        'die Konsistenz zwischen Kommunikation und gelebter Realität.',
+        { list: ['die Qualität der Beziehungen.', 'die Unternehmenskultur.', 'die Erfahrung der Mitarbeitenden.', 'die Konsistenz zwischen Kommunikation und gelebter Realität.'] },
       ],
     },
     {
@@ -324,58 +290,14 @@ export default {
       heading: 'Praktischer 30-Tage-Verbesserungsplan',
       blocks: [
         'Wenn die Qualität der Bewerbungen nicht zufriedenstellend ist, lohnt es sich, strukturiert vorzugehen.',
-      ],
-    },
-    {
-      heading: 'Woche 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analyse',
-      blocks: [
-        'Überprüfung der Stellenanzeigen;',
-        'Überprüfung der genutzten Kanäle;',
-        'Sammlung der wichtigsten Daten.',
-      ],
-    },
-    {
-      heading: 'Woche 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Optimierung',
-      blocks: [
-        'Verbesserung der Texte;',
-        'Überprüfung der Anforderungen;',
-        'Aktualisierung des Wertangebots.',
-      ],
-    },
-    {
-      heading: 'Woche 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Sichtbarkeit',
-      blocks: [
-        'Erweiterung der Kanäle;',
-        'Einbindung des Teams;',
-        'Aktivierung von Empfehlungsprogrammen.',
-      ],
-    },
-    {
-      heading: 'Woche 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Messung',
-      blocks: [
-        'Vergleich der Ergebnisse;',
-        'Analyse der Bewerbungsqualität;',
-        'Identifikation der wirksamsten Massnahmen.',
+        {
+          weekPlan: [
+            { week: 'Woche 1', title: 'Analyse', items: ['Überprüfung der Stellenanzeigen.', 'Überprüfung der genutzten Kanäle.', 'Sammlung der wichtigsten Daten.'] },
+            { week: 'Woche 2', title: 'Optimierung', items: ['Verbesserung der Texte.', 'Überprüfung der Anforderungen.', 'Aktualisierung des Wertangebots.'] },
+            { week: 'Woche 3', title: 'Sichtbarkeit', items: ['Erweiterung der Kanäle.', 'Einbindung des Teams.', 'Aktivierung von Empfehlungsprogrammen.'] },
+            { week: 'Woche 4', title: 'Messung', items: ['Vergleich der Ergebnisse.', 'Analyse der Bewerbungsqualität.', 'Identifikation der wirksamsten Massnahmen.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'Alles beginnt mit der Stellenanzeige: Erfahren Sie, wie Sie sie wirksam schreiben.', slug: 'come-scrivere-un-annuncio-di-lavoro-efficace' } },
@@ -384,11 +306,7 @@ export default {
       blocks: [
         'Wenn ein Unternehmen keine qualifizierten Bewerbungen erhält, gibt es selten eine einzige Ursache.',
         'In den meisten Fällen ist das Ergebnis eine Kombination von Faktoren:',
-        'Stellenanzeige;',
-        'Kanäle;',
-        'Prozess;',
-        'Reputation;',
-        'Wertangebot.',
+        { list: ['Stellenanzeige.', 'Kanäle.', 'Prozess.', 'Reputation.', 'Wertangebot.'] },
         'Die gute Nachricht ist, dass viele dieser Elemente verbessert werden können.',
         'Bevor Sie schliessen, dass "es keine guten Leute mehr gibt", lohnt es sich, Ihr Recruiting-System genau zu analysieren.',
         'Die Unternehmen mit den besten Ergebnissen sind nicht unbedingt diejenigen, die am meisten investieren.',

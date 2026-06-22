@@ -14,9 +14,7 @@ export default {
       heading: 'Le marché du travail a changé',
       blocks: [
         'Pendant de nombreuses années, le processus de recrutement a été perçu comme un parcours à sens unique.',
-        'L\'entreprise publiait une offre.',
-        'Les candidats se proposaient.',
-        'L\'organisation choisissait.',
+        { list: ['L\'entreprise publiait une offre.', 'Les candidats se proposaient.', 'L\'organisation choisissait.'] },
         'Aujourd\'hui, le contexte est très différent.',
         'Les personnes ont accès à une quantité énorme d\'informations.',
         'Elles peuvent comparer les opportunités, recueillir des avis, visiter les sites des entreprises et évaluer différents aspects avant même d\'envoyer une candidature.',
@@ -27,10 +25,7 @@ export default {
       heading: 'Les candidats sont mieux informés',
       blocks: [
         'Avant de postuler, de nombreuses personnes vérifient :',
-        'le site web de l\'entreprise ;',
-        'la présence en ligne ;',
-        'les avis ;',
-        'les actualités sur l\'entreprise.',
+        { list: ['Site web de l\'entreprise.', 'Présence en ligne.', 'Avis.', 'Actualités sur l\'entreprise.'] },
         'Même une PME locale est souvent analysée avec attention.',
       ],
     },
@@ -41,11 +36,7 @@ export default {
         'Le salaire continue d\'être important.',
         'Mais ce n\'est plus le seul critère de choix.',
         'De plus en plus de professionnels évaluent :',
-        'l\'environnement de travail ;',
-        'la stabilité ;',
-        'les perspectives de croissance ;',
-        'la flexibilité ;',
-        'la qualité du leadership.',
+        { list: ['Environnement de travail.', 'Stabilité.', 'Perspectives de croissance.', 'Flexibilité.', 'Qualité du leadership.'] },
       ],
     },
     {
@@ -71,11 +62,7 @@ export default {
       blocks: [
         'Lorsqu\'un professionnel compare deux opportunités, il prend en considération de nombreux éléments.',
         'Par exemple :',
-        'la sécurité ;',
-        'les perspectives ;',
-        'l\'environnement ;',
-        'l\'équilibre entre vie privée et travail ;',
-        'la qualité des relations.',
+        { list: ['Sécurité.', 'Perspectives.', 'Environnement.', 'Équilibre entre vie privée et travail.', 'Qualité des relations.'] },
       ],
     },
     {
@@ -103,16 +90,13 @@ export default {
     {
       heading: 'Communication',
       blocks: [
-        'Le site est-il à jour ?',
-        'Les informations sont-elles claires ?',
-        'L\'entreprise paraît-elle professionnelle ?',
+        { list: ['Le site est-il à jour ?', 'Les informations sont-elles claires ?', 'L\'entreprise paraît-elle professionnelle ?'] },
       ],
     },
     {
       heading: 'Cohérence',
       blocks: [
-        'Ce qui est communiqué est-il cohérent avec ce qui ressort en ligne ?',
-        'Les incohérences génèrent des doutes.',
+        'Ce qui est communiqué est-il cohérent avec ce qui ressort en ligne ? Les incohérences, même petites, génèrent des doutes dans l\'esprit de ceux qui évaluent l\'entreprise.',
       ],
     },
     {
@@ -132,44 +116,33 @@ export default {
     {
       heading: 'Signaux qui transmettent de la stabilité',
       blocks: [
-        'une présence consolidée sur le marché ;',
-        'la croissance ;',
-        'la clarté organisationnelle ;',
-        'la solidité perçue.',
+        { list: ['Présence consolidée sur le marché.', 'Croissance.', 'Clarté organisationnelle.', 'Solidité perçue.'] },
       ],
     },
     {
       heading: 'Pourquoi c\'est important',
       blocks: [
-        'Changer d\'emploi représente toujours un choix exigeant.',
-        'Les personnes veulent réduire le risque.',
+        'Changer d\'emploi représente toujours un choix exigeant, et les personnes veulent réduire le risque en choisissant des entreprises qui garantissent une continuité.',
       ],
     },
     {
       heading: '3. Environnement de travail',
       blocks: [
-        'Un des aspects les plus sous-estimés par les entreprises.',
-        'Et l\'un des plus évalués par les candidats.',
+        'Un des aspects les plus sous-estimés par les entreprises, mais aussi l\'un des plus évalués par les candidats.',
       ],
     },
     {
       heading: 'Comment se passe vraiment le travail ?',
       blocks: [
         'Les personnes essaient de comprendre :',
-        'comment les collaborateurs sont traités ;',
-        'quelle ambiance règne ;',
-        'comment les relations internes sont gérées.',
+        { list: ['Comment les collaborateurs sont traités.', 'Quelle ambiance règne.', 'Comment les relations internes sont gérées.'] },
       ],
     },
     {
       heading: 'Le bouche-à-oreille compte',
       blocks: [
-        'Souvent, les informations les plus influentes ne viennent pas des sites des entreprises.',
-        'Elles viennent des personnes.',
-        'Anciens collaborateurs.',
-        'Clients.',
-        'Fournisseurs.',
-        'Connaissances.',
+        'Souvent, les informations les plus influentes ne viennent pas des sites des entreprises, mais des personnes.',
+        { list: ['Anciens collaborateurs.', 'Clients.', 'Fournisseurs.', 'Connaissances.'] },
       ],
     },
     {
@@ -182,9 +155,7 @@ export default {
     {
       heading: 'Les questions qu\'ils se posent',
       blocks: [
-        'Pourrai-je apprendre ?',
-        'Pourrai-je assumer de nouvelles responsabilités ?',
-        'Pourrai-je évoluer professionnellement ?',
+        { list: ['Pourrai-je apprendre ?', 'Pourrai-je assumer de nouvelles responsabilités ?', 'Pourrai-je évoluer professionnellement ?'] },
       ],
     },
     {
@@ -207,9 +178,7 @@ export default {
       heading: 'Les candidats recherchent des signaux',
       blocks: [
         'Même avant d\'entrer dans l\'entreprise, de nombreuses personnes essaient de comprendre :',
-        'comment les collaborateurs sont gérés ;',
-        'à quel point la direction est accessible ;',
-        'quel style de leadership caractérise l\'organisation.',
+        { list: ['Comment les collaborateurs sont gérés.', 'À quel point la direction est accessible.', 'Quel style de leadership caractérise l\'organisation.'] },
       ],
     },
     {
@@ -230,17 +199,13 @@ export default {
     {
       heading: 'Ce que les candidats évaluent',
       blocks: [
-        'les horaires ;',
-        'l\'autonomie ;',
-        'l\'organisation du travail ;',
-        'la confiance.',
+        { list: ['Horaires.', 'Autonomie.', 'Organisation du travail.', 'Confiance.'] },
       ],
     },
     {
       heading: 'La flexibilité n\'est pas seulement une question organisationnelle',
       blocks: [
-        'C\'est aussi un signal culturel.',
-        'Cela communique la manière dont l\'entreprise considère ses collaborateurs.',
+        'C\'est aussi un signal culturel : cela communique la manière dont l\'entreprise considère ses collaborateurs et à quel point elle fait confiance à leur jugement.',
       ],
     },
     {
@@ -312,16 +277,10 @@ export default {
       heading: 'Un exemple typique',
       blocks: [
         'Une entreprise offre :',
-        'un environnement positif ;',
-        'la stabilité ;',
-        'l\'autonomie ;',
-        'la croissance.',
+        { list: ['Environnement positif.', 'Stabilité.', 'Autonomie.', 'Croissance.'] },
         'Mais le candidat ne le sait pas. Pourquoi ?',
         'Parce que ces informations n\'apparaissent pas :',
-        'sur le site ;',
-        'dans les annonces ;',
-        'sur les réseaux sociaux ;',
-        'dans la communication de l\'entreprise.',
+        { list: ['Sur le site.', 'Dans les annonces.', 'Sur les réseaux sociaux.', 'Dans la communication de l\'entreprise.'] },
       ],
     },
     {
@@ -340,23 +299,19 @@ export default {
     {
       heading: 'Le site web',
       blocks: [
-        'Transmet-il du professionnalisme ?',
-        'Est-il à jour ?',
-        'Raconte-t-il l\'entreprise de manière authentique ?',
+        { list: ['Transmet-il du professionnalisme ?', 'Est-il à jour ?', 'Raconte-t-il l\'entreprise de manière authentique ?'] },
       ],
     },
     {
       heading: 'Les profils sociaux',
       blocks: [
-        'Montrent-ils quelque chose de la réalité de l\'entreprise ?',
-        'Ou paraissent-ils abandonnés ?',
+        'Montrent-ils quelque chose de la réalité de l\'entreprise, des personnes et des projets ? Ou paraissent-ils abandonnés, avec le dernier post datant de plusieurs années ?',
       ],
     },
     {
       heading: 'Les offres d\'emploi',
       blocks: [
-        'Communiquent-elles seulement des exigences ?',
-        'Ou expliquent-elles pourquoi cette opportunité est intéressante ?',
+        'Communiquent-elles seulement des exigences et des missions ? Ou expliquent-elles aussi pourquoi cette opportunité est vraiment intéressante pour celui qui la lit ?',
       ],
     },
     {
@@ -412,36 +367,15 @@ export default {
     {
       heading: 'Plan pratique sur 30 jours',
       blocks: [
-      ],
-    },
-    {
-      heading: 'Semaine 1',
-      blocks: [
-        'Analysez votre communication.',
-        'le site ;',
-        'les annonces ;',
-        'les profils sociaux.',
-      ],
-    },
-    {
-      heading: 'Semaine 2',
-      blocks: [
-        'Parlez avec vos collaborateurs.',
-        'Demandez : Pourquoi travaillez-vous ici ?',
-        'Les réponses peuvent être surprenantes.',
-      ],
-    },
-    {
-      heading: 'Semaine 3',
-      blocks: [
-        'Identifiez les véritables points forts de l\'entreprise.',
-        'Pas ceux théoriques, ceux réels.',
-      ],
-    },
-    {
-      heading: 'Semaine 4',
-      blocks: [
-        'Commencez à les communiquer de manière cohérente.',
+        'Pour commencer à combler l\'écart entre ce que votre entreprise offre vraiment et ce que les candidats perçoivent, vous pouvez suivre un plan simple.',
+        {
+          weekPlan: [
+            { week: 'Semaine 1', title: 'Analysez votre communication', items: ['Site web.', 'Annonces.', 'Profils sociaux.'] },
+            { week: 'Semaine 2', title: 'Parlez avec vos collaborateurs', items: ['Demandez : « Pourquoi travaillez-vous ici ? »', 'Les réponses peuvent être surprenantes.'] },
+            { week: 'Semaine 3', title: 'Identifiez les véritables points forts', items: ['Pas ceux théoriques, mais ceux réels de l\'entreprise.'] },
+            { week: 'Semaine 4', title: 'Communiquez de manière cohérente', items: ['Commencez à raconter ces points forts sur tous les canaux.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'Vous voulez construire une image d\'entreprise attractive ? Partez de la marque employeur.', slug: 'employer-branding-pmi-guida-pratica' } },
@@ -454,7 +388,7 @@ export default {
         'Très souvent, ce sont celles qui ont compris une vérité simple :',
         'les gens veulent savoir pourquoi ils devraient choisir précisément cette entreprise.',
         'Les PME possèdent souvent des caractéristiques extraordinaires :',
-        'Proximité – Autonomie – Rapidité - Relations authentiques.',
+        { list: ['Proximité.', 'Autonomie.', 'Rapidité.', 'Relations authentiques.'] },
         'Le défi n\'est pas de les créer, le défi est de les communiquer.',
         'Et quand cela arrive, le recrutement change profondément.',
       ],

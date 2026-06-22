@@ -8,64 +8,51 @@ export default {
   readingTime: 7,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80',
-  intro: 'Der Arbeitsmarkt befindet sich im stetigen Wandel. Manche Berufe wachsen schnell, andere verändern sich. Wieder andere verzeichnen eine sinkende Nachfrage.\n\nFür Stellensuchende, für Menschen, die ihre Karriere verändern möchten, oder für Personen, die einen Ausbildungsweg wählen, ist es entscheidend zu verstehen, wo sich die Möglichkeiten konzentrieren.\n\nEine der häufigsten Fragen lautet:\n\nWelche Branchen bieten heute die grössten Beschäftigungsmöglichkeiten?\n\nDie Antwort hängt nicht nur von der Anzahl der veröffentlichten Stellenangebote ab.\n\nEs zählen auch die Schwierigkeit der Unternehmen, qualifiziertes Personal zu finden, die technologische Entwicklung, der demografische Wandel und die neuen Bedürfnisse des Marktes.\n\nIn diesem Leitfaden analysieren wir die Branchen, die derzeit die meisten beruflichen Möglichkeiten generieren, die am stärksten gefragten Kompetenzen und die Trends, die die Arbeitswelt in den kommenden Jahren wahrscheinlich weiter beeinflussen werden.',
+  intro: 'Der Arbeitsmarkt befindet sich im stetigen Wandel. Manche Berufe wachsen schnell, andere verändern sich. Wieder andere verzeichnen eine sinkende Nachfrage.\n\nFür Stellensuchende, für Menschen, die ihre Karriere verändern möchten, oder für Personen, die einen Ausbildungsweg wählen, ist es entscheidend zu verstehen, wo sich die Möglichkeiten konzentrieren. Eine der häufigsten Fragen lautet: Welche Branchen bieten heute die grössten Beschäftigungsmöglichkeiten?\n\nDie Antwort hängt nicht nur von der Anzahl der veröffentlichten Stellenangebote ab. Es zählen auch die Schwierigkeit der Unternehmen, qualifiziertes Personal zu finden, die technologische Entwicklung, der demografische Wandel und die neuen Bedürfnisse des Marktes.\n\nIn diesem Leitfaden analysieren wir die Branchen, die derzeit die meisten beruflichen Möglichkeiten generieren, die am stärksten gefragten Kompetenzen und die Trends, die die Arbeitswelt in den kommenden Jahren wahrscheinlich weiter beeinflussen werden.',
   sections: [
     {
       heading: 'Wie sich der Arbeitsmarkt verändert',
       blocks: [
-        'In den letzten Jahren hat sich die Arbeit schneller verändert als in vielen vorangegangenen Jahrzehnten.',
-        'Unternehmen stehen vor wichtigen Transformationen.',
-        'Zu den wichtigsten Faktoren gehören:',
-        'Digitalisierung;',
-        'Automatisierung;',
-        'Bevölkerungsalterung;',
-        'Nachhaltigkeit;',
-        'Wandel der geforderten Kompetenzen.',
+        'In den letzten Jahren hat sich die Arbeit schneller verändert als in vielen vorangegangenen Jahrzehnten, und Unternehmen stehen vor wichtigen Transformationen. Zu den wichtigsten Faktoren gehören:',
+        { list: ['Digitalisierung.', 'Automatisierung.', 'Bevölkerungsalterung.', 'Nachhaltigkeit.', 'Wandel der geforderten Kompetenzen.'] },
         'Diese Phänomene zu verstehen, hilft, die gegenwärtigen und zukünftigen Möglichkeiten besser einzuordnen.',
       ],
     },
     {
       heading: 'Die Digitalisierung',
       blocks: [
-        'Praktisch jede Branche nutzt heute digitale Werkzeuge.',
-        'Das betrifft nicht nur die IT.',
-        'Auch Administration, Logistik, Produktion, Marketing und Vertrieb erleben einen tiefgreifenden Wandel.',
+        'Praktisch jede Branche nutzt heute digitale Werkzeuge: Das betrifft nicht nur die IT, sondern auch Administration, Logistik, Produktion, Marketing und Vertrieb erleben einen tiefgreifenden Wandel.',
       ],
     },
     { cta: { question: 'Möchten Sie die Möglichkeiten in wachsenden Branchen entdecken?', action: 'Stellenangebote ansehen', to: '/offerte' } },
     {
       heading: 'Die Alterung der Bevölkerung',
       blocks: [
-        'Der Anstieg des Durchschnittsalters führt zu einer wachsenden Nachfrage nach Gesundheits- und Pflegedienstleistungen.',
-        'Dieses Phänomen beeinflusst den Arbeitsmarkt erheblich.',
+        'Der Anstieg des Durchschnittsalters führt zu einer wachsenden Nachfrage nach Gesundheits- und Pflegedienstleistungen, dieses Phänomen beeinflusst den Arbeitsmarkt erheblich.',
       ],
     },
     {
       heading: 'Die Automatisierung',
       blocks: [
-        'Viele repetitive Tätigkeiten werden zunehmend automatisiert.',
-        'Parallel dazu wächst die Nachfrage nach Fachkräften, die diese Prozesse steuern, kontrollieren und verbessern können.',
+        'Viele repetitive Tätigkeiten werden zunehmend automatisiert, und parallel dazu wächst die Nachfrage nach Fachkräften, die diese Prozesse steuern, kontrollieren und verbessern können.',
       ],
     },
     {
       heading: 'Die Nachhaltigkeit',
       blocks: [
-        'Unternehmen achten zunehmend auf Umwelt-, Energie- und gesellschaftliche Verantwortungsthemen.',
-        'Neue Kompetenzen gewinnen in zahlreichen Branchen an Bedeutung.',
+        'Unternehmen achten zunehmend auf Umwelt-, Energie- und gesellschaftliche Verantwortungsthemen, und neue Kompetenzen gewinnen in zahlreichen Branchen an Bedeutung.',
       ],
     },
     {
       heading: 'Gesundheitswesen und Pflege',
       blocks: [
-        'Unter allen Sektoren bietet das Gesundheitswesen weiterhin einige der interessantesten Möglichkeiten.',
-        'Die steigende Nachfrage nach Gesundheitsdienstleistungen macht zahlreiche Berufsbilder besonders gefragt.',
+        'Unter allen Sektoren bietet das Gesundheitswesen weiterhin einige der interessantesten Möglichkeiten: Die steigende Nachfrage nach Gesundheitsdienstleistungen macht zahlreiche Berufsbilder besonders gefragt.',
       ],
     },
     {
       heading: 'Pflegefachpersonen',
       blocks: [
-        'Sie zählen zu den am meisten gesuchten Berufen.',
-        'Gesundheitseinrichtungen suchen kontinuierlich qualifiziertes Personal.',
+        'Sie zählen zu den am meisten gesuchten Berufen: Gesundheitseinrichtungen suchen kontinuierlich qualifiziertes Personal.',
       ],
     },
     {
@@ -78,10 +65,7 @@ export default {
       heading: 'Therapeutische Berufe',
       blocks: [
         'Dazu zählen:',
-        'Physiotherapie;',
-        'Ergotherapie;',
-        'Logopädie;',
-        'Arbeitstherapie.',
+        { list: ['Physiotherapie.', 'Ergotherapie.', 'Logopädie.', 'Arbeitstherapie.'] },
       ],
     },
     {
@@ -93,9 +77,7 @@ export default {
     {
       heading: 'Technologie und Digitales',
       blocks: [
-        'Die Technologie verändert den Arbeitsmarkt weiter.',
-        'Das betrifft nicht nur IT-Unternehmen.',
-        'Jede Organisation benötigt heute digitale Kompetenzen.',
+        'Die Technologie verändert den Arbeitsmarkt weiter und betrifft nicht nur IT-Unternehmen: Jede Organisation benötigt heute digitale Kompetenzen.',
       ],
     },
     {
@@ -125,15 +107,13 @@ export default {
     {
       heading: 'Was diese Berufe gemeinsam haben',
       blocks: [
-        'Die Notwendigkeit kontinuierlicher Weiterbildung.',
-        'Die Technologie entwickelt sich schnell und erfordert ständige Schulung.',
+        'Die Notwendigkeit kontinuierlicher Weiterbildung: Die Technologie entwickelt sich schnell und erfordert ständige Schulung.',
       ],
     },
     {
       heading: 'Industrie und technische Berufe',
       blocks: [
-        'Wenn von Arbeit gesprochen wird, denkt man oft sofort an Bürotätigkeiten.',
-        'In Wirklichkeit haben viele Unternehmen Mühe, qualifiziertes technisches Personal zu finden.',
+        'Wenn von Arbeit gesprochen wird, denkt man oft sofort an Bürotätigkeiten, aber in Wirklichkeit haben viele Unternehmen Mühe, qualifiziertes technisches Personal zu finden.',
       ],
     },
     {
@@ -163,8 +143,7 @@ export default {
     {
       heading: 'Bauwesen und Handwerk',
       blocks: [
-        'Eine oft unterschätzte Branche.',
-        'Sie bietet jedoch weiterhin zahlreiche berufliche Möglichkeiten.',
+        'Eine oft unterschätzte Branche, die jedoch weiterhin zahlreiche berufliche Möglichkeiten bietet.',
       ],
     },
     {
@@ -194,8 +173,7 @@ export default {
     {
       heading: 'Logistik und Supply Chain',
       blocks: [
-        'In den letzten Jahren ist die Logistik zu einer immer strategischeren Branche geworden.',
-        'Das Wachstum des E-Commerce, die Internationalisierung der Lieferketten und die Notwendigkeit, Prozesse zu optimieren, haben die Nachfrage nach qualifizierten Fachkräften erhöht.',
+        'In den letzten Jahren ist die Logistik zu einer immer strategischeren Branche geworden: Das Wachstum des E-Commerce, die Internationalisierung der Lieferketten und die Notwendigkeit, Prozesse zu optimieren, haben die Nachfrage nach qualifizierten Fachkräften erhöht.',
       ],
     },
     {
@@ -225,8 +203,7 @@ export default {
     {
       heading: 'Verkauf und Kundenbeziehungen',
       blocks: [
-        'Jedes Unternehmen braucht Kunden.',
-        'Deshalb bleiben kaufmännische Berufe einer der dynamischsten Bereiche des Arbeitsmarktes.',
+        'Jedes Unternehmen braucht Kunden, und deshalb bleiben kaufmännische Berufe einer der dynamischsten Bereiche des Arbeitsmarktes.',
       ],
     },
     {
@@ -250,19 +227,14 @@ export default {
     {
       heading: 'Was den Unterschied macht',
       blocks: [
-        'Nicht nur die Verkaufsfähigkeit.',
-        'Immer wichtiger sind:',
-        'Kommunikation;',
-        'Zuhören;',
-        'Verhandlung;',
-        'Beziehungsmanagement.',
+        'Nicht nur die Verkaufsfähigkeit. Immer wichtiger sind:',
+        { list: ['Kommunikation.', 'Zuhören.', 'Verhandlung.', 'Beziehungsmanagement.'] },
       ],
     },
     {
       heading: 'Finanzen, Buchhaltung und Verwaltung',
       blocks: [
-        'Viele Menschen glauben, diese Rollen seien inzwischen gesättigt.',
-        'In Wirklichkeit gibt es weiterhin zahlreiche Möglichkeiten, insbesondere für Personen mit aktuellen Kompetenzen.',
+        'Viele Menschen glauben, diese Rollen seien inzwischen gesättigt, aber in Wirklichkeit gibt es weiterhin zahlreiche Möglichkeiten, insbesondere für Personen mit aktuellen Kompetenzen.',
       ],
     },
     {
@@ -292,8 +264,7 @@ export default {
     {
       heading: 'Die Kompetenzen, die die Beschäftigungsfähigkeit erhöhen',
       blocks: [
-        'Wenn von beruflichen Möglichkeiten gesprochen wird, konzentriert man sich leicht ausschliesslich auf Berufe.',
-        'In Wirklichkeit machen oft die Kompetenzen den Unterschied.',
+        'Wenn von beruflichen Möglichkeiten gesprochen wird, konzentriert man sich leicht ausschliesslich auf Berufe, aber in Wirklichkeit machen oft die Kompetenzen den Unterschied.',
       ],
     },
     {
@@ -317,30 +288,27 @@ export default {
     {
       heading: 'Anpassungsfähigkeit',
       blocks: [
-        'Der Wandel ist inzwischen eine Konstante.',
-        'Wer sich schneller anpasst, bewahrt tendenziell eine höhere Beschäftigungsfähigkeit.',
+        'Der Wandel ist inzwischen eine Konstante, und wer sich schneller anpasst, bewahrt tendenziell eine höhere Beschäftigungsfähigkeit.',
       ],
     },
     {
       heading: 'Zusammenarbeit',
       blocks: [
-        'Immer mehr Tätigkeiten werden in multidisziplinären Teams ausgeführt.',
-        'Die Fähigkeit, mit anderen Menschen zusammenzuarbeiten, ist grundlegend.',
+        'Immer mehr Tätigkeiten werden in multidisziplinären Teams ausgeführt: Die Fähigkeit, mit anderen Menschen zusammenzuarbeiten, ist grundlegend.',
       ],
     },
     {
       heading: 'Wie wählt man die richtige Branche?',
       blocks: [
         'Viele Kandidaten fragen sich:',
-        'Wohin sollte ich meine Karriere ausrichten?',
+        { list: ['Wohin sollte ich meine Karriere ausrichten?'] },
         'Die Antwort hängt nicht nur von der Marktnachfrage ab.',
       ],
     },
     {
       heading: 'Berücksichtigen Sie Ihre Kompetenzen',
       blocks: [
-        'Gehen Sie von dem aus, was Sie bereits können.',
-        'Bestehende Kompetenzen sind oft der beste Ausgangspunkt.',
+        'Gehen Sie von dem aus, was Sie bereits können: Bestehende Kompetenzen sind oft der beste Ausgangspunkt.',
       ],
     },
     {
@@ -358,27 +326,20 @@ export default {
     {
       heading: 'Bewerten Sie die nötige Weiterbildung',
       blocks: [
-        'Manche Wege erfordern erhebliche Bildungsinvestitionen.',
-        'Andere ermöglichen einen schnelleren Übergang.',
+        'Manche Wege erfordern erhebliche Bildungsinvestitionen, während andere einen schnelleren Übergang ermöglichen.',
       ],
     },
     {
       heading: 'Ist ein Branchenwechsel möglich?',
       blocks: [
-        'Absolut.',
-        'Immer mehr Menschen erleben mindestens einen beruflichen Übergang in ihrer Karriere.',
+        'Absolut: Immer mehr Menschen erleben mindestens einen beruflichen Übergang in ihrer Karriere.',
       ],
     },
     {
       heading: 'Übertragbare Kompetenzen',
       blocks: [
-        'Viele Kompetenzen können in unterschiedlichen Kontexten eingesetzt werden.',
-        'Zum Beispiel:',
-        'Kundenmanagement;',
-        'Organisation;',
-        'Koordination;',
-        'Verkauf;',
-        'Kommunikation.',
+        'Viele Kompetenzen können in unterschiedlichen Kontexten eingesetzt werden. Zum Beispiel:',
+        { list: ['Kundenmanagement.', 'Organisation.', 'Koordination.', 'Verkauf.', 'Kommunikation.'] },
       ],
     },
     {
@@ -390,8 +351,7 @@ export default {
     {
       heading: 'Warten Sie nicht auf den perfekten Moment',
       blocks: [
-        'Viele Menschen schieben einen beruflichen Wandel jahrelang auf.',
-        'In der Zwischenzeit entwickelt sich der Markt weiter.',
+        'Viele Menschen schieben einen beruflichen Wandel jahrelang auf, in der Zwischenzeit entwickelt sich der Markt weiter.',
       ],
     },
     {
@@ -434,12 +394,8 @@ export default {
     {
       heading: 'Fazit',
       blocks: [
-        'Der Arbeitsmarkt bietet sehr unterschiedliche Möglichkeiten.',
-        'Sich ausschliesslich auf die Anzahl der verfügbaren Stellen zu konzentrieren, birgt das Risiko eines unvollständigen Bildes.',
-        'Die besten Möglichkeiten entstehen oft aus dem Zusammentreffen von drei Elementen:',
-        'vom Markt geforderte Kompetenzen;',
-        'persönliche Interessen;',
-        'Fähigkeit, sich an den Wandel anzupassen.',
+        'Der Arbeitsmarkt bietet sehr unterschiedliche Möglichkeiten, und sich ausschliesslich auf die Anzahl der verfügbaren Stellen zu konzentrieren, birgt das Risiko eines unvollständigen Bildes. Die besten Möglichkeiten entstehen oft aus dem Zusammentreffen von drei Elementen:',
+        { list: ['Vom Markt geforderte Kompetenzen.', 'Persönliche Interessen.', 'Fähigkeit, sich an den Wandel anzupassen.'] },
         'Zu verstehen, wo neue berufliche Möglichkeiten entstehen, ermöglicht bewusstere Entscheidungen und den Aufbau langfristig solider Karrierewege.',
         'Wer in Weiterbildung investiert, gefragte Kompetenzen entwickelt und eine offene Haltung gegenüber Veränderungen bewahrt, ist am besten positioniert, um die Möglichkeiten zu nutzen, die der Markt in den kommenden Jahren bieten wird.',
       ],

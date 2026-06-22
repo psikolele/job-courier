@@ -14,15 +14,14 @@ export default {
       heading: 'Pourquoi de nombreuses personnes cherchent du travail de la mauvaise manière',
       blocks: [
         'Quand on perd un emploi ou qu\'on décide de changer d\'entreprise, la réaction la plus courante est de commencer à postuler partout.',
-        'D\'un point de vue émotionnel, c\'est compréhensible.',
-        'D\'un point de vue stratégique, c\'est souvent contre-productif.',
+        'D\'un point de vue émotionnel, c\'est compréhensible. D\'un point de vue stratégique, c\'est souvent contre-productif.',
       ],
     },
     {
       heading: 'L\'erreur de la quantité',
       blocks: [
         'De nombreux candidats pensent :',
-        'Plus j\'envoie de candidatures, plus j\'aurai de chances.',
+        { list: ['Plus j\'envoie de candidatures, plus j\'aurai de chances.'] },
         'Ce n\'est pas toujours vrai.',
         'Envoyer 100 candidatures génériques produit souvent de moins bons résultats que 20 candidatures bien ciblées.',
       ],
@@ -55,10 +54,7 @@ export default {
         'Un bon CV est fondamental.',
         'Mais il ne suffit pas à lui seul.',
         'La recherche d\'emploi nécessite :',
-        'de la visibilité ;',
-        'une stratégie ;',
-        'du réseau ;',
-        'de la persévérance.',
+        { list: ['de la visibilité ;', 'une stratégie ;', 'du réseau ;', 'de la persévérance.'] },
       ],
     },
     {
@@ -73,10 +69,7 @@ export default {
       blocks: [
         'L\'expérience est importante.',
         'Cependant, les entreprises évaluent aussi :',
-        'la motivation ;',
-        'l\'attitude ;',
-        'la capacité d\'apprentissage ;',
-        'l\'adaptabilité.',
+        { list: ['la motivation ;', 'l\'attitude ;', 'la capacité d\'apprentissage ;', 'l\'adaptabilité.'] },
       ],
     },
     {
@@ -90,9 +83,7 @@ export default {
       heading: 'Elles ont des objectifs clairs',
       blocks: [
         'Elles savent exactement :',
-        'quel poste elles recherchent ;',
-        'quelles entreprises les intéressent ;',
-        'quelles compétences elles veulent valoriser.',
+        { list: ['quel poste elles recherchent ;', 'quelles entreprises les intéressent ;', 'quelles compétences elles veulent valoriser.'] },
       ],
     },
     {
@@ -106,18 +97,14 @@ export default {
       blocks: [
         'Elles ne se limitent pas aux annonces en ligne.',
         'Elles exploitent :',
-        'les contacts professionnels ;',
-        'le réseau ;',
-        'les candidatures spontanées ;',
-        'LinkedIn.',
+        { list: ['les contacts professionnels ;', 'le réseau ;', 'les candidatures spontanées ;', 'LinkedIn.'] },
       ],
     },
     {
       heading: 'Elles sont persévérantes',
       blocks: [
-        'La recherche d\'emploi est un marathon.',
-        'Pas un sprint.',
-        'Ceux qui maintiennent la continuité obtiennent généralement de meilleurs résultats.',
+        'La recherche d\'emploi est un marathon, pas un sprint.',
+        'Ceux qui maintiennent la continuité dans le temps, en consacrant chaque semaine un peu d\'énergie à la recherche, obtiennent généralement de meilleurs résultats que ceux qui alternent des phases de grande activité avec de longues périodes de stagnation.',
       ],
     },
     {
@@ -131,10 +118,7 @@ export default {
       blocks: [
         'Plus vous êtes précis, plus il sera facile d\'identifier des opportunités cohérentes.',
         'Par exemple :',
-        'employé administratif ;',
-        'technicien de maintenance ;',
-        'commercial B2B ;',
-        'développeur logiciel.',
+        { list: ['employé administratif ;', 'technicien de maintenance ;', 'commercial B2B ;', 'développeur logiciel.'] },
         'Ce sont des objectifs très différents les uns des autres.',
       ],
     },
@@ -142,9 +126,7 @@ export default {
       heading: 'Identifiez vos points forts',
       blocks: [
         'Demandez-vous :',
-        'quelles compétences est-ce que je possède ?',
-        'quels résultats ai-je obtenus ?',
-        'qu\'est-ce qui me distingue des autres candidats ?',
+        { list: ['quelles compétences est-ce que je possède ?', 'quels résultats ai-je obtenus ?', 'qu\'est-ce qui me distingue des autres candidats ?'] },
       ],
     },
     {
@@ -212,10 +194,7 @@ export default {
       heading: 'Maintenez votre profil à jour',
       blocks: [
         'Vérifiez que sont présents :',
-        'l\'expérience professionnelle ;',
-        'les compétences ;',
-        'la formation ;',
-        'les coordonnées.',
+        { list: ['l\'expérience professionnelle ;', 'les compétences ;', 'la formation ;', 'les coordonnées.'] },
         'Le profil devrait être cohérent avec le CV.',
       ],
     },
@@ -229,9 +208,7 @@ export default {
       heading: 'Suivez des entreprises et des professionnels',
       blocks: [
         'Cela permet de :',
-        'découvrir de nouvelles opportunités ;',
-        'mieux comprendre le marché ;',
-        'rester informé des tendances du secteur.',
+        { list: ['découvrir de nouvelles opportunités ;', 'mieux comprendre le marché ;', 'rester informé des tendances du secteur.'] },
       ],
     },
     {
@@ -257,10 +234,7 @@ export default {
       blocks: [
         'Il n\'est pas nécessaire de réécrire complètement le CV pour chaque candidature.',
         'Cependant, il est utile d\'adapter :',
-        'le profil professionnel ;',
-        'les compétences mises en avant ;',
-        'les mots-clés ;',
-        'la lettre de motivation.',
+        { list: ['le profil professionnel ;', 'les compétences mises en avant ;', 'les mots-clés ;', 'la lettre de motivation.'] },
       ],
     },
     {
@@ -272,17 +246,15 @@ export default {
     {
       heading: 'Organiser la recherche comme un projet',
       blocks: [
-        'De nombreuses personnes cherchent du travail de manière aléatoire.',
-        'Les activités non planifiées tendent à produire des résultats irréguliers.',
+        'De nombreuses personnes cherchent du travail de manière aléatoire, en postulant au hasard sans plan derrière.',
+        'Les activités non planifiées tendent à produire des résultats irréguliers, avec des moments de grand élan suivis de semaines de stagnation. Traiter la recherche comme un petit projet, avec des objectifs et des échéances, aide à maintenir le rythme.',
       ],
     },
     {
       heading: 'Définissez des objectifs hebdomadaires',
       blocks: [
         'Par exemple :',
-        'candidatures envoyées ;',
-        'nouvelles entreprises identifiées ;',
-        'contacts professionnels activés.',
+        { list: ['candidatures envoyées ;', 'nouvelles entreprises identifiées ;', 'contacts professionnels activés.'] },
       ],
     },
     {
@@ -290,20 +262,14 @@ export default {
       blocks: [
         'Une simple feuille de calcul peut suffire.',
         'Notez :',
-        'la date de candidature ;',
-        'l\'entreprise ;',
-        'le poste ;',
-        'l\'état de la sélection ;',
-        'les éventuels suivis.',
+        { list: ['la date de candidature ;', 'l\'entreprise ;', 'le poste ;', 'l\'état de la sélection ;', 'les éventuels suivis.'] },
       ],
     },
     {
       heading: 'Analysez les résultats',
       blocks: [
         'Après quelques semaines, demandez-vous :',
-        'quelles candidatures génèrent des entretiens ?',
-        'lesquelles non ?',
-        'quels secteurs répondent davantage ?',
+        { list: ['quelles candidatures génèrent des entretiens ?', 'lesquelles non ?', 'quels secteurs répondent davantage ?'] },
         'Cela permet d\'améliorer progressivement votre approche.',
       ],
     },
@@ -320,9 +286,7 @@ export default {
       blocks: [
         'Le CV reste le premier élément à vérifier.',
         'Demandez-vous :',
-        'communique-t-il clairement ma valeur ?',
-        'met-il en avant des résultats concrets ?',
-        'est-il à jour ?',
+        { list: ['communique-t-il clairement ma valeur ?', 'met-il en avant des résultats concrets ?', 'est-il à jour ?'] },
       ],
     },
     {
@@ -334,18 +298,14 @@ export default {
     {
       heading: 'Analysez la stratégie',
       blocks: [
-        'Utilisez-vous plusieurs canaux ?',
-        'Ou vous appuyez-vous exclusivement sur les annonces ?',
+        { list: ['Utilisez-vous plusieurs canaux ?', 'Ou vous appuyez-vous exclusivement sur les annonces ?'] },
       ],
     },
     {
       heading: 'Demandez des retours',
       blocks: [
         'Quand c\'est possible, échangez avec :',
-        'des recruteurs ;',
-        'des professionnels RH ;',
-        'des collègues ;',
-        'des personnes de confiance.',
+        { list: ['des recruteurs ;', 'des professionnels RH ;', 'des collègues ;', 'des personnes de confiance.'] },
         'Un regard extérieur peut identifier des aspects que vous ne remarquez pas.',
       ],
     },
@@ -353,58 +313,14 @@ export default {
       heading: 'Plan pratique sur 30 jours',
       blocks: [
         'Si vous voulez rendre votre recherche plus efficace, vous pouvez suivre un plan simple.',
-      ],
-    },
-    {
-      heading: 'Semaine 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analyse',
-      blocks: [
-        'mise à jour du CV ;',
-        'mise à jour de LinkedIn ;',
-        'définition des objectifs professionnels.',
-      ],
-    },
-    {
-      heading: 'Semaine 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Recherche',
-      blocks: [
-        'identification des entreprises cibles ;',
-        'surveillance des opportunités ;',
-        'envoi de candidatures ciblées.',
-      ],
-    },
-    {
-      heading: 'Semaine 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Réseautage',
-      blocks: [
-        'contact avec des professionnels ;',
-        'participation à des événements ;',
-        'développement du réseau professionnel.',
-      ],
-    },
-    {
-      heading: 'Semaine 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Évaluation',
-      blocks: [
-        'analyse des résultats ;',
-        'correction de la stratégie ;',
-        'planification du mois suivant.',
+        {
+          weekPlan: [
+            { week: 'Semaine 1', title: 'Analyse', items: ['mise à jour du CV ;', 'mise à jour de LinkedIn ;', 'définition des objectifs professionnels.'] },
+            { week: 'Semaine 2', title: 'Recherche', items: ['identification des entreprises cibles ;', 'surveillance des opportunités ;', 'envoi de candidatures ciblées.'] },
+            { week: 'Semaine 3', title: 'Réseautage', items: ['contact avec des professionnels ;', 'participation à des événements ;', 'développement du réseau professionnel.'] },
+            { week: 'Semaine 4', title: 'Évaluation', items: ['analyse des résultats ;', 'correction de la stratégie ;', 'planification du mois suivant.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'Vous ne savez pas où chercher ? Découvrez les secteurs avec le plus d\'opportunités.', slug: 'settori-con-piu-opportunita-di-lavoro' } },
@@ -413,10 +329,7 @@ export default {
       blocks: [
         'Trouver un emploi n\'est pas seulement une question de chance.',
         'C\'est le résultat d\'une combinaison de facteurs :',
-        'la préparation ;',
-        'la stratégie ;',
-        'la persévérance ;',
-        'la capacité d\'adaptation.',
+        { list: ['la préparation ;', 'la stratégie ;', 'la persévérance ;', 'la capacité d\'adaptation.'] },
         'Les personnes qui obtiennent les meilleurs résultats ne sont pas nécessairement celles qui envoient le plus de candidatures.',
         'Ce sont souvent celles qui parviennent à construire une approche plus consciente et organisée.',
         'Traitez la recherche d\'emploi comme un projet professionnel.',

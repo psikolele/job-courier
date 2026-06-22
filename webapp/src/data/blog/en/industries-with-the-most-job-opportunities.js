@@ -8,64 +8,51 @@ export default {
   readingTime: 7,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80',
-  intro: 'The job market is constantly evolving. Some professions are growing quickly, others are transforming. Others still are seeing demand decline.\n\nFor anyone looking for a job, considering a career change, or choosing a training path, understanding where opportunities are concentrated is essential.\n\nOne of the most common questions is:\n\nWhich industries offer the most employment opportunities today?\n\nThe answer doesn\'t depend only on the number of job ads posted.\n\nIt also depends on how difficult it is for companies to find qualified staff, technological change, demographic shifts and new market needs.\n\nIn this guide we\'ll look at the sectors generating the most professional opportunities, the most in-demand skills, and the trends likely to keep shaping the world of work in the years ahead.',
+  intro: 'The job market is constantly evolving: some professions are growing quickly, others are transforming, others still are seeing demand decline.\n\nFor anyone looking for a job, considering a career change, or choosing a training path, understanding where opportunities are concentrated is essential. One of the most common questions is: which industries offer the most employment opportunities today?\n\nThe answer doesn\'t depend only on the number of job ads posted, but also on how difficult it is for companies to find qualified staff, technological change, demographic shifts and new market needs.\n\nIn this guide we\'ll look at the sectors generating the most professional opportunities, the most in-demand skills, and the trends likely to keep shaping the world of work in the years ahead.',
   sections: [
     {
       heading: 'How the job market is changing',
       blocks: [
-        'In recent years, work has changed faster than in many previous decades.',
-        'Companies are facing major transformations.',
-        'Among the main drivers we find:',
-        'digitalization;',
-        'automation;',
-        'an aging population;',
-        'sustainability;',
-        'changing skill requirements.',
+        'In recent years, work has changed faster than in many previous decades, and companies are facing major transformations. Among the main drivers we find:',
+        { list: ['Digitalization.', 'Automation.', 'An aging population.', 'Sustainability.', 'Changing skill requirements.'] },
         'Understanding these phenomena helps make better sense of current and future opportunities.',
       ],
     },
     {
       heading: 'Digitalization',
       blocks: [
-        'Practically every sector now uses digital tools.',
-        'It isn\'t just about IT.',
-        'Administration, logistics, manufacturing, marketing and sales are also undergoing deep transformation.',
+        'Practically every sector now uses digital tools: it isn\'t just about IT, but also administration, logistics, manufacturing, marketing and sales, all of which are undergoing deep transformation.',
       ],
     },
     { cta: { question: 'Want to discover opportunities in growing industries?', action: 'See the job offers', to: '/offerte' } },
     {
       heading: 'The aging population',
       blocks: [
-        'The rising average age is driving growing demand for healthcare and care services.',
-        'This phenomenon is significantly influencing the job market.',
+        'The rising average age is driving growing demand for healthcare and care services, significantly influencing the job market.',
       ],
     },
     {
       heading: 'Automation',
       blocks: [
-        'Many repetitive tasks are being progressively automated.',
-        'At the same time, demand is growing for professionals able to manage, monitor and improve these processes.',
+        'Many repetitive tasks are being progressively automated, and at the same time, demand is growing for professionals able to manage, monitor and improve these processes.',
       ],
     },
     {
       heading: 'Sustainability',
       blocks: [
-        'Companies are paying increasing attention to environmental, energy and social responsibility issues.',
-        'New skills are gaining importance across many sectors.',
+        'Companies are paying increasing attention to environmental, energy and social responsibility issues, and new skills are gaining importance across many sectors.',
       ],
     },
     {
       heading: 'Healthcare and personal care',
       blocks: [
-        'Among all sectors, healthcare continues to offer some of the most interesting opportunities.',
-        'The growing demand for healthcare services makes numerous professional roles particularly sought after.',
+        'Among all sectors, healthcare continues to offer some of the most interesting opportunities: the growing demand for healthcare services makes numerous professional roles particularly sought after.',
       ],
     },
     {
       heading: 'Nurses',
       blocks: [
-        'One of the most in-demand professions.',
-        'Healthcare facilities are constantly looking for qualified staff.',
+        'One of the most in-demand professions: healthcare facilities are constantly looking for qualified staff.',
       ],
     },
     {
@@ -78,10 +65,7 @@ export default {
       heading: 'Therapeutic professions',
       blocks: [
         'These include:',
-        'physiotherapy;',
-        'occupational therapy;',
-        'speech therapy;',
-        'rehabilitation therapy.',
+        { list: ['Physiotherapy.', 'Occupational therapy.', 'Speech therapy.', 'Rehabilitation therapy.'] },
       ],
     },
     {
@@ -93,9 +77,7 @@ export default {
     {
       heading: 'Technology and digital',
       blocks: [
-        'Technology continues to reshape the job market.',
-        'It isn\'t limited to IT companies.',
-        'Any organization today needs digital skills.',
+        'Technology continues to reshape the job market and it isn\'t limited to IT companies: any organization today needs digital skills.',
       ],
     },
     {
@@ -125,15 +107,13 @@ export default {
     {
       heading: 'What these professions have in common',
       blocks: [
-        'The need for continuous learning.',
-        'Technology evolves quickly and requires ongoing training.',
+        'The need for continuous learning: technology evolves quickly and requires ongoing training.',
       ],
     },
     {
       heading: 'Industry and technical professions',
       blocks: [
-        'When people talk about jobs, they often think first of office roles.',
-        'In reality, many companies struggle to find qualified technical staff.',
+        'When people talk about jobs, they often think first of office roles, but in reality, many companies struggle to find qualified technical staff.',
       ],
     },
     {
@@ -163,8 +143,7 @@ export default {
     {
       heading: 'Construction and skilled trades',
       blocks: [
-        'A sector that\'s often underestimated.',
-        'Yet it continues to offer numerous professional opportunities.',
+        'A sector that\'s often underestimated, yet it continues to offer numerous professional opportunities.',
       ],
     },
     {
@@ -194,8 +173,7 @@ export default {
     {
       heading: 'Logistics and supply chain',
       blocks: [
-        'In recent years logistics has become an increasingly strategic sector.',
-        'The growth of e-commerce, the internationalization of supply chains and the need to optimize processes have increased demand for qualified professionals.',
+        'In recent years logistics has become an increasingly strategic sector: the growth of e-commerce, the internationalization of supply chains and the need to optimize processes have increased demand for qualified professionals.',
       ],
     },
     {
@@ -225,8 +203,7 @@ export default {
     {
       heading: 'Sales and customer relations',
       blocks: [
-        'Every company needs customers.',
-        'For this reason, sales professions continue to be one of the most dynamic areas of the job market.',
+        'Every company needs customers, and for this reason, sales professions continue to be one of the most dynamic areas of the job market.',
       ],
     },
     {
@@ -250,19 +227,14 @@ export default {
     {
       heading: 'What makes the difference',
       blocks: [
-        'Not just the ability to sell.',
-        'Increasingly important are:',
-        'communication;',
-        'listening;',
-        'negotiation;',
-        'relationship management.',
+        'Not just the ability to sell: increasingly important are:',
+        { list: ['Communication.', 'Listening.', 'Negotiation.', 'Relationship management.'] },
       ],
     },
     {
       heading: 'Finance, accounting and administration',
       blocks: [
-        'Many people think these roles are now saturated.',
-        'In reality, numerous opportunities continue to exist, especially for those with up-to-date skills.',
+        'Many people think these roles are now saturated, but in reality, numerous opportunities continue to exist, especially for those with up-to-date skills.',
       ],
     },
     {
@@ -292,8 +264,7 @@ export default {
     {
       heading: 'The skills that boost employability',
       blocks: [
-        'When discussing professional opportunities, it\'s easy to focus only on professions.',
-        'In reality, skills often make the difference.',
+        'When discussing professional opportunities, it\'s easy to focus only on professions, but in reality, skills often make the difference.',
       ],
     },
     {
@@ -317,30 +288,27 @@ export default {
     {
       heading: 'Adaptability',
       blocks: [
-        'Change is now constant.',
-        'Those who adapt faster tend to remain more employable over time.',
+        'Change is now constant, and those who adapt faster tend to remain more employable over time.',
       ],
     },
     {
       heading: 'Collaboration',
       blocks: [
-        'More and more work is carried out in multidisciplinary teams.',
-        'The ability to work with others is essential.',
+        'More and more work is carried out in multidisciplinary teams: the ability to work with others is essential.',
       ],
     },
     {
       heading: 'How to choose the right industry',
       blocks: [
         'Many candidates ask themselves:',
-        'Where should I direct my career?',
+        { list: ['Where should I direct my career?'] },
         'The answer doesn\'t depend only on market demand.',
       ],
     },
     {
       heading: 'Consider your skills',
       blocks: [
-        'Start from what you can already do.',
-        'Existing skills are often the best starting point.',
+        'Start from what you can already do: existing skills are often the best starting point.',
       ],
     },
     {
@@ -358,27 +326,20 @@ export default {
     {
       heading: 'Assess the training required',
       blocks: [
-        'Some paths require significant training investments.',
-        'Others allow for a faster transition.',
+        'Some paths require significant training investments, while others allow for a faster transition.',
       ],
     },
     {
       heading: 'Is it possible to change industry?',
       blocks: [
-        'Absolutely.',
-        'More and more people go through at least one career transition during their working life.',
+        'Absolutely: more and more people go through at least one career transition during their working life.',
       ],
     },
     {
       heading: 'Transferable skills',
       blocks: [
-        'Many skills can be used in different contexts.',
-        'For example:',
-        'client management;',
-        'organization;',
-        'coordination;',
-        'sales;',
-        'communication.',
+        'Many skills can be used in different contexts. For example:',
+        { list: ['Client management.', 'Organization.', 'Coordination.', 'Sales.', 'Communication.'] },
       ],
     },
     {
@@ -390,8 +351,7 @@ export default {
     {
       heading: 'Don\'t wait for the perfect moment',
       blocks: [
-        'Many people put off a career change for years.',
-        'Meanwhile, the market keeps evolving.',
+        'Many people put off a career change for years, meanwhile, the market keeps evolving.',
       ],
     },
     {
@@ -434,12 +394,8 @@ export default {
     {
       heading: 'Conclusion',
       blocks: [
-        'The job market offers very different kinds of opportunities.',
-        'Focusing only on the number of available job ads risks giving an incomplete picture.',
-        'The best opportunities often arise from the intersection of three elements:',
-        'skills the market is asking for;',
-        'personal interests;',
-        'the ability to adapt to change.',
+        'The job market offers very different kinds of opportunities, and focusing only on the number of available job ads risks giving an incomplete picture. The best opportunities often arise from the intersection of three elements:',
+        { list: ['Skills the market is asking for.', 'Personal interests.', 'The ability to adapt to change.'] },
         'Understanding where new professional opportunities are emerging makes it possible to make more informed decisions and build a stronger career path over the long term.',
         'Those who invest in training, develop the skills in demand and stay open to change will be best placed to seize the opportunities the market will offer in the years ahead.',
       ],

@@ -14,9 +14,7 @@ export default {
       heading: 'The job market has changed',
       blocks: [
         'For many years, the hiring process was perceived as a one-way path.',
-        'The company posted a job ad.',
-        'Candidates applied.',
-        'The organization chose.',
+        { list: ['The company posted a job ad.', 'Candidates applied.', 'The organization chose.'] },
         'Today the context is very different.',
         'People have access to a huge amount of information.',
         'They can compare opportunities, gather opinions, visit company websites and evaluate various aspects even before sending an application.',
@@ -27,10 +25,7 @@ export default {
       heading: 'Candidates are better informed',
       blocks: [
         'Before applying, many people check:',
-        'the company website;',
-        'online presence;',
-        'reviews;',
-        'news about the company.',
+        { list: ['the company website.', 'online presence.', 'reviews.', 'news about the company.'] },
         'Even a local SME is often analyzed carefully.',
       ],
     },
@@ -41,11 +36,7 @@ export default {
         'Salary continues to be important.',
         'But it\'s no longer the only deciding factor.',
         'More and more professionals are weighing:',
-        'work environment;',
-        'stability;',
-        'growth prospects;',
-        'flexibility;',
-        'quality of leadership.',
+        { list: ['work environment.', 'stability.', 'growth prospects.', 'flexibility.', 'quality of leadership.'] },
       ],
     },
     {
@@ -71,11 +62,7 @@ export default {
       blocks: [
         'When a professional compares two opportunities, they consider many elements.',
         'For example:',
-        'security;',
-        'prospects;',
-        'environment;',
-        'work-life balance;',
-        'quality of relationships.',
+        { list: ['security.', 'prospects.', 'environment.', 'work-life balance.', 'quality of relationships.'] },
       ],
     },
     {
@@ -103,16 +90,13 @@ export default {
     {
       heading: 'Communication',
       blocks: [
-        'Is the website up to date?',
-        'Is the information clear?',
-        'Does the company come across as professional?',
+        { list: ['Is the website up to date?', 'Is the information clear?', 'Does the company come across as professional?'] },
       ],
     },
     {
       heading: 'Consistency',
       blocks: [
-        'Does what is communicated match what shows up online?',
-        'Inconsistencies create doubt.',
+        'Does what is communicated match what shows up online? Inconsistencies create doubt.',
       ],
     },
     {
@@ -132,44 +116,33 @@ export default {
     {
       heading: 'Signals that convey stability',
       blocks: [
-        'an established market presence;',
-        'growth;',
-        'organizational clarity;',
-        'perceived solidity.',
+        { list: ['an established market presence.', 'growth.', 'organizational clarity.', 'perceived solidity.'] },
       ],
     },
     {
       heading: 'Why it matters',
       blocks: [
-        'Changing jobs is always a demanding decision.',
-        'People want to reduce the risk.',
+        'Changing jobs is always a demanding decision, and people want to reduce the risk by choosing companies that offer a sense of continuity.',
       ],
     },
     {
       heading: '3. Work environment',
       blocks: [
-        'One of the aspects most underestimated by companies.',
-        'And one of the most evaluated by candidates.',
+        'One of the aspects most underestimated by companies, and one of the most evaluated by candidates.',
       ],
     },
     {
       heading: 'What is it really like to work there?',
       blocks: [
         'People try to understand:',
-        'how employees are treated;',
-        'what the atmosphere is like;',
-        'how internal relationships are managed.',
+        { list: ['how employees are treated.', 'what the atmosphere is like.', 'how internal relationships are managed.'] },
       ],
     },
     {
       heading: 'Word of mouth matters',
       blocks: [
-        'Often the most influential information doesn\'t come from company websites.',
-        'It comes from people.',
-        'Former employees.',
-        'Clients.',
-        'Suppliers.',
-        'Acquaintances.',
+        'Often the most influential information doesn\'t come from company websites, but from people.',
+        { list: ['Former employees.', 'Clients.', 'Suppliers.', 'Acquaintances.'] },
       ],
     },
     {
@@ -182,9 +155,7 @@ export default {
     {
       heading: 'The questions they ask themselves',
       blocks: [
-        'Will I be able to learn?',
-        'Will I be able to take on new responsibilities?',
-        'Will I be able to grow professionally?',
+        { list: ['Will I be able to learn?', 'Will I be able to take on new responsibilities?', 'Will I be able to grow professionally?'] },
       ],
     },
     {
@@ -207,9 +178,7 @@ export default {
       heading: 'Candidates look for signals',
       blocks: [
         'Even before joining a company, many people try to understand:',
-        'how employees are managed;',
-        'how accessible management is;',
-        'what leadership style characterizes the organization.',
+        { list: ['how employees are managed.', 'how accessible management is.', 'what leadership style characterizes the organization.'] },
       ],
     },
     {
@@ -230,17 +199,13 @@ export default {
     {
       heading: 'What candidates evaluate',
       blocks: [
-        'working hours;',
-        'autonomy;',
-        'work organization;',
-        'trust.',
+        { list: ['working hours.', 'autonomy.', 'work organization.', 'trust.'] },
       ],
     },
     {
       heading: 'Flexibility isn\'t just an organizational matter',
       blocks: [
-        'It\'s also a cultural signal.',
-        'It communicates how the company views its employees.',
+        'It\'s also a cultural signal: it communicates how the company views its employees and how much it trusts their judgment.',
       ],
     },
     {
@@ -312,16 +277,10 @@ export default {
       heading: 'A typical example',
       blocks: [
         'A company offers:',
-        'a positive environment;',
-        'stability;',
-        'autonomy;',
-        'growth.',
+        { list: ['a positive environment.', 'stability.', 'autonomy.', 'growth.'] },
         'But the candidate doesn\'t know it. Why?',
         'Because this information doesn\'t appear:',
-        'on the website;',
-        'in job ads;',
-        'on social media;',
-        'in company communication.',
+        { list: ['on the website.', 'in job ads.', 'on social media.', 'in company communication.'] },
       ],
     },
     {
@@ -340,23 +299,19 @@ export default {
     {
       heading: 'The website',
       blocks: [
-        'Does it convey professionalism?',
-        'Is it up to date?',
-        'Does it tell the company\'s story authentically?',
+        { list: ['Does it convey professionalism?', 'Is it up to date?', 'Does it tell the company\'s story authentically?'] },
       ],
     },
     {
       heading: 'Social media profiles',
       blocks: [
-        'Do they show something of the company\'s reality?',
-        'Or do they look abandoned?',
+        'Do they show something of the company\'s reality, of the people and projects? Or do they look abandoned, with the last post from years ago?',
       ],
     },
     {
       heading: 'Job ads',
       blocks: [
-        'Do they communicate only requirements?',
-        'Or do they explain why the opportunity is interesting?',
+        'Do they communicate only requirements and duties? Or do they also explain why the opportunity is truly interesting for the reader?',
       ],
     },
     {
@@ -412,36 +367,15 @@ export default {
     {
       heading: 'A practical 30-day plan',
       blocks: [
-      ],
-    },
-    {
-      heading: 'Week 1',
-      blocks: [
-        'Analyze your communication.',
-        'website;',
-        'job ads;',
-        'social media profiles.',
-      ],
-    },
-    {
-      heading: 'Week 2',
-      blocks: [
-        'Talk to your employees.',
-        'Ask: Why do you work here?',
-        'The answers can be surprising.',
-      ],
-    },
-    {
-      heading: 'Week 3',
-      blocks: [
-        'Identify the company\'s real strengths.',
-        'Not the theoretical ones, the real ones.',
-      ],
-    },
-    {
-      heading: 'Week 4',
-      blocks: [
-        'Start communicating them consistently.',
+        'To start closing the gap between what your company truly offers and what candidates perceive, you can follow a simple plan.',
+        {
+          weekPlan: [
+            { week: 'Week 1', title: 'Analyze your communication', items: ['website.', 'job ads.', 'social media profiles.'] },
+            { week: 'Week 2', title: 'Talk to your employees', items: ['Ask: "Why do you work here?"', 'The answers can be surprising.'] },
+            { week: 'Week 3', title: 'Identify the company\'s real strengths', items: ['Not the theoretical ones, the real ones.'] },
+            { week: 'Week 4', title: 'Start communicating them consistently', items: ['Begin sharing these strengths across all channels.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'Want to build an attractive company image? Start with employer branding.', slug: 'employer-branding-pmi-guida-pratica' } },
@@ -454,7 +388,7 @@ export default {
         'Very often they\'re the ones that have understood a simple truth:',
         'people want to know why they should choose that particular company.',
         'SMEs often have remarkable qualities:',
-        'Closeness – Autonomy – Speed – Authentic relationships.',
+        { list: ['Closeness.', 'Autonomy.', 'Speed.', 'Authentic relationships.'] },
         'The challenge isn\'t creating them, it\'s communicating them.',
         'And when that happens, recruiting changes profoundly.',
       ],

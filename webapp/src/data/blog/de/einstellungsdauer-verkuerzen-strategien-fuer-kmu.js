@@ -8,38 +8,27 @@ export default {
   readingTime: 7,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=80',
-  intro: 'Viele Unternehmen konzentrieren sich auf ein Ziel: die richtige Person zu finden.\n\nDas ist eine verständliche Priorität, doch es gibt einen weiteren Faktor, der oft unterschätzt wird: die Geschwindigkeit.\n\nJeder Tag, an dem eine Stelle unbesetzt bleibt, kann konkrete Folgen haben:\n\nhöhere Arbeitsbelastung für das Team;\n\noperative Verzögerungen;\n\nVerzögerungen bei Projekten;\n\nverpasste Chancen;\n\nindirekte Kosten.\n\nAus diesem Grund betrifft Recruiting nicht nur die Qualität der Einstellungen.\n\nEs betrifft auch die Zeit, die benötigt wird, um dorthin zu gelangen.\n\nDie effektivsten Unternehmen schaffen es, ein Gleichgewicht zwischen Geschwindigkeit und Qualität zu finden.\n\nSie stellen nicht überstürzt ein.\n\nSie stellen gut ein, ohne Zeit zu verlieren.\n\nIn diesem Leitfaden zeigen wir, welche Faktoren das Recruiting verlangsamen und wie Sie einen schnelleren und effektiveren Prozess aufbauen können.',
+  intro: 'Viele Unternehmen konzentrieren sich auf ein Ziel: die richtige Person zu finden. Das ist eine verständliche Priorität, doch es gibt einen weiteren Faktor, der oft unterschätzt wird: die Geschwindigkeit.\n\nJeder Tag, an dem eine Stelle unbesetzt bleibt, kann konkrete Folgen haben: höhere Arbeitsbelastung für das Team, operative Verzögerungen, Verzögerungen bei Projekten, verpasste Chancen und indirekte Kosten.\n\nAus diesem Grund betrifft Recruiting nicht nur die Qualität der Einstellungen, es betrifft auch die Zeit, die benötigt wird, um dorthin zu gelangen. Die effektivsten Unternehmen schaffen es, ein Gleichgewicht zwischen Geschwindigkeit und Qualität zu finden. Sie stellen nicht überstürzt ein. Sie stellen gut ein, ohne Zeit zu verlieren.\n\nIn diesem Leitfaden zeigen wir, welche Faktoren das Recruiting verlangsamen und wie Sie einen schnelleren und effektiveren Prozess aufbauen können.',
   sections: [
     {
       heading: 'Was eine offene Stelle wirklich kostet',
       blocks: [
-        'Viele KMU messen diese Grösse nicht.',
-        'Dennoch verursacht eine offene Stelle fast immer Kosten.',
-        'Auch wenn diese nicht sofort sichtbar sind.',
+        'Viele KMU messen diese Grösse nicht. Dennoch verursacht eine offene Stelle fast immer Kosten, auch wenn diese nicht sofort sichtbar sind.',
       ],
     },
     {
       heading: 'Höherer Druck auf das Team',
       blocks: [
-        'Wenn eine Person fehlt, werden die Aufgaben umverteilt.',
-        'Die verbleibenden Mitarbeitenden müssen zusätzliche Lasten tragen.',
-        'Kurzfristig kann das funktionieren.',
-        'Langfristig kann es zu folgendem führen:',
-        'Stress;',
-        'Fehlern;',
-        'sinkender Motivation.',
+        'Wenn eine Person fehlt, werden die Aufgaben umverteilt und die verbleibenden Mitarbeitenden müssen zusätzliche Lasten tragen. Kurzfristig kann das funktionieren, langfristig kann es zu folgendem führen:',
+        { list: ['Stress.', 'Fehlern.', 'Sinkender Motivation.'] },
       ],
     },
     { cta: { question: 'Möchten Sie schneller einstellen? Veröffentlichen Sie jetzt Ihre Stellenanzeige.', action: 'Stellenanzeige aufgeben', to: '/soluzioni-e-tariffe' } },
     {
       heading: 'Operative Verzögerungen',
       blocks: [
-        'Manche Tätigkeiten werden einfach verschoben.',
-        'Dies kann beeinflussen:',
-        'Kunden;',
-        'Lieferanten;',
-        'Produktivität;',
-        'Servicequalität.',
+        'Manche Tätigkeiten werden einfach verschoben. Dies kann beeinflussen:',
+        { list: ['Kunden.', 'Lieferanten.', 'Produktivität.', 'Servicequalität.'] },
       ],
     },
     {
@@ -51,51 +40,39 @@ export default {
     {
       heading: 'Die unsichtbaren Kosten',
       blocks: [
-        'Oft erscheinen sie nicht in den Bilanzen.',
-        'Aber sie existieren.',
-        'Und das ist einer der Gründe, warum die Verkürzung der Einstellungsdauer eine Priorität sein sollte.',
+        'Oft erscheinen sie nicht in den Bilanzen, aber sie existieren. Und das ist einer der Gründe, warum die Verkürzung der Einstellungsdauer eine Priorität sein sollte.',
       ],
     },
     {
       heading: 'Warum Einstellungen zu viel Zeit benötigen',
       blocks: [
-        'Viele Unternehmen führen Verzögerungen ausschliesslich auf die Schwierigkeit zurück, Kandidaten zu finden.',
-        'In Wirklichkeit liegt das Problem oft im internen Prozess.',
+        'Viele Unternehmen führen Verzögerungen ausschliesslich auf die Schwierigkeit zurück, Kandidaten zu finden; in Wirklichkeit liegt das Problem oft im internen Prozess.',
       ],
     },
     {
       heading: 'Unklare Anforderungen',
       blocks: [
-        'Wenn keine genaue Definition der Rolle existiert, verlangsamt sich die Auswahl tendenziell.',
-        'Bewerbungen werden mit wenig einheitlichen Kriterien bewertet.',
-        'Entscheidungen werden schwieriger.',
+        'Wenn keine genaue Definition der Rolle existiert, verlangsamt sich die Auswahl tendenziell: Bewerbungen werden mit wenig einheitlichen Kriterien bewertet und Entscheidungen werden schwieriger.',
       ],
     },
     {
       heading: 'Zu viele beteiligte Personen',
       blocks: [
-        'Mehrere Verantwortliche einzubeziehen kann nützlich sein.',
-        'Aber wenn der Prozess nicht strukturiert ist, steigt das Risiko von Verzögerungen.',
+        'Mehrere Verantwortliche einzubeziehen kann nützlich sein, aber wenn der Prozess nicht strukturiert ist, steigt das Risiko von Verzögerungen.',
       ],
     },
     {
       heading: 'Aufgeschobene Entscheidungen',
       blocks: [
-        'Eine sehr häufige Situation.',
-        'Man erhält interessante Kandidaten.',
-        'Aber die Entscheidung wird ständig aufgeschoben.',
-        'In der Zwischenzeit bewegt sich der Markt weiter.',
+        'Eine sehr häufige Situation: man erhält interessante Kandidaten, aber die Entscheidung wird ständig aufgeschoben. In der Zwischenzeit bewegt sich der Markt weiter.',
       ],
     },
     {
       heading: 'Übermässig komplexe Prozesse',
       blocks: [
         'Manche Auswahlverfahren sehen vor:',
-        'zahlreiche Vorstellungsgespräche;',
-        'wiederholende Bewertungen;',
-        'unklare Schritte.',
-        'Das verbessert nicht immer die Qualität der Wahl.',
-        'Oft erhöht es einfach die Dauer.',
+        { list: ['Zahlreiche Vorstellungsgespräche.', 'Wiederholende Bewertungen.', 'Unklare Schritte.'] },
+        'Das verbessert nicht immer die Qualität der Wahl; oft erhöht es einfach die Dauer.',
       ],
     },
     {
@@ -108,10 +85,7 @@ export default {
       heading: 'Das perfekte Profil existiert selten',
       blocks: [
         'Viele Unternehmen suchen eine Person, die besitzt:',
-        'alle geforderten Kompetenzen;',
-        'spezifische Erfahrung;',
-        'Branchenkenntnisse;',
-        'sofortige Verfügbarkeit.',
+        { list: ['Alle geforderten Kompetenzen.', 'Spezifische Erfahrung.', 'Branchenkenntnisse.', 'Sofortige Verfügbarkeit.'] },
         'Je mehr Anforderungen es gibt, desto kleiner wird der Pool an Kandidaten.',
       ],
     },
@@ -124,15 +98,13 @@ export default {
     {
       heading: 'Eine nützliche Frage',
       blocks: [
-        'Welche Kompetenzen sind wirklich unverzichtbar?',
-        'Welche können durch Schulung und Begleitung entwickelt werden?',
+        { list: ['Welche Kompetenzen sind wirklich unverzichtbar?', 'Welche können durch Schulung und Begleitung entwickelt werden?'] },
       ],
     },
     {
       heading: 'Potenzial und Anpassungsfähigkeit',
       blocks: [
-        'Viele hervorragende Mitarbeitende werden nicht für das eingestellt, was sie bereits perfekt können.',
-        'Sondern für die Fähigkeit, sich schnell weiterzuentwickeln.',
+        'Viele hervorragende Mitarbeitende werden nicht für das eingestellt, was sie bereits perfekt können, sondern für die Fähigkeit, sich schnell weiterzuentwickeln.',
       ],
     },
     {
@@ -144,8 +116,7 @@ export default {
     {
       heading: 'Die Rolle definieren',
       blocks: [
-        'Die erste Frage ist einfach:',
-        'Was wird diese Person konkret tun?',
+        'Die erste Frage ist einfach: Was wird diese Person konkret tun?',
       ],
     },
     {
@@ -164,80 +135,65 @@ export default {
       heading: 'Festlegen, wer entscheidet',
       blocks: [
         'Vor Beginn der Suche ist es hilfreich zu klären:',
-        'wer die Lebensläufe analysiert;',
-        'wer an den Vorstellungsgesprächen teilnimmt;',
-        'wer die endgültige Entscheidung trifft.',
+        { list: ['Wer die Lebensläufe analysiert.', 'Wer an den Vorstellungsgesprächen teilnimmt.', 'Wer die endgültige Entscheidung trifft.'] },
         'Das verhindert spätere Verzögerungen.',
       ],
     },
     {
       heading: 'Beschleunigen, ohne Qualität zu verlieren',
       blocks: [
-        'Wenn von der Verkürzung der Einstellungsdauer die Rede ist, befürchten manche Unternehmen, die Qualität der Auswahl zu beeinträchtigen.',
-        'Das ist eine berechtigte Sorge.',
-        'Aber Geschwindigkeit und Qualität stehen nicht zwangsläufig im Widerspruch.',
+        'Wenn von der Verkürzung der Einstellungsdauer die Rede ist, befürchten manche Unternehmen, die Qualität der Auswahl zu beeinträchtigen. Das ist eine berechtigte Sorge, aber Geschwindigkeit und Qualität stehen nicht zwangsläufig im Widerspruch.',
       ],
     },
     {
       heading: 'Tätigkeiten ohne Mehrwert eliminieren',
       blocks: [
-        'Jede Phase des Prozesses sollte einen klaren Zweck haben.',
-        'Wenn ein Schritt die Qualität der Entscheidung nicht verbessert, lohnt es sich zu fragen, ob er wirklich notwendig ist.',
+        'Jede Phase des Prozesses sollte einen klaren Zweck haben. Wenn ein Schritt die Qualität der Entscheidung nicht verbessert, lohnt es sich zu fragen, ob er wirklich notwendig ist.',
       ],
     },
     {
       heading: 'Bestimmte Tätigkeiten standardisieren',
       blocks: [
         'Zum Beispiel:',
-        'Bewertungskriterien;',
-        'Interviewfragen;',
-        'Screening-Prozesse.',
+        { list: ['Bewertungskriterien.', 'Interviewfragen.', 'Screening-Prozesse.'] },
         'Standardisierung reduziert Zeit und Unsicherheit.',
       ],
     },
     {
       heading: 'Sich im Voraus vorbereiten',
       blocks: [
-        'Viele Suchen beginnen erst, wenn ein Notfall entsteht.',
-        'Die effektivsten Unternehmen bauen hingegen einen kontinuierlichen Ansatz für die Talentsuche auf.',
+        'Viele Suchen beginnen erst, wenn ein Notfall entsteht; die effektivsten Unternehmen bauen hingegen einen kontinuierlichen Ansatz für die Talentsuche auf.',
       ],
     },
     {
       heading: 'Die Bedeutung der Antwortgeschwindigkeit',
       blocks: [
-        'Einer der am meisten unterschätzten Aspekte des modernen Recruitings.',
-        'Und einer der wichtigsten.',
+        'Einer der am meisten unterschätzten Aspekte des modernen Recruitings und einer der wichtigsten.',
       ],
     },
     {
       heading: 'Was häufig passiert',
       blocks: [
-        'Eine Kandidatin oder ein Kandidat sendet den Lebenslauf.',
-        'Tage vergehen.',
-        'Manchmal Wochen.',
-        'Bevor eine Rückmeldung erfolgt.',
+        { list: ['Eine Kandidatin oder ein Kandidat sendet den Lebenslauf.', 'Tage vergehen, manchmal Wochen.', 'Bevor eine Rückmeldung erfolgt.'] },
         'In der Zwischenzeit hat die Person möglicherweise bereits andere Auswahlverfahren begonnen.',
       ],
     },
     {
       heading: 'Die besten Kandidaten sind oft die schnellsten',
       blocks: [
-        'Die gefragtesten Personen erhalten in der Regel mehr Möglichkeiten.',
-        'Aus diesem Grund kann die Antwortgeschwindigkeit den Unterschied ausmachen.',
+        'Die gefragtesten Personen erhalten in der Regel mehr Möglichkeiten; aus diesem Grund kann die Antwortgeschwindigkeit den Unterschied ausmachen.',
       ],
     },
     {
       heading: 'Auch eine einfache Mitteilung zählt',
       blocks: [
-        'Nicht immer ist eine sofortige Entscheidung möglich.',
-        'Aber Kandidaten auf dem Laufenden zu halten trägt dazu bei, ihr Interesse aufrechtzuerhalten und verbessert die gesamte Erfahrung.',
+        'Nicht immer ist eine sofortige Entscheidung möglich, aber Kandidaten auf dem Laufenden zu halten trägt dazu bei, ihr Interesse aufrechtzuerhalten und verbessert die gesamte Erfahrung.',
       ],
     },
     {
       heading: 'Die Candidate Experience kann Einstellungen beschleunigen',
       blocks: [
-        'Viele Unternehmen verbinden die Candidate Experience mit Employer Branding.',
-        'In Wirklichkeit beeinflusst sie auch die Geschwindigkeit der Einstellungen.',
+        'Viele Unternehmen verbinden die Candidate Experience mit Employer Branding; in Wirklichkeit beeinflusst sie auch die Geschwindigkeit der Einstellungen.',
       ],
     },
     {
@@ -250,9 +206,7 @@ export default {
       heading: 'Transparenz reduziert Abbrüche',
       blocks: [
         'Kandidaten schätzen es zu wissen:',
-        'welche die nächsten Phasen sein werden;',
-        'wie der Zeitplan aussieht;',
-        'wer die endgültige Entscheidung trifft.',
+        { list: ['Welche die nächsten Phasen sein werden.', 'Wie der Zeitplan aussieht.', 'Wer die endgültige Entscheidung trifft.'] },
       ],
     },
     {
@@ -264,121 +218,93 @@ export default {
     {
       heading: 'Die zu überwachenden KPIs',
       blocks: [
-        'Viele KMU versuchen, das Recruiting zu verbessern, ohne es zu messen.',
-        'Das macht es schwierig zu verstehen, was wirklich funktioniert.',
+        'Viele KMU versuchen, das Recruiting zu verbessern, ohne es zu messen; das macht es schwierig zu verstehen, was wirklich funktioniert.',
       ],
     },
     {
       heading: 'Einstellungsdauer',
       blocks: [
-        'Dies ist der Hauptindikator.',
-        'Er misst die Zeit zwischen der Eröffnung der Stelle und der Annahme des Angebots.',
+        'Dies ist der Hauptindikator: er misst die Zeit zwischen der Eröffnung der Stelle und der Annahme des Angebots.',
       ],
     },
     {
       heading: 'Reaktionszeit',
       blocks: [
-        'Wie viel Zeit vergeht zwischen der Bewerbung und dem ersten Kontakt?',
-        'Die Verkürzung dieses Intervalls kann die Erfolgschancen deutlich erhöhen.',
+        'Wie viel Zeit vergeht zwischen der Bewerbung und dem ersten Kontakt? Die Verkürzung dieses Intervalls kann die Erfolgschancen deutlich erhöhen.',
       ],
     },
     {
       heading: 'Anzahl qualifizierter Bewerbungen',
       blocks: [
-        'Es zählt nicht nur die Quantität.',
-        'Vor allem zählt die Qualität.',
+        'Es zählt nicht nur die Quantität; vor allem zählt die Qualität.',
       ],
     },
     {
       heading: 'Konversionsrate zu Vorstellungsgesprächen',
       blocks: [
-        'Wie viele Kandidaten gelangen vom ersten Screening zum Vorstellungsgespräch?',
-        'Diese Kennzahl hilft, die Qualität der Stellenanzeige und des verwendeten Kanals zu bewerten.',
+        'Wie viele Kandidaten gelangen vom ersten Screening zum Vorstellungsgespräch? Diese Kennzahl hilft, die Qualität der Stellenanzeige und des verwendeten Kanals zu bewerten.',
       ],
     },
     {
       heading: 'Annahmequote des Angebots',
       blocks: [
-        'Wie viele Kandidaten nehmen das Angebot tatsächlich an?',
-        'Ein niedriger Wert kann auf Probleme bei der Wettbewerbsfähigkeit des Angebots oder im Prozess hinweisen.',
+        'Wie viele Kandidaten nehmen das Angebot tatsächlich an? Ein niedriger Wert kann auf Probleme bei der Wettbewerbsfähigkeit des Angebots oder im Prozess hinweisen.',
       ],
     },
     {
       heading: '30-Tage-Praxisplan',
       blocks: [
-        'Die Verkürzung der Einstellungsdauer erfordert nicht zwangsläufig grosse Investitionen.',
-        'Oft genügt es, an der Methode zu arbeiten.',
-      ],
-    },
-    {
-      heading: 'Woche 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analyse',
-      blocks: [
-        'Sammeln Sie Daten zu den letzten Auswahlverfahren:',
-        'durchschnittliche Einstellungsdauer;',
-        'Anzahl Bewerbungen;',
-        'Anzahl Vorstellungsgespräche;',
-        'gemachte Angebote.',
-      ],
-    },
-    {
-      heading: 'Woche 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Überprüfung des Prozesses',
-      blocks: [
-        'Identifizieren Sie:',
-        'überflüssige Schritte;',
-        'Engpässe;',
-        'Entscheidungsverzögerungen.',
-      ],
-    },
-    {
-      heading: 'Woche 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Optimierung',
-      blocks: [
-        'Definieren Sie:',
-        'klare Verantwortlichkeiten;',
-        'maximale Antwortzeiten;',
-        'gemeinsame Bewertungskriterien.',
-      ],
-    },
-    {
-      heading: 'Woche 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Messung',
-      blocks: [
-        'Vergleichen Sie die Ergebnisse mit den vorherigen.',
-        'Bewerten Sie:',
-        'Geschwindigkeit;',
-        'Qualität;',
-        'Candidate Experience.',
+        'Die Verkürzung der Einstellungsdauer erfordert nicht zwangsläufig grosse Investitionen; oft genügt es, an der Methode zu arbeiten.',
+        {
+          weekPlan: [
+            {
+              week: 'Woche 1',
+              title: 'Analyse',
+              items: [
+                'Sammeln Sie Daten zu den letzten Auswahlverfahren: durchschnittliche Einstellungsdauer und Anzahl Bewerbungen.',
+                'Anzahl Vorstellungsgespräche und gemachte Angebote.',
+                'Identifizieren Sie die offensichtlichsten Engpässe im aktuellen Prozess.',
+              ],
+            },
+            {
+              week: 'Woche 2',
+              title: 'Überprüfung des Prozesses',
+              items: [
+                'Identifizieren Sie überflüssige Schritte, die keinen Mehrwert für die Auswahl bringen.',
+                'Kartieren Sie Engpässe und Entscheidungsverzögerungen.',
+                'Sammeln Sie Feedback von den am Auswahlprozess beteiligten Managern.',
+              ],
+            },
+            {
+              week: 'Woche 3',
+              title: 'Optimierung',
+              items: [
+                'Definieren Sie klare Verantwortlichkeiten für jede Phase des Prozesses.',
+                'Legen Sie maximale Antwortzeiten für Kandidaten fest.',
+                'Teilen Sie die Bewertungskriterien mit allen beteiligten Verantwortlichen.',
+              ],
+            },
+            {
+              week: 'Woche 4',
+              title: 'Messung',
+              items: [
+                'Vergleichen Sie Geschwindigkeit und Qualität der Einstellungen mit den vorherigen Daten.',
+                'Bewerten Sie die Candidate Experience durch strukturiertes Feedback.',
+                'Planen Sie die Optimierungen für den nächsten Zyklus.',
+              ],
+            },
+          ],
+        },
       ],
     },
     { related: { question: 'Eine gute Stellenanzeige beschleunigt den gesamten Prozess: Erfahren Sie, wie Sie sie schreiben.', slug: 'come-scrivere-un-annuncio-di-lavoro-efficace' } },
     {
       heading: 'Fazit',
       blocks: [
-        'Die Einstellungsdauer zu verkürzen bedeutet nicht, zu hetzen.',
-        'Es bedeutet, alles zu eliminieren, was den Prozess unnötig verlangsamt.',
-        'Unternehmen, die besser einstellen, sind nicht zwangsläufig diejenigen, die der Auswahl mehr Zeit widmen.',
-        'Es sind oft diejenigen, die ein klares, kohärentes und messbares System aufgebaut haben.',
+        'Die Einstellungsdauer zu verkürzen bedeutet nicht, zu hetzen: es bedeutet, alles zu eliminieren, was den Prozess unnötig verlangsamt.',
+        'Unternehmen, die besser einstellen, sind nicht zwangsläufig diejenigen, die der Auswahl mehr Zeit widmen; es sind oft diejenigen, die ein klares, kohärentes und messbares System aufgebaut haben.',
         'Wenn die Rolle gut definiert ist, die Verantwortlichkeiten klar sind und Entscheidungen schnell getroffen werden, wird das Recruiting für alle effektiver: Unternehmen, Manager, Kandidaten.',
-        'In einem zunehmend wettbewerbsorientierten Markt ist Geschwindigkeit nicht nur ein operativer Vorteil, sondern ein Wettbewerbsvorteil.',
-        'Und oft macht sie den Unterschied zwischen der Einstellung der richtigen Kandidatin oder des richtigen Kandidaten oder dem Verlust an einen Mitbewerber.',
+        'In einem zunehmend wettbewerbsorientierten Markt ist Geschwindigkeit nicht nur ein operativer Vorteil, sondern ein Wettbewerbsvorteil: und oft macht sie den Unterschied zwischen der Einstellung der richtigen Kandidatin oder des richtigen Kandidaten oder dem Verlust an einen Mitbewerber.',
       ],
     },
   ],

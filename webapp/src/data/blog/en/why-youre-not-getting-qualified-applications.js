@@ -15,15 +15,14 @@ export default {
       blocks: [
         'Before looking for solutions it\'s important to identify the right problem.',
         'Many companies use the phrase:',
-        'We get unqualified applications.',
+        { list: ['We get unqualified applications.'] },
         'But behind that statement, very different situations can be hiding.',
       ],
     },
     {
       heading: 'Case 1: few applications come in',
       blocks: [
-        'Here the problem could be visibility.',
-        'The right people might simply not be seeing the ad.',
+        'Here the problem could be visibility: the right people might simply not be seeing the ad, because it was published on the wrong channels or with wording that doesn\'t show up in searches.',
       ],
     },
     { cta: { question: 'Want more qualified applications? Start with a better job ad.', action: 'Post your job ad', to: '/soluzioni-e-tariffe' } },
@@ -31,9 +30,7 @@ export default {
       heading: 'Case 2: many applications come in but few are relevant',
       blocks: [
         'In this case the problem could relate to:',
-        'the job ad;',
-        'the channels;',
-        'positioning.',
+        { list: ['the job ad;', 'the channels;', 'positioning.'] },
       ],
     },
     {
@@ -60,19 +57,14 @@ export default {
       blocks: [
         'Many job ads use vague descriptions.',
         'For example:',
-        'dynamic team member;',
-        'motivated professional;',
-        'flexible person.',
+        { list: ['dynamic team member.', 'motivated professional.', 'flexible person.'] },
         'These phrases communicate very little.',
       ],
     },
     {
       heading: 'What the candidate should understand right away',
       blocks: [
-        'the role;',
-        'the responsibilities;',
-        'the required skills;',
-        'the work context.',
+        { list: ['the role.', 'the responsibilities.', 'the required skills.', 'the work context.'] },
         'The clearer this information is, the higher the quality of the applications.',
       ],
     },
@@ -88,11 +80,7 @@ export default {
       blocks: [
         'This is probably one of the most common obstacles.',
         'Many companies build an ideal description that combines:',
-        'extensive experience;',
-        'advanced technical skills;',
-        'multiple languages;',
-        'immediate availability;',
-        'high flexibility.',
+        { list: ['extensive experience.', 'advanced technical skills.', 'multiple languages.', 'immediate availability.', 'high flexibility.'] },
         'The result is often an extremely rare profile.',
       ],
     },
@@ -165,44 +153,33 @@ export default {
       heading: 'How a candidate thinks today',
       blocks: [
         'Before applying, many people check:',
-        'the company website;',
-        'online presence;',
-        'published content;',
-        'general reputation.',
+        { list: ['the company website.', 'online presence.', 'published content.', 'general reputation.'] },
       ],
     },
     {
       heading: 'If the company is invisible',
       blocks: [
-        'The candidate has little information to evaluate the opportunity.',
-        'This can reduce interest in the position.',
+        'The candidate has little information to evaluate the opportunity, and this can significantly reduce interest in the position, even when the role offered would be appealing.',
       ],
     },
     {
       heading: 'Employer branding',
       blocks: [
         'It doesn\'t mean aggressive marketing. It means authentically telling people:',
-        'who you are;',
-        'how you work;',
-        'what values you stand for;',
-        'what your organization offers.',
+        { list: ['who you are.', 'how you work.', 'what values you stand for.', 'what your organization offers.'] },
       ],
     },
     {
       heading: 'Reason 5: the selection process is too slow',
       blocks: [
         'Many companies lose qualified candidates without realizing it.',
-        'Not because the profile wasn\'t suitable.',
-        'But because the process took too long.',
+        'Not because the profile wasn\'t suitable, but because the process took too long: every week of waiting is another chance for the candidate to accept a different offer.',
       ],
     },
     {
       heading: 'What often happens',
       blocks: [
-        'Week 1: application received.',
-        'Week 3: first contact.',
-        'Week 5: interview.',
-        'Week 8: decision.',
+        { list: ['Week 1: application received.', 'Week 3: first contact.', 'Week 5: interview.', 'Week 8: decision.'] },
         'In the meantime, the candidate has already accepted another offer.',
       ],
     },
@@ -226,12 +203,7 @@ export default {
         'Pay remains important.',
         'But it\'s not the only thing candidates evaluate.',
         'Many professionals also consider:',
-        'growth opportunities;',
-        'training;',
-        'autonomy;',
-        'work environment;',
-        'flexibility;',
-        'company stability.',
+        { list: ['growth opportunities.', 'training.', 'autonomy.', 'work environment.', 'flexibility.', 'company stability.'] },
       ],
     },
     {
@@ -259,10 +231,7 @@ export default {
       heading: 'Candidates do their research',
       blocks: [
         'Before applying, many people check:',
-        'the company website;',
-        'social media profiles;',
-        'reviews;',
-        'general reputation.',
+        { list: ['the company website.', 'social media profiles.', 'reviews.', 'general reputation.'] },
       ],
     },
     {
@@ -277,10 +246,7 @@ export default {
       blocks: [
         'Not through slogans.',
         'But through:',
-        'the quality of relationships;',
-        'company culture;',
-        'employee experience;',
-        'consistency between what is communicated and what is actually experienced.',
+        { list: ['the quality of relationships.', 'company culture.', 'employee experience.', 'consistency between what is communicated and what is actually experienced.'] },
       ],
     },
     {
@@ -324,58 +290,14 @@ export default {
       heading: 'A practical 30-day improvement plan',
       blocks: [
         'When the quality of applications isn\'t satisfactory, it\'s worth taking a structured approach.',
-      ],
-    },
-    {
-      heading: 'Week 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analysis',
-      blocks: [
-        'review the job ads;',
-        'check the channels used;',
-        'gather the key data.',
-      ],
-    },
-    {
-      heading: 'Week 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Optimization',
-      blocks: [
-        'improve the wording;',
-        'review the requirements;',
-        'update the value proposition.',
-      ],
-    },
-    {
-      heading: 'Week 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Visibility',
-      blocks: [
-        'expand the channels;',
-        'involve the team;',
-        'activate any referral programs.',
-      ],
-    },
-    {
-      heading: 'Week 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Measurement',
-      blocks: [
-        'compare the results;',
-        'analyze the quality of applications;',
-        'identify the most effective actions.',
+        {
+          weekPlan: [
+            { week: 'Week 1', title: 'Analysis', items: ['review the job ads.', 'check the channels used.', 'gather the key data.'] },
+            { week: 'Week 2', title: 'Optimization', items: ['improve the wording.', 'review the requirements.', 'update the value proposition.'] },
+            { week: 'Week 3', title: 'Visibility', items: ['expand the channels.', 'involve the team.', 'activate any referral programs.'] },
+            { week: 'Week 4', title: 'Measurement', items: ['compare the results.', 'analyze the quality of applications.', 'identify the most effective actions.'] },
+          ],
+        },
       ],
     },
     { related: { question: 'It all starts with the job ad: discover how to write one effectively.', slug: 'come-scrivere-un-annuncio-di-lavoro-efficace' } },
@@ -384,11 +306,7 @@ export default {
       blocks: [
         'When a company isn\'t getting qualified applications, there\'s rarely a single cause.',
         'In most cases the result depends on a combination of factors:',
-        'the job ad;',
-        'the channels;',
-        'the process;',
-        'reputation;',
-        'the value proposition.',
+        { list: ['the job ad.', 'the channels.', 'the process.', 'reputation.', 'the value proposition.'] },
         'The good news is that many of these elements can be improved.',
         'Before concluding that "there just aren\'t any good people out there anymore", it\'s worth carefully analyzing your own recruiting system.',
         'The companies that get the best results aren\'t necessarily the ones that invest the most.',

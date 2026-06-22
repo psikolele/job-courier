@@ -8,38 +8,27 @@ export default {
   readingTime: 7,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=80',
-  intro: 'Many companies focus on a single goal: finding the right person.\n\nIt\'s an understandable priority, yet there\'s another factor that is often underestimated: speed.\n\nEvery day a position remains unfilled can have real consequences:\n\nincreased workload on the team;\n\noperational slowdowns;\n\nproject delays;\n\nmissed opportunities;\n\nindirect costs.\n\nFor this reason, recruiting isn\'t just about the quality of hires.\n\nIt\'s also about the time it takes to get there.\n\nThe most effective companies manage to strike a balance between speed and quality.\n\nThey don\'t hire in a rush.\n\nThey hire well, without wasting time.\n\nIn this guide we\'ll look at what slows recruiting down and how to build a faster, more effective process.',
+  intro: 'Many companies focus on a single goal: finding the right person. It\'s an understandable priority, yet there\'s another factor that is often underestimated: speed.\n\nEvery day a position remains unfilled can have real consequences: increased workload on the team, operational slowdowns, project delays, missed opportunities and indirect costs.\n\nFor this reason, recruiting isn\'t just about the quality of hires, but also about the time it takes to get there. The most effective companies manage to strike a balance between speed and quality: they don\'t hire in a rush, they hire well, without wasting time.\n\nIn this guide we\'ll look at what slows recruiting down and how to build a faster, more effective process.',
   sections: [
     {
       heading: 'How much a vacant position really costs',
       blocks: [
-        'Many SMEs don\'t measure this.',
-        'Yet an open position almost always generates a cost.',
-        'Even when it isn\'t immediately visible.',
+        'Many SMEs don\'t measure this. Yet an open position almost always generates a cost, even when it isn\'t immediately visible.',
       ],
     },
     {
       heading: 'More pressure on the team',
       blocks: [
-        'When someone is missing, tasks get redistributed.',
-        'The remaining team members have to absorb extra workload.',
-        'In the short term this can work.',
-        'In the long term it can create:',
-        'stress;',
-        'mistakes;',
-        'a drop in motivation.',
+        'When someone is missing, tasks get redistributed and the remaining team members have to absorb extra workload. In the short term this can work, but in the long term it can create:',
+        { list: ['Stress.', 'Mistakes.', 'A drop in motivation.'] },
       ],
     },
     { cta: { question: 'Want to hire faster? Post your job ad now.', action: 'Post your job ad', to: '/soluzioni-e-tariffe' } },
     {
       heading: 'Operational delays',
       blocks: [
-        'Some tasks simply get postponed.',
-        'This can affect:',
-        'customers;',
-        'suppliers;',
-        'productivity;',
-        'service quality.',
+        'Some tasks simply get postponed. This can affect:',
+        { list: ['Customers.', 'Suppliers.', 'Productivity.', 'Service quality.'] },
       ],
     },
     {
@@ -51,51 +40,39 @@ export default {
     {
       heading: 'The invisible cost',
       blocks: [
-        'It often doesn\'t show up on the balance sheet.',
-        'But it exists.',
-        'And it\'s one of the reasons reducing time-to-hire should be a priority.',
+        'It often doesn\'t show up on the balance sheet, but it exists. And it\'s one of the reasons reducing time-to-hire should be a priority.',
       ],
     },
     {
       heading: 'Why hiring takes too long',
       blocks: [
-        'Many companies blame delays solely on the difficulty of finding candidates.',
-        'In reality, the problem is often within the process itself.',
+        'Many companies blame delays solely on the difficulty of finding candidates; in reality, the problem is often within the process itself.',
       ],
     },
     {
       heading: 'Unclear requirements',
       blocks: [
-        'When there\'s no precise definition of the role, the selection process tends to slow down.',
-        'Applications get evaluated against inconsistent criteria.',
-        'Decisions become harder.',
+        'When there\'s no precise definition of the role, the selection process tends to slow down: applications get evaluated against inconsistent criteria and decisions become harder.',
       ],
     },
     {
       heading: 'Too many people involved',
       blocks: [
-        'Involving several managers can be useful.',
-        'But when the process isn\'t structured, the risk of delays increases.',
+        'Involving several managers can be useful, but when the process isn\'t structured, the risk of delays increases.',
       ],
     },
     {
       heading: 'Postponed decisions',
       blocks: [
-        'A very common situation.',
-        'Interesting candidates come in.',
-        'But the decision keeps getting pushed back.',
-        'Meanwhile, the market keeps moving.',
+        'A very common situation: interesting candidates come in, but the decision keeps getting pushed back. Meanwhile, the market keeps moving.',
       ],
     },
     {
       heading: 'Overly complex processes',
       blocks: [
         'Some selection processes include:',
-        'numerous interviews;',
-        'repetitive evaluations;',
-        'unclear steps.',
-        'This doesn\'t always improve the quality of the choice.',
-        'Often it simply increases the time it takes.',
+        { list: ['Numerous interviews.', 'Repetitive evaluations.', 'Unclear steps.'] },
+        'This doesn\'t always improve the quality of the choice; often it simply increases the time it takes.',
       ],
     },
     {
@@ -108,10 +85,7 @@ export default {
       heading: 'The perfect profile rarely exists',
       blocks: [
         'Many companies look for someone who has:',
-        'all the required skills;',
-        'specific experience;',
-        'industry knowledge;',
-        'immediate availability.',
+        { list: ['All the required skills.', 'Specific experience.', 'Industry knowledge.', 'Immediate availability.'] },
         'The more requirements you add, the smaller the pool of candidates becomes.',
       ],
     },
@@ -124,15 +98,13 @@ export default {
     {
       heading: 'A useful question',
       blocks: [
-        'Which skills are truly essential?',
-        'Which ones can be developed through training and mentoring?',
+        { list: ['Which skills are truly essential?', 'Which ones can be developed through training and mentoring?'] },
       ],
     },
     {
       heading: 'Potential and adaptability',
       blocks: [
-        'Many great employees aren\'t hired for what they can already do perfectly.',
-        'They\'re hired for their ability to learn quickly.',
+        'Many great employees aren\'t hired for what they can already do perfectly, but for their ability to learn quickly.',
       ],
     },
     {
@@ -144,8 +116,7 @@ export default {
     {
       heading: 'Define the role',
       blocks: [
-        'The first question is simple:',
-        'What will this person actually need to do?',
+        'The first question is simple: what will this person actually need to do?',
       ],
     },
     {
@@ -164,80 +135,65 @@ export default {
       heading: 'Decide who makes the call',
       blocks: [
         'Before starting the search, it\'s useful to clarify:',
-        'who reviews the CVs;',
-        'who takes part in the interviews;',
-        'who makes the final decision.',
+        { list: ['Who reviews the CVs.', 'Who takes part in the interviews.', 'Who makes the final decision.'] },
         'This avoids delays later on.',
       ],
     },
     {
       heading: 'Speeding up without losing quality',
       blocks: [
-        'When it comes to reducing time-to-hire, some companies worry about compromising the quality of their choices.',
-        'It\'s a legitimate concern.',
-        'But speed and quality aren\'t necessarily at odds.',
+        'When it comes to reducing time-to-hire, some companies worry about compromising the quality of their choices. It\'s a legitimate concern, but speed and quality aren\'t necessarily at odds.',
       ],
     },
     {
       heading: 'Eliminate steps that don\'t add value',
       blocks: [
-        'Every stage of the process should have a clear purpose.',
-        'If a step doesn\'t improve the quality of the decision, it\'s worth asking whether it\'s really necessary.',
+        'Every stage of the process should have a clear purpose. If a step doesn\'t improve the quality of the decision, it\'s worth asking whether it\'s really necessary.',
       ],
     },
     {
       heading: 'Standardize certain activities',
       blocks: [
         'For example:',
-        'evaluation criteria;',
-        'interview questions;',
-        'screening processes.',
+        { list: ['Evaluation criteria.', 'Interview questions.', 'Screening processes.'] },
         'Standardization reduces both time and uncertainty.',
       ],
     },
     {
       heading: 'Plan ahead',
       blocks: [
-        'Many searches only start once an urgent need arises.',
-        'The most effective companies instead build an ongoing approach to finding talent.',
+        'Many searches only start once an urgent need arises; the most effective companies instead build an ongoing approach to finding talent.',
       ],
     },
     {
       heading: 'The importance of response speed',
       blocks: [
-        'One of the most underrated aspects of modern recruiting.',
-        'And one of the most important.',
+        'One of the most underrated aspects of modern recruiting is also one of the most important.',
       ],
     },
     {
       heading: 'What often happens',
       blocks: [
-        'A candidate sends in their CV.',
-        'Days go by.',
-        'Sometimes weeks.',
-        'Before they get any response.',
+        { list: ['A candidate sends in their CV.', 'Days go by, sometimes weeks.', 'Before they get any response.'] },
         'In the meantime, they may have already started other selection processes.',
       ],
     },
     {
       heading: 'The best candidates are often the fastest to move on',
       blocks: [
-        'The most sought-after people generally receive more opportunities.',
-        'For this reason, response speed can make all the difference.',
+        'The most sought-after people generally receive more opportunities; for this reason, response speed can make all the difference.',
       ],
     },
     {
       heading: 'Even simple communication matters',
       blocks: [
-        'It\'s not always possible to make an immediate decision.',
-        'But keeping candidates updated helps maintain their interest and improves the overall experience.',
+        'It\'s not always possible to make an immediate decision, but keeping candidates updated helps maintain their interest and improves the overall experience.',
       ],
     },
     {
       heading: 'Candidate experience can speed up hiring',
       blocks: [
-        'Many companies link candidate experience to employer branding.',
-        'In reality, it also affects how quickly hiring happens.',
+        'Many companies link candidate experience to employer branding; in reality, it also affects how quickly hiring happens.',
       ],
     },
     {
@@ -250,9 +206,7 @@ export default {
       heading: 'Transparency reduces drop-offs',
       blocks: [
         'Candidates appreciate knowing:',
-        'what the next steps will be;',
-        'what the timeline looks like;',
-        'who will make the final decision.',
+        { list: ['What the next steps will be.', 'What the timeline looks like.', 'Who will make the final decision.'] },
       ],
     },
     {
@@ -264,121 +218,93 @@ export default {
     {
       heading: 'KPIs to monitor',
       blocks: [
-        'Many SMEs try to improve recruiting without measuring it.',
-        'This makes it hard to understand what\'s actually working.',
+        'Many SMEs try to improve recruiting without measuring it; this makes it hard to understand what\'s actually working.',
       ],
     },
     {
       heading: 'Time-to-hire',
       blocks: [
-        'This is the main indicator.',
-        'It measures the time between opening a position and the offer being accepted.',
+        'This is the main indicator: it measures the time between opening a position and the offer being accepted.',
       ],
     },
     {
       heading: 'Response time',
       blocks: [
-        'How much time passes between an application and the first contact?',
-        'Reducing this gap can significantly increase the chances of success.',
+        'How much time passes between an application and the first contact? Reducing this gap can significantly increase the chances of success.',
       ],
     },
     {
       heading: 'Number of qualified applications',
       blocks: [
-        'It\'s not just about quantity.',
-        'Quality matters most.',
+        'It\'s not just about quantity; quality matters most.',
       ],
     },
     {
       heading: 'Interview conversion rate',
       blocks: [
-        'How many candidates move from the initial screening to an interview?',
-        'This data helps assess the quality of the job ad and the channel used.',
+        'How many candidates move from the initial screening to an interview? This data helps assess the quality of the job ad and the channel used.',
       ],
     },
     {
       heading: 'Offer acceptance rate',
       blocks: [
-        'How many candidates actually accept the offer?',
-        'A low rate can point to problems with the competitiveness of the offer or with the process itself.',
+        'How many candidates actually accept the offer? A low rate can point to problems with the competitiveness of the offer or with the process itself.',
       ],
     },
     {
       heading: 'A practical 30-day plan',
       blocks: [
-        'Reducing time-to-hire doesn\'t necessarily require major investment.',
-        'Often it\'s enough to change the approach.',
-      ],
-    },
-    {
-      heading: 'Week 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analysis',
-      blocks: [
-        'Gather data on your most recent hires:',
-        'average time-to-hire;',
-        'number of applications;',
-        'number of interviews;',
-        'offers made.',
-      ],
-    },
-    {
-      heading: 'Week 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Process review',
-      blocks: [
-        'Identify:',
-        'redundant steps;',
-        'bottlenecks;',
-        'decision delays.',
-      ],
-    },
-    {
-      heading: 'Week 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Optimization',
-      blocks: [
-        'Define:',
-        'clear responsibilities;',
-        'maximum response times;',
-        'shared evaluation criteria.',
-      ],
-    },
-    {
-      heading: 'Week 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Measurement',
-      blocks: [
-        'Compare results with the previous period.',
-        'Evaluate:',
-        'speed;',
-        'quality;',
-        'candidate experience.',
+        'Reducing time-to-hire doesn\'t necessarily require major investment; often it\'s enough to change the approach.',
+        {
+          weekPlan: [
+            {
+              week: 'Week 1',
+              title: 'Analysis',
+              items: [
+                'Gather data on your most recent hires: average time-to-hire and number of applications.',
+                'Count the number of interviews conducted and offers made.',
+                'Identify the most obvious bottlenecks in the current process.',
+              ],
+            },
+            {
+              week: 'Week 2',
+              title: 'Process review',
+              items: [
+                'Identify redundant steps that don\'t add value to the selection.',
+                'Map bottlenecks and decision delay points.',
+                'Gather feedback from managers involved in the selection process.',
+              ],
+            },
+            {
+              week: 'Week 3',
+              title: 'Optimization',
+              items: [
+                'Define clear responsibilities for each stage of the process.',
+                'Set maximum response times for candidates.',
+                'Share evaluation criteria with all managers involved.',
+              ],
+            },
+            {
+              week: 'Week 4',
+              title: 'Measurement',
+              items: [
+                'Compare speed and quality of hires with previous data.',
+                'Evaluate the candidate experience by gathering structured feedback.',
+                'Plan optimizations for the next cycle.',
+              ],
+            },
+          ],
+        },
       ],
     },
     { related: { question: 'A good job ad speeds up the whole process: find out how to write one.', slug: 'come-scrivere-un-annuncio-di-lavoro-efficace' } },
     {
       heading: 'Conclusion',
       blocks: [
-        'Reducing time-to-hire doesn\'t mean rushing.',
-        'It means eliminating everything that needlessly slows down the process.',
-        'Companies that hire better aren\'t necessarily the ones that spend the most time on selection.',
-        'They\'re often the ones that have built a clear, consistent and measurable system.',
+        'Reducing time-to-hire doesn\'t mean rushing: it means eliminating everything that needlessly slows down the process.',
+        'Companies that hire better aren\'t necessarily the ones that spend the most time on selection; they\'re often the ones that have built a clear, consistent and measurable system.',
         'When the role is well defined, responsibilities are clear and decisions are made quickly, recruiting becomes more effective for everyone: the company, the managers, the candidates.',
-        'In an increasingly competitive market, speed isn\'t just an operational advantage, it\'s a competitive one.',
-        'And it often makes the difference between hiring the right candidate or losing them to a competitor.',
+        'In an increasingly competitive market, speed isn\'t just an operational advantage, it\'s a competitive one: and it often makes the difference between hiring the right candidate or losing them to a competitor.',
       ],
     },
   ],

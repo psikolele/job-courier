@@ -8,38 +8,27 @@ export default {
   readingTime: 7,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=80',
-  intro: 'De nombreuses entreprises se concentrent sur un objectif : trouver la bonne personne.\n\nC\'est une priorité compréhensible, mais il existe un autre facteur souvent sous-estimé : la rapidité.\n\nChaque jour où un poste reste vacant peut générer des conséquences concrètes :\n\ncharge de travail accrue pour l\'équipe ;\n\nralentissements opérationnels ;\n\nretards dans les projets ;\n\nopportunités manquées ;\n\ncoûts indirects.\n\nC\'est pourquoi le recrutement ne concerne pas seulement la qualité des embauches.\n\nIl concerne aussi le temps nécessaire pour y parvenir.\n\nLes entreprises les plus efficaces parviennent à trouver un équilibre entre rapidité et qualité.\n\nElles n\'embauchent pas dans la précipitation.\n\nElles embauchent bien, sans perdre de temps.\n\nDans ce guide, nous verrons quels facteurs ralentissent le recrutement et comment construire un processus plus rapide et plus efficace.',
+  intro: 'De nombreuses entreprises se concentrent sur un objectif : trouver la bonne personne. C\'est une priorité compréhensible, mais il existe un autre facteur souvent sous-estimé : la rapidité.\n\nChaque jour où un poste reste vacant peut générer des conséquences concrètes : charge de travail accrue pour l\'équipe, ralentissements opérationnels, retards dans les projets, opportunités manquées et coûts indirects.\n\nC\'est pourquoi le recrutement ne concerne pas seulement la qualité des embauches, mais aussi le temps nécessaire pour y parvenir. Les entreprises les plus efficaces parviennent à trouver un équilibre entre rapidité et qualité : elles n\'embauchent pas dans la précipitation, elles embauchent bien, sans perdre de temps.\n\nDans ce guide, nous verrons quels facteurs ralentissent le recrutement et comment construire un processus plus rapide et plus efficace.',
   sections: [
     {
       heading: 'Combien coûte vraiment un poste vacant',
       blocks: [
-        'De nombreuses PME ne mesurent pas cette donnée.',
-        'Pourtant, un poste ouvert génère presque toujours un coût.',
-        'Même lorsqu\'il n\'est pas immédiatement visible.',
+        'De nombreuses PME ne mesurent pas cette donnée. Pourtant, un poste ouvert génère presque toujours un coût, même lorsqu\'il n\'est pas immédiatement visible.',
       ],
     },
     {
       heading: 'Pression accrue sur l\'équipe',
       blocks: [
-        'Quand une personne manque, les tâches sont redistribuées.',
-        'Les collaborateurs présents doivent absorber des charges supplémentaires.',
-        'À court terme, cela peut fonctionner.',
-        'À long terme, cela peut créer :',
-        'du stress ;',
-        'des erreurs ;',
-        'une baisse de motivation.',
+        'Quand une personne manque, les tâches sont redistribuées et les collaborateurs présents doivent absorber des charges supplémentaires. À court terme, cela peut fonctionner, mais à long terme, cela peut créer :',
+        { list: ['Du stress.', 'Des erreurs.', 'Une baisse de motivation.'] },
       ],
     },
     { cta: { question: 'Vous voulez recruter plus rapidement ? Publiez votre annonce dès maintenant.', action: 'Publier votre annonce', to: '/soluzioni-e-tariffe' } },
     {
       heading: 'Retards opérationnels',
       blocks: [
-        'Certaines activités sont simplement reportées.',
-        'Cela peut affecter :',
-        'les clients ;',
-        'les fournisseurs ;',
-        'la productivité ;',
-        'la qualité du service.',
+        'Certaines activités sont simplement reportées. Cela peut affecter :',
+        { list: ['Les clients.', 'Les fournisseurs.', 'La productivité.', 'La qualité du service.'] },
       ],
     },
     {
@@ -51,51 +40,39 @@ export default {
     {
       heading: 'Le coût invisible',
       blocks: [
-        'Souvent, il n\'apparaît pas dans les bilans.',
-        'Mais il existe.',
-        'Et c\'est l\'une des raisons pour lesquelles réduire le temps de recrutement devrait être une priorité.',
+        'Souvent, il n\'apparaît pas dans les bilans, mais il existe. Et c\'est l\'une des raisons pour lesquelles réduire le temps de recrutement devrait être une priorité.',
       ],
     },
     {
       heading: 'Pourquoi les recrutements prennent trop de temps',
       blocks: [
-        'De nombreuses entreprises attribuent les retards exclusivement à la difficulté de trouver des candidats.',
-        'En réalité, le problème est souvent interne au processus.',
+        'De nombreuses entreprises attribuent les retards exclusivement à la difficulté de trouver des candidats ; en réalité, le problème est souvent interne au processus.',
       ],
     },
     {
       heading: 'Exigences peu claires',
       blocks: [
-        'Quand il n\'existe pas de définition précise du poste, la sélection tend à ralentir.',
-        'Les candidatures sont évaluées avec des critères peu homogènes.',
-        'Les décisions deviennent plus difficiles.',
+        'Quand il n\'existe pas de définition précise du poste, la sélection tend à ralentir : les candidatures sont évaluées avec des critères peu homogènes et les décisions deviennent plus difficiles.',
       ],
     },
     {
       heading: 'Trop de personnes impliquées',
       blocks: [
-        'Impliquer plusieurs responsables peut être utile.',
-        'Mais quand le processus n\'est pas structuré, le risque de ralentissement augmente.',
+        'Impliquer plusieurs responsables peut être utile, mais quand le processus n\'est pas structuré, le risque de ralentissement augmente.',
       ],
     },
     {
       heading: 'Décisions reportées',
       blocks: [
-        'Une situation très fréquente.',
-        'On reçoit des candidats intéressants.',
-        'Mais la décision est continuellement reportée.',
-        'Pendant ce temps, le marché continue d\'évoluer.',
+        'Une situation très fréquente : on reçoit des candidats intéressants, mais la décision est continuellement reportée. Pendant ce temps, le marché continue d\'évoluer.',
       ],
     },
     {
       heading: 'Processus excessivement complexes',
       blocks: [
         'Certaines sélections prévoient :',
-        'de nombreux entretiens ;',
-        'des évaluations répétitives ;',
-        'des étapes peu claires.',
-        'Cela n\'améliore pas toujours la qualité du choix.',
-        'Souvent, cela ne fait qu\'augmenter les délais.',
+        { list: ['De nombreux entretiens.', 'Des évaluations répétitives.', 'Des étapes peu claires.'] },
+        'Cela n\'améliore pas toujours la qualité du choix ; souvent, cela ne fait qu\'augmenter les délais.',
       ],
     },
     {
@@ -108,10 +85,7 @@ export default {
       heading: 'Le profil parfait existe rarement',
       blocks: [
         'De nombreuses entreprises cherchent une personne possédant :',
-        'toutes les compétences requises ;',
-        'une expérience spécifique ;',
-        'la connaissance du secteur ;',
-        'une disponibilité immédiate.',
+        { list: ['Toutes les compétences requises.', 'Une expérience spécifique.', 'La connaissance du secteur.', 'Une disponibilité immédiate.'] },
         'Plus le nombre d\'exigences augmente, plus le bassin de candidats se réduit.',
       ],
     },
@@ -124,15 +98,13 @@ export default {
     {
       heading: 'Une question utile',
       blocks: [
-        'Quelles compétences sont vraiment indispensables ?',
-        'Lesquelles peuvent être développées par la formation et l\'accompagnement ?',
+        { list: ['Quelles compétences sont vraiment indispensables ?', 'Lesquelles peuvent être développées par la formation et l\'accompagnement ?'] },
       ],
     },
     {
       heading: 'Potentiel et adaptabilité',
       blocks: [
-        'De nombreux excellents collaborateurs sont embauchés non pas pour ce qu\'ils savent déjà parfaitement faire.',
-        'Mais pour leur capacité à progresser rapidement.',
+        'De nombreux excellents collaborateurs sont embauchés non pas pour ce qu\'ils savent déjà parfaitement faire, mais pour leur capacité à progresser rapidement.',
       ],
     },
     {
@@ -144,8 +116,7 @@ export default {
     {
       heading: 'Définir le poste',
       blocks: [
-        'La première question est simple :',
-        'Que devra concrètement faire cette personne ?',
+        'La première question est simple : que devra concrètement faire cette personne ?',
       ],
     },
     {
@@ -164,80 +135,65 @@ export default {
       heading: 'Établir qui décide',
       blocks: [
         'Avant de lancer la recherche, il est utile de clarifier :',
-        'qui analyse les CV ;',
-        'qui participe aux entretiens ;',
-        'qui prend la décision finale.',
+        { list: ['Qui analyse les CV.', 'Qui participe aux entretiens.', 'Qui prend la décision finale.'] },
         'Cela évite des ralentissements ultérieurs.',
       ],
     },
     {
       heading: 'Accélérer sans perdre en qualité',
       blocks: [
-        'Quand on parle de réduire le temps de recrutement, certaines entreprises craignent de compromettre la qualité des choix.',
-        'C\'est une préoccupation légitime.',
-        'Mais rapidité et qualité ne sont pas nécessairement en conflit.',
+        'Quand on parle de réduire le temps de recrutement, certaines entreprises craignent de compromettre la qualité des choix. C\'est une préoccupation légitime, mais rapidité et qualité ne sont pas nécessairement en conflit.',
       ],
     },
     {
       heading: 'Éliminer les activités qui ne créent pas de valeur',
       blocks: [
-        'Chaque étape du processus devrait avoir un but précis.',
-        'Si une étape n\'améliore pas la qualité de la décision, il vaut la peine de se demander si elle est vraiment nécessaire.',
+        'Chaque étape du processus devrait avoir un but précis. Si une étape n\'améliore pas la qualité de la décision, il vaut la peine de se demander si elle est vraiment nécessaire.',
       ],
     },
     {
       heading: 'Standardiser certaines activités',
       blocks: [
         'Par exemple :',
-        'critères d\'évaluation ;',
-        'questions d\'entretien ;',
-        'processus de tri.',
+        { list: ['Critères d\'évaluation partagés.', 'Questions d\'entretien standardisées.', 'Processus de tri définis.'] },
         'La standardisation réduit les délais et les incertitudes.',
       ],
     },
     {
       heading: 'Se préparer à l\'avance',
       blocks: [
-        'De nombreuses recherches ne démarrent que lorsqu\'une urgence apparaît.',
-        'Les entreprises les plus efficaces construisent au contraire une approche continue de la recherche de talents.',
+        'De nombreuses recherches ne démarrent que lorsqu\'une urgence apparaît ; les entreprises les plus efficaces construisent au contraire une approche continue de la recherche de talents.',
       ],
     },
     {
       heading: 'L\'importance de la rapidité de réponse',
       blocks: [
-        'Un des aspects les plus sous-estimés du recrutement moderne.',
-        'Et l\'un des plus importants.',
+        'Un des aspects les plus sous-estimés du recrutement moderne est aussi l\'un des plus importants.',
       ],
     },
     {
       heading: 'Ce qui se passe souvent',
       blocks: [
-        'Un candidat envoie son CV.',
-        'Des jours passent.',
-        'Parfois des semaines.',
-        'Avant de recevoir une réponse.',
+        { list: ['Un candidat envoie son CV.', 'Des jours passent, parfois des semaines.', 'Avant de recevoir une réponse.'] },
         'Pendant ce temps, il a peut-être déjà entamé d\'autres processus de sélection.',
       ],
     },
     {
       heading: 'Les meilleurs candidats sont souvent les plus rapides',
       blocks: [
-        'Les personnes les plus recherchées reçoivent généralement plus d\'opportunités.',
-        'C\'est pourquoi la rapidité de réponse peut faire la différence.',
+        'Les personnes les plus recherchées reçoivent généralement plus d\'opportunités ; c\'est pourquoi la rapidité de réponse peut faire la différence.',
       ],
     },
     {
       heading: 'Même une simple communication compte',
       blocks: [
-        'Il n\'est pas toujours possible de prendre une décision immédiate.',
-        'Mais tenir les candidats informés contribue à maintenir leur intérêt et améliore l\'expérience globale.',
+        'Il n\'est pas toujours possible de prendre une décision immédiate, mais tenir les candidats informés contribue à maintenir leur intérêt et améliore l\'expérience globale.',
       ],
     },
     {
       heading: 'L\'expérience candidat peut accélérer les embauches',
       blocks: [
-        'De nombreuses entreprises associent l\'expérience candidat à l\'employer branding.',
-        'En réalité, elle influence aussi la rapidité des embauches.',
+        'De nombreuses entreprises associent l\'expérience candidat à l\'employer branding ; en réalité, elle influence aussi la rapidité des embauches.',
       ],
     },
     {
@@ -250,9 +206,7 @@ export default {
       heading: 'La transparence réduit les abandons',
       blocks: [
         'Les candidats apprécient de savoir :',
-        'quelles seront les prochaines étapes ;',
-        'quels sont les délais ;',
-        'qui prendra la décision finale.',
+        { list: ['Quelles seront les prochaines étapes.', 'Quels sont les délais prévus.', 'Qui prendra la décision finale.'] },
       ],
     },
     {
@@ -264,121 +218,93 @@ export default {
     {
       heading: 'Les KPI à surveiller',
       blocks: [
-        'De nombreuses PME essaient d\'améliorer le recrutement sans le mesurer.',
-        'Cela rend difficile de comprendre ce qui fonctionne réellement.',
+        'De nombreuses PME essaient d\'améliorer le recrutement sans le mesurer ; cela rend difficile de comprendre ce qui fonctionne réellement.',
       ],
     },
     {
       heading: 'Temps de recrutement',
       blocks: [
-        'C\'est l\'indicateur principal.',
-        'Il mesure le temps qui s\'écoule entre l\'ouverture du poste et l\'acceptation de l\'offre.',
+        'C\'est l\'indicateur principal : il mesure le temps qui s\'écoule entre l\'ouverture du poste et l\'acceptation de l\'offre.',
       ],
     },
     {
       heading: 'Temps de réponse',
       blocks: [
-        'Combien de temps s\'écoule entre la candidature et le premier contact ?',
-        'Réduire cet intervalle peut augmenter significativement les chances de succès.',
+        'Combien de temps s\'écoule entre la candidature et le premier contact ? Réduire cet intervalle peut augmenter significativement les chances de succès.',
       ],
     },
     {
       heading: 'Nombre de candidatures qualifiées',
       blocks: [
-        'Ce qui compte n\'est pas seulement la quantité.',
-        'Ce qui compte surtout, c\'est la qualité.',
+        'Ce qui compte n\'est pas seulement la quantité ; ce qui compte surtout, c\'est la qualité.',
       ],
     },
     {
       heading: 'Taux de conversion en entretiens',
       blocks: [
-        'Combien de candidats passent du tri initial à l\'entretien ?',
-        'Cette donnée aide à évaluer la qualité de l\'annonce et du canal utilisé.',
+        'Combien de candidats passent du tri initial à l\'entretien ? Cette donnée aide à évaluer la qualité de l\'annonce et du canal utilisé.',
       ],
     },
     {
       heading: 'Taux d\'acceptation de l\'offre',
       blocks: [
-        'Combien de candidats acceptent réellement la proposition ?',
-        'Une valeur basse peut indiquer des problèmes dans la compétitivité de l\'offre ou dans le processus.',
+        'Combien de candidats acceptent réellement la proposition ? Une valeur basse peut indiquer des problèmes dans la compétitivité de l\'offre ou dans le processus.',
       ],
     },
     {
       heading: 'Plan pratique sur 30 jours',
       blocks: [
-        'Réduire le temps de recrutement ne nécessite pas forcément de gros investissements.',
-        'Souvent, il suffit d\'agir sur la méthode.',
-      ],
-    },
-    {
-      heading: 'Semaine 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analyse',
-      blocks: [
-        'Recueillez des données sur les dernières sélections :',
-        'temps moyen de recrutement ;',
-        'nombre de candidatures ;',
-        'nombre d\'entretiens ;',
-        'offres formulées.',
-      ],
-    },
-    {
-      heading: 'Semaine 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Révision du processus',
-      blocks: [
-        'Identifiez :',
-        'les étapes redondantes ;',
-        'les goulots d\'étranglement ;',
-        'les retards décisionnels.',
-      ],
-    },
-    {
-      heading: 'Semaine 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Optimisation',
-      blocks: [
-        'Définissez :',
-        'des responsabilités claires ;',
-        'des délais maximaux de réponse ;',
-        'des critères d\'évaluation partagés.',
-      ],
-    },
-    {
-      heading: 'Semaine 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Mesure',
-      blocks: [
-        'Comparez les résultats avec les précédents.',
-        'Évaluez :',
-        'la rapidité ;',
-        'la qualité ;',
-        'l\'expérience candidat.',
+        'Réduire le temps de recrutement ne nécessite pas forcément de gros investissements ; souvent, il suffit d\'agir sur la méthode.',
+        {
+          weekPlan: [
+            {
+              week: 'Semaine 1',
+              title: 'Analyse',
+              items: [
+                'Recueillez des données sur les dernières sélections : temps moyen de recrutement et candidatures reçues.',
+                'Comptez le nombre d\'entretiens effectués et les offres formulées.',
+                'Identifiez les goulots d\'étranglement les plus évidents dans le processus actuel.',
+              ],
+            },
+            {
+              week: 'Semaine 2',
+              title: 'Révision du processus',
+              items: [
+                'Identifiez les étapes redondantes qui n\'ajoutent pas de valeur à la sélection.',
+                'Cartographiez les goulots d\'étranglement et les points de ralentissement décisionnel.',
+                'Recueillez les retours des managers impliqués dans le processus de sélection.',
+              ],
+            },
+            {
+              week: 'Semaine 3',
+              title: 'Optimisation',
+              items: [
+                'Définissez des responsabilités claires pour chaque phase du processus.',
+                'Établissez des délais maximaux de réponse aux candidats.',
+                'Partagez les critères d\'évaluation avec tous les responsables impliqués.',
+              ],
+            },
+            {
+              week: 'Semaine 4',
+              title: 'Mesure',
+              items: [
+                'Comparez la rapidité et la qualité des embauches avec les données précédentes.',
+                'Évaluez l\'expérience candidat en recueillant des retours structurés.',
+                'Planifiez les optimisations pour le cycle suivant.',
+              ],
+            },
+          ],
+        },
       ],
     },
     { related: { question: 'Une bonne annonce accélère tout le processus : découvrez comment la rédiger.', slug: 'come-scrivere-un-annuncio-di-lavoro-efficace' } },
     {
       heading: 'Conclusion',
       blocks: [
-        'Réduire le temps de recrutement ne signifie pas se précipiter.',
-        'Cela signifie éliminer tout ce qui ralentit inutilement le processus.',
-        'Les entreprises qui embauchent le mieux ne sont pas nécessairement celles qui consacrent le plus de temps à la sélection.',
-        'Ce sont souvent celles qui ont construit un système clair, cohérent et mesurable.',
+        'Réduire le temps de recrutement ne signifie pas se précipiter : cela signifie éliminer tout ce qui ralentit inutilement le processus.',
+        'Les entreprises qui embauchent le mieux ne sont pas nécessairement celles qui consacrent le plus de temps à la sélection ; ce sont souvent celles qui ont construit un système clair, cohérent et mesurable.',
         'Quand le poste est bien défini, les responsabilités sont claires et les décisions sont prises rapidement, le recrutement devient plus efficace pour tous : entreprise, manager, candidats.',
-        'Dans un marché de plus en plus compétitif, la rapidité n\'est pas seulement un avantage opérationnel, c\'est un avantage compétitif.',
-        'Et elle représente souvent la différence entre embaucher le bon candidat ou le laisser à un concurrent.',
+        'Dans un marché de plus en plus compétitif, la rapidité n\'est pas seulement un avantage opérationnel, c\'est un avantage compétitif : elle représente souvent la différence entre embaucher le bon candidat ou le laisser à un concurrent.',
       ],
     },
   ],

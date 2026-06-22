@@ -8,53 +8,46 @@ export default {
   readingTime: 7,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&q=80',
-  intro: 'You\'ve updated your CV.\n\nYou\'ve sent out several applications.\n\nYou\'ve found job ads that seem to perfectly match your profile.\n\nAnd yet nothing happens.\n\nNo phone call.\n\nNo email.\n\nNo interview invitation.\n\nIt\'s a frustrating situation that many candidates know all too well.\n\nThe first reaction is often to think:\n\nthere are no opportunities;\n\nthe market is stuck;\n\nI\'m too qualified;\n\nI\'m not qualified enough.\n\nIn reality the causes can be very different.\n\nThe good news is that in most cases there are things that can be improved.\n\nIn this guide we\'ll look at the most common reasons an application goes unanswered and how to address them in concrete ways.',
+  intro: 'You\'ve updated your CV and you\'ve sent out several applications, finding job ads that seem to perfectly match your profile.\n\nAnd yet nothing happens: no phone call, no email, no interview invitation. It\'s a frustrating situation that many candidates know all too well.\n\nThe first reaction is often to think that there are no opportunities, that the market is stuck, that I\'m too qualified or, on the contrary, not qualified enough. In reality the causes can be very different, and the good news is that in most cases there are things that can be improved.\n\nIn this guide we\'ll look at the most common reasons an application goes unanswered and how to address them in concrete ways.',
   sections: [
     {
       heading: 'First question: is the lack of responses really the problem?',
       blocks: [
         'Before looking for solutions, it\'s important to understand what the real problem is.',
         'Many candidates use the phrase:',
-        'Nobody answers me.',
+        { list: ['Nobody answers me.'] },
         'But different situations call for different solutions.',
       ],
     },
     {
       heading: 'Case 1: no response at all',
       blocks: [
-        'You send applications and never get contacted.',
-        'In this case the problem is generally in the early stages of the process.',
+        'You send applications and never get contacted. In this case the problem is generally in the early stages of the process.',
       ],
     },
     { cta: { question: 'Get your search moving again: apply to the right jobs.', action: 'See the job offers', to: '/offerte' } },
     {
       heading: 'Case 2: you get interviews but no offers',
       blocks: [
-        'The situation is different.',
-        'Here the CV probably works.',
-        'You need to analyze your interview preparation instead.',
+        'The situation is different: here the CV probably works, but you need to analyze your interview preparation instead.',
       ],
     },
     {
       heading: 'Case 3: you get a few responses',
       blocks: [
-        'This can be a normal situation.',
-        'Many companies receive numerous applications and don\'t contact every candidate.',
-        'For this reason it\'s important to look at the overall picture.',
+        'This can be a normal situation, since many companies receive numerous applications and don\'t contact every candidate. For this reason it\'s important to look at the overall picture.',
       ],
     },
     {
       heading: 'Reason 1: your CV doesn\'t communicate your value',
       blocks: [
-        'Your CV is the first point of contact between you and the company.',
-        'If it doesn\'t quickly convey your professional value, the process can stop right there.',
+        'Your CV is the first point of contact between you and the company. If it doesn\'t quickly convey your professional value, the process can stop right there.',
       ],
     },
     {
       heading: 'A very common mistake',
       blocks: [
-        'Many CVs describe tasks.',
-        'Few describe results.',
+        'Many CVs describe tasks, while few describe results.',
       ],
     },
     {
@@ -72,10 +65,8 @@ export default {
     {
       heading: 'The recruiter needs to quickly understand',
       blocks: [
-        'who you are;',
-        'what you can do;',
-        'what skills you have;',
-        'what value you can bring.',
+        'The recruiter needs to quickly understand:',
+        { list: ['Who you are.', 'What you can do.', 'What skills you have.', 'What value you can bring.'] },
         'If this information doesn\'t come through clearly, your application loses impact.',
       ],
     },
@@ -84,15 +75,14 @@ export default {
       blocks: [
         'One of the most common mistakes is applying to any available position.',
         'The idea is simple:',
-        'The more applications I send, the better my chances.',
+        { list: ['The more applications I send, the better my chances.'] },
         'In practice the opposite often happens.',
       ],
     },
     {
       heading: 'Why this happens',
       blocks: [
-        'Recruiters look for profiles that meet a significant share of the requirements.',
-        'When the gap between your profile and the role is too wide, your chances of being contacted decrease.',
+        'Recruiters look for profiles that meet a significant share of the requirements. When the gap between your profile and the role is too wide, your chances of being contacted decrease.',
       ],
     },
     {
@@ -104,127 +94,92 @@ export default {
     {
       heading: 'Reason 3: you always use the same CV',
       blocks: [
-        'Many candidates prepare a single CV and use it for every position.',
-        'It\'s understandable.',
-        'Customizing takes time.',
-        'But it can make a huge difference.',
+        'Many candidates prepare a single CV and use it for every position. It\'s understandable, because customizing takes time, but it can make a huge difference.',
       ],
     },
     {
       heading: 'Companies are looking for different things',
       blocks: [
-        'Even seemingly similar roles can have different priorities.',
-        'For example:',
-        'client contact;',
-        'IT skills;',
-        'organizational abilities;',
-        'technical experience.',
+        'Even seemingly similar roles can have different priorities, for example:',
+        { list: ['Client contact.', 'IT skills.', 'Organizational abilities.', 'Technical experience.'] },
       ],
     },
     {
       heading: 'What to customize',
       blocks: [
-        'You don\'t need to rewrite everything.',
-        'It\'s often enough to adjust:',
-        'your professional profile;',
-        'the skills you highlight;',
-        'keywords;',
-        'how you describe your experience.',
+        'You don\'t need to rewrite everything. It\'s often enough to adjust:',
+        { list: ['Your professional profile.', 'The skills you highlight.', 'Keywords.', 'How you describe your experience.'] },
       ],
     },
     {
       heading: 'Reason 4: your LinkedIn profile isn\'t helping',
       blocks: [
-        'More and more companies check candidates\' LinkedIn profiles.',
-        'A neglected profile can weaken an application.',
+        'More and more companies check candidates\' LinkedIn profiles. A neglected profile can weaken an application.',
       ],
     },
     {
       heading: 'Common issues',
       blocks: [
-        'incomplete information;',
-        'outdated experience;',
-        'missing skills;',
-        'inconsistencies with the CV.',
+        { list: ['Incomplete information.', 'Outdated experience.', 'Missing skills.', 'Inconsistencies with the CV.'] },
       ],
     },
     {
       heading: 'What to do',
       blocks: [
         'Make sure your LinkedIn profile is:',
-        'up to date;',
-        'professional;',
-        'consistent with your CV.',
+        { list: ['Up to date.', 'Professional.', 'Consistent with your CV.'] },
       ],
     },
     {
       heading: 'Reason 5: you\'re only using one channel',
       blocks: [
-        'Many candidates limit their search to online job ads.',
-        'That\'s a limiting strategy.',
+        'Many candidates limit their search to online job ads. That\'s a limiting strategy.',
       ],
     },
     {
       heading: 'An effective search uses multiple tools',
       blocks: [
-        'job boards;',
-        'networking;',
-        'recruiters;',
-        'speculative applications;',
-        'LinkedIn.',
+        { list: ['Job boards.', 'Networking.', 'Recruiters.', 'Speculative applications.', 'LinkedIn.'] },
         'The more channels you use, the more opportunities you have of spotting interesting openings.',
       ],
     },
     {
       heading: 'Reason 6: the market requires skills you haven\'t developed yet',
       blocks: [
-        'Sometimes the problem isn\'t the CV.',
-        'It\'s your professional positioning.',
+        'Sometimes the problem isn\'t the CV, but your professional positioning.',
       ],
     },
     {
       heading: 'Questions to ask yourself',
       blocks: [
-        'Are my skills still in demand?',
-        'Is the industry changing?',
-        'Am I investing in training?',
-        'Do job ads ask for tools I don\'t know?',
+        { list: ['Are my skills still in demand?', 'Is the industry changing?', 'Am I investing in training?', 'Do job ads ask for tools I don\'t know?'] },
       ],
     },
     {
       heading: 'Look at the market',
       blocks: [
-        'Analyze job ads in your sector.',
-        'Which skills come up most often?',
-        'This analysis can provide very useful pointers for future training.',
+        'Analyze job ads in your sector: which skills come up most often? This analysis can provide very useful pointers for future training.',
       ],
     },
     {
       heading: 'Reason 7: your applications aren\'t personalized enough',
       blocks: [
         'Many candidates spend just a few seconds on each application.',
-        'Upload the CV.',
-        'Click "Send".',
-        'Move on to the next ad.',
-        'From an efficiency standpoint it seems like a good strategy.',
-        'From a results standpoint, it often isn\'t.',
+        { list: ['Upload the CV.', 'Click "Send".', 'Move on to the next ad.'] },
+        'From an efficiency standpoint it seems like a good strategy, but from a results standpoint, it often isn\'t.',
       ],
     },
     {
       heading: 'Why personalization matters',
       blocks: [
-        'Companies want to understand why you\'re interested in that specific position.',
-        'A completely generic application communicates little engagement.',
+        'Companies want to understand why you\'re interested in that specific position. A completely generic application communicates little engagement.',
       ],
     },
     {
       heading: 'You don\'t need to rewrite everything',
       blocks: [
-        'Even small adjustments can make a big difference.',
-        'For example:',
-        'tweak your professional profile;',
-        'highlight relevant skills;',
-        'showcase relevant experience.',
+        'Even small adjustments can make a big difference. For example:',
+        { list: ['Tweak your professional profile.', 'Highlight relevant skills.', 'Showcase relevant experience.'] },
       ],
     },
     {
@@ -236,33 +191,26 @@ export default {
     {
       heading: 'Reason 8: the problem might not be you',
       blocks: [
-        'This is an important consideration.',
-        'Many people attribute every unanswered application to their own limitations.',
-        'That\'s not always the case.',
+        'This is an important consideration. Many people attribute every unanswered application to their own limitations, but that\'s not always the case.',
       ],
     },
     {
       heading: 'Companies receive many applications',
       blocks: [
-        'Some positions attract dozens or hundreds of CVs.',
-        'Not everyone can get a response.',
+        'Some positions attract dozens or hundreds of CVs. Not everyone can get a response.',
       ],
     },
     {
       heading: 'Priorities can change',
       blocks: [
         'Sometimes companies:',
-        'put a search on hold;',
-        'change the role;',
-        'redefine the budget;',
-        'decide to promote someone internally.',
+        { list: ['Put a search on hold.', 'Change the role.', 'Redefine the budget.', 'Decide to promote someone internally.'] },
       ],
     },
     {
       heading: 'Timelines can be long',
       blocks: [
-        'Some selection processes take weeks.',
-        'In these cases silence doesn\'t necessarily mean rejection.',
+        'Some selection processes take weeks. In these cases silence doesn\'t necessarily mean rejection.',
       ],
     },
     {
@@ -280,10 +228,7 @@ export default {
       heading: 'No response after many applications',
       blocks: [
         'Possible causes:',
-        'a weak CV;',
-        'poorly targeted applications;',
-        'misaligned skills;',
-        'a limited strategy.',
+        { list: ['A weak CV.', 'Poorly targeted applications.', 'Misaligned skills.', 'A limited strategy.'] },
       ],
     },
     {
@@ -295,9 +240,7 @@ export default {
       heading: 'Some interviews but no offers',
       blocks: [
         'Possible causes:',
-        'insufficient preparation;',
-        'difficulty communicating your value;',
-        'misaligned expectations.',
+        { list: ['Insufficient preparation.', 'Difficulty communicating your value.', 'Misaligned expectations.'] },
       ],
     },
     {
@@ -309,99 +252,68 @@ export default {
       heading: 'Occasional responses',
       blocks: [
         'Possible causes:',
-        'a competitive market;',
-        'a still-limited search;',
-        'the need to optimize your process.',
+        { list: ['A competitive market.', 'A still-limited search.', 'The need to optimize your process.'] },
       ],
     },
     {
       heading: 'Analyze the numbers',
       blocks: [
-        'Treat your job search like a project.',
-        'Track:',
-        'applications sent;',
-        'responses received;',
-        'interviews obtained;',
-        'offers received.',
+        'Treat your job search like a project. Track:',
+        { list: ['Applications sent.', 'Responses received.', 'Interviews obtained.', 'Offers received.'] },
         'The data helps identify weak points.',
       ],
     },
     {
       heading: 'A practical 30-day improvement plan',
       blocks: [
-        'When results aren\'t coming, the solution isn\'t to indiscriminately increase the number of applications.',
-        'A more structured approach is needed.',
-      ],
-    },
-    {
-      heading: 'Week 1',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Review',
-      blocks: [
-        'update your CV;',
-        'update LinkedIn;',
-        'check the skills the market is asking for.',
-      ],
-    },
-    {
-      heading: 'Week 2',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Personalization',
-      blocks: [
-        'apply to positions that are genuinely a good fit;',
-        'adapt your CV;',
-        'improve your professional profile.',
-      ],
-    },
-    {
-      heading: 'Week 3',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Expand your channels',
-      blocks: [
-        'networking;',
-        'professional contacts;',
-        'speculative applications;',
-        'recruiters.',
-      ],
-    },
-    {
-      heading: 'Week 4',
-      blocks: [
-      ],
-    },
-    {
-      heading: 'Analysis',
-      blocks: [
-        'evaluate the results;',
-        'identify improvements;',
-        'plan your next actions.',
+        'When results aren\'t coming, the solution isn\'t to indiscriminately increase the number of applications: a more structured approach is needed.',
+        { weekPlan: [
+          {
+            week: 'Week 1',
+            title: 'Review',
+            items: [
+              'Update your CV.',
+              'Update LinkedIn.',
+              'Check the skills the market is asking for.',
+            ],
+          },
+          {
+            week: 'Week 2',
+            title: 'Personalization',
+            items: [
+              'Apply to positions that are genuinely a good fit.',
+              'Adapt your CV.',
+              'Improve your professional profile.',
+            ],
+          },
+          {
+            week: 'Week 3',
+            title: 'Expand your channels',
+            items: [
+              'Networking and professional contacts.',
+              'Speculative applications.',
+              'Recruiters.',
+            ],
+          },
+          {
+            week: 'Week 4',
+            title: 'Analysis',
+            items: [
+              'Evaluate the results.',
+              'Identify improvements.',
+              'Plan your next actions.',
+            ],
+          },
+        ] },
       ],
     },
     { related: { question: 'The problem might be your CV: discover how to improve it.', slug: 'come-scrivere-un-cv-che-ottiene-colloqui' } },
     {
       heading: 'Conclusion',
       blocks: [
-        'Not getting responses to your applications can be frustrating.',
-        'However, in most cases, the problem isn\'t down to a single factor.',
-        'It\'s often the result of a combination of elements:',
-        'your CV;',
-        'your strategy;',
-        'your skills;',
-        'your professional positioning;',
-        'how you apply.',
-        'Job hunting shouldn\'t be treated as a lottery.',
-        'It can be analyzed, measured and improved.',
-        'The more you understand what works and what doesn\'t, the more your chances of getting interviews and new opportunities increase.',
-        'The first step isn\'t sending more applications, it\'s understanding how to make the ones you send more effective.',
+        'Not getting responses to your applications can be frustrating. However, in most cases, the problem isn\'t down to a single factor: it\'s often the result of a combination of elements.',
+        { list: ['Your CV.', 'Your strategy.', 'Your skills.', 'Your professional positioning.', 'How you apply.'] },
+        'Job hunting shouldn\'t be treated as a lottery: it can be analyzed, measured and improved. The more you understand what works and what doesn\'t, the more your chances of getting interviews and new opportunities increase. The first step isn\'t sending more applications, it\'s understanding how to make the ones you send more effective.',
       ],
     },
   ],

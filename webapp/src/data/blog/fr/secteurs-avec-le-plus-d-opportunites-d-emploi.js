@@ -8,64 +8,51 @@ export default {
   readingTime: 7,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80',
-  intro: 'Le marché du travail est en constante évolution. Certaines professions croissent rapidement, d\'autres se transforment. D\'autres encore voient leur demande diminuer.\n\nPour qui cherche un emploi, qui souhaite changer de carrière ou qui choisit un parcours de formation, comprendre où se concentrent les opportunités est fondamental.\n\nUne des questions les plus fréquentes est :\n\nQuels sont aujourd\'hui les secteurs qui offrent le plus de possibilités d\'emploi ?\n\nLa réponse ne dépend pas seulement du nombre d\'offres publiées.\n\nCompte également la difficulté des entreprises à trouver du personnel qualifié, l\'évolution technologique, les changements démographiques et les nouveaux besoins du marché.\n\nDans ce guide, nous analyserons les secteurs qui génèrent le plus d\'opportunités professionnelles, les compétences les plus demandées et les tendances qui continueront probablement à influencer le monde du travail dans les années à venir.',
+  intro: 'Le marché du travail est en constante évolution. Certaines professions croissent rapidement, d\'autres se transforment. D\'autres encore voient leur demande diminuer.\n\nPour qui cherche un emploi, qui souhaite changer de carrière ou qui choisit un parcours de formation, comprendre où se concentrent les opportunités est fondamental. Une des questions les plus fréquentes est : Quels sont aujourd\'hui les secteurs qui offrent le plus de possibilités d\'emploi ?\n\nLa réponse ne dépend pas seulement du nombre d\'offres publiées. Compte également la difficulté des entreprises à trouver du personnel qualifié, l\'évolution technologique, les changements démographiques et les nouveaux besoins du marché.\n\nDans ce guide, nous analyserons les secteurs qui génèrent le plus d\'opportunités professionnelles, les compétences les plus demandées et les tendances qui continueront probablement à influencer le monde du travail dans les années à venir.',
   sections: [
     {
       heading: 'Comment le marché du travail change',
       blocks: [
-        'Ces dernières années, le travail a changé plus rapidement que pendant de nombreuses décennies précédentes.',
-        'Les entreprises font face à des transformations importantes.',
-        'Parmi les principaux facteurs, on trouve :',
-        'la digitalisation ;',
-        'l\'automatisation ;',
-        'le vieillissement de la population ;',
-        'la durabilité ;',
-        'l\'évolution des compétences requises.',
+        'Ces dernières années, le travail a changé plus rapidement que pendant de nombreuses décennies précédentes. Les entreprises font face à des transformations importantes. Parmi les principaux facteurs, on trouve :',
+        { list: ['la digitalisation ;', 'l\'automatisation ;', 'le vieillissement de la population ;', 'la durabilité ;', 'l\'évolution des compétences requises.'] },
         'Comprendre ces phénomènes aide à mieux interpréter les opportunités présentes et futures.',
       ],
     },
     {
       heading: 'La digitalisation',
       blocks: [
-        'Pratiquement tous les secteurs utilisent aujourd\'hui des outils numériques.',
-        'Cela ne concerne pas seulement l\'informatique.',
-        'L\'administration, la logistique, la production, le marketing et les ventes vivent également une transformation profonde.',
+        'Pratiquement tous les secteurs utilisent aujourd\'hui des outils numériques. Cela ne concerne pas seulement l\'informatique. L\'administration, la logistique, la production, le marketing et les ventes vivent également une transformation profonde.',
       ],
     },
     { cta: { question: 'Vous voulez découvrir les opportunités dans les secteurs en croissance ?', action: 'Voir les offres d\'emploi', to: '/offerte' } },
     {
       heading: 'Le vieillissement de la population',
       blocks: [
-        'L\'augmentation de l\'âge moyen génère une demande croissante de services de santé et d\'assistance.',
-        'Ce phénomène influence de manière significative le marché du travail.',
+        'L\'augmentation de l\'âge moyen génère une demande croissante de services de santé et d\'assistance. Ce phénomène influence de manière significative le marché du travail.',
       ],
     },
     {
       heading: 'L\'automatisation',
       blocks: [
-        'De nombreuses activités répétitives sont progressivement automatisées.',
-        'Parallèlement, la demande de professionnels capables de gérer, contrôler et améliorer ces processus augmente.',
+        'De nombreuses activités répétitives sont progressivement automatisées. Parallèlement, la demande de professionnels capables de gérer, contrôler et améliorer ces processus augmente.',
       ],
     },
     {
       heading: 'La durabilité',
       blocks: [
-        'Les entreprises sont de plus en plus attentives aux questions environnementales, énergétiques et de responsabilité sociale.',
-        'De nouvelles compétences gagnent en importance dans de nombreux secteurs.',
+        'Les entreprises sont de plus en plus attentives aux questions environnementales, énergétiques et de responsabilité sociale. De nouvelles compétences gagnent en importance dans de nombreux secteurs.',
       ],
     },
     {
       heading: 'Santé et soins à la personne',
       blocks: [
-        'Parmi tous les secteurs, celui de la santé continue d\'offrir certaines des opportunités les plus intéressantes.',
-        'L\'augmentation de la demande de services de santé rend particulièrement recherchées de nombreuses professions.',
+        'Parmi tous les secteurs, celui de la santé continue d\'offrir certaines des opportunités les plus intéressantes. L\'augmentation de la demande de services de santé rend particulièrement recherchées de nombreuses professions.',
       ],
     },
     {
       heading: 'Infirmiers',
       blocks: [
-        'Ils représentent l\'une des professions les plus demandées.',
-        'Les établissements de santé recherchent continuellement du personnel qualifié.',
+        'Ils représentent l\'une des professions les plus demandées. Les établissements de santé recherchent continuellement du personnel qualifié.',
       ],
     },
     {
@@ -78,10 +65,7 @@ export default {
       heading: 'Professions thérapeutiques',
       blocks: [
         'Parmi celles-ci :',
-        'la physiothérapie ;',
-        'l\'ergothérapie ;',
-        'l\'orthophonie ;',
-        'l\'ergothérapie occupationnelle.',
+        { list: ['la physiothérapie ;', 'l\'ergothérapie ;', 'l\'orthophonie ;', 'l\'ergothérapie occupationnelle.'] },
       ],
     },
     {
@@ -93,9 +77,7 @@ export default {
     {
       heading: 'Technologie et numérique',
       blocks: [
-        'La technologie continue de transformer le marché du travail.',
-        'Cela ne concerne pas seulement les entreprises informatiques.',
-        'Toute organisation a aujourd\'hui besoin de compétences numériques.',
+        'La technologie continue de transformer le marché du travail. Cela ne concerne pas seulement les entreprises informatiques. Toute organisation a aujourd\'hui besoin de compétences numériques.',
       ],
     },
     {
@@ -125,15 +107,13 @@ export default {
     {
       heading: 'Ce qui réunit ces professions',
       blocks: [
-        'La nécessité d\'une mise à jour continue.',
-        'La technologie évolue rapidement et requiert une formation constante.',
+        'La nécessité d\'une mise à jour continue. La technologie évolue rapidement et requiert une formation constante.',
       ],
     },
     {
       heading: 'Industrie et professions techniques',
       blocks: [
-        'Souvent, lorsqu\'on parle d\'emploi, on pense immédiatement aux métiers de bureau.',
-        'En réalité, de nombreuses entreprises ont du mal à trouver du personnel technique qualifié.',
+        'Souvent, lorsqu\'on parle d\'emploi, on pense immédiatement aux métiers de bureau. En réalité, de nombreuses entreprises ont du mal à trouver du personnel technique qualifié.',
       ],
     },
     {
@@ -163,8 +143,7 @@ export default {
     {
       heading: 'Construction et artisanat',
       blocks: [
-        'Un secteur souvent sous-estimé.',
-        'Et pourtant, il continue d\'offrir de nombreuses opportunités professionnelles.',
+        'Un secteur souvent sous-estimé. Et pourtant, il continue d\'offrir de nombreuses opportunités professionnelles.',
       ],
     },
     {
@@ -194,8 +173,7 @@ export default {
     {
       heading: 'Logistique et chaîne d\'approvisionnement',
       blocks: [
-        'Ces dernières années, la logistique est devenue un secteur de plus en plus stratégique.',
-        'La croissance du e-commerce, l\'internationalisation des approvisionnements et la nécessité d\'optimiser les processus ont augmenté la demande de professionnels qualifiés.',
+        'Ces dernières années, la logistique est devenue un secteur de plus en plus stratégique. La croissance du e-commerce, l\'internationalisation des approvisionnements et la nécessité d\'optimiser les processus ont augmenté la demande de professionnels qualifiés.',
       ],
     },
     {
@@ -225,8 +203,7 @@ export default {
     {
       heading: 'Ventes et relations clients',
       blocks: [
-        'Chaque entreprise a besoin de clients.',
-        'C\'est pourquoi les professions commerciales continuent de représenter l\'un des domaines les plus dynamiques du marché du travail.',
+        'Chaque entreprise a besoin de clients. C\'est pourquoi les professions commerciales continuent de représenter l\'un des domaines les plus dynamiques du marché du travail.',
       ],
     },
     {
@@ -250,19 +227,14 @@ export default {
     {
       heading: 'Ce qui fait la différence',
       blocks: [
-        'Pas seulement la capacité à vendre.',
-        'De plus en plus importants sont :',
-        'la communication ;',
-        'l\'écoute ;',
-        'la négociation ;',
-        'la gestion des relations.',
+        'Pas seulement la capacité à vendre. De plus en plus importants sont :',
+        { list: ['la communication ;', 'l\'écoute ;', 'la négociation ;', 'la gestion des relations.'] },
       ],
     },
     {
       heading: 'Finance, comptabilité et administration',
       blocks: [
-        'De nombreuses personnes pensent que ces métiers sont désormais saturés.',
-        'En réalité, de nombreuses opportunités continuent d\'exister, surtout pour ceux qui possèdent des compétences à jour.',
+        'De nombreuses personnes pensent que ces métiers sont désormais saturés. En réalité, de nombreuses opportunités continuent d\'exister, surtout pour ceux qui possèdent des compétences à jour.',
       ],
     },
     {
@@ -292,8 +264,7 @@ export default {
     {
       heading: 'Les compétences qui augmentent l\'employabilité',
       blocks: [
-        'Quand on parle d\'opportunités professionnelles, il est facile de se concentrer uniquement sur les professions.',
-        'En réalité, c\'est souvent la compétence qui fait la différence.',
+        'Quand on parle d\'opportunités professionnelles, il est facile de se concentrer uniquement sur les professions. En réalité, c\'est souvent la compétence qui fait la différence.',
       ],
     },
     {
@@ -317,30 +288,27 @@ export default {
     {
       heading: 'Adaptabilité',
       blocks: [
-        'Le changement est désormais une constante.',
-        'Ceux qui s\'adaptent le plus rapidement ont tendance à conserver une meilleure employabilité dans le temps.',
+        'Le changement est désormais une constante. Ceux qui s\'adaptent le plus rapidement ont tendance à conserver une meilleure employabilité dans le temps.',
       ],
     },
     {
       heading: 'Collaboration',
       blocks: [
-        'De plus en plus d\'activités sont réalisées en équipes multidisciplinaires.',
-        'La capacité à travailler avec d\'autres personnes est fondamentale.',
+        'De plus en plus d\'activités sont réalisées en équipes multidisciplinaires. La capacité à travailler avec d\'autres personnes est fondamentale.',
       ],
     },
     {
       heading: 'Comment choisir le bon secteur',
       blocks: [
         'De nombreux candidats se demandent :',
-        'Vers où devrais-je orienter ma carrière ?',
+        { list: ['Vers où devrais-je orienter ma carrière ?'] },
         'La réponse ne dépend pas seulement de la demande du marché.',
       ],
     },
     {
       heading: 'Considérez vos compétences',
       blocks: [
-        'Partez de ce que vous savez déjà faire.',
-        'Les compétences existantes représentent souvent le meilleur point de départ.',
+        'Partez de ce que vous savez déjà faire. Les compétences existantes représentent souvent le meilleur point de départ.',
       ],
     },
     {
@@ -358,27 +326,20 @@ export default {
     {
       heading: 'Évaluez la formation nécessaire',
       blocks: [
-        'Certains parcours nécessitent des investissements de formation importants.',
-        'D\'autres permettent une transition plus rapide.',
+        'Certains parcours nécessitent des investissements de formation importants. D\'autres permettent une transition plus rapide.',
       ],
     },
     {
       heading: 'Est-il possible de changer de secteur ?',
       blocks: [
-        'Absolument oui.',
-        'De plus en plus de personnes vivent au moins une transition professionnelle au cours de leur carrière.',
+        'Absolument oui. De plus en plus de personnes vivent au moins une transition professionnelle au cours de leur carrière.',
       ],
     },
     {
       heading: 'Les compétences transférables',
       blocks: [
-        'De nombreuses compétences peuvent être utilisées dans des contextes différents.',
-        'Par exemple :',
-        'la gestion clientèle ;',
-        'l\'organisation ;',
-        'la coordination ;',
-        'la vente ;',
-        'la communication.',
+        'De nombreuses compétences peuvent être utilisées dans des contextes différents. Par exemple :',
+        { list: ['la gestion clientèle ;', 'l\'organisation ;', 'la coordination ;', 'la vente ;', 'la communication.'] },
       ],
     },
     {
@@ -390,8 +351,7 @@ export default {
     {
       heading: 'N\'attendez pas le moment parfait',
       blocks: [
-        'De nombreuses personnes repoussent un changement professionnel pendant des années.',
-        'Pendant ce temps, le marché continue d\'évoluer.',
+        'De nombreuses personnes repoussent un changement professionnel pendant des années. Pendant ce temps, le marché continue d\'évoluer.',
       ],
     },
     {
@@ -434,12 +394,8 @@ export default {
     {
       heading: 'Conclusion',
       blocks: [
-        'Le marché du travail offre des opportunités très différentes les unes des autres.',
-        'Se concentrer uniquement sur le nombre d\'offres disponibles risque de donner une vision incomplète.',
-        'Les meilleures opportunités naissent souvent de la rencontre entre trois éléments :',
-        'les compétences demandées par le marché ;',
-        'les intérêts personnels ;',
-        'la capacité à s\'adapter au changement.',
+        'Le marché du travail offre des opportunités très différentes les unes des autres. Se concentrer uniquement sur le nombre d\'offres disponibles risque de donner une vision incomplète. Les meilleures opportunités naissent souvent de la rencontre entre trois éléments :',
+        { list: ['les compétences demandées par le marché ;', 'les intérêts personnels ;', 'la capacité à s\'adapter au changement.'] },
         'Comprendre où naissent de nouvelles opportunités professionnelles permet de prendre des décisions plus éclairées et de construire des parcours de carrière plus solides sur le long terme.',
         'Ceux qui investissent dans la formation, développent les compétences demandées et conservent un esprit ouvert au changement seront les mieux placés pour saisir les opportunités que le marché offrira dans les années à venir.',
       ],

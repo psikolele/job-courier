@@ -8,30 +8,21 @@ export default {
   readingTime: 8,
   datePublished: '2026-06-10',
   image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&q=80',
-  intro: 'Der Lebenslauf bleibt das wichtigste Dokument im gesamten Bewerbungsprozess.\n\nSie können Erfahrung, solide Kompetenzen und ausgezeichnete Referenzen haben, aber wenn Ihr Lebenslauf Ihren beruflichen Wert nicht schnell vermittelt, riskieren Sie, nicht einmal zur Phase des Vorstellungsgesprächs zu gelangen.\n\nViele Kandidaten senden Dutzende von Bewerbungen, ohne eine Antwort zu erhalten, und denken, das Problem sei die Konkurrenz, der Markt oder der Mangel an Möglichkeiten.\n\nOft ist das erste Hindernis der Lebenslauf selbst.\n\nEin guter Lebenslauf dient nicht dazu, Ihre gesamte berufliche Geschichte zu erzählen.\n\nEr dient dazu, eine Recruiterin oder einen Recruiter zu überzeugen, Ihnen mehr Zeit zu widmen.\n\nDas Ziel des Lebenslaufs ist nicht, eine Stelle zu erhalten.\n\nDas Ziel ist, ein Vorstellungsgespräch zu erhalten.\n\nIn diesem Leitfaden zeigen wir, wie Sie einen wirksamen Lebenslauf erstellen, welche Fehler Sie vermeiden sollten und welche Elemente während einer Auswahl wirklich den Unterschied machen.',
+  intro: 'Der Lebenslauf bleibt das wichtigste Dokument im gesamten Bewerbungsprozess: Sie können Erfahrung, solide Kompetenzen und ausgezeichnete Referenzen haben, aber wenn Ihr Lebenslauf Ihren beruflichen Wert nicht schnell vermittelt, riskieren Sie, nicht einmal zur Phase des Vorstellungsgesprächs zu gelangen.\n\nViele Kandidaten senden Dutzende von Bewerbungen, ohne eine Antwort zu erhalten, und denken, das Problem sei die Konkurrenz, der Markt oder der Mangel an Möglichkeiten, aber oft ist das erste Hindernis der Lebenslauf selbst.\n\nEin guter Lebenslauf dient nicht dazu, Ihre gesamte berufliche Geschichte zu erzählen, er dient dazu, eine Recruiterin oder einen Recruiter zu überzeugen, Ihnen mehr Zeit zu widmen: das Ziel des Lebenslaufs ist nicht, eine Stelle zu erhalten, sondern ein Vorstellungsgespräch zu erhalten.\n\nIn diesem Leitfaden zeigen wir, wie Sie einen wirksamen Lebenslauf erstellen, welche Fehler Sie vermeiden sollten und welche Elemente während einer Auswahl wirklich den Unterschied machen.',
   sections: [
     {
       heading: 'Die ersten 30 Sekunden zählen',
       blocks: [
-        'Viele Kandidaten stellen sich vor, dass die Recruiterin oder der Recruiter jedes Wort des Lebenslaufs aufmerksam liest.',
-        'In Wirklichkeit ist das erste Screening oft sehr schnell.',
+        'Viele Kandidaten stellen sich vor, dass die Recruiterin oder der Recruiter jedes Wort des Lebenslaufs aufmerksam liest, aber in Wirklichkeit ist das erste Screening oft sehr schnell.',
         'Wer das Personal auswählt, sucht Antworten auf wenige grundlegende Fragen:',
-        'Wer ist diese Person?',
-        'Was ist ihr Beruf?',
-        'Verfügt sie über die geforderte Erfahrung?',
-        'Hat sie für die Rolle interessante Kompetenzen?',
-        'Lohnt es sich, näher hinzuschauen?',
-        'Wenn diese Informationen nicht sofort hervortreten, steigt das Risiko des Ausschlusses.',
-        'Nicht weil die Kandidatin oder der Kandidat nicht geeignet wäre.',
-        'Einfach weil ihr oder sein Wert nicht wirksam kommuniziert wurde.',
+        { list: ['Wer ist diese Person?', 'Was ist ihr Beruf?', 'Verfügt sie über die geforderte Erfahrung?', 'Hat sie für die Rolle interessante Kompetenzen?', 'Lohnt es sich, näher hinzuschauen?'] },
+        'Wenn diese Informationen nicht sofort hervortreten, steigt das Risiko des Ausschlusses; nicht weil die Kandidatin oder der Kandidat nicht geeignet wäre, einfach weil ihr oder sein Wert nicht wirksam kommuniziert wurde.',
       ],
     },
     {
       heading: 'Die ideale Struktur eines modernen Lebenslaufs',
       blocks: [
-        'Einer der häufigsten Fehler besteht darin, komplexe, schlecht lesbare oder übermässig kreative Vorlagen zu verwenden.',
-        'In den meisten Fällen funktioniert Einfachheit besser.',
-        'Ein wirksamer Lebenslauf sollte einer klaren und leicht durchsuchbaren Struktur folgen.',
+        'Einer der häufigsten Fehler besteht darin, komplexe, schlecht lesbare oder übermässig kreative Vorlagen zu verwenden. In den meisten Fällen funktioniert Einfachheit besser, und ein wirksamer Lebenslauf sollte einer klaren und leicht durchsuchbaren Struktur folgen.',
       ],
     },
     { cta: { question: 'Ist Ihr Lebenslauf bereit? Stellen Sie ihn auf die Probe.', action: 'Stellenangebote ansehen', to: '/offerte' } },
@@ -39,24 +30,16 @@ export default {
       heading: 'Persönliche Daten',
       blocks: [
         'Geben Sie ausschliesslich wirklich nützliche Informationen an:',
-        'Vor- und Nachname;',
-        'Telefonnummer;',
-        'professionelle E-Mail-Adresse;',
-        'Wohnort;',
-        'LinkedIn-Profil (falls aktuell).',
+        { list: ['Vor- und Nachname.', 'Telefonnummer.', 'Professionelle E-Mail-Adresse.', 'Wohnort.', 'LinkedIn-Profil (falls aktuell).'] },
         'Vermeiden Sie überflüssige Informationen, die der Bewerbung keinen Wert hinzufügen.',
       ],
     },
     {
       heading: 'Berufsprofil',
       blocks: [
-        'Dies ist wahrscheinlich der am meisten unterschätzte Abschnitt des Lebenslaufs.',
-        'Dabei ist es einer der ersten, der gelesen wird.',
+        'Dies ist wahrscheinlich der am meisten unterschätzte Abschnitt des Lebenslaufs, dabei ist es einer der ersten, der gelesen wird.',
         'Er sollte in wenigen Zeilen zusammenfassen:',
-        'wer Sie sind;',
-        'was Sie tun;',
-        'welche Kompetenzen Sie auszeichnen;',
-        'welchen Wert Sie einbringen können.',
+        { list: ['Wer Sie sind.', 'Was Sie tun.', 'Welche Kompetenzen Sie auszeichnen.', 'Welchen Wert Sie einbringen können.'] },
       ],
     },
     {
@@ -77,13 +60,8 @@ export default {
       blocks: [
         'Dieser Abschnitt bildet das Herzstück des Lebenslaufs.',
         'Für jede Erfahrung ist es hilfreich anzugeben:',
-        'Rolle;',
-        'Unternehmen;',
-        'Zeitraum;',
-        'Hauptverantwortlichkeiten;',
-        'erzielte Ergebnisse.',
-        'Viele Kandidaten beschreiben nur Tätigkeiten.',
-        'Unternehmen wollen hingegen die Wirkung Ihrer Arbeit verstehen.',
+        { list: ['Rolle.', 'Unternehmen.', 'Zeitraum.', 'Hauptverantwortlichkeiten.', 'Erzielte Ergebnisse.'] },
+        'Viele Kandidaten beschreiben nur Tätigkeiten, während Unternehmen die Wirkung Ihrer Arbeit verstehen wollen.',
       ],
     },
     {
@@ -115,15 +93,13 @@ export default {
       heading: 'Ausbildung',
       blocks: [
         'Geben Sie an: Abschluss – Institution – Jahr des Abschlusses.',
-        'Wenn Sie über langjährige Berufserfahrung verfügen, kann dieser Abschnitt kürzer sein.',
-        'Für Junior-Profile hingegen erhält die Ausbildung eine grössere Bedeutung.',
+        'Wenn Sie über langjährige Berufserfahrung verfügen, kann dieser Abschnitt kürzer sein; für Junior-Profile hingegen erhält die Ausbildung eine grössere Bedeutung.',
       ],
     },
     {
       heading: 'Kompetenzen',
       blocks: [
-        'Viele Lebensläufe enthalten endlose Listen von Kompetenzen.',
-        'Besser ist es, sich auf die für die Rolle wirklich relevanten zu konzentrieren.',
+        'Viele Lebensläufe enthalten endlose Listen von Kompetenzen; besser ist es, sich auf die für die Rolle wirklich relevanten zu konzentrieren.',
         'Zum Beispiel:',
       ],
     },
@@ -139,28 +115,20 @@ export default {
     {
       heading: 'Soziale Kompetenzen',
       blocks: [
-        'Organisation;',
-        'Problemlösung;',
-        'Kommunikation;',
-        'Prioritätenmanagement.',
+        { list: ['Organisation.', 'Problemlösung.', 'Kommunikation.', 'Prioritätenmanagement.'] },
       ],
     },
     {
       heading: 'Sprachen',
       blocks: [
         'Sprachkenntnisse stellen weiterhin ein wichtiges Element in zahlreichen beruflichen Kontexten dar.',
-        'Geben Sie das Niveau klar und realistisch an.',
-        'Vermeiden Sie besser vage Bewertungen wie gut – mittel – Schulkenntnisse.',
-        'Verwenden Sie anerkannte Niveaus wie A1, B2 oder C1.',
+        'Geben Sie das Niveau klar und realistisch an, vermeiden Sie besser vage Bewertungen wie gut – mittel – Schulkenntnisse. Verwenden Sie anerkannte Niveaus wie A1, B2 oder C1.',
       ],
     },
     {
       heading: 'Wie Sie ein Berufsprofil schreiben, das Aufmerksamkeit erregt',
       blocks: [
-        'Das Berufsprofil ist oft der Unterschied zwischen einem Lebenslauf, der vertieft wird, und einem, der aussortiert wird.',
-        'Sein Ziel ist es, sofort Interesse zu wecken.',
-        'Es darf keine Biografie sein.',
-        'Es muss eine wirksame Zusammenfassung Ihres beruflichen Werts sein.',
+        'Das Berufsprofil ist oft der Unterschied zwischen einem Lebenslauf, der vertieft wird, und einem, der aussortiert wird: sein Ziel ist es, sofort Interesse zu wecken, es darf keine Biografie sein, sondern eine wirksame Zusammenfassung Ihres beruflichen Werts.',
       ],
     },
     {
@@ -190,34 +158,24 @@ export default {
     {
       heading: 'Die Fehler, die einen Lebenslauf aussortieren lassen',
       blocks: [
-        'Auch Kandidaten mit Erfahrung und soliden Kompetenzen können eine Bewerbung durch vermeidbare Fehler beeinträchtigen.',
-        'Viele Recruiter stellen jede Woche dutzendfach dieselben Probleme fest.',
-        'Sie zu kennen erlaubt es, sie zu vermeiden.',
+        'Auch Kandidaten mit Erfahrung und soliden Kompetenzen können eine Bewerbung durch vermeidbare Fehler beeinträchtigen: viele Recruiter stellen jede Woche dutzendfach dieselben Probleme fest, und sie zu kennen erlaubt es, sie zu vermeiden.',
       ],
     },
     {
       heading: 'Zu langer Lebenslauf',
       blocks: [
-        'Einer der häufigsten Fehler.',
-        'Viele Kandidaten versuchen, jede Berufserfahrung, jeden Kurs und jedes Detail ihrer Karriere einzufügen.',
-        'Das Ergebnis ist oft ein schwer lesbares Dokument.',
+        'Einer der häufigsten Fehler: viele Kandidaten versuchen, jede Berufserfahrung, jeden Kurs und jedes Detail ihrer Karriere einzufügen, mit dem Ergebnis, ein schwer lesbares Dokument zu produzieren.',
         'In den meisten Fällen gilt:',
-        '1 Seite genügt für Junior-Profile;',
-        '2 Seiten sind für die meisten Fachkräfte angemessen;',
-        'mehr als 3 Seiten bringen selten zusätzlichen Wert.',
+        { list: ['1 Seite genügt für Junior-Profile.', '2 Seiten sind für die meisten Fachkräfte angemessen.', 'Mehr als 3 Seiten bringen selten zusätzlichen Wert.'] },
         'Prägnanz ist eine sehr geschätzte Kompetenz.',
       ],
     },
     {
       heading: 'Übermässige Grafik',
       blocks: [
-        'Ein Lebenslauf muss keinen Designpreis gewinnen.',
-        'Er muss lesbar sein.',
-        'Komplexe Layouts, übermässige Farben, Symbole überall oder kreative Gestaltung können das Lesen erschweren.',
+        'Ein Lebenslauf muss keinen Designpreis gewinnen: er muss lesbar sein. Komplexe Layouts, übermässige Farben, Symbole überall oder kreative Gestaltung können das Lesen erschweren.',
         'Bevorzugen Sie:',
-        'Klarheit;',
-        'Ordnung;',
-        'Einfachheit.',
+        { list: ['Klarheit.', 'Ordnung.', 'Einfachheit.'] },
       ],
     },
     {
@@ -225,92 +183,68 @@ export default {
       blocks: [
         'Wenige Elemente vermitteln einen so schlechten Eindruck wie Rechtschreib- oder Grammatikfehler.',
         'Bevor Sie den Lebenslauf senden:',
-        'lesen Sie ihn erneut durch;',
-        'verwenden Sie eine automatische Korrektur;',
-        'bitten Sie eine zweite Person, den Text zu überprüfen.',
+        { list: ['Lesen Sie ihn erneut durch.', 'Verwenden Sie eine automatische Korrektur.', 'Bitten Sie eine zweite Person, den Text zu überprüfen.'] },
       ],
     },
     {
       heading: 'Inkonsistente Informationen',
       blocks: [
-        'Daten, die nicht übereinstimmen – unklare Erfahrungen – widersprüchlich beschriebene Rollen.',
-        'All das sind Elemente, die Zweifel erzeugen.',
-        'Glaubwürdigkeit ist von grundlegender Bedeutung.',
+        'Daten, die nicht übereinstimmen, unklare Erfahrungen, widersprüchlich beschriebene Rollen: all das sind Elemente, die Zweifel erzeugen. Glaubwürdigkeit ist von grundlegender Bedeutung.',
       ],
     },
     {
       heading: 'Lebenslauf und Auswahlsysteme: was zu wissen ist',
       blocks: [
-        'Immer mehr Unternehmen nutzen Screening-Software zur Verwaltung von Bewerbungen.',
-        'Das bedeutet nicht, dass der Lebenslauf ausschliesslich von einem Computer gelesen wird.',
-        'Es bedeutet jedoch, dass Klarheit noch wichtiger ist.',
+        'Immer mehr Unternehmen nutzen Screening-Software zur Verwaltung von Bewerbungen. Das bedeutet nicht, dass der Lebenslauf ausschliesslich von einem Computer gelesen wird, aber die Klarheit wird noch wichtiger.',
       ],
     },
     {
       heading: 'Wie Sie die Lesbarkeit verbessern',
       blocks: [
         'Verwenden Sie:',
-        'klare Titel;',
-        'gut definierte Abschnitte;',
-        'mit der Rolle übereinstimmende Terminologie;',
-        'tatsächlich vorhandene Kompetenzen.',
+        { list: ['Klare Titel.', 'Gut definierte Abschnitte.', 'Mit der Rolle übereinstimmende Terminologie.', 'Tatsächlich vorhandene Kompetenzen.'] },
         'Vermeiden Sie hingegen:',
-        'unnötige Bilder;',
-        'zu komplexe Tabellen;',
-        'schwer interpretierbare Formate.',
+        { list: ['Unnötige Bilder.', 'Zu komplexe Tabellen.', 'Schwer interpretierbare Formate.'] },
       ],
     },
     {
       heading: 'Die Bedeutung von Schlüsselwörtern',
       blocks: [
-        'Wenn eine Stellenanzeige fordert:',
-        'Buchhaltung;',
-        'SAP;',
-        'Kundenbetreuung;',
-        'und Sie diese Kompetenzen besitzen, sollten sie im Lebenslauf klar hervortreten.',
+        'Wenn eine Stellenanzeige spezifische Kompetenzen fordert und Sie diese besitzen, sollten sie im Lebenslauf klar hervortreten. Zum Beispiel:',
+        { list: ['Buchhaltung.', 'SAP.', 'Kundenbetreuung.'] },
         'Viele Kandidaten haben die geforderten Kompetenzen, kommunizieren sie aber nicht deutlich genug.',
       ],
     },
     {
       heading: 'Die Kompetenzen, die heute den Unterschied machen',
       blocks: [
-        'Technische Kompetenzen bleiben grundlegend.',
-        'Dennoch bewerten Unternehmen zunehmend auch die Fähigkeit, sich anzupassen und zusammenzuarbeiten.',
+        'Technische Kompetenzen bleiben grundlegend; dennoch bewerten Unternehmen zunehmend auch die Fähigkeit, sich anzupassen und zusammenzuarbeiten.',
       ],
     },
     {
       heading: 'Digitale Kompetenzen',
       blocks: [
-        'Fast jeder Beruf erfordert heute eine gewisse Vertrautheit mit digitalen Tools.',
-        'Je nach Branche können dazu gehören:',
-        'ERP;',
-        'CRM;',
-        'Datenanalyse-Tools;',
-        'Spezialsoftware.',
+        'Fast jeder Beruf erfordert heute eine gewisse Vertrautheit mit digitalen Tools. Je nach Branche können dazu gehören:',
+        { list: ['ERP.', 'CRM.', 'Datenanalyse-Tools.', 'Spezialsoftware.'] },
       ],
     },
     {
       heading: 'Sprachkenntnisse',
       blocks: [
-        'Sprachen bleiben weiterhin ein wichtiger Wettbewerbsfaktor.',
-        'Investitionen in Sprachkenntnisse bringen langfristig oft eine erhebliche Rendite.',
+        'Sprachen bleiben weiterhin ein wichtiger Wettbewerbsfaktor. Investitionen in Sprachkenntnisse bringen langfristig oft eine erhebliche Rendite.',
       ],
     },
     {
       heading: 'Organisatorische Kompetenzen',
       blocks: [
         'Unternehmen schätzen Personen, die in der Lage sind:',
-        'Prioritäten zu setzen;',
-        'Fristen einzuhalten;',
-        'eigenständig zu arbeiten;',
-        'komplexe Tätigkeiten zu organisieren.',
+        { list: ['Prioritäten zu setzen.', 'Fristen einzuhalten.', 'Eigenständig zu arbeiten.', 'Komplexe Tätigkeiten zu organisieren.'] },
       ],
     },
     {
       heading: 'Problemlösung',
       blocks: [
-        'Immer mehr Organisationen suchen Personen, die Probleme angehen und Lösungen finden können.',
-        'Wenn möglich, zeigen Sie konkrete Beispiele innerhalb Ihrer Berufserfahrung.',
+        'Immer mehr Organisationen suchen Personen, die Probleme angehen und Lösungen finden können. Wenn möglich, zeigen Sie konkrete Beispiele innerhalb Ihrer Berufserfahrung.',
       ],
     },
     {
@@ -408,13 +342,8 @@ export default {
     {
       heading: 'Fazit',
       blocks: [
-        'Ein wirksamer Lebenslauf ist nicht derjenige, der die meisten Informationen enthält.',
-        'Es ist derjenige, der Ihren beruflichen Wert am besten kommuniziert.',
-        'Unternehmen erhalten zahlreiche Bewerbungen und widmen dem ersten Screening wenig Zeit.',
-        'Aus diesem Grund werden Klarheit, Prägnanz und Relevanz zu entscheidenden Faktoren.',
-        'Wenn Sie ein paar Stunden in den Aufbau eines gut strukturierten Lebenslaufs investieren, kann das die Ergebnisse Ihrer Stellensuche enorm verbessern.',
-        'Betrachten Sie den Lebenslauf nicht als ein einfaches Dokument.',
-        'Betrachten Sie ihn als Ihr erstes Vorstellungsgespräch.',
+        'Ein wirksamer Lebenslauf ist nicht derjenige, der die meisten Informationen enthält: es ist derjenige, der Ihren beruflichen Wert am besten kommuniziert. Unternehmen erhalten zahlreiche Bewerbungen und widmen dem ersten Screening wenig Zeit, aus diesem Grund werden Klarheit, Prägnanz und Relevanz zu entscheidenden Faktoren.',
+        'Wenn Sie ein paar Stunden in den Aufbau eines gut strukturierten Lebenslaufs investieren, kann das die Ergebnisse Ihrer Stellensuche enorm verbessern. Betrachten Sie den Lebenslauf nicht als ein einfaches Dokument: betrachten Sie ihn als Ihr erstes Vorstellungsgespräch.',
       ],
     },
   ],
