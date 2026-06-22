@@ -110,8 +110,8 @@ const Footer = ({ setShowLoginModal }) => {
                                 {col.title}
                             </div>
                             {inlineLinks.length > 0 && (
-                                <div style={{ display: 'flex', gap: 16, marginBottom: 10, flexWrap: 'wrap' }}>
-                                    {inlineLinks.map(l => <span key={l.label}>{renderLink(l)}</span>)}
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10, flexWrap: 'wrap' }}>
+                                    {inlineLinks.map((l, i) => <React.Fragment key={l.label}>{i > 0 && <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 13, userSelect: 'none' }}>|</span>}{renderLink(l)}</React.Fragment>)}
                                 </div>
                             )}
                             {stackLinks.map(l => (

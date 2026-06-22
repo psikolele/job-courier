@@ -23,7 +23,7 @@ const SIZE = {
     },
     grid: {
         wrapperClass: 'w-full',
-        cardClass: 'flex flex-col w-full overflow-hidden group transition-all duration-300 cursor-pointer',
+        cardClass: 'flex flex-col w-full h-full overflow-hidden group transition-all duration-300 cursor-pointer',
         imageWrapClass: 'h-[180px] overflow-hidden relative',
         titleSize: 19,
         titleWeight: 900,
