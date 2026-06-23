@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, Phone, MapPin, Send, ArrowRight, Check } from 'lucide-react';
+import { Send, ArrowRight, Check, Upload } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,12 +32,6 @@ const Contact = () => {
         }, containerRef);
         return () => ctx.revert();
     }, []);
-
-    const contactInfo = [
-        { icon: <Phone size={18} />, label: t('contact.phone_label'), value: '+41 91 210 89 92', sub: t('contact.phone_hours') },
-        { icon: <Mail size={18} />, label: t('contact.email_label'), value: 'sales@jobcourier.ch', sub: t('contact.email_sub') },
-        { icon: <MapPin size={18} />, label: t('contact.hq_label'), value: 'Via delle Fornaci, 6', sub: '6826 Riva San Vitale, CH' }
-    ];
 
     const inputStyle = {
         width: '100%',
@@ -77,7 +71,7 @@ const Contact = () => {
                         }}>{t('contact.hero_title')}<br /><span style={{ color: F }}>{t('contact.hero_em')}</span></h1>
                         <p className="hero-line" style={{
                             fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
-                            color: 'rgba(255,255,255,0.75)', lineHeight: 1.4
+                            color: 'rgba(255,255,255,0.75)', lineHeight: 1.4, maxWidth: 680
                         }}>{t('contact.hero_sub')}</p>
                     </div>
                 </div>
@@ -91,32 +85,11 @@ const Contact = () => {
                     <div className="lg:col-span-5 space-y-1 section-reveal" style={{ background: 'rgba(5,11,43,0.06)' }}>
                         <div style={{ background: '#FFFFFF', padding: '48px 40px' }}>
                             <SectionLabel>{t('contact.connection_label')}</SectionLabel>
-
-                            <div className="space-y-10 mt-8">
-                                {contactInfo.map((info, idx) => (
-                                    <div key={idx} className="group flex items-start gap-5">
-                                        <div className="flex items-center justify-center transition-colors" style={{
-                                            width: 40, height: 40,
-                                            background: GL,
-                                            color: F,
-                                            flexShrink: 0
-                                        }}>
-                                            {info.icon}
-                                        </div>
-                                        <div>
-                                            <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: GM, marginBottom: 4 }}>{info.label}</p>
-                                            <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 18, color: N, marginBottom: 2 }}>{info.value}</p>
-                                            <p style={{ fontFamily: body, fontSize: 12, color: GM }}>{info.sub}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div style={{ marginTop: 40, paddingTop: 24, borderTop: '1px solid rgba(5,11,43,0.07)' }}>
-                                <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 16, color: GM, lineHeight: 1.5 }}>
-                                    {t('contact.service_quote')}
-                                </p>
-                            </div>
+                            <p style={{
+                                fontFamily: body, fontSize: 15, color: GM, lineHeight: 1.7, marginTop: 16
+                            }}>
+                                {t('contact.service_desc')}
+                            </p>
                         </div>
 
                         {/* CANDIDATE BLOCK */}
@@ -140,12 +113,15 @@ const Contact = () => {
                             </p>
                             <a href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it"
                                 style={{
+                                    background: F, color: '#FFFFFF', border: 'none',
+                                    padding: '14px 28px',
                                     fontFamily: brand, fontWeight: 700, fontSize: 11,
-                                    letterSpacing: '0.16em', textTransform: 'uppercase',
-                                    color: F, textDecoration: 'none',
+                                    letterSpacing: '0.14em', textTransform: 'uppercase',
+                                    cursor: 'pointer', borderRadius: 0,
+                                    textDecoration: 'none',
                                     display: 'inline-flex', alignItems: 'center', gap: 8
                                 }} className="hover:opacity-80 transition-opacity">
-                                {t('contact.register_portal')} →
+                                <Upload size={14} /> {t('contact.candidate_cta')}
                             </a>
                         </div>
                     </div>
@@ -158,25 +134,25 @@ const Contact = () => {
                                 fontFamily: brand, fontWeight: 900, fontSize: 36,
                                 color: N, textTransform: 'uppercase',
                                 letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 12
-                            }}>Scrivici.</h2>
+                            }}>{t('contact.form_heading')}</h2>
                             <p style={{ fontFamily: body, fontSize: 13, color: GM, marginBottom: 32 }}>{t('contact.form_sub')}</p>
 
                             <form className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label style={labelStyle}>{t('contact.name_label')}</label>
-                                        <input type="text" placeholder="John Doe" style={inputStyle} />
+                                        <input type="text" placeholder="Mario Rossi" style={inputStyle} />
                                     </div>
                                     <div>
                                         <label style={labelStyle}>{t('contact.email_label')}</label>
-                                        <input type="email" placeholder="john@company.ch" style={inputStyle} />
+                                        <input type="email" placeholder="mario@azienda.ch" style={inputStyle} />
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label style={labelStyle}>{t('contact.company_label')}</label>
-                                        <input type="text" placeholder="Your Co. Ltd" style={inputStyle} />
+                                        <input type="text" placeholder="Azienda SA" style={inputStyle} />
                                     </div>
                                     <div>
                                         <label style={labelStyle}>{t('contact.sector_label')}</label>
@@ -215,45 +191,34 @@ const Contact = () => {
                 </div>
             </section>
 
-            {/* LOCATION */}
-            <section className="py-24 px-6 md:px-12 section-reveal" style={{ background: '#FFFFFF' }}>
-                <div className="container mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
-                        <div>
-                            <SectionLabel>{t('contact.hq_label')}</SectionLabel>
-                            <h2 style={{
-                                fontFamily: brand, fontWeight: 900, fontSize: 64,
-                                color: N, textTransform: 'uppercase',
-                                letterSpacing: '-0.03em', lineHeight: 0.9, marginBottom: 8
-                            }}>{t('contact.location_title')}</h2>
-                            <p style={{
-                                fontFamily: editorial, fontStyle: 'italic', fontSize: 32,
-                                color: F, lineHeight: 1.1, marginBottom: 28
-                            }}>{t('contact.location_em')}</p>
-                            <p style={{ fontFamily: body, fontSize: 16, color: GM, lineHeight: 1.6, marginBottom: 32, maxWidth: 480 }}>
-                                {t('contact.location_sub')}
-                            </p>
-                            <a href="https://www.google.com/maps/search/Via+delle+Fornaci+6+6826+Riva+San+Vitale" target="_blank" rel="noreferrer"
-                                style={{
-                                    background: N, color: '#FFFFFF', border: 'none',
-                                    padding: '14px 28px',
-                                    fontFamily: brand, fontWeight: 700, fontSize: 11,
-                                    letterSpacing: '0.14em', textTransform: 'uppercase',
-                                    cursor: 'pointer', borderRadius: 0,
-                                    textDecoration: 'none',
-                                    display: 'inline-flex', alignItems: 'center', gap: 8
-                                }} className="hover:opacity-80 transition-opacity">
-                                {t('contact.open_map')} →
-                            </a>
-                        </div>
-                        <div className="relative aspect-video overflow-hidden group" style={{ border: '1px solid rgba(5,11,43,0.07)' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&q=80&w=2670"
-                                alt="Location"
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                            />
-                        </div>
-                    </div>
+            {/* CTA FINALE */}
+            <section className="py-24 px-6 md:px-12 section-reveal" style={{ background: N }}>
+                <div className="container mx-auto text-center" style={{ maxWidth: 720 }}>
+                    <SectionLabel color={F}><span style={{ color: F }}>{t('contact.cta_label')}</span></SectionLabel>
+                    <h2 style={{
+                        fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 8vw, 4rem)',
+                        color: '#FFFFFF', textTransform: 'uppercase',
+                        letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 8
+                    }}>{t('contact.cta_title')}</h2>
+                    <p style={{
+                        fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
+                        color: F, lineHeight: 1.2, marginBottom: 24
+                    }}>{t('contact.cta_em')}</p>
+                    <p style={{
+                        fontFamily: body, fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: 36
+                    }}>{t('contact.cta_sub')}</p>
+                    <a href="#" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        style={{
+                            background: F, color: '#FFFFFF', border: 'none',
+                            padding: '16px 36px',
+                            fontFamily: brand, fontWeight: 700, fontSize: 11,
+                            letterSpacing: '0.14em', textTransform: 'uppercase',
+                            cursor: 'pointer', borderRadius: 0,
+                            textDecoration: 'none',
+                            display: 'inline-flex', alignItems: 'center', gap: 10
+                        }} className="hover:opacity-80 transition-opacity">
+                        {t('contact.submit')} <ArrowRight size={14} />
+                    </a>
                 </div>
             </section>
         </div>

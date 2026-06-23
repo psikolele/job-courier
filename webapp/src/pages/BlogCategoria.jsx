@@ -8,8 +8,8 @@ import SectionLabel from '../components/ui/SectionLabel.jsx';
 import ArticleCard from '../components/blog/ArticleCard.jsx';
 
 const LABELS = {
-  carriera: { breadcrumb: 'Blog — Carriera', title: 'Suggerimenti per la carriera', subtitle: 'Consigli pratici per chi cerca lavoro.' },
-  recruiting: { breadcrumb: 'Blog — Recruiting', title: 'Suggerimenti per il recruiting', subtitle: 'Strategie per attrarre i candidati giusti.' },
+  carriera: { breadcrumb: 'Blog — Carriera', title: 'Risorse per la carriera', subtitle: 'Consigli pratici per cercare lavoro, migliorare il CV e affrontare i colloqui.' },
+  recruiting: { breadcrumb: 'Blog — Recruiting', title: 'Risorse per il recruiting', subtitle: 'Approfondimenti, strategie e buone pratiche per aziende e recruiter.' },
 };
 
 const BlogCategoria = () => {

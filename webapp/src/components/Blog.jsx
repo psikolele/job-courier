@@ -172,7 +172,7 @@ const Blog = () => {
             <div className="w-full flex flex-col gap-1" style={{ background: GL }}>
                 <MarqueeSlider
                     title="Consigli di carriera"
-                    subtitle="Guida e approfondimenti per i candidati dal team Jobcourier"
+                    subtitle="Consigli pratici per trovare lavoro, migliorare il CV e affrontare i colloqui."
                     articles={candidateArticles}
                     readArticleText={t('blog.read_article') || 'Leggi Articolo'}
                     speed={30}
@@ -181,7 +181,7 @@ const Blog = () => {
                 />
                 <MarqueeSlider
                     title="Consigli di recruiting"
-                    subtitle="Guida e approfondimenti per le aziende dal team Jobcourier"
+                    subtitle="Strategie e suggerimenti per attrarre candidati e migliorare le attività di ricerca del personale."
                     articles={companyArticles}
                     readArticleText={t('blog.read_article') || 'Leggi Articolo'}
                     speed={25}
