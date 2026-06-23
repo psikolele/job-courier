@@ -33,7 +33,7 @@ const FuchsiaButton = ({ href, onClick, children, fullWidth = false }) => (
 );
 
 const OutlineButton = ({ href, onClick, children, fullWidth = false }) => (
-    <a href={href} onClick={onClick} className="inline-flex items-center justify-center gap-2 transition-all hover:bg-slate-50 hover:scale-[1.02] hover-lift"
+    <a href={href} onClick={onClick} className="jc-glow-btn-light inline-flex items-center justify-center gap-2"
         style={{
             background: 'transparent', color: N,
             border: `1.5px solid ${N}`,
@@ -108,7 +108,7 @@ const getLocalizedData = (lang) => {
                       desc:  isIt ? "Candidature e candidati in un'unica area riservata." : isDe ? 'Bewerbungen und Kandidaten in einem einzigen reservierten Bereich.' : isFr ? 'Candidatures et candidats dans un seul espace réservé.' : 'Applications and candidates in one reserved area.' },
                 ],
                 tag: isIt ? '01 / OCCASIONALE' : isDe ? '01 / GELEGENTLICH' : isFr ? '01 / OCCASIONNEL' : '01 / OCCASIONAL',
-                cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
+                cta: isIt ? 'Contattaci' : isDe ? 'Kontakt' : isFr ? 'Contactez-nous' : 'Contact us',
             },
             {
                 label: isIt ? '02 / VOLUME' : isDe ? '02 / VOLUMEN' : isFr ? '02 / VOLUME' : '02 / VOLUME',
@@ -384,11 +384,7 @@ const Pricing = () => {
                                                 ))}
                                             </ul>
 
-                                            {plan.highlight ? (
-                                                <FuchsiaButton href="/contatti" fullWidth>{plan.cta} →</FuchsiaButton>
-                                            ) : (
-                                                <OutlineButton href="/contatti" fullWidth>{plan.cta} →</OutlineButton>
-                                            )}
+                                            <OutlineButton href="/contatti" fullWidth>{plan.cta} →</OutlineButton>
                                         </motion.div>
                                     ))}
                                 </div>

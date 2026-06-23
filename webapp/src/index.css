@@ -245,9 +245,7 @@
   position: relative;
   flex: 1;
   height: 140px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: transparent;
   border: none;
   border-radius: 0;
   display: flex;
@@ -255,10 +253,6 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: background-color 0.3s ease;
-}
-.jc-spotlight-card:hover {
-  background: rgba(255, 255, 255, 0.05);
 }
 .jc-spotlight-glow {
   display: none;
@@ -314,5 +308,32 @@
   box-shadow: 0 0 20px rgba(255, 31, 122, 0.15), inset 0 0 20px rgba(255, 31, 122, 0.05);
 }
 .jc-glow-btn:hover::before {
+  opacity: 1;
+}
+
+/* Light-bg variant — navy border, fuchsia glow on hover */
+.jc-glow-btn-light {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(5, 11, 43, 0.18);
+  background: transparent;
+  text-decoration: none;
+  transition: border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+.jc-glow-btn-light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 31, 122, 0.10), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.jc-glow-btn-light:hover {
+  border-color: rgba(255, 31, 122, 0.4);
+  color: var(--brand-fuchsia);
+  box-shadow: 0 0 20px rgba(255, 31, 122, 0.12), inset 0 0 20px rgba(255, 31, 122, 0.04);
+}
+.jc-glow-btn-light:hover::before {
   opacity: 1;
 }

@@ -352,7 +352,7 @@ const Hero = ({ setShowLoginModal }) => {
                                 { label: 'Aziende che assumono', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
                                 { label: 'Consigli di Carriera', href: '#blog', external: false }
                             ].map(({ label, href, external }) => {
-                                const btnClass = "flex-1 py-3 border border-[var(--brand-navy)]/25 text-[13px] tracking-[0.04em] text-center text-[var(--brand-navy)] hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200";
+                                const btnClass = "jc-glow-btn-light flex-1 py-3 text-[13px] tracking-[0.04em] text-center text-[var(--brand-navy)]";
                                 return external ? (
                                     <a
                                         key={label}

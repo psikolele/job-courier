@@ -26,7 +26,7 @@ const topAds = [
     }
 ];
 
-const bottomAds = [blcAd, blcAd, blcAd, blcAd];
+const bottomAds = [blcAd, blcAd];
 
 const AdBanner = ({ type = 'bottom' }) => {
     const N = 'var(--brand-navy)';
@@ -44,7 +44,7 @@ const AdBanner = ({ type = 'bottom' }) => {
 
 
                 <div
-                    className={`w-full grid ${isTop ? 'grid-cols-2 gap-4' : 'grid-cols-2 md:grid-cols-4'}`}
+                    className={`w-full grid grid-cols-2 gap-4`}
                     style={isTop ? {} : { gap: 1, background: 'rgba(5,11,43,0.06)' }}
                 >
                     {adsToRender.map((ad, i) => (
