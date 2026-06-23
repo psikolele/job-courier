@@ -290,23 +290,13 @@
   text-align: center;
 }
 
-/* Secondary outline button with fuchsia glow on hover */
+/* Fuchsia glow hover effect — add to any element, no font override */
 .jc-glow-btn {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 32px;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: transparent;
-  color: rgba(255, 255, 255, 0.55);
-  font-family: var(--font-brand);
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   text-decoration: none;
-  overflow: hidden;
   transition: border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
 }
 .jc-glow-btn::before {
