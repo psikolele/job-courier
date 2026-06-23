@@ -1,54 +1,14 @@
 [
   {
     "id": 0,
-    "title": "Réceptionniste - 80/100%",
+    "title": "RIF. 591 - AUTISTA PATENTE C/E + ADR",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719708-receptionniste-80-100-la-chaux-de-fonds-ne&language=en"
+    "company": "E-Work Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719719-rif-591-autista-patente-c-e-adr-lugano&language=en"
   },
   {
     "id": 1,
-    "title": "Administrator:in Innendienst 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Lavoris Personal AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719717-administrator-in-innendienst-100-6430-schwyz&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Fachperson Gesundheit / Fachperson Betreuung EFZ (m,w,d) 60-100%, Psychiatrische Wohngruppe",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719706-fachperson-gesundheit-fachperson-betreuung-efz-m-w-d-60-100-psychiatrische-wohngruppe-aarau-ag&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Spezialist Instandhaltung (all genders) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719707-spezialist-instandhaltung-all-genders-100-luzern-luzern&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Saldatore in quota con i patentini della saldatura",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719712-saldatore-in-quota-con-i-patentini-della-saldatura-locarno&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Dynamischer Aussendienstmitarbeiter Region Baden m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719709-dynamischer-aussendienstmitarbeiter-region-baden-m-w-d-100-baden-aargau&language=en"
-  },
-  {
-    "id": 6,
     "title": "Gärtner:in 100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,15 +16,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719705-g%C3%A4rtner-in-100-m-w-d-bern-be&language=en"
   },
   {
-    "id": 7,
-    "title": "ELETTRICISTA",
+    "id": 2,
+    "title": "Saldatore in quota con i patentini della saldatura",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719715-elettricista-locarno&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719712-saldatore-in-quota-con-i-patentini-della-saldatura-locarno&language=en"
   },
   {
-    "id": 8,
+    "id": 3,
+    "title": "Serramentista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719711-serramentista-luganese-lugano&language=en"
+  },
+  {
+    "id": 4,
     "title": "Pressopiegatore CNC / Saldatore",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,7 +40,47 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719714-pressopiegatore-cnc-saldatore-arbedo-castione&language=en"
   },
   {
+    "id": 5,
+    "title": "ELETTRICISTA",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719715-elettricista-locarno&language=en"
+  },
+  {
+    "id": 6,
+    "title": "AUTISTA TRASFERTISTA",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719718-autista-trasfertista-locarno&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Réceptionniste - 80/100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719708-receptionniste-80-100-la-chaux-de-fonds-ne&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Spezialist Instandhaltung (all genders) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719707-spezialist-instandhaltung-all-genders-100-luzern-luzern&language=en"
+  },
+  {
     "id": 9,
+    "title": "Dynamischer Aussendienstmitarbeiter Region Baden m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719709-dynamischer-aussendienstmitarbeiter-region-baden-m-w-d-100-baden-aargau&language=en"
+  },
+  {
+    "id": 10,
     "title": "Stellvertretende Teamleitung im Bereich Fertigung (m/w) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +88,11 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719710-stellvertretende-teamleitung-im-bereich-fertigung-m-w-100-kriens-luzern&language=en"
   },
   {
-    "id": 10,
-    "title": "MONTATORE DI PONTEGGI",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719716-montatore-di-ponteggi-bellinzona&language=en"
-  },
-  {
     "id": 11,
-    "title": "Autista patente C - con uso della gru",
+    "title": "Administrator:in Innendienst 100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719713-autista-patente-c-con-uso-della-gru-sopraceneri&language=en"
+    "company": "Lavoris Personal AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6719717-administrator-in-innendienst-100-6430-schwyz&language=en"
   }
 ]
