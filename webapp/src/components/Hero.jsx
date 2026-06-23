@@ -449,8 +449,8 @@ const Hero = ({ setShowLoginModal }) => {
                                 <Link
                                     key={idx}
                                     to={item.href}
-                                    className="flex-1 py-3 border border-white/25 text-[13px] tracking-[0.04em] text-center text-white/90 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/10 transition-all duration-200"
-                                    style={{ textDecoration: 'none', borderRadius: 0 }}
+                                    className="jc-glow-btn flex-1 text-[13px]"
+                                    style={{ textDecoration: 'none', padding: '12px 8px' }}
                                 >
                                     {item.label}
                                 </Link>

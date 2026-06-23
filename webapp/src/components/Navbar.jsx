@@ -323,7 +323,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-white/55 font-mono whitespace-normal break-words text-center"
+                                                className="jc-glow-btn w-full"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
@@ -332,7 +332,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                             <Link
                                                 key={idx}
                                                 to={link.href}
-                                                className="text-sm md:text-[15px] font-medium text-white/55 font-mono whitespace-normal break-words text-center"
+                                                className="jc-glow-btn w-full"
                                                 onClick={() => setMenuOpen(false)}
                                             >
                                                 {getLabel(link, lang)}
