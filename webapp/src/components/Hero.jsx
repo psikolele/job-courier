@@ -116,7 +116,7 @@ const Hero = ({ setShowLoginModal }) => {
     };
 
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
         checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
@@ -124,12 +124,12 @@ const Hero = ({ setShowLoginModal }) => {
 
     return (
         <section
-            className="relative w-full flex flex-col md:flex-row overflow-hidden h-auto md:h-[calc(100svh-80px)] min-h-[calc(100svh-80px)]"
+            className="relative w-full flex flex-col lg:flex-row overflow-hidden h-auto lg:h-[calc(100svh-80px)] min-h-[calc(100svh-80px)]"
             style={{ background: 'var(--brand-gray-light)', marginTop: '80px', overflow: 'hidden' }}
         >
             <style>{`
                 /* General Desktop scaling adjustments */
-                @media (min-width: 768px) {
+                @media (min-width: 1024px) {
                     .hero-h1, .hero-h1-sub {
                         transition: font-size 0.2s ease, margin-bottom 0.2s ease;
                     }
@@ -147,7 +147,7 @@ const Hero = ({ setShowLoginModal }) => {
                 }
 
                 /* Laptops / Smaller monitors (height <= 950px) */
-                @media (max-height: 950px) and (min-width: 768px) {
+                @media (max-height: 950px) and (min-width: 1024px) {
                     .hero-panel {
                         padding-top: 2.5rem !important;
                         padding-bottom: 1.5rem !important;
@@ -171,7 +171,7 @@ const Hero = ({ setShowLoginModal }) => {
                 }
 
                 /* Mid-small laptops / Typical Browser Viewport (height <= 850px) */
-                @media (max-height: 850px) and (min-width: 768px) {
+                @media (max-height: 850px) and (min-width: 1024px) {
                     .hero-panel {
                         padding-top: 2.25rem !important;
                         padding-bottom: 1.25rem !important;
@@ -203,7 +203,7 @@ const Hero = ({ setShowLoginModal }) => {
                 }
 
                 /* Compact viewports / Zoomed-in laptops / Developer tools open (height <= 720px) */
-                @media (max-height: 720px) and (min-width: 768px) {
+                @media (max-height: 720px) and (min-width: 1024px) {
                     .hero-panel {
                         padding-top: 1.75rem !important;
                         padding-bottom: 1rem !important;
@@ -235,7 +235,7 @@ const Hero = ({ setShowLoginModal }) => {
                 }
             `}</style>
             {/* ── LEFT: CANDIDATES PANEL (50% Width) ── */}
-            <div className="hero-panel relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-12 md:pt-8 pb-8 md:pb-6 bg-white z-10 border-r border-slate-200 min-h-[calc(100svh-80px)] md:min-h-0">
+            <div className="hero-panel relative w-full lg:w-[50%] flex flex-col justify-start px-4 sm:px-8 lg:px-16 pt-12 lg:pt-8 pb-8 lg:pb-6 bg-white z-10 border-r border-slate-200 min-h-[calc(100svh-80px)] lg:min-h-0">
                 <div className="max-w-2xl flex flex-col flex-1">
                     <div className="w-full max-w-lg mx-auto" style={{ marginBottom: isMobile ? 24 : 48 }}>
                         <p style={{
@@ -281,7 +281,7 @@ const Hero = ({ setShowLoginModal }) => {
  
                     {/* SEARCH CARD */}
                     <div
-                        className="hero-card-box bg-white p-6 w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px]"
+                        className="hero-card-box bg-white p-6 w-full max-w-lg mx-auto mb-6 lg:mb-8 lg:h-[312px]"
                         style={{ borderRadius: 0 }}
                     >
                         <form onSubmit={handleSearch} className="flex flex-col h-full justify-between">
@@ -381,7 +381,7 @@ const Hero = ({ setShowLoginModal }) => {
             </div>
 
             {/* ── RIGHT: EMPLOYERS PANEL (50% Width) ── */}
-            <div className="hero-panel relative w-full md:w-[50%] flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-12 md:pt-8 pb-8 md:pb-6 bg-[#050B2B] text-white z-0 overflow-hidden">
+            <div className="hero-panel relative w-full lg:w-[50%] flex flex-col justify-start px-4 sm:px-8 lg:px-16 pt-12 lg:pt-8 pb-8 lg:pb-6 bg-[#050B2B] text-white z-0 overflow-hidden">
                 <div className="relative z-10 max-w-2xl flex flex-col flex-1">
                     <div className="w-full max-w-lg mx-auto" style={{ marginBottom: isMobile ? 24 : 48 }}>
                         <p style={{
@@ -426,7 +426,7 @@ const Hero = ({ setShowLoginModal }) => {
                     </div>
 
                     {/* Stat aziende + CTA — same container as candidati form */}
-                    <div className="hero-card-box w-full max-w-lg mx-auto mb-6 md:mb-8 md:h-[312px] flex flex-col justify-between p-6" style={{ borderRadius: 0 }}>
+                    <div className="hero-card-box w-full max-w-lg mx-auto mb-6 lg:mb-8 lg:h-[312px] flex flex-col justify-between p-6" style={{ borderRadius: 0 }}>
                         {/* Stats Spotlight Cards row */}
                         <div className="flex gap-4 w-full pb-2" style={{ flex: 1, alignItems: 'center' }}>
                             <SpotlightCard target={120000} duration={2200} label="Candidati registrati" />
