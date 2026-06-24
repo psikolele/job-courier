@@ -291,7 +291,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     placeholder={t('hero.candidates.search_placeholder')}
                                     value={keyword}
                                     onChange={(e) => setKeyword(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-3.5 border-0 border-b border-b-[var(--brand-fuchsia)] font-mono text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors"
+                                    className="w-full pl-10 pr-4 py-3.5 border-0 border-b border-b-[var(--brand-fuchsia)] font-mono text-xs sm:text-sm focus:border-b-[var(--brand-navy)] outline-none transition-colors"
                                     style={{ borderRadius: 0 }}
                                 />
                                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />

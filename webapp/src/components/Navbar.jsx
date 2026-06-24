@@ -159,12 +159,31 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 }}
                             />
                         </div>
-                        {/* Logo Image with Magnetic Lift & Drop Shadow - Infinitely sharp high-resolution raster asset */}
+                        {/* Logo: pictogram on mobile, full logo on desktop */}
+                        <motion.img
+                            src="/logo-square.svg"
+                            onError={(e) => { e.currentTarget.src = '/logo-square.png'; }}
+                            alt="JobCourier"
+                            className={`lg:hidden ${scrolled ? 'h-[36px]' : 'h-[44px]'} w-auto object-contain transition-all duration-300`}
+                            initial={{ scale: 1, y: 0, filter: "drop-shadow(0 2px 4px rgba(38, 54, 123, 0.0))" }}
+                            variants={{
+                                hover: {
+                                    scale: 1.05,
+                                    y: -2,
+                                    filter: "drop-shadow(0 8px 24px rgba(38, 54, 123, 0.12))"
+                                }
+                            }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 280,
+                                damping: 18
+                            }}
+                        />
                         <motion.img
                             src="/logo-full.svg"
                             onError={(e) => { e.currentTarget.src = '/logo-full.png'; }}
                             alt="JobCourier"
-                            className={`${scrolled ? 'h-[40px]' : 'h-[52px]'} w-auto object-contain transition-all duration-300`}
+                            className={`hidden lg:block ${scrolled ? 'h-[40px]' : 'h-[52px]'} w-auto object-contain transition-all duration-300`}
                             initial={{ scale: 1, y: 0, filter: "drop-shadow(0 2px 4px rgba(38, 54, 123, 0.0))" }}
                             variants={{
                                 hover: {
