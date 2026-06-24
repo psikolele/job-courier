@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const IconLinkedIn = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+    </svg>
+);
+
+const IconInstagram = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    </svg>
+);
+
+const IconFacebook = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
     </svg>
 );
 
@@ -13,12 +26,98 @@ const IconRSS = () => (
     </svg>
 );
 
+const IconClose = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+);
+
+const RssModal = ({ onClose }) => {
+    const N = 'var(--brand-navy)';
+    const F = 'var(--brand-fuchsia)';
+    const brand = 'var(--font-brand)';
+    const body = 'var(--font-body)';
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={onClose}
+            style={{ position: 'fixed', inset: 0, zIndex: 300, background: 'rgba(5,11,43,0.6)', backdropFilter: 'blur(6px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+                onClick={e => e.stopPropagation()}
+                style={{ background: '#fff', maxWidth: 520, width: '100%', padding: '36px 32px', position: 'relative' }}
+            >
+                <button
+                    onClick={onClose}
+                    style={{ position: 'absolute', top: 14, right: 14, background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(5,11,43,0.4)', transition: 'color 0.15s' }}
+                    onMouseEnter={e => e.currentTarget.style.color = N}
+                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(5,11,43,0.4)'}
+                    aria-label="Chiudi"
+                >
+                    <IconClose />
+                </button>
+
+                <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: F, marginBottom: 12 }}>
+                    Feed RSS
+                </div>
+                <h2 style={{ fontFamily: brand, fontWeight: 800, fontSize: 22, color: N, marginBottom: 16, lineHeight: 1.3 }}>
+                    Importare offerte di lavoro tramite feed RSS
+                </h2>
+                <p style={{ fontFamily: body, fontSize: 14, color: 'rgba(5,11,43,0.7)', lineHeight: 1.7, marginBottom: 16 }}>
+                    Pubblica automaticamente i tuoi annunci di lavoro su JobCourier tramite un feed RSS dal tuo ATS o portale di lavoro.
+                </p>
+                <ul style={{ fontFamily: body, fontSize: 13, color: 'rgba(5,11,43,0.65)', lineHeight: 1.8, marginBottom: 24, paddingLeft: 18 }}>
+                    <li>Amplia il tuo pubblico di candidati</li>
+                    <li>Ricevi più candidature qualificate</li>
+                    <li>Integrazione semplice con il tuo sistema esistente</li>
+                </ul>
+
+                <a
+                    href="https://www.jobcourier.ch/wp-content/uploads/2025/06/JobCourier-multiposting-doc.xlsx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="jc-glow-btn-light"
+                    style={{
+                        display: 'inline-flex', alignItems: 'center', gap: 8,
+                        fontFamily: brand, fontWeight: 700, fontSize: 11,
+                        letterSpacing: '0.14em', textTransform: 'uppercase',
+                        color: N, border: `1.5px solid ${N}`,
+                        padding: '12px 24px', textDecoration: 'none', cursor: 'pointer'
+                    }}
+                >
+                    Scarica documentazione tecnica →
+                </a>
+
+                <p style={{ fontFamily: body, fontSize: 12, color: 'rgba(5,11,43,0.4)', marginTop: 16 }}>
+                    Per assistenza: <a href="mailto:support@jobcourier.ch" style={{ color: F, textDecoration: 'none' }}>support@jobcourier.ch</a>
+                </p>
+            </motion.div>
+        </motion.div>
+    );
+};
+
 const Footer = ({ setShowLoginModal }) => {
+    const [showRssModal, setShowRssModal] = useState(false);
     const N = 'var(--brand-navy)';
     const F = 'var(--brand-fuchsia)';
     const brand = 'var(--font-brand)';
     const editorial = 'var(--font-editorial)';
     const body = 'var(--font-body)';
+
+    const socials = [
+        { icon: <IconLinkedIn />, href: 'https://www.linkedin.com/company/jobcourier-ch', label: 'LinkedIn' },
+        { icon: <IconInstagram />, href: 'https://www.instagram.com/job_courier/', label: 'Instagram' },
+        { icon: <IconFacebook />, href: 'https://www.facebook.com/JobCourier.ch', label: 'Facebook' },
+        { icon: <IconRSS />, href: '#rss', label: 'RSS Feed', onClick: (e) => { e.preventDefault(); setShowRssModal(true); } },
+    ];
 
     const cols = [
         { title: 'Area Legale', links: [
@@ -58,16 +157,21 @@ const Footer = ({ setShowLoginModal }) => {
                         Dove aziende e candidati si incontrano.
                     </p>
                     <div style={{ display: 'flex', gap: 12 }}>
-                        <a href="#" aria-label="LinkedIn" style={{ color: 'rgba(255,255,255,0.45)', transition: 'color 0.15s' }}
-                            onMouseEnter={e => e.currentTarget.style.color = 'var(--brand-white)'}
-                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.45)'}>
-                            <IconLinkedIn />
-                        </a>
-                        <a href="#" aria-label="RSS" style={{ color: 'rgba(255,255,255,0.45)', transition: 'color 0.15s' }}
-                            onMouseEnter={e => e.currentTarget.style.color = 'var(--brand-white)'}
-                            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.45)'}>
-                            <IconRSS />
-                        </a>
+                        {socials.map(s => (
+                            <a
+                                key={s.label}
+                                href={s.href}
+                                target={s.onClick ? undefined : '_blank'}
+                                rel={s.onClick ? undefined : 'noopener noreferrer'}
+                                aria-label={s.label}
+                                onClick={s.onClick}
+                                style={{ color: 'rgba(255,255,255,0.45)', transition: 'color 0.15s' }}
+                                onMouseEnter={e => e.currentTarget.style.color = 'var(--brand-white)'}
+                                onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.45)'}
+                            >
+                                {s.icon}
+                            </a>
+                        ))}
                     </div>
                 </div>
 
@@ -130,6 +234,10 @@ const Footer = ({ setShowLoginModal }) => {
                     © {new Date().getFullYear()} JobCourier.ch — Tutti i diritti riservati
                 </span>
             </div>
+
+            <AnimatePresence>
+                {showRssModal && <RssModal onClose={() => setShowRssModal(false)} />}
+            </AnimatePresence>
         </footer>
     );
 };
