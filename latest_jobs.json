@@ -1,22 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Betriebsmechaniker (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720062-betriebsmechaniker-m-w-d-100-zurich-zurich&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Addetto al montaggio ponteggi",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720071-addetto-al-montaggio-ponteggi-lugano-bellinzona&language=en"
-  },
-  {
-    "id": 2,
     "title": "METALCOSTRUTTORE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,23 +8,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720074-metalcostruttore-locarno&language=en"
   },
   {
-    "id": 3,
-    "title": "Technicien/ne Méthode et Industrialisation",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720069-technicien-ne-methode-et-industrialisation-les-brenets-ne&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Maler (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720065-maler-m-w-d-100-zurich-zurich&language=en"
-  },
-  {
-    "id": 5,
+    "id": 1,
     "title": "SEGRETARIA DI DIREZIONE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,15 +16,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720075-segretaria-di-direzione-lugano&language=en"
   },
   {
-    "id": 6,
-    "title": "Schweisser (m/w/d) 100%",
+    "id": 2,
+    "title": "Magazziniere con i patentini della Suva - sostituzione infortunio",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720063-schweisser-m-w-d-100-zurich-zurich&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720072-magazziniere-con-i-patentini-della-suva-sostituzione-infortunio-locarno&language=en"
   },
   {
-    "id": 7,
+    "id": 3,
+    "title": "Lavapiatti - disponibile da subito",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720073-lavapiatti-disponibile-da-subito-lugano&language=en"
+  },
+  {
+    "id": 4,
     "title": "SEGRETARIA AMMINISTRATIVA 60% (DE/IT) – Locarnese",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,15 +40,31 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720076-segretaria-amministrativa-60-de-it-?-locarnese-locarno&language=en"
   },
   {
-    "id": 8,
-    "title": "Sachbearbeiter/-in Kundendienst und Disponent (D/F) (w/m/d) 100%",
+    "id": 5,
+    "title": "Betriebsmechaniker (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720067-sachbearbeiter-in-kundendienst-und-disponent-d-f-w-m-d-100-aarau-aargau&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720062-betriebsmechaniker-m-w-d-100-zurich-zurich&language=en"
   },
   {
-    "id": 9,
+    "id": 6,
+    "title": "Technicien/ne Méthode et Industrialisation",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720069-technicien-ne-methode-et-industrialisation-les-brenets-ne&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Cameriere/a di sala disponibile da subito - Locarno",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720070-cameriere-a-di-sala-disponibile-da-subito-locarno-locarno-bellinzona&language=en"
+  },
+  {
+    "id": 8,
     "title": "Reifenpraktiker (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,7 +72,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720064-reifenpraktiker-m-w-d-uster-zh&language=en"
   },
   {
-    "id": 10,
+    "id": 9,
     "title": "Metallbauer EFZ (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +80,19 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720068-metallbauer-efz-m-w-d-100-zurich-zurich&language=en"
   },
   {
-    "id": 11,
-    "title": "Polymechaniker Montage 100% (m/w/d)",
+    "id": 10,
+    "title": "Schweisser (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720066-polymechaniker-montage-100-m-w-d-horgen-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720063-schweisser-m-w-d-100-zurich-zurich&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Maler (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720065-maler-m-w-d-100-zurich-zurich&language=en"
   }
 ]
