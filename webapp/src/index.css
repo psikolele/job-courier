@@ -343,6 +343,8 @@
   position: relative;
   display: inline-block;
   overflow: hidden;
+  padding: 0 8px;
+  white-space: nowrap;
 }
 .cl-effect-5 a span {
   position: relative;
@@ -354,8 +356,11 @@
 .cl-effect-5 a span::before {
   position: absolute;
   top: 100%;
+  left: 0;
+  width: 100%;
   content: attr(data-hover);
   font-weight: 700;
+  white-space: nowrap;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
