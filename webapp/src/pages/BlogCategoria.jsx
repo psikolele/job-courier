@@ -8,8 +8,8 @@ import SectionLabel from '../components/ui/SectionLabel.jsx';
 import ArticleCard from '../components/blog/ArticleCard.jsx';
 
 const LABELS = {
-  carriera: { breadcrumb: 'Blog — Carriera', title: 'Risorse per la carriera', subtitle: 'Consigli pratici per cercare lavoro, migliorare il CV e affrontare i colloqui.' },
-  recruiting: { breadcrumb: 'Blog — Recruiting', title: 'Risorse per il recruiting', subtitle: 'Approfondimenti, strategie e buone pratiche per aziende e recruiter.' },
+  carriera: { breadcrumb: 'Blog Carriera', titleLine1: 'RISORSE PER LA', titleEm: 'CARRIERA', subtitle: 'Consigli pratici per cercare lavoro, migliorare il CV e affrontare i colloqui.' },
+  recruiting: { breadcrumb: 'Blog Recruiting', titleLine1: 'RISORSE PER IL', titleEm: 'RECRUITING', subtitle: 'Approfondimenti, strategie e buone pratiche per aziende e recruiter.' },
 };
 
 const BlogCategoria = () => {
@@ -25,25 +25,16 @@ const BlogCategoria = () => {
   const otherId = categoryId === 'carriera' ? 'recruiting' : 'carriera';
   const L = LABELS[categoryId];
 
-  const lastSpace = L.title.lastIndexOf(' ');
-  const titleLead = lastSpace > -1 ? L.title.slice(0, lastSpace + 1) : null;
-  const titleEmphasis = lastSpace > -1 ? L.title.slice(lastSpace + 1) : null;
-
   return (
     <>
-      <BlogSeo type="category" lang={lang} categoryId={categoryId} title={`${L.title} | JobCourier`} description={L.subtitle} />
+      <BlogSeo type="category" lang={lang} categoryId={categoryId} title={`${L.titleLine1} ${L.titleEm} | JobCourier`} description={L.subtitle} />
 
       <section className="relative min-h-[40vh] pt-32 pb-16 px-6 md:px-12 flex flex-col justify-center" style={{ background: 'var(--brand-navy)' }}>
         <div className="container mx-auto w-full">
           <div className="max-w-3xl">
             <SectionLabel>{L.breadcrumb}</SectionLabel>
             <h1 style={{ fontFamily: 'var(--font-brand)', fontWeight: 900, fontSize: 'clamp(2rem, 8vw, 4.5rem)', color: 'var(--brand-white)', textTransform: 'uppercase', letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 24 }}>
-              {titleLead ? (
-                <>
-                  {titleLead}
-                  <span style={{ color: 'var(--brand-fuchsia)' }}>{titleEmphasis}</span>
-                </>
-              ) : L.title}
+              {L.titleLine1}<br /><span style={{ color: 'var(--brand-fuchsia)' }}>{L.titleEm}</span>
             </h1>
             <p style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: 'rgba(255,255,255,0.75)', lineHeight: 1.4 }}>{L.subtitle}</p>
           </div>
