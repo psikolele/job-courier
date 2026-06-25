@@ -1,6 +1,9 @@
+# Task Checklist
+
 | Status | Task |
 | :---: | :--- |
-| [x] | **Task 1: Replace ASFL SVBL banner image** — Sovrascrivere banner-asfl-svbl.png con la nuova versione ampia ad alta risoluzione. |
-| [x] | **Task 2: Implement SpotlightCard with Mouse Tracking** — Creare spotlight-card.jsx, pulire stili jc-dot in index.css, aggiungere classi jc-spotlight. |
-| [x] | **Task 3: Integrate SpotlightCard in Hero** — Modificare Hero.jsx per caricare i due contatori animati nel pannello aziende. |
-| [x] | **Task 4: Verification and Build** — Eseguire npm run build locale per validare le modifiche. |
+| [x] | Create CSS slicing rules (implemented directly in `AdBanner.jsx` for clean self-containment) |
+| [x] | Implement the ASFL SVBL reconstructed HTML banner component inside `AdBanner.jsx` |
+| [x] | Implement the Formati Academy reconstructed HTML banner component inside `AdBanner.jsx` with spelling corrections (`ated` instead of `atec`) |
+| [x] | Update `AdBanner.jsx` layout container to use a responsive aspect ratio (`aspect-[1024/112]`) |
+| [x] | Verify build and check responsiveness |
