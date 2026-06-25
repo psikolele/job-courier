@@ -39,8 +39,7 @@ const AdBanner = ({ type = 'bottom' }) => {
     const adsToRender = isTop ? topAds : bottomAds;
 
     return (
-        <div className="w-full px-6 md:px-12">
-            <div className="max-w-[1400px] mx-auto w-full">
+        <div className="w-[95%] mx-auto">
 
 
                 <div
@@ -75,7 +74,6 @@ const AdBanner = ({ type = 'bottom' }) => {
                         </motion.a>
                     ))}
                 </div>
-            </div>
         </div>
     );
 };

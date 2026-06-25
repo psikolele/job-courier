@@ -87,7 +87,7 @@ const MarqueeSlider = ({ title, subtitle, articles, readArticleText, speed = 35,
             onTouchEnd={() => setTimeout(resumeAuto, 2000)}
         >
             {/* Header: title + subtitle + arrows */}
-            <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-12 w-full">
+            <div className="w-[98%] mx-auto px-4 md:px-8 mb-12">
                 <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                         <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />

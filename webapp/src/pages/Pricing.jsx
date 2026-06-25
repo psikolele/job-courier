@@ -71,7 +71,8 @@ const getLocalizedData = (lang) => {
     const isFr = lang === 'fr';
 
     return {
-        heroTitleMain: isIt ? 'UNA SOLUZIONE PER OGNI' : isDe ? 'EINE LÖSUNG FÜR JEDEN' : isFr ? 'UNE SOLUTION POUR CHAQUE' : 'A SOLUTION FOR EVERY',
+        heroTitleMain: isIt ? 'UNA SOLUZIONE PER' : isDe ? 'EINE LÖSUNG FÜR' : isFr ? 'UNE SOLUTION POUR' : 'A SOLUTION FOR',
+        heroTitleLine2: isIt ? 'OGNI ' : isDe ? 'JEDEN ' : isFr ? 'CHAQUE ' : 'EVERY ',
         heroTitleEm: isIt ? 'ESIGENZA.' : isDe ? 'BEDARF.' : isFr ? 'BESOIN.' : 'NEED.',
         heroSub: isIt ? 'Per una singola assunzione o per una ricerca continua di personale.' : isDe ? 'Für eine einzelne Einstellung oder eine kontinuierliche Personalsuche.' : isFr ? 'Pour un recrutement ponctuel ou une recherche continue de personnel.' : 'For a single hire or continuous staffing needs.',
         heroCta: isIt ? 'REGISTRA AZIENDA' : isDe ? 'UNTERNEHMEN REGISTRIEREN' : isFr ? 'ENREGISTRER ENTREPRISE' : 'REGISTER COMPANY',
@@ -230,7 +231,7 @@ const Pricing = () => {
                             letterSpacing: '-0.025em',
                             lineHeight: 0.95,
                             marginBottom: 24
-                        }}>{data.heroTitleMain}<br /><span style={{ color: F }}>{data.heroTitleEm}</span></h1>
+                        }}>{data.heroTitleMain}<br />{data.heroTitleLine2}<span style={{ color: F }}>{data.heroTitleEm}</span></h1>
                         <p className="hero-line" style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1.2rem, 3vw, 1.8rem)', color: 'rgba(255,255,255,0.75)', marginBottom: 40, lineHeight: 1.4 }}>
                             {data.heroSub}
                         </p>
@@ -494,7 +495,7 @@ const Pricing = () => {
                                             {data.agency.boxDesc}
                                         </p>
                                     </div>
-                                    <div className="space-y-3 w-full">
+                                    <div className="flex gap-3 w-full" style={{ marginTop: 24 }}>
                                         <FuchsiaButton href="/contatti" fullWidth>
                                             {data.agency.cta} →
                                         </FuchsiaButton>
