@@ -273,7 +273,7 @@ const Offerte = ({ setShowLoginModal }) => {
         <div className="pt-24 min-h-screen" style={{ background: GL }}>
             <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-8 pb-24 md:pb-32">
                 {/* Page header */}
-                <div className="mb-8 flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
+                <div className="mb-8 flex flex-col md:flex-row md:items-end gap-8 md:gap-12">
                     {/* Left: counter */}
                     <div className="flex-shrink-0">
                         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
