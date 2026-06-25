@@ -262,6 +262,21 @@ const BlcBanner = () => {
     );
 };
 
+// ---------- ANIMATION VARIANTS ----------
+
+const bannerVariants = {
+    hidden: { opacity: 0, y: 35 },
+    visible: (i) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.85,
+            ease: [0.16, 1, 0.3, 1], // Elegant ease-out expo curve
+            delay: i * 0.15
+        }
+    })
+};
+
 // ---------- MAIN COMPONENT ----------
 
 const AdBanner = ({ type = 'bottom' }) => {
@@ -283,6 +298,11 @@ const AdBanner = ({ type = 'bottom' }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="overflow-hidden relative group block"
+                        variants={bannerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.15 }}
+                        custom={i}
                         style={{
                             backgroundColor: ad.bg,
                             position: 'relative',
@@ -290,8 +310,10 @@ const AdBanner = ({ type = 'bottom' }) => {
                             height: 235,
                             ...(!isTop && { border: '1.5px solid rgba(255,31,122,0.22)' })
                         }}
-                        whileHover={{ boxShadow: '0 0 0 2px rgba(255,31,122,0.35), inset 0 0 0 1px rgba(255,31,122,0.12)' }}
-                        transition={{ duration: 0.2, ease: 'easeOut' }}
+                        whileHover={{ 
+                            boxShadow: '0 0 0 2px rgba(255,31,122,0.35), inset 0 0 0 1px rgba(255,31,122,0.12)',
+                            transition: { duration: 0.2, ease: 'easeOut' }
+                        }}
                     >
                         <span style={{
                             position: 'absolute', top: 10, right: 14,
