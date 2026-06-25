@@ -50,13 +50,12 @@ const AsflBanner = () => {
                 <span className="mt-[0.3cqw]">SVBL</span>
             </div>
 
-            {/* Middle team photo slice */}
+            {/* Middle team photo - Using high-res AI generated logistics visual */}
             <div className="w-[47%] h-full relative overflow-hidden shrink-0">
                 <img 
-                    src="/img/banner-asfl-svbl.png" 
+                    src="/img/banner-asfl-bg-generated.png" 
                     alt="ASFL SVBL Team" 
-                    className="absolute max-w-none h-full top-0 object-cover"
-                    style={{ left: '-19.05%', width: '174.15%' }}
+                    className="w-full h-full object-cover"
                 />
             </div>
 
@@ -105,13 +104,12 @@ const FormaBanner = () => {
                 <div className="mt-[0.3cqw] text-[#fc1452]">APF</div>
             </div>
 
-            {/* Section 2: Cyber graphics slice */}
+            {/* Section 2: Cyber graphics slice - Using high-res AI generated cyber background */}
             <div className="w-[15%] h-full relative overflow-hidden shrink-0">
                 <img 
-                    src="/img/banner-forma-academy.png" 
+                    src="/img/banner-cyber-bg-generated.png" 
                     alt="Cyber Security Graphics" 
-                    className="absolute max-w-none h-full top-0 object-cover"
-                    style={{ left: '-77.78%', width: '711.11%' }}
+                    className="w-full h-full object-cover"
                 />
             </div>
 
@@ -136,13 +134,12 @@ const FormaBanner = () => {
                 </ul>
             </div>
 
-            {/* Section 4: Multimedia graphics slice */}
+            {/* Section 4: Multimedia graphics slice - Using high-res AI generated multimedia background */}
             <div className="w-[15%] h-full relative overflow-hidden shrink-0">
                 <img 
-                    src="/img/banner-forma-academy.png" 
+                    src="/img/banner-multimedia-bg-generated.png" 
                     alt="Multimedia Graphics" 
-                    className="absolute max-w-none h-full top-0 object-cover"
-                    style={{ left: '-240.0%', width: '400.0%' }}
+                    className="w-full h-full object-cover"
                 />
             </div>
 
