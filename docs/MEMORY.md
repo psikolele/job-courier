@@ -127,9 +127,9 @@ webapp/src/
 
 | # | Task | Stato |
 |---|------|-------|
-| A | Paywall incrementale 3 click (localStorage counter → mostra RegistrationWallModal) | ⏳ Parziale (hook esiste, non ancora integrato in Offerte) |
+| A | Paywall incrementale 3 click (localStorage counter → mostra RegistrationWallModal) | ✅ Completato |
 | B | Template `/offerta/:id` — rotta interna completa con CTA "Candidati Ora" | ⏳ File esiste (OffertaDettaglio.jsx), da completare |
-| C | Componente Vetrini integrato in homepage | ⏳ Componente esiste, non ancora in Home.jsx |
+| C | Componente Vetrini integrato in homepage | ✅ Completato |
 | D | Sezione Referenze/Testimonianze in fondo homepage | ❌ Non iniziato |
 | E | Uniformità H1 Candidati/Aziende — dimensioni simmetriche GSAP | ⏳ Parziale |
 
