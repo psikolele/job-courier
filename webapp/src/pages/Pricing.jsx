@@ -42,7 +42,8 @@ const OutlineButton = ({ href, onClick, children, fullWidth = false }) => (
             letterSpacing: '0.14em', textTransform: 'uppercase',
             cursor: 'pointer', borderRadius: 0,
             width: fullWidth ? '100%' : 'auto',
-            textDecoration: 'none'
+            textDecoration: 'none',
+            whiteSpace: 'nowrap'
         }}>
         {children}
     </a>
@@ -188,9 +189,10 @@ const getLocalizedData = (lang) => {
             subtitle: isIt ? 'Da oltre 10 anni mettiamo in contatto candidati, aziende e agenzie di reclutamento in tutta la Svizzera.' : isDe ? 'Seit über 10 Jahren verbinden wir Kandidaten, Unternehmen und Personalvermittlungen in der ganzen Schweiz.' : isFr ? 'Depuis plus de 10 ans, nous mettons en relation candidats, entreprises et agences de recrutement dans toute la Suisse.' : 'For over 10 years we\'ve been connecting candidates, companies and recruitment agencies across Switzerland.',
             items: [
                 { num: '10+', lines: isIt ? ['ANNI', 'DI ESPERIENZA', 'NEL RECRUITING'] : isDe ? ['JAHRE', 'ERFAHRUNG', 'IM RECRUITING'] : isFr ? ['ANS', 'D\'EXPÉRIENCE', 'EN RECRUTEMENT'] : ['YEARS', 'OF EXPERIENCE', 'IN RECRUITING'] },
-                { num: '', lines: isIt ? ['AUDIENCE', 'QUALIFICATA E', 'IN TARGET'] : isDe ? ['QUALIFIZIERTE', 'ZIELGRUPPEN-', 'AUDIENCE'] : isFr ? ['AUDIENCE', 'QUALIFIÉE ET', 'CIBLÉE'] : ['QUALIFIED', 'TARGETED', 'AUDIENCE'] },
+                { num: '95%', lines: isIt ? ['AUDIENCE', 'QUALIFICATA E', 'IN TARGET'] : isDe ? ['QUALIFIZIERTE', 'ZIELGRUPPEN-', 'AUDIENCE'] : isFr ? ['AUDIENCE', 'QUALIFIÉE ET', 'CIBLÉE'] : ['QUALIFIED', 'TARGETED', 'AUDIENCE'] },
                 { num: "120'000+", lines: isIt ? ['CANDIDATI', 'REGISTRATI'] : isDe ? ['REGISTRIERTE', 'KANDIDATEN'] : isFr ? ['CANDIDATS', 'INSCRITS'] : ['REGISTERED', 'CANDIDATES'] },
-                { num: '', lines: isIt ? ['PARTNER DI', 'AGENZIE E PMI', 'IN TUTTA SVIZZERA'] : isDe ? ['PARTNER VON', 'AGENTUREN & KMU', 'IN DER SCHWEIZ'] : isFr ? ['PARTENAIRE DES', 'AGENCES ET PME', 'EN SUISSE'] : ['PARTNER OF', 'AGENCIES & SMES', 'ACROSS SWITZERLAND'] },
+                { num: "3'000+", lines: isIt ? ['CANDIDATURE', 'AL MESE'] : isDe ? ['BEWERBUNGEN', 'PRO MONAT'] : isFr ? ['CANDIDATURES', 'PAR MOIS'] : ['APPLICATIONS', 'PER MONTH'] },
+                { num: '50+', lines: isIt ? ['PARTNER TRA', 'AGENZIE E PMI', 'IN TUTTA SVIZZERA'] : isDe ? ['PARTNER VON', 'AGENTUREN & KMU', 'IN DER SCHWEIZ'] : isFr ? ['PARTENAIRE DES', 'AGENCES ET PME', 'EN SUISSE'] : ['PARTNER OF', 'AGENCIES & SMES', 'ACROSS SWITZERLAND'] },
             ],
         },
     };
@@ -512,14 +514,14 @@ const Pricing = () => {
 
             {/* STATS */}
             <section className="py-20 px-6 md:px-12" style={{ background: W }}>
-                <div className="container mx-auto max-w-5xl text-center">
+                <div className="container mx-auto max-w-6xl">
                     <div className="mb-6">
                         <SectionLabel>{data.stats.title}</SectionLabel>
                     </div>
-                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: GM, lineHeight: 1.5, maxWidth: 640, margin: '0 auto 48px' }}>
+                    <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: GM, lineHeight: 1.5, maxWidth: 640, marginBottom: 48 }}>
                         {data.stats.subtitle}
                     </p>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
                         {data.stats.items.map((stat, sIdx) => (
                             <motion.div
                                 key={sIdx}
@@ -527,14 +529,13 @@ const Pricing = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: sIdx * 0.08 }}
-                                className="p-6"
-                                style={{ background: GL, border: '1px solid rgba(5,11,43,0.06)' }}
+                                className="p-6 text-center transition-all duration-300"
+                                style={{ background: 'rgba(254,254,254,0.8)', border: '1px solid rgba(5,11,43,0.06)', backdropFilter: 'blur(8px)' }}
+                                whileHover={{ background: 'rgba(5,11,43,0.03)', boxShadow: '0 8px 32px rgba(5,11,43,0.06), inset 0 1px 0 rgba(255,255,255,0.8)' }}
                             >
-                                {stat.num && (
-                                    <div style={{ fontFamily: brand, fontWeight: 900, fontSize: 32, color: F, letterSpacing: '-0.02em', marginBottom: 8 }}>
-                                        {stat.num}
-                                    </div>
-                                )}
+                                <div style={{ fontFamily: brand, fontWeight: 900, fontSize: 32, color: F, letterSpacing: '-0.02em', marginBottom: 8 }}>
+                                    {stat.num}
+                                </div>
                                 {stat.lines.map((line, lIdx) => (
                                     <div key={lIdx} style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, color: N, letterSpacing: '0.1em', textTransform: 'uppercase', lineHeight: 1.6 }}>
                                         {line}
