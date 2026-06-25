@@ -529,9 +529,21 @@ const Pricing = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: sIdx * 0.08 }}
-                                className="p-6 text-center transition-all duration-300"
-                                style={{ background: 'rgba(254,254,254,0.8)', border: '1px solid rgba(5,11,43,0.06)', backdropFilter: 'blur(8px)' }}
-                                whileHover={{ background: 'rgba(5,11,43,0.03)', boxShadow: '0 8px 32px rgba(5,11,43,0.06), inset 0 1px 0 rgba(255,255,255,0.8)' }}
+                                className="p-6 text-center"
+                                style={{
+                                    background: 'rgba(255,255,255,0.65)',
+                                    backdropFilter: 'blur(16px)',
+                                    WebkitBackdropFilter: 'blur(16px)',
+                                    border: '1px solid rgba(255,255,255,0.5)',
+                                    borderRadius: 16,
+                                    boxShadow: '0 4px 24px rgba(5,11,43,0.04), 0 1px 2px rgba(5,11,43,0.03)',
+                                    transition: 'all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                                }}
+                                whileHover={{
+                                    background: 'rgba(245,245,250,0.85)',
+                                    boxShadow: '0 12px 40px rgba(5,11,43,0.08), 0 2px 6px rgba(5,11,43,0.04), inset 0 1px 0 rgba(255,255,255,0.9)',
+                                    y: -4,
+                                }}
                             >
                                 <div style={{ fontFamily: brand, fontWeight: 900, fontSize: 32, color: F, letterSpacing: '-0.02em', marginBottom: 8 }}>
                                     {stat.num}
