@@ -43,35 +43,35 @@ const AsflBanner = () => {
         >
             {/* Left yellow block */}
             <div 
-                className="w-[11%] h-full bg-[#ffff01] flex flex-col justify-center items-center font-sans font-black italic text-black leading-none shrink-0" 
-                style={{ fontSize: 'clamp(9px, 3.2cqw, 36px)' }}
+                className="w-[18%] h-full bg-[#ffff01] flex flex-col justify-center items-center font-sans font-black italic text-black leading-none shrink-0" 
+                style={{ fontSize: 'clamp(14px, 3.8cqw, 36px)' }}
             >
                 <span>ASFL</span>
-                <span className="mt-[0.2cqw]">SVBL</span>
+                <span className="mt-[0.3cqw]">SVBL</span>
             </div>
 
             {/* Middle team photo slice */}
-            <div className="w-[57%] h-full relative overflow-hidden shrink-0">
+            <div className="w-[47%] h-full relative overflow-hidden shrink-0">
                 <img 
                     src="/img/banner-asfl-svbl.png" 
                     alt="ASFL SVBL Team" 
-                    className="absolute max-w-none h-full top-0"
-                    style={{ left: '-19.05%', width: '174.15%', objectFit: 'cover' }}
+                    className="absolute max-w-none h-full top-0 object-cover"
+                    style={{ left: '-19.05%', width: '174.15%' }}
                 />
             </div>
 
             {/* Right dark grey text area */}
-            <div className="w-[32%] h-full flex flex-col justify-center px-[2.5cqw] text-white font-sans text-left leading-normal shrink-0">
+            <div className="w-[35%] h-full flex flex-col justify-center px-[3cqw] text-white font-sans text-left leading-normal shrink-0">
                 <h4 
                     className="font-extrabold leading-tight tracking-wide" 
-                    style={{ fontSize: 'clamp(8.5px, 2.2cqw, 24px)' }}
+                    style={{ fontSize: 'clamp(11px, 2.3cqw, 24px)' }}
                 >
                     La logistica muove il mondo - Muoviti insieme a noi!
                 </h4>
-                <div className="w-full h-[1.5px] bg-[#ffff01] my-[0.5cqw]"></div>
+                <div className="w-full h-[2px] bg-[#ffff01] my-[0.8cqw]"></div>
                 <p 
                     className="font-semibold opacity-95 leading-tight" 
-                    style={{ fontSize: 'clamp(6.5px, 1.25cqw, 13px)' }}
+                    style={{ fontSize: 'clamp(8px, 1.35cqw, 14px)' }}
                 >
                     Associazione Svizzera per la formazione professionale in logistica
                     <br />
@@ -97,29 +97,29 @@ const FormaBanner = () => {
         >
             {/* Section 1: Black box "QUATTRO PERCORSI APF" */}
             <div 
-                className="w-[11%] h-full bg-black flex flex-col justify-center items-center text-white font-sans font-black text-center leading-none px-[0.5cqw] shrink-0" 
-                style={{ fontSize: 'clamp(8.5px, 2.2cqw, 24px)', letterSpacing: '0.05em' }}
+                className="w-[18%] h-full bg-black flex flex-col justify-center items-center text-white font-sans font-black text-center leading-none px-[0.5cqw] shrink-0" 
+                style={{ fontSize: 'clamp(11px, 2.3cqw, 24px)', letterSpacing: '0.05em' }}
             >
                 <div>QUATTRO</div>
-                <div className="mt-[0.2cqw]">PERCORSI</div>
-                <div className="mt-[0.2cqw] text-[#fc1452]">APF</div>
+                <div className="mt-[0.3cqw]">PERCORSI</div>
+                <div className="mt-[0.3cqw] text-[#fc1452]">APF</div>
             </div>
 
             {/* Section 2: Cyber graphics slice */}
-            <div className="w-[14%] h-full relative overflow-hidden shrink-0">
+            <div className="w-[15%] h-full relative overflow-hidden shrink-0">
                 <img 
                     src="/img/banner-forma-academy.png" 
                     alt="Cyber Security Graphics" 
-                    className="absolute max-w-none h-full top-0"
-                    style={{ left: '-77.78%', width: '711.11%', objectFit: 'cover' }}
+                    className="absolute max-w-none h-full top-0 object-cover"
+                    style={{ left: '-77.78%', width: '711.11%' }}
                 />
             </div>
 
             {/* Section 3: Red course list */}
-            <div className="w-[35%] h-full bg-[#fc1452] flex flex-col justify-center shrink-0" style={{ paddingLeft: '2.5cqw' }}>
+            <div className="w-[38%] h-full bg-[#fc1452] flex flex-col justify-center shrink-0" style={{ paddingLeft: '3cqw' }}>
                 <ul 
-                    className="list-none flex flex-col justify-center gap-[0.25cqw] text-white font-sans text-left font-black uppercase leading-tight" 
-                    style={{ fontSize: 'clamp(6.8px, 1.45cqw, 15px)', letterSpacing: '0.02em' }}
+                    className="list-none flex flex-col justify-center gap-[0.4cqw] text-white font-sans text-left font-black uppercase leading-tight" 
+                    style={{ fontSize: 'clamp(9px, 1.55cqw, 15px)', letterSpacing: '0.02em' }}
                 >
                     <li className="flex items-center gap-[0.6cqw]">
                         <span className="text-white">•</span> DIGITAL COLLABORATION SPECIALIST
@@ -137,17 +137,17 @@ const FormaBanner = () => {
             </div>
 
             {/* Section 4: Multimedia graphics slice */}
-            <div className="w-[25%] h-full relative overflow-hidden shrink-0">
+            <div className="w-[15%] h-full relative overflow-hidden shrink-0">
                 <img 
                     src="/img/banner-forma-academy.png" 
                     alt="Multimedia Graphics" 
-                    className="absolute max-w-none h-full top-0"
-                    style={{ left: '-240.0%', width: '400.0%', objectFit: 'cover' }}
+                    className="absolute max-w-none h-full top-0 object-cover"
+                    style={{ left: '-240.0%', width: '400.0%' }}
                 />
             </div>
 
             {/* Section 5: White logo area */}
-            <div className="w-[15%] h-full bg-white flex flex-col justify-center items-center py-[0.5cqw] px-[1cqw] shrink-0">
+            <div className="w-[14%] h-full bg-white flex flex-col justify-center items-center py-[1cqw] px-[1cqw] shrink-0">
                 {/* Top Half: Formati Academy logo crop */}
                 <div className="h-[45%] w-full relative overflow-hidden flex items-center justify-center">
                     <img 
@@ -158,10 +158,10 @@ const FormaBanner = () => {
                     />
                 </div>
                 
-                {/* Bottom Half: ATED logo and text */}
-                <div className="h-[45%] w-full flex items-center justify-center mt-[0.25cqw] gap-[0.4cqw]">
+                {/* Bottom Half: ATED logo and text stacked vertically for optimal 235px height layout */}
+                <div className="h-[45%] w-full flex flex-col items-center justify-center mt-[0.5cqw] gap-[0.2cqw]">
                     {/* ATED SVG Logo */}
-                    <svg viewBox="0 0 110 38" className="shrink-0" style={{ width: 'clamp(25px, 5.8cqw, 60px)', height: 'auto' }}>
+                    <svg viewBox="0 0 110 38" className="shrink-0" style={{ width: 'clamp(35px, 6.5cqw, 65px)', height: 'auto' }}>
                         <text x="2" y="27" fontFamily="Inter, sans-serif" fontWeight="900" fontSize="26" fill="#000000" letterSpacing="-0.02em">ate</text>
                         <circle cx="83" cy="18" r="9" stroke="#FF1F7A" strokeWidth="3.6" fill="none" />
                         <circle cx="83" cy="18" r="3.2" fill="#FF1F7A" />
@@ -170,11 +170,11 @@ const FormaBanner = () => {
                     
                     {/* Text next to logo */}
                     <div 
-                        className="flex flex-col text-black font-extrabold uppercase leading-none tracking-wide text-left justify-center shrink-0" 
-                        style={{ fontSize: 'clamp(4.2px, 0.85cqw, 9px)' }}
+                        className="flex flex-col text-black font-extrabold uppercase leading-none tracking-wider text-center justify-center shrink-0" 
+                        style={{ fontSize: 'clamp(5px, 1.0cqw, 10px)' }}
                     >
                         <span>con il patrocinio</span>
-                        <span className="mt-[0.1cqw]">di ated</span>
+                        <span className="mt-[0.2cqw]">di ated</span>
                     </div>
                 </div>
             </div>
@@ -207,10 +207,8 @@ const AdBanner = ({ type = 'bottom' }) => {
                             backgroundColor: ad.bg,
                             position: 'relative',
                             display: 'block',
-                            ...(isTop 
-                                ? { width: '100%', aspectRatio: '1024 / 112' } 
-                                : { height: 235, border: '1.5px solid rgba(255,31,122,0.22)' }
-                            )
+                            height: 235,
+                            ...(!isTop && { border: '1.5px solid rgba(255,31,122,0.22)' })
                         }}
                         whileHover={{ boxShadow: '0 0 0 2px rgba(255,31,122,0.35), inset 0 0 0 1px rgba(255,31,122,0.12)' }}
                         transition={{ duration: 0.2, ease: 'easeOut' }}
