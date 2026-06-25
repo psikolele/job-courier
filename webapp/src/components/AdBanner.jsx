@@ -222,13 +222,48 @@ const BlcBanner = () => {
                 </svg>
             </div>
 
-            {/* Section 2: Photo area - Using high-res corporate team visual */}
-            <div className="w-[43%] h-full relative overflow-hidden shrink-0">
+            {/* Section 2: Photo area with bottom gradient and 3 icons at the bottom */}
+            <div className="w-[43%] h-full relative overflow-hidden shrink-0 flex flex-col justify-end p-[1.5cqw] pb-[2cqw]">
                 <img 
-                    src="/img/Gemini_Generated_Image_ape98sape98sape9.png" 
+                    src="/img/blc-learning-bg.png" 
                     alt="Corporate Training BLC" 
-                    className="w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover z-0"
                 />
+                {/* Gradient overlay from bottom to top */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#002544]/95 via-[#002544]/35 to-transparent z-10" />
+
+                {/* The 3 icons + labels at the bottom */}
+                <div className="relative z-20 w-full grid grid-cols-3 gap-[1cqw] text-white font-sans text-center">
+                    {/* Icon 1: Professional Training */}
+                    <div className="flex flex-col items-center justify-end gap-[0.4cqw]">
+                        <svg className="w-[2.8cqw] h-[2.8cqw] max-h-[26px] max-w-[26px] text-white fill-current opacity-90 hover:opacity-100 transition-opacity" viewBox="0 0 24 24">
+                            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#e2231a" />
+                        </svg>
+                        <span className="font-bold uppercase leading-tight tracking-wider" style={{ fontSize: 'clamp(6px, 0.95cqw, 10px)' }}>
+                            Formazione<br />Professionale
+                        </span>
+                    </div>
+
+                    {/* Icon 2: Language Courses */}
+                    <div className="flex flex-col items-center justify-end gap-[0.4cqw]">
+                        <svg className="w-[2.8cqw] h-[2.8cqw] max-h-[26px] max-w-[26px] text-white fill-current opacity-90 hover:opacity-100 transition-opacity" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z" fill="#e2231a" />
+                        </svg>
+                        <span className="font-bold uppercase leading-tight tracking-wider" style={{ fontSize: 'clamp(6px, 0.95cqw, 10px)' }}>
+                            Corsi di<br />Lingue
+                        </span>
+                    </div>
+
+                    {/* Icon 3: Security Consulting */}
+                    <div className="flex flex-col items-center justify-end gap-[0.4cqw]">
+                        <svg className="w-[2.8cqw] h-[2.8cqw] max-h-[26px] max-w-[26px] text-white fill-current opacity-90 hover:opacity-100 transition-opacity" viewBox="0 0 24 24">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" fill="#e2231a" />
+                        </svg>
+                        <span className="font-bold uppercase leading-tight tracking-wider" style={{ fontSize: 'clamp(6px, 0.95cqw, 10px)' }}>
+                            Consulenza<br />Sicurezza
+                        </span>
+                    </div>
+                </div>
             </div>
 
             {/* Section 3: BLC Navy blue courses block */}
@@ -241,20 +276,17 @@ const BlcBanner = () => {
                 </h4>
                 <div className="w-full h-[2px] bg-[#e2231a] my-[0.8cqw]"></div>
                 <ul 
-                    className="list-none flex flex-col gap-[0.4cqw] text-white font-semibold opacity-95 leading-tight" 
-                    style={{ fontSize: 'clamp(8px, 1.35cqw, 14px)' }}
+                    className="list-none flex flex-col gap-[0.6cqw] text-white font-semibold opacity-95 leading-tight" 
+                    style={{ fontSize: 'clamp(8px, 1.45cqw, 15px)' }}
                 >
                     <li className="flex items-center gap-[0.4cqw]">
-                        <span className="text-[#e2231a]">•</span> Corsi di Lingue & Traduzioni
+                        <span className="text-[#e2231a]">•</span> corsi di lingue
                     </li>
                     <li className="flex items-center gap-[0.4cqw]">
-                        <span className="text-[#e2231a]">•</span> Corsi Safety & Security (Sicurezza)
+                        <span className="text-[#e2231a]">•</span> gestione microcrisi
                     </li>
                     <li className="flex items-center gap-[0.4cqw]">
-                        <span className="text-[#e2231a]">•</span> Orientamento & Outplacement
-                    </li>
-                    <li className="flex items-center gap-[0.4cqw]">
-                        <span className="text-[#e2231a]">•</span> Consulenza Strategica e Privacy GDPR
+                        <span className="text-[#e2231a]">•</span> corsi di informatica ed AI
                     </li>
                 </ul>
             </div>
