@@ -288,7 +288,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 <h2 className="text-lg md:text-xl font-bold text-[var(--brand-navy)] tracking-[0.2em] uppercase font-sans mb-6">
                                     {candidateTitle}
                                 </h2>
-                                <div className="flex flex-col items-center gap-4">
+                                <div className="flex flex-col items-center gap-4 cl-effect-5">
                                     {candidateLinks.map((link, idx) => (
                                         link.external ? (
                                             <a
@@ -297,7 +297,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                                 className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
-                                                {getLabel(link, lang)}
+                                                <span data-hover={getLabel(link, lang)}>{getLabel(link, lang)}</span>
                                             </a>
                                         ) : (
                                             <Link
@@ -306,7 +306,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                                 className="text-sm md:text-[15px] font-medium text-[var(--brand-gray-mid)] font-mono whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
-                                                {getLabel(link, lang)}
+                                                <span data-hover={getLabel(link, lang)}>{getLabel(link, lang)}</span>
                                             </Link>
                                         )
                                     ))}
@@ -323,17 +323,17 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 <h2 className="text-lg md:text-xl font-bold text-white tracking-[0.2em] uppercase font-sans mb-6">
                                     {companyTitle}
                                 </h2>
-                                <div className="flex flex-col items-center gap-4">
+                                <div className="flex flex-col items-center gap-4 cl-effect-5">
                                     {companyLinks.map((link, idx) => {
                                         if (link.combined) {
                                             return (
                                                 <div key={idx} className="flex items-center gap-2 text-sm md:text-[15px] font-medium text-white/55 font-mono text-center">
                                                     <a href={link.href} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
-                                                        {getLabel(link, lang)}
+                                                        <span data-hover={getLabel(link, lang)}>{getLabel(link, lang)}</span>
                                                     </a>
                                                     <span className="text-white/25">I</span>
                                                     <a href={link.combined.href} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
-                                                        {getLabel(link.combined, lang)}
+                                                        <span data-hover={getLabel(link.combined, lang)}>{getLabel(link.combined, lang)}</span>
                                                     </a>
                                                 </div>
                                             );
@@ -345,7 +345,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                                 className="text-sm md:text-[15px] font-medium text-white/55 font-mono whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
-                                                {getLabel(link, lang)}
+                                                <span data-hover={getLabel(link, lang)}>{getLabel(link, lang)}</span>
                                             </a>
                                         ) : (
                                             <Link
@@ -354,7 +354,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                                 className="text-sm md:text-[15px] font-medium text-white/55 font-mono whitespace-normal break-words text-center"
                                                 onClick={() => setMenuOpen(false)}
                                             >
-                                                {getLabel(link, lang)}
+                                                <span data-hover={getLabel(link, lang)}>{getLabel(link, lang)}</span>
                                             </Link>
                                         );
                                     })}
