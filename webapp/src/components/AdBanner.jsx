@@ -11,7 +11,7 @@ const blcAd = {
 
 const topAds = [
     {
-        href: 'https://www.asfl-svbl.ch/it/',
+        href: 'https://www.svbl.ch/it/',
         img: '/img/banner-asfl-svbl.png',
         alt: 'ASFL SVBL - Associazione Svizzera per la formazione professionale in logistica',
         fit: 'contain',
@@ -177,6 +177,91 @@ const FormaBanner = () => {
     );
 };
 
+const BlcBanner = () => {
+    return (
+        <div 
+            className="w-full h-full flex select-none overflow-hidden" 
+            style={{ 
+                background: '#ffffff', 
+                containerType: 'inline-size', 
+                height: '100%',
+                width: '100%'
+            }}
+        >
+            {/* Section 1: White BLC Logo block */}
+            <div className="w-[22%] h-full bg-white flex flex-col justify-center items-center py-[1cqw] px-[1.5cqw] shrink-0 border-r border-slate-100">
+                {/* BLC SVG Logo */}
+                <svg viewBox="0 0 228 128" className="shrink-0" style={{ width: 'clamp(55px, 9.5cqw, 95px)', height: 'auto' }}>
+                    {/* B and C in navy blue (#002544), L in red (#e2231a) */}
+                    <path 
+                        fillRule="evenodd" 
+                        clipRule="evenodd" 
+                        d="M0,3 L1,1 L35,1 L36,2 L46,2 L47,3 L50,3 L51,4 L56,5 L58,7 L62,9 L66,14 L67,20 L68,21 L68,26 L67,27 L67,30 L63,37 L60,40 L50,45 L53,47 L56,47 L62,50 L70,59 L70,61 L71,62 L71,66 L72,67 L71,76 L70,77 L70,79 L68,83 L63,89 L62,89 L59,92 L55,94 L49,95 L48,96 L43,96 L42,97 L0,97 L0,4 Z M22,17 L21,18 L21,39 L22,40 L36,40 L37,39 L39,39 L45,33 L45,30 L46,29 L45,23 L41,19 L37,17 L23,17 Z M22,55 L21,56 L21,81 L22,82 L35,82 L36,81 L40,81 L44,79 L48,75 L49,73 L49,64 L48,62 L44,58 L40,56 L23,56 Z" 
+                        fill="#002544" 
+                    />
+                    <path 
+                        d="M88,3 L89,1 L109,1 L109,79 L110,80 L145,80 L145,97 L88,97 L88,4 Z" 
+                        fill="#e2231a" 
+                    />
+                    <path 
+                        d="M198,18 L197,19 L192,20 L188,23 L187,23 L180,30 L180,31 L178,33 L177,37 L176,38 L176,41 L175,42 L175,57 L176,58 L177,64 L180,68 L180,69 L187,76 L188,76 L190,78 L192,78 L196,80 L206,81 L207,80 L214,80 L215,79 L218,79 L219,78 L221,78 L227,75 L227,94 L225,94 L222,96 L219,96 L218,97 L214,97 L213,98 L189,98 L188,97 L181,96 L171,91 L161,81 L161,80 L159,78 L156,72 L156,70 L154,66 L154,62 L153,61 L153,41 L154,40 L154,37 L155,36 L156,30 L162,19 L171,10 L172,10 L177,6 L183,3 L189,2 L190,1 L194,1 L195,0 L214,0 L215,1 L220,1 L221,2 L224,2 L225,3 L227,3 L227,23 L221,20 L215,19 L214,18 L199,18 Z" 
+                        fill="#002544" 
+                    />
+                    <text 
+                        x="114" 
+                        y="120" 
+                        fontFamily="system-ui, -apple-system, sans-serif" 
+                        fontWeight="800" 
+                        fontSize="13" 
+                        fill="#002544" 
+                        letterSpacing="0.05em"
+                        textAnchor="middle"
+                    >
+                        BUSINESS LEARNING CENTRE
+                    </text>
+                </svg>
+            </div>
+
+            {/* Section 2: Photo area - Using high-res corporate team visual */}
+            <div className="w-[43%] h-full relative overflow-hidden shrink-0">
+                <img 
+                    src="/img/Gemini_Generated_Image_ape98sape98sape9.png" 
+                    alt="Corporate Training BLC" 
+                    className="w-full h-full object-cover"
+                />
+            </div>
+
+            {/* Section 3: BLC Navy blue courses block */}
+            <div className="w-[35%] h-full bg-[#002544] flex flex-col justify-center px-[3cqw] text-white font-sans text-left leading-normal shrink-0">
+                <h4 
+                    className="font-extrabold leading-tight tracking-wide uppercase text-white" 
+                    style={{ fontSize: 'clamp(11px, 2.1cqw, 22px)' }}
+                >
+                    Formazione continua e consulenza aziendale
+                </h4>
+                <div className="w-full h-[2px] bg-[#e2231a] my-[0.8cqw]"></div>
+                <ul 
+                    className="list-none flex flex-col gap-[0.4cqw] text-white font-semibold opacity-95 leading-tight" 
+                    style={{ fontSize: 'clamp(8px, 1.35cqw, 14px)' }}
+                >
+                    <li className="flex items-center gap-[0.4cqw]">
+                        <span className="text-[#e2231a]">•</span> Corsi di Lingue & Traduzioni
+                    </li>
+                    <li className="flex items-center gap-[0.4cqw]">
+                        <span className="text-[#e2231a]">•</span> Corsi Safety & Security (Sicurezza)
+                    </li>
+                    <li className="flex items-center gap-[0.4cqw]">
+                        <span className="text-[#e2231a]">•</span> Orientamento & Outplacement
+                    </li>
+                    <li className="flex items-center gap-[0.4cqw]">
+                        <span className="text-[#e2231a]">•</span> Consulenza Strategica e Privacy GDPR
+                    </li>
+                </ul>
+            </div>
+        </div>
+    );
+};
+
 // ---------- MAIN COMPONENT ----------
 
 const AdBanner = ({ type = 'bottom' }) => {
@@ -220,12 +305,7 @@ const AdBanner = ({ type = 'bottom' }) => {
                         {isTop ? (
                             i === 0 ? <AsflBanner /> : <FormaBanner />
                         ) : (
-                            <img
-                                src={ad.img}
-                                alt={ad.alt}
-                                className={`w-full h-full object-${ad.fit}`}
-                                style={ad.position ? { objectPosition: ad.position } : undefined}
-                            />
+                            <BlcBanner />
                         )}
                     </motion.a>
                 ))}
