@@ -115,6 +115,11 @@ webapp/src/
   - File: `webapp/src/components/ui/RouteLoader.jsx`, `webapp/src/hooks/useRouteLoader.js`, keyframes `.jcl-*` in `index.css`, aggancio in `App.jsx`
   - `prefers-reduced-motion`: solo fade del logo centrato (≤400ms), niente movimento
   - Zero dipendenze Remotion in bundle; Remotion resta studio separato opzionale
+- **Sessioni 23-25 Giugno 2026** (8 commit di rifinitura UI/UX e funzionalità):
+  - **Footer Social & RSS** (commit `0594b12`): Aggiunti link social Instagram/Facebook nel footer e modale per feed RSS.
+  - **Rifiniture Layout & Responsive** (commit `0f09548`, `6ac81c9`, `a471dad`): Alzato il breakpoint di split dell'Hero da md (768px) a lg (1024px); visualizzato solo il pittogramma del logo sulla navbar mobile; ridotta la Hero mobile search placeholder font.
+  - **Allineamento Blog & Ads** (commit `2154ff7`, `75f1689`): Sistemati i breadcrumb e il titolo a 2 righe nel blog, larghezza annunci al 95%.
+  - **Rework Pricing & Glassmorphism** (commit `6f7d305`, `4012150`): Ridisegnata la sezione statistiche del pricing con 5 card a effetto glassmorphism (sfocatura dello sfondo, angoli arrotondati e sollevamento al passaggio del mouse); CTAs allineate e impostate su "Contattaci".
 
 ---
 

@@ -292,9 +292,9 @@ Ref: `00_Wiki/concepts/token-optimization.md` § Temporary File Policy
 **Model:** Haiku 4.5  
 **Status:** 🔴 CRITICAL  
 **Deadline:** URGENT  
-**Last Updated:** 2026-06-13
+**Last Updated:** 2026-06-25
 
-**Ultimo handoff:** [docs/handoff-2026-06-13.md](docs/handoff-2026-06-13.md)
+**Ultimo handoff:** [docs/handoff-2026-06-25.md](docs/handoff-2026-06-25.md)
 
 ---
 

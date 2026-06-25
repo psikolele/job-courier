@@ -205,20 +205,8 @@ const Contact = () => {
                         color: F, lineHeight: 1.2, marginBottom: 24
                     }}>{t('contact.cta_em')}</p>
                     <p style={{
-                        fontFamily: body, fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: 36
+                        fontFamily: body, fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6
                     }}>{t('contact.cta_sub')}</p>
-                    <a href="#" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                        style={{
-                            background: F, color: '#FFFFFF', border: 'none',
-                            padding: '16px 36px',
-                            fontFamily: brand, fontWeight: 700, fontSize: 11,
-                            letterSpacing: '0.14em', textTransform: 'uppercase',
-                            cursor: 'pointer', borderRadius: 0,
-                            textDecoration: 'none',
-                            display: 'inline-flex', alignItems: 'center', gap: 10
-                        }} className="hover:opacity-80 transition-opacity">
-                        {t('contact.submit')} <ArrowRight size={14} />
-                    </a>
                 </div>
             </section>
         </div>
