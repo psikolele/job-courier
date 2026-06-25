@@ -1,54 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Comptable et assistante admin",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720282-comptable-et-assistante-admin-lausanne-vaud&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Polymécanicien CFC",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720284-polymecanicien-cfc-lausanne-vaud&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Logistiker EFZ 100% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720278-logistiker-efz-100-m-w-d-zurich-zh&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Pittori edilizia Stradale",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720281-pittori-edilizia-stradale-lugano-ticino&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Muratore",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720279-muratore-lugano-ticino&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Mécanicien Automobile avec CFC",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720274-mecanicien-automobile-avec-cfc-lausanne-vd&language=en"
-  },
-  {
-    "id": 6,
     "title": "Technicien/ne Qualité (H/F)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,15 +8,39 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720287-technicien-ne-qualite-h-f-la-chaux-de-fonds-ne&language=en"
   },
   {
-    "id": 7,
-    "title": "Operatore/trice Sbavatura al Microscopio e Logistica",
+    "id": 1,
+    "title": "Servicetechniker/in Öl - Region Bern - Solothurn",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720288-operatore-trice-sbavatura-al-microscopio-e-logistica-lugano-lugano&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720286-servicetechniker-in-%C3%B6l-region-bern-solothurn-solothurn-so&language=en"
   },
   {
-    "id": 8,
+    "id": 2,
+    "title": "Fachmann Gesundheit EFZ (m,w,d) 80-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720285-fachmann-gesundheit-efz-m-w-d-80-100-landquart-maienfeld-zizers&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Comptable et assistante admin",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720282-comptable-et-assistante-admin-lausanne-vaud&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Polymécanicien CFC",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720284-polymecanicien-cfc-lausanne-vaud&language=en"
+  },
+  {
+    "id": 5,
     "title": "Kostenplaner/in (m/w/d) 80?100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,15 +48,31 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720280-kostenplaner-in-m-w-d-80-100-zurich-zh&language=en"
   },
   {
-    "id": 9,
-    "title": "Dépanneur Electricien avec CFC",
+    "id": 6,
+    "title": "Senior Kafka Engineer (90%)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720289-senior-kafka-engineer-90-zurigo&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Muratore",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720275-depanneur-electricien-avec-cfc-lausanne-vd&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720279-muratore-lugano-ticino&language=en"
   },
   {
-    "id": 10,
+    "id": 8,
+    "title": "Autista Betoniera",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720283-autista-betoniera-manno-ticino&language=en"
+  },
+  {
+    "id": 9,
     "title": "Servicetechniker/-in MSR - Gebäudeautomation (100%) (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +80,19 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720276-servicetechniker-in-msr-geb%C3%A4udeautomation-100-m-w-d-zurich-oerlikon-zh&language=en"
   },
   {
-    "id": 11,
-    "title": "Servicetechniker/in Öl - Region Bern - Solothurn",
+    "id": 10,
+    "title": "Collaborateur/trice LPP",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720286-servicetechniker-in-%C3%B6l-region-bern-solothurn-solothurn-so&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720277-collaborateur-trice-lpp-lausanne-vd&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Logistiker EFZ 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720278-logistiker-efz-100-m-w-d-zurich-zh&language=en"
   }
 ]
