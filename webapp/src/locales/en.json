@@ -30,8 +30,18 @@
     }
   },
   "blog": {
-    "title_candidates": "Career Advice",
-    "title_companies": "Recruiting Advice",
+    "title_candidates": "CAREER ADVICE",
+    "subtitle_candidates": "Practical advice for finding a job, improving your CV, and facing interviews.",
+    "title_companies": "RECRUITING ADVICE",
+    "subtitle_companies": "Strategies and suggestions to attract candidates and improve recruitment activities.",
+    "page_candidates_breadcrumb": "Career Blog",
+    "page_candidates_title_line1": "RESOURCES FOR",
+    "page_candidates_title_em": "CAREER",
+    "page_candidates_subtitle": "Practical advice for job searching, improving your CV, and facing interviews.",
+    "page_companies_breadcrumb": "Recruiting Blog",
+    "page_companies_title_line1": "RESOURCES FOR",
+    "page_companies_title_em": "RECRUITING",
+    "page_companies_subtitle": "Insights, strategies, and best practices for companies and recruiters.",
     "read_article": "Read article",
     "candidateArticles": [
       {

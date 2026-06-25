@@ -30,8 +30,18 @@
     }
   },
   "blog": {
-    "title_candidates": "Conseils de carrière",
-    "title_companies": "Conseils de recrutement",
+    "title_candidates": "CONSEILS DE CARRIÈRE",
+    "subtitle_candidates": "Conseils pratiques pour trouver un emploi, améliorer son CV et réussir ses entretiens.",
+    "title_companies": "CONSEILS DE RECRUTEMENT",
+    "subtitle_companies": "Stratégies et suggestions pour attirer des candidats et améliorer les activités de recrutement.",
+    "page_candidates_breadcrumb": "Blog Carrière",
+    "page_candidates_title_line1": "RESSOURCES POUR LA",
+    "page_candidates_title_em": "CARRIÈRE",
+    "page_candidates_subtitle": "Conseils pratiques pour chercher un emploi, améliorer son CV et réussir ses entretiens.",
+    "page_companies_breadcrumb": "Blog Recrutement",
+    "page_companies_title_line1": "RESSOURCES POUR LE",
+    "page_companies_title_em": "RECRUTEMENT",
+    "page_companies_subtitle": "Analyses, stratégies et bonnes pratiques pour les entreprises et les recruteurs.",
     "read_article": "Lire l'article",
     "candidateArticles": [
       {

@@ -7,14 +7,9 @@ import BlogSeo from '../components/blog/BlogSeo.jsx';
 import SectionLabel from '../components/ui/SectionLabel.jsx';
 import ArticleCard from '../components/blog/ArticleCard.jsx';
 
-const LABELS = {
-  carriera: { breadcrumb: 'Blog Carriera', titleLine1: 'RISORSE PER LA', titleEm: 'CARRIERA', subtitle: 'Consigli pratici per cercare lavoro, migliorare il CV e affrontare i colloqui.' },
-  recruiting: { breadcrumb: 'Blog Recruiting', titleLine1: 'RISORSE PER IL', titleEm: 'RECRUITING', subtitle: 'Approfondimenti, strategie e buone pratiche per aziende e recruiter.' },
-};
-
 const BlogCategoria = () => {
   const { categoria } = useParams();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lang = i18n.language?.slice(0, 2) || 'it';
   const categoryId = resolveCategorySegment(categoria);
   if (!categoryId) return <Navigate to="/blog/carriera" replace />;
@@ -23,7 +18,18 @@ const BlogCategoria = () => {
 
   const articles = listByCategory(categoryId, lang);
   const otherId = categoryId === 'carriera' ? 'recruiting' : 'carriera';
-  const L = LABELS[categoryId];
+  
+  const L = categoryId === 'carriera' ? {
+    breadcrumb: t('blog.page_candidates_breadcrumb'),
+    titleLine1: t('blog.page_candidates_title_line1'),
+    titleEm: t('blog.page_candidates_title_em'),
+    subtitle: t('blog.page_candidates_subtitle')
+  } : {
+    breadcrumb: t('blog.page_companies_breadcrumb'),
+    titleLine1: t('blog.page_companies_title_line1'),
+    titleEm: t('blog.page_companies_title_em'),
+    subtitle: t('blog.page_companies_subtitle')
+  };
 
   return (
     <>

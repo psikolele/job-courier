@@ -30,8 +30,18 @@
     }
   },
   "blog": {
-    "title_candidates": "Consigli di Carriera",
-    "title_companies": "Consigli di Recruiting",
+    "title_candidates": "CONSIGLI DI CARRIERA",
+    "subtitle_candidates": "Consigli pratici per trovare lavoro, migliorare il CV e affrontare i colloqui.",
+    "title_companies": "CONSIGLI DI RECRUITING",
+    "subtitle_companies": "Strategie e suggerimenti per attrarre candidati e migliorare le attività di ricerca del personale.",
+    "page_candidates_breadcrumb": "Blog Carriera",
+    "page_candidates_title_line1": "RISORSE PER LA",
+    "page_candidates_title_em": "CARRIERA",
+    "page_candidates_subtitle": "Consigli pratici per cercare lavoro, migliorare il CV e affrontare i colloqui.",
+    "page_companies_breadcrumb": "Blog Recruiting",
+    "page_companies_title_line1": "RISORSE PER IL",
+    "page_companies_title_em": "RECRUITING",
+    "page_companies_subtitle": "Approfondimenti, strategie e buone pratiche per aziende e recruiter.",
     "read_article": "Leggi l'articolo",
     "candidateArticles": [
       {

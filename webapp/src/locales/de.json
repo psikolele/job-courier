@@ -30,8 +30,18 @@
     }
   },
   "blog": {
-    "title_candidates": "Karrieretipps",
-    "title_companies": "Recruiting-Tipps",
+    "title_candidates": "KARRIERETIPPS",
+    "subtitle_candidates": "Praktische Ratschläge zur Jobsuche, zur Verbesserung des Lebenslaufs und für Vorstellungsgespräche.",
+    "title_companies": "RECRUITING-TIPPS",
+    "subtitle_companies": "Strategien und Vorschläge zur Gewinnung von Kandidaten und zur Verbesserung der Personalbeschaffung.",
+    "page_candidates_breadcrumb": "Karriere-Blog",
+    "page_candidates_title_line1": "RESSOURCEN FÜR DIE",
+    "page_candidates_title_em": "KARRIERE",
+    "page_candidates_subtitle": "Praktische Ratschläge zur Jobsuche, zur Verbesserung des Lebenslaufs und für Vorstellungsgespräche.",
+    "page_companies_breadcrumb": "Recruiting-Blog",
+    "page_companies_title_line1": "RESSOURCEN FÜR DAS",
+    "page_companies_title_em": "RECRUITING",
+    "page_companies_subtitle": "Einblicke, Strategien und bewährte Verfahren für Unternehmen und Recruiter.",
     "read_article": "Artikel lesen",
     "candidateArticles": [
       {

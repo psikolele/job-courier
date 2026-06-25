@@ -171,8 +171,8 @@ const Blog = () => {
             {/* Two separate sliders — each with own trattino + title (= menu anchor) + subtitle */}
             <div className="w-full flex flex-col gap-1" style={{ background: GL }}>
                 <MarqueeSlider
-                    title="Consigli di carriera"
-                    subtitle="Consigli pratici per trovare lavoro, migliorare il CV e affrontare i colloqui."
+                    title={t('blog.title_candidates')}
+                    subtitle={t('blog.subtitle_candidates')}
                     articles={candidateArticles}
                     readArticleText={t('blog.read_article') || 'Leggi Articolo'}
                     speed={30}
@@ -180,8 +180,8 @@ const Blog = () => {
                     slugMap={candidateSlugs}
                 />
                 <MarqueeSlider
-                    title="Consigli di recruiting"
-                    subtitle="Strategie e suggerimenti per attrarre candidati e migliorare le attività di ricerca del personale."
+                    title={t('blog.title_companies')}
+                    subtitle={t('blog.subtitle_companies')}
                     articles={companyArticles}
                     readArticleText={t('blog.read_article') || 'Leggi Articolo'}
                     speed={25}
