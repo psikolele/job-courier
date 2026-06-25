@@ -134,45 +134,43 @@ const FormaBanner = () => {
                 </ul>
             </div>
 
-            {/* Section 4: Multimedia graphics slice - Using high-res AI generated multimedia background */}
-            <div className="w-[15%] h-full relative overflow-hidden shrink-0">
+            {/* Section 4/5: Multimedia graphics with glassmorphic overlay card containing both logos */}
+            <div className="w-[29%] h-full relative overflow-hidden shrink-0 flex items-center justify-center">
                 <img 
                     src="/img/banner-multimedia-bg-generated.png" 
                     alt="Multimedia Graphics" 
                     className="w-full h-full object-cover"
                 />
-            </div>
-
-            {/* Section 5: White logo area */}
-            <div className="w-[14%] h-full bg-white flex flex-col justify-center items-center py-[1cqw] px-[1cqw] shrink-0">
-                {/* Top Half: Formati Academy logo crop */}
-                <div className="h-[45%] w-full relative overflow-hidden flex items-center justify-center">
-                    <img 
-                        src="/img/banner-forma-academy.png" 
-                        alt="Formati Academy" 
-                        className="absolute max-w-none h-[200%] top-0"
-                        style={{ left: '-566.67%', width: '666.67%', objectFit: 'contain' }}
-                    />
-                </div>
                 
-                {/* Bottom Half: ATED logo and text stacked vertically for optimal 235px height layout */}
-                <div className="h-[45%] w-full flex flex-col items-center justify-center mt-[0.5cqw] gap-[0.2cqw]">
-                    {/* ATED SVG Logo */}
-                    <svg viewBox="0 0 110 38" className="shrink-0" style={{ width: 'clamp(35px, 6.5cqw, 65px)', height: 'auto' }}>
-                        <text x="2" y="27" fontFamily="Inter, sans-serif" fontWeight="900" fontSize="26" fill="#000000" letterSpacing="-0.02em">ate</text>
-                        <circle cx="83" cy="18" r="9" stroke="#FF1F7A" strokeWidth="3.6" fill="none" />
-                        <circle cx="83" cy="18" r="3.2" fill="#FF1F7A" />
-                        <line x1="92" y1="4" x2="92" y2="28" stroke="#000000" strokeWidth="3.6" strokeLinecap="round" />
-                    </svg>
-                    
-                    {/* Text next to logo */}
-                    <div 
-                        className="flex flex-col text-black font-extrabold uppercase leading-none tracking-wider text-center justify-center shrink-0" 
-                        style={{ fontSize: 'clamp(5px, 1.0cqw, 10px)' }}
-                    >
-                        <span>con il patrocinio</span>
-                        <span className="mt-[0.2cqw]">di ated</span>
+                {/* Glassmorphic card overlay */}
+                <div className="absolute inset-[10%] bg-white/85 backdrop-blur-md border border-white/20 shadow-md rounded-[1.25rem] flex flex-col items-center justify-center p-[1cqw] gap-[1cqw]">
+                    {/* Top: Formati Academy logo */}
+                    <div className="flex items-center justify-center gap-[0.4cqw] select-none text-[#1a2554]">
+                        <span className="font-sans font-extrabold tracking-tight" style={{ fontSize: 'clamp(8px, 1.45cqw, 18px)' }}>forma</span>
+                        <svg viewBox="44 1 32 30" className="h-[1.7cqw] w-auto min-h-[13px] max-h-[22px]" style={{ aspectRatio: '32/30' }}>
+                            <path d="M51,11 L57,5 L57,13 L58,14 L62,14 L62,19 L59,19 L57,21 L57,23 L60,26 L62,26 L62,30 L61,31 L53,31 L51,29 L51,20 L50,19 L44,19 L51,12 Z" fill="#E2231A" />
+                            <path fillRule="evenodd" clipRule="evenodd" d="M65,1 L66,2 L67,2 L72,7 L72,8 L74,11 L74,13 L75,14 L75,17 L76,18 L76,27 L75,28 L75,31 L66,31 L66,25 L65,24 L65,21 L64,20 L64,15 L65,14 L64,13 L64,11 L65,10 L68,10 L69,11 L69,13 L70,14 L71,13 L71,9 L70,8 L69,5 L66,2 Z M66,14 L65,14 L64,15 L65,16 L68,16 L69,15 L68,14 L67,14 Z" fill="#2f9de5" />
+                        </svg>
+                        <span className="font-sans font-semibold text-slate-500 tracking-wide" style={{ fontSize: 'clamp(8px, 1.45cqw, 18px)' }}>academy</span>
                     </div>
+
+                    {/* Middle: Patronage Label */}
+                    <span className="font-sans font-extrabold text-slate-500 uppercase tracking-wider text-center select-none" style={{ fontSize: 'clamp(5px, 0.75cqw, 9px)' }}>
+                        con il patrocinio di
+                    </span>
+
+                    {/* Bottom: ATED SVG Logo */}
+                    <svg viewBox="0 0 300 90" className="h-[2.2cqw] w-auto min-h-[17px] max-h-[30px] fill-current text-black" style={{ aspectRatio: '300/90' }}>
+                        {/* Letter 'a' (outer + inner) */}
+                        <path fillRule="evenodd" clipRule="evenodd" d="M9,24 L10,24 L13,21 L19,18 L21,18 L22,17 L27,17 L28,16 L40,16 L41,17 L45,17 L46,18 L51,19 L60,27 L62,31 L63,36 L64,37 L64,45 L65,46 L65,87 L64,88 L51,88 L51,79 L52,78 L52,75 L53,74 L53,71 L52,70 L47,79 L42,84 L41,84 L37,87 L35,87 L31,89 L18,89 L17,88 L15,88 L9,85 L6,82 L5,82 L5,81 L1,76 L1,74 L0,73 L0,62 L1,61 L2,57 L8,51 L14,48 L17,48 L18,47 L23,47 L24,46 L41,46 L42,45 L46,45 L47,44 L49,44 L51,42 L51,36 L50,34 L46,30 L42,29 L41,28 L25,28 L24,29 L22,29 L17,33 L15,37 L15,39 L2,39 L4,31 L9,25 Z M50,51 L45,54 L42,54 L41,55 L36,55 L35,56 L28,56 L27,57 L23,57 L22,58 L18,59 L13,64 L13,71 L15,73 L15,74 L20,77 L23,77 L24,78 L27,78 L28,77 L33,77 L34,76 L36,76 L40,74 L47,67 L50,61 L50,58 L51,57 L51,52 Z" />
+                        {/* Letter 't' */}
+                        <path d="M83,0 L96,0 L96,16 L97,17 L116,17 L116,28 L115,29 L97,29 L96,30 L96,72 L99,76 L101,76 L102,77 L116,77 L116,88 L97,88 L96,87 L93,87 L89,85 L86,82 L83,76 L83,30 L82,29 L69,29 L69,17 L82,17 L83,16 L83,1 Z" />
+                        {/* Letter 'e' (outer + inner) */}
+                        <path fillRule="evenodd" clipRule="evenodd" d="M126,31 L133,23 L142,18 L144,18 L145,17 L149,17 L150,16 L159,16 L160,17 L164,17 L165,18 L167,18 L176,23 L182,30 L185,36 L186,41 L187,42 L187,56 L135,56 L134,57 L134,62 L137,68 L143,74 L147,76 L149,76 L150,77 L161,77 L162,76 L164,76 L169,72 L173,64 L186,64 L184,72 L181,76 L181,77 L174,84 L173,84 L171,86 L167,87 L166,88 L163,88 L162,89 L147,89 L146,88 L141,87 L135,84 L127,76 L123,69 L122,63 L121,62 L121,57 L120,56 L120,50 L121,49 L121,43 L122,42 L123,37 L126,32 Z M149,28 L148,29 L144,30 L137,37 L135,41 L135,43 L134,44 L135,46 L173,46 L174,45 L174,42 L173,41 L173,39 L171,35 L166,30 L162,29 L161,28 L150,28 Z" />
+                        {/* Letter 'd' (outer + arrow) */}
+                        <path d="M196,19 L197,17 L250,17 L251,18 L255,18 L256,19 L261,20 L268,24 L272,28 L272,29 L211,29 L210,30 L210,75 L211,76 L271,76 L272,77 L267,82 L266,82 L262,85 L260,85 L257,87 L254,87 L253,88 L197,88 L196,87 L196,20 Z" />
+                        <path d="M277,34 L276,33 L278,32 L282,36 L283,36 L299,52 L299,53 L278,74 L277,74 L277,71 L280,66 L280,64 L282,60 L282,45 L281,44 L281,42 L280,41 L280,39 L278,35 Z" />
+                    </svg>
                 </div>
             </div>
         </div>
