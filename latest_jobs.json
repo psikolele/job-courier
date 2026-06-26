@@ -9,11 +9,11 @@
   },
   {
     "id": 1,
-    "title": "Buchhalter 80-100% (a)",
+    "title": "Aussendienstmitarbeiter (m,w,d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720465-buchhalter-80-100-a-basel-bl&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720458-aussendienstmitarbeiter-m-w-d-100-altst%C3%A4tten-sg&language=en"
   },
   {
     "id": 2,
@@ -25,22 +25,6 @@
   },
   {
     "id": 3,
-    "title": "Servicetechniker",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720456-servicetechniker-zurich-zh&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Aussendienstmitarbeiter (m,w,d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720458-aussendienstmitarbeiter-m-w-d-100-altst%C3%A4tten-sg&language=en"
-  },
-  {
-    "id": 5,
     "title": "Planificateur Électricien 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,12 +32,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720461-planificateur-electricien-100-cdi-h-f-d-vevey-vd&language=en"
   },
   {
-    "id": 6,
-    "title": "Servicetechniker Notruf- & Sicherheitssysteme 100% (m/w/d)",
+    "id": 4,
+    "title": "Servicetechniker",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720463-servicetechniker-notruf-sicherheitssysteme-100-m-w-d-uster-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720456-servicetechniker-zurich-zh&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Buchhalter 80-100% (a)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720465-buchhalter-80-100-a-basel-bl&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Dipl. Pflegefachperson im Tag- und Spätdienst (m,w,d) 80-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720464-dipl-pflegefachperson-im-tag-und-sp%C3%A4tdienst-m-w-d-80-100-gossau-sg-sg&language=en"
   },
   {
     "id": 7,
@@ -65,22 +65,14 @@
   },
   {
     "id": 8,
-    "title": "Agricoltore",
+    "title": "Instandhaltungsfachmann im Netzbetrieb (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720466-agricoltore-locarno-ti&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720462-instandhaltungsfachmann-im-netzbetrieb-m-w-d-zurich-zh&language=en"
   },
   {
     "id": 9,
-    "title": "Betriebselektriker Produktionsanlagen Region Wohlen",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720468-betriebselektriker-produktionsanlagen-region-wohlen-wohlen-aargau&language=en"
-  },
-  {
-    "id": 10,
     "title": "Pflegehelferin SRK (m,w,d) 50 - 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +80,19 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720459-pflegehelferin-srk-m-w-d-50-100-st-gallen-sg&language=en"
   },
   {
-    "id": 11,
-    "title": "Dipl. Pflegefachperson im Tag- und Spätdienst (m,w,d) 80-100%",
+    "id": 10,
+    "title": "Betriebsmechaniker Maschinenservice & Techniksupport 80-100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720464-dipl-pflegefachperson-im-tag-und-sp%C3%A4tdienst-m-w-d-80-100-gossau-sg-sg&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720469-betriebsmechaniker-maschinenservice-techniksupport-80-100-m-w-d-h%C3%A4rkingen-so&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Junior Productmanager Nutzfahrzeuge/Bau-Landmaschinen 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720467-junior-productmanager-nutzfahrzeuge-bau-landmaschinen-100-zurich-zh&language=en"
   }
 ]
