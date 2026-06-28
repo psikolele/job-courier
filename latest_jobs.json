@@ -1,38 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Operaio specializzato/conduttore di macchine utensili",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720667-operaio-specializzato-conduttore-di-macchine-utensili-bioggio-lugano&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Secrétaire 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720658-secretaire-100-cdi-h-f-d-sion-vs&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Elektro-Projektleiter mit Potenzial für mehr (a) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720664-elektro-projektleiter-mit-potenzial-fur-mehr-a-100-bern-bern&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Schreiner EFZ (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720662-schreiner-efz-m-w-d-100-wolfwil-so&language=en"
-  },
-  {
-    "id": 4,
     "title": "Verniciatore/trice IMMEDIATAMENTE DISPONIBILE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,59 +8,91 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720668-verniciatore-trice-immediatamente-disponibile-mendrisio-lugano&language=en"
   },
   {
-    "id": 5,
-    "title": "Flexible Tageseinsätze in der Region Bern ? Jetzt Teil unseres Einsatzpools werden!",
+    "id": 1,
+    "title": "Schaler (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720661-flexible-tageseins%C3%A4tze-in-der-region-bern-jetzt-teil-unseres-einsatzpools-werden-bern-be&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720680-schaler-m-w-d-feusisberg&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Gerüstmonteur (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720676-gerustmonteur-m-w-d-winterthur&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Bauarbeiter (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720669-bauarbeiter-m-w-d-winterthur&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Schaler (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720675-schaler-m-w-d-winterthur&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Bauarbeiter (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720679-bauarbeiter-m-w-d-st-gallen&language=en"
   },
   {
     "id": 6,
-    "title": "Personalberater Medical 100% (m,w,d)",
+    "title": "Bauarbeiter (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720663-personalberater-medical-100-m-w-d-st-gallen-sg&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720681-bauarbeiter-m-w-d-feusisberg&language=en"
   },
   {
     "id": 7,
-    "title": "Leitung Küche (m/w/d) für einen bekannten Luzerner Gastrobetrieb",
+    "title": "Betonbohrer / Fräser (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720654-leitung-kuche-m-w-d-fur-einen-bekannten-luzerner-gastrobetrieb-luzern-lu&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720674-betonbohrer-fr%C3%A4ser-m-w-d-andelfingen&language=en"
   },
   {
     "id": 8,
-    "title": "Ingénieur en environnement 80-100% CDI (H/F/D)",
+    "title": "Bauarbeiter (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720656-ingenieur-en-environnement-80-100-cdi-h-f-d-sion-vs&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720678-bauarbeiter-m-w-d-weinfelden&language=en"
   },
   {
     "id": 9,
-    "title": "Event & Seminar Manager (m/w/d) 80-100%",
+    "title": "Bauarbeiter (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720660-event-seminar-manager-m-w-d-80-100-st-gallen-sg&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720673-bauarbeiter-m-w-d-winterthur&language=en"
   },
   {
     "id": 10,
-    "title": "Chef de Partie (m/w/d) für die Sommersaison oder in Jahresanstellung",
+    "title": "Maler  (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720655-chef-de-partie-m-w-d-fur-die-sommersaison-oder-in-jahresanstellung-luzern-lu&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720671-maler-m-w-d-winterthur&language=en"
   },
   {
     "id": 11,
-    "title": "Geschäftsführer für Restaurant am See  (m/w/d) 100 %, 8610 Uster",
+    "title": "Schaler (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720657-gesch%C3%A4ftsfuhrer-fur-restaurant-am-see-m-w-d-100-8610-uster-uster-zh&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720670-schaler-m-w-d-bulach&language=en"
   }
 ]
