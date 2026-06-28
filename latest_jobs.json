@@ -1,70 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Elektro-Projektleiter (a) 80 - 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720805-elektro-projektleiter-a-80-100-bern-bern&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Contrôleur/euse qualité 2x8",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720794-contr%C3%B4leur-euse-qualite-2x8-la-chaux-de-fonds-ne&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Techniker Unterhalt (HLKSE) 80% - 100% (a) im Herzen von Bern",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720806-techniker-unterhalt-hlkse-80-100-a-im-herzen-von-bern-bern-be&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Conducteur de travaux bâtiment 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720802-conducteur-de-travaux-b%C3%A2timent-100-cdi-h-f-d-monthey-valais&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Automatiker /Betriebselektriker m/w/ 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720808-automatiker-betriebselektriker-m-w-100-rheinfelden-rheinfelden&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Technicien ES GC et bâtiment 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720801-technicien-es-gc-et-b%C3%A2timent-100-cdi-h-f-d-sion-vs&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Briefsortierer Schichtbetrieb (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720807-briefsortierer-schichtbetrieb-m-w-d-h%C3%A4rkingen-bz-so&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Elektronik-Ingenieur (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720803-elektronik-ingenieur-m-w-d-basel-bs&language=en"
-  },
-  {
-    "id": 8,
     "title": "Installateur sanitaire 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,7 +8,47 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720797-installateur-sanitaire-100-cdi-h-f-d-monthey-vs&language=en"
   },
   {
-    "id": 9,
+    "id": 1,
+    "title": "Mécanicien Régleur CNC  (H/F)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720798-mecanicien-regleur-cnc-h-f-la-chaux-de-fonds-ne&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Elektro-Projektleiter (a) 80 - 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720805-elektro-projektleiter-a-80-100-bern-bern&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Technicien ES GC et bâtiment 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720801-technicien-es-gc-et-b%C3%A2timent-100-cdi-h-f-d-sion-vs&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Lüftungstechniker Gebäudetechnik HLK m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720804-luftungstechniker-geb%C3%A4udetechnik-hlk-m-w-d-100-liestal-basel-landschaft&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Dipl. Pflegefachfrau / Fachfrau Gesundheit EFZ (m,w,d) Nachtwache ab 40%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720795-dipl-pflegefachfrau-fachfrau-gesundheit-efz-m-w-d-nachtwache-ab-40-ilanz-graubunden&language=en"
+  },
+  {
+    "id": 6,
     "title": "Mitarbeiter Zuschneiderei / Logistik (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,7 +56,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720799-mitarbeiter-zuschneiderei-logistik-m-w-d-100-aarau-ag&language=en"
   },
   {
-    "id": 10,
+    "id": 7,
+    "title": "Dipl. Pflegefachfrau HF als Teamleitung Nachtdienst (m,w,d) 80-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720800-dipl-pflegefachfrau-hf-als-teamleitung-nachtdienst-m-w-d-80-100-zurich-zh&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Contrôleur/euse qualité 2x8",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720794-contr%C3%B4leur-euse-qualite-2x8-la-chaux-de-fonds-ne&language=en"
+  },
+  {
+    "id": 9,
     "title": "Mandatsleiterin / Mandatsleiter Treuhand",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +80,19 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720796-mandatsleiterin-mandatsleiter-treuhand-solothurn-so&language=en"
   },
   {
-    "id": 11,
-    "title": "Lüftungstechniker Gebäudetechnik HLK m/w/d 100%",
+    "id": 10,
+    "title": "Elektronik-Ingenieur (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720804-luftungstechniker-geb%C3%A4udetechnik-hlk-m-w-d-100-liestal-basel-landschaft&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720803-elektronik-ingenieur-m-w-d-basel-bs&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Briefsortierer Schichtbetrieb (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720807-briefsortierer-schichtbetrieb-m-w-d-h%C3%A4rkingen-bz-so&language=en"
   }
 ]
