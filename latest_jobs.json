@@ -1,14 +1,86 @@
 [
   {
     "id": 0,
-    "title": "Dachdecker (a) 100%",
+    "title": "MURATORE",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720893-dachdecker-a-100-bern-bern&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720913-muratore-bellinzona&language=en"
   },
   {
     "id": 1,
+    "title": "ELETTRICISTA",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720907-elettricista-locarno&language=en"
+  },
+  {
+    "id": 2,
+    "title": "COSTRUTTORE STRADALE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720912-costruttore-stradale-bellinzona&language=en"
+  },
+  {
+    "id": 3,
+    "title": "MACCHINISTA – ESCAVATORISTA M1",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720915-macchinista-?-escavatorista-m1-bellinzona&language=en"
+  },
+  {
+    "id": 4,
+    "title": "SELVICOLTORE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720911-selvicoltore-locarno&language=en"
+  },
+  {
+    "id": 5,
+    "title": "METALCOSTRUTTORE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720908-metalcostruttore-locarno&language=en"
+  },
+  {
+    "id": 6,
+    "title": "MECCANICO MEZZI PESANTI E AGRICOLI",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720906-meccanico-mezzi-pesanti-e-agricoli-locarno&language=en"
+  },
+  {
+    "id": 7,
+    "title": "PITTORE CAPPOTTISTA",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720914-pittore-cappottista-locarno&language=en"
+  },
+  {
+    "id": 8,
+    "title": "ASFALTISTI",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720910-asfaltisti-bellinzona&language=en"
+  },
+  {
+    "id": 9,
+    "title": "CARPENTIERE EDILE DI SOTTOSTRUTTURA",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720909-carpentiere-edile-di-sottostruttura-bellinzona&language=en"
+  },
+  {
+    "id": 10,
     "title": "Kranführer Kat. B",
     "location": "Svizzera",
     "sector": "Generale",
@@ -16,83 +88,11 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720905-kranfuhrer-kat-b-bern-be&language=en"
   },
   {
-    "id": 2,
-    "title": "Technicien/Métreur en bâtiment 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720895-technicien-metreur-en-b%C3%A2timent-100-cdi-h-f-d-sion-vs&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Chef de secteur technique 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720896-chef-de-secteur-technique-100-cdi-h-f-d-sierre-vs&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Chauffeur CE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720892-chauffeur-ce-kr%C3%A4iligen-be&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Betriebselektriker m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720900-betriebselektriker-m-w-d-100-basel-basel&language=en"
-  },
-  {
-    "id": 6,
+    "id": 11,
     "title": "Buchhalter",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720903-buchhalter-romanshorn-tg&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Maschinenbauer (a)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720897-maschinenbauer-a-murten-fr&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Kranführer + Vorarbeiter + Maschinist + Bauarbeiter A + B (a) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720894-kranfuhrer-vorarbeiter-maschinist-bauarbeiter-a-b-a-100-bern-bern-mittelland&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Automobilassistent/in",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720904-automobilassistent-in-bern-be&language=en"
-  },
-  {
-    "id": 10,
-    "title": "Sanitärinstallateur EFZ (m/w/d) 80?100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720902-sanit%C3%A4rinstallateur-efz-m-w-d-80-100-langendorf-so&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Techniker für modernste Sicherheitslösungen und Anlagen 100% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720899-techniker-fur-modernste-sicherheitsl%C3%B6sungen-und-anlagen-100-m-w-d-zurich-zurich&language=en"
   }
 ]
