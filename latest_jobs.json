@@ -1,22 +1,6 @@
 [
   {
     "id": 0,
-    "title": "ELETTRICISTA",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720907-elettricista-locarno&language=en"
-  },
-  {
-    "id": 1,
-    "title": "PITTORE CAPPOTTISTA",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720914-pittore-cappottista-locarno&language=en"
-  },
-  {
-    "id": 2,
     "title": "GIARDINIERE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,20 +8,36 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720916-giardiniere-locarno&language=en"
   },
   {
-    "id": 3,
-    "title": "Kranführer Kat. B",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720905-kranfuhrer-kat-b-bern-be&language=en"
-  },
-  {
-    "id": 4,
-    "title": "POSATORE DI PARQUET",
+    "id": 1,
+    "title": "CARPENTIERE EDILE DI SOTTOSTRUTTURA",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720917-posatore-di-parquet-locarno&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720909-carpentiere-edile-di-sottostruttura-bellinzona&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Automobilassistent/in",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720904-automobilassistent-in-bern-be&language=en"
+  },
+  {
+    "id": 3,
+    "title": "ELETTRICISTA",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720907-elettricista-locarno&language=en"
+  },
+  {
+    "id": 4,
+    "title": "COSTRUTTORE STRADALE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720912-costruttore-stradale-bellinzona&language=en"
   },
   {
     "id": 5,
@@ -49,14 +49,30 @@
   },
   {
     "id": 6,
-    "title": "ASFALTISTI",
+    "title": "Buchhalter",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720910-asfaltisti-bellinzona&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720903-buchhalter-romanshorn-tg&language=en"
   },
   {
     "id": 7,
+    "title": "Kranführer Kat. B",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720905-kranfuhrer-kat-b-bern-be&language=en"
+  },
+  {
+    "id": 8,
+    "title": "MACCHINISTA – ESCAVATORISTA M1",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720915-macchinista-?-escavatorista-m1-bellinzona&language=en"
+  },
+  {
+    "id": 9,
     "title": "MURATORE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,28 +80,12 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720913-muratore-bellinzona&language=en"
   },
   {
-    "id": 8,
-    "title": "SELVICOLTORE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720911-selvicoltore-locarno&language=en"
-  },
-  {
-    "id": 9,
-    "title": "COSTRUTTORE STRADALE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720912-costruttore-stradale-bellinzona&language=en"
-  },
-  {
     "id": 10,
-    "title": "Automobilassistent/in",
+    "title": "POSATORE DI PARQUET",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720904-automobilassistent-in-bern-be&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6720917-posatore-di-parquet-locarno&language=en"
   },
   {
     "id": 11,
