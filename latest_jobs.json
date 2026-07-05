@@ -1,78 +1,38 @@
 [
   {
     "id": 0,
-    "title": "Autolackierer (m/w/d) 100%",
+    "title": "Bauarbeiter (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723569-autolackierer-m-w-d-100-kuttigen-ag&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723587-bauarbeiter-m-w-d-w%C3%A4denswil&language=en"
   },
   {
     "id": 1,
-    "title": "Neurologe/in 50-100% (m,w,d)",
+    "title": "Bauarbeiter (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723571-neurologe-in-50-100-m-w-d-basel-basel&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723584-bauarbeiter-m-w-d-winterthur&language=en"
   },
   {
     "id": 2,
-    "title": "Diplomierte Pflegefachperson mit NDS Anästhesie 50-100% (m,w,d)",
+    "title": "Bauarbeiter (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723574-diplomierte-pflegefachperson-mit-nds-an%C3%A4sthesie-50-100-m-w-d-basel-basel-stadt&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723588-bauarbeiter-m-w-d-feusisberg&language=en"
   },
   {
     "id": 3,
-    "title": "Biomedizinische/r Analytiker/In 50-100% (m,w,d)",
+    "title": "Schaler (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723572-biomedizinische-r-analytiker-in-50-100-m-w-d-basel-stadt-basel-stadt&language=en"
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723589-schaler-m-w-d-feusisberg&language=en"
   },
   {
     "id": 4,
-    "title": "Backoffice-Spezialist/in mit Projektadministration (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723582-backoffice-spezialist-in-mit-projektadministration-m-w-d-bern-be&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Assistent Gesundheit und Soziales EBA oder Pflegehelfer SRK m,w,d",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723583-assistent-gesundheit-und-soziales-eba-oder-pflegehelfer-srk-m-w-d-biberist-so&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Infirmier en santé mentale (h/f/d) 80-100% CDD de plusieurs mois",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723573-infirmier-en-sante-mentale-h-f-d-80-100-cdd-de-plusieurs-mois-montreux-vd&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Leiter im Schaltanlagenbau m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723570-leiter-im-schaltanlagenbau-m-w-d-100-basel-basel&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Mitarbeiter Qualitätssicherung (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723577-mitarbeiter-qualit%C3%A4tssicherung-m-w-d-100-zuchwil-so&language=en"
-  },
-  {
-    "id": 9,
     "title": "Projektleiter (m/w/d) Elektro",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +40,59 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723580-projektleiter-m-w-d-elektro-oetwil-am-see-zurich&language=en"
   },
   {
-    "id": 10,
-    "title": "Mitarbeiter Zustellung (m/w/d)  50-60% in der Spät-/Abendzustellung",
+    "id": 5,
+    "title": "Mouveur/ Agent de parc (H/F/H)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723578-mitarbeiter-zustellung-m-w-d-50-60-in-der-sp%C3%A4t-abendzustellung-bulach-zh&language=en"
+    "company": "DasTeam",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723592-mouveur-agent-de-parc-h-f-h-1203-gen%C3%A8ve&language=en"
   },
   {
-    "id": 11,
+    "id": 6,
+    "title": "Gerüstmonteur (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723590-gerustmonteur-m-w-d-winterthur&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Maler  (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723586-maler-m-w-d-winterthur&language=en"
+  },
+  {
+    "id": 8,
     "title": "Auto- und Industrielackierer:in (w/m/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723579-auto-und-industrielackierer-in-w-m-d-100-buchs-aargau&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Backoffice-Spezialist/in mit Projektadministration (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723582-backoffice-spezialist-in-mit-projektadministration-m-w-d-bern-be&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Schaler (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Work Selection AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723585-schaler-m-w-d-winterthur&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Assistent Gesundheit und Soziales EBA oder Pflegehelfer SRK m,w,d",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723583-assistent-gesundheit-und-soziales-eba-oder-pflegehelfer-srk-m-w-d-biberist-so&language=en"
   }
 ]
