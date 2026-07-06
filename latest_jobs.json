@@ -1,14 +1,22 @@
 [
   {
     "id": 0,
-    "title": "Fachperson Betreuung EFZ 80-100% (m,w,d)",
+    "title": "Regionaler Serviceleiter Nordwest (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723788-fachperson-betreuung-efz-80-100-m-w-d-basel-bs&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723789-regionaler-serviceleiter-nordwest-m-w-d-h%C3%A4rkingen-so&language=en"
   },
   {
     "id": 1,
+    "title": "RIF. 592 - TECNICO STAMPAGGIO A INIEZIONE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "E-Work Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723792-rif-592-tecnico-stampaggio-a-iniezione-mendrisio&language=en"
+  },
+  {
+    "id": 2,
     "title": "Arzt / Ärztin 40-100% (m,w,d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -16,28 +24,20 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723783-arzt-%C3%A4rztin-40-100-m-w-d-laufen-bl&language=en"
   },
   {
-    "id": 2,
-    "title": "Fachperson Gesundheit EFZ 40-80% (m,w,d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723778-fachperson-gesundheit-efz-40-80-m-w-d-basel-bs&language=en"
-  },
-  {
     "id": 3,
-    "title": "Leiter:in Baumanagement",
+    "title": "Dipl. Pflegefachfrau HF für Frührehastation (m,w,d) 60%-100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723779-leiter-in-baumanagement-zurich-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723785-dipl-pflegefachfrau-hf-fur-fruhrehastation-m-w-d-60-100-walzenhausen-ar&language=en"
   },
   {
     "id": 4,
-    "title": "Regionaler Serviceleiter Nordwest (m/w/d)",
+    "title": "Elektro-Sicherheitsberater oder Elektroprojektleiter m/w/d 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723789-regionaler-serviceleiter-nordwest-m-w-d-h%C3%A4rkingen-so&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723787-elektro-sicherheitsberater-oder-elektroprojektleiter-m-w-d-100-basel-basel&language=en"
   },
   {
     "id": 5,
@@ -49,38 +49,14 @@
   },
   {
     "id": 6,
-    "title": "Kundendiensttechniker:in (m/w/d) 80-100%",
+    "title": "Fachperson Gesundheit EFZ 40-80% (m,w,d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723781-kundendiensttechniker-in-m-w-d-80-100-graubunden-gr&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723778-fachperson-gesundheit-efz-40-80-m-w-d-basel-bs&language=en"
   },
   {
     "id": 7,
-    "title": "Dipl. Pflegefachfrau HF für Frührehastation (m,w,d) 60%-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723785-dipl-pflegefachfrau-hf-fur-fruhrehastation-m-w-d-60-100-walzenhausen-ar&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Instandhaltungsmechaniker (m/w/d) mit Erfahrung",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723784-instandhaltungsmechaniker-m-w-d-mit-erfahrung-bienne-be&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Ergotherapeut/In 50-100% (m,w,d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723777-ergotherapeut-in-50-100-m-w-d-basel-bs&language=en"
-  },
-  {
-    "id": 10,
     "title": "Elektromonteur 80 ? 100 %",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723780-elektromonteur-80-100-sursee-lu&language=en"
   },
   {
-    "id": 11,
-    "title": "Servicetechniker - Quereinsteiger willkommen - Zürich (m/w/d)",
+    "id": 8,
+    "title": "Dipl. Pflegefachperson HF 80-100% (m,w,d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723786-servicetechniker-quereinsteiger-willkommen-zurich-m-w-d-zurich-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723791-dipl-pflegefachperson-hf-80-100-m-w-d-basel-bs&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Facharzt / Fachärztin für innere Medizin 50-100% (m,w,d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723790-facharzt-fach%C3%A4rztin-fur-innere-medizin-50-100-m-w-d-buochs-nw&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Leiter:in Baumanagement",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723779-leiter-in-baumanagement-zurich-zh&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Kundendiensttechniker:in (m/w/d) 80-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6723781-kundendiensttechniker-in-m-w-d-80-100-graubunden-gr&language=en"
   }
 ]
