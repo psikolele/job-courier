@@ -1,62 +1,22 @@
 [
   {
     "id": 0,
-    "title": "Addetto al bistro'",
+    "title": "AUTISTA DISPONIBILE DA SUBITO – ZONA QUINTO",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724356-addetto-al-bistro-grancia-lugano&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724358-autista-disponibile-da-subito-?-zona-quinto-sopraceneri&language=en"
   },
   {
     "id": 1,
-    "title": "Elektroinstallateur EFZ (a)",
+    "title": "Operaio Edile / Muratore",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724350-elektroinstallateur-efz-a-bern-bern&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724360-operaio-edile-muratore-acquarossa&language=en"
   },
   {
     "id": 2,
-    "title": "Polymechaniker EFZ (m/w/d) ? Montage & Instandhaltung",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724349-polymechaniker-efz-m-w-d-montage-instandhaltung-st-gallen-sg&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Automatiker EFZ (m/w/d) ? Prüf- und Messtechnik",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724346-automatiker-efz-m-w-d-pruf-und-messtechnik-st-gallen-sg&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Mitarbeiter/in Paketsortierung Wechselschicht (m/w/d) 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724347-mitarbeiter-in-paketsortierung-wechselschicht-m-w-d-80-100-pratteln-bl&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Mécanicien PL responsable technique et diagnostique à 100% (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724345-mecanicien-pl-responsable-technique-et-diagnostique-%C3%A0-100-h-f-d-corcelles-pr%C3%A8s-payerne-vd&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Temporär AGS/PH August 60-100% (m,w,d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724355-tempor%C3%A4r-ags-ph-august-60-100-m-w-d-attiswil-so&language=en"
-  },
-  {
-    "id": 7,
     "title": "METALCOSTRUTTORE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,15 +24,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724357-metalcostruttore-locarno&language=en"
   },
   {
-    "id": 8,
-    "title": "Projektassistenz Bau",
+    "id": 3,
+    "title": "PIANIFICATORE DELLA PRODUZIONE - SETTORE ELETTRONICO",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724353-projektassistenz-bau-zurich-zh&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724359-pianificatore-della-produzione-settore-elettronico-locarno&language=en"
   },
   {
-    "id": 9,
+    "id": 4,
     "title": "Sachbearbeiter/in Treuhand 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,12 +40,52 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724354-sachbearbeiter-in-treuhand-100-aarau-aargau&language=en"
   },
   {
-    "id": 10,
-    "title": "PIANIFICATORE DELLA PRODUZIONE - SETTORE ELETTRONICO",
+    "id": 5,
+    "title": "Polymechaniker EFZ (m/w/d) ? Montage & Instandhaltung",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724359-pianificatore-della-produzione-settore-elettronico-locarno&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724349-polymechaniker-efz-m-w-d-montage-instandhaltung-st-gallen-sg&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Automatiker EFZ (m/w/d) ? Prüf- und Messtechnik",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724346-automatiker-efz-m-w-d-pruf-und-messtechnik-st-gallen-sg&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Elektroinstallateur EFZ (a)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724350-elektroinstallateur-efz-a-bern-bern&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Küchenchef 100% (m/w/d) für ein Ausflugsrestaurant in Horw",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724348-kuchenchef-100-m-w-d-fur-ein-ausflugsrestaurant-in-horw-horw-lu&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Mitarbeiter/in Paketsortierung Wechselschicht (m/w/d) 80-100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724347-mitarbeiter-in-paketsortierung-wechselschicht-m-w-d-80-100-pratteln-bl&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Operaio di produzione",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6724352-operaio-di-produzione-mendrisio-ti&language=en"
   },
   {
     "id": 11,
