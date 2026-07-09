@@ -1,4 +1,4 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 4 Giugno 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 26 Giugno 2026)
 
 ## 📌 Stato Attuale: Operazioni Completate
 
@@ -37,6 +37,67 @@
 * **Navbar Sempre Visibile**: Rimosso lo stato trasparente allo scroll di partenza. Navbar sempre attiva con sfondo `white/98`, shrinkage di altezza `72px -> 60px` ed attivazione progressiva di ombra all'aumentare dello scroll.
 * **Spazi Pubblicitari (AdSlots)**: Eliminata la vecchia sezione CTA ridondante e sostituita con due ampi spazi AdSlot flex-row 50%/50% a caricamento lazy per massimizzare la monetizzazione.
 * **Blog 50/50 Split**: Layout "Clinical Boutique" totalmente bianco spezzato in due colonne asincrone (Candidati a sx con carosello 5s, Aziende a dx con carosello 5.3s).
+
+### 7. Notion CRM Integration & Snapshot Rebuild (Luglio 2026) — ✅ *COMPLETED*
+* **Importazione e Allineamento Categoria**: Sviluppato lo script di sincronizzazione `sync_categories_to_notion.py` che ha mappato e importato le categorie `Temp`, `Perm` e `Temp e Perm` dal file Excel `.raw/20260629_Agenzie_CH_aggiornate_2026.xlsx` su Notion (353 pagine Notion aggiornate con un match rate del 98.5% e 0 errori).
+* **Vercel Blob Snapshot Cache**: Configurato il Vercel Blob store `jc-crm-blob` per ospitare lo snapshot cache JSON contenente tutte le **6.138 aziende e contatti** raggruppati lato server Next.js. Questo bypassa i limiti di rate-limiting di Notion e ottimizza il caricamento della pipeline e delle tabelle a schermo.
+* **Middleware Rebuild Protection**: Modificato `middleware.ts` per consentire all'endpoint `/api/companies/rebuild` di bypassare NextAuth se l'header `x-rebuild-secret` corrisponde alla variabile d'ambiente `REBUILD_SECRET`.
+* **Automazione Cron Job su n8n**: Sviluppato lo script `deploy_rebuild_cron.mjs` ed attivato il workflow cron job `"JC CRM - Rebuild Snapshot Cron"` (ID: `TtIVXWWuyfAgawl6`) su `emanueleserra.app.n8n.cloud` per innescare la ricostruzione automatica dello snapshot in Vercel Blob ogni 15 minuti.
+* **Audit di Verifica & Esportazione**: Creato lo script di controllo `verify_and_export.py` che ha confermato un'unione dei dati con copertura superiore al 98.5% rispetto a tutti i file di input storici e generato il file Excel consolidato `Notion_CRM_Export_Gabriele.xlsx` (6.138 righe) pronto per Gabriele.
+
+### 6. LLM-Enhanced Job Matching — 3-Phase Plan (Giugno 2026) — 🔴 *IN PROGRESS*
+
+**Handoff:** `docs/handoff-2026-06-25.md` | **Piano:** `docs/IMPLEMENTATION_PLAN_2026-06-25.md` | **Meeting:** `docs/MEETING_SUMMARY_2026-06-25.md`
+
+**Contesto:** 2 sessioni meeting Otter.ai (49 min totali, 25 giugno). Session 1 = LinkedIn automation strategy. Session 2 = Database + email automation design. Entrambe mappate direttamente su Job Courier come blueprint architetturale.
+
+#### Phase 1 — Foundation (NOW, 2-3 settimane, target 15 luglio)
+* **P1.1 Tassonomia Normalizzata:** Centralizzare enums cantoni→regionId, settori→sectorId in `utils/taxonomy.js`. Cross-reference ISCO-08/O*NET. 26 cantoni svizzeri + 15+ settori. Effort: 1 settimana.
+* **P1.2 Search Indexing (Elasticsearch):** Sostituire scraping HTML raw (3 page concurrent, 45 jobs max) con Elasticsearch index. Sub-100ms retrieval, full-text + filtri. Docker-compose per ES 8.11.0. Pipeline: Scraper → Indexer → API. Effort: 1.5 settimane.
+* **P1.3 Faceted Navigation:** Conteggi live per cantone/settore/livello esperienza. Salary range slider. Aggregation queries ES. Componente `FacetedSearch.jsx`. Effort: 1 settimana.
+* **Checkpoint Phase 1:** Staging deploy con 10k+ offerte indicizzate, ricerca <100ms, filtri funzionanti.
+
+#### Phase 2 — Semantic Matching (4-6 settimane, target fine agosto)
+* **P2.1 Vector Embeddings:** 768-dim embeddings per job descriptions. OpenAI `text-embedding-3-small` ($0.02/1M tokens) o HuggingFace `paraphrase-multilingual-mpnet-base-v2` (gratuito, supporta IT+DE). Hybrid search keyword+vector (30%/70% weight).
+* **P2.2 LLM Query Understanding:** Claude API per parsing query strutturato → skills, experience_level, location, remote_preference. Costo ~$0.10-0.50/1k queries.
+* **P2.3 Skills Graph:** Grafo bidirezionale skill con distanza (adjacent=0.5, similar=0.7). 500+ skills target. Auto-expand query "React" → include "Vue", "Angular".
+* **P2.4 LLM Ranking + Explainability:** Claude re-rank top-20 con match score 0-10 + reasoning. UI `JobCardWithReasoning.jsx`.
+
+#### Phase 3 — Personalization (6-8 settimane, target fine ottobre)
+* **P3.1 Candidate Profiles:** Search history, click tracking, application signals, saved jobs.
+* **P3.2 Unified Recommendation Model:** SilverTorch pattern — retrieval+ranking in single stage (23.7x faster).
+* **P3.3 Dual-Perspective Reasoning:** Match under hard constraints (certificazione, visa, location) + soft signals.
+
+#### Discriminanti Chiave (da Session 2 meeting)
+| Discriminante | Impatto |
+|---------------|---------|
+| **Lingua** (IT/DE/FR/EN) | Template email, lingua job alerts |
+| **Cantone** (26 CH) | Filtro regionale, regionId mapping |
+| **Tipo Azienda** (Corporate vs Staffing) | Contenuto outreach diverso |
+| **Tipo Impiego** (Permanent/Temporary/Contract) | Value proposition diversa |
+| **Livello Esperienza** (Junior/Mid/Senior) | Matching candidato-offerta |
+
+#### Assegnazioni
+* **Emanuele S.:** Phase 1 (ES setup, tassonomia, UI filtri) — 3.5 settimane
+* **Michele:** Phase 2 (embeddings, LLM query, skills graph) — 5 settimane post-Phase 1
+
+#### Costi Stimati
+| Componente | Costo |
+|-----------|-------|
+| Elasticsearch Cloud | ~$500/mese |
+| OpenAI Embeddings | ~$200 (una tantum, 10k jobs) |
+| Claude API (query+ranking) | ~$150/mese |
+| **Totale** | **~$850/mese** |
+
+#### Blockers per Gabriele (in attesa feedback)
+1. Risorse: Emanuele + Michele 100% dedicati?
+2. Infrastruttura: ES cloud vs self-hosted?
+3. Budget API: Claude + OpenAI approvato?
+4. Scope Phase 1 lock
+5. Timeline OK?
+6. Standup frequency?
+
+**Mail bozza pronta:** `GMAIL_DRAFT_GABRIELE.txt` → `g.molteni@jobcourier.ch` (CC: emanuele.serra, michele). Mail NON ancora inviata (Gmail MCP non disponibile il 25/06).
 
 ---
 
