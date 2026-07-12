@@ -5,66 +5,10 @@
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725570-montage-elektriker-efz-winterthur-zurich&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Elektrofachfrau/Elektrofachmann / Monteurin/Monteur Sicherungsanlagen m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725564-elektrofachfrau-elektrofachmann-monteurin-monteur-sicherungsanlagen-m-w-d-100-aarau-aargau&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Mitarbeiter für Ladestation in der Region Baden m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725576-mitarbeiter-fur-ladestation-in-der-region-baden-m-w-d-100-baden-aargau&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Montageelektriker EFZ als FTTH Monteur (m/w) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725568-montageelektriker-efz-als-ftth-monteur-m-w-100-birmenstorf-ag-aargau&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Lagermitarbeiter Kommissionierung 90% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725575-lagermitarbeiter-kommissionierung-90-m-w-d-d%C3%A4llikon-zh&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Montageelektriker EFZ (m/w/d) für Service und Reparaturen gesucht",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725577-montageelektriker-efz-m-w-d-fur-service-und-reparaturen-gesucht-oftringen-aargau&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Montage-Elektriker EFZ",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725565-montage-elektriker-efz-zurich-zurich&language=en"
   },
   {
-    "id": 7,
-    "title": "Elektroplaner 80-100% m*w",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725573-elektroplaner-80-100-m-w-aarau-aargau&language=en"
-  },
-  {
-    "id": 8,
+    "id": 1,
     "title": "Technico commercial",
     "location": "Svizzera",
     "sector": "Generale",
@@ -72,15 +16,63 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725567-technico-commercial-morges-vd&language=en"
   },
   {
-    "id": 9,
-    "title": "Elektroplaner für IT-Projekte Region Aarau m/w/d 100%",
+    "id": 2,
+    "title": "Mitarbeiter für Ladestation in der Region Zürich m/w/d 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725574-elektroplaner-fur-it-projekte-region-aarau-m-w-d-100-aarau-aargau&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725572-mitarbeiter-fur-ladestation-in-der-region-zurich-m-w-d-100-zurich-zurich&language=en"
   },
   {
-    "id": 10,
+    "id": 3,
+    "title": "Eidg. dipl. Elektroinstallateur (a) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725578-eidg-dipl-elektroinstallateur-a-100-bern-bern&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Montageelektriker EFZ (m/w/d) für Service und Reparaturen gesucht",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725577-montageelektriker-efz-m-w-d-fur-service-und-reparaturen-gesucht-oftringen-aargau&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Elektrofachfrau/Elektrofachmann / Monteurin/Monteur Sicherungsanlagen m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725564-elektrofachfrau-elektrofachmann-monteurin-monteur-sicherungsanlagen-m-w-d-100-aarau-aargau&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Elektroplaner 80-100% m*w",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725573-elektroplaner-80-100-m-w-aarau-aargau&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Montage-Elektriker EFZ",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725569-montage-elektriker-efz-w%C3%A4denswil-zurich&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Mitarbeiter für Ladestation in der Region Baden m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725576-mitarbeiter-fur-ladestation-in-der-region-baden-m-w-d-100-baden-aargau&language=en"
+  },
+  {
+    "id": 9,
     "title": "Montage- / Baustellenleiter  für Photovoltaikanlagen (a) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +80,19 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725571-montage-baustellenleiter-fur-photovoltaikanlagen-a-100-solothurn-so&language=en"
   },
   {
-    "id": 11,
-    "title": "Strategic Procurement Manager Elektro & Anlagen (m/w/d) 100%",
+    "id": 10,
+    "title": "Lagermitarbeiter Kommissionierung 90% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725566-strategic-procurement-manager-elektro-anlagen-m-w-d-100-bolligen-be&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725575-lagermitarbeiter-kommissionierung-90-m-w-d-d%C3%A4llikon-zh&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Elektroplaner für IT-Projekte Region Aarau m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725574-elektroplaner-fur-it-projekte-region-aarau-m-w-d-100-aarau-aargau&language=en"
   }
 ]
