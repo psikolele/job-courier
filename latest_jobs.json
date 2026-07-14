@@ -1,38 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Assembler elettronico",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725861-assembler-elettronico-bellinzona-lugano&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Trade Compliance Specialist | Export Operations | Origine Preferenziale delle Merci (50%)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725867-trade-compliance-specialist-export-operations-origine-preferenziale-delle-merci-50-bioggio&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Tecnico Installatore e Manutentore Automazione",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725866-tecnico-installatore-e-manutentore-automazione-gordola&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Sabbiatore industriale",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725862-sabbiatore-industriale-bellinzona-lugano&language=en"
-  },
-  {
-    "id": 4,
     "title": "Polimeccanico",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,39 +8,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725858-polimeccanico-bellinzona-lugano&language=en"
   },
   {
-    "id": 5,
-    "title": "Barista per la Stagione Estiva",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725864-barista-per-la-stagione-estiva-lugano&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Tornitore /trice CNC",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725859-tornitore-trice-cnc-lugano-lugano&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Manovale/Aiuto Idraulico",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725856-manovale-aiuto-idraulico-balerna-bellinzona&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Responsable Comptable (H/F)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Approach People Recruitment",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725868-responsable-comptable-h-f-lausanne&language=en"
-  },
-  {
-    "id": 9,
+    "id": 1,
     "title": "Lavaggista moto 50%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +16,83 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725855-lavaggista-moto-50-lugano-lugano&language=en"
   },
   {
-    "id": 10,
-    "title": "Addetto al Montaggio Tende",
+    "id": 2,
+    "title": "Trade Compliance Specialist | Export Operations | Origine Preferenziale delle Merci (50%)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725865-addetto-al-montaggio-tende-sottoceneri&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725867-trade-compliance-specialist-export-operations-origine-preferenziale-delle-merci-50-bioggio&language=en"
   },
   {
-    "id": 11,
+    "id": 3,
+    "title": "Tornitore /trice CNC",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725859-tornitore-trice-cnc-lugano-lugano&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Tester industriale elettronico",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725860-tester-industriale-elettronico-bellinzona-lugano&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Tecnico Installatore e Manutentore Automazione",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725866-tecnico-installatore-e-manutentore-automazione-gordola&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Giardiniere",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725854-giardiniere-rivera-tessin-bellinzona&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Barista per la Stagione Estiva",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725864-barista-per-la-stagione-estiva-lugano&language=en"
+  },
+  {
+    "id": 8,
     "title": "Operatore di produzione in camera bianca (fixed term)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725863-operatore-di-produzione-in-camera-bianca-fixed-term-lugano-lugano&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Assembler elettronico",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725861-assembler-elettronico-bellinzona-lugano&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Responsable Comptable (H/F)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725868-responsable-comptable-h-f-lausanne&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Manovale/Aiuto Idraulico",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725856-manovale-aiuto-idraulico-balerna-bellinzona&language=en"
   }
 ]
