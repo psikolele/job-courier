@@ -1,11 +1,11 @@
 [
   {
     "id": 0,
-    "title": "FALEGNAME",
+    "title": "SELVICOLTORE",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725951-falegname-locarno&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725950-selvicoltore-locarno&language=en"
   },
   {
     "id": 1,
@@ -17,14 +17,6 @@
   },
   {
     "id": 2,
-    "title": "SELVICOLTORE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725950-selvicoltore-locarno&language=en"
-  },
-  {
-    "id": 3,
     "title": "CONTABILE SENIOR",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,55 +24,23 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725952-contabile-senior-lugano&language=en"
   },
   {
+    "id": 3,
+    "title": "FALEGNAME",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725951-falegname-locarno&language=en"
+  },
+  {
     "id": 4,
-    "title": "Instrumentiste ou IDDO",
+    "title": "Chauffeur de Bus H/F",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725939-instrumentiste-ou-iddo-neuchatel&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725938-chauffeur-de-bus-h-f-sion&language=en"
   },
   {
     "id": 5,
-    "title": "Supply Chain Planner, 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Rapelli - ORIOR Food AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725945-supply-chain-planner-100-stabio-ti&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Conseiller(ère) en téléphonie - FRIBOURG",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725941-conseiller-%C3%A8re-en-telephonie-fribourg-fribourg&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Meccanico DISPONIBILE DA SUBITO",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725948-meccanico-disponibile-da-subito-lugano-lugano&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Tecnologo Alimentare, 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Rapelli - ORIOR Food AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725946-tecnologo-alimentare-100-stabio-ti&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Collaboratrice/collaboratore Spedizione, 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Rapelli - ORIOR Food AG",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725942-collaboratrice-collaboratore-spedizione-100-stabio-ti&language=en"
-  },
-  {
-    "id": 10,
     "title": "Manutentore/Maintenance Technician, 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +48,51 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725943-manutentore-maintenance-technician-100-stabio-ti&language=en"
   },
   {
-    "id": 11,
-    "title": "Chauffeur de Bus H/F",
+    "id": 6,
+    "title": "Conseiller(ère) en téléphonie - VALAIS",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Manpower",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725938-chauffeur-de-bus-h-f-sion&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725940-conseiller-%C3%A8re-en-telephonie-valais-sion&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Tecnologo Alimentare, 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Rapelli - ORIOR Food AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725946-tecnologo-alimentare-100-stabio-ti&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Instrumentiste ou IDDO",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Manpower",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725939-instrumentiste-ou-iddo-neuchatel&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Supply Chain Planner, 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Rapelli - ORIOR Food AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725945-supply-chain-planner-100-stabio-ti&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Meccanico DISPONIBILE DA SUBITO",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725948-meccanico-disponibile-da-subito-lugano-lugano&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Collaboratore Pulizia, 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Rapelli - ORIOR Food AG",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6725944-collaboratore-pulizia-100-stabio-ti&language=en"
   }
 ]
