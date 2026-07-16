@@ -1,46 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Magazziniere",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Team Personnel Solutions SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726943-magazziniere-grancia&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Integration Architect",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726946-integration-architect-geneva&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Teamleiter:in IT Perimeter Security Engineering",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726944-teamleiter-in-it-perimeter-security-engineering-zurich&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Data Architect",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726945-data-architect-geneva&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Cloud Engineer",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726948-cloud-engineer-zurich&language=en"
-  },
-  {
-    "id": 5,
     "title": "Senior Workplace Engineer",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,39 +8,55 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726947-senior-workplace-engineer-zurich&language=en"
   },
   {
-    "id": 6,
-    "title": "Betriebsmechaniker/in oder Schlosser/in",
+    "id": 1,
+    "title": "Magazziniere",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726934-betriebsmechaniker-in-oder-schlosser-in-steg-vs&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726949-magazziniere-sottoceneri&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Montatore di carpenteria pesante",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726950-montatore-di-carpenteria-pesante-arbedo-castione&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Teamleiter:in IT Perimeter Security Engineering",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726944-teamleiter-in-it-perimeter-security-engineering-zurich&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Idraulico",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726954-idraulico-sottoceneri&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Asfaltatore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726951-asfaltatore-sopraceneri&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Lattoniere",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726953-lattoniere-sottoceneri&language=en"
   },
   {
     "id": 7,
-    "title": "Servicetechniker Wartung & Inbetriebnahme International (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726940-servicetechniker-wartung-inbetriebnahme-international-m-w-d-zurich-zh&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Elektroinstallateur EFZ  (a) 80-100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726935-elektroinstallateur-efz-a-80-100-wangen-an-der-aare-be&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Zeichner:in EFZ Fachrichtung Ingenieurbau",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726936-zeichner-in-efz-fachrichtung-ingenieurbau-zurich-zh&language=en"
-  },
-  {
-    "id": 10,
     "title": "Operatore/trice Pulizie Speciali",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726942-operatore-trice-pulizie-speciali-lugano-lugano&language=en"
   },
   {
-    "id": 11,
-    "title": "Ferblantier",
+    "id": 8,
+    "title": "Fabbro carpenteria leggera",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726941-ferblantier-la-chaux-de-fonds-ne&language=en"
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726952-fabbro-carpenteria-leggera-sopraceneri&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Magazziniere",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Team Personnel Solutions SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726943-magazziniere-grancia&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Cloud Engineer",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726948-cloud-engineer-zurich&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Integration Architect",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6726946-integration-architect-geneva&language=en"
   }
 ]
