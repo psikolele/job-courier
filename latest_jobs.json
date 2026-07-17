@@ -1,30 +1,14 @@
 [
   {
     "id": 0,
-    "title": "Chef d'équipe maçonnerie bâtiment/GC 100% CDI (H/F/D)",
+    "title": "Business Developer / Commercial Terrain B2B (VIE) - Allemand & Français bilingues - Suisse alémaniqu",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727137-chef-d-equipe-ma%C3%A7onnerie-b%C3%A2timent-gc-100-cdi-h-f-d-martigny-vs&language=en"
+    "company": "Approach People Recruitment",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727143-business-developer-commercial-terrain-b2b-vie-allemand-fran%C3%A7ais-bilingues-suisse-alemaniqu-zurich&language=en"
   },
   {
     "id": 1,
-    "title": "Monteur sanitaire CFC",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727141-monteur-sanitaire-cfc-neuchatel-ne&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Technicien piscine 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727134-technicien-piscine-100-cdi-h-f-d-aigle-vd&language=en"
-  },
-  {
-    "id": 3,
     "title": "Opérateur de production à 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,7 +16,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727136-operateur-de-production-%C3%A0-100-cdi-h-f-d-martigny-vs&language=en"
   },
   {
-    "id": 4,
+    "id": 2,
     "title": "COUVREURS / FERBLANTIERS (Zingueur) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,15 +24,15 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727133-couvreurs-ferblantiers-zingueur-100-fontaines-ne-ne&language=en"
   },
   {
-    "id": 5,
-    "title": "Consultant Permanent 80-100% (m/w/d)",
+    "id": 3,
+    "title": "Monteur sanitaire CFC",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727132-consultant-permanent-80-100-m-w-d-aarau-ag&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727141-monteur-sanitaire-cfc-neuchatel-ne&language=en"
   },
   {
-    "id": 6,
+    "id": 4,
     "title": "Koch EFZ für Altersheim an Goldküste (m/w/d) 80 bis 100 %",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,20 +40,36 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727140-koch-efz-fur-altersheim-an-goldkuste-m-w-d-80-bis-100-zolliken-zh&language=en"
   },
   {
-    "id": 7,
-    "title": "Lüftungsmonteur EFZ 100% (m/w/d)",
+    "id": 5,
+    "title": "Quality Manager",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727131-luftungsmonteur-efz-100-m-w-d-bern-be&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727129-quality-manager-lugano-ti&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Servicetechniker Verkehrs- und Kommunikationstechnik 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727138-servicetechniker-verkehrs-und-kommunikationstechnik-100-m-w-d-zurich-zh&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Technicien piscine 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727134-technicien-piscine-100-cdi-h-f-d-aigle-vd&language=en"
   },
   {
     "id": 8,
-    "title": "Leitung Restauration (a) 100 %",
+    "title": "MENUISIERS POSEURS 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727139-leitung-restauration-a-100-saanenm%C3%B6ser-bei-gstaad-be&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727142-menuisiers-poseurs-100-fontaines-ne-ne&language=en"
   },
   {
     "id": 9,
@@ -81,18 +81,18 @@
   },
   {
     "id": 10,
-    "title": "Administrateur systèmes & réseaux IT 80-100% CDI (H/F/D)",
+    "title": "Chef d'équipe maçonnerie bâtiment/GC 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727128-administrateur-syst%C3%A8mes-reseaux-it-80-100-cdi-h-f-d-sierre-vs&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727137-chef-d-equipe-ma%C3%A7onnerie-b%C3%A2timent-gc-100-cdi-h-f-d-martigny-vs&language=en"
   },
   {
     "id": 11,
-    "title": "Quality Manager",
+    "title": "Polisseurs/euses Complets",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727129-quality-manager-lugano-ti&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727130-polisseurs-euses-complets-le-locle-ne&language=en"
   }
 ]
