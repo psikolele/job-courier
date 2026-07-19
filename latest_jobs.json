@@ -1,6 +1,14 @@
 [
   {
     "id": 0,
+    "title": "Gebäudetechniker (m/w/d) Gebäude Automatiker (m/w/d) HLKK & MSRL",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727517-geb%C3%A4udetechniker-m-w-d-geb%C3%A4ude-automatiker-m-w-d-hlkk-msrl-zurich-zh&language=en"
+  },
+  {
+    "id": 1,
     "title": "Servicetechniker (m/w/d) Haushaltsgeräte Zentralschweiz",
     "location": "Svizzera",
     "sector": "Generale",
@@ -8,79 +16,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727525-servicetechniker-m-w-d-haushaltsger%C3%A4te-zentralschweiz-luzern-lu&language=en"
   },
   {
-    "id": 1,
-    "title": "Projektleiter Feuerungstechnik (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727518-projektleiter-feuerungstechnik-m-w-d-zurich-zh&language=en"
-  },
-  {
     "id": 2,
-    "title": "Mécanicien Régleur CNC  (H/F)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727528-mecanicien-regleur-cnc-h-f-la-chaux-de-fonds-ne&language=en"
-  },
-  {
-    "id": 3,
-    "title": "Servicetechniker (m/w/d) Automation International",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727516-servicetechniker-m-w-d-automation-international-zurich-zh&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Servicemonteur/in Elektro (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727523-servicemonteur-in-elektro-m-w-d-m%C3%B6hlin-ag&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Betriebselektriker mit Allroundtalent (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727521-betriebselektriker-mit-allroundtalent-m-w-d-dubendorf-zh&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Abteilungsleiter/Elektro-Projektleiter m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727520-abteilungsleiter-elektro-projektleiter-m-w-d-100-basel-basel&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Technicien de service SAV",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727515-technicien-de-service-sav-neuch%C3%A2tel-ne&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Directeur de travaux 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727522-directeur-de-travaux-100-cdi-h-f-d-monthey-vs&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Mitarbeiter Logistik (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727526-mitarbeiter-logistik-m-w-d-100-dintikon-ag&language=en"
-  },
-  {
-    "id": 10,
     "title": "Logistiker/in (m/w/d) 100% Temporär",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +24,75 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727527-logistiker-in-m-w-d-100-tempor%C3%A4r-frauenfeld-tg&language=en"
   },
   {
-    "id": 11,
-    "title": "Technicien Bois/Ebéniste 100% CDI (H/F/D)",
+    "id": 3,
+    "title": "Field Engineer / Servicetechniker/In (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727514-technicien-bois-ebeniste-100-cdi-h-f-d-sion-vs&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727519-field-engineer-servicetechniker-in-m-w-d-zurich-zh&language=en"
+  },
+  {
+    "id": 4,
+    "title": "Data Center Facility Engineer (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727524-data-center-facility-engineer-m-w-d-rafz-zh&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Servicetechniker (m/w/d) Automation International",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727516-servicetechniker-m-w-d-automation-international-zurich-zh&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Directeur de travaux 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727522-directeur-de-travaux-100-cdi-h-f-d-monthey-vs&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Servicemonteur/in Elektro (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727523-servicemonteur-in-elektro-m-w-d-m%C3%B6hlin-ag&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Abteilungsleiter/Elektro-Projektleiter m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727520-abteilungsleiter-elektro-projektleiter-m-w-d-100-basel-basel&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Projektleiter Feuerungstechnik (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727518-projektleiter-feuerungstechnik-m-w-d-zurich-zh&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Technicien de service SAV",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727515-technicien-de-service-sav-neuch%C3%A2tel-ne&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Mitarbeiter Logistik (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727526-mitarbeiter-logistik-m-w-d-100-dintikon-ag&language=en"
   }
 ]
