@@ -1,11 +1,11 @@
 [
   {
     "id": 0,
-    "title": "ASSEMBLATORI E COLLAUDATORI ELETTRONICI",
+    "title": "MECCANICO MEZZI PESANTI E AGRICOLI",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727902-assemblatori-e-collaudatori-elettronici-locarno&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727904-meccanico-mezzi-pesanti-e-agricoli-locarno&language=en"
   },
   {
     "id": 1,
@@ -17,22 +17,6 @@
   },
   {
     "id": 2,
-    "title": "SALDATORE METALCOSTRUTTORE",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727901-saldatore-metalcostruttore-locarno&language=en"
-  },
-  {
-    "id": 3,
-    "title": "MECCANICO MEZZI PESANTI E AGRICOLI",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727904-meccanico-mezzi-pesanti-e-agricoli-locarno&language=en"
-  },
-  {
-    "id": 4,
     "title": "GIARDINIERE SELVICOLTORE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -40,7 +24,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727900-giardiniere-selvicoltore-locarno&language=en"
   },
   {
-    "id": 5,
+    "id": 3,
     "title": "CARPENTIERE TETTI IN LEGNO",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,28 +32,44 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727903-carpentiere-tetti-in-legno-locarno&language=en"
   },
   {
+    "id": 4,
+    "title": "ASSEMBLATORI E COLLAUDATORI ELETTRONICI",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727902-assemblatori-e-collaudatori-elettronici-locarno&language=en"
+  },
+  {
+    "id": 5,
+    "title": "SALDATORE METALCOSTRUTTORE",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727901-saldatore-metalcostruttore-locarno&language=en"
+  },
+  {
     "id": 6,
-    "title": "Fabbro",
+    "title": "Operaio plastico specializzato presse iniezione",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727895-fabbro-bellinzona-bellinzona&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727894-operaio-plastico-specializzato-presse-iniezione-bellinzona-bellinzona&language=en"
   },
   {
     "id": 7,
-    "title": "Operaio/a metalmeccanico/a",
+    "title": "Piegatore di lamiera",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727897-operaio-a-metalmeccanico-a-lugano-bellinzona&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727899-piegatore-di-lamiera-bellinzona-lugano&language=en"
   },
   {
     "id": 8,
-    "title": "Saldatore TIG/MIG",
+    "title": "Addetti lucidatura/smerigliatura",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727898-saldatore-tig-mig-bellinzona-bellinzona&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727892-addetti-lucidatura-smerigliatura-bellinzona-lugano&language=en"
   },
   {
     "id": 9,
@@ -81,18 +81,18 @@
   },
   {
     "id": 10,
-    "title": "Addetto alle pulizie",
+    "title": "Saldatore TIG/MIG",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727891-addetto-alle-pulizie-rivera-tessin-bellinzona&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727898-saldatore-tig-mig-bellinzona-bellinzona&language=en"
   },
   {
     "id": 11,
-    "title": "Addetti lucidatura/smerigliatura",
+    "title": "Fabbro",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727892-addetti-lucidatura-smerigliatura-bellinzona-lugano&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727895-fabbro-bellinzona-bellinzona&language=en"
   }
 ]
