@@ -1,35 +1,35 @@
 [
   {
     "id": 0,
-    "title": "Operaio plastico specializzato presse iniezione",
+    "title": "Saldatore TIG/MIG",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727894-operaio-plastico-specializzato-presse-iniezione-bellinzona-bellinzona&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727898-saldatore-tig-mig-bellinzona-bellinzona&language=en"
   },
   {
     "id": 1,
-    "title": "Serramentista posatore",
+    "title": "Menuisier Poseur de cuisines 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727890-serramentista-posatore-lugano-bellinzona&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727886-menuisier-poseur-de-cuisines-100-cdi-h-f-d-martigny-vs&language=en"
   },
   {
     "id": 2,
-    "title": "Quality Engineer",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727889-quality-engineer-mezzovico-ti-mezzovico&language=en"
-  },
-  {
-    "id": 3,
     "title": "Piegatore di lamiera",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727899-piegatore-di-lamiera-bellinzona-lugano&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Elektroinstallateur oder Montage-Elektriker (a) für Grossbaustellen",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727887-elektroinstallateur-oder-montage-elektriker-a-fur-grossbaustellen-solothurn-solothurn&language=en"
   },
   {
     "id": 4,
@@ -41,11 +41,11 @@
   },
   {
     "id": 5,
-    "title": "Saldatore TIG/MIG",
+    "title": "Installateur Electricien CFC / Chef Monteur",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727898-saldatore-tig-mig-bellinzona-bellinzona&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727885-installateur-electricien-cfc-chef-monteur-aigle-vs&language=en"
   },
   {
     "id": 6,
@@ -57,22 +57,6 @@
   },
   {
     "id": 7,
-    "title": "Installateur Electricien CFC / Chef Monteur",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727885-installateur-electricien-cfc-chef-monteur-aigle-vs&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Operaio/a metalmeccanico/a",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727897-operaio-a-metalmeccanico-a-lugano-bellinzona&language=en"
-  },
-  {
-    "id": 9,
     "title": "Fabbro",
     "location": "Svizzera",
     "sector": "Generale",
@@ -80,19 +64,35 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727895-fabbro-bellinzona-bellinzona&language=en"
   },
   {
-    "id": 10,
-    "title": "Menuisier Poseur de cuisines 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727886-menuisier-poseur-de-cuisines-100-cdi-h-f-d-martigny-vs&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Operaio settore plastico (estrusione)",
+    "id": 8,
+    "title": "Quality Engineer",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727893-operaio-settore-plastico-estrusione-bellinzona-lugano&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727889-quality-engineer-mezzovico-ti-mezzovico&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Addetti lucidatura/smerigliatura",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727892-addetti-lucidatura-smerigliatura-bellinzona-lugano&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Operaio/a metalmeccanico/a",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727897-operaio-a-metalmeccanico-a-lugano-bellinzona&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Serramentista posatore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6727890-serramentista-posatore-lugano-bellinzona&language=en"
   }
 ]
