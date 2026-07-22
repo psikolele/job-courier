@@ -1,14 +1,38 @@
 [
   {
     "id": 0,
-    "title": "Addetto al Controllo Qualità Meccanico",
+    "title": "AUTISTA AUTOTRASPORTATORE",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728085-addetto-al-controllo-qualit%C3%A0-meccanico-mezzovico-lugano&language=en"
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728091-autista-autotrasportatore-locarno&language=en"
   },
   {
     "id": 1,
+    "title": "Operatori/trici di linee di produzione",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728090-operatori-trici-di-linee-di-produzione-mendrisio&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Verniciatore",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728089-verniciatore-mendrisio&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Elettricista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728088-elettricista-mendrisio&language=en"
+  },
+  {
+    "id": 4,
     "title": "Technicien menuisier 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -16,47 +40,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728078-technicien-menuisier-100-cdi-h-f-d-martigny-vs&language=en"
   },
   {
-    "id": 2,
-    "title": "Rappresentante commerciale settore Ferramenta (Bellinzonese)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728086-rappresentante-commerciale-settore-ferramenta-bellinzonese-bellinzona-bellinzona&language=en"
-  },
-  {
-    "id": 3,
-    "title": "CNC-Fräser (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728084-cnc-fr%C3%A4ser-m-w-d-100-zurich-zurich&language=en"
-  },
-  {
-    "id": 4,
-    "title": "TreuhänderIn 80-100% in Oerlikon",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728083-treuh%C3%A4nderin-80-100-in-oerlikon-zurich-oerlikon-zh&language=en"
-  },
-  {
     "id": 5,
-    "title": "Elektro-Projektleiter mit Zusatzverantwortung (a) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728072-elektro-projektleiter-mit-zusatzverantwortung-a-100-solothurn-so&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Polymécanicien 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728074-polymecanicien-100-cdi-h-f-d-monthey-vs&language=en"
-  },
-  {
-    "id": 7,
     "title": "Menuisier d'atelier 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,20 +48,36 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728076-menuisier-d-atelier-100-cdi-h-f-d-martigny-vs&language=en"
   },
   {
-    "id": 8,
-    "title": "Menuisier CFC 100% CDI (H/F/D)",
+    "id": 6,
+    "title": "Addetto al Controllo Qualità Meccanico",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728085-addetto-al-controllo-qualit%C3%A0-meccanico-mezzovico-lugano&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Ingénieur en génie civil 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728080-menuisier-cfc-100-cdi-h-f-d-sierre-valais&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728079-ingenieur-en-genie-civil-100-cdi-h-f-d-monthey-vs&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Rappresentante commerciale settore Ferramenta (Bellinzonese)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728086-rappresentante-commerciale-settore-ferramenta-bellinzonese-bellinzona-bellinzona&language=en"
   },
   {
     "id": 9,
-    "title": "Elektroinstallateur EFZ (a)",
+    "title": "CNC-Fräser (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728082-elektroinstallateur-efz-a-bern-bern&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728084-cnc-fr%C3%A4ser-m-w-d-100-zurich-zurich&language=en"
   },
   {
     "id": 10,
@@ -89,10 +89,10 @@
   },
   {
     "id": 11,
-    "title": "Secrétaire médicale (H/F)",
+    "title": "Ingénieur en automation 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728075-secretaire-medicale-h-f-gen%C3%A8ve-ge&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728077-ingenieur-en-automation-100-cdi-h-f-d-monthey-vs&language=en"
   }
 ]
