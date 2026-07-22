@@ -1,14 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Elettricista",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Gi Group SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728088-elettricista-mendrisio&language=en"
-  },
-  {
-    "id": 1,
     "title": "Operatori/trici di linee di produzione",
     "location": "Svizzera",
     "sector": "Generale",
@@ -16,7 +8,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728090-operatori-trici-di-linee-di-produzione-mendrisio&language=en"
   },
   {
-    "id": 2,
+    "id": 1,
     "title": "AUTISTA AUTOTRASPORTATORE",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,7 +16,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728091-autista-autotrasportatore-locarno&language=en"
   },
   {
-    "id": 3,
+    "id": 2,
     "title": "Verniciatore",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,20 +24,28 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728089-verniciatore-mendrisio&language=en"
   },
   {
+    "id": 3,
+    "title": "Elettricista",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Gi Group SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728088-elettricista-mendrisio&language=en"
+  },
+  {
     "id": 4,
+    "title": "Elektroinstallateur EFZ (a)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728082-elektroinstallateur-efz-a-bern-bern&language=en"
+  },
+  {
+    "id": 5,
     "title": "CNC-Fräser (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728084-cnc-fr%C3%A4ser-m-w-d-100-zurich-zurich&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Ingénieur en automation 100% CDI (H/F/D)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728077-ingenieur-en-automation-100-cdi-h-f-d-monthey-vs&language=en"
   },
   {
     "id": 6,
@@ -65,34 +65,34 @@
   },
   {
     "id": 8,
-    "title": "Elektroinstallateur EFZ (a)",
+    "title": "Technicien CVC 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728082-elektroinstallateur-efz-a-bern-bern&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728081-technicien-cvc-100-cdi-h-f-d-monthey-vs&language=en"
   },
   {
     "id": 9,
-    "title": "Rappresentante commerciale settore Ferramenta (Bellinzonese)",
+    "title": "Ingénieur en génie civil 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728086-rappresentante-commerciale-settore-ferramenta-bellinzonese-bellinzona-bellinzona&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728079-ingenieur-en-genie-civil-100-cdi-h-f-d-monthey-vs&language=en"
   },
   {
     "id": 10,
+    "title": "Menuisier CFC 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728080-menuisier-cfc-100-cdi-h-f-d-sierre-valais&language=en"
+  },
+  {
+    "id": 11,
     "title": "Technicien menuisier 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728078-technicien-menuisier-100-cdi-h-f-d-martigny-vs&language=en"
-  },
-  {
-    "id": 11,
-    "title": "Addetto al Controllo Qualità Meccanico",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728085-addetto-al-controllo-qualit%C3%A0-meccanico-mezzovico-lugano&language=en"
   }
 ]
