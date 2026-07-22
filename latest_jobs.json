@@ -33,14 +33,6 @@
   },
   {
     "id": 4,
-    "title": "Rappresentante commerciale settore Ferramenta (Bellinzonese)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728086-rappresentante-commerciale-settore-ferramenta-bellinzonese-bellinzona-bellinzona&language=en"
-  },
-  {
-    "id": 5,
     "title": "Technicien CVC 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -48,12 +40,20 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728081-technicien-cvc-100-cdi-h-f-d-monthey-vs&language=en"
   },
   {
-    "id": 6,
+    "id": 5,
     "title": "Addetto al Controllo Qualità Meccanico",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Randstad Svizzera SA",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728085-addetto-al-controllo-qualit%C3%A0-meccanico-mezzovico-lugano&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Menuisier d'atelier 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728076-menuisier-d-atelier-100-cdi-h-f-d-martigny-vs&language=en"
   },
   {
     "id": 7,
@@ -65,27 +65,27 @@
   },
   {
     "id": 8,
-    "title": "Menuisier CFC 100% CDI (H/F/D)",
+    "title": "Rappresentante commerciale settore Ferramenta (Bellinzonese)",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728080-menuisier-cfc-100-cdi-h-f-d-sierre-valais&language=en"
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728086-rappresentante-commerciale-settore-ferramenta-bellinzonese-bellinzona-bellinzona&language=en"
   },
   {
     "id": 9,
-    "title": "Elektroinstallateur EFZ (a)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728082-elektroinstallateur-efz-a-bern-bern&language=en"
-  },
-  {
-    "id": 10,
     "title": "Ingénieur en génie civil 100% CDI (H/F/D)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728079-ingenieur-en-genie-civil-100-cdi-h-f-d-monthey-vs&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Technicien menuisier 100% CDI (H/F/D)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728078-technicien-menuisier-100-cdi-h-f-d-martigny-vs&language=en"
   },
   {
     "id": 11,
