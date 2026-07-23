@@ -1,30 +1,6 @@
 [
   {
     "id": 0,
-    "title": "FRESATORE CNC 5 ASSI ESPERTO",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "ER Services Sagl",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728446-fresatore-cnc-5-assi-esperto-stabio&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Senior Cloud Project Manager (Modern Workplace)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Michael Bailey Associates",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728443-senior-cloud-project-manager-modern-workplace-bern&language=en"
-  },
-  {
-    "id": 2,
-    "title": "TORNITORE CNC ESPERTO",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "ER Services Sagl",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728445-tornitore-cnc-esperto-stabio&language=en"
-  },
-  {
-    "id": 3,
     "title": "Linux Platform Engineer (RHEL/OpenShift)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -32,23 +8,31 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728444-linux-platform-engineer-rhel-openshift-bern&language=en"
   },
   {
+    "id": 1,
+    "title": "TORNITORE CNC ESPERTO",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "ER Services Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728445-tornitore-cnc-esperto-stabio&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Senior Cloud Project Manager (Modern Workplace)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728443-senior-cloud-project-manager-modern-workplace-bern&language=en"
+  },
+  {
+    "id": 3,
+    "title": "FRESATORE CNC 5 ASSI ESPERTO",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "ER Services Sagl",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728446-fresatore-cnc-5-assi-esperto-stabio&language=en"
+  },
+  {
     "id": 4,
-    "title": "Sachbearbeiter Export & Auftragsabwicklung 60-80% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728439-sachbearbeiter-export-auftragsabwicklung-60-80-m-w-d-olten-so&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Automatiker EFZ (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728432-automatiker-efz-m-w-d-100-zurich-zurich&language=en"
-  },
-  {
-    "id": 6,
     "title": "Solar-Installateur (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -56,7 +40,31 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728434-solar-installateur-m-w-d-100-zurich-zurich&language=en"
   },
   {
+    "id": 5,
+    "title": "Elektroniker m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728437-elektroniker-m-w-d-100-zurich-zurich&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Automatiker EFZ (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728432-automatiker-efz-m-w-d-100-zurich-zurich&language=en"
+  },
+  {
     "id": 7,
+    "title": "Operatore di produzione",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728442-operatore-di-produzione-cadro-lugano&language=en"
+  },
+  {
+    "id": 8,
     "title": "Ingegnere Quantity Surveyor ? Gare e Preventivazione",
     "location": "Svizzera",
     "sector": "Generale",
@@ -64,20 +72,12 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728440-ingegnere-quantity-surveyor-gare-e-preventivazione-lugano-lugano&language=en"
   },
   {
-    "id": 8,
-    "title": "Solarmitarbeiter (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728433-solarmitarbeiter-m-w-d-100-zurich-zurich&language=en"
-  },
-  {
     "id": 9,
-    "title": "Reifenpraktiker (m/w/d)",
+    "title": "Sachbearbeiter Verkauf Innendienst / Backoffice 80% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728436-reifenpraktiker-m-w-d-zurich-seebach-zh&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728435-sachbearbeiter-verkauf-innendienst-backoffice-80-m-w-d-suhr-ag&language=en"
   },
   {
     "id": 10,
@@ -89,10 +89,10 @@
   },
   {
     "id": 11,
-    "title": "Operatore di produzione",
+    "title": "Solarmitarbeiter (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728442-operatore-di-produzione-cadro-lugano&language=en"
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728433-solarmitarbeiter-m-w-d-100-zurich-zurich&language=en"
   }
 ]
