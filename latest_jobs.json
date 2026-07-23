@@ -1,6 +1,22 @@
 [
   {
     "id": 0,
+    "title": "Senior Cloud Project Manager (Modern Workplace)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Michael Bailey Associates",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728443-senior-cloud-project-manager-modern-workplace-bern&language=en"
+  },
+  {
+    "id": 1,
+    "title": "Servicetechniker Industrieanlagen & Automatisierung 100% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728430-servicetechniker-industrieanlagen-automatisierung-100-m-w-d-wetzikon-zh&language=en"
+  },
+  {
+    "id": 2,
     "title": "Polymechaniker als Montageleiter 100% (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -8,79 +24,7 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728431-polymechaniker-als-montageleiter-100-m-w-d-zurich-zurich&language=en"
   },
   {
-    "id": 1,
-    "title": "Reifenpraktiker (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728429-reifenpraktiker-m-w-d-effretikon-zh&language=en"
-  },
-  {
-    "id": 2,
-    "title": "Solar-Installateur (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728434-solar-installateur-m-w-d-100-zurich-zurich&language=en"
-  },
-  {
     "id": 3,
-    "title": "Sachbearbeiter Verkauf Innendienst / Backoffice 80% (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728435-sachbearbeiter-verkauf-innendienst-backoffice-80-m-w-d-suhr-ag&language=en"
-  },
-  {
-    "id": 4,
-    "title": "Betriebsmechaniker (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728428-betriebsmechaniker-m-w-d-100-zurich-zurich&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Automatiker EFZ (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728432-automatiker-efz-m-w-d-100-zurich-zurich&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Staplerfahrer/in (m/w/d) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728438-staplerfahrer-in-m-w-d-100-luterbach-solothurn&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Ingegnere Quantity Surveyor ? Gare e Preventivazione",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728440-ingegnere-quantity-surveyor-gare-e-preventivazione-lugano-lugano&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Operatore/trice trapano a colonna- DISPONIBILE DA SUBITO",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728441-operatore-trice-trapano-a-colonna-disponibile-da-subito-balerna-lugano&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Operatore di produzione",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Randstad Svizzera SA",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728442-operatore-di-produzione-cadro-lugano&language=en"
-  },
-  {
-    "id": 10,
     "title": "Elektroniker m/w/d 100%",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +32,67 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728437-elektroniker-m-w-d-100-zurich-zurich&language=en"
   },
   {
-    "id": 11,
+    "id": 4,
+    "title": "Operatore/trice trapano a colonna- DISPONIBILE DA SUBITO",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728441-operatore-trice-trapano-a-colonna-disponibile-da-subito-balerna-lugano&language=en"
+  },
+  {
+    "id": 5,
+    "title": "Staplerfahrer/in (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728438-staplerfahrer-in-m-w-d-100-luterbach-solothurn&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Reifenpraktiker (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728436-reifenpraktiker-m-w-d-zurich-seebach-zh&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Automatiker EFZ (m/w/d) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728432-automatiker-efz-m-w-d-100-zurich-zurich&language=en"
+  },
+  {
+    "id": 8,
     "title": "Solarmitarbeiter (m/w/d) 100%",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728433-solarmitarbeiter-m-w-d-100-zurich-zurich&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Reifenpraktiker (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728429-reifenpraktiker-m-w-d-effretikon-zh&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Sachbearbeiter Verkauf Innendienst / Backoffice 80% (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728435-sachbearbeiter-verkauf-innendienst-backoffice-80-m-w-d-suhr-ag&language=en"
+  },
+  {
+    "id": 11,
+    "title": "Operatore di produzione",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Randstad Svizzera SA",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6728442-operatore-di-produzione-cadro-lugano&language=en"
   }
 ]
