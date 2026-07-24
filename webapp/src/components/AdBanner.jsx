@@ -294,6 +294,60 @@ const BlcBanner = () => {
     );
 };
 
+const SupsiBanner = () => {
+    return (
+        <div 
+            className="w-full h-full flex select-none overflow-hidden" 
+            style={{ 
+                background: '#001E38', 
+                containerType: 'inline-size', 
+                height: '100%',
+                width: '100%'
+            }}
+        >
+            {/* Section 1: SUPSI Logo block */}
+            <div 
+                className="w-[28%] h-full bg-[#001428] flex flex-col justify-center items-start px-[2.5cqw] text-white font-sans shrink-0 border-r border-white/10" 
+            >
+                <span className="font-extrabold tracking-tight leading-none text-white" style={{ fontSize: 'clamp(14px, 3.5cqw, 32px)' }}>
+                    SUPSI
+                </span>
+                <span className="font-semibold text-slate-300 leading-tight mt-[0.3cqw]" style={{ fontSize: 'clamp(9px, 1.6cqw, 16px)' }}>
+                    Formazione continua
+                </span>
+            </div>
+
+            {/* Section 2: Course Info & Title */}
+            <div className="w-[48%] h-full flex flex-col justify-center px-[3cqw] text-white font-sans text-left leading-normal shrink-0">
+                <span className="font-bold uppercase tracking-wider text-[#e2231a] mb-[0.2cqw]" style={{ fontSize: 'clamp(7px, 1.1cqw, 11px)' }}>
+                    Master Executive
+                </span>
+                <h4 
+                    className="font-extrabold leading-tight tracking-wide text-white" 
+                    style={{ fontSize: 'clamp(11px, 2.2cqw, 22px)' }}
+                >
+                    MAS Human Capital Management
+                </h4>
+                <div className="w-full h-[2px] bg-[#e2231a] my-[0.6cqw]"></div>
+                <p className="font-medium text-slate-300 leading-tight" style={{ fontSize: 'clamp(7px, 1.2cqw, 12px)' }}>
+                    Sviluppa le competenze strategiche per la gestione delle risorse umane
+                </p>
+            </div>
+
+            {/* Section 3: Call to action button */}
+            <div className="w-[24%] h-full bg-[#001930] flex flex-col justify-center items-center px-[1.5cqw] shrink-0">
+                <div 
+                    className="bg-[#e2231a] hover:bg-[#c11b13] text-white font-bold rounded-lg px-[2cqw] py-[1cqw] text-center shadow-lg flex items-center gap-[0.5cqw] transition-transform"
+                    style={{ fontSize: 'clamp(8px, 1.3cqw, 13px)' }}
+                >
+                    <span>Scopri il Master</span>
+                    <span>→</span>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 // ---------- ANIMATION VARIANTS ----------
 
 const bannerVariants = {
@@ -311,7 +365,7 @@ const bannerVariants = {
 
 // ---------- MAIN COMPONENT ----------
 
-const AdBanner = ({ type = 'bottom' }) => {
+const AdBanner = ({ type = 'top' }) => {
     const GM = 'var(--brand-gray-mid)';
     const body = 'var(--font-body)';
     const isTop = type === 'top';
@@ -326,7 +380,7 @@ const AdBanner = ({ type = 'bottom' }) => {
                 {adsToRender.map((ad, i) => (
                     <motion.a
                         key={i}
-                        href={ad.href}
+                        href={i === 1 && isTop ? 'https://formazionecontinua.supsi.ch/it/course-details?id=863-mas-human-capital-management' : ad.href}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="overflow-hidden relative group block"
@@ -357,7 +411,7 @@ const AdBanner = ({ type = 'bottom' }) => {
                         }}>ADV</span>
                         
                         {isTop ? (
-                            i === 0 ? <AsflBanner /> : <FormaBanner />
+                            i === 0 ? <AsflBanner /> : <SupsiBanner />
                         ) : (
                             <BlcBanner />
                         )}

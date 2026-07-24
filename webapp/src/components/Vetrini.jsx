@@ -31,6 +31,33 @@ const Vetrini = () => {
     return (
         <section className="py-16 md:py-20 px-6 md:px-12 w-full" id="vetrini" style={{ background: '#FFFFFF' }}>
             <div className="max-w-[1400px] mx-auto w-full">
+                {/* Header Sezione Aziende Partner */}
+                <div className="mb-8 md:mb-10 text-left">
+                    <div className="flex items-center gap-3">
+                        <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                        <span style={{
+                            fontFamily: brand,
+                            fontWeight: 700,
+                            fontSize: 11,
+                            letterSpacing: '0.2em',
+                            textTransform: 'uppercase',
+                            color: F
+                        }}>
+                            AZIENDE PARTNER
+                        </span>
+                    </div>
+                    <h2 style={{
+                        fontFamily: editorial,
+                        fontStyle: 'italic',
+                        fontSize: 'clamp(24px, 3.5vw, 36px)',
+                        color: N,
+                        lineHeight: 1.2,
+                        marginTop: 8
+                    }}>
+                        Aziende recruiter che si affidano a Job Courier
+                    </h2>
+                </div>
+
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" style={{ gap: 1, background: 'rgba(5,11,43,0.06)' }}>
                     {companies.map((company, idx) => (
                         <motion.a
