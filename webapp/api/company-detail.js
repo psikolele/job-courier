@@ -125,12 +125,14 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
 
   if (req.method === 'OPTIONS') { res.status(200).end(); return; }
 
   const { id, slug } = req.query || {};
 
   if (!id || !/^\d+$/.test(String(id))) {
+    res.setHeader('Cache-Control', 'no-store');
     res.status(400).json({ error: 'Missing or invalid numeric id parameter' });
     return;
   }
@@ -139,6 +141,7 @@ export default async function handler(req, res) {
     const html = await fetchCompanyDetailHtml(id, slug || '');
 
     if (isStub(html)) {
+      res.setHeader('Cache-Control', 'no-store');
       res.status(502).json({ error: 'Upstream did not return valid company detail content' });
       return;
     }
@@ -147,6 +150,7 @@ export default async function handler(req, res) {
     res.status(200).json(detail);
   } catch (error) {
     console.error('Error fetching company detail:', error);
+    res.setHeader('Cache-Control', 'no-store');
     res.status(500).json({ error: 'Failed to fetch company detail data', details: error.message });
   }
 }

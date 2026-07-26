@@ -91,6 +91,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
 
   if (req.method === 'OPTIONS') { res.status(200).end(); return; }
 
@@ -98,6 +99,7 @@ export default async function handler(req, res) {
     const html = await fetchCompanyListHtml();
 
     if (isStub(html)) {
+      res.setHeader('Cache-Control', 'no-store');
       res.status(502).json({ error: 'Upstream did not return valid company list content' });
       return;
     }
@@ -108,6 +110,7 @@ export default async function handler(req, res) {
     res.status(200).json(companies);
   } catch (error) {
     console.error('Error fetching companies:', error);
+    res.setHeader('Cache-Control', 'no-store');
     res.status(500).json({ error: 'Failed to fetch companies data', details: error.message });
   }
 }

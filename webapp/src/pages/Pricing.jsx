@@ -193,7 +193,7 @@ const getLocalizedData = (lang) => {
                 { num: "120'000+", lines: isIt ? ['CANDIDATI', 'REGISTRATI'] : isDe ? ['REGISTRIERTE', 'KANDIDATEN'] : isFr ? ['CANDIDATS', 'INSCRITS'] : ['REGISTERED', 'CANDIDATES'] },
                 { num: "3'000+", lines: isIt ? ['CANDIDATURE', 'AL MESE'] : isDe ? ['BEWERBUNGEN', 'PRO MONAT'] : isFr ? ['CANDIDATURES', 'PAR MOIS'] : ['APPLICATIONS', 'PER MONTH'] },
                 { num: '50+', lines: isIt ? ['AZIENDE CHE', 'CI HANNO SCELTO'] : isDe ? ['PARTNER VON', 'AGENTUREN & KMU', 'IN DER SCHWEIZ'] : isFr ? ['PARTENAIRE DES', 'AGENCES ET PME', 'EN SUISSE'] : ['PARTNER OF', 'AGENCIES & SMES', 'ACROSS SWITZERLAND'] },
-                { num: "2'300+", lines: isIt ? ['IN TUTTA', 'SVIZZERA'] : isDe ? ['PARTNER VON', 'AGENTUREN & KMU', 'IN DER SCHWEIZ'] : isFr ? ['PARTENAIRE DES', 'AGENCES ET PME', 'EN SUISSE'] : ['PARTNER OF', 'AGENCIES & SMES', 'ACROSS SWITZERLAND'] },
+                { num: "2'300+", lines: isIt ? ['IN TUTTA', 'SVIZZERA'] : isDe ? ['IN DER GANZEN', 'SCHWEIZ'] : isFr ? ['DANS TOUTE', 'LA SUISSE'] : ['ACROSS', 'SWITZERLAND'] },
             ],
         },
     };

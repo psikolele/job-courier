@@ -10,6 +10,7 @@ export default async function handler(req, res) {
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   );
+  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
 
   if (req.method === 'OPTIONS') {
     res.status(200).end();
@@ -19,6 +20,7 @@ export default async function handler(req, res) {
   const { id } = req.query;
 
   if (!id) {
+    res.setHeader('Cache-Control', 'no-store');
     res.status(400).json({ error: 'Missing job ID parameter' });
     return;
   }
@@ -198,6 +200,7 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error fetching job details:', error);
+    res.setHeader('Cache-Control', 'no-store');
     res.status(500).json({ error: 'Failed to fetch job details data', details: error.message });
   }
 }
