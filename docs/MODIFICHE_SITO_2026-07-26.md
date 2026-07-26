@@ -31,8 +31,12 @@ Titolo sezione: **AZIENDE PARTNER** — sottotitolo: *Aziende e Recruiter che si
 
 Le due frasi vengono riprese identiche come sottotitolo nelle rispettive pagine blog.
 
-## 6. Pagina "Aziende che assumono"
-Pagina rimanda all'applicativo esterno — richiesta di Gabriele: fare una **copia della pagina nel sito**, come già fatto per le offerte.
+## 6. Pagina "Aziende che assumono" — ✅ FATTO
+Pagina rimandava all'applicativo esterno — richiesta di Gabriele: fare una **copia della pagina nel sito**, come già fatto per le offerte.
+
+Implementato: `/aziende-che-assumono` (griglia loghi + ricerca per nome) e `/azienda/:slug` (profilo azienda). Scraper `api/companies.js` e `api/company-detail.js`.
+
+**Da sapere:** la pagina jobroom non elenca aziende con offerte attive, ma **profili aziendali vetrina** — tutte e 11 hanno **0 annunci attivi** oggi. Il profilo espone sede, settore, testo "Lavora con noi" e candidatura spontanea. Per questo il click porta al profilo interno e non a offerte filtrate (che sarebbero state 11 pagine vuote).
 
 ## 7. Pagina "Come funziona"
 Da modificare solo le 4 immagini degli step: **Registra / Pubblica / Visualizza / Contatta**. Proposte grafiche di Laura estratte dal docx:
@@ -65,13 +69,18 @@ Nessuna indicazione ricevuta finora. Laura manda contenuti (incluse info per il 
 
 ## Checklist implementazione
 - [ ] Titoli Home (candidati/aziende)
-- [ ] Link menu Azienda → login/registrazione
-- [ ] Titolo "Aziende Partner" in vetrina annunci
-- [ ] Sezione "Formazione continua" (Ated + Supsi) separata da ASFL/BLC
-- [ ] Titoli blog (Consigli di carriera / Consigli di recruiting)
-- [ ] Copia statica pagina "Aziende che assumono"
-- [ ] 4 immagini pagina "Come funziona"
-- [ ] Testi pagina Soluzioni (titolo, H1, paragrafo, contatori)
-- [ ] Correzioni Cookie Policy (ragione sociale, indirizzo, email)
+- [x] Link menu Azienda → login/registrazione *(era un bug: "Trova candidati" puntava a job-seekers.php)*
+- [x] Titolo "Aziende Partner" in vetrina annunci
+- [x] Sezione "Formazione continua" (Ated + Supsi) separata da ASFL/BLC *(FormaBanner/Ated non veniva mai renderizzato)*
+- [x] Titoli blog (Consigli di carriera / Consigli di recruiting)
+- [x] Copia pagina "Aziende che assumono" → `/aziende-che-assumono` + `/azienda/:slug`
+- [x] 4 immagini pagina "Come funziona"
+- [x] Testi pagina Soluzioni (titolo, H1, paragrafo, contatori)
+- [x] Correzioni Cookie Policy (ragione sociale, indirizzo, email)
 - [ ] Pagina Contatti (in attesa contenuti da Laura)
 - [ ] Rispondere a Laura: data go-live + slot check finale
+
+## Pendenze tecniche non bloccanti
+- **EN/DE/FR hero:** stessa incoerenza semantica dell'italiano prima del fix ("Accedi al tuo" / "Access your" invece di "Trova il tuo") — non toccate, valutare se allinearle.
+- **Contatore 2'300+ in pagina Soluzioni:** le versioni EN/DE/FR usano un testo placeholder copiato dall'italiano, servono traduzioni reali prima di un rilascio multilingua.
+- **Caching scraper aziende:** ogni apertura di `/azienda/:slug` fa 2 chiamate upstream a jobroom (lista per risolvere lo slug + dettaglio). Nessun endpoint del progetto usa caching sulle risposte, quindi non l'ho introdotto qui; se il traffico cresce vale un `s-maxage` su `/api/companies`.
