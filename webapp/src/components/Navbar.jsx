@@ -57,7 +57,7 @@ const IconMenu = () => (
 const getCandidateLinks = () => [
     { label: 'Offerte di lavoro', labelEn: 'Job offers', labelDe: 'Stellenangebote', labelFr: 'Offres d\'emploi', href: '/offerte' },
     { label: 'Carica il tuo CV', labelEn: 'Upload your CV', labelDe: 'Lebenslauf hochladen', labelFr: 'Déposez votre CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
-    { label: 'Aziende che assumono', labelEn: 'Hiring companies', labelDe: 'Einstellende Unternehmen', labelFr: 'Entreprises qui recrutent', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
+    { label: 'Aziende che assumono', labelEn: 'Hiring companies', labelDe: 'Einstellende Unternehmen', labelFr: 'Entreprises qui recrutent', href: '/aziende-che-assumono' },
     { label: 'Consigli di carriera', labelEn: 'Career tips', labelDe: 'Karrieretipps', labelFr: 'Conseils carrière', href: '/blog/carriera' },
 ];
 

@@ -6,7 +6,7 @@ import { CATEGORIES, categorySegmentFor } from '../src/data/blog/categories.js';
 
 const SITE = 'https://www.jobcourier.ch';
 const LANGS = ['it', 'en', 'de', 'fr'];
-const STATIC = ['/', '/offerte', '/soluzioni-e-tariffe', '/come-funziona', '/contatti', '/faq'];
+const STATIC = ['/', '/offerte', '/soluzioni-e-tariffe', '/come-funziona', '/contatti', '/faq', '/aziende-che-assumono'];
 
 const urls = [];
 for (const p of STATIC) urls.push({ loc: `${SITE}${p}` });

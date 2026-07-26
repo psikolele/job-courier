@@ -22,6 +22,8 @@ import CondizioniGenerali from './pages/CondizioniGenerali';
 import CookiePolicy from './pages/CookiePolicy';
 import BlogCategoria from './pages/BlogCategoria';
 import BlogArticolo from './pages/BlogArticolo';
+import AziendeCheAssumono from './pages/AziendeCheAssumono';
+import AziendaDettaglio from './pages/AziendaDettaglio';
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -100,6 +102,8 @@ function App() {
         <Route path="/come-funziona" element={<ComeFunziona />} />
         <Route path="/offerte" element={<Offerte setShowLoginModal={setShowLoginModal} />} />
         <Route path="/offerta/:id" element={<OffertaDettaglio setShowLoginModal={setShowLoginModal} />} />
+        <Route path="/aziende-che-assumono" element={<AziendeCheAssumono />} />
+        <Route path="/azienda/:slug" element={<AziendaDettaglio />} />
         <Route path="/blog" element={<Navigate to="/blog/carriera" replace />} />
         <Route path="/blog/:categoria" element={<BlogCategoria />} />
         <Route path="/blog/:categoria/:slug" element={<BlogArticolo />} />

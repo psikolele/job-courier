@@ -349,7 +349,7 @@ const Hero = ({ setShowLoginModal }) => {
                         <div className="flex gap-2">
                             {[
                                 { label: 'Vedi tutte le offerte', href: '/offerte', external: false },
-                                { label: 'Aziende che assumono', href: 'https://jobroom.jobcourier.ch/jobs-by-company.php', external: true },
+                                { label: 'Aziende che assumono', href: '/aziende-che-assumono', external: false },
                                 { label: 'Consigli di Carriera', href: '#blog', external: false }
                             ].map(({ label, href, external }) => {
                                 const btnClass = "jc-glow-btn-light flex-1 py-3 text-[13px] tracking-[0.04em] text-center text-[var(--brand-navy)]";

@@ -5,7 +5,7 @@ const PAGES_TO_FETCH = 3;   // 3 pages × 15 jobs = 45 — faster default load
 const MAX_JOBS = 45;
 const BATCH_SIZE = 3;       // max concurrent fetches to avoid upstream rate-limit
 
-function parseJobsFromHtml(html, offset = 0) {
+export function parseJobsFromHtml(html, offset = 0) {
   const $ = cheerio.load(html);
   const jobs = [];
 
