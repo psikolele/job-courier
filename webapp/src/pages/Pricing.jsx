@@ -72,10 +72,10 @@ const getLocalizedData = (lang) => {
     const isFr = lang === 'fr';
 
     return {
-        heroTitleMain: isIt ? 'UNA SOLUZIONE PER' : isDe ? 'EINE LÖSUNG FÜR' : isFr ? 'UNE SOLUTION POUR' : 'A SOLUTION FOR',
-        heroTitleLine2: isIt ? 'OGNI ' : isDe ? 'JEDEN ' : isFr ? 'CHAQUE ' : 'EVERY ',
-        heroTitleEm: isIt ? 'ESIGENZA.' : isDe ? 'BEDARF.' : isFr ? 'BESOIN.' : 'NEED.',
-        heroSub: isIt ? 'Per una singola assunzione o per una ricerca continua di personale.' : isDe ? 'Für eine einzelne Einstellung oder eine kontinuierliche Personalsuche.' : isFr ? 'Pour un recrutement ponctuel ou une recherche continue de personnel.' : 'For a single hire or continuous staffing needs.',
+        heroTitleMain: isIt ? 'PER OGNI ESIGENZA' : isDe ? 'EINE LÖSUNG FÜR' : isFr ? 'UNE SOLUTION POUR' : 'A SOLUTION FOR',
+        heroTitleLine2: isIt ? 'UNA ' : isDe ? 'JEDEN ' : isFr ? 'CHAQUE ' : 'EVERY ',
+        heroTitleEm: isIt ? 'SOLUZIONE MIRATA.' : isDe ? 'BEDARF.' : isFr ? 'BESOIN.' : 'NEED.',
+        heroSub: isIt ? 'Da 10 anni mettiamo in contatto candidati e aziende e agenzie di reclutamento in tutta la Svizzera.' : isDe ? 'Für eine einzelne Einstellung oder eine kontinuierliche Personalsuche.' : isFr ? 'Pour un recrutement ponctuel ou une recherche continue de personnel.' : 'For a single hire or continuous staffing needs.',
         heroCta: isIt ? 'REGISTRA AZIENDA' : isDe ? 'UNTERNEHMEN REGISTRIEREN' : isFr ? 'ENREGISTRER ENTREPRISE' : 'REGISTER COMPANY',
         tabs: {
             companies: isIt ? 'Aziende & PMI' : isDe ? 'Unternehmen & KMU' : isFr ? 'Entreprises & PME' : 'Companies & SMEs',
@@ -192,7 +192,8 @@ const getLocalizedData = (lang) => {
                 { num: '95%', lines: isIt ? ['AUDIENCE', 'QUALIFICATA E', 'IN TARGET'] : isDe ? ['QUALIFIZIERTE', 'ZIELGRUPPEN-', 'AUDIENCE'] : isFr ? ['AUDIENCE', 'QUALIFIÉE ET', 'CIBLÉE'] : ['QUALIFIED', 'TARGETED', 'AUDIENCE'] },
                 { num: "120'000+", lines: isIt ? ['CANDIDATI', 'REGISTRATI'] : isDe ? ['REGISTRIERTE', 'KANDIDATEN'] : isFr ? ['CANDIDATS', 'INSCRITS'] : ['REGISTERED', 'CANDIDATES'] },
                 { num: "3'000+", lines: isIt ? ['CANDIDATURE', 'AL MESE'] : isDe ? ['BEWERBUNGEN', 'PRO MONAT'] : isFr ? ['CANDIDATURES', 'PAR MOIS'] : ['APPLICATIONS', 'PER MONTH'] },
-                { num: '50+', lines: isIt ? ['PARTNER TRA', 'AGENZIE E PMI', 'IN TUTTA SVIZZERA'] : isDe ? ['PARTNER VON', 'AGENTUREN & KMU', 'IN DER SCHWEIZ'] : isFr ? ['PARTENAIRE DES', 'AGENCES ET PME', 'EN SUISSE'] : ['PARTNER OF', 'AGENCIES & SMES', 'ACROSS SWITZERLAND'] },
+                { num: '50+', lines: isIt ? ['AZIENDE CHE', 'CI HANNO SCELTO'] : isDe ? ['PARTNER VON', 'AGENTUREN & KMU', 'IN DER SCHWEIZ'] : isFr ? ['PARTENAIRE DES', 'AGENCES ET PME', 'EN SUISSE'] : ['PARTNER OF', 'AGENCIES & SMES', 'ACROSS SWITZERLAND'] },
+                { num: "2'300+", lines: isIt ? ['IN TUTTA', 'SVIZZERA'] : isDe ? ['PARTNER VON', 'AGENTUREN & KMU', 'IN DER SCHWEIZ'] : isFr ? ['PARTENAIRE DES', 'AGENCES ET PME', 'EN SUISSE'] : ['PARTNER OF', 'AGENCIES & SMES', 'ACROSS SWITZERLAND'] },
             ],
         },
     };
@@ -521,7 +522,7 @@ const Pricing = () => {
                     <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: GM, lineHeight: 1.5, maxWidth: 640, marginBottom: 48 }}>
                         {data.stats.subtitle}
                     </p>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
                         {data.stats.items.map((stat, sIdx) => (
                             <motion.div
                                 key={sIdx}

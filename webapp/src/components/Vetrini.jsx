@@ -54,7 +54,7 @@ const Vetrini = () => {
                         lineHeight: 1.2,
                         marginTop: 8
                     }}>
-                        Aziende recruiter che si affidano a Job Courier
+                        Aziende e Recruiter che si affidano a Job Courier
                     </h2>
                 </div>
 

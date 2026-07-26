@@ -132,7 +132,7 @@ const Footer = ({ setShowLoginModal }) => {
         ]},
         { title: 'Aziende', inline: ['Pubblica annuncio', 'Trova Candidati'], links: [
             { label: 'Pubblica annuncio', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
-            { label: 'Trova Candidati', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it' },
+            { label: 'Trova Candidati', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
             { label: 'Registra Azienda', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
             { label: 'Login', href: '#login' },
             { label: 'Contatti', href: '/contatti' },

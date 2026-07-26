@@ -99,6 +99,11 @@
 
 **Mail bozza pronta:** `GMAIL_DRAFT_GABRIELE.txt` → `g.molteni@jobcourier.ch` (CC: emanuele.serra, michele). Mail NON ancora inviata (Gmail MCP non disponibile il 25/06).
 
+### 8. Modifiche Sito richieste da Laura (26 Luglio 2026) — 🔴 *DA IMPLEMENTARE*
+* **Dettaglio completo:** `docs/MODIFICHE_SITO_2026-07-26.md`
+* Go-live target: 30.07–03.08.2026. Check finale vdc: mer 29 (16-19:30) o gio (11-12).
+* Copre: titoli Home, link menu Azienda, sezione Aziende Partner, sezione Formazione continua (Ated+Supsi separata da ASFL/BLC), titoli blog, copia statica pagina "Aziende che assumono", 4 immagini "Come funziona", testi pagina Soluzioni, correzioni legali Cookie Policy (JobCourier Sagl, Riva San Vitale, privacy@jobcourier.ch). Pagina Contatti in attesa di contenuti da Laura.
+
 ---
 
 ## 🚀 Prossime Operazioni & Task Rimasti (Missing Tasks)

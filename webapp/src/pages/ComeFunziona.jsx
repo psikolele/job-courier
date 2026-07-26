@@ -32,10 +32,10 @@ const SectionLabel = ({ children, dark = false }) => (
 );
 
 const STEPS = [
-    { icon: <UserPlus size={24} />, titleKey: 'come_funziona.step1_title', descKey: 'come_funziona.step1_desc', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop' },
-    { icon: <CreditCard size={24} />, titleKey: 'come_funziona.step2_title', descKey: 'come_funziona.step2_desc', image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&auto=format&fit=crop' },
-    { icon: <FileText size={24} />, titleKey: 'come_funziona.step3_title', descKey: 'come_funziona.step3_desc', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop' },
-    { icon: <Users size={24} />, titleKey: 'come_funziona.step4_title', descKey: 'come_funziona.step4_desc', image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop' },
+    { icon: <UserPlus size={24} />, titleKey: 'come_funziona.step1_title', descKey: 'come_funziona.step1_desc', image: '/img/come-funziona/registra.jpeg' },
+    { icon: <CreditCard size={24} />, titleKey: 'come_funziona.step2_title', descKey: 'come_funziona.step2_desc', image: '/img/come-funziona/pubblica.jpeg' },
+    { icon: <FileText size={24} />, titleKey: 'come_funziona.step3_title', descKey: 'come_funziona.step3_desc', image: '/img/come-funziona/visualizza.jpeg' },
+    { icon: <Users size={24} />, titleKey: 'come_funziona.step4_title', descKey: 'come_funziona.step4_desc', image: '/img/come-funziona/contatta.jpeg' },
 ];
 
 const WHY = [

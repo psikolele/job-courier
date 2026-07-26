@@ -14,34 +14,34 @@
   },
   "hero": {
     "candidates": {
-      "h1": "Accedi al tuo",
+      "h1": "Trova il tuo",
       "h1_sub": "Prossimo Lavoro.",
-      "subtitle": "Per I Candidati",
+      "subtitle": "PER I CANDIDATI",
       "cta": "Trova Offerte",
       "search_placeholder": "Qualifica, azienda o parola chiave...",
       "any_sector": "Qualsiasi settore lavorativo",
       "all_cantons": "Tutti i Cantoni (Svizzera)"
     },
     "companies": {
-      "h1": "Trova il tuo",
-      "h1_sub": "Miglior Talento.",
-      "subtitle": "Per Le Aziende",
+      "h1": "I candidati giusti",
+      "h1_sub": "sono già qui.",
+      "subtitle": "PER LE AZIENDE",
       "cta": "Pubblica Annuncio"
     }
   },
   "blog": {
-    "title_candidates": "CONSIGLI DI CARRIERA",
-    "subtitle_candidates": "Consigli pratici per trovare lavoro, migliorare il CV e affrontare i colloqui.",
-    "title_companies": "CONSIGLI DI RECRUITING",
-    "subtitle_companies": "Strategie e suggerimenti per attrarre candidati e migliorare le attività di ricerca del personale.",
+    "title_candidates": "Consigli di carriera",
+    "subtitle_candidates": "Consigli pratici per affrontare ogni fase della ricerca di lavoro.",
+    "title_companies": "Consigli di recruiting",
+    "subtitle_companies": "Idee, strategie e consigli per trovare i candidati giusti.",
     "page_candidates_breadcrumb": "Blog Carriera",
-    "page_candidates_title_line1": "RISORSE PER LA",
-    "page_candidates_title_em": "CARRIERA",
-    "page_candidates_subtitle": "Consigli pratici per cercare lavoro, migliorare il CV e affrontare i colloqui.",
+    "page_candidates_title_line1": "Consigli di",
+    "page_candidates_title_em": "Carriera",
+    "page_candidates_subtitle": "Consigli pratici per affrontare ogni fase della ricerca di lavoro.",
     "page_companies_breadcrumb": "Blog Recruiting",
-    "page_companies_title_line1": "RISORSE PER IL",
-    "page_companies_title_em": "RECRUITING",
-    "page_companies_subtitle": "Approfondimenti, strategie e buone pratiche per aziende e recruiter.",
+    "page_companies_title_line1": "Consigli di",
+    "page_companies_title_em": "Recruiting",
+    "page_companies_subtitle": "Idee, strategie e consigli per trovare i candidati giusti.",
     "read_article": "Leggi l'articolo",
     "candidateArticles": [
       {
@@ -107,7 +107,7 @@
     "cta_btn2": "VEDI I PIANI"
   },
   "pricing": {
-    "subtitle": "Soluzioni di Recruitment",
+    "subtitle": "Soluzioni e tariffe",
     "hero_title": "Cerchi candidati?",
     "hero_em": "Noi li troviamo.",
     "hero_sub": "Ottimizziamo il tuo tempo e acceleriamo il recruiting con soluzioni basate su visibilità, database e matching avanzato.",

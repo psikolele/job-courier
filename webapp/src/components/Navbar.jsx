@@ -65,7 +65,7 @@ const getCompanyLinks = () => [
     {
         label: 'Pubblica annuncio', labelEn: 'Post a job', labelDe: 'Stelle ausschreiben', labelFr: 'Publier une annonce',
         href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true,
-        combined: { label: 'Trova candidati', labelEn: 'Find candidates', labelDe: 'Kandidaten finden', labelFr: 'Trouver des candidats', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it' },
+        combined: { label: 'Trova candidati', labelEn: 'Find candidates', labelDe: 'Kandidaten finden', labelFr: 'Trouver des candidats', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
     },
     { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
     { label: 'Soluzioni e tariffe', labelEn: 'Solutions and Prices', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },

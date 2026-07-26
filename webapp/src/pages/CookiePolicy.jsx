@@ -79,8 +79,8 @@ const CookiePolicy = () => {
                 <div className="container mx-auto max-w-3xl">
 
                     <P>
-                        Ultimo aggiornamento: giugno 2026. La presente Cookie Policy descrive come <strong>JobCourier SA</strong>,
-                        con sede in Via Cantonale, 6900 Lugano (Svizzera), utilizza i cookie e tecnologie simili sul sito web{' '}
+                        Ultimo aggiornamento: giugno 2026. La presente Cookie Policy descrive come <strong>JobCourier Sagl</strong>,
+                        con sede in Via delle Fornaci 6 - 6826 Riva San Vitale, utilizza i cookie e tecnologie simili sul sito web{' '}
                         <strong>jobcourier.ch</strong>. La policy è redatta in conformità al Regolamento UE 2016/679 (GDPR),
                         alla Legge federale svizzera sulla protezione dei dati (nLPD) e alle disposizioni applicabili in materia
                         di comunicazioni elettroniche.
@@ -269,8 +269,8 @@ const CookiePolicy = () => {
                         è possibile contattare JobCourier ai seguenti recapiti:
                     </P>
                     <Ul>
-                        <Li><strong>E-mail:</strong> <a href="mailto:support@jobcourier.ch" style={{ color: F }}>support@jobcourier.ch</a></Li>
-                        <Li><strong>Indirizzo:</strong> JobCourier SA, Via Cantonale, 6900 Lugano, Svizzera</Li>
+                        <Li><strong>E-mail:</strong> <a href="mailto:privacy@jobcourier.ch" style={{ color: F }}>privacy@jobcourier.ch</a></Li>
+                        <Li><strong>Indirizzo:</strong> JobCourier Sagl - Via delle Fornaci 6 - 6826 Riva San Vitale</Li>
                     </Ul>
 
                 </div>

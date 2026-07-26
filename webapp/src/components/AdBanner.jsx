@@ -1,33 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const blcAd = {
-    href: 'https://www.blc-sa.ch',
-    img: '/img/Gemini_Generated_Image_ape98sape98sape9.png',
-    alt: 'Business Learning Centre SA',
-    fit: 'cover',
-    bg: '#ffffff'
-};
-
-const topAds = [
-    {
-        href: 'https://www.svbl.ch/it/',
-        img: '/img/banner-asfl-svbl.png',
-        alt: 'ASFL SVBL - Associazione Svizzera per la formazione professionale in logistica',
-        fit: 'contain',
-        bg: '#f8f9fa'
-    },
-    {
-        href: 'https://formati.academy/',
-        img: '/img/banner-forma-academy.png',
-        alt: 'Formati Academy - APF Percorsi',
-        fit: 'contain',
-        bg: '#ffffff'
-    }
-];
-
-const bottomAds = [blcAd, blcAd];
-
 // ---------- RECONSTRUCTED HTML BANNERS ----------
 
 const AsflBanner = () => {
@@ -312,9 +285,6 @@ const SupsiBanner = () => {
                 <span className="font-extrabold tracking-tight leading-none text-white" style={{ fontSize: 'clamp(14px, 3.5cqw, 32px)' }}>
                     SUPSI
                 </span>
-                <span className="font-semibold text-slate-300 leading-tight mt-[0.3cqw]" style={{ fontSize: 'clamp(9px, 1.6cqw, 16px)' }}>
-                    Formazione continua
-                </span>
             </div>
 
             {/* Section 2: Course Info & Title */}
@@ -363,60 +333,130 @@ const bannerVariants = {
     })
 };
 
+// ---------- GROUP DEFINITIONS ----------
+// Group 1 ("top"): ASFL + BLC — no section title, unchanged visual style.
+// Group 2 ("bottom"): Ated (FormaBanner) + Supsi — wrapped under "Formazione continua" section title.
+
+const topSlots = [
+    { key: 'asfl', href: 'https://www.svbl.ch/it/', bg: '#f8f9fa', Component: AsflBanner },
+    { key: 'blc', href: 'https://www.blc-sa.ch', bg: '#ffffff', Component: BlcBanner }
+];
+
+const bottomSlots = [
+    { key: 'ated', href: 'https://formati.academy/', bg: '#000000', Component: FormaBanner },
+    { key: 'supsi', href: 'https://formazionecontinua.supsi.ch/it/course-details?id=863-mas-human-capital-management', bg: '#001E38', Component: SupsiBanner }
+];
+
+// ---------- SECTION TITLE (pattern reused from Vetrini.jsx) ----------
+
+const SectionTitle = ({ eyebrow, title, subtitle }) => {
+    const N = 'var(--brand-navy)';
+    const F = 'var(--brand-fuchsia)';
+    const GM = 'var(--brand-gray-mid)';
+    const brand = 'var(--font-brand)';
+    const editorial = 'var(--font-editorial)';
+    const body = 'var(--font-body)';
+
+    return (
+        <div className="mb-6 md:mb-8 text-left">
+            <div className="flex items-center gap-3">
+                <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
+                <span style={{
+                    fontFamily: brand,
+                    fontWeight: 700,
+                    fontSize: 11,
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
+                    color: F
+                }}>
+                    {eyebrow}
+                </span>
+            </div>
+            <h2 style={{
+                fontFamily: editorial,
+                fontStyle: 'italic',
+                fontSize: 'clamp(22px, 3vw, 32px)',
+                color: N,
+                lineHeight: 1.2,
+                marginTop: 8
+            }}>
+                {title}
+            </h2>
+            {subtitle && (
+                <p style={{
+                    fontFamily: body,
+                    fontSize: 14,
+                    color: GM,
+                    marginTop: 6,
+                    maxWidth: 640
+                }}>
+                    {subtitle}
+                </p>
+            )}
+        </div>
+    );
+};
+
 // ---------- MAIN COMPONENT ----------
 
 const AdBanner = ({ type = 'top' }) => {
     const GM = 'var(--brand-gray-mid)';
     const body = 'var(--font-body)';
     const isTop = type === 'top';
-    const adsToRender = isTop ? topAds : bottomAds;
+    const slots = isTop ? topSlots : bottomSlots;
 
     return (
         <div className="w-[95%] mx-auto">
+            {!isTop && (
+                <SectionTitle
+                    eyebrow="Crescita professionale"
+                    title="Formazione continua"
+                    subtitle="Opportunità per aggiornare competenze e favorire la crescita professionale."
+                />
+            )}
             <div
                 className="w-full grid grid-cols-1 md:grid-cols-2 gap-4"
                 style={isTop ? {} : { gap: 1, background: 'rgba(5,11,43,0.06)' }}
             >
-                {adsToRender.map((ad, i) => (
-                    <motion.a
-                        key={i}
-                        href={i === 1 && isTop ? 'https://formazionecontinua.supsi.ch/it/course-details?id=863-mas-human-capital-management' : ad.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="overflow-hidden relative group block"
-                        variants={bannerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.15 }}
-                        custom={i}
-                        style={{
-                            backgroundColor: ad.bg,
-                            position: 'relative',
-                            display: 'block',
-                            height: 235,
-                            ...(!isTop && { border: '1.5px solid rgba(255,31,122,0.22)' })
-                        }}
-                        whileHover={{ 
-                            boxShadow: '0 0 0 2px rgba(255,31,122,0.35), inset 0 0 0 1px rgba(255,31,122,0.12)',
-                            transition: { duration: 0.2, ease: 'easeOut' }
-                        }}
-                    >
-                        <span style={{
-                            position: 'absolute', top: 10, right: 14,
-                            fontFamily: body, fontSize: 9, fontWeight: 700,
-                            letterSpacing: '0.22em', textTransform: 'uppercase',
-                            color: GM, background: '#FFFFFF', padding: '3px 8px', zIndex: 10,
-                            borderRadius: '4px',
-                            border: '1px solid rgba(5,11,43,0.05)'
-                        }}>ADV</span>
-                        
-                        {isTop ? (
-                            i === 0 ? <AsflBanner /> : <SupsiBanner />
-                        ) : (
-                            <BlcBanner />
-                        )}
-                    </motion.a>
-                ))}
+                {slots.map((slot, i) => {
+                    const Banner = slot.Component;
+                    return (
+                        <motion.a
+                            key={slot.key}
+                            href={slot.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="overflow-hidden relative group block"
+                            variants={bannerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.15 }}
+                            custom={i}
+                            style={{
+                                backgroundColor: slot.bg,
+                                position: 'relative',
+                                display: 'block',
+                                height: 235,
+                                ...(!isTop && { border: '1.5px solid rgba(255,31,122,0.22)' })
+                            }}
+                            whileHover={{
+                                boxShadow: '0 0 0 2px rgba(255,31,122,0.35), inset 0 0 0 1px rgba(255,31,122,0.12)',
+                                transition: { duration: 0.2, ease: 'easeOut' }
+                            }}
+                        >
+                            <span style={{
+                                position: 'absolute', top: 10, right: 14,
+                                fontFamily: body, fontSize: 9, fontWeight: 700,
+                                letterSpacing: '0.22em', textTransform: 'uppercase',
+                                color: GM, background: '#FFFFFF', padding: '3px 8px', zIndex: 10,
+                                borderRadius: '4px',
+                                border: '1px solid rgba(5,11,43,0.05)'
+                            }}>ADV</span>
+
+                            <Banner />
+                        </motion.a>
+                    );
+                })}
             </div>
         </div>
     );
