@@ -6,10 +6,20 @@
   },
   "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/offerte", "destination": "/index.html" },
+    { "source": "/offerta/:id", "destination": "/index.html" },
+    { "source": "/aziende-che-assumono", "destination": "/index.html" },
+    { "source": "/azienda/:slug", "destination": "/index.html" },
+    { "source": "/blog", "destination": "/index.html" },
+    { "source": "/blog/:categoria", "destination": "/index.html" },
+    { "source": "/blog/:categoria/:slug", "destination": "/index.html" },
+    { "source": "/soluzioni-e-tariffe", "destination": "/index.html" },
+    { "source": "/come-funziona", "destination": "/index.html" },
+    { "source": "/contatti", "destination": "/index.html" },
+    { "source": "/faq", "destination": "/index.html" },
+    { "source": "/condizioni-generali", "destination": "/index.html" },
+    { "source": "/cookie-policy", "destination": "/index.html" }
   ],
   "redirects": [
     {

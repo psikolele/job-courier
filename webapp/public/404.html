@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagina non trovata | JobCourier</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/png" href="/logo-square.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --brand-navy: #050b2b;
+        --brand-fuchsia: #ff1f7a;
+        --brand-gray-light: #f6f7fb;
+        --brand-gray-mid: #8b8fa8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        padding: 6rem 1.5rem;
+        text-align: center;
+        background: var(--brand-gray-light);
+        color: var(--brand-navy);
+        font-family: 'DM Sans', system-ui, sans-serif;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--brand-navy);
+        margin-bottom: 3rem;
+      }
+      .logo::before {
+        content: '';
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--brand-fuchsia);
+      }
+      .logo span { color: var(--brand-fuchsia); }
+      .eyebrow {
+        margin: 0;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--brand-fuchsia);
+      }
+      h1 {
+        margin: 0.75rem 0 0;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(2.25rem, 5vw, 3rem);
+        font-weight: 700;
+      }
+      p {
+        margin: 1rem auto 0;
+        max-width: 28rem;
+        color: var(--brand-gray-mid);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      .actions {
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+      }
+      a.btn {
+        padding: 0.85rem 1.6rem;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+      }
+      a.btn:hover { opacity: 0.85; }
+      .btn-primary { background: var(--brand-navy); color: #fff; }
+      .btn-secondary {
+        border: 1px solid var(--brand-navy);
+        color: var(--brand-navy);
+      }
+    </style>
+  </head>
+  <body>
+    <a class="logo" href="/">JOBCOURIER<span>.CH</span></a>
+    <p class="eyebrow">Errore 404</p>
+    <h1>Pagina non trovata</h1>
+    <p>
+      La pagina che cerchi non esiste o è stata spostata. Torna alla home oppure
+      esplora le offerte di lavoro.
+    </p>
+    <div class="actions">
+      <a class="btn btn-primary" href="/">Torna alla home</a>
+      <a class="btn btn-secondary" href="/offerte">Vedi le offerte</a>
+    </div>
+  </body>
+</html>
