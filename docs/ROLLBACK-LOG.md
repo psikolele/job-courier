@@ -84,7 +84,17 @@ impostazioni richieste dal GOLIVE-PLAN §4:
 
 ## OP-02 — TTL record `A www` da 1 ora a 600 secondi (GoDaddy)
 
-**Stato:** 🔜 non ancora eseguita — richiede login manuale dell'utente al pannello GoDaddy (account di Laura)
+**Data:** 2026-07-28
+**Stato:** ✅ eseguita e verificata
+**Autorizzazione:** via libera di Laura confermato dall'utente prima dell'esecuzione. Login al pannello effettuato dall'utente (credenziali mai viste né digitate da Claude).
+
+**Stato del record PRIMA della modifica** (letto dal pannello GoDaddy):
+```
+Tipo: A
+Nome: www
+Dati: 217.26.61.124
+TTL:  1 ora
+```
 
 **Cosa fa:** abbassa solo il TTL del record `A www`. Il valore `217.26.61.124` resta invariato.
 
@@ -99,4 +109,31 @@ nslookup -type=A www.jobcourier.ch 8.8.8.8
 
 **Guardrail:** toccare esclusivamente il campo TTL di `A www`. NON toccare MX, `jobroom`, `crm`, TXT SPF/DKIM/DMARC, nameserver — vedi tabella "VIETATO" in [GOLIVE-PLAN.md](GOLIVE-PLAN.md) §2.
 
-**Esito:** _(da compilare)_
+**Procedura seguita:** il TTL minimo selezionabile dai preset GoDaddy è 30 minuti; per
+600 secondi serve l'opzione "Personalizzata" che apre un campo in secondi. Prima del
+salvataggio il form è stato riletto per intero (tipo `a`, nome `www`, valore
+`217.26.61.124`, ttl `custom`/`600`) e verificato che fosse l'unico form aperto.
+
+**Esito:**
+```
+Tipo: A   Nome: www   Dati: 217.26.61.124   TTL: 600 secondi
+```
+
+Controlli dopo il salvataggio:
+
+| Controllo | Risultato |
+|---|---|
+| `A www` nel pannello | 217.26.61.124, **600 secondi** ✅ |
+| `A @` | 217.26.61.124, 600 s — invariato |
+| MX `@` | jobcourier-ch.mail.protection.outlook.com — intatto ✅ |
+| CNAME `jobroom` | jobcourier.arca24.careers — intatto ✅ |
+| CNAME `crm`, `autodiscover`, brevo, splio | invariati ✅ |
+| `https://www.jobcourier.ch` | 200, `Server: Apache` (WordPress su Hostpoint) ✅ |
+| Risoluzione da 8.8.8.8 e da ns49 | 217.26.61.124 — invariata ✅ |
+
+Nota: i resolver che avevano già in cache la risposta con TTL 3600 continueranno a
+usarla fino a un'ora dal salvataggio. Da quel momento tutti avranno il TTL corto.
+Per questo l'operazione va fatta ≥24h prima del go-live.
+
+**Rischio residuo:** nessuno. Il valore del record non è cambiato, quindi il traffico
+non si sposta. Se servisse annullare, rimettere TTL 1 ora dallo stesso form.
