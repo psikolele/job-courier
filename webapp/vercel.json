@@ -4,6 +4,7 @@
       "data": false
     }
   },
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/(.*)",
