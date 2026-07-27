@@ -5,12 +5,615 @@
     }
   },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ],
   "redirects": [
     {
-      "source": "/old-jobs-path",
+      "source": "/de/:path*",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/10-competenze-piu-importanti-2025",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/2020-hr-trends",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/5-motivi-per-cui-reclutare-tramite-email-non-funziona-serve-un-software",
+      "destination": "/blog/recruiting/come-scrivere-un-annuncio-di-lavoro-efficace",
+      "permanent": true
+    },
+    {
+      "source": "/agenzie-in-vetrina",
+      "destination": "/soluzioni-e-tariffe",
+      "permanent": true
+    },
+    {
+      "source": "/agenzie-per-il-lavoro",
+      "destination": "/soluzioni-e-tariffe",
+      "permanent": true
+    },
+    {
+      "source": "/ai-intelligenza-artificiale",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/ambiente-di-lavoro",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/api-software",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/artificial-intelligence-in-hr",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/benessere-aziendale",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/bilanciamento-tra-vita-professionale-e-personale-consigli-per-il-successo-in-svizzera",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/candidati",
+      "destination": "/offerte",
+      "permanent": true
+    },
+    {
+      "source": "/come-condurre-un-audit-delle-competenze-nella-vostra-organizzazione",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/come-prepararsi-a-un-colloquio-di-lavoro-in-svizzera-consigli-pratici",
+      "destination": "/blog/carriera/come-affrontare-un-colloquio-di-lavoro",
+      "permanent": true
+    },
+    {
+      "source": "/come-scrivere-una-lettera-di-motivazione-efficace-per-un-lavoro-in-svizzera",
+      "destination": "/blog/carriera/come-scrivere-un-cv-che-ottiene-colloqui",
+      "permanent": true
+    },
+    {
+      "source": "/consenso-trattamento-dati-personali",
+      "destination": "/condizioni-generali",
+      "permanent": true
+    },
+    {
+      "source": "/corriere-del-ticino-offerte-di-lavoro",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/corriere-del-ticino",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/corriere-lavoro-federico-massaccesi-lacc",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/corriere-lavoro-gabriele-molteni-arca24",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/corriere-lavoro-nicoletta-mazzanti-sidler-sa",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/corriere-lavoro-reclutare-tramite-email-avv-massimiliano-nicotra",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/curriculum-vitae-come-creare-un-cv-di-successo-per-il-mercato-del-lavoro-svizzero",
+      "destination": "/blog/carriera/come-scrivere-un-cv-che-ottiene-colloqui",
+      "permanent": true
+    },
+    {
+      "source": "/cv-digitale",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/data-breach-significato",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/decimo-episodio-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/digital-cv",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/dipartimentalizzazione",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/directory-agenzie",
+      "destination": "/soluzioni-e-tariffe",
+      "permanent": true
+    },
+    {
+      "source": "/diritto-all-oblio-dei-dati-personali",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/diritto-alla-portabilita-dei-dati",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/diritto-di-accesso",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/dodicesimo-episodio-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/employee-benefits-trends",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/faq-candidato",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/fare-i-compiti-per-lia",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/fare-ordine-nei-processi",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/flessibilita-lavorativa",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/gamification-gamificare-la-forza-lavoro-come-rendere-divertente-ed-efficace-il-coinvolgimento-dei-dipendenti",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/gdpr-best-practices",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/gdpr-e-hr",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/gdpr-for-hr-professionals",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/gdpr-for-hr",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/gdpr-hr-data",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/gdpr-hr",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/gestione-risorse-umane",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/gestione-risorse",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/global-mobility",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/green-skills",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/guida-ai-permessi-di-lavoro-in-svizzera-per-cittadini-stranieri",
+      "destination": "/blog/carriera/come-trovare-lavoro-guida-pratica",
+      "permanent": true
+    },
+    {
+      "source": "/hr-next-gen-una-delle-10-tendenze-del-futuro",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/hr-talent-management-nellera-della-digitalizzazione",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/hr-tech",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/hr-transformation",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/i-migliori-lavori-del-futuro",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/i-settori-in-crescita-in-svizzera-dove-cercare-opportunita-di-lavoro",
+      "destination": "/blog/carriera/settori-con-piu-opportunita-di-lavoro",
+      "permanent": true
+    },
+    {
+      "source": "/il-segreto-per-imparare",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/il-tuo-prossimo-lavoro-lo-trova-jobtome",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/importare-offerte-di-lavoro-tramite-feed-rss",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/intelligenza-artificiale-recruiting",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/intelligenza-artificiale",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/intervista",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/job-trends",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/jobarch-recruit-easily-hire-quickly",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/jobcourier-futuring-you",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/jobcourier-team-personnel-solutions-sa",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/la-ricerca-del-lavoro-per-gli-stranieri-in-svizzera-guida-completa",
+      "destination": "/blog/carriera/come-trovare-lavoro-guida-pratica",
+      "permanent": true
+    },
+    {
+      "source": "/la-verita-paga-sempre-attraverso-la-giusta-comunicazione",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/lavoro-flessibile",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/lavoro-ibrido",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/lavoro-lugano",
+      "destination": "/offerte",
+      "permanent": true
+    },
+    {
+      "source": "/leadership-femminile",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/limportanza-della-compagnia",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/limportanza-delle-terre-di-mezzo",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/login",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/magazine-azienda",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/magazine-candidato",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/mappatura-delle-competenze",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/news",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/nono-episodio-di-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/onboarding-dei-candidati",
+      "destination": "/blog/recruiting/come-ridurre-i-tempi-di-assunzione",
+      "permanent": true
+    },
+    {
+      "source": "/onboarding",
+      "destination": "/blog/recruiting/come-ridurre-i-tempi-di-assunzione",
+      "permanent": true
+    },
+    {
+      "source": "/orizzonti-hr",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/ottavo-episodio-di-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/performance-management",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/prezzi",
+      "destination": "/soluzioni-e-tariffe",
+      "permanent": true
+    },
+    {
+      "source": "/primo-episodio-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-by-design-e-privacy-by-default",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/quarto-episodio-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/quattordicesimo-episodio-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/quinto-episodio-di-hr-stories-la-sitcom-sulle-risorse-umane",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/reclutamento",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/recruiters",
+      "destination": "/soluzioni-e-tariffe",
+      "permanent": true
+    },
+    {
+      "source": "/retention-dei-dipendenti",
+      "destination": "/blog/recruiting/come-trattenere-i-collaboratori-migliori",
+      "permanent": true
+    },
+    {
+      "source": "/riprogettare-il-dialogo-tra-generazioni",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/riqualificazione-professionale-la-vera-priorita-dei-prossimi-anni",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/secondo-episodio-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/selezione-artificiale",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/sesto-episodio-di-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/settimo-episodio-di-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/smart-working-significato-e-valore",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/smartworking",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/socialita-ed-equilibrio-vita-lavoro",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/soft-skills",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/team-personnel-solutions-sa",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/tendenze-del-mercato-del-lavoro-post-covid",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/terzo-episodio-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/test-leadership",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/test-linguistici-online",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/trailer-di-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/trasformazione-del-lavoro-sfide-e-strategie-per-il-futuro",
+      "destination": "/blog/carriera",
+      "permanent": true
+    },
+    {
+      "source": "/tredicesimo-episodio-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/tutorial",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/undicesimo-episodio-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/video-colloquio-in-differita",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/webseries-hr-stories",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/worktainment-limportanza-dellinatteso",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/worktainment-un-lavoro-gratificante",
+      "destination": "/blog/recruiting",
+      "permanent": true
+    },
+    {
+      "source": "/zolliway",
+      "destination": "/blog/recruiting",
       "permanent": true
     }
   ],

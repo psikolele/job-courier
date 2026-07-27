@@ -24,6 +24,7 @@ import BlogCategoria from './pages/BlogCategoria';
 import BlogArticolo from './pages/BlogArticolo';
 import AziendeCheAssumono from './pages/AziendeCheAssumono';
 import AziendaDettaglio from './pages/AziendaDettaglio';
+import NotFound from './pages/NotFound';
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -110,6 +111,7 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/condizioni-generali" element={<CondizioniGenerali />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer setShowLoginModal={setShowLoginModal} />
       {routeLoaderVisible && <RouteLoader />}
