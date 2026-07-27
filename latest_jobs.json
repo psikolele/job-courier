@@ -1,22 +1,6 @@
 [
   {
     "id": 0,
-    "title": "Spezialreiniger/in Schadensanierung (a) 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732496-spezialreiniger-in-schadensanierung-a-100-urtenen-sch%C3%B6nbuhl-be&language=en"
-  },
-  {
-    "id": 1,
-    "title": "Sachbearbeiter/in Bau- und Projektadministration (m/w/d) 60?100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732489-sachbearbeiter-in-bau-und-projektadministration-m-w-d-60-100-schwyz-sz&language=en"
-  },
-  {
-    "id": 2,
     "title": "Fassadenmonteur/in (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -24,63 +8,31 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732487-fassadenmonteur-in-m-w-d-schwyz-sz&language=en"
   },
   {
-    "id": 3,
-    "title": "Fachperson Tiefbauplanung (m/w/d)",
+    "id": 1,
+    "title": "Instandhaltungsfachmann im Netzbetrieb (m/w/d)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732483-fachperson-tiefbauplanung-m-w-d-schwyz-sz&language=en"
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732490-instandhaltungsfachmann-im-netzbetrieb-m-w-d-zurich-zh&language=en"
+  },
+  {
+    "id": 2,
+    "title": "Vorarbeiter:in 100% (a)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732485-vorarbeiter-in-100-a-bern-bern&language=en"
+  },
+  {
+    "id": 3,
+    "title": "Sachbearbeiter/in Bau- und Projektadministration (m/w/d) 60?100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732489-sachbearbeiter-in-bau-und-projektadministration-m-w-d-60-100-schwyz-sz&language=en"
   },
   {
     "id": 4,
-    "title": "HR-Fachfrau / HR-Fachmann",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732482-hr-fachfrau-hr-fachmann-allschwil-bl&language=en"
-  },
-  {
-    "id": 5,
-    "title": "Netzelektriker EFZ m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732495-netzelektriker-efz-m-w-d-100-arlesheim-baselland&language=en"
-  },
-  {
-    "id": 6,
-    "title": "Betriebselektriker m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732493-betriebselektriker-m-w-d-100-basel-basel&language=en"
-  },
-  {
-    "id": 7,
-    "title": "Betriebselektriker m/w/d 100%",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732488-betriebselektriker-m-w-d-100-reinach-baselland&language=en"
-  },
-  {
-    "id": 8,
-    "title": "Strassenbauer (m/w/d)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732492-strassenbauer-m-w-d-subingen-so&language=en"
-  },
-  {
-    "id": 9,
-    "title": "Sanitärinstallateur EFZ - 100% (a)",
-    "location": "Svizzera",
-    "sector": "Generale",
-    "company": "Adecco",
-    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732486-sanit%C3%A4rinstallateur-efz-100-a-solothurn-solothurn&language=en"
-  },
-  {
-    "id": 10,
     "title": "Dachdecker Flachdach (a)",
     "location": "Svizzera",
     "sector": "Generale",
@@ -88,11 +40,59 @@
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732484-dachdecker-flachdach-a-bern-bern&language=en"
   },
   {
-    "id": 11,
+    "id": 5,
     "title": "Heizungsinstallateur 100% - (a)",
     "location": "Svizzera",
     "sector": "Generale",
     "company": "Adecco",
     "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732494-heizungsinstallateur-100-a-solothurn-solothurn&language=en"
+  },
+  {
+    "id": 6,
+    "title": "Strassenbauer (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732492-strassenbauer-m-w-d-subingen-so&language=en"
+  },
+  {
+    "id": 7,
+    "title": "Sanitärinstallateur EFZ - 100% (a)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732486-sanit%C3%A4rinstallateur-efz-100-a-solothurn-solothurn&language=en"
+  },
+  {
+    "id": 8,
+    "title": "Spezialreiniger/in Schadensanierung (a) 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732496-spezialreiniger-in-schadensanierung-a-100-urtenen-sch%C3%B6nbuhl-be&language=en"
+  },
+  {
+    "id": 9,
+    "title": "Betriebselektriker m/w/d 100%",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732488-betriebselektriker-m-w-d-100-reinach-baselland&language=en"
+  },
+  {
+    "id": 10,
+    "title": "Fachperson Tiefbauplanung (m/w/d)",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732483-fachperson-tiefbauplanung-m-w-d-schwyz-sz&language=en"
+  },
+  {
+    "id": 11,
+    "title": "HR-Fachfrau / HR-Fachmann",
+    "location": "Svizzera",
+    "sector": "Generale",
+    "company": "Adecco",
+    "link": "https://jobroom.jobcourier.ch/job/view-job.php?id=6732482-hr-fachfrau-hr-fachmann-allschwil-bl&language=en"
   }
 ]
