@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Lock } from 'lucide-react';
+import { Lock, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SectionLabel from '../components/ui/SectionLabel.jsx';
 
@@ -17,16 +17,18 @@ const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
-const FuchsiaButton = ({ href, onClick, children, fullWidth = false }) => (
+const FuchsiaButton = ({ href, onClick, children, fullWidth = false, compact = false }) => (
     <a href={href} onClick={onClick} className="inline-flex items-center justify-center gap-2 transition-all hover:opacity-85 hover:scale-[1.02] hover-lift"
         style={{
             background: F, color: W, border: 'none',
-            padding: '14px 28px',
+            padding: compact ? '14px 18px' : '14px 28px',
+            minHeight: 48,
             fontFamily: brand, fontWeight: 700, fontSize: 11,
-            letterSpacing: '0.14em', textTransform: 'uppercase',
+            letterSpacing: compact ? '0.08em' : '0.14em', textTransform: 'uppercase',
             cursor: 'pointer', borderRadius: 0,
             width: fullWidth ? '100%' : 'auto',
-            textDecoration: 'none'
+            textDecoration: 'none',
+            textAlign: 'center', lineHeight: 1.3
         }}>
         {children}
     </a>
@@ -49,17 +51,19 @@ const OutlineButton = ({ href, onClick, children, fullWidth = false, target, rel
     </a>
 );
 
-const FuchsiaOutlineButton = ({ href, onClick, children, fullWidth = false }) => (
+const FuchsiaOutlineButton = ({ href, onClick, children, fullWidth = false, compact = false }) => (
     <a href={href} onClick={onClick} className="inline-flex items-center justify-center gap-2 transition-all hover:opacity-85 hover:scale-[1.02] hover-lift"
         style={{
             background: 'transparent', color: F,
             border: `1.5px solid ${F}`,
-            padding: '14px 28px',
+            padding: compact ? '14px 18px' : '14px 28px',
+            minHeight: 48,
             fontFamily: brand, fontWeight: 700, fontSize: 11,
-            letterSpacing: '0.14em', textTransform: 'uppercase',
+            letterSpacing: compact ? '0.08em' : '0.14em', textTransform: 'uppercase',
             cursor: 'pointer', borderRadius: 0,
             width: fullWidth ? '100%' : 'auto',
-            textDecoration: 'none'
+            textDecoration: 'none',
+            textAlign: 'center', lineHeight: 1.3
         }}>
         {children}
     </a>
@@ -496,7 +500,7 @@ const Pricing = () => {
                                     </ul>
                                 </div>
 
-                                <div className="flex flex-col justify-between items-center md:items-stretch md:w-[260px] p-8 text-center"
+                                <div className="flex flex-col justify-between items-center md:items-stretch md:w-[300px] md:shrink-0 p-8 text-center"
                                     style={{ background: GL, borderLeft: '1px solid rgba(5,11,43,0.06)' }}>
                                     <div className="space-y-4 my-auto">
                                         <Lock size={32} className="mx-auto text-slate-300" />
@@ -507,12 +511,14 @@ const Pricing = () => {
                                             {data.agency.boxDesc}
                                         </p>
                                     </div>
-                                    <div className="flex gap-3 w-full" style={{ marginTop: 24 }}>
-                                        <FuchsiaButton href="/contatti" fullWidth>
-                                            {data.agency.cta} →
+                                    <div className="flex flex-col gap-3 w-full" style={{ marginTop: 32 }}>
+                                        <FuchsiaButton href="/contatti" fullWidth compact>
+                                            <span>{data.agency.cta}</span>
+                                            <ArrowRight size={14} style={{ flexShrink: 0 }} />
                                         </FuchsiaButton>
-                                        <FuchsiaOutlineButton href="/contatti" fullWidth>
-                                            {data.agency.cta2} →
+                                        <FuchsiaOutlineButton href="/contatti" fullWidth compact>
+                                            <span>{data.agency.cta2}</span>
+                                            <ArrowRight size={14} style={{ flexShrink: 0 }} />
                                         </FuchsiaOutlineButton>
                                     </div>
                                 </div>
