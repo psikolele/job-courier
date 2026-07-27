@@ -32,8 +32,8 @@ const FuchsiaButton = ({ href, onClick, children, fullWidth = false }) => (
     </a>
 );
 
-const OutlineButton = ({ href, onClick, children, fullWidth = false }) => (
-    <a href={href} onClick={onClick} className="jc-glow-btn-light inline-flex items-center justify-center gap-2"
+const OutlineButton = ({ href, onClick, children, fullWidth = false, target, rel }) => (
+    <a href={href} onClick={onClick} target={target} rel={rel} className="jc-glow-btn-light inline-flex items-center justify-center gap-2"
         style={{
             background: 'transparent', color: N,
             border: `1.5px solid ${N}`,
@@ -110,7 +110,9 @@ const getLocalizedData = (lang) => {
                       desc:  isIt ? "Candidature e candidati in un'unica area riservata." : isDe ? 'Bewerbungen und Kandidaten in einem einzigen reservierten Bereich.' : isFr ? 'Candidatures et candidats dans un seul espace réservé.' : 'Applications and candidates in one reserved area.' },
                 ],
                 tag: isIt ? '01 / OCCASIONALE' : isDe ? '01 / GELEGENTLICH' : isFr ? '01 / OCCASIONNEL' : '01 / OCCASIONAL',
-                cta: isIt ? 'Contattaci' : isDe ? 'Kontakt' : isFr ? 'Contactez-nous' : 'Contact us',
+                cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
+                href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it',
+                external: true,
             },
             {
                 label: isIt ? '02 / VOLUME' : isDe ? '02 / VOLUMEN' : isFr ? '02 / VOLUME' : '02 / VOLUME',
@@ -139,6 +141,7 @@ const getLocalizedData = (lang) => {
                 tag: isIt ? 'CONSIGLIATO' : isDe ? 'EMPFOHLEN' : isFr ? 'RECOMMANDÉ' : 'RECOMMENDED',
                 highlight: true,
                 cta: isIt ? 'Contattaci' : isDe ? 'Kontakt' : isFr ? 'Contactez-nous' : 'Contact us',
+                href: '/contatti',
             },
             {
                 label: isIt ? '03 / CONTINUO' : isDe ? '03 / KONTINUIERLICH' : isFr ? '03 / CONTINU' : '03 / CONTINUOUS',
@@ -167,6 +170,7 @@ const getLocalizedData = (lang) => {
                 ],
                 tag: isIt ? 'PIÙ ACQUISTATO' : isDe ? 'MEISTGEKAUFT' : isFr ? 'PLUS ACHETÉ' : 'BEST SELLER',
                 cta: isIt ? 'Contattaci' : isDe ? 'Kontakt' : isFr ? 'Contactez-nous' : 'Contact us',
+                href: '/contatti',
             },
         ],
         agency: {
@@ -388,7 +392,12 @@ const Pricing = () => {
                                                 ))}
                                             </ul>
 
-                                            <OutlineButton href="/contatti" fullWidth>{plan.cta} →</OutlineButton>
+                                            <OutlineButton
+                                                href={plan.href || '/contatti'}
+                                                fullWidth
+                                                target={plan.external ? '_blank' : undefined}
+                                                rel={plan.external ? 'noopener noreferrer' : undefined}
+                                            >{plan.cta} →</OutlineButton>
                                         </motion.div>
                                     ))}
                                 </div>
