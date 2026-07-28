@@ -375,6 +375,7 @@ const SectionTitle = ({ eyebrow, title, subtitle }) => {
             <h2 style={{
                 fontFamily: editorial,
                 fontStyle: 'italic',
+                textTransform: 'uppercase',
                 fontSize: 'clamp(22px, 3vw, 32px)',
                 color: N,
                 lineHeight: 1.2,

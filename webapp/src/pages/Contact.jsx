@@ -61,7 +61,7 @@ const Contact = () => {
 
     // Interim delivery: no mail backend exists yet, so the form opens the user's
     // mail client with a prefilled message addressed to JobCourier.
-    const CONTACT_EMAIL = 'laura@jobcourier.ch';
+    const CONTACT_EMAIL = 'sales@jobcourier.ch';
 
     const [form, setForm] = useState({
         firstName: '', lastName: '', email: '', company: '', subject: '', message: ''
@@ -257,7 +257,7 @@ const Contact = () => {
                         </button>
 
                         <p style={{ fontFamily: body, fontSize: 12, color: GM }}>
-                            {t('contact.gdpr_prefix')} <Link to="/cookie-policy" style={{ color: F, textDecoration: 'underline' }}>{t('contact.gdpr_link')}</Link>
+                            {t('contact.gdpr_prefix')} <Link to="/condizioni-generali" style={{ color: F, textDecoration: 'underline' }}>{t('contact.gdpr_link')}</Link>
                         </p>
                     </form>
                 </div>
