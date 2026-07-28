@@ -375,7 +375,6 @@ const SectionTitle = ({ eyebrow, title, subtitle }) => {
             <h2 style={{
                 fontFamily: editorial,
                 fontStyle: 'italic',
-                textTransform: 'uppercase',
                 fontSize: 'clamp(22px, 3vw, 32px)',
                 color: N,
                 lineHeight: 1.2,
@@ -410,9 +409,8 @@ const AdBanner = ({ type = 'top' }) => {
         <div className="w-[95%] mx-auto">
             {!isTop && (
                 <SectionTitle
-                    eyebrow="Formazione"
-                    title="Continua"
-                    subtitle="Opportunità per aggiornare competenze e favorire la crescita professionale."
+                    eyebrow="Formazione Continua"
+                    title="Opportunità per aggiornare competenze e favorire la crescita professionale."
                 />
             )}
             <div
