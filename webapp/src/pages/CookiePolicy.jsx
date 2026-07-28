@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -51,6 +51,21 @@ const Li = ({ children }) => (
 const FuchsiaLine = () => (
     <div style={{ width: 48, height: 3, background: F, marginBottom: 32, marginTop: 8 }} />
 );
+
+const CookieDeclaration = () => {
+    const ref = useRef(null);
+    useEffect(() => {
+        const el = ref.current;
+        if (!el || el.querySelector('script')) return;
+        const script = document.createElement('script');
+        script.id = 'CookieDeclaration';
+        script.src = 'https://consent.cookiebot.com/29601bde-40d6-45d8-be15-4b7bdef2d50c/cd.js';
+        script.type = 'text/javascript';
+        script.async = true;
+        el.appendChild(script);
+    }, []);
+    return <div ref={ref} />;
+};
 
 const CookiePolicy = () => {
     return (
@@ -135,34 +150,12 @@ const CookiePolicy = () => {
 
                     <H2>3. Cookie specifici utilizzati su jobcourier.ch</H2>
 
-                    <div style={{ overflowX: 'auto', marginBottom: 24 }}>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: body, fontSize: '0.9rem', color: GM }}>
-                            <thead>
-                                <tr style={{ background: N }}>
-                                    {['Nome cookie', 'Tipologia', 'Durata', 'Finalità'].map(h => (
-                                        <th key={h} style={{ padding: '10px 14px', textAlign: 'left', color: 'var(--brand-white)', fontFamily: brand, fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.05em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{h}</th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {[
-                                    ['sessionid / PHPSESSID', 'Tecnico', 'Sessione', 'Gestione della sessione utente autenticato'],
-                                    ['auth_token', 'Tecnico', '30 giorni', 'Mantenimento del login ("ricordami")'],
-                                    ['lang_pref', 'Funzionale', '1 anno', 'Memorizzazione della lingua preferita'],
-                                    ['cookie_consent', 'Tecnico', '1 anno', 'Salvataggio delle preferenze di consenso cookie'],
-                                    ['_ga / _ga_*', 'Analitico', '2 anni', 'Identificazione utente per Google Analytics'],
-                                    ['_gid', 'Analitico', '24 ore', 'Distinzione utenti per Google Analytics'],
-                                    ['_gat', 'Analitico', '1 minuto', 'Limitazione frequenza richieste a Google Analytics'],
-                                ].map(([name, type, dur, purpose], i) => (
-                                    <tr key={name} style={{ background: i % 2 === 0 ? 'var(--brand-gray-light)' : 'var(--brand-white)' }}>
-                                        <td style={{ padding: '10px 14px', fontFamily: 'monospace', fontSize: '0.85rem', color: N, fontWeight: 600 }}>{name}</td>
-                                        <td style={{ padding: '10px 14px' }}>{type}</td>
-                                        <td style={{ padding: '10px 14px', whiteSpace: 'nowrap' }}>{dur}</td>
-                                        <td style={{ padding: '10px 14px' }}>{purpose}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                    <P>
+                        L'elenco aggiornato dei cookie effettivamente rilevati sul sito, generato automaticamente da
+                        Cookiebot tramite scansione periodica, è riportato di seguito:
+                    </P>
+                    <div style={{ marginBottom: 24 }}>
+                        <CookieDeclaration />
                     </div>
 
                     <P>
