@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example

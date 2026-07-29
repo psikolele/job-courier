@@ -409,9 +409,8 @@ const AdBanner = ({ type = 'top' }) => {
         <div className="w-[95%] mx-auto">
             {!isTop && (
                 <SectionTitle
-                    eyebrow="Crescita professionale"
-                    title="Formazione continua"
-                    subtitle="Opportunità per aggiornare competenze e favorire la crescita professionale."
+                    eyebrow="Formazione Continua"
+                    title="Opportunità per aggiornare competenze e favorire la crescita professionale."
                 />
             )}
             <div

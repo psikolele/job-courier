@@ -1,5 +1,11 @@
 .vercel
 node_modules/
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
 *.mp4
 *.db
 ruvector.db

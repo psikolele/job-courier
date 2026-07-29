@@ -1,4 +1,24 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 26 Giugno 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 28 Luglio 2026)
+
+> ⚠️ **Avvertenza sull'attendibilità di questo wiki.** Verifica del 27/07/2026: quattro
+> documenti citati nella sezione 6 (`handoff-2026-06-25.md`, `IMPLEMENTATION_PLAN_2026-06-25.md`,
+> `MEETING_SUMMARY_2026-06-25.md`, `GMAIL_DRAFT_GABRIELE.txt`) **non esistono nel repo**.
+> Prima di citare un file da qui, controllare che ci sia davvero.
+
+## 0. Go-Live: integrazione branch e correzioni SEO (28 Luglio 2026) — ✅ *COMPLETED*
+
+**Handoff completo:** [`docs/handoff-2026-07-28.md`](handoff-2026-07-28.md) · **Registro operazioni:** [`docs/ROLLBACK-LOG.md`](ROLLBACK-LOG.md)
+**Modello:** Claude Opus 5 (`claude-opus-5`), caveman mode full · 60 minuti
+
+* **`main` era indietro rispetto alla produzione.** Il lavoro di luglio viveva su due branch mai mergiati (modifiche Ballinari + piano go-live). Un push su `main` avrebbe fatto regredire il sito live. Integrati e allineati (merge `ebb3056`).
+* **I 121 redirect erano inerti.** Le 211 URL WordPress indicizzate finiscono tutte con lo slash, le regole erano scritte tutte senza: nessun match, quindi soft-404 di massa al go-live. Fix `"trailingSlash": false` (`05d51c2`). Bug invisibile in locale perché `vite dev` non applica i redirect di `vercel.json`.
+* **Soft-404 eliminato.** Rimosso il rewrite catch-all, sostituito con 14 rewrite espliciti + `webapp/public/404.html` statico: gli URL inesistenti ora rispondono **404 vero** invece di 200 (`5f355cc`). ⚠️ Conseguenza: una nuova `<Route>` in `App.jsx` va aggiunta anche ai `rewrites` di `vercel.json`, altrimenti 404 da URL diretta.
+* **Pre-flight DNS/Vercel.** Domini `jobcourier.ch` e `www` aggiunti al progetto Vercel; TTL del record `A www` abbassato da 1 ora a 600 s su GoDaddy. Nessuno dei due tocca il traffico: il sito pubblico è ancora il WordPress su Hostpoint, verificato prima e dopo.
+* **`.env` non era ignorato da git** in nessuno dei due `.gitignore`. Aggiunte le regole + `.env.example` (`e0a22e0`).
+* **Data go-live spostata a venerdì 31 luglio**, prima del rilascio Jobroom del 3 agosto (deciso con Gabriele).
+* **La nuova piattaforma Arca24 romperà gli scraper:** struttura URL completamente diversa (`/it/careers/latest_jobs` invece di `/job/latest-and-all-job-ads.php`). L'host `viso-` sembra però un ambiente di collaudo — chiedere ad Arca24 quello definitivo prima di migrare.
+
+---
 
 ## 📌 Stato Attuale: Operazioni Completate
 
