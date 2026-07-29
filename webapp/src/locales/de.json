@@ -20,13 +20,25 @@
       "cta": "Angebote Finden",
       "search_placeholder": "Berufsbezeichnung, Unternehmen oder Stichwort...",
       "any_sector": "Jeder Bereich",
-      "all_cantons": "Alle Kantone (Schweiz)"
+      "all_cantons": "Alle Kantone (Schweiz)",
+      "links": {
+        "all_offers": "Alle Stellen ansehen",
+        "hiring_companies": "Einstellende Unternehmen",
+        "career_tips": "Karrieretipps"
+      }
     },
     "companies": {
       "h1": "Finden Sie Ihr",
       "h1_sub": "Bestes Talent.",
       "subtitle": "Für Unternehmen",
-      "cta": "Anzeige veröffentlichen"
+      "cta": "Anzeige veröffentlichen",
+      "links": {
+        "how_it_works": "Wie es funktioniert",
+        "pricing": "Lösungen und Tarife",
+        "recruiting_tips": "Recruiting-Tipps"
+      },
+      "stat_candidates": "Registrierte Kandidaten",
+      "stat_applications": "Bewerbungen pro Monat"
     }
   },
   "blog": {
@@ -76,34 +88,48 @@
         "title": "Warum Kandidaten manche Unternehmen wählen und andere nicht",
         "description": "Die sieben Faktoren, die Kandidaten wirklich bewerten, und wie KMU sie kommunizieren können."
       }
-    ]
+    ],
+    "read_also": "Lesen Sie auch",
+    "other_articles": "Weitere Artikel",
+    "switch_to_recruiting": "Sind Sie ein Unternehmen? Recruiting-Tipps",
+    "switch_to_career": "Auf Jobsuche? Karrieretipps",
+    "cta_career": "Finden Sie Ihren nächsten Job",
+    "cta_recruiting": "Veröffentlichen Sie Ihre Anzeige",
+    "cta_career_btn": "Stellen ansehen",
+    "cta_recruiting_btn": "Lösungen entdecken"
   },
   "come_funziona": {
-    "subtitle": "JobCourier-Prozess",
-    "hero_title": "Einfach.",
-    "hero_em": "Präzise.",
-    "hero_sub": "Von der Registrierung bis zur ersten Bewerbung: In wenigen Klicks haben Sie das Recruiting unter Kontrolle.",
-    "steps_title": "Wie es funktioniert",
-    "step1_title": "Registrierung",
-    "step1_desc": "Erstellen Sie Ihr Unternehmenskonto in 30 Sekunden. Keine Bürokratie, kein Warten.",
-    "step2_title": "Plan wählen",
-    "step2_desc": "Von der Einzelanzeige bis zu Enterprise-Paketen: Wählen Sie die passende Lösung für Ihr Unternehmen.",
-    "step3_title": "Anzeige veröffentlichen",
-    "step3_desc": "Verwalten Sie Ihre Inserate vollständig, anonym oder öffentlich, mit maximaler Flexibilität.",
-    "step4_title": "Bewerbungen erhalten",
-    "step4_desc": "Greifen Sie auf die Datenbank zu und schalten Sie die qualifiziertesten Profile frei. Das Matching arbeitet für Sie.",
-    "why_title": "Warum JobCourier",
-    "why_sub": "Eine Plattform für den Schweizer Markt. Lokal, präzise, effektiv.",
-    "feature1_title": "Schweizer Portal",
-    "feature1_desc": "Lokale Datenbank mit verifizierten Kandidaten, die aktiv auf dem Schweizer Arbeitsmarkt sind.",
-    "feature2_title": "Erweitertes Matching",
-    "feature2_desc": "Matching-Algorithmus, der die kompatiblesten Profile mit Ihren Anforderungen identifiziert.",
-    "feature3_title": "Dedizierter Support",
-    "feature3_desc": "Ein Expertenteam steht Ihnen zur Verfügung, um Ihre Recruiting-Kampagnen zu optimieren.",
-    "cta_title": "Bereit anzufangen?",
-    "cta_sub": "Registrieren Sie Ihr Unternehmen und veröffentlichen Sie Ihre erste Anzeige in weniger als 5 Minuten.",
-    "cta_btn": "JETZT STARTEN",
-    "cta_btn2": "Pläne ansehen"
+    "hero_label": "Die JobCourier-Methode",
+    "hero_title": "Von der Anzeige zu den Kandidaten",
+    "hero_em": "in wenigen Klicks.",
+    "hero_emphasis": "Einfach. Sofort.",
+    "steps_label": "4 einfache Schritte",
+    "steps_title": "Veröffentlichen Sie eine",
+    "steps_title_em": "Personalsuche.",
+    "steps_sub": "Greifen Sie sofort auf die bereits bei JobCourier registrierten Kandidaten zu",
+    "step1_title": "REGISTRIEREN",
+    "step1_desc": "Erstellen Sie kostenlos Ihr Unternehmenskonto und gelangen Sie in Ihren geschützten JobCourier-Bereich.",
+    "step2_title": "VERÖFFENTLICHEN",
+    "step2_desc": "Veröffentlichen Sie Ihre Personalsuche und machen Sie sie für Kandidaten in der ganzen Schweiz sichtbar.",
+    "step3_title": "ANSEHEN",
+    "step3_desc": "JobCourier zeigt Ihnen sofort die zu Ihrer Suche passenden Kandidaten.",
+    "step4_title": "KONTAKTIEREN",
+    "step4_desc": "Prüfen Sie die erhaltenen Profile und kontaktieren Sie die interessantesten.",
+    "why_label": "Warum JobCourier",
+    "why_title": "Eine Plattform, die Ihnen hilft, Kandidaten einfach zu finden.",
+    "why_sub": "Schnell und effektiv.",
+    "feature1_title": "120'000+ registrierte Kandidaten",
+    "feature1_desc": "Zugriff auf eine der grössten Kandidatendatenbanken der Schweiz.",
+    "feature2_title": "Bereits verfügbare Kandidaten",
+    "feature2_desc": "Nach der Veröffentlichung zeigt Ihnen JobCourier sofort passende Kandidaten aus der Datenbank.",
+    "feature3_title": "Lokale Kompetenz",
+    "feature3_desc": "Wir kennen den Schweizer Arbeitsmarkt und die Bedürfnisse derjenigen, die täglich einstellen.",
+    "cta_label": "Bereit zu starten",
+    "cta_title": "KANDIDATEN FINDEN – GANZ",
+    "cta_title_em": "EINFACH.",
+    "cta_sub": "Veröffentlichen Sie eine Personalsuche und greifen Sie sofort auf die bereits bei JobCourier registrierten Kandidaten zu.",
+    "cta_btn": "UNTERNEHMEN REGISTRIEREN",
+    "cta_btn2": "PLÄNE ANSEHEN"
   },
   "pricing": {
     "subtitle": "Rekrutierungslösungen",

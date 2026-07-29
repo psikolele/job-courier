@@ -20,13 +20,25 @@
       "cta": "Find Offers",
       "search_placeholder": "Job title, company or keyword...",
       "any_sector": "Any job sector",
-      "all_cantons": "All Cantons (Switzerland)"
+      "all_cantons": "All Cantons (Switzerland)",
+      "links": {
+        "all_offers": "View all offers",
+        "hiring_companies": "Hiring companies",
+        "career_tips": "Career tips"
+      }
     },
     "companies": {
       "h1": "Find your",
       "h1_sub": "Best Talent.",
       "subtitle": "For Companies",
-      "cta": "Publish Ad"
+      "cta": "Publish Ad",
+      "links": {
+        "how_it_works": "How it works",
+        "pricing": "Solutions and prices",
+        "recruiting_tips": "Recruiting tips"
+      },
+      "stat_candidates": "Registered candidates",
+      "stat_applications": "Applications per month"
     }
   },
   "blog": {
@@ -76,34 +88,48 @@
         "title": "Why candidates choose some companies and not others",
         "description": "The seven factors candidates really evaluate and how SMEs can communicate them."
       }
-    ]
+    ],
+    "read_also": "Read also",
+    "other_articles": "Other articles",
+    "switch_to_recruiting": "Are you a company? Recruiting tips",
+    "switch_to_career": "Looking for a job? Career tips",
+    "cta_career": "Find your next job",
+    "cta_recruiting": "Post your job ad",
+    "cta_career_btn": "View offers",
+    "cta_recruiting_btn": "Discover the solutions"
   },
   "come_funziona": {
-    "subtitle": "JobCourier Process",
-    "hero_title": "Simple.",
-    "hero_em": "Surgical.",
-    "hero_sub": "From registration to the first application: in a few clicks you have recruiting under control.",
-    "steps_title": "How it works",
-    "step1_title": "Registration",
-    "step1_desc": "Create your company account in 30 seconds. No bureaucracy, no waiting.",
-    "step2_title": "Choose a Plan",
-    "step2_desc": "From a single ad to enterprise packages: choose the solution that best fits your needs.",
-    "step3_title": "Post the Job",
-    "step3_desc": "Manage your listings fully, anonymously or publicly, with maximum flexibility.",
-    "step4_title": "Receive Applications",
-    "step4_desc": "Access the database and unlock the most qualified profiles. Advanced matching works for you.",
-    "why_title": "Why JobCourier",
-    "why_sub": "A platform built for the Swiss market. Local, precise, effective.",
-    "feature1_title": "Swiss Portal",
-    "feature1_desc": "Local database with verified candidates active in the Swiss job market.",
-    "feature2_title": "Advanced Matching",
-    "feature2_desc": "Matching algorithm that identifies the most compatible profiles with your requirements.",
-    "feature3_title": "Dedicated Support",
-    "feature3_desc": "A team of experts at your disposal to optimize your recruiting campaigns.",
-    "cta_title": "Ready to start?",
-    "cta_sub": "Register your company and post your first ad in less than 5 minutes.",
-    "cta_btn": "START NOW",
-    "cta_btn2": "View plans"
+    "hero_label": "The JobCourier Method",
+    "hero_title": "From posting to candidates",
+    "hero_em": "in a few clicks.",
+    "hero_emphasis": "Simple. Immediate.",
+    "steps_label": "4 Simple Steps",
+    "steps_title": "Post a",
+    "steps_title_em": "staffing search.",
+    "steps_sub": "Get immediate access to candidates already registered on JobCourier",
+    "step1_title": "REGISTER",
+    "step1_desc": "Create your company account for free and access your reserved JobCourier area.",
+    "step2_title": "POST",
+    "step2_desc": "Post your staffing search and make it visible to candidates across Switzerland.",
+    "step3_title": "VIEW",
+    "step3_desc": "JobCourier instantly shows you the candidates matching your search.",
+    "step4_title": "CONTACT",
+    "step4_desc": "Review the profiles you receive and contact the ones you are most interested in.",
+    "why_label": "Why JobCourier",
+    "why_title": "A platform designed to help you find candidates the simple way.",
+    "why_sub": "Fast and effective.",
+    "feature1_title": "120'000+ registered candidates",
+    "feature1_desc": "Access one of the largest candidate databases in Switzerland.",
+    "feature2_title": "Candidates already available",
+    "feature2_desc": "After posting, JobCourier immediately shows you matching candidates already in the database.",
+    "feature3_title": "Local expertise",
+    "feature3_desc": "We know the Swiss labour market and the needs of those who hire every day.",
+    "cta_label": "Ready to start",
+    "cta_title": "FIND CANDIDATES THE",
+    "cta_title_em": "SIMPLE WAY.",
+    "cta_sub": "Post a staffing search and get immediate access to candidates already registered on JobCourier.",
+    "cta_btn": "REGISTER COMPANY",
+    "cta_btn2": "VIEW PLANS"
   },
   "pricing": {
     "subtitle": "Recruitment Solutions",
