@@ -20,6 +20,24 @@ const UPSTREAM_PARAMS = new Set([
   'language', 'country', 'keyword', 'location', 'sector', 'role_id', 'region', 'global',
 ]);
 
+// Per-page timeout. A single slow upstream page must not drag the whole
+// showcase request past the function's time limit; a missing page just means
+// fewer jobs in the pool, which the caller already tolerates.
+const PAGE_TIMEOUT_MS = 6000;
+
+async function fetchPage(url, headers) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), PAGE_TIMEOUT_MS);
+  try {
+    const r = await fetch(url, { headers, signal: ctrl.signal });
+    return r.ok ? await r.text() : '';
+  } catch {
+    return '';
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export function parseJobsFromHtml(html, offset = 0) {
   const $ = cheerio.load(html);
   const jobs = [];
@@ -184,9 +202,7 @@ export default async function handler(req, res) {
     const batchSize = showcase ? SHOWCASE_BATCH_SIZE : BATCH_SIZE;
     for (let i = 0; i < pageUrls.length; i += batchSize) {
       const batch = pageUrls.slice(i, i + batchSize).map(url =>
-        fetch(url, { headers: fetchHeaders })
-          .then(r => r.ok ? r.text() : '')
-          .catch(() => '')
+        fetchPage(url, fetchHeaders)
       );
       responses.push(...await Promise.all(batch));
       if (responses.filter(Boolean).length >= pagesToFetch) break;
