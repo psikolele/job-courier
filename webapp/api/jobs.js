@@ -5,10 +5,14 @@ const PAGES_TO_FETCH = 3;   // 3 pages × 15 jobs = 45 — faster default load
 const MAX_JOBS = 45;
 const BATCH_SIZE = 3;       // max concurrent fetches to avoid upstream rate-limit
 
-// Home showcase needs a wider window: the feed is heavily skewed towards one
-// language region, so 45 jobs are not enough to fill a language-filtered list.
-const SHOWCASE_PAGES = 8;
-const SHOWCASE_MAX_JOBS = 120;
+// The home showcase needs a much wider window than the default list. Upstream
+// groups its pages by company — the first ~9 pages are all Adecco — so a short
+// window yields a single-brand showcase once the per-company cap is applied.
+// Measured on the live feed: 30 pages (450 jobs) is where the 6th company
+// appears, which is what a 12-card showcase capped at 2 per company needs.
+const SHOWCASE_PAGES = 30;
+const SHOWCASE_MAX_JOBS = 450;
+const SHOWCASE_BATCH_SIZE = 6;  // wider batch to keep the cold-miss latency sane
 
 // Params we are willing to forward upstream. Everything else (including our own
 // `showcase` flag) is dropped instead of being proxied blindly.
@@ -177,8 +181,9 @@ export default async function handler(req, res) {
 
     // Batched parallel fetch (BATCH_SIZE concurrent to avoid rate-limiting)
     const responses = [];
-    for (let i = 0; i < pageUrls.length; i += BATCH_SIZE) {
-      const batch = pageUrls.slice(i, i + BATCH_SIZE).map(url =>
+    const batchSize = showcase ? SHOWCASE_BATCH_SIZE : BATCH_SIZE;
+    for (let i = 0; i < pageUrls.length; i += batchSize) {
+      const batch = pageUrls.slice(i, i + batchSize).map(url =>
         fetch(url, { headers: fetchHeaders })
           .then(r => r.ok ? r.text() : '')
           .catch(() => '')

@@ -249,7 +249,8 @@
     "why_apply_title": "WHY APPLY EVEN IF THIS JOB ISN'T RIGHT FOR YOU",
     "select_offer": "Select a job offer from the list",
     "loading": "Loading job offer...",
-    "load_error": "Loading Error"
+    "load_error": "Loading Error",
+    "latest_published": "Latest published ads"
   },
   "footer": {
     "rss_title": "RSS Feed",

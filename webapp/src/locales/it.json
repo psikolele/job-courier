@@ -249,7 +249,8 @@
     "why_apply_title": "PERCHÉ CANDIDARSI ANCHE SE QUESTA OFFERTA NON FA PER TE",
     "select_offer": "Seleziona un'offerta dalla lista",
     "loading": "Caricamento offerta in corso...",
-    "load_error": "Errore di Caricamento"
+    "load_error": "Errore di Caricamento",
+    "latest_published": "Ultimi annunci pubblicati"
   },
   "footer": {
     "rss_title": "Feed RSS",

@@ -290,7 +290,7 @@ const Offerte = ({ setShowLoginModal }) => {
                             color: N, textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 0.95
                         }}>
-                            {jobs.length} annunci live
+                            {t('jobs.latest_published')}
                         </h1>
                     </div>
 

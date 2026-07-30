@@ -74,6 +74,8 @@ const CITY_CANTON = {
     // main cities, for resilience
     winterthur: 'ZH', uster: 'ZH', dietikon: 'ZH', schlieren: 'ZH',
     adliswil: 'ZH', wallisellen: 'ZH', kilchberg: 'ZH', bulach: 'ZH',
+    bubikon: 'ZH', ruti: 'ZH', rafz: 'ZH', fehraltorf: 'ZH', bruttisellen: 'ZH',
+    oberuzwil: 'SG', weinfelden: 'TG', raperswilen: 'TG', ebikon: 'LU',
     thun: 'BE', biel: 'BE', bienne: 'BE', interlaken: 'BE', burgdorf: 'BE',
     herzogenbuchsee: 'BE', ligerz: 'BE', moutier: 'BE', tavannes: 'BE',
     'saint-imier': 'BE', 'la neuveville': 'BE', tramelan: 'BE',

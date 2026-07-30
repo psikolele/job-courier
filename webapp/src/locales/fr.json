@@ -249,7 +249,8 @@
     "why_apply_title": "POURQUOI POSTULER MÊME SI CETTE OFFRE NE VOUS CORRESPOND PAS",
     "select_offer": "Sélectionnez une offre dans la liste",
     "loading": "Chargement de l'offre...",
-    "load_error": "Erreur de chargement"
+    "load_error": "Erreur de chargement",
+    "latest_published": "Dernières annonces publiées"
   },
   "footer": {
     "rss_title": "Flux RSS",

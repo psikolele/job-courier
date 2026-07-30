@@ -249,7 +249,8 @@
     "why_apply_title": "WARUM SICH BEWERBEN, AUCH WENN DIESE STELLE NICHT PASST",
     "select_offer": "Wählen Sie eine Stelle aus der Liste",
     "loading": "Stelle wird geladen...",
-    "load_error": "Fehler beim Laden"
+    "load_error": "Fehler beim Laden",
+    "latest_published": "Neueste veröffentlichte Anzeigen"
   },
   "footer": {
     "rss_title": "RSS-Feed",
