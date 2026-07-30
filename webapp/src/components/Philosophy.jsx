@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Philosophy = () => {
+    const { t } = useTranslation();
     const sectionRef = useRef(null);
     const text1Ref = useRef(null);
     const text2Ref = useRef(null);
@@ -51,11 +53,11 @@ const Philosophy = () => {
 
             <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-start text-left">
                 <p ref={text1Ref} className="text-xl md:text-3xl font-sans text-gray-400 mb-8 max-w-3xl leading-relaxed">
-                    La maggior parte dei portali offre un mare di annunci confusi: <span className="text-white">perdita di tempo e disorganizzazione.</span>
+                    {t('philosophy.line1')} <span className="text-white">{t('philosophy.line1_em')}</span>
                 </p>
                 <h2 ref={text2Ref} className="text-4xl md:text-7xl font-sans font-bold text-background leading-tight">
-                    Noi ci concentriamo su: <br />
-                    <span className="font-drama italic text-accent tracking-wide text-5xl md:text-8xl">incontri precisi.</span>
+                    {t('philosophy.line2')} <br />
+                    <span className="font-drama italic text-accent tracking-wide text-5xl md:text-8xl">{t('philosophy.line2_em')}</span>
                 </h2>
             </div>
         </section>

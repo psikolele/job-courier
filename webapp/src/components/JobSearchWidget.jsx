@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Search, Briefcase, MapPin, ChevronRight } from 'lucide-react';
 import { CANTONS, SECTORS, buildSearchParams } from '../utils/searchData';
 
 const JobSearchWidget = ({ onSearch, initialKeyword = '', initialSector = '', initialCanton = '' }) => {
+    const { t } = useTranslation();
     const [keyword, setKeyword] = useState(initialKeyword);
     const [selectedSector, setSelectedSector] = useState(initialSector);
     const [selectedCanton, setSelectedCanton] = useState(initialCanton);
@@ -49,7 +51,7 @@ const JobSearchWidget = ({ onSearch, initialKeyword = '', initialSector = '', in
                 <Search style={iconStyle} />
                 <input
                     type="text"
-                    placeholder="Qualifica, azienda o parola chiave..."
+                    placeholder={t('hero.candidates.search_placeholder')}
                     value={keyword}
                     onChange={e => setKeyword(e.target.value)}
                     style={inputBase}
@@ -64,7 +66,7 @@ const JobSearchWidget = ({ onSearch, initialKeyword = '', initialSector = '', in
                     onChange={e => setSelectedSector(e.target.value)}
                     style={{ ...selectBase, color: selectedSector ? 'var(--brand-navy)' : '#8B8FA8' }}
                 >
-                    <option value="">Qualsiasi settore</option>
+                    <option value="">{t('jobs.any_sector')}</option>
                     {SECTORS.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                 </select>
                 <ChevronRight style={{ ...iconStyle, left: 'auto', right: 10, transform: 'translateY(-50%) rotate(90deg)' }} />
@@ -78,7 +80,7 @@ const JobSearchWidget = ({ onSearch, initialKeyword = '', initialSector = '', in
                     onChange={e => setSelectedCanton(e.target.value)}
                     style={{ ...selectBase, color: selectedCanton ? 'var(--brand-navy)' : '#8B8FA8' }}
                 >
-                    <option value="">Tutti i Cantoni</option>
+                    <option value="">{t('jobs.all_cantons_short')}</option>
                     {CANTONS.map(c => <option key={c.value} value={c.value}>{c.name}</option>)}
                 </select>
                 <ChevronRight style={{ ...iconStyle, left: 'auto', right: 10, transform: 'translateY(-50%) rotate(90deg)' }} />
@@ -96,7 +98,7 @@ const JobSearchWidget = ({ onSearch, initialKeyword = '', initialSector = '', in
                     whiteSpace: 'nowrap',
                 }}
             >
-                TROVA OFFERTE →
+                {t('jobs.search_cta')} →
             </button>
         </form>
     );

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { AnimatedButton } from './ui/animated-button';
 
 const CTA = () => {
+    const { t } = useTranslation();
     const [activeSide, setActiveSide] = useState(null); // 'left' or 'right'
 
     return (
@@ -26,26 +28,26 @@ const CTA = () => {
 
                 <div className={`relative z-10 transition-all duration-700 flex flex-col h-full justify-center ${activeSide === 'right' ? 'md:opacity-40 md:scale-95' : 'opacity-100 scale-100'}`}>
                     <div className="flex items-center justify-between mb-8 w-full">
-                        <span className="text-sm font-mono text-accent tracking-widest uppercase block">Per i Candidati</span>
+                        <span className="text-sm font-mono text-accent tracking-widest uppercase block">{t('cta.for_candidates')}</span>
                         <div className={`w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-primary transition-all duration-500 bg-white shadow-sm ${activeSide === 'left' ? 'translate-x-3 bg-accent border-accent text-white scale-110' : 'group-hover:translate-x-1'}`}>
                             <ArrowRight strokeWidth={activeSide === 'left' ? 2.5 : 1.5} size={activeSide === 'left' ? 24 : 20} className="transition-all" />
                         </div>
                     </div>
 
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-primary mb-6 tracking-tight transition-all duration-500 min-w-max">
-                        Accedi al tuo<br />
-                        <span className="font-drama italic text-accent">Prossimo Lavoro.</span>
+                        {t('cta.candidates_h1')}<br />
+                        <span className="font-drama italic text-accent">{t('cta.candidates_h1_em')}</span>
                     </h2>
 
                     <div className={`overflow-hidden transition-all duration-700 transform origin-left ${activeSide === 'right' ? 'max-h-[500px] md:max-h-0 md:opacity-0 md:translate-y-4' : 'max-h-[500px] opacity-100 translate-y-0'}`}>
                         <p className="text-gray-600 mb-10 max-w-md text-lg">
-                            Crea il tuo profilo, imposta gli alert per le posizioni desiderate e candidati con un singolo click.
+                            {t('cta.candidates_desc')}
                         </p>
                         <AnimatedButton 
                             href="/offerte"
                             className="relative overflow-hidden rounded-full bg-primary px-8 py-4 font-semibold text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg"
                         >
-                            Cerca Offerte
+                            {t('cta.candidates_btn')}
                         </AnimatedButton>
                     </div>
                 </div>
@@ -69,26 +71,26 @@ const CTA = () => {
 
                 <div className={`relative z-10 transition-all duration-700 flex flex-col h-full justify-center ${activeSide === 'left' ? 'md:opacity-40 md:scale-95' : 'opacity-100 scale-100'}`}>
                     <div className="flex items-center justify-between mb-8 w-full flex-row-reverse md:flex-row">
-                        <span className="text-sm font-mono text-accent tracking-widest uppercase block">Per le Aziende</span>
+                        <span className="text-sm font-mono text-accent tracking-widest uppercase block">{t('cta.for_companies')}</span>
                         <div className={`w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-500 bg-white/5 backdrop-blur-sm ${activeSide === 'right' ? '-translate-x-3 bg-white text-surface border-white scale-110' : 'group-hover:-translate-x-1'}`}>
                             <ArrowLeft strokeWidth={activeSide === 'right' ? 2.5 : 1.5} size={activeSide === 'right' ? 24 : 20} className="transition-all" />
                         </div>
                     </div>
 
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-white mb-6 tracking-tight transition-all duration-500 min-w-max">
-                        Trova il Miglior<br />
+                        {t('cta.companies_h1')}<br />
                         <span className="font-drama italic text-accent">Talento.</span>
                     </h2>
 
                     <div className={`overflow-hidden transition-all duration-700 transform origin-left ${activeSide === 'left' ? 'max-h-[500px] md:max-h-0 md:opacity-0 md:translate-y-4' : 'max-h-[500px] opacity-100 translate-y-0'}`}>
                         <p className="text-gray-400 mb-10 max-w-md text-lg">
-                            Pubblica le tue posizioni aperte, gestisci le candidature e incontra i professionisti che cerchi nel mercato svizzero.
+                            {t('cta.companies_desc')}
                         </p>
                         <AnimatedButton 
                             href="/soluzioni-e-tariffe"
                             className="relative overflow-hidden rounded-full bg-accent px-8 py-4 font-semibold text-foreground transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg"
                         >
-                            Pubblica un'Offerta
+                            {t('cta.companies_btn')}
                         </AnimatedButton>
                     </div>
                 </div>

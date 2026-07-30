@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
@@ -11,6 +12,7 @@ const brand = 'var(--font-brand)';
 const body = 'var(--font-body)';
 
 const RegistrationWallModal = ({ isOpen, onClose, onOpenLogin }) => {
+    const { t } = useTranslation();
     const modalRef = useRef(null);
     const overlayRef = useRef(null);
 
@@ -44,7 +46,7 @@ const RegistrationWallModal = ({ isOpen, onClose, onOpenLogin }) => {
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 w-10 h-10 bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shadow-sm rounded-none border border-slate-200 cursor-pointer"
+                    aria-label={t('footer.close')} className="absolute top-6 right-6 w-10 h-10 bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shadow-sm rounded-none border border-slate-200 cursor-pointer"
                     aria-label="Chiudi"
                 >
                     <X size={20} />
@@ -61,7 +63,7 @@ const RegistrationWallModal = ({ isOpen, onClose, onOpenLogin }) => {
 
                     {/* Title */}
                     <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 tracking-[0.15em] uppercase font-sans">
-                        Accedi o Registrati
+                        {t('wall.title')}
                     </h2>
                     
                     {/* Copy */}
@@ -69,7 +71,7 @@ const RegistrationWallModal = ({ isOpen, onClose, onOpenLogin }) => {
                         className="text-slate-500 text-sm mb-8 max-w-sm" 
                         style={{ fontFamily: 'var(--font-body)', lineHeight: 1.6 }}
                     >
-                        Crea subito il tuo account gratuito per candidarti in un click, impostare alert personalizzati e monitorare lo stato delle tue ricerche sul mercato elvetico.
+                        {t('wall.desc')}
                     </p>
 
                     {/* Action buttons */}
@@ -84,7 +86,7 @@ const RegistrationWallModal = ({ isOpen, onClose, onOpenLogin }) => {
                                 onClose();
                             }}
                         >
-                            Iscriviti Ora
+                            {t('wall.register_cta')}
                         </motion.button>
 
                         {/* ACCEDI (Login) — popup auto-closes & logs in on completion */}
@@ -97,7 +99,7 @@ const RegistrationWallModal = ({ isOpen, onClose, onOpenLogin }) => {
                             }}
                             className="w-full bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 transition-all hover:border-[var(--brand-navy)] hover:text-[var(--brand-navy)] text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
                         >
-                            Accedi al Profilo
+                            {t('nav.access_profile')}
                         </motion.button>
                     </div>
                 </div>

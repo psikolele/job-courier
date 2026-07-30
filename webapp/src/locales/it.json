@@ -10,7 +10,11 @@
     "all_offers": "Vedi tutte le offerte",
     "all_companies": "Vedi tutte le aziende",
     "pricing": "Soluzioni e tariffe",
-    "register_company": "Registra azienda"
+    "register_company": "Registra azienda",
+    "candidates_modal_desc": "Accedi a migliaia di offerte di lavoro in tutta la Svizzera. Crea il tuo profilo e candidati in pochi click.",
+    "access_profile": "Accedi al Profilo",
+    "companies_modal_desc": "Pubblica una posizione e visualizza subito i candidati compatibili. Accedi a oltre 120'000 candidati registrati.",
+    "company_login": "Login Azienda"
   },
   "hero": {
     "candidates": {
@@ -249,7 +253,9 @@
     "why_apply_title": "PERCHÉ CANDIDARSI ANCHE SE QUESTA OFFERTA NON FA PER TE",
     "select_offer": "Seleziona un'offerta dalla lista",
     "loading": "Caricamento offerta in corso...",
-    "load_error": "Errore di Caricamento"
+    "load_error": "Errore di Caricamento",
+    "any_sector": "Qualsiasi settore",
+    "all_cantons_short": "Tutti i Cantoni"
   },
   "footer": {
     "rss_title": "Feed RSS",
@@ -261,7 +267,20 @@
     "rss_doc": "Scarica documentazione tecnica",
     "support": "Per assistenza:",
     "tagline": "Dove aziende e candidati si incontrano.",
-    "close": "Chiudi"
+    "close": "Chiudi",
+    "col_legal": "Area Legale",
+    "link_terms": "Condizioni Generali",
+    "link_cookies": "Cookie Policy",
+    "col_candidates": "Candidati",
+    "link_jobs": "Offerte di lavoro",
+    "link_faq": "FAQ / Aiuto",
+    "col_companies": "Aziende",
+    "link_post_job": "Pubblica annuncio",
+    "link_find_candidates": "Trova Candidati",
+    "link_register_company": "Registra Azienda",
+    "link_contact": "Contatti",
+    "rights_reserved": "Tutti i diritti riservati",
+    "link_upload_cv": "Carica il CV"
   },
   "latest": {
     "label": "Offerte appena pubblicate",
@@ -270,5 +289,94 @@
     "see_all": "Vedi tutte le offerte",
     "prev": "Precedente",
     "next": "Successiva"
+  },
+  "cta": {
+    "for_candidates": "Per i Candidati",
+    "candidates_h1": "Accedi al tuo",
+    "candidates_h1_em": "Prossimo Lavoro.",
+    "candidates_desc": "Crea il tuo profilo, imposta gli alert per le posizioni desiderate e candidati con un singolo click.",
+    "candidates_btn": "Cerca Offerte",
+    "for_companies": "Per le Aziende",
+    "companies_h1": "Trova il Miglior",
+    "companies_desc": "Pubblica le tue posizioni aperte, gestisci le candidature e incontra i professionisti che cerchi nel mercato svizzero.",
+    "companies_btn": "Pubblica un'Offerta"
+  },
+  "company": {
+    "not_found": "Azienda non trovata.",
+    "not_found_desc": "Il profilo che cerchi non esiste o non è più disponibile.",
+    "back_to_companies": "Torna alle aziende",
+    "load_error": "Si è verificato un errore nel caricamento dell'azienda. Riprova più tardi.",
+    "profile_label": "Profilo azienda",
+    "spontaneous_application": "Candidatura spontanea",
+    "active_listings": "Annunci attivi",
+    "no_active_jobs": "Nessuna offerta attiva per questa azienda al momento."
+  },
+  "companies_list": {
+    "meta_title": "Aziende che assumono - JobCourier",
+    "title": "Aziende che assumono",
+    "subtitle": "Le aziende che si affidano a Job Courier per trovare i propri candidati.",
+    "intro": "Un elenco delle aziende con un profilo attivo su JobCourier. Seleziona un'azienda per scoprire chi è e come candidarti.",
+    "load_error": "Si è verificato un errore nel caricamento delle aziende. Riprova più tardi.",
+    "none_available": "Nessuna azienda disponibile al momento.",
+    "discover_more": "Scopri di più",
+    "search_placeholder": "Cerca un'azienda per nome..."
+  },
+  "ads": {
+    "asfl_tagline": "La logistica muove il mondo - Muoviti insieme a noi!",
+    "asfl_desc": "Associazione Svizzera per la formazione professionale in logistica",
+    "forma_title": "BUSINESS AI SPECIALIST",
+    "forma_patronage": "con il patrocinio di",
+    "forma_courses": "corsi di informatica ed AI",
+    "forma_alt": "Opportunità per aggiornare competenze e favorire la crescita professionale.",
+    "supsi_desc": "Sviluppa le competenze strategiche per la gestione delle risorse umane",
+    "supsi_cta": "Scopri il Master"
+  },
+  "features": {
+    "dynamic_search_title": "Ricerca Dinamica",
+    "dynamic_search_desc": "Esplora posizioni per settore e cantone istantaneamente.",
+    "alerts_desc": "Ricevi notifiche in tempo reale per le tue competenze.",
+    "one_click_title": "Candidatura in 1 Click",
+    "one_click_desc": "Pianifica e gestisci le tue candidature rapidamente.",
+    "heading_line1": "Strumenti Digitali per il",
+    "heading_line2": "Mercato del Lavoro",
+    "intro": "Non siamo solo una bacheca annunci. Forniamo un ecosistema tecnologico avanzato costruito per accelerare il tuo percorso verso il posizionamento ideale."
+  },
+  "showcase": {
+    "label": "AZIENDE PARTNER",
+    "title": "Aziende e Recruiter che si affidano a Job Courier",
+    "see_jobs": "Vedi Annunci"
+  },
+  "wall": {
+    "title": "Accedi o Registrati",
+    "desc": "Crea subito il tuo account gratuito per candidarti in un click, impostare alert personalizzati e monitorare lo stato delle tue ricerche sul mercato elvetico.",
+    "register_cta": "Iscriviti Ora"
+  },
+  "redirect": {
+    "title": "Reindirizzamento esterno",
+    "sending_you": "Ti stiamo mandando",
+    "to_another_site": "su un altro sito",
+    "desc": "La candidatura per questa offerta è gestita esternamente. Verrai aperto in una nuova finestra a breve."
+  },
+  "philosophy": {
+    "line1": "La maggior parte dei portali offre un mare di annunci confusi:",
+    "line1_em": "perdita di tempo e disorganizzazione.",
+    "line2": "Noi ci concentriamo su:",
+    "line2_em": "incontri precisi."
+  },
+  "notfound": {
+    "meta_title": "Pagina non trovata | JobCourier",
+    "error_label": "Errore 404",
+    "title": "Pagina non trovata",
+    "desc": "La pagina che cerchi non esiste o è stata spostata. Torna alla home oppure esplora le offerte di lavoro.",
+    "back_home": "Torna alla home",
+    "see_offers": "Vedi le offerte"
+  },
+  "faq": {
+    "label": "FAQ Candidati",
+    "title": "Domande",
+    "title_em": "Frequenti.",
+    "subtitle": "Tutto quello che devi sapere su JobCourier.",
+    "no_answer": "Non hai trovato risposta alla tua domanda?",
+    "contact_support": "Contatta il supporto"
   }
 }

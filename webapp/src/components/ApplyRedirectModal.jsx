@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ExternalLink } from 'lucide-react';
 import { AnimatedButton } from './ui/animated-button';
@@ -22,6 +23,7 @@ const body = 'var(--font-body)';
  *   autoRedirectMs: number — default 2500
  */
 const ApplyRedirectModal = ({ isOpen, onClose, externalUrl, companyName = '', autoRedirectMs = 2500 }) => {
+    const { t } = useTranslation();
     const modalRef = useRef(null);
     const overlayRef = useRef(null);
     const timerRef = useRef(null);
@@ -67,7 +69,7 @@ const ApplyRedirectModal = ({ isOpen, onClose, externalUrl, companyName = '', au
                     <span style={{ width: 10, height: 10, borderRadius: '50%', background: F, display: 'inline-block', marginBottom: 20 }} className="animate-pulse" />
 
                     <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: F, marginBottom: 14 }}>
-                        Reindirizzamento esterno
+                        {t('redirect.title')}
                     </p>
 
                     <h2 style={{
@@ -75,7 +77,7 @@ const ApplyRedirectModal = ({ isOpen, onClose, externalUrl, companyName = '', au
                         color: N, textTransform: 'uppercase',
                         letterSpacing: '-0.02em', lineHeight: 1, marginBottom: 12
                     }}>
-                        Ti stiamo mandando<br/>su un altro sito
+                        {t('redirect.sending_you')}<br/>{t('redirect.to_another_site')}
                     </h2>
 
                     {companyName && (
@@ -85,7 +87,7 @@ const ApplyRedirectModal = ({ isOpen, onClose, externalUrl, companyName = '', au
                     )}
 
                     <p style={{ fontFamily: body, fontSize: 13, color: GM, marginBottom: 28, lineHeight: 1.6, maxWidth: 320 }}>
-                        La candidatura per questa offerta è gestita esternamente. Verrai aperto in una nuova finestra a breve.
+                        {t('redirect.desc')}
                     </p>
 
                     <div className="flex flex-col w-full gap-3">

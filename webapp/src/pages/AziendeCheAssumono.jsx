@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -25,6 +26,7 @@ const normalize = (str) =>
         .trim();
 
 const AziendeCheAssumono = () => {
+    const { t } = useTranslation();
     const [companies, setCompanies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -58,7 +60,7 @@ const AziendeCheAssumono = () => {
     return (
         <div className="pt-24 min-h-screen" style={{ background: '#FFFFFF' }}>
             <Helmet>
-                <title>Aziende che assumono - JobCourier</title>
+                <title>{t('companies_list.meta_title')}</title>
                 <meta
                     name="description"
                     content="Scopri le aziende con un profilo attivo su JobCourier e trova quelle che stanno cercando personale in Svizzera."
@@ -68,7 +70,7 @@ const AziendeCheAssumono = () => {
             <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12 md:py-16">
                 {/* Header */}
                 <div className="mb-10 md:mb-12 text-left max-w-3xl">
-                    <SectionLabel>Aziende che assumono</SectionLabel>
+                    <SectionLabel>{t('companies_list.title')}</SectionLabel>
                     <h2 style={{
                         fontFamily: editorial,
                         fontStyle: 'italic',
@@ -77,10 +79,10 @@ const AziendeCheAssumono = () => {
                         lineHeight: 1.15,
                         marginBottom: 12
                     }}>
-                        Le aziende che si affidano a Job Courier per trovare i propri candidati.
+                        {t('companies_list.subtitle')}
                     </h2>
                     <p style={{ fontFamily: body, fontSize: 14, color: GM, lineHeight: 1.6 }}>
-                        Un elenco delle aziende con un profilo attivo su JobCourier. Seleziona un'azienda per scoprire chi è e come candidarti.
+                        {t('companies_list.intro')}
                     </p>
                 </div>
 
@@ -91,7 +93,7 @@ const AziendeCheAssumono = () => {
                             type="text"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
-                            placeholder="Cerca un'azienda per nome..."
+                            placeholder={t('companies_list.search_placeholder')}
                             className="w-full pl-10 pr-4 py-3.5 border-0 border-b font-mono text-sm outline-none transition-colors"
                             style={{
                                 borderRadius: 0,
@@ -118,11 +120,11 @@ const AziendeCheAssumono = () => {
                     </div>
                 ) : error ? (
                     <div style={{ padding: 24, background: '#FFF0F0', color: '#C00', fontFamily: body, fontSize: 13 }}>
-                        Si è verificato un errore nel caricamento delle aziende. Riprova più tardi.
+                        {t('companies_list.load_error')}
                     </div>
                 ) : companies.length === 0 ? (
                     <div style={{ padding: 48, textAlign: 'center', color: GM, fontFamily: body, fontSize: 14 }}>
-                        Nessuna azienda disponibile al momento.
+                        {t('companies_list.none_available')}
                     </div>
                 ) : filtered.length === 0 ? (
                     <div style={{ padding: 48, textAlign: 'center', color: GM, fontFamily: body, fontSize: 14 }}>
@@ -182,7 +184,7 @@ const AziendeCheAssumono = () => {
                                             textTransform: 'uppercase',
                                             color: GM
                                         }}>
-                                            Scopri di più
+                                            {t('companies_list.discover_more')}
                                         </span>
                                     </div>
                                 </Link>
