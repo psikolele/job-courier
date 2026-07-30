@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 const Vetrini = () => {
+    const { t } = useTranslation();
     const companies = [
         { name: "Orienta SA", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243388.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243388&company-name=orienta-sa" },
         { name: "Randstad Svizzera SA", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244729.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244729&company-name=randstad-svizzera-sa" },
@@ -43,7 +45,7 @@ const Vetrini = () => {
                             textTransform: 'uppercase',
                             color: F
                         }}>
-                            AZIENDE PARTNER
+                            {t('showcase.label')}
                         </span>
                     </div>
                     <h2 style={{
@@ -54,7 +56,7 @@ const Vetrini = () => {
                         lineHeight: 1.2,
                         marginTop: 8
                     }}>
-                        Aziende e Recruiter che si affidano a Job Courier
+                        {t('showcase.title')}
                     </h2>
                 </div>
 
@@ -90,7 +92,7 @@ const Vetrini = () => {
                                     textTransform: 'uppercase',
                                     color: GM
                                 }}>
-                                    Vedi Annunci
+                                    {t('showcase.see_jobs')}
                                 </span>
                             </div>
                         </motion.a>

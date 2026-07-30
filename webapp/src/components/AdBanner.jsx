@@ -1,9 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 // ---------- RECONSTRUCTED HTML BANNERS ----------
 
 const AsflBanner = () => {
+    const { t } = useTranslation();
     return (
         <div 
             className="w-full h-full flex select-none overflow-hidden" 
@@ -38,14 +40,14 @@ const AsflBanner = () => {
                     className="font-extrabold leading-tight tracking-wide" 
                     style={{ fontSize: 'clamp(11px, 2.3cqw, 24px)' }}
                 >
-                    La logistica muove il mondo - Muoviti insieme a noi!
+                    {t('ads.asfl_tagline')}
                 </h4>
                 <div className="w-full h-[2px] bg-[#ffff01] my-[0.8cqw]"></div>
                 <p 
                     className="font-semibold opacity-95 leading-tight" 
                     style={{ fontSize: 'clamp(8px, 1.35cqw, 14px)' }}
                 >
-                    Associazione Svizzera per la formazione professionale in logistica
+                    {t('ads.asfl_desc')}
                     <br />
                     Via Ferriere 11 | 6512 Giubiasco
                     <br />
@@ -57,6 +59,7 @@ const AsflBanner = () => {
 };
 
 const FormaBanner = () => {
+    const { t } = useTranslation();
     return (
         <div 
             className="w-full h-full flex select-none overflow-hidden" 
@@ -99,7 +102,7 @@ const FormaBanner = () => {
                         <span className="text-white">•</span> CYBER SECURITY SPECIALIST
                     </li>
                     <li className="flex items-center gap-[0.6cqw]">
-                        <span className="text-white">•</span> BUSINESS AI SPECIALIST
+                        <span className="text-white">•</span> {t('ads.forma_title')}
                     </li>
                     <li className="flex items-center gap-[0.6cqw]">
                         <span className="text-white">•</span> MULTIMEDIA CONTENT CREATOR
@@ -129,7 +132,7 @@ const FormaBanner = () => {
 
                     {/* Middle: Patronage Label */}
                     <span className="font-sans font-extrabold text-slate-500 uppercase tracking-wider text-center select-none" style={{ fontSize: 'clamp(5px, 0.75cqw, 9px)' }}>
-                        con il patrocinio di
+                        {t('ads.forma_patronage')}
                     </span>
 
                     {/* Bottom: ATED SVG Logo */}
@@ -151,6 +154,7 @@ const FormaBanner = () => {
 };
 
 const BlcBanner = () => {
+    const { t } = useTranslation();
     return (
         <div 
             className="w-full h-full flex select-none overflow-hidden" 
@@ -259,7 +263,7 @@ const BlcBanner = () => {
                         <span className="text-[#e2231a]">•</span> gestione microcrisi
                     </li>
                     <li className="flex items-center gap-[0.4cqw]">
-                        <span className="text-[#e2231a]">•</span> corsi di informatica ed AI
+                        <span className="text-[#e2231a]">•</span> {t('ads.forma_courses')}
                     </li>
                 </ul>
             </div>
@@ -268,6 +272,7 @@ const BlcBanner = () => {
 };
 
 const SupsiBanner = () => {
+    const { t } = useTranslation();
     return (
         <div 
             className="w-full h-full flex select-none overflow-hidden" 
@@ -300,7 +305,7 @@ const SupsiBanner = () => {
                 </h4>
                 <div className="w-full h-[2px] bg-[#e2231a] my-[0.6cqw]"></div>
                 <p className="font-medium text-slate-300 leading-tight" style={{ fontSize: 'clamp(7px, 1.2cqw, 12px)' }}>
-                    Sviluppa le competenze strategiche per la gestione delle risorse umane
+                    {t('ads.supsi_desc')}
                 </p>
             </div>
 
@@ -310,7 +315,7 @@ const SupsiBanner = () => {
                     className="bg-[#e2231a] hover:bg-[#c11b13] text-white font-bold rounded-lg px-[2cqw] py-[1cqw] text-center shadow-lg flex items-center gap-[0.5cqw] transition-transform"
                     style={{ fontSize: 'clamp(8px, 1.3cqw, 13px)' }}
                 >
-                    <span>Scopri il Master</span>
+                    <span>{t('ads.supsi_cta')}</span>
                     <span>→</span>
                 </div>
             </div>
@@ -400,6 +405,7 @@ const SectionTitle = ({ eyebrow, title, subtitle }) => {
 // ---------- MAIN COMPONENT ----------
 
 const AdBanner = ({ type = 'top' }) => {
+    const { t } = useTranslation();
     const GM = 'var(--brand-gray-mid)';
     const body = 'var(--font-body)';
     const isTop = type === 'top';
@@ -410,7 +416,7 @@ const AdBanner = ({ type = 'top' }) => {
             {!isTop && (
                 <SectionTitle
                     eyebrow="Formazione Continua"
-                    title="Opportunità per aggiornare competenze e favorire la crescita professionale."
+                    title={t('ads.forma_alt')}
                 />
             )}
             <div

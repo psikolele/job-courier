@@ -408,9 +408,9 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                     <IconUser size={24} />
                                 </div>
                                 <h3 className="text-lg md:text-xl font-bold text-[var(--brand-navy)] mb-2 tracking-[0.2em] uppercase font-sans">
-                                    Candidati
+                                    {t('nav.candidates')}
                                 </h3>
-                                <p className="text-[var(--brand-gray-mid)] text-sm mb-4 max-w-[240px]">Accedi a migliaia di offerte di lavoro in tutta la Svizzera. Crea il tuo profilo e candidati in pochi click.</p>
+                                <p className="text-[var(--brand-gray-mid)] text-sm mb-4 max-w-[240px]">{t('nav.candidates_modal_desc')}</p>
 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <motion.button
@@ -419,7 +419,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                         className="w-full bg-[var(--brand-navy)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
                                         onClick={() => { openLoginPopup(); setShowLoginModal(false); }}
                                     >
-                                        Accedi al Profilo
+                                        {t('nav.access_profile')}
                                     </motion.button>
                                     <motion.a
                                         whileHover={{ scale: 1.03 }}
@@ -427,7 +427,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                         href={jobroomLang("https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it")}
                                         className="w-full bg-white border-2 border-[var(--brand-navy)]/20 text-[var(--brand-navy)] font-bold py-4 transition-all hover:border-[var(--brand-navy)] text-center rounded-none tracking-[0.1em] text-xs uppercase"
                                     >
-                                        Carica il tuo CV
+                                        {t('footer.link_upload_cv')}
                                     </motion.a>
                                 </div>
                             </div>
@@ -438,9 +438,9 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                     <IconBuilding size={24} />
                                 </div>
                                 <h3 className="text-lg md:text-xl font-bold text-white mb-2 tracking-[0.2em] uppercase font-sans">
-                                    Aziende
+                                    {t('nav.companies')}
                                 </h3>
-                                <p className="text-white/55 text-sm mb-4 max-w-[240px]">Pubblica una posizione e visualizza subito i candidati compatibili. Accedi a oltre 120'000 candidati registrati.</p>
+                                <p className="text-white/55 text-sm mb-4 max-w-[240px]">{t('nav.companies_modal_desc')}</p>
 
                                 <div className="flex flex-col gap-3 w-full max-w-[280px]">
                                     <motion.button
@@ -449,7 +449,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                         className="w-full bg-[var(--brand-fuchsia)] text-white font-bold py-4 transition-all text-center rounded-none tracking-[0.1em] text-xs uppercase cursor-pointer"
                                         onClick={() => { openLoginPopup(); setShowLoginModal(false); }}
                                     >
-                                        Login Azienda
+                                        {t('nav.company_login')}
                                     </motion.button>
                                     <motion.a
                                         whileHover={{ scale: 1.03 }}
@@ -457,7 +457,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                         href={jobroomLang("https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it&_gl=1*e5uej*_gcl_au*MjA5NDU5ODA3Ni4xNzE4MDA1NjYy")}
                                         className="w-full bg-transparent border-2 border-white/20 text-white font-bold py-4 transition-all hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] text-center px-4 rounded-none tracking-[0.1em] text-xs uppercase"
                                     >
-                                        Registra Azienda
+                                        {t('footer.link_register_company')}
                                     </motion.a>
                                 </div>
                             </div>

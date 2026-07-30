@@ -124,22 +124,22 @@ const Footer = ({ setShowLoginModal }) => {
     ];
 
     const cols = [
-        { title: 'Area Legale', links: [
-            { label: 'Condizioni Generali', href: '/condizioni-generali' },
-            { label: 'Cookie Policy', href: '/cookie-policy' },
+        { title: t('footer.col_legal'), links: [
+            { label: t('footer.link_terms'), href: '/condizioni-generali' },
+            { label: t('footer.link_cookies'), href: '/cookie-policy' },
         ]},
-        { title: 'Candidati', links: [
-            { label: 'Offerte di lavoro', href: '/offerte' },
-            { label: 'Carica il CV', href: jobroomLang('https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it') },
+        { title: t('footer.col_candidates'), links: [
+            { label: t('footer.link_jobs'), href: '/offerte' },
+            { label: t('footer.link_upload_cv'), href: jobroomLang('https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it') },
             { label: 'Login', href: '#login' },
-            { label: 'FAQ / Aiuto', href: '/faq' },
+            { label: t('footer.link_faq'), href: '/faq' },
         ]},
-        { title: 'Aziende', inline: ['Pubblica annuncio', 'Trova Candidati'], links: [
-            { label: 'Pubblica annuncio', href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
-            { label: 'Trova Candidati', href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
-            { label: 'Registra Azienda', href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
+        { title: t('footer.col_companies'), inline: ['Pubblica annuncio', 'Trova Candidati'], links: [
+            { label: t('footer.link_post_job'), href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
+            { label: t('footer.link_find_candidates'), href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
+            { label: t('footer.link_register_company'), href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
             { label: 'Login', href: '#login' },
-            { label: 'Contatti', href: '/contatti' },
+            { label: t('footer.link_contact'), href: '/contatti' },
         ]},
     ];
 
@@ -235,7 +235,7 @@ const Footer = ({ setShowLoginModal }) => {
             {/* Copyright row — fondo bianco separato */}
             <div className="-mx-5 md:-mx-10 px-5 md:px-10 py-4" style={{ background: 'var(--brand-white)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
                 <span style={{ fontFamily: body, fontSize: 11, color: 'rgba(5,11,43,0.35)' }}>
-                    © {new Date().getFullYear()} JobCourier.ch — Tutti i diritti riservati
+                    © {new Date().getFullYear()} JobCourier.ch — {t('footer.rights_reserved')}
                 </span>
             </div>
 

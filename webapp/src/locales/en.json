@@ -10,7 +10,11 @@
     "all_offers": "View all offers",
     "all_companies": "View all companies",
     "pricing": "Pricing and solutions",
-    "register_company": "Register company"
+    "register_company": "Register company",
+    "candidates_modal_desc": "Access thousands of job offers across Switzerland. Create your profile and apply in a few clicks.",
+    "access_profile": "Access Profile",
+    "companies_modal_desc": "Post a position and view matching candidates right away. Access over 120,000 registered candidates.",
+    "company_login": "Company Login"
   },
   "hero": {
     "candidates": {
@@ -249,7 +253,9 @@
     "why_apply_title": "WHY APPLY EVEN IF THIS JOB ISN'T RIGHT FOR YOU",
     "select_offer": "Select a job offer from the list",
     "loading": "Loading job offer...",
-    "load_error": "Loading Error"
+    "load_error": "Loading Error",
+    "any_sector": "Any sector",
+    "all_cantons_short": "All Cantons"
   },
   "footer": {
     "rss_title": "RSS Feed",
@@ -261,7 +267,20 @@
     "rss_doc": "Download technical documentation",
     "support": "For assistance:",
     "tagline": "Where companies and candidates meet.",
-    "close": "Close"
+    "close": "Close",
+    "col_legal": "Legal",
+    "link_terms": "Terms and Conditions",
+    "link_cookies": "Cookie Policy",
+    "col_candidates": "Candidates",
+    "link_jobs": "Job offers",
+    "link_faq": "FAQ / Help",
+    "col_companies": "Companies",
+    "link_post_job": "Post a job",
+    "link_find_candidates": "Find Candidates",
+    "link_register_company": "Register Company",
+    "link_contact": "Contact",
+    "rights_reserved": "All rights reserved",
+    "link_upload_cv": "Upload your CV"
   },
   "latest": {
     "label": "Just published",
@@ -270,5 +289,94 @@
     "see_all": "See all job offers",
     "prev": "Previous",
     "next": "Next"
+  },
+  "cta": {
+    "for_candidates": "For Candidates",
+    "candidates_h1": "Access your",
+    "candidates_h1_em": "Next Job.",
+    "candidates_desc": "Create your profile, set alerts for the positions you want and apply with a single click.",
+    "candidates_btn": "Search Jobs",
+    "for_companies": "For Companies",
+    "companies_h1": "Find the Best",
+    "companies_desc": "Post your open positions, manage applications and meet the professionals you're looking for in the Swiss market.",
+    "companies_btn": "Post a Job"
+  },
+  "company": {
+    "not_found": "Company not found.",
+    "not_found_desc": "The profile you are looking for does not exist or is no longer available.",
+    "back_to_companies": "Back to companies",
+    "load_error": "An error occurred while loading the company. Please try again later.",
+    "profile_label": "Company profile",
+    "spontaneous_application": "Spontaneous application",
+    "active_listings": "Active listings",
+    "no_active_jobs": "No active job offers for this company at the moment."
+  },
+  "companies_list": {
+    "meta_title": "Hiring Companies - JobCourier",
+    "title": "Hiring Companies",
+    "subtitle": "The companies that trust Job Courier to find their candidates.",
+    "intro": "A list of companies with an active profile on JobCourier. Select a company to find out who they are and how to apply.",
+    "load_error": "An error occurred while loading companies. Please try again later.",
+    "none_available": "No companies available at the moment.",
+    "discover_more": "Discover more",
+    "search_placeholder": "Search a company by name..."
+  },
+  "ads": {
+    "asfl_tagline": "Logistics moves the world - Move with us!",
+    "asfl_desc": "Swiss Association for Vocational Training in Logistics",
+    "forma_title": "BUSINESS AI SPECIALIST",
+    "forma_patronage": "under the patronage of",
+    "forma_courses": "IT and AI courses",
+    "forma_alt": "Opportunities to update skills and foster professional growth.",
+    "supsi_desc": "Develop strategic skills for human resources management",
+    "supsi_cta": "Discover the Master"
+  },
+  "features": {
+    "dynamic_search_title": "Dynamic Search",
+    "dynamic_search_desc": "Explore positions by sector and canton instantly.",
+    "alerts_desc": "Get real-time notifications for your skills.",
+    "one_click_title": "1-Click Application",
+    "one_click_desc": "Plan and manage your applications quickly.",
+    "heading_line1": "Digital Tools for the",
+    "heading_line2": "Job Market",
+    "intro": "We're not just a job board. We provide an advanced technology ecosystem built to accelerate your path to the ideal position."
+  },
+  "showcase": {
+    "label": "PARTNER COMPANIES",
+    "title": "Companies and Recruiters who trust Job Courier",
+    "see_jobs": "See Listings"
+  },
+  "wall": {
+    "title": "Sign In or Register",
+    "desc": "Create your free account now to apply in one click, set personalized alerts and track the status of your search on the Swiss market.",
+    "register_cta": "Sign Up Now"
+  },
+  "redirect": {
+    "title": "External redirect",
+    "sending_you": "We're sending you",
+    "to_another_site": "to another site",
+    "desc": "Applications for this job are handled externally. You will be redirected to a new window shortly."
+  },
+  "philosophy": {
+    "line1": "Most portals offer a sea of confusing listings, leading to:",
+    "line1_em": "wasted time and disorganization.",
+    "line2": "We focus on:",
+    "line2_em": "precise matches."
+  },
+  "notfound": {
+    "meta_title": "Page not found | JobCourier",
+    "error_label": "Error 404",
+    "title": "Page not found",
+    "desc": "The page you're looking for doesn't exist or has moved. Go back home or browse job offers.",
+    "back_home": "Back to home",
+    "see_offers": "See job offers"
+  },
+  "faq": {
+    "label": "Candidate FAQ",
+    "title": "Frequently",
+    "title_em": "Asked Questions.",
+    "subtitle": "Everything you need to know about JobCourier.",
+    "no_answer": "Didn't find an answer to your question?",
+    "contact_support": "Contact support"
   }
 }

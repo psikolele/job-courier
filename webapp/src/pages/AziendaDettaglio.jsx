@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { MapPin, Briefcase, ExternalLink, ChevronLeft } from 'lucide-react';
@@ -13,6 +14,7 @@ const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
 const AziendaDettaglio = () => {
+    const { t } = useTranslation();
     const { slug } = useParams();
 
     // 'loading' | 'not-found' | 'error' | 'ready'
@@ -93,10 +95,10 @@ const AziendaDettaglio = () => {
                 {helmet}
                 <div className="text-center px-6 max-w-md">
                     <h1 style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 26, color: N, marginBottom: 16 }}>
-                        Azienda non trovata.
+                        {t('company.not_found')}
                     </h1>
                     <p style={{ fontFamily: body, fontSize: 14, color: GM, marginBottom: 24 }}>
-                        Il profilo che cerchi non esiste o non è più disponibile.
+                        {t('company.not_found_desc')}
                     </p>
                     <Link to="/aziende-che-assumono" style={{
                         fontFamily: brand, fontWeight: 700, fontSize: 11,
@@ -104,7 +106,7 @@ const AziendaDettaglio = () => {
                         color: F, textDecoration: 'none',
                         display: 'inline-flex', alignItems: 'center', gap: 6
                     }}>
-                        <ChevronLeft size={14} /> Torna alle aziende
+                        <ChevronLeft size={14} /> {t('company.back_to_companies')}
                     </Link>
                 </div>
             </div>
@@ -117,7 +119,7 @@ const AziendaDettaglio = () => {
                 {helmet}
                 <div className="text-center px-6 max-w-md">
                     <p style={{ fontFamily: body, fontSize: 14, color: '#C00', marginBottom: 24 }}>
-                        Si è verificato un errore nel caricamento dell'azienda. Riprova più tardi.
+                        {t('company.load_error')}
                     </p>
                     <Link to="/aziende-che-assumono" style={{
                         fontFamily: brand, fontWeight: 700, fontSize: 11,
@@ -125,7 +127,7 @@ const AziendaDettaglio = () => {
                         color: F, textDecoration: 'none',
                         display: 'inline-flex', alignItems: 'center', gap: 6
                     }}>
-                        <ChevronLeft size={14} /> Torna alle aziende
+                        <ChevronLeft size={14} /> {t('company.back_to_companies')}
                     </Link>
                 </div>
             </div>
@@ -146,7 +148,7 @@ const AziendaDettaglio = () => {
                     color: F, textDecoration: 'none',
                     display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 24
                 }}>
-                    <ChevronLeft size={14} /> Torna alle aziende
+                    <ChevronLeft size={14} /> {t('company.back_to_companies')}
                 </Link>
 
                 {/* Header */}
@@ -161,7 +163,7 @@ const AziendaDettaglio = () => {
                         </div>
                     )}
                     <div style={{ flex: 1, minWidth: 0 }}>
-                        <SectionLabel>Profilo azienda</SectionLabel>
+                        <SectionLabel>{t('company.profile_label')}</SectionLabel>
                         <h1 style={{
                             fontFamily: brand, fontWeight: 900,
                             fontSize: 'clamp(22px, 4vw, 34px)',
@@ -220,7 +222,7 @@ const AziendaDettaglio = () => {
                                 }}
                                 className="hover:opacity-80 transition-opacity"
                             >
-                                Candidatura spontanea <ExternalLink size={13} />
+                                {t('company.spontaneous_application')} <ExternalLink size={13} />
                             </a>
                         )}
                     </div>
@@ -228,7 +230,7 @@ const AziendaDettaglio = () => {
 
                 {/* Annunci attivi */}
                 <div style={{ background: '#FFFFFF', padding: '32px 36px' }}>
-                    <SectionLabel>Annunci attivi</SectionLabel>
+                    <SectionLabel>{t('company.active_listings')}</SectionLabel>
 
                     {hasJobs ? (
                         <div className="flex flex-col gap-1" style={{ background: 'rgba(5,11,43,0.06)' }}>
@@ -254,7 +256,7 @@ const AziendaDettaglio = () => {
                     ) : (
                         <div style={{ textAlign: 'center', padding: '32px 16px' }}>
                             <p style={{ fontFamily: body, fontSize: 14, color: GM, marginBottom: 20 }}>
-                                Nessuna offerta attiva per questa azienda al momento.
+                                {t('company.no_active_jobs')}
                             </p>
                             <Link to="/offerte" style={{
                                 background: N, color: '#FFFFFF', border: 'none',
@@ -264,7 +266,7 @@ const AziendaDettaglio = () => {
                                 textDecoration: 'none',
                                 display: 'inline-flex', alignItems: 'center', gap: 8
                             }} className="hover:opacity-80 transition-opacity">
-                                Vedi tutte le offerte →
+                                {t('latest.see_all')} →
                             </Link>
                         </div>
                     )}

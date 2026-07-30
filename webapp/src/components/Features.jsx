@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const DiagnosticShuffler = () => {
+    const { t } = useTranslation();
     const baseItems = ['Ticino', 'Canton Ticino', 'Commerciale', 'Ingegneria', 'Medicina'];
     const [items, setItems] = useState([
         { id: 1, text: baseItems[0] },
@@ -42,14 +44,15 @@ const DiagnosticShuffler = () => {
                 </AnimatePresence>
             </div>
             <div className="mt-auto text-left relative z-10 w-full mb-0 flex flex-col">
-                <h3 className="text-xl font-bold font-sans text-white mb-1">Ricerca Dinamica</h3>
-                <p className="text-sm text-gray-400 leading-tight">Esplora posizioni per settore e cantone istantaneamente.</p>
+                <h3 className="text-xl font-bold font-sans text-white mb-1">{t('features.dynamic_search_title')}</h3>
+                <p className="text-sm text-gray-400 leading-tight">{t('features.dynamic_search_desc')}</p>
             </div>
         </div>
     );
 };
 
 const TelemetryTypewriter = () => {
+    const { t } = useTranslation();
     const [text, setText] = useState('');
     const fullText = "Invio notifica: 'Nuova posizione aperta come Software Engineer a Lugano.'";
     const [index, setIndex] = useState(0);
@@ -80,13 +83,14 @@ const TelemetryTypewriter = () => {
             </div>
             <div className="mt-4">
                 <h3 className="text-xl font-bold font-sans text-white mb-2">Job Alert Personalizzati</h3>
-                <p className="text-sm text-gray-400">Ricevi notifiche in tempo reale per le tue competenze.</p>
+                <p className="text-sm text-gray-400">{t('features.alerts_desc')}</p>
             </div>
         </div>
     );
 };
 
 const CursorScheduler = () => {
+    const { t } = useTranslation();
     return (
         <div className="relative h-64 w-full glass-dark rounded-[2rem] overflow-hidden p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col items-center group">
             {/* Griglia giorni finta */}
@@ -114,24 +118,25 @@ const CursorScheduler = () => {
             </motion.svg>
 
             <div className="mt-auto flex w-full flex-col align-start text-left">
-                <h3 className="text-xl font-bold font-sans text-white mb-2">Candidatura in 1 Click</h3>
-                <p className="text-sm text-gray-400">Pianifica e gestisci le tue candidature rapidamente.</p>
+                <h3 className="text-xl font-bold font-sans text-white mb-2">{t('features.one_click_title')}</h3>
+                <p className="text-sm text-gray-400">{t('features.one_click_desc')}</p>
             </div>
         </div>
     );
 };
 
 const Features = () => {
+    const { t } = useTranslation();
     return (
         <section id="features" className="w-full py-32 px-6 md:px-12 bg-background relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-20">
                     <h2 className="text-4xl md:text-6xl font-sans tracking-tight font-bold text-primary mb-6">
-                        Strumenti Digitali per il<br />
-                        <span className="font-drama italic text-accent">Mercato del Lavoro</span>
+                        {t('features.heading_line1')}<br />
+                        <span className="font-drama italic text-accent">{t('features.heading_line2')}</span>
                     </h2>
                     <p className="text-base text-gray-600 max-w-2xl leading-relaxed">
-                        Non siamo solo una bacheca annunci. Forniamo un ecosistema tecnologico avanzato costruito per accelerare il tuo percorso verso il posizionamento ideale.
+                        {t('features.intro')}
                     </p>
                 </div>
 

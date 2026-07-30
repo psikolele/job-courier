@@ -10,7 +10,11 @@
     "all_offers": "Voir toutes les offres",
     "all_companies": "Voir toutes les entreprises",
     "pricing": "Solutions et tarifs",
-    "register_company": "Inscrire une entreprise"
+    "register_company": "Inscrire une entreprise",
+    "candidates_modal_desc": "Accédez à des milliers d'offres d'emploi dans toute la Suisse. Créez votre profil et postulez en quelques clics.",
+    "access_profile": "Accéder au profil",
+    "companies_modal_desc": "Publiez un poste et consultez immédiatement les candidats correspondants. Accédez à plus de 120'000 candidats inscrits.",
+    "company_login": "Connexion entreprise"
   },
   "hero": {
     "candidates": {
@@ -249,7 +253,9 @@
     "why_apply_title": "POURQUOI POSTULER MÊME SI CETTE OFFRE NE VOUS CORRESPOND PAS",
     "select_offer": "Sélectionnez une offre dans la liste",
     "loading": "Chargement de l'offre...",
-    "load_error": "Erreur de chargement"
+    "load_error": "Erreur de chargement",
+    "any_sector": "Tout secteur",
+    "all_cantons_short": "Tous les Cantons"
   },
   "footer": {
     "rss_title": "Flux RSS",
@@ -261,7 +267,20 @@
     "rss_doc": "Télécharger la documentation technique",
     "support": "Pour assistance :",
     "tagline": "Là où entreprises et candidats se rencontrent.",
-    "close": "Fermer"
+    "close": "Fermer",
+    "col_legal": "Mentions légales",
+    "link_terms": "Conditions Générales",
+    "link_cookies": "Politique de cookies",
+    "col_candidates": "Candidats",
+    "link_jobs": "Offres d'emploi",
+    "link_faq": "FAQ / Aide",
+    "col_companies": "Entreprises",
+    "link_post_job": "Publier une annonce",
+    "link_find_candidates": "Trouver des candidats",
+    "link_register_company": "Enregistrer une entreprise",
+    "link_contact": "Contact",
+    "rights_reserved": "Tous droits réservés",
+    "link_upload_cv": "Déposez votre CV"
   },
   "latest": {
     "label": "Offres récemment publiées",
@@ -270,5 +289,94 @@
     "see_all": "Voir toutes les offres",
     "prev": "Précédent",
     "next": "Suivant"
+  },
+  "cta": {
+    "for_candidates": "Pour les Candidats",
+    "candidates_h1": "Accédez à votre",
+    "candidates_h1_em": "Prochain Emploi.",
+    "candidates_desc": "Créez votre profil, configurez des alertes pour les postes souhaités et postulez en un seul clic.",
+    "candidates_btn": "Chercher des offres",
+    "for_companies": "Pour les Entreprises",
+    "companies_h1": "Trouvez les Meilleurs",
+    "companies_desc": "Publiez vos postes ouverts, gérez les candidatures et rencontrez les professionnels que vous recherchez sur le marché suisse.",
+    "companies_btn": "Publier une offre"
+  },
+  "company": {
+    "not_found": "Entreprise introuvable.",
+    "not_found_desc": "Le profil recherché n'existe pas ou n'est plus disponible.",
+    "back_to_companies": "Retour aux entreprises",
+    "load_error": "Une erreur s'est produite lors du chargement de l'entreprise. Veuillez réessayer plus tard.",
+    "profile_label": "Profil de l'entreprise",
+    "spontaneous_application": "Candidature spontanée",
+    "active_listings": "Annonces actives",
+    "no_active_jobs": "Aucune offre active pour cette entreprise pour le moment."
+  },
+  "companies_list": {
+    "meta_title": "Entreprises qui recrutent - JobCourier",
+    "title": "Entreprises qui recrutent",
+    "subtitle": "Les entreprises qui font confiance à Job Courier pour trouver leurs candidats.",
+    "intro": "Une liste d'entreprises avec un profil actif sur JobCourier. Sélectionnez une entreprise pour découvrir qui elle est et comment postuler.",
+    "load_error": "Une erreur s'est produite lors du chargement des entreprises. Veuillez réessayer plus tard.",
+    "none_available": "Aucune entreprise disponible pour le moment.",
+    "discover_more": "En savoir plus",
+    "search_placeholder": "Rechercher une entreprise par nom..."
+  },
+  "ads": {
+    "asfl_tagline": "La logistique fait bouger le monde - Bougez avec nous !",
+    "asfl_desc": "Association suisse pour la formation professionnelle en logistique",
+    "forma_title": "BUSINESS AI SPECIALIST",
+    "forma_patronage": "sous le patronage de",
+    "forma_courses": "cours d'informatique et d'IA",
+    "forma_alt": "Opportunités pour mettre à jour ses compétences et favoriser sa croissance professionnelle.",
+    "supsi_desc": "Développez des compétences stratégiques en gestion des ressources humaines",
+    "supsi_cta": "Découvrir le Master"
+  },
+  "features": {
+    "dynamic_search_title": "Recherche Dynamique",
+    "dynamic_search_desc": "Explorez les postes par secteur et canton instantanément.",
+    "alerts_desc": "Recevez des notifications en temps réel pour vos compétences.",
+    "one_click_title": "Candidature en 1 Clic",
+    "one_click_desc": "Planifiez et gérez vos candidatures rapidement.",
+    "heading_line1": "Outils Numériques pour le",
+    "heading_line2": "Marché de l'Emploi",
+    "intro": "Nous ne sommes pas seulement un tableau d'offres. Nous proposons un écosystème technologique avancé conçu pour accélérer votre parcours vers le poste idéal."
+  },
+  "showcase": {
+    "label": "ENTREPRISES PARTENAIRES",
+    "title": "Entreprises et recruteurs qui font confiance à Job Courier",
+    "see_jobs": "Voir les annonces"
+  },
+  "wall": {
+    "title": "Se connecter ou s'inscrire",
+    "desc": "Créez dès maintenant votre compte gratuit pour postuler en un clic, configurer des alertes personnalisées et suivre l'état de vos recherches sur le marché suisse.",
+    "register_cta": "S'inscrire maintenant"
+  },
+  "redirect": {
+    "title": "Redirection externe",
+    "sending_you": "Nous vous envoyons",
+    "to_another_site": "vers un autre site",
+    "desc": "La candidature pour cette offre est gérée de manière externe. Vous serez redirigé vers une nouvelle fenêtre sous peu."
+  },
+  "philosophy": {
+    "line1": "La plupart des portails proposent une mer d'annonces confuses, ce qui entraîne :",
+    "line1_em": "perte de temps et désorganisation.",
+    "line2": "Nous nous concentrons sur :",
+    "line2_em": "des rencontres précises."
+  },
+  "notfound": {
+    "meta_title": "Page introuvable | JobCourier",
+    "error_label": "Erreur 404",
+    "title": "Page introuvable",
+    "desc": "La page que vous cherchez n'existe pas ou a été déplacée. Retournez à l'accueil ou explorez les offres d'emploi.",
+    "back_home": "Retour à l'accueil",
+    "see_offers": "Voir les offres"
+  },
+  "faq": {
+    "label": "FAQ Candidats",
+    "title": "Questions",
+    "title_em": "Fréquentes.",
+    "subtitle": "Tout ce que vous devez savoir sur JobCourier.",
+    "no_answer": "Vous n'avez pas trouvé de réponse à votre question ?",
+    "contact_support": "Contacter le support"
   }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -121,22 +122,24 @@ const FAQItem = ({ q, a, index }) => {
     );
 };
 
-const FAQ = () => (
+const FAQ = () => {
+    const { t } = useTranslation();
+    return (
     <div className="min-h-screen overflow-x-hidden" style={{ background: GL }}>
         {/* HERO */}
         <section className="relative min-h-[40vh] pt-32 pb-16 px-6 md:px-12 flex flex-col justify-center" style={{ background: N }}>
             <div className="container mx-auto w-full">
                 <div className="max-w-3xl">
-                    <SectionLabel>FAQ Candidati</SectionLabel>
+                    <SectionLabel>{t('faq.label')}</SectionLabel>
                     <h1 style={{
                         fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 8vw, 4.5rem)',
                         color: 'var(--brand-white)', textTransform: 'uppercase',
                         letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 24
                     }}>
-                        Domande<br /><span style={{ color: F }}>Frequenti.</span>
+                        {t('faq.title')}<br /><span style={{ color: F }}>{t('faq.title_em')}</span>
                     </h1>
                     <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: 'rgba(255,255,255,0.75)', lineHeight: 1.4 }}>
-                        Tutto quello che devi sapere su JobCourier.
+                        {t('faq.subtitle')}
                     </p>
                 </div>
             </div>
@@ -155,7 +158,7 @@ const FAQ = () => (
         <section className="py-16 px-6 md:px-12" style={{ background: GL }}>
             <div className="container mx-auto max-w-3xl text-center">
                 <p style={{ fontFamily: body, fontSize: 14, color: GM, marginBottom: 8 }}>
-                    Non hai trovato risposta alla tua domanda?
+                    {t('faq.no_answer')}
                 </p>
                 <a
                     href="mailto:support@jobcourier.ch"
@@ -166,11 +169,12 @@ const FAQ = () => (
                         display: 'inline-flex', alignItems: 'center', gap: 6
                     }}
                 >
-                    Contatta il supporto →
+                    {t('faq.contact_support')} →
                 </a>
             </div>
         </section>
     </div>
-);
+    );
+};
 
 export default FAQ;
