@@ -165,5 +165,11 @@
     "cta_title": "Una domanda?",
     "cta_em": "Siamo qui per aiutarti.",
     "cta_sub": "Contattaci per informazioni sui nostri servizi, sulle soluzioni di recruiting o sulla pubblicazione delle offerte di lavoro."
+  },
+  "showcase": {
+    "eyebrow": "Offerte appena pubblicate",
+    "title": "Ogni giorno centinaia di nuove offerte di lavoro",
+    "see_all_short": "Vedi tutte",
+    "see_all": "Vedi tutte le offerte"
   }
 }

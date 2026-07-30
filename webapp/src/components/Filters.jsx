@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Briefcase, User, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight, ChevronLeft, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { fetchLatestJobs } from '../services/api';
 import useRegistrationWall from '../hooks/useRegistrationWall';
+import useShowcaseJobs from '../hooks/useShowcaseJobs';
 import RegistrationWallModal from './RegistrationWallModal';
 
 
@@ -48,6 +50,11 @@ const Filters = () => {
     const resumeTimeoutRef = useRef(null);
     const navigate = useNavigate();
     const wall = useRegistrationWall();
+    const { t, i18n } = useTranslation();
+
+    // Showcase-only policy: language region first, max 2 offers per company.
+    // The all-offers page (/offerte) is untouched.
+    const { jobs: showcaseJobs } = useShowcaseJobs(latestJobs, i18n.language);
 
     useEffect(() => {
         setTimeout(() => {
@@ -111,7 +118,7 @@ const Filters = () => {
         const fetchJobs = async () => {
             setJobsLoading(true);
             try {
-                const data = await fetchLatestJobs();
+                const data = await fetchLatestJobs({ showcase: '1' });
                 if (data && data.length > 0) {
                     const formattedJobs = data.map(job => {
                         const linkId = job.link?.match(/[?&]id=(\d+)/)?.[1] || job.id;
@@ -193,7 +200,7 @@ const Filters = () => {
     };
 
     useEffect(() => {
-        if (!jobsLoading && latestJobs.length > 0 && sliderRef.current) {
+        if (!jobsLoading && showcaseJobs.length > 0 && sliderRef.current) {
             const handleResize = () => {
                 resumeAutoScroll();
             };
@@ -208,7 +215,7 @@ const Filters = () => {
                 ctx.revert();
             };
         }
-    }, [jobsLoading, latestJobs]);
+    }, [jobsLoading, showcaseJobs]);
 
     const handleMouseEnter = () => {
         isPausedRef.current = true;
@@ -284,7 +291,7 @@ const Filters = () => {
                                 letterSpacing: '0.2em',
                                 textTransform: 'uppercase',
                                 color: 'var(--brand-fuchsia)'
-                            }}>Offerte appena pubblicate</span>
+                            }}>{t('showcase.eyebrow')}</span>
                         </div>
                         <h2 style={{
                             fontFamily: 'var(--font-editorial)',
@@ -293,7 +300,7 @@ const Filters = () => {
                             color: 'var(--brand-navy)',
                             lineHeight: 1.15,
                             margin: 0
-                        }}>Ogni giorno centinaia di nuove offerte di lavoro</h2>
+                        }}>{t('showcase.title')}</h2>
                     </div>
 
                     <div className="flex items-center gap-6" style={{ flexShrink: 0, marginTop: 6 }}>
@@ -329,7 +336,7 @@ const Filters = () => {
                                 textTransform: 'uppercase'
                             }}
                         >
-                            Vedi tutte <ChevronRight className="w-4 h-4" />
+                            {t('showcase.see_all_short')} <ChevronRight className="w-4 h-4" />
                         </button>
                     </div>
                 </div>
@@ -386,7 +393,7 @@ const Filters = () => {
                                 <div key={i} className="w-[290px] md:w-[340px] shrink-0 flex-none animate-pulse bg-white p-6 h-[235px] snap-center" style={{ borderBottom: '2.5px solid var(--brand-fuchsia)' }}></div>
                             ))
                         ) : (
-                            latestJobs.map((job, idx) => (
+                            showcaseJobs.map((job, idx) => (
                                 <motion.div
                                     onClick={() => {
                                         navigate(`/offerte?global=1&jobId=${job.id}`);
@@ -493,7 +500,7 @@ const Filters = () => {
                 
                 <div className="mt-2 flex justify-center md:hidden">
                     <button onClick={() => navigate('/offerte')} className="text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] flex items-center gap-1 transition-colors">
-                        Vedi tutte le offerte <ChevronRight className="w-4 h-4" />
+                        {t('showcase.see_all')} <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>
             </div>

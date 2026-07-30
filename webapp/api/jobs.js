@@ -5,6 +5,17 @@ const PAGES_TO_FETCH = 3;   // 3 pages × 15 jobs = 45 — faster default load
 const MAX_JOBS = 45;
 const BATCH_SIZE = 3;       // max concurrent fetches to avoid upstream rate-limit
 
+// Home showcase needs a wider window: the feed is heavily skewed towards one
+// language region, so 45 jobs are not enough to fill a language-filtered list.
+const SHOWCASE_PAGES = 8;
+const SHOWCASE_MAX_JOBS = 120;
+
+// Params we are willing to forward upstream. Everything else (including our own
+// `showcase` flag) is dropped instead of being proxied blindly.
+const UPSTREAM_PARAMS = new Set([
+  'language', 'country', 'keyword', 'location', 'sector', 'role_id', 'region', 'global',
+]);
+
 export function parseJobsFromHtml(html, offset = 0) {
   const $ = cheerio.load(html);
   const jobs = [];
@@ -143,12 +154,16 @@ export default async function handler(req, res) {
   try {
     const baseUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php';
     const singlePage = req.query?.singlePage === '1';
-    const pagesToFetch = singlePage ? 1 : PAGES_TO_FETCH;
-    const maxJobs = singlePage ? 15 : MAX_JOBS;
+    const showcase = req.query?.showcase === '1';
 
-    // Build per-page params, forwarding any caller query params
+    let pagesToFetch = PAGES_TO_FETCH;
+    let maxJobs = MAX_JOBS;
+    if (singlePage) { pagesToFetch = 1; maxJobs = 15; }
+    else if (showcase) { pagesToFetch = SHOWCASE_PAGES; maxJobs = SHOWCASE_MAX_JOBS; }
+
+    // Build per-page params, forwarding only whitelisted caller query params
     const callerParams = req.query ? Object.fromEntries(
-      Object.entries(req.query).filter(([k]) => !['page', 'singlePage'].includes(k))
+      Object.entries(req.query).filter(([k]) => UPSTREAM_PARAMS.has(k))
     ) : {};
 
     const pageUrls = Array.from({ length: pagesToFetch }, (_, idx) => {
@@ -169,7 +184,7 @@ export default async function handler(req, res) {
           .catch(() => '')
       );
       responses.push(...await Promise.all(batch));
-      if (responses.filter(Boolean).flatMap(h => h ? [h] : []).length >= PAGES_TO_FETCH) break;
+      if (responses.filter(Boolean).length >= pagesToFetch) break;
     }
 
     // Parse + flatten, offset IDs by page to avoid collision

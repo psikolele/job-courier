@@ -164,5 +164,11 @@
     "cta_title": "Eine Frage?",
     "cta_em": "Wir sind hier, um zu helfen.",
     "cta_sub": "Kontaktieren Sie uns für Informationen über unsere Dienstleistungen, Recruiting-Lösungen oder Stellenausschreibungen."
+  },
+  "showcase": {
+    "eyebrow": "Neu veröffentlicht",
+    "title": "Jeden Tag Hunderte neuer Stellenangebote",
+    "see_all_short": "Alle ansehen",
+    "see_all": "Alle Stellenangebote ansehen"
   }
 }
