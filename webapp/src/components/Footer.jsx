@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { jobroomLang } from '../utils/jobroomLang';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -33,6 +35,7 @@ const IconClose = () => (
 );
 
 const RssModal = ({ onClose }) => {
+    const { t } = useTranslation();
     const N = 'var(--brand-navy)';
     const F = 'var(--brand-fuchsia)';
     const brand = 'var(--font-brand)';
@@ -60,24 +63,24 @@ const RssModal = ({ onClose }) => {
                     style={{ position: 'absolute', top: 14, right: 14, background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(5,11,43,0.4)', transition: 'color 0.15s' }}
                     onMouseEnter={e => e.currentTarget.style.color = N}
                     onMouseLeave={e => e.currentTarget.style.color = 'rgba(5,11,43,0.4)'}
-                    aria-label="Chiudi"
+                    aria-label={t('footer.close')}
                 >
                     <IconClose />
                 </button>
 
                 <div style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: F, marginBottom: 12 }}>
-                    Feed RSS
+                    {t('footer.rss_title')}
                 </div>
                 <h2 style={{ fontFamily: brand, fontWeight: 800, fontSize: 22, color: N, marginBottom: 16, lineHeight: 1.3 }}>
-                    Importare offerte di lavoro tramite feed RSS
+                    {t('footer.rss_heading')}
                 </h2>
                 <p style={{ fontFamily: body, fontSize: 14, color: 'rgba(5,11,43,0.7)', lineHeight: 1.7, marginBottom: 16 }}>
-                    Pubblica automaticamente i tuoi annunci di lavoro su JobCourier tramite un feed RSS dal tuo ATS o portale di lavoro.
+                    {t('footer.rss_desc')}
                 </p>
                 <ul style={{ fontFamily: body, fontSize: 13, color: 'rgba(5,11,43,0.65)', lineHeight: 1.8, marginBottom: 24, paddingLeft: 18 }}>
-                    <li>Amplia il tuo pubblico di candidati</li>
-                    <li>Ricevi più candidature qualificate</li>
-                    <li>Integrazione semplice con il tuo sistema esistente</li>
+                    <li>{t('footer.rss_b1')}</li>
+                    <li>{t('footer.rss_b2')}</li>
+                    <li>{t('footer.rss_b3')}</li>
                 </ul>
 
                 <a
@@ -93,11 +96,11 @@ const RssModal = ({ onClose }) => {
                         padding: '12px 24px', textDecoration: 'none', cursor: 'pointer'
                     }}
                 >
-                    Scarica documentazione tecnica →
+                    {t('footer.rss_doc')} →
                 </a>
 
                 <p style={{ fontFamily: body, fontSize: 12, color: 'rgba(5,11,43,0.4)', marginTop: 16 }}>
-                    Per assistenza: <a href="mailto:support@jobcourier.ch" style={{ color: F, textDecoration: 'none' }}>support@jobcourier.ch</a>
+                    {t('footer.support')} <a href="mailto:support@jobcourier.ch" style={{ color: F, textDecoration: 'none' }}>support@jobcourier.ch</a>
                 </p>
             </motion.div>
         </motion.div>
@@ -105,6 +108,7 @@ const RssModal = ({ onClose }) => {
 };
 
 const Footer = ({ setShowLoginModal }) => {
+    const { t } = useTranslation();
     const [showRssModal, setShowRssModal] = useState(false);
     const N = 'var(--brand-navy)';
     const F = 'var(--brand-fuchsia)';
@@ -126,14 +130,14 @@ const Footer = ({ setShowLoginModal }) => {
         ]},
         { title: 'Candidati', links: [
             { label: 'Offerte di lavoro', href: '/offerte' },
-            { label: 'Carica il CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it' },
+            { label: 'Carica il CV', href: jobroomLang('https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it') },
             { label: 'Login', href: '#login' },
             { label: 'FAQ / Aiuto', href: '/faq' },
         ]},
         { title: 'Aziende', inline: ['Pubblica annuncio', 'Trova Candidati'], links: [
-            { label: 'Pubblica annuncio', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
-            { label: 'Trova Candidati', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
-            { label: 'Registra Azienda', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
+            { label: 'Pubblica annuncio', href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
+            { label: 'Trova Candidati', href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
+            { label: 'Registra Azienda', href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
             { label: 'Login', href: '#login' },
             { label: 'Contatti', href: '/contatti' },
         ]},
@@ -154,7 +158,7 @@ const Footer = ({ setShowLoginModal }) => {
                         />
                     </div>
                     <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 15, color: 'var(--brand-white)', lineHeight: 1.5, marginBottom: 20 }}>
-                        Dove aziende e candidati si incontrano.
+                        {t('footer.tagline')}
                     </p>
                     <div style={{ display: 'flex', gap: 12 }}>
                         {socials.map(s => (

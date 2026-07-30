@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Briefcase, User, ChevronRight, Clock, Building2, UserPlus, X, ArrowRight, ChevronLeft, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -33,6 +34,7 @@ const deriveRole = (role) => {
 };
 
 const Filters = () => {
+    const { t } = useTranslation();
     // eslint-disable-next-line no-unused-vars
     const [cantons, setCantons] = useState([]);
     // eslint-disable-next-line no-unused-vars
@@ -284,7 +286,7 @@ const Filters = () => {
                                 letterSpacing: '0.2em',
                                 textTransform: 'uppercase',
                                 color: 'var(--brand-fuchsia)'
-                            }}>Offerte appena pubblicate</span>
+                            }}>{t('latest.label')}</span>
                         </div>
                         <h2 style={{
                             fontFamily: 'var(--font-editorial)',
@@ -293,7 +295,7 @@ const Filters = () => {
                             color: 'var(--brand-navy)',
                             lineHeight: 1.15,
                             margin: 0
-                        }}>Ogni giorno centinaia di nuove offerte di lavoro</h2>
+                        }}>{t('latest.title')}</h2>
                     </div>
 
                     <div className="flex items-center gap-6" style={{ flexShrink: 0, marginTop: 6 }}>
@@ -302,14 +304,14 @@ const Filters = () => {
                             <button
                                 onClick={() => handleManualScroll('left')}
                                 className="w-8 h-8 rounded-full border border-slate-200/80 flex items-center justify-center text-slate-500 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/5 transition-all duration-200 cursor-pointer"
-                                title="Precedente"
+                                title={t('latest.prev')}
                             >
                                 <ChevronLeft className="w-4 h-4" />
                             </button>
                             <button
                                 onClick={() => handleManualScroll('right')}
                                 className="w-8 h-8 rounded-full border border-slate-200/80 flex items-center justify-center text-slate-500 hover:border-[#FF1F7A] hover:text-[#FF1F7A] hover:bg-[#FF1F7A]/5 transition-all duration-200 cursor-pointer"
-                                title="Successiva"
+                                title={t('latest.next')}
                             >
                                 <ChevronRight className="w-4 h-4" />
                             </button>
@@ -329,7 +331,7 @@ const Filters = () => {
                                 textTransform: 'uppercase'
                             }}
                         >
-                            Vedi tutte <ChevronRight className="w-4 h-4" />
+                            {t('latest.see_all_short')} <ChevronRight className="w-4 h-4" />
                         </button>
                     </div>
                 </div>
@@ -441,7 +443,7 @@ const Filters = () => {
                                                 flexShrink: 0
                                             }}>
                                                 <MapPin size={9} style={{ color: 'var(--brand-fuchsia)', flexShrink: 0 }} />
-                                                <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--brand-gray-mid)' }}>Sede:</span>
+                                                <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--brand-gray-mid)' }}>{t('jobs.label_location')}:</span>
                                                 {formatLocation(job.location)}
                                             </span>
                                         </div>
@@ -478,8 +480,8 @@ const Filters = () => {
                                         return (
                                             <div className="relative" style={{ marginTop: 'auto', paddingTop: 12, borderTop: '1px solid rgba(5,11,43,0.05)' }}>
                                                 <div className="flex flex-col items-start" style={{ gap: 6, overflow: 'hidden' }}>
-                                                    <span style={{ ...chip, opacity: 0.7, maxWidth: '100%', overflow: 'hidden' }}><Briefcase size={9} /><span style={lbl}>Settore:</span>{settore}</span>
-                                                    <span style={{ ...chip, opacity: 0.55, maxWidth: '100%', overflow: 'hidden' }}><User size={9} /><span style={lbl}>Ruolo:</span>{ruolo}</span>
+                                                    <span style={{ ...chip, opacity: 0.7, maxWidth: '100%', overflow: 'hidden' }}><Briefcase size={9} /><span style={lbl}>{t('jobs.label_sector')}:</span>{settore}</span>
+                                                    <span style={{ ...chip, opacity: 0.55, maxWidth: '100%', overflow: 'hidden' }}><User size={9} /><span style={lbl}>{t('jobs.label_role')}:</span>{ruolo}</span>
                                                 </div>
                                                 <div className="absolute top-0 right-0 h-full w-10 pointer-events-none sm:hidden" style={{ background: 'linear-gradient(to right, transparent, #FFFFFF)' }} />
                                             </div>
@@ -493,7 +495,7 @@ const Filters = () => {
                 
                 <div className="mt-2 flex justify-center md:hidden">
                     <button onClick={() => navigate('/offerte')} className="text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] flex items-center gap-1 transition-colors">
-                        Vedi tutte le offerte <ChevronRight className="w-4 h-4" />
+                        {t('latest.see_all')} <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>
             </div>

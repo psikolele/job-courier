@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { jobroomLang } from '../utils/jobroomLang';
 
 import { AnimatedButton } from './ui/animated-button';
 import { openLoginPopup, AUTH_EVENT } from '../hooks/useAuthPopup';
@@ -56,7 +57,7 @@ const IconMenu = () => (
 
 const getCandidateLinks = () => [
     { label: 'Offerte di lavoro', labelEn: 'Job offers', labelDe: 'Stellenangebote', labelFr: 'Offres d\'emploi', href: '/offerte' },
-    { label: 'Carica il tuo CV', labelEn: 'Upload your CV', labelDe: 'Lebenslauf hochladen', labelFr: 'Déposez votre CV', href: 'https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it', external: true },
+    { label: 'Carica il tuo CV', labelEn: 'Upload your CV', labelDe: 'Lebenslauf hochladen', labelFr: 'Déposez votre CV', href: jobroomLang('https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it'), external: true },
     { label: 'Aziende che assumono', labelEn: 'Hiring companies', labelDe: 'Einstellende Unternehmen', labelFr: 'Entreprises qui recrutent', href: '/aziende-che-assumono' },
     { label: 'Consigli di carriera', labelEn: 'Career tips', labelDe: 'Karrieretipps', labelFr: 'Conseils carrière', href: '/blog/carriera' },
 ];
@@ -64,8 +65,8 @@ const getCandidateLinks = () => [
 const getCompanyLinks = () => [
     {
         label: 'Pubblica annuncio', labelEn: 'Post a job', labelDe: 'Stelle ausschreiben', labelFr: 'Publier une annonce',
-        href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it', external: true,
-        combined: { label: 'Trova candidati', labelEn: 'Find candidates', labelDe: 'Kandidaten finden', labelFr: 'Trouver des candidats', href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it' },
+        href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it'), external: true,
+        combined: { label: 'Trova candidati', labelEn: 'Find candidates', labelDe: 'Kandidaten finden', labelFr: 'Trouver des candidats', href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
     },
     { label: 'Come funziona', labelEn: 'How it works', labelDe: 'Wie es funktioniert', labelFr: 'Comment ça marche', href: '/come-funziona' },
     { label: 'Soluzioni e tariffe', labelEn: 'Solutions and Prices', labelDe: 'Lösungen und Tarife', labelFr: 'Solutions et tarifs', href: '/soluzioni-e-tariffe' },
@@ -423,7 +424,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                     <motion.a
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                                        href="https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it"
+                                        href={jobroomLang("https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it")}
                                         className="w-full bg-white border-2 border-[var(--brand-navy)]/20 text-[var(--brand-navy)] font-bold py-4 transition-all hover:border-[var(--brand-navy)] text-center rounded-none tracking-[0.1em] text-xs uppercase"
                                     >
                                         Carica il tuo CV
@@ -453,7 +454,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                     <motion.a
                                         whileHover={{ scale: 1.03 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                                        href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it&_gl=1*e5uej*_gcl_au*MjA5NDU5ODA3Ni4xNzE4MDA1NjYy"
+                                        href={jobroomLang("https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it&_gl=1*e5uej*_gcl_au*MjA5NDU5ODA3Ni4xNzE4MDA1NjYy")}
                                         className="w-full bg-transparent border-2 border-white/20 text-white font-bold py-4 transition-all hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)] text-center px-4 rounded-none tracking-[0.1em] text-xs uppercase"
                                     >
                                         Registra Azienda

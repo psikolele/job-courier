@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { jobroomLang } from '../utils/jobroomLang';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -88,7 +89,7 @@ const ComeFunziona = () => {
                         </p>
 
                         <div className="hero-line flex flex-col sm:flex-row items-start gap-4">
-                            <a href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
+                            <a href={jobroomLang("https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it")}
                                 style={{
                                     background: F, color: 'var(--brand-white)', border: 'none',
                                     padding: '14px 28px',
@@ -242,7 +243,7 @@ const ComeFunziona = () => {
                         {t('come_funziona.cta_sub')}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <a href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
+                        <a href={jobroomLang("https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it")}
                             style={{
                                 background: F, color: 'var(--brand-white)', border: 'none',
                                 padding: '14px 28px',

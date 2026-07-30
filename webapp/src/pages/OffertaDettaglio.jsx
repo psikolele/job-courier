@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MapPin, Briefcase, Calendar, ChevronLeft, ExternalLink, Clock, Building, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -16,6 +17,7 @@ const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
 const PercheCandidatiWidget = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [kw, setKw] = useState('');
     const [loc, setLoc] = useState('');
@@ -44,15 +46,15 @@ const PercheCandidatiWidget = () => {
                 fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--brand-fuchsia)', marginBottom: 12
-            }}>Cerca un'altra offerta</p>
+            }}>{t('jobs.search_another')}</p>
             <form onSubmit={handleSearch} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <input
-                    type="text" placeholder="Professione o parola chiave"
+                    type="text" placeholder={t('jobs.ph_keyword')}
                     value={kw} onChange={e => setKw(e.target.value)}
                     style={inputStyle}
                 />
                 <input
-                    type="text" placeholder="Luogo o cantone"
+                    type="text" placeholder={t('jobs.ph_location')}
                     value={loc} onChange={e => setLoc(e.target.value)}
                     style={inputStyle}
                 />
@@ -68,7 +70,7 @@ const PercheCandidatiWidget = () => {
                     letterSpacing: '0.18em', textTransform: 'uppercase',
                     cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
                 }}>
-                    <Search size={13} /> CERCA OFFERTE
+                    <Search size={13} /> {t('jobs.search_cta')}
                 </button>
             </form>
         </div>
@@ -76,6 +78,7 @@ const PercheCandidatiWidget = () => {
 };
 
 const OffertaDettaglio = ({ setShowLoginModal }) => {
+    const { t } = useTranslation();
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -140,7 +143,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                 <div className="flex flex-col items-center gap-4">
                     <span className="w-12 h-12 border-4 border-t-transparent animate-spin rounded-full" style={{ borderColor: `${F} transparent transparent transparent` }} />
                     <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 12, letterSpacing: '0.15em', textTransform: 'uppercase', color: N }}>
-                        Caricamento offerta in corso...
+                        {t('jobs.loading')}
                     </p>
                 </div>
             </div>
@@ -152,7 +155,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
             <div className="pt-32 min-h-screen flex items-center justify-center px-4" style={{ background: GL }}>
                 <div className="max-w-md w-full text-center bg-white px-8 py-10 border border-red-200 rounded-none shadow-sm">
                     <h2 style={{ fontFamily: brand, fontWeight: 900, fontSize: 24, color: '#e63946', marginBottom: 12, textTransform: 'uppercase' }}>
-                        Errore di Caricamento
+                        {t('jobs.load_error')}
                     </h2>
                     <p style={{ fontFamily: body, fontSize: 14, color: GM, marginBottom: 24 }}>
                         {error || "L'offerta di lavoro richiesta non è stata trovata o non è più disponibile."}
@@ -166,7 +169,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                             letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: 0
                         }}
                     >
-                        Torna alle Offerte
+                        {t('jobs.back_to_jobs_title')}
                     </button>
                 </div>
             </div>
@@ -184,7 +187,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                     style={{ fontFamily: brand, color: N, background: 'transparent', border: 'none', cursor: 'pointer', padding: 0 }}
                 >
                     <ChevronLeft size={16} />
-                    <span>Torna indietro</span>
+                    <span>{t('jobs.go_back')}</span>
                 </button>
 
                 {/* Main Grid: Clinical Boutique Layout Split 65/35 */}
@@ -258,37 +261,37 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                         {/* Quick Information Panel */}
                         <div className="flex flex-col gap-4">
                             <h4 style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: F, marginBottom: 4 }}>
-                                Scheda informativa
+                                {t('jobs.info_card')}
                             </h4>
 
                             <div className="flex flex-col gap-3">
                                 <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
-                                    <span style={{ fontFamily: body, color: GM }}>Sede</span>
+                                    <span style={{ fontFamily: body, color: GM }}>{t('jobs.label_location')}</span>
                                     <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">Sede: {formatLocation(job.location)}</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
-                                    <span style={{ fontFamily: body, color: GM }}>Settore</span>
+                                    <span style={{ fontFamily: body, color: GM }}>{t('jobs.label_sector')}</span>
                                     <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">Settore: {job.sector || "Non specificato"}</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
-                                    <span style={{ fontFamily: body, color: GM }}>Ruolo</span>
+                                    <span style={{ fontFamily: body, color: GM }}>{t('jobs.label_role')}</span>
                                     <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">Ruolo: {job.role || "Non specificato"}</span>
                                 </div>
                                 {job.details?.percentage && (
                                     <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
-                                        <span style={{ fontFamily: body, color: GM }}>Impiego</span>
+                                        <span style={{ fontFamily: body, color: GM }}>{t('jobs.label_employment')}</span>
                                         <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">{job.details.percentage}</span>
                                     </div>
                                 )}
                                 {job.details?.duration && (
                                     <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
-                                        <span style={{ fontFamily: body, color: GM }}>Durata</span>
+                                        <span style={{ fontFamily: body, color: GM }}>{t('jobs.label_duration')}</span>
                                         <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">{job.details.duration}</span>
                                     </div>
                                 )}
                                 {job.details?.entryDate && (
                                     <div className="flex justify-between items-center text-sm py-1">
-                                        <span style={{ fontFamily: body, color: GM }}>Entrata</span>
+                                        <span style={{ fontFamily: body, color: GM }}>{t('jobs.label_start')}</span>
                                         <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">{job.details.entryDate}</span>
                                     </div>
                                 )}
@@ -307,7 +310,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                                 borderRadius: 0
                             }}
                         >
-                            <span>Candidati</span>
+                            <span>{t('jobs.apply')}</span>
                             <ExternalLink size={13} style={{ color: F }} />
                         </button>
 
@@ -318,7 +321,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                                     fontFamily: brand, fontWeight: 700, fontSize: 10,
                                     letterSpacing: '0.16em', textTransform: 'uppercase',
                                     color: F, marginBottom: 14
-                                }}>PERCHÉ CANDIDARSI ANCHE SE QUESTA OFFERTA NON FA PER TE</p>
+                                }}>{t('jobs.why_apply_title')}</p>
                                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                     {[
                                         'Accesso diretto a migliaia di offerte in tutta Svizzera',
