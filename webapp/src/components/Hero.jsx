@@ -10,7 +10,7 @@ import SpotlightCard from './ui/spotlight-card';
 import heroBg1 from '../assets/hero-bg.jpg';
 
 const Hero = ({ setShowLoginModal }) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [hoveredSide, setHoveredSide] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const navigate = useNavigate();
@@ -21,19 +21,11 @@ const Hero = ({ setShowLoginModal }) => {
     const [selectedCanton, setSelectedCanton] = useState('');
     const [selectedSector, setSelectedSector] = useState('');
 
-    const lang = i18n?.language || 'it';
     const companyLinks = [
-        { label: 'Come funziona', href: '/come-funziona' },
-        { label: 'Soluzioni e tariffe', href: '/soluzioni-e-tariffe' },
-        { label: 'Consigli di recruiting', href: '#blog' }
+        { label: t('hero.companies.links.how_it_works'), href: '/come-funziona' },
+        { label: t('hero.companies.links.pricing'), href: '/soluzioni-e-tariffe' },
+        { label: t('hero.companies.links.recruiting_tips'), href: '#blog' }
     ];
-    
-    const getHeroLabel = (item) => {
-        if (lang === 'en' && item.labelEn) return item.labelEn;
-        if (lang === 'de' && item.labelDe) return item.labelDe;
-        if (lang === 'fr' && item.labelFr) return item.labelFr;
-        return item.label;
-    };
 
     useEffect(() => {
         setTimeout(() => {
@@ -339,7 +331,7 @@ const Hero = ({ setShowLoginModal }) => {
                                     borderRadius: 0,
                                 }}
                             >
-                                Trova Offerte →
+                                {t('hero.candidates.cta')} →
                             </AnimatedButton>
                         </form>
                     </div>
@@ -348,9 +340,9 @@ const Hero = ({ setShowLoginModal }) => {
                     <div className="w-full max-w-lg mx-auto hero-quick-links" style={{ marginTop: 16 }}>
                         <div className="flex gap-2">
                             {[
-                                { label: 'Vedi tutte le offerte', href: '/offerte', external: false },
-                                { label: 'Aziende che assumono', href: '/aziende-che-assumono', external: false },
-                                { label: 'Consigli di Carriera', href: '#blog', external: false }
+                                { label: t('hero.candidates.links.all_offers'), href: '/offerte', external: false },
+                                { label: t('hero.candidates.links.hiring_companies'), href: '/aziende-che-assumono', external: false },
+                                { label: t('hero.candidates.links.career_tips'), href: '#blog', external: false }
                             ].map(({ label, href, external }) => {
                                 const btnClass = "jc-glow-btn-light flex-1 py-3 text-[13px] tracking-[0.04em] text-center text-[var(--brand-navy)]";
                                 return external ? (
@@ -429,8 +421,8 @@ const Hero = ({ setShowLoginModal }) => {
                     <div className="hero-card-box w-full max-w-lg mx-auto mb-6 lg:mb-8 lg:h-[312px] flex flex-col justify-between p-6" style={{ borderRadius: 0 }}>
                         {/* Stats Spotlight Cards row */}
                         <div className="flex gap-4 w-full pb-2" style={{ flex: 1, alignItems: 'center' }}>
-                            <SpotlightCard target={120000} duration={2200} label="Candidati registrati" />
-                            <SpotlightCard target={3000} duration={1800} label="Candidature al mese" />
+                            <SpotlightCard target={120000} duration={2200} label={t('hero.companies.stat_candidates')} />
+                            <SpotlightCard target={3000} duration={1800} label={t('hero.companies.stat_applications')} />
                         </div>
                         {/* Button — pinned to bottom, full width */}
                         <AnimatedButton
@@ -438,7 +430,7 @@ const Hero = ({ setShowLoginModal }) => {
                             className="w-full py-4 text-white font-bold tracking-[0.14em] text-xs uppercase cursor-pointer"
                             style={{ background: '#FF1F7A', borderRadius: 0, border: 'none' }}
                         >
-                            Pubblica annuncio →
+                            {t('hero.companies.cta')} →
                         </AnimatedButton>
                     </div>
 

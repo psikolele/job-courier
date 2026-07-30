@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { MapPin, Briefcase, User, ChevronLeft, Calendar, Search, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -45,6 +46,7 @@ const deriveRole = (role) => {
 };
 
 const PercheCandidatiWidget = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [kw, setKw] = useState('');
     const [loc, setLoc] = useState('');
@@ -73,20 +75,20 @@ const PercheCandidatiWidget = () => {
                 fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 10,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--brand-fuchsia)', marginBottom: 12
-            }}>Cerca un'altra offerta</p>
+            }}>{t('jobs.search_another')}</p>
             <form onSubmit={handleSearch} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <input
-                    type="text" placeholder="Professione o parola chiave"
+                    type="text" placeholder={t('jobs.ph_keyword')}
                     value={kw} onChange={e => setKw(e.target.value)}
                     style={inputStyle}
                 />
                 <input
-                    type="text" placeholder="Luogo o cantone"
+                    type="text" placeholder={t('jobs.ph_location')}
                     value={loc} onChange={e => setLoc(e.target.value)}
                     style={inputStyle}
                 />
                 <input
-                    type="text" placeholder="Settore"
+                    type="text" placeholder={t('jobs.ph_sector')}
                     value={settore} onChange={e => setSettore(e.target.value)}
                     style={inputStyle}
                 />
@@ -97,7 +99,7 @@ const PercheCandidatiWidget = () => {
                     letterSpacing: '0.18em', textTransform: 'uppercase',
                     cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
                 }}>
-                    <Search size={13} /> CERCA OFFERTE
+                    <Search size={13} /> {t('jobs.search_cta')}
                 </button>
             </form>
         </div>
@@ -105,6 +107,7 @@ const PercheCandidatiWidget = () => {
 };
 
 const Offerte = ({ setShowLoginModal }) => {
+    const { t } = useTranslation();
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
 
@@ -279,7 +282,7 @@ const Offerte = ({ setShowLoginModal }) => {
                         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
                             <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
                             <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
-                                Offerte di lavoro
+                                {t('jobs.title')}
                             </span>
                         </div>
                         <h1 style={{
@@ -324,7 +327,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                 transition: 'all 0.2s'
                             }}
                         >
-                            Lista
+                            {t('jobs.tab_list')}
                         </button>
                         <button
                             onClick={() => setActiveTab('detail')}
@@ -339,7 +342,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                 transition: 'all 0.2s'
                             }}
                         >
-                            Dettagli
+                            {t('jobs.tab_details')}
                         </button>
                     </div>
                 )}
@@ -359,7 +362,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                 <div style={{ padding: 16, background: '#FFF0F0', color: '#C00', fontFamily: body, fontSize: 13 }}>{error}</div>
                             ) : jobs.length === 0 ? (
                                 <div style={{ padding: 32, textAlign: 'center', color: GM, fontFamily: body, fontSize: 14 }}>
-                                    Nessuna offerta trovata con i filtri attuali.
+                                    {t('jobs.none_found')}
                                 </div>
                             ) : (
                                 <div className="flex flex-col gap-1 overflow-y-auto scroll-fade" style={{ maxHeight: 'calc(100vh - 320px)', background: 'rgba(5,11,43,0.04)' }}>
@@ -400,7 +403,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                                 </>
                                                             )}
                                                             {job.redirect && (
-                                                                <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 8, letterSpacing: '0.18em', textTransform: 'uppercase', color: F }}>● Esterno</span>
+                                                                <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 8, letterSpacing: '0.18em', textTransform: 'uppercase', color: F }}>● {t('jobs.external_badge')}</span>
                                                             )}
                                                         </div>
                                                     </div>
@@ -433,10 +436,10 @@ const Offerte = ({ setShowLoginModal }) => {
                                                     return (
                                                         <div className="flex flex-col items-start" style={{ paddingTop: 10, borderTop: '1px solid rgba(5,11,43,0.05)', gap: 5 }}>
                                                             {job.location && (
-                                                                <span style={{ ...chip, opacity: 0.6 }}><MapPin size={9} /><span style={lbl}>Sede:</span>{formatLocation(job.location)}</span>
+                                                                <span style={{ ...chip, opacity: 0.6 }}><MapPin size={9} /><span style={lbl}>{t('jobs.label_location')}:</span>{formatLocation(job.location)}</span>
                                                             )}
-                                                            <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} /><span style={lbl}>Settore:</span>{settore}</span>
-                                                            <span style={{ ...chip, opacity: 0.55 }}><User size={9} /><span style={lbl}>Ruolo:</span>{ruolo}</span>
+                                                            <span style={{ ...chip, opacity: 0.7 }}><Briefcase size={9} /><span style={lbl}>{t('jobs.label_sector')}:</span>{settore}</span>
+                                                            <span style={{ ...chip, opacity: 0.55 }}><User size={9} /><span style={lbl}>{t('jobs.label_role')}:</span>{ruolo}</span>
                                                         </div>
                                                     );
                                                 })()}
@@ -465,7 +468,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                             color: F,
                                             display: 'inline-flex', alignItems: 'center', gap: 6
                                         }}>
-                                            <ChevronLeft size={14} /> Torna alle offerte
+                                            <ChevronLeft size={14} /> {t('jobs.back_to_jobs')}
                                         </button>
                                     </div>
                                 )}
@@ -507,17 +510,17 @@ const Offerte = ({ setShowLoginModal }) => {
                                                             <div className="flex flex-col sm:flex-row items-start sm:items-center flex-wrap" style={{ gap: 6, paddingBottom: 2 }}>
                                                                 <span style={metaChip()}>
                                                                     <span style={iconBox('rgba(255,31,122,0.08)')}><MapPin size={11} color="var(--brand-fuchsia)" /></span>
-                                                                    <span style={metaLbl}>Sede:</span>
+                                                                    <span style={metaLbl}>{t('jobs.label_location')}:</span>
                                                                     <span style={val}>{formatLocation(selectedJob.location)}</span>
                                                                 </span>
                                                                 <span style={metaChip()}>
                                                                     <span style={iconBox('rgba(5,11,43,0.06)')}><Briefcase size={11} color="var(--brand-navy)" /></span>
-                                                                    <span style={metaLbl}>Settore:</span>
+                                                                    <span style={metaLbl}>{t('jobs.label_sector')}:</span>
                                                                     <span style={val}>{deriveSector(selectedJob.title, selectedJob.sector) || selectedJob.sector || 'Altro'}</span>
                                                                 </span>
                                                                 <span style={metaChip()}>
                                                                     <span style={iconBox('rgba(5,11,43,0.06)')}><User size={11} color="var(--brand-navy)" /></span>
-                                                                    <span style={metaLbl}>Ruolo:</span>
+                                                                    <span style={metaLbl}>{t('jobs.label_role')}:</span>
                                                                     <span style={val}>{deriveRole(selectedJob.role) || selectedJob.role || 'Altro'}</span>
                                                                 </span>
                                                             </div>
@@ -550,14 +553,14 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         width: 'fit-content'
                                                     }} className="hover:opacity-80 transition-opacity">
                                                     {applyData.redirect ? (
-                                                        <>Candidati <ExternalLink size={13} /></>
+                                                        <>{t('jobs.apply')} <ExternalLink size={13} /></>
                                                     ) : (
-                                                        <>Candidati →</>
+                                                        <>{t('jobs.apply')} →</>
                                                     )}
                                                 </button>
                                                 {applyData.redirect && (
                                                     <span style={{ fontFamily: body, fontSize: 11, color: GM, fontStyle: 'italic' }}>
-                                                        Candidatura gestita su sito esterno
+                                                        {t('jobs.apply_external_note')}
                                                     </span>
                                                 )}
                                             </div>
@@ -567,7 +570,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                                                 <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
                                                 <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
-                                                    Dettagli posizione
+                                                    {t('jobs.details_position')}
                                                 </span>
                                             </div>
                                             {detailLoading ? (
@@ -598,9 +601,9 @@ const Offerte = ({ setShowLoginModal }) => {
                                                                 width: 'fit-content'
                                                             }} className="hover:opacity-80 transition-opacity">
                                                             {applyData.redirect ? (
-                                                                <>Candidati <ExternalLink size={13} /></>
+                                                                <>{t('jobs.apply')} <ExternalLink size={13} /></>
                                                             ) : (
-                                                                <>Candidati →</>
+                                                                <>{t('jobs.apply')} →</>
                                                             )}
                                                         </button>
                                                     </div>
@@ -618,7 +621,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         fontFamily: brand, fontWeight: 700, fontSize: 11,
                                                         letterSpacing: '0.16em', textTransform: 'uppercase',
                                                         color: F, marginBottom: 16
-                                                    }}>PERCHÉ CANDIDARSI ANCHE SE QUESTA OFFERTA NON FA PER TE</p>
+                                                    }}>{t('jobs.why_apply_title')}</p>
                                                     <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                                         {[
                                                             'Accesso diretto a migliaia di offerte in tutta Svizzera',
@@ -641,7 +644,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                         fontFamily: editorial, fontStyle: 'italic',
                                         fontSize: 18, color: GM
                                     }}>
-                                        Seleziona un'offerta dalla lista
+                                        {t('jobs.select_offer')}
                                     </div>
                                 )}
                             </div>

@@ -2,10 +2,14 @@ import { useMemo } from 'react';
 import { resolveLocation, regionForLang } from '../utils/localeRegion';
 
 export const SHOWCASE_TARGET = 12;
-export const SHOWCASE_CAP = 2;
 
-/** Highest per-company cap we are willing to reach in order to fill the target. */
-const MAX_CAP = 12;
+/**
+ * Hard anti-monopoly cap: a company never occupies more than this many slots,
+ * even when that leaves the showcase short of SHOWCASE_TARGET. The feed
+ * currently carries very few companies, so this genuinely limits the card
+ * count — that is the intended trade-off, not a bug.
+ */
+export const SHOWCASE_CAP = 2;
 
 /**
  * Company identity for the anti-monopoly cap. Legal suffixes are stripped so
@@ -50,9 +54,8 @@ function capPerCompany(jobs, cap) {
  * Jobs whose canton cannot be resolved are wildcards: they stay in-region
  * rather than being dropped.
  *
- * The cap has to be able to rise because the live feed carries only three
- * companies (Adecco / Manpower / Randstad): a hard cap of 2 would yield six
- * cards in total. In-region jobs always occupy the cap slots first.
+ * The cap is hard: with few companies in the feed the showcase simply shows
+ * fewer cards rather than letting one company dominate it.
  */
 export function buildShowcase(jobs, uiLang, { target = SHOWCASE_TARGET, cap = SHOWCASE_CAP } = {}) {
     const list = Array.isArray(jobs) ? jobs : [];
@@ -71,19 +74,10 @@ export function buildShowcase(jobs, uiLang, { target = SHOWCASE_TARGET, cap = SH
     const outRegion = tagged.filter(j => j.__lang !== region && j.__lang !== null);
     const ordered = [...inRegion, ...outRegion];
 
-    let best = [];
-    let appliedCap = cap;
-    for (let c = cap; c <= MAX_CAP; c++) {
-        const candidate = capPerCompany(ordered, c);
-        appliedCap = c;
-        best = candidate;
-        if (candidate.length >= target) break;
-    }
-
-    const selected = best.slice(0, target);
+    const selected = capPerCompany(ordered, cap).slice(0, target);
     return {
         jobs: selected,
-        appliedCap,
+        appliedCap: cap,
         inRegionCount: selected.filter(j => j.__lang === region || j.__lang === null).length,
         region,
     };

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { jobroomLang } from '../utils/jobroomLang';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -70,25 +71,25 @@ const ComeFunziona = () => {
             <section className="relative min-h-[60vh] pt-32 pb-20 px-6 md:px-12 flex flex-col justify-center" style={{ background: N }}>
                 <div className="container mx-auto w-full">
                     <div className="max-w-4xl">
-                        <div className="hero-line"><SectionLabel>Metodo Jobcourier</SectionLabel></div>
+                        <div className="hero-line"><SectionLabel>{t('come_funziona.hero_label')}</SectionLabel></div>
                         <h1 className="hero-line" style={{
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 8vw, 5rem)',
                             color: 'var(--brand-white)', textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 0.95, marginBottom: 32
                         }}>
-                            Dalla pubblicazione ai candidati<br />
-                            <span style={{ color: F }}>in pochi click.</span>
+                            {t('come_funziona.hero_title')}<br />
+                            <span style={{ color: F }}>{t('come_funziona.hero_em')}</span>
                         </h1>
                         <p className="hero-line" style={{
                             fontFamily: editorial, fontStyle: 'italic',
                             fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
                             color: 'rgba(255,255,255,0.85)', lineHeight: 1.2, marginBottom: 40
                         }}>
-                            Semplice. Immediato.
+                            {t('come_funziona.hero_emphasis')}
                         </p>
 
                         <div className="hero-line flex flex-col sm:flex-row items-start gap-4">
-                            <a href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
+                            <a href={jobroomLang("https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it")}
                                 style={{
                                     background: F, color: 'var(--brand-white)', border: 'none',
                                     padding: '14px 28px',
@@ -119,17 +120,17 @@ const ComeFunziona = () => {
             <section className="py-24 px-6 md:px-12 overflow-hidden" style={{ background: 'var(--brand-white)' }}>
                 <div className="container mx-auto">
                     <div className="mb-16 max-w-3xl">
-                        <SectionLabel>4 Semplici Mosse</SectionLabel>
+                        <SectionLabel>{t('come_funziona.steps_label')}</SectionLabel>
                         <h3 style={{
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(1.6rem, 4vw, 3rem)',
                             color: N, textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 1.05, marginBottom: 12
-                        }}>Pubblica una ricerca di <span style={{ color: F }}>personale.</span></h3>
+                        }}>{t('come_funziona.steps_title')} <span style={{ color: F }}>{t('come_funziona.steps_title_em')}</span></h3>
                         <p style={{
                             fontFamily: editorial, fontStyle: 'italic',
                             fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
                             color: GM, lineHeight: 1.3
-                        }}>Accedi immediatamente ai candidati già registrati su JobCourier</p>
+                        }}>{t('come_funziona.steps_sub')}</p>
                     </div>
 
                     <HoverSlider className="w-full">
@@ -187,14 +188,14 @@ const ComeFunziona = () => {
             <section className="py-24 px-6 md:px-12 why-trigger" style={{ background: GL }}>
                 <div className="container mx-auto">
                     <div className="mb-16 max-w-2xl">
-                        <SectionLabel>Perché JobCourier</SectionLabel>
+                        <SectionLabel>{t('come_funziona.why_label')}</SectionLabel>
                         <h2 style={{
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)',
                             color: N, textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: 12
-                        }}>Una piattaforma pensata per aiutarti a trovare candidati in modo semplice.</h2>
+                        }}>{t('come_funziona.why_title')}</h2>
                         <p style={{ fontFamily: editorial, fontStyle: 'italic', fontSize: 'clamp(1rem, 2vw, 1.35rem)', color: GM, lineHeight: 1.4 }}>
-                            Rapido ed efficace.
+                            {t('come_funziona.why_sub')}
                         </p>
                     </div>
 
@@ -228,21 +229,21 @@ const ComeFunziona = () => {
             {/* CTA */}
             <section className="py-24 px-6 md:px-12" style={{ background: N }}>
                 <div className="container mx-auto max-w-4xl">
-                    <SectionLabel>Pronto a iniziare</SectionLabel>
+                    <SectionLabel>{t('come_funziona.cta_label')}</SectionLabel>
                     <h2 style={{
                         fontFamily: brand, fontWeight: 900, fontSize: 'clamp(2rem, 6vw, 4rem)',
                         color: 'var(--brand-white)', textTransform: 'uppercase',
                         letterSpacing: '-0.025em', lineHeight: 0.9, marginBottom: 20
-                    }}>TROVA CANDIDATI IN MODO <span style={{ color: F }}>SEMPLICE.</span></h2>
+                    }}>{t('come_funziona.cta_title')} <span style={{ color: F }}>{t('come_funziona.cta_title_em')}</span></h2>
                     <p style={{
                         fontFamily: editorial, fontStyle: 'italic', fontSize: 20,
                         color: 'rgba(255,255,255,0.65)', lineHeight: 1.4,
                         marginBottom: 40
                     }}>
-                        Pubblica una ricerca di personale e accedi immediatamente ai candidati già registrati su JobCourier.
+                        {t('come_funziona.cta_sub')}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <a href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it"
+                        <a href={jobroomLang("https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it")}
                             style={{
                                 background: F, color: 'var(--brand-white)', border: 'none',
                                 padding: '14px 28px',

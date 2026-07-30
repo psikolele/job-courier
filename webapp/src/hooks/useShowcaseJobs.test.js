@@ -78,16 +78,27 @@ describe('buildShowcase — anti-monopoly cap', () => {
         expect(Object.values(perCompany).every(n => n <= 2)).toBe(true);
     });
 
-    it('raises the cap only as far as needed to fill the target', () => {
-        // 3 companies × cap 2 = 6 cards; a target of 9 forces cap 3.
+    it('holds the cap at 2 even when that leaves the showcase short', () => {
+        // 3 companies × cap 2 = 6 cards, so a target of 9 cannot be met.
+        // The cap wins: we show 6 cards rather than letting a company take more.
         const feed = [
             ...Array.from({ length: 5 }, (_, i) => job(i + 1, 'Adecco', 'Svizzera, Lugano, Ti')),
             ...Array.from({ length: 5 }, (_, i) => job(i + 11, 'Manpower', 'Svizzera, Locarno, Ti')),
             ...Array.from({ length: 5 }, (_, i) => job(i + 21, 'Randstad', 'Svizzera, Ascona, Ti')),
         ];
         const { jobs, appliedCap } = buildShowcase(feed, 'it', { target: 9 });
-        expect(appliedCap).toBe(3);
-        expect(jobs).toHaveLength(9);
+        expect(appliedCap).toBe(2);
+        expect(jobs).toHaveLength(6);
+    });
+
+    it('never lets one company exceed 2 slots, in any language', () => {
+        const feed = Array.from({ length: 60 }, (_, i) =>
+            job(i + 1, 'Adecco', ['Svizzera, Lugano, Ti', 'Svizzera, Zürich, Zh', 'Svizzera, Sion, Vs'][i % 3])
+        );
+        for (const lang of ['it', 'en', 'de', 'fr']) {
+            const { jobs } = buildShowcase(feed, lang, { target: 12 });
+            expect(jobs.length, lang).toBeLessThanOrEqual(2);
+        }
     });
 
     it('gives in-region jobs the cap slots before out-of-region ones', () => {
@@ -101,7 +112,7 @@ describe('buildShowcase — anti-monopoly cap', () => {
         expect(jobs.map(j => j.id)).toEqual([2, 3]);
     });
 
-    it('returns a stable card count across languages when the pool allows it', () => {
+    it('returns a full, stable card count when enough companies are present', () => {
         const feed = [
             ...Array.from({ length: 8 }, (_, i) => job(i + 1, `C${i}`, 'Svizzera, Lugano, Ti')),
             ...Array.from({ length: 8 }, (_, i) => job(i + 21, `D${i}`, 'Svizzera, Zürich, Zh')),
