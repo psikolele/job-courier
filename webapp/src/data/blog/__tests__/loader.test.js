@@ -3,12 +3,20 @@ import { blogIndex, findBySlug, listByCategory } from '../blogIndex.js';
 import { getArticle } from '../loader.js';
 
 describe('blogIndex', () => {
-  it('contiene 10 articoli IT', () => {
-    expect(blogIndex.it).toHaveLength(10);
+  it('contiene articoli IT', () => {
+    expect(blogIndex.it.length).toBeGreaterThan(0);
   });
-  it('5 per categoria', () => {
-    expect(listByCategory('carriera', 'it')).toHaveLength(5);
-    expect(listByCategory('recruiting', 'it')).toHaveLength(5);
+  it('ogni lingua ha lo stesso numero di articoli di IT', () => {
+    expect(Object.keys(blogIndex).sort()).toEqual(['de', 'en', 'fr', 'it']);
+    for (const lang of Object.keys(blogIndex)) {
+      expect(blogIndex[lang], lang).toHaveLength(blogIndex.it.length);
+    }
+  });
+  it('le due categorie partizionano l\'indice, in parti uguali', () => {
+    const carriera = listByCategory('carriera', 'it');
+    const recruiting = listByCategory('recruiting', 'it');
+    expect(carriera.length + recruiting.length).toBe(blogIndex.it.length);
+    expect(carriera).toHaveLength(recruiting.length);
   });
   it('findBySlug trova articolo e lingua', () => {
     const hit = findBySlug('employer-branding-pmi-guida-pratica');
