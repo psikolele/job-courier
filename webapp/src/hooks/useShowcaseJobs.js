@@ -1,7 +1,12 @@
 import { useMemo } from 'react';
 import { resolveLocation, regionForLang } from '../utils/localeRegion';
 
-export const SHOWCASE_TARGET = 12;
+/**
+ * Upper bound on cards. What actually renders is whatever the per-company cap
+ * allows: with the current feed that is a stable 8 in every language, because
+ * two of the five companies in the pool have a single ad each.
+ */
+export const SHOWCASE_TARGET = 10;
 
 /**
  * Hard anti-monopoly cap: a company never occupies more than this many slots,

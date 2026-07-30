@@ -5,14 +5,18 @@ const PAGES_TO_FETCH = 3;   // 3 pages × 15 jobs = 45 — faster default load
 const MAX_JOBS = 45;
 const BATCH_SIZE = 3;       // max concurrent fetches to avoid upstream rate-limit
 
-// The home showcase needs a much wider window than the default list. Upstream
-// groups its pages by company — the first ~9 pages are all Adecco — so a short
-// window yields a single-brand showcase once the per-company cap is applied.
-// Measured on the live feed: 30 pages (450 jobs) is where the 6th company
-// appears, which is what a 12-card showcase capped at 2 per company needs.
-const SHOWCASE_PAGES = 30;
-const SHOWCASE_MAX_JOBS = 450;
-const SHOWCASE_BATCH_SIZE = 6;  // wider batch to keep the cold-miss latency sane
+// The home showcase needs company variety, not volume. Upstream groups its
+// listing pages by company — the first nine pages are all Adecco — so reading
+// the first N pages yields a single-brand showcase once the per-company cap is
+// applied. Walking 30 consecutive pages fixed the variety but made the request
+// slow enough to hang the function.
+//
+// Instead we sample the catalogue with a stride: the first three pages for
+// recency, then every fifth page. Measured on the live feed this reaches the
+// same five companies as 30 consecutive pages in 8 requests (~1s), which is
+// what a 10-card showcase capped at 2 per company needs.
+const SHOWCASE_PAGE_NUMBERS = [1, 2, 3, 10, 15, 20, 25, 30];
+const SHOWCASE_MAX_JOBS = 120;
 
 // Params we are willing to forward upstream. Everything else (including our own
 // `showcase` flag) is dropped instead of being proxied blindly.
@@ -178,34 +182,32 @@ export default async function handler(req, res) {
     const singlePage = req.query?.singlePage === '1';
     const showcase = req.query?.showcase === '1';
 
-    let pagesToFetch = PAGES_TO_FETCH;
+    let pageNumbers = Array.from({ length: PAGES_TO_FETCH }, (_, i) => i + 1);
     let maxJobs = MAX_JOBS;
-    if (singlePage) { pagesToFetch = 1; maxJobs = 15; }
-    else if (showcase) { pagesToFetch = SHOWCASE_PAGES; maxJobs = SHOWCASE_MAX_JOBS; }
+    if (singlePage) { pageNumbers = [1]; maxJobs = 15; }
+    else if (showcase) { pageNumbers = SHOWCASE_PAGE_NUMBERS; maxJobs = SHOWCASE_MAX_JOBS; }
 
     // Build per-page params, forwarding only whitelisted caller query params
     const callerParams = req.query ? Object.fromEntries(
       Object.entries(req.query).filter(([k]) => UPSTREAM_PARAMS.has(k))
     ) : {};
 
-    const pageUrls = Array.from({ length: pagesToFetch }, (_, idx) => {
+    const pageUrls = pageNumbers.map((pageNumber) => {
       const url = new URL(baseUrl);
       url.searchParams.set('language', callerParams.language || 'it');
       url.searchParams.set('country', callerParams.country || '214');
       Object.entries(callerParams).forEach(([k, v]) => url.searchParams.set(k, v));
-      url.searchParams.set('page', idx + 1);
+      url.searchParams.set('page', pageNumber);
       return url.toString();
     });
 
     // Batched parallel fetch (BATCH_SIZE concurrent to avoid rate-limiting)
     const responses = [];
-    const batchSize = showcase ? SHOWCASE_BATCH_SIZE : BATCH_SIZE;
-    for (let i = 0; i < pageUrls.length; i += batchSize) {
-      const batch = pageUrls.slice(i, i + batchSize).map(url =>
+    for (let i = 0; i < pageUrls.length; i += BATCH_SIZE) {
+      const batch = pageUrls.slice(i, i + BATCH_SIZE).map(url =>
         fetchPage(url, fetchHeaders)
       );
       responses.push(...await Promise.all(batch));
-      if (responses.filter(Boolean).length >= pagesToFetch) break;
     }
 
     // Parse + flatten, offset IDs by page to avoid collision
