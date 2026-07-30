@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { jobroomLang } from '../utils/jobroomLang';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -115,7 +116,7 @@ const getLocalizedData = (lang) => {
                 ],
                 tag: isIt ? '01 / OCCASIONALE' : isDe ? '01 / GELEGENTLICH' : isFr ? '01 / OCCASIONNEL' : '01 / OCCASIONAL',
                 cta: isIt ? 'Acquista' : isDe ? 'Kaufen' : isFr ? 'Acheter' : 'Buy',
-                href: 'https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it',
+                href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it'),
                 external: true,
             },
             {
@@ -248,7 +249,7 @@ const Pricing = () => {
                         </p>
 
                         <div className="hero-line flex flex-row gap-4 w-full max-w-lg">
-                            <FuchsiaButton href="https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it" fullWidth>
+                            <FuchsiaButton href={jobroomLang("https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it")} fullWidth>
                                 {data.heroCta} →
                             </FuchsiaButton>
                             <FuchsiaOutlineButton href="#soluzioni" fullWidth>
