@@ -197,3 +197,41 @@ Lasciare `www.jobcourier.ch` come dominio primario servito dal deploy.
 `curl -sI https://jobcourier.ch/` → `308` + `location: https://www.jobcourier.ch/`.
 
 **Rischio:** nullo prima del cambio DNS (nessuno raggiunge ancora quei domini su Vercel).
+
+---
+
+## OP-05 — Backup database WordPress da Hostpoint
+
+**Data:** 2026-07-31 19:32–19:41 · **Stato:** ✅ eseguita
+**Autorizzazione:** utente, esplicita. Login al pannello fatto dall'utente (credenziali mai viste né digitate da Claude).
+
+**Cosa:** Backup Manager → tab "Backup database" → download dei due DB MySQL.
+
+| File | Dimensione | Tabelle | Esito |
+|---|---|---|---|
+| `uzohucip_wp0.sql` | 276 KB | 12 | `-- Dump completed on 2026-07-31 19:32:59` ✅ |
+| `uzohucip_wp1.sql` | 953 MB | 85 | `-- Dump completed on 2026-07-31 19:37:24` ✅ |
+
+Destinazione: `C:\Users\psiko\Downloads\`. **Da spostare in un archivio stabile** — la
+cartella Download non è un posto dove tenere l'unica copia del sito del cliente.
+
+**⚠️ Incidente durante l'operazione — il sito è andato 503 per ~7 minuti.**
+
+Il dump di `uzohucip_wp1` è quasi 1 GB. Su Smart Webhosting condiviso il mysqldump ha
+saturato la capacità: `https://www.jobcourier.ch/` ha risposto **503 Service Unavailable**
+(Apache, "capacity problems") fra le 19:37 e le 19:41 circa. A download concluso il sito è
+tornato **200** senza alcun intervento.
+
+Aggravante mia: il primo click su DOWNLOAD sembrava non aver fatto nulla (nessun file su
+disco dopo 60s), ho ricliccato, e sono partiti **due** dump da 1 GB in parallelo. Il primo
+in realtà stava lavorando, solo lentamente. Il file duplicato `uzohucip_wp1 (1).sql` è
+stato cancellato. Regola per la prossima volta: su Hostpoint un dump grosso può metterci
+minuti prima di scrivere il primo byte su disco — controllare `*.crdownload`, non
+l'assenza del file finale.
+
+**Conseguenza operativa:** il **backup file (tab "Backup server")** NON è stato lanciato.
+Genera un archivio dell'intero account da 9.2 GB e rischia un 503 molto più lungo mentre
+il sito è ancora quello pubblico. Va fatto **dopo** lo switch DNS, quando jobcourier.ch
+non punta più a Hostpoint: stesso backup, zero impatto visibile.
+
+**ROLLBACK:** non applicabile — operazione di sola lettura. Nessuna modifica sul server.
