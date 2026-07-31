@@ -268,7 +268,7 @@
 .jc-spotlight-text {
   font-family: var(--font-brand);
   font-weight: 900;
-  font-size: 2.2rem;
+  font-size: clamp(1.35rem, 6vw, 2.2rem);
   color: var(--brand-white);
   letter-spacing: -0.02em;
   line-height: 1;
@@ -282,6 +282,18 @@
   color: rgba(255, 255, 255, 0.5);
   margin-top: 8px;
   text-align: center;
+}
+
+@media (max-width: 480px) {
+  .jc-spotlight-card {
+    height: auto;
+    min-height: 100px;
+    padding: 4px 0;
+  }
+  .jc-spotlight-label {
+    font-size: 0.52rem;
+    margin-top: 6px;
+  }
 }
 
 /* Fuchsia glow hover effect — add to any element, no font override */

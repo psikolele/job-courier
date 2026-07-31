@@ -348,8 +348,9 @@ const topSlots = [
 ];
 
 const bottomSlots = [
-    { key: 'ated', href: 'https://formati.academy/', bg: '#000000', Component: FormaBanner },
-    { key: 'supsi', href: 'https://formazionecontinua.supsi.ch/it/course-details?id=863-mas-human-capital-management', bg: '#001E38', Component: SupsiBanner }
+    { key: 'ated', href: 'https://formati.academy/', bg: '#000000', Component: FormaBanner }
+    // TEMP: Supsi banner set aside per client request (2026-07-31) — re-enable by uncommenting this entry.
+    // { key: 'supsi', href: 'https://formazionecontinua.supsi.ch/it/course-details?id=863-mas-human-capital-management', bg: '#001E38', Component: SupsiBanner }
 ];
 
 // ---------- SECTION TITLE (pattern reused from Vetrini.jsx) ----------
@@ -420,7 +421,7 @@ const AdBanner = ({ type = 'top' }) => {
                 />
             )}
             <div
-                className="w-full grid grid-cols-1 md:grid-cols-2 gap-4"
+                className={`w-full grid grid-cols-1 ${isTop ? 'md:grid-cols-2' : ''} gap-4`}
                 style={isTop ? {} : { gap: 1, background: 'rgba(5,11,43,0.06)' }}
             >
                 {slots.map((slot, i) => {

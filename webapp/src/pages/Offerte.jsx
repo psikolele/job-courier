@@ -286,11 +286,18 @@ const Offerte = ({ setShowLoginModal }) => {
                             </span>
                         </div>
                         <h1 style={{
-                            fontFamily: brand, fontWeight: 900, fontSize: 44,
+                            fontFamily: brand, fontWeight: 900, fontSize: 'clamp(24px, 5vw, 34px)',
                             color: N, textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 0.95
                         }}>
-                            {jobs.length} annunci live
+                            {jobs.length} annunci
+                        </h1>
+                        <h1 style={{
+                            fontFamily: editorial, fontStyle: 'italic', fontWeight: 400,
+                            fontSize: 'clamp(24px, 5vw, 34px)',
+                            color: F, lineHeight: 1.1
+                        }}>
+                            live
                         </h1>
                     </div>
 

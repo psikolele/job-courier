@@ -212,10 +212,11 @@ const Pricing = () => {
     const containerRef = useRef(null);
     const [activeTab, setActiveTab] = useState('companies');
     const [selectedPlan, setSelectedPlan] = useState(null);
+    const [hoveredPlan, setHoveredPlan] = useState(null);
     const { t, i18n } = useTranslation();
     const lang = i18n.language || 'it';
     const data = getLocalizedData(lang);
-    const activePlan = data.plans[selectedPlan ?? 1];
+    const activePlan = data.plans[hoveredPlan ?? selectedPlan ?? 1];
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -304,6 +305,8 @@ const Pricing = () => {
                                         <motion.div key={pIdx}
                                             className="group relative flex flex-col min-w-0 cursor-pointer h-full"
                                             onClick={() => setSelectedPlan(pIdx)}
+                                            onMouseEnter={() => setHoveredPlan(pIdx)}
+                                            onMouseLeave={() => setHoveredPlan(null)}
                                             whileTap={{ scale: 0.97 }}
                                             animate={{
                                                 boxShadow: selectedPlan === pIdx
@@ -420,7 +423,7 @@ const Pricing = () => {
                                     </div>
                                     <AnimatePresence mode="wait">
                                         <motion.div
-                                            key={selectedPlan ?? 1}
+                                            key={hoveredPlan ?? selectedPlan ?? 1}
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
                                             exit={{ opacity: 0, transition: { duration: 0.12 } }}
