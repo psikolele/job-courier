@@ -137,3 +137,63 @@ Per questo l'operazione va fatta ≥24h prima del go-live.
 
 **Rischio residuo:** nessuno. Il valore del record non è cambiato, quindi il traffico
 non si sposta. Se servisse annullare, rimettere TTL 1 ora dallo stesso form.
+
+---
+
+## OP-03 — Allineamento `main` alla produzione + host canonico su www
+
+**Data:** 2026-07-31 · **Stato:** ✅ eseguita e verificata
+
+**Perché:** il deploy di produzione delle 09:54 veniva da `claude/site-final-updates-ed071a`,
+tre commit avanti a `main` (fix UI offerte/pricing/AdBanner/stats mobile). Il primo push su
+`main` avrebbe fatto regredire la produzione. In più apex e www rispondevano entrambi 200
+senza `<link rel="canonical">` in pagina: duplicate content sulle 213 URL indicizzate, che
+sono tutte su www.
+
+**Cosa è stato fatto:**
+1. fast-forward `claude/site-final-updates-ed071a` → `main` (0 commit persi, 0 conflitti)
+2. `68fb357` canonical + og:url derivati dal pathname nell'Helmet di `App.jsx`, host `https://www.jobcourier.ch`
+3. `3ec9d1c` rimosso l'`og:url` statico da `index.html` (react-helmet-async non sostituisce i tag che non ha creato → ne comparivano due)
+4. push su `main` → deploy produzione `eawfnzsx4`
+
+**ROLLBACK:**
+```bash
+git -C <repo> revert 3ec9d1c 68fb357 && git push origin main
+# oppure, immediato, senza rebuild:
+vercel rollback https://job-courier-webapp-demddmwmn-psikolele-projects.vercel.app
+```
+
+**Verifica eseguita sul deploy live:**
+
+| Controllo | Esito |
+|---|---|
+| 211/211 URL vecchie (`old-urls-snapshot.txt`) | tutte 200, nessuna orfana ✅ |
+| `/xyz-inesistente` | 404 HTTP reale ✅ |
+| 10 route principali | 200 ✅ |
+| `/api/jobs`, `/api/companies`, `/api/job-detail` | 200 ✅ |
+| canonical su `/soluzioni-e-tariffe` | 1 tag, `https://www.jobcourier.ch/soluzioni-e-tariffe` ✅ |
+| `og:url` | 1 tag, coerente col canonical ✅ |
+| console browser | 0 errori ✅ |
+| lint su `App.jsx` | 0 problemi (errori pre-esistenti del repo invariati) ✅ |
+
+**Rischio residuo:** nullo sul traffico — il DNS punta ancora a Hostpoint, questo deploy
+è visibile solo su `.vercel.app`.
+
+---
+
+## OP-04 — Redirect apex → www su Vercel Domains — ⏳ DA ESEGUIRE
+
+**Perché:** oggi apex e www servono entrambi 200. Va scelto un host canonico o Google
+vede contenuto duplicato. Si tiene **www**: è l'host di tutte le 213 URL indicizzate,
+della sitemap e di robots.txt, quindi il canonical non si sposta.
+
+**Dove:** Vercel → progetto `job-courier-webapp` → Settings → Domains →
+`jobcourier.ch` → Edit → *Redirect to* `www.jobcourier.ch`, status 308.
+Lasciare `www.jobcourier.ch` come dominio primario servito dal deploy.
+
+**ROLLBACK:** stessa schermata, rimettere `jobcourier.ch` su "No Redirect".
+
+**Verifica:** dopo il cambio DNS,
+`curl -sI https://jobcourier.ch/` → `308` + `location: https://www.jobcourier.ch/`.
+
+**Rischio:** nullo prima del cambio DNS (nessuno raggiunge ancora quei domini su Vercel).
