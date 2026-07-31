@@ -290,14 +290,14 @@ const Offerte = ({ setShowLoginModal }) => {
                             color: N, textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 0.95
                         }}>
-                            {jobs.length} annunci
+                            Ultimi annunci
                         </h1>
                         <h1 style={{
-                            fontFamily: editorial, fontStyle: 'italic', fontWeight: 400,
-                            fontSize: 'clamp(24px, 5vw, 34px)',
-                            color: F, lineHeight: 1.1
+                            fontFamily: brand, fontWeight: 900, fontSize: 'clamp(24px, 5vw, 34px)',
+                            color: F, textTransform: 'uppercase',
+                            letterSpacing: '-0.025em', lineHeight: 0.95
                         }}>
-                            live
+                            Pubblicati
                         </h1>
                     </div>
 
