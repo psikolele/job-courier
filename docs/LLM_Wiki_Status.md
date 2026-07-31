@@ -1,11 +1,28 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 28 Luglio 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 31 Luglio 2026)
 
 > ⚠️ **Avvertenza sull'attendibilità di questo wiki.** Verifica del 27/07/2026: quattro
-> documenti citati nella sezione 6 (`handoff-2026-06-25.md`, `IMPLEMENTATION_PLAN_2026-06-25.md`,
-> `MEETING_SUMMARY_2026-06-25.md`, `GMAIL_DRAFT_GABRIELE.txt`) **non esistono nel repo**.
-> Prima di citare un file da qui, controllare che ci sia davvero.
+> documenti citati nella sezione 6 erano segnalati come mancanti. Ri-verificato il 31/07/2026:
+> `IMPLEMENTATION_PLAN_2026-06-25.md` e `MEETING_SUMMARY_2026-06-25.md` ora esistono in `docs/`,
+> `GMAIL_DRAFT_GABRIELE.txt` esiste alla radice del repo. **`handoff-2026-06-25.md` resta
+> mancante.** Prima di citare un file da qui, controllare comunque che ci sia davvero — il
+> wiki non è fonte di verità, il filesystem lo è.
 
-## 0. Go-Live: integrazione branch e correzioni SEO (28 Luglio 2026) — ✅ *COMPLETED*
+## 0. i18n: regressione EN/DE/FR, recupero branch, sistematizzazione (31 Luglio 2026) — 🟡 *IN PROGRESS*
+
+**Handoff completo:** [`docs/handoff-2026-07-31.md`](handoff-2026-07-31.md)
+**Modello:** Claude Opus 5 (`claude-opus-5`), caveman mode full · 2 sessioni
+
+* **Regressione silenziosa scoperta e fixata.** I commit che riversavano il copy dai DOCX cliente (`7c71136`, `a6b0af6`, `8151e94`) avevano sostituito chiamate `t()` con testo italiano letterale. i18next non segnala nulla in questo caso — nessun errore, la chiave semplicemente smette di essere chiamata. Hero e ComeFunziona riagganciati, `come_funziona.*` riscritto sul copy DOCX attuale in 4 lingue (prima EN/DE/FR avevano il copy *pre-revisione*).
+* **Trovato per caso mentre si verificava il fix: `main` era di nuovo indietro.** `origin/integration/golive-plus-ballinari` conteneva 8 commit mai arrivati su `main`, il più recente delle 14:32 del 28/07. Per ~30 ore la produzione ha servito la pagina Contatti pre-27.07 mentre Laura la credeva già online. Merge recuperato (`994736c`), namespace disgiunti verificati con `git merge-tree` prima di toccare main, 0 conflitti.
+* **Scoperta strutturale:** convivono 3 pattern i18n diversi nel codice (`t()`+JSON, oggetti inline `labelEn/labelDe/labelFr`, ternari `isIt?:`). Una stringa IT letterale non si distingue a colpo d'occhio da una tradotta — causa strutturale delle regressioni ricorrenti.
+* **i18n sistematico su tutto il sito, in due sessioni misurate.** Metodo: script estrattore (trova le stringhe IT senza leggere i sorgenti interi) → applier che dichiara quante volte ogni sostituzione *deve* colpire e rifiuta di scrivere se il conteggio non torna (rifiutati 10 file su 24 al primo giro, sempre per un motivo reale — occorrenze multiple legittime tipo `Sede:` in card+dettaglio) → locale scritti via script → build/lint confrontati pre/post (non "zero errori", ma stesso numero di prima) → verifica live leggendo `i18n.t()` risolto a runtime, non il DOM (3 falsi negativi presi leggendo il DOM in questa sessione).
+* **Risultato:** locale passati da 119 chiavi con buchi a **300 chiavi × 4 lingue in parità totale**. Verificato in produzione su home, come-funziona, offerte, contatti, FAQ, footer, 404.
+* **Fix collaterale:** 13 link verso il portale jobroom erano fissi su `lan=it&language=it` — un utente FR cliccava "Publier une annonce" e atterrava sul portale in italiano. Centralizzato in `utils/jobroomLang.js`.
+* **Resta fuori:** FAQ body (32 Q&A, ~6.5k tok, non previsto nel censimento iniziale), settori/cantoni Hero+Filters (chiavi Arca24, aspettano Laura), pagine legali (rischio conformità su traduzione automatica, non tradotte di proposito). Mail inviata a Laura/Gabriele il 29/07 con 4 domande decisionali, risposta non ancora arrivata.
+
+---
+
+## 1. Go-Live: integrazione branch e correzioni SEO (28 Luglio 2026) — ✅ *COMPLETED*
 
 **Handoff completo:** [`docs/handoff-2026-07-28.md`](handoff-2026-07-28.md) · **Registro operazioni:** [`docs/ROLLBACK-LOG.md`](ROLLBACK-LOG.md)
 **Modello:** Claude Opus 5 (`claude-opus-5`), caveman mode full · 60 minuti
@@ -119,12 +136,13 @@
 
 **Mail bozza pronta:** `GMAIL_DRAFT_GABRIELE.txt` → `g.molteni@jobcourier.ch` (CC: emanuele.serra, michele). Mail NON ancora inviata (Gmail MCP non disponibile il 25/06).
 
-### 8. Modifiche Sito richieste da Laura (26 Luglio 2026) — 🟡 *9/10 FATTE (manca pagina Contatti)*
+### 8. Modifiche Sito richieste da Laura (26 Luglio 2026) — ✅ *10/10 FATTE*
 * **Dettaglio completo:** `docs/MODIFICHE_SITO_2026-07-26.md`
 * **Nuove pagine interne:** `/aziende-che-assumono` + `/azienda/:slug` con scraper `api/companies.js` e `api/company-detail.js` (sostituiscono il link esterno a jobroom). Le 11 aziende su jobroom sono profili vetrina con 0 annunci attivi.
 * **Bug corretti strada facendo:** "Trova candidati" puntava alla pagina candidati invece della registrazione azienda; il banner Ated (`FormaBanner`) non veniva mai renderizzato; hero companies duplicava il testo dei candidati.
 * Go-live target: 30.07–03.08.2026. Check finale vdc: mer 29 (16-19:30) o gio (11-12).
-* Copre: titoli Home, link menu Azienda, sezione Aziende Partner, sezione Formazione continua (Ated+Supsi separata da ASFL/BLC), titoli blog, copia statica pagina "Aziende che assumono", 4 immagini "Come funziona", testi pagina Soluzioni, correzioni legali Cookie Policy (JobCourier Sagl, Riva San Vitale, privacy@jobcourier.ch). Pagina Contatti in attesa di contenuti da Laura.
+* Copre: titoli Home, link menu Azienda, sezione Aziende Partner, sezione Formazione continua (Ated+Supsi separata da ASFL/BLC), titoli blog, copia statica pagina "Aziende che assumono", 4 immagini "Come funziona", testi pagina Soluzioni, correzioni legali Cookie Policy (JobCourier Sagl, Riva San Vitale, privacy@jobcourier.ch).
+* **Pagina Contatti — completata e verificata in produzione il 31/07.** Era stata implementata il 28/07 (`d909ac0`) ma finita su un branch mai arrivato su `main`; recuperata durante la sessione i18n del 29/07 (vedi sezione 0). Sezione candidati, box FAQ, Nome/Cognome separati, tendina Oggetto a 4 voci, testo GDPR — tutto confermato live in tutte e 4 le lingue.
 
 ---
 
