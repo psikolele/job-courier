@@ -26,6 +26,9 @@ import AziendeCheAssumono from './pages/AziendeCheAssumono';
 import AziendaDettaglio from './pages/AziendaDettaglio';
 import NotFound from './pages/NotFound';
 
+// Canonical host: www is the indexed hostname (sitemap, robots and the 213 legacy URLs).
+const SITE = 'https://www.jobcourier.ch';
+
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
@@ -50,6 +53,9 @@ function App() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const navigate = useNavigate();
   const routeLoaderVisible = useRouteLoader();
+  const { pathname } = useLocation();
+  // Blog pages render their own BlogSeo canonical, which overrides this one.
+  const canonical = `${SITE}${pathname === '/' ? '' : pathname.replace(/\/+$/, '')}`;
 
   // Return-from-JobRoom redirect
   useEffect(() => {
@@ -93,6 +99,8 @@ function App() {
       <Helmet>
         <title>JobCourier - Il portale svizzero per il lavoro</title>
         <meta name="description" content="Trova il lavoro dei tuoi sogni in Svizzera o pubblica un annuncio per i migliori talenti su JobCourier." />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:url" content={canonical} />
       </Helmet>
       <ScrollToTop />
       <Navbar showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
