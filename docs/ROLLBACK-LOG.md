@@ -235,3 +235,49 @@ il sito è ancora quello pubblico. Va fatto **dopo** lo switch DNS, quando jobco
 non punta più a Hostpoint: stesso backup, zero impatto visibile.
 
 **ROLLBACK:** non applicabile — operazione di sola lettura. Nessuna modifica sul server.
+
+---
+
+## OP-06 — GO-LIVE: switch DNS jobcourier.ch → Vercel
+
+**Data:** 2026-07-31, ~22:20–22:33 CET · **Stato:** ✅ eseguito e verificato
+**Autorizzazione:** utente, esplicita. Modifiche fatte dall'utente sul pannello GoDaddy (credenziali mai viste né digitate da Claude).
+
+**Cosa è stato fatto (GoDaddy → DNS jobcourier.ch):**
+1. `A @`: `217.26.61.124` → `76.76.21.21`
+2. `A www` eliminato → creato `CNAME www` → `cname.vercel-dns.com`, TTL 600s
+3. Vercel Domains: `jobcourier.ch` impostato su Redirect 308 → `www.jobcourier.ch`; `www.jobcourier.ch` confermato su Production (fatto prima dello switch, OP precedente non numerata)
+
+**Timeline propagazione:**
+- 22:20 — apex già 308 funzionante (Server: Vercel), www ancora SSL "SEC_E_WRONG_PRINCIPAL" (cert non emesso)
+- 22:26, 22:33 — ricontrolli, SSL ancora pending
+- ~22:32 — certificato Let's Encrypt emesso (`notBefore=Jul 31 21:32:32 2026 GMT`), www torna 200 HTTPS
+- Tempo totale emissione SSL: ~12 minuti, ben dentro la soglia di 1h del playbook §6.3
+
+**Matrice di verifica finale (§5 punto 7) — tutto verde:**
+
+| Controllo | Esito |
+|---|---|
+| `https://jobcourier.ch` | 308 → www, SSL valido |
+| `https://www.jobcourier.ch` | 200, SSL Let's Encrypt valido fino 29/10/2026 |
+| 10 rotte principali | tutte 200 |
+| `/xyz-inesistente` | 404 reale |
+| `https://jobroom.jobcourier.ch` | 200, intatto |
+| `https://crm.jobcourier.ch` | 200, intatto |
+| 5 redirect a campione (`/prezzi/`, `/faq-candidato/`, `/de/`, `/candidati/`, `/recruiters/`) | tutti risolti alla pagina corretta |
+| `/api/jobs`, `/api/companies`, `/api/job-detail` | 200 |
+| Mixed content homepage | nessuno |
+
+**Non ancora verificato (richiede azione umana):**
+- Invio/ricezione email @jobcourier.ch (test con Laura)
+- Submit sitemap + richiesta indicizzazione su Search Console
+
+**ROLLBACK disponibile (§6.1):**
+```
+GoDaddy → DNS jobcourier.ch:
+  A @   → 217.26.61.124
+  www   → elimina CNAME, ricrea A → 217.26.61.124
+```
+Recupero ~10 min (TTL 600s). WordPress su Hostpoint intatto, non toccato, non disdetto.
+
+**Prossimo passo consigliato:** backup file completo Hostpoint (OP "Backup server", rimandato in OP-05 per evitare 503 sul sito pubblico) — ora sicuro, Hostpoint non serve più traffico live.
