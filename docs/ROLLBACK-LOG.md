@@ -281,3 +281,59 @@ GoDaddy → DNS jobcourier.ch:
 Recupero ~10 min (TTL 600s). WordPress su Hostpoint intatto, non toccato, non disdetto.
 
 **Prossimo passo consigliato:** backup file completo Hostpoint (OP "Backup server", rimandato in OP-05 per evitare 503 sul sito pubblico) — ora sicuro, Hostpoint non serve più traffico live.
+
+---
+
+## OP-07 — Deploy vetrina home: cap 2 offerte per azienda + regione lingua
+
+**Data:** 2026-08-01, ~00:45–01:10 · **Stato:** ✅ eseguito e verificato in produzione
+**Autorizzazione:** utente, esplicita ("ora"); conferma push su main tramite AskUserQuestion prima del deploy (bloccato una volta dal classificatore di sicurezza dell'harness, poi confermato).
+
+**Perché:** la home mostrava le "Offerte appena pubblicate" senza alcun filtro — il feed
+upstream raggruppa le offerte per azienda, risultando in run di 3-4 annunci consecutivi
+della stessa agenzia (es. 4× Adecco). Segnalato dall'utente confrontando il sito live con
+la build precedente.
+
+**Origine del fix:** la feature esisteva già, sviluppata e verificata in preview il 30/07
+sul branch `claude/offerte-vetrina-lingua-cantone-d4d073`, ma **mai mergiata** — quel
+branch divergeva da un `main` di ieri pomeriggio (prima di UI fixes, canonical SEO,
+i18n batch2). Un merge diretto avrebbe toccato 37 file e reintrodotto regressioni già
+sistemate stanotte: heading `Offerte.jsx` (tornerebbe al fontSize/testo pre-fix) e
+CSS mobile stats (perderebbe il fix di `8b49ead`).
+
+**Cosa è stato effettivamente portato in main** (cherry-pick chirurgico, non merge):
+- **Nuovi file** (copiati as-is dal branch): `webapp/src/hooks/useShowcaseJobs.js` +
+  test, `webapp/src/utils/localeRegion.js` + test — logica di cap-per-azienda e
+  mappatura cantone→regione linguistica
+- **Patch mirate** (5 file, diff isolato dal resto del branch):
+  `webapp/src/components/Filters.jsx` (consuma l'hook), `webapp/src/services/api.js`
+  (fetchLatestJobs accetta parametri), `webapp/api/jobs.js` (nuovo modo opt-in
+  `showcase=1`: campiona 8 pagine con stride invece di 3 consecutive, whitelist dei
+  parametri inoltrati upstream), `webapp/vercel.json` (timeout 60s sulla function
+  `api/jobs.js`), `webapp/src/i18n.js` (persiste la lingua scelta in localStorage)
+- **Esplicitamente escluso**: il diff del branch su `Offerte.jsx` (heading) e
+  `index.css` (rimuoveva il fix mobile) — avrebbero causato regressioni
+- **Nessuna modifica ai file locale** (`it/en/de/fr.json`) — la feature non richiede
+  nuove chiavi di traduzione, evitando così il conflitto a 342 vs 246 chiavi
+
+**Verifica pre-deploy:**
+- Build ✅, lint invariato (60 problemi, stesso baseline pre-esistente), 134 test nuovi
+  passati (`useShowcaseJobs.test.js` + `localeRegion.test.js`)
+- Server dev locale: home mostra 8 aziende diverse, zero ripetizioni; richieste
+  `api/jobs?showcase=1` → 200; `/offerte` (listing completo) verificata intatta,
+  heading statico invariato
+
+**Verifica post-deploy (produzione, bundle `index-CZExhNgr.js`):**
+- Homepage live: 7 aziende distinte, max 2 occorrenze ciascuna (Adecco×2,
+  Manpower×2, Work Selection×2) — cap rispettato
+- Tutte le rotte 200, jobroom/crm intatti, redirect di esempio ok,
+  `api/jobs?showcase=1` e `api/jobs` (default, usato da `/offerte`) entrambi 200
+
+**ROLLBACK:**
+```bash
+git -C <repo> revert 0c72fcf && git push origin main
+# oppure immediato senza rebuild:
+vercel rollback <url del deployment precedente>
+```
+Il modo `showcase=1` di `api/jobs.js` è additivo: se disabilitato, `/offerte` e il resto
+del sito non sono toccati.
