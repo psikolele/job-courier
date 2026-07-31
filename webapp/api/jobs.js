@@ -5,6 +5,43 @@ const PAGES_TO_FETCH = 3;   // 3 pages × 15 jobs = 45 — faster default load
 const MAX_JOBS = 45;
 const BATCH_SIZE = 3;       // max concurrent fetches to avoid upstream rate-limit
 
+// The home showcase needs company variety, not volume. Upstream groups its
+// listing pages by company — the first nine pages are all Adecco — so reading
+// the first N pages yields a single-brand showcase once the per-company cap is
+// applied. Walking 30 consecutive pages fixed the variety but made the request
+// slow enough to hang the function.
+//
+// Instead we sample the catalogue with a stride: the first three pages for
+// recency, then every fifth page. Measured on the live feed this reaches the
+// same five companies as 30 consecutive pages in 8 requests (~1s), which is
+// what a 10-card showcase capped at 2 per company needs.
+const SHOWCASE_PAGE_NUMBERS = [1, 2, 3, 10, 15, 20, 25, 30];
+const SHOWCASE_MAX_JOBS = 120;
+
+// Params we are willing to forward upstream. Everything else (including our own
+// `showcase` flag) is dropped instead of being proxied blindly.
+const UPSTREAM_PARAMS = new Set([
+  'language', 'country', 'keyword', 'location', 'sector', 'role_id', 'region', 'global',
+]);
+
+// Per-page timeout. A single slow upstream page must not drag the whole
+// showcase request past the function's time limit; a missing page just means
+// fewer jobs in the pool, which the caller already tolerates.
+const PAGE_TIMEOUT_MS = 6000;
+
+async function fetchPage(url, headers) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), PAGE_TIMEOUT_MS);
+  try {
+    const r = await fetch(url, { headers, signal: ctrl.signal });
+    return r.ok ? await r.text() : '';
+  } catch {
+    return '';
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export function parseJobsFromHtml(html, offset = 0) {
   const $ = cheerio.load(html);
   const jobs = [];
@@ -143,20 +180,24 @@ export default async function handler(req, res) {
   try {
     const baseUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php';
     const singlePage = req.query?.singlePage === '1';
-    const pagesToFetch = singlePage ? 1 : PAGES_TO_FETCH;
-    const maxJobs = singlePage ? 15 : MAX_JOBS;
+    const showcase = req.query?.showcase === '1';
 
-    // Build per-page params, forwarding any caller query params
+    let pageNumbers = Array.from({ length: PAGES_TO_FETCH }, (_, i) => i + 1);
+    let maxJobs = MAX_JOBS;
+    if (singlePage) { pageNumbers = [1]; maxJobs = 15; }
+    else if (showcase) { pageNumbers = SHOWCASE_PAGE_NUMBERS; maxJobs = SHOWCASE_MAX_JOBS; }
+
+    // Build per-page params, forwarding only whitelisted caller query params
     const callerParams = req.query ? Object.fromEntries(
-      Object.entries(req.query).filter(([k]) => !['page', 'singlePage'].includes(k))
+      Object.entries(req.query).filter(([k]) => UPSTREAM_PARAMS.has(k))
     ) : {};
 
-    const pageUrls = Array.from({ length: pagesToFetch }, (_, idx) => {
+    const pageUrls = pageNumbers.map((pageNumber) => {
       const url = new URL(baseUrl);
       url.searchParams.set('language', callerParams.language || 'it');
       url.searchParams.set('country', callerParams.country || '214');
       Object.entries(callerParams).forEach(([k, v]) => url.searchParams.set(k, v));
-      url.searchParams.set('page', idx + 1);
+      url.searchParams.set('page', pageNumber);
       return url.toString();
     });
 
@@ -164,12 +205,9 @@ export default async function handler(req, res) {
     const responses = [];
     for (let i = 0; i < pageUrls.length; i += BATCH_SIZE) {
       const batch = pageUrls.slice(i, i + BATCH_SIZE).map(url =>
-        fetch(url, { headers: fetchHeaders })
-          .then(r => r.ok ? r.text() : '')
-          .catch(() => '')
+        fetchPage(url, fetchHeaders)
       );
       responses.push(...await Promise.all(batch));
-      if (responses.filter(Boolean).flatMap(h => h ? [h] : []).length >= PAGES_TO_FETCH) break;
     }
 
     // Parse + flatten, offset IDs by page to avoid collision

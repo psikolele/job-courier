@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { fetchLatestJobs } from '../services/api';
 import useRegistrationWall from '../hooks/useRegistrationWall';
+import useShowcaseJobs from '../hooks/useShowcaseJobs';
 import RegistrationWallModal from './RegistrationWallModal';
 
 
@@ -34,7 +35,7 @@ const deriveRole = (role) => {
 };
 
 const Filters = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     // eslint-disable-next-line no-unused-vars
     const [cantons, setCantons] = useState([]);
     // eslint-disable-next-line no-unused-vars
@@ -50,6 +51,10 @@ const Filters = () => {
     const resumeTimeoutRef = useRef(null);
     const navigate = useNavigate();
     const wall = useRegistrationWall();
+
+    // Showcase-only policy: language region first, max 2 offers per company.
+    // The all-offers page (/offerte) is untouched.
+    const { jobs: showcaseJobs } = useShowcaseJobs(latestJobs, i18n.language);
 
     useEffect(() => {
         setTimeout(() => {
@@ -113,7 +118,7 @@ const Filters = () => {
         const fetchJobs = async () => {
             setJobsLoading(true);
             try {
-                const data = await fetchLatestJobs();
+                const data = await fetchLatestJobs({ showcase: '1' });
                 if (data && data.length > 0) {
                     const formattedJobs = data.map(job => {
                         const linkId = job.link?.match(/[?&]id=(\d+)/)?.[1] || job.id;
@@ -195,7 +200,7 @@ const Filters = () => {
     };
 
     useEffect(() => {
-        if (!jobsLoading && latestJobs.length > 0 && sliderRef.current) {
+        if (!jobsLoading && showcaseJobs.length > 0 && sliderRef.current) {
             const handleResize = () => {
                 resumeAutoScroll();
             };
@@ -210,7 +215,7 @@ const Filters = () => {
                 ctx.revert();
             };
         }
-    }, [jobsLoading, latestJobs]);
+    }, [jobsLoading, showcaseJobs]);
 
     const handleMouseEnter = () => {
         isPausedRef.current = true;
@@ -388,7 +393,7 @@ const Filters = () => {
                                 <div key={i} className="w-[290px] md:w-[340px] shrink-0 flex-none animate-pulse bg-white p-6 h-[235px] snap-center" style={{ borderBottom: '2.5px solid var(--brand-fuchsia)' }}></div>
                             ))
                         ) : (
-                            latestJobs.map((job, idx) => (
+                            showcaseJobs.map((job, idx) => (
                                 <motion.div
                                     onClick={() => {
                                         navigate(`/offerte?global=1&jobId=${job.id}`);

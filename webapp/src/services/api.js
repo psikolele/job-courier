@@ -49,9 +49,10 @@ export async function fetchFeaturedJobs() {
   return res.json();
 }
 
-export async function fetchLatestJobs() {
+export async function fetchLatestJobs(params = {}) {
   try {
-    const res = await fetch(API_ENDPOINTS.jobs.latest());
+    const qs = new URLSearchParams(params).toString();
+    const res = await fetch(qs ? `${API_ENDPOINTS.jobs.latest()}?${qs}` : API_ENDPOINTS.jobs.latest());
     if (!res.ok) throw new Error('API server unavailable');
     return await res.json();
   } catch (error) {
