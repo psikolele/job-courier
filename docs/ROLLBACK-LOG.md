@@ -337,3 +337,21 @@ vercel rollback <url del deployment precedente>
 ```
 Il modo `showcase=1` di `api/jobs.js` è additivo: se disabilitato, `/offerte` e il resto
 del sito non sono toccati.
+
+---
+
+## OP-08 — Backup file completo (ZIP) account Hostpoint
+
+**Data:** 2026-08-01, 01:09 · **Stato:** ⏳ avviato, in corso lato server
+**Autorizzazione:** utente, esplicita ("lancia il backup file completo... per ultimo").
+
+**Cosa:** Backup Manager → tab "Backup server" → tipo ZIP Archive → Avviare un backup.
+Rimandato dopo lo switch DNS (OP-06) apposta: ora Hostpoint non serve più traffico
+pubblico, un backup di 9.2GB non rischia il 503 osservato in OP-05.
+
+**Stato al momento della richiesta:** "Creato il 01.08.2026 01:09:25 — Il backup non è
+ancora finito". Notifica automatica via mail a laura@jobcourier.ch al completamento
+(comportamento dichiarato dal pannello). Download disponibile dalla stessa pagina una
+volta pronto.
+
+**ROLLBACK:** non applicabile — operazione di sola lettura, nessuna modifica al server.
