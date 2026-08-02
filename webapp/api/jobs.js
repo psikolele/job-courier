@@ -1,5 +1,15 @@
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
+import { fetchCompanyListHtml, parseCompaniesFromHtml } from './companies.js';
+import { warmUpSessionCookies } from './company-detail.js';
+
+const fetchHeaders = {
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'it-IT,it;q=0.9,en;q=0.7',
+  'Cache-Control': 'no-cache',
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120',
+  'Referer': 'https://jobroom.jobcourier.ch/',
+};
 
 const PAGES_TO_FETCH = 3;   // 3 pages × 15 jobs = 45 — faster default load
 const MAX_JOBS = 45;
@@ -42,7 +52,74 @@ async function fetchPage(url, headers) {
   }
 }
 
-export function parseJobsFromHtml(html, offset = 0) {
+// Company pages render the same `.singleResult` markup as the search listing, but
+// without the `Sede:` label and with the company in a hidden span. `options` lets the
+// caller supply the company it already knows and keeps the location parsing honest.
+// Fallback source: one request per company, so these are the cost knobs. Measured
+// against the live listing on 02/08/2026: 35 companies, of which only 12 carry ads,
+// scattered through the list — capping the count drops real jobs, so we read them all.
+// 120 ads come back in ~15s at concurrency 3, ~7s at 6; the response is CDN-cached for
+// 5 minutes (s-maxage), so only the first request after an expiry pays it.
+const FALLBACK_MAX_COMPANIES = 40;
+const FALLBACK_BATCH_SIZE = 6;
+
+/**
+ * Read jobs from the per-company pages instead of the global search listing.
+ *
+ * Companies are read in parallel batches, then interleaved round-robin so the result
+ * is not one company followed by the next: the upstream ad count is wildly uneven
+ * (Adecco alone carries most of the catalogue) and a naive concat would make every
+ * caller — the showcase especially — look single-brand again.
+ */
+async function fetchJobsFromCompanyPages(maxJobs) {
+  const listHtml = await fetchCompanyListHtml();
+  // `jobs_count` reads 0 for every company on the current listing page, so it cannot be
+  // used to skip empty ones — a company with no ads simply yields an empty list here.
+  const companies = parseCompaniesFromHtml(listHtml)
+    .filter(c => c.id)
+    .slice(0, FALLBACK_MAX_COMPANIES);
+
+  if (companies.length === 0) return [];
+
+  const cookiesStr = await warmUpSessionCookies();
+  const headers = cookiesStr ? { ...fetchHeaders, Cookie: cookiesStr } : fetchHeaders;
+
+  const perCompany = [];
+  for (let i = 0; i < companies.length; i += FALLBACK_BATCH_SIZE) {
+    const batch = companies.slice(i, i + FALLBACK_BATCH_SIZE).map(async (company, idx) => {
+      const url = new URL('https://jobroom.jobcourier.ch/employer/view-company.php');
+      url.searchParams.set('id', company.id);
+      url.searchParams.set('company-name', company.slug || '');
+      url.searchParams.set('lan', 'it');
+      url.searchParams.set('language', 'it');
+      url.searchParams.set('source', 'direct');
+
+      const html = await fetchPage(url.toString(), headers);
+      if (!html) return [];
+      // Offset keeps the synthetic image seeds distinct across companies.
+      return parseJobsFromHtml(html, (i + idx) * 15, { companyName: company.name });
+    });
+    perCompany.push(...await Promise.all(batch));
+  }
+
+  const seen = new Set();
+  const out = [];
+  const depth = Math.max(...perCompany.map(list => list.length), 0);
+  for (let rank = 0; rank < depth && out.length < maxJobs; rank++) {
+    for (const list of perCompany) {
+      if (out.length >= maxJobs) break;
+      const job = list[rank];
+      if (!job) continue;
+      const key = job.jobroom_id || job.title;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push(job);
+    }
+  }
+  return out;
+}
+
+export function parseJobsFromHtml(html, offset = 0, options = {}) {
   const $ = cheerio.load(html);
   const jobs = [];
 
@@ -73,7 +150,9 @@ export function parseJobsFromHtml(html, offset = 0) {
       } catch (_) {}
     }
 
-    const companyName = $el.find('.companyLink span, .company, .firm').first().text().trim() || 'Azienda Riservata';
+    const companyName = options.companyName
+      || $el.find('.companyLink span, .company, .firm').first().text().trim()
+      || 'Azienda Riservata';
 
     let location = '';
     const labelSede = $el.find('.detailsHead label:contains("Sede:")');
@@ -83,7 +162,23 @@ export function parseJobsFromHtml(html, offset = 0) {
       location = clone.text().replace(/\s+/g, ' ').trim().replace(/^[,\s-]+/, '').trim();
     }
     if (!location) {
-      location = $el.find('.location, .place, .details span:last-child').first().text().trim() || 'Svizzera';
+      // Company pages mark the location with a maps glyph instead of a `Sede:` label.
+      // The markup carries empty segments ("Svizzera, , Basel, Basel") and repeats the
+      // city as canton, so normalise before using it — `utils/localeRegion` reads this.
+      // Only the span right after the glyph: the same `.detailsHead` can also carry
+      // "Settore:" and "Ruolo:", which must not bleed into the location string.
+      const geo = $el.find('.detailsHead .glyphicon.google-maps').first().next('span');
+      if (geo.length > 0) {
+        const parts = geo.text().replace(/\s+/g, ' ').split(',')
+          .map(p => p.trim())
+          .filter(Boolean)
+          .filter((p, i, arr) => i === 0 || p.toLowerCase() !== arr[i - 1].toLowerCase())
+          .filter(p => !/^(svizzera|suisse|schweiz|switzerland)$/i.test(p));
+        location = parts.join(', ');
+      }
+    }
+    if (!location) {
+      location = $el.find('.location, .place').first().text().trim() || 'Svizzera';
     }
 
     let sector = $el.find('.sector, .category, .details span:contains("Settore"), .detailsHead label:contains("Settore:")').next('span').text().trim();
@@ -169,14 +264,6 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') { res.status(200).end(); return; }
 
-  const fetchHeaders = {
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Language': 'it-IT,it;q=0.9,en;q=0.7',
-    'Cache-Control': 'no-cache',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120',
-    'Referer': 'https://jobroom.jobcourier.ch/',
-  };
-
   try {
     const baseUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php';
     const singlePage = req.query?.singlePage === '1';
@@ -226,6 +313,19 @@ export default async function handler(req, res) {
         if (allJobs.length >= maxJobs) break;
       }
       if (allJobs.length >= maxJobs) break;
+    }
+
+    // The search listing went dry on 02/08/2026 (Arca24 platform work): it renders its
+    // shell and reports "Non ci sono risultati" while the ads themselves are still
+    // published and reachable on each company's page. Fall back to those pages so the
+    // site keeps serving jobs. Once the listing answers again this branch stops running
+    // on its own — no flag to flip back.
+    if (allJobs.length === 0) {
+      const fallbackJobs = await fetchJobsFromCompanyPages(maxJobs);
+      if (fallbackJobs.length > 0) {
+        res.status(200).json(fallbackJobs);
+        return;
+      }
     }
 
     res.status(200).json(allJobs);

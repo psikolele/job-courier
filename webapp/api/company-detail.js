@@ -17,7 +17,7 @@ function isStub(html) {
   return !html || html.length < MIN_VALID_LENGTH;
 }
 
-async function warmUpSessionCookies() {
+export async function warmUpSessionCookies() {
   const warmUpUrl = 'https://jobroom.jobcourier.ch/jobs-by-company.php?lan=it&language=it&source=direct';
   let cookiesStr = '';
   try {

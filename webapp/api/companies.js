@@ -17,7 +17,7 @@ function isStub(html) {
   return !html || html.length < MIN_VALID_LENGTH || !html.includes('standardCompanies');
 }
 
-async function fetchCompanyListHtml() {
+export async function fetchCompanyListHtml() {
   let html = '';
   let cookiesStr = '';
 
@@ -41,7 +41,7 @@ async function fetchCompanyListHtml() {
   return html;
 }
 
-function parseCompaniesFromHtml(html) {
+export function parseCompaniesFromHtml(html) {
   const $ = cheerio.load(html);
   const companies = [];
   const seenIds = new Set();
