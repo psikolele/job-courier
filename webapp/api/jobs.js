@@ -340,6 +340,13 @@ export default async function handler(req, res) {
     if (allJobs.length === 0 && !isFiltered) {
       const fallbackJobs = await fetchJobsFromCompanyPages(maxJobs);
       if (fallbackJobs.length > 0) {
+        // Each miss on this path costs one upstream request per company, so the default
+        // 5-minute TTL would mean ~420 requests/hour against a partner platform that is
+        // already under strain — enough to trip its bot protection, which would also
+        // take down `api/companies`, currently healthy. At 40 minutes it is ~53/hour.
+        // Ads do not move that fast during an outage. Only this path is slowed down:
+        // when the search listing recovers, responses go back to the 5-minute TTL.
+        res.setHeader('Cache-Control', 's-maxage=2400, stale-while-revalidate=1200');
         res.status(200).json(fallbackJobs);
         return;
       }
