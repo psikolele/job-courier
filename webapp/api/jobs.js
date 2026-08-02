@@ -57,9 +57,11 @@ async function fetchPage(url, headers) {
 // caller supply the company it already knows and keeps the location parsing honest.
 // Fallback source: one request per company, so these are the cost knobs. Measured
 // against the live listing on 02/08/2026: 35 companies, of which only 12 carry ads,
-// scattered through the list — capping the count drops real jobs, so we read them all.
-// 120 ads come back in ~15s at concurrency 3, ~7s at 6; the response is CDN-cached for
-// 5 minutes (s-maxage), so only the first request after an expiry pays it.
+// scattered through the list — so every company is read rather than a prefix, which
+// would silently drop jobs. 120 ads come back in ~11s at concurrency 6, and the
+// response is CDN-cached for 5 minutes (s-maxage), so only the first request after an
+// expiry pays it. The cap is a runaway guard above the current roster, not a target:
+// if it ever bites, the truncation is logged rather than passing unnoticed.
 const FALLBACK_MAX_COMPANIES = 40;
 const FALLBACK_BATCH_SIZE = 6;
 
@@ -75,9 +77,11 @@ async function fetchJobsFromCompanyPages(maxJobs) {
   const listHtml = await fetchCompanyListHtml();
   // `jobs_count` reads 0 for every company on the current listing page, so it cannot be
   // used to skip empty ones — a company with no ads simply yields an empty list here.
-  const companies = parseCompaniesFromHtml(listHtml)
-    .filter(c => c.id)
-    .slice(0, FALLBACK_MAX_COMPANIES);
+  const allCompanies = parseCompaniesFromHtml(listHtml).filter(c => c.id);
+  const companies = allCompanies.slice(0, FALLBACK_MAX_COMPANIES);
+  if (allCompanies.length > companies.length) {
+    console.warn(`Job fallback: reading ${companies.length} of ${allCompanies.length} companies — raise FALLBACK_MAX_COMPANIES.`);
+  }
 
   if (companies.length === 0) return [];
 
@@ -178,8 +182,16 @@ export function parseJobsFromHtml(html, offset = 0, options = {}) {
       }
     }
     if (!location) {
-      location = $el.find('.location, .place').first().text().trim() || 'Svizzera';
+      location = $el.find('.location, .place').first().text().trim();
     }
+    if (!location) {
+      // Kept for the search listing, where this was the long-standing last resort.
+      // Guarded because on company pages the same selector hits the hidden span that
+      // holds the company name, which would silently land in the location field.
+      const tail = $el.find('.details span:last-child').first().text().trim();
+      if (tail && tail !== companyName) location = tail;
+    }
+    if (!location) location = 'Svizzera';
 
     let sector = $el.find('.sector, .category, .details span:contains("Settore"), .detailsHead label:contains("Settore:")').next('span').text().trim();
     if (!sector) {
@@ -320,7 +332,12 @@ export default async function handler(req, res) {
     // published and reachable on each company's page. Fall back to those pages so the
     // site keeps serving jobs. Once the listing answers again this branch stops running
     // on its own — no flag to flip back.
-    if (allJobs.length === 0) {
+    // Only for unfiltered requests. The company pages cannot honour keyword/sector/
+    // region, so answering a filtered query from them would return a grab-bag of
+    // unrelated jobs instead of an honest "no match" — wrong data rather than none.
+    // A filtered search that finds nothing must keep saying so.
+    const isFiltered = Object.keys(callerParams).some(k => k !== 'language' && k !== 'country');
+    if (allJobs.length === 0 && !isFiltered) {
       const fallbackJobs = await fetchJobsFromCompanyPages(maxJobs);
       if (fallbackJobs.length > 0) {
         res.status(200).json(fallbackJobs);

@@ -17,14 +17,20 @@ function isStub(html) {
   return !html || html.length < MIN_VALID_LENGTH || !html.includes('standardCompanies');
 }
 
+// Without this, three retries against a slow-but-alive upstream can hang long enough to
+// blow the caller's function budget — `api/jobs` calls this before its own timed fetches.
+const REQUEST_TIMEOUT_MS = 6000;
+
 export async function fetchCompanyListHtml() {
   let html = '';
   let cookiesStr = '';
 
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), REQUEST_TIMEOUT_MS);
     try {
       const headers = cookiesStr ? { ...fetchHeaders, Cookie: cookiesStr } : fetchHeaders;
-      const response = await fetch(LIST_URL, { headers });
+      const response = await fetch(LIST_URL, { headers, signal: ctrl.signal });
       html = response.ok ? await response.text() : '';
 
       // Session cookies from the first (stub) response unlock real content on the retry.
@@ -35,6 +41,8 @@ export async function fetchCompanyListHtml() {
       }
     } catch (_) {
       html = '';
+    } finally {
+      clearTimeout(timer);
     }
     if (!isStub(html)) return html;
   }

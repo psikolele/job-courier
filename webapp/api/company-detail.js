@@ -20,13 +20,19 @@ function isStub(html) {
 export async function warmUpSessionCookies() {
   const warmUpUrl = 'https://jobroom.jobcourier.ch/jobs-by-company.php?lan=it&language=it&source=direct';
   let cookiesStr = '';
+  // Bounded: `api/jobs` runs this before its own timed fetches, so an untimed hang here
+  // would eat the whole function budget and turn a degrade into a hard platform timeout.
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 6000);
   try {
-    const response = await fetch(warmUpUrl, { headers: fetchHeaders });
+    const response = await fetch(warmUpUrl, { headers: fetchHeaders, signal: ctrl.signal });
     const setCookieHeader = response.headers.get('set-cookie') || '';
     const rawCookies = setCookieHeader.split(/,(?=\s*[a-zA-Z0-9_]+=)/) || [];
     cookiesStr = rawCookies.map(cookie => cookie.trim().split(';')[0]).join('; ');
   } catch (err) {
     console.warn('Session cookie warm-up failed:', err.message);
+  } finally {
+    clearTimeout(timer);
   }
   return cookiesStr;
 }
