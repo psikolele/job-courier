@@ -339,17 +339,18 @@ const bannerVariants = {
 };
 
 // ---------- GROUP DEFINITIONS ----------
-// Group 1 ("top"): ASFL + BLC — no section title, unchanged visual style.
-// Group 2 ("bottom"): Ated (FormaBanner) + Supsi — wrapped under "Formazione continua" section title.
+// Group 1 ("top"): ASFL alone — no section title, unchanged visual style.
+// Group 2 ("bottom"): Ated (FormaBanner) + BLC — wrapped under "Formazione continua" section title.
+// Reordered 2026-08-01 per client request: Supsi declined, ASFL moved solo to top, Ated+BLC paired at bottom.
 
 const topSlots = [
-    { key: 'asfl', href: 'https://www.svbl.ch/it/', bg: '#f8f9fa', Component: AsflBanner },
-    { key: 'blc', href: 'https://www.blc-sa.ch', bg: '#ffffff', Component: BlcBanner }
+    { key: 'asfl', href: 'https://www.svbl.ch/it/', bg: '#f8f9fa', Component: AsflBanner }
 ];
 
 const bottomSlots = [
-    { key: 'ated', href: 'https://formati.academy/', bg: '#000000', Component: FormaBanner }
-    // TEMP: Supsi banner set aside per client request (2026-07-31) — re-enable by uncommenting this entry.
+    { key: 'ated', href: 'https://ated.ch/corsi-di-formazione-ict', bg: '#000000', Component: FormaBanner },
+    { key: 'blc', href: 'https://www.blc-sa.ch', bg: '#ffffff', Component: BlcBanner }
+    // TEMP: Supsi banner set aside per client request (2026-07-31) — re-enable if it comes back into rotation.
     // { key: 'supsi', href: 'https://formazionecontinua.supsi.ch/it/course-details?id=863-mas-human-capital-management', bg: '#001E38', Component: SupsiBanner }
 ];
 
@@ -421,7 +422,7 @@ const AdBanner = ({ type = 'top' }) => {
                 />
             )}
             <div
-                className={`w-full grid grid-cols-1 ${isTop ? 'md:grid-cols-2' : ''} gap-4`}
+                className={`w-full grid grid-cols-1 ${slots.length > 1 ? 'md:grid-cols-2' : ''} gap-4`}
                 style={isTop ? {} : { gap: 1, background: 'rgba(5,11,43,0.06)' }}
             >
                 {slots.map((slot, i) => {
