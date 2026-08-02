@@ -65,6 +65,12 @@ async function fetchPage(url, headers) {
 const FALLBACK_MAX_COMPANIES = 40;
 const FALLBACK_BATCH_SIZE = 6;
 
+// What "the listing is working" looks like. Below this the fallback steps in, and a
+// fallback result under these numbers is treated as degraded: served, but not cached
+// for 40 minutes. Measured baseline is 120 ads across 12 companies.
+const MIN_HEALTHY_JOBS = 10;
+const MIN_HEALTHY_COMPANIES = 3;
+
 /**
  * Read jobs from the per-company pages instead of the global search listing.
  *
@@ -337,16 +343,42 @@ export default async function handler(req, res) {
     // unrelated jobs instead of an honest "no match" — wrong data rather than none.
     // A filtered search that finds nothing must keep saying so.
     const isFiltered = Object.keys(callerParams).some(k => k !== 'language' && k !== 'country');
-    if (allJobs.length === 0 && !isFiltered) {
-      const fallbackJobs = await fetchJobsFromCompanyPages(maxJobs);
+    // Not just on zero. A half-recovered listing answering with a handful of ads is worse
+    // than one answering with none: the page looks like real data — "three jobs in all of
+    // Switzerland" — instead of an obvious outage, and would stay that way indefinitely
+    // while the ads sit reachable on the company pages. Whatever the listing did return is
+    // kept and merged, never discarded.
+    if (allJobs.length < MIN_HEALTHY_JOBS && !isFiltered) {
+      const fromCompanies = await fetchJobsFromCompanyPages(maxJobs);
+      const merged = [...allJobs];
+      const known = new Set(allJobs.map(j => j.jobroom_id || j.title));
+      for (const job of fromCompanies) {
+        if (merged.length >= maxJobs) break;
+        const key = job.jobroom_id || job.title;
+        if (known.has(key)) continue;
+        known.add(key);
+        merged.push(job);
+      }
+      const fallbackJobs = merged;
       if (fallbackJobs.length > 0) {
         // Each miss on this path costs one upstream request per company, so the default
         // 5-minute TTL would mean ~420 requests/hour against a partner platform that is
         // already under strain — enough to trip its bot protection, which would also
-        // take down `api/companies`, currently healthy. At 40 minutes it is ~53/hour.
-        // Ads do not move that fast during an outage. Only this path is slowed down:
-        // when the search listing recovers, responses go back to the 5-minute TTL.
-        res.setHeader('Cache-Control', 's-maxage=2400, stale-while-revalidate=1200');
+        // take down `api/companies`. At 40 minutes it is ~53/hour, and ads do not move
+        // that fast during an outage.
+        //
+        // But only pin a result that looks healthy. If some company pages were stubbed
+        // and others answered, the run still returns something — just thin, or from a
+        // single company, which is the monobrand showcase this code exists to avoid.
+        // Caching that for 40 minutes would lock in the bad hour. A weak result is still
+        // served, at the short TTL, so the next request can do better.
+        const companyCount = new Set(fallbackJobs.map(j => j.company?.name)).size;
+        const healthy = fallbackJobs.length >= MIN_HEALTHY_JOBS && companyCount >= MIN_HEALTHY_COMPANIES;
+        if (healthy) {
+          res.setHeader('Cache-Control', 's-maxage=2400, stale-while-revalidate=1200');
+        } else {
+          console.warn(`Job fallback returned a weak result (${fallbackJobs.length} ads, ${companyCount} companies) — serving it without the long TTL.`);
+        }
         res.status(200).json(fallbackJobs);
         return;
       }

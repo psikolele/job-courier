@@ -21,7 +21,22 @@ function isStub(html) {
 // blow the caller's function budget — `api/jobs` calls this before its own timed fetches.
 const REQUEST_TIMEOUT_MS = 6000;
 
+// This URL is fetched by two separate functions — this one on every companies page view,
+// and `api/jobs` on every fallback run — with no cache between them. When upstream starts
+// stubbing (its bot protection did exactly that to a dev IP under load), each caller would
+// answer with three more retries, turning real traffic into a retry storm against the host
+// that is already refusing us. So: remember a good result briefly, and remember a refusal
+// too, so a blocked window costs one request instead of one per page view.
+const LIST_CACHE_MS = 60_000;
+const STUB_BACKOFF_MS = 60_000;
+let cachedList = { html: '', at: 0 };
+let stubbedUntil = 0;
+
 export async function fetchCompanyListHtml() {
+  const now = Date.now();
+  if (cachedList.html && now - cachedList.at < LIST_CACHE_MS) return cachedList.html;
+  if (now < stubbedUntil) return '';
+
   let html = '';
   let cookiesStr = '';
 
@@ -44,8 +59,14 @@ export async function fetchCompanyListHtml() {
     } finally {
       clearTimeout(timer);
     }
-    if (!isStub(html)) return html;
+    if (!isStub(html)) {
+      cachedList = { html, at: Date.now() };
+      stubbedUntil = 0;
+      return html;
+    }
   }
+  // Every attempt came back a stub: stop asking for a while.
+  stubbedUntil = Date.now() + STUB_BACKOFF_MS;
   return html;
 }
 
@@ -107,7 +128,9 @@ export default async function handler(req, res) {
     const html = await fetchCompanyListHtml();
 
     if (isStub(html)) {
-      res.setHeader('Cache-Control', 'no-store');
+      // Briefly cacheable on purpose: `no-store` meant every visitor during an upstream
+      // refusal generated a fresh round of retries against it.
+      res.setHeader('Cache-Control', 's-maxage=60');
       res.status(502).json({ error: 'Upstream did not return valid company list content' });
       return;
     }
