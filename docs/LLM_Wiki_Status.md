@@ -1,13 +1,53 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 31 Luglio 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 2 Agosto 2026)
 
-> ⚠️ **Avvertenza sull'attendibilità di questo wiki.** Verifica del 27/07/2026: quattro
-> documenti citati nella sezione 6 erano segnalati come mancanti. Ri-verificato il 31/07/2026:
-> `IMPLEMENTATION_PLAN_2026-06-25.md` e `MEETING_SUMMARY_2026-06-25.md` ora esistono in `docs/`,
-> `GMAIL_DRAFT_GABRIELE.txt` esiste alla radice del repo. **`handoff-2026-06-25.md` resta
-> mancante.** Prima di citare un file da qui, controllare comunque che ci sia davvero — il
-> wiki non è fonte di verità, il filesystem lo è.
+> ⚠️ **Avvertenza sull'attendibilità di questo wiki.** Ri-verificato il 02/08/2026, e la
+> verifica precedente era imprecisa: `IMPLEMENTATION_PLAN_2026-06-25.md`,
+> `MEETING_SUMMARY_2026-06-25.md` e `GMAIL_DRAFT_GABRIELE.txt` esistono **solo sul disco
+> locale e non sono tracciati da git** — quindi non ci sono in un clone del repo né in un
+> worktree. `handoff-2026-06-25.md` non esiste affatto. Esistono e sono tracciati:
+> `ROLLBACK-LOG.md`, `GOLIVE-PLAN.md`, `old-urls-snapshot.txt`, tutti gli `handoff-*.md`
+> dal 06-01 in poi.
+>
+> Prima di citare un file da qui, controllare che ci sia davvero **e che sia committato**:
+> `git ls-files --error-unmatch <path>`. Il wiki non è fonte di verità, e nemmeno il
+> filesystem locale — lo è il repo.
 
-## 0. i18n: regressione EN/DE/FR, recupero branch, sistematizzazione (31 Luglio 2026) — 🟡 *IN PROGRESS*
+## 0. Outage jobroom: le offerte spariscono il giorno dopo il go-live (2 Agosto 2026) — ✅ *MITIGATO, causa a monte aperta*
+
+**Handoff completo:** [`docs/handoff-2026-08-02.md`](handoff-2026-08-02.md) · **Commit:** `a2dd371`, `697664b`, `e935ec1`, `6589c0d`
+**Modello:** Claude Opus 5 (`claude-opus-5`), caveman mode full · 120 minuti
+
+* **Il guasto è a monte, non nel nostro codice.** `latest-and-all-job-ads.php` serve la sua shell ma risponde "Non ci sono risultati" a qualsiasi filtro — Svizzera, mondiale, nessun filtro — verificato in browser reale con JS completo. Nel markup è comparso `arca24_partner=jobcourier`, assente il giorno prima: verosimilmente la migrazione Arca24 del 3 agosto, partita in anticipo.
+* **⚠️ Diagnosi iniziale sbagliata, registrata perché è l'errore da non ripetere.** Avevo concluso "catalogo vuoto". Falso: aprendo `employer/view-company.php?id=...` **gli annunci ci sono tutti**. Rotta era solo la ricerca generale. Prima di dichiarare un catalogo vuoto, aprire una scheda azienda.
+* **Il fix cambia la sorgente, non il parser.** Le schede azienda usano lo stesso identico markup della ricerca (`.singleResult`, `.dataContainer`, `view-job.php`): `parseJobsFromHtml` non modificato ne estrae 15 al primo colpo. Riusate `fetchCompanyListHtml`/`parseCompaniesFromHtml` (da `companies.js`) e `warmUpSessionCookies` (da `company-detail.js`), solo esportate. Nessuna infrastruttura ricreata.
+* **Misure prima di scegliere i parametri:** 35 aziende in lista, **solo 12 con annunci**, sparse nell'elenco — leggerne un prefisso perde offerte reali — per **120 annunci totali**, ~11s a concorrenza 6. Interleaving round-robin, non concatenazione: i conteggi per azienda sono sbilanciatissimi e concatenare avrebbe riprodotto la vetrina monomarca appena risolta da `0c72fcf`.
+* **Si autodisattiva.** Parte solo se la ricerca non restituisce abbastanza offerte; quando Arca24 ripristina smette da solo. Nessun flag da ricordare.
+* **7 problemi trovati da due giri di review avversariale + stress test, tutti corretti.** I tre seri: (a) il fallback rispondeva anche alle **ricerche filtrate** — `keyword=%00%FF` restituiva 45 offerte a caso, confermato dal vivo, dati sbagliati e non assenti; (b) **ripresa parziale** non gestita — il trigger era `length === 0`, quindi una ricerca che riparte con 3 offerte avrebbe lasciato il sito con 3 offerte per tutta la Svizzera a tempo indeterminato, con l'aria del dato vero; (c) `/api/companies` rispondeva **502 + `no-store`** su stub, quindi ogni visita generava 3 retry contro un host che ci stava già rifiutando.
+* **⚠️ L'anti-bot di jobroom è reale e si attiva.** ~500 richieste durante lo stress test e la piattaforma ha iniziato a rispondere **99 byte** (`localStorage.clear(); location.reload()`) invece di 145 KB, warm-up compreso — blocco totale. Colpito solo l'IP di sviluppo, **non** quelli di Vercel (verificato: `/api/companies` in produzione continuava a rispondere). Rientrato in ~2 ore. Da qui il TTL di 40 minuti sul solo percorso fallback: da ~420 a ~53 richieste/ora.
+* **Scelta deliberata: i filtri restano vuoti durante l'outage.** Filtrare lato nostro il pool significherebbe filtrare ~120 offerte su 6.639 reali e far concludere all'utente "in Ticino ci sono 3 posti". Uno zero onesto batte un numero sbagliato che sembra vero. Da rivalutare oltre i due giorni.
+* **La soluzione vera è il feed XML Arca24:** 6.639 offerte, 17 aziende (contro le 4 visibili sfogliando l'HTML), date reali. L'URL ricevuto il 30/07 era pre-firmato a 30 minuti ed è scaduto — **serve un indirizzo permanente**, chiesto nella mail per Laura e Gabriele. Risolverebbe l'outage e tre limiti storici insieme.
+
+---
+
+## 1. GO-LIVE ESEGUITO: jobcourier.ch passa a Vercel (31 Luglio 2026, sera) — ✅ *COMPLETED*
+
+**Registro operazioni:** [`docs/ROLLBACK-LOG.md`](ROLLBACK-LOG.md) (OP-01 → OP-08) · **Piano:** [`docs/GOLIVE-PLAN.md`](GOLIVE-PLAN.md)
+**Modello:** Claude Opus 5 (`claude-opus-5`), caveman mode full · 120 minuti
+
+* **Switch DNS su GoDaddy, due sole modifiche:** `A @` da `217.26.61.124` a `76.76.21.21`, e `A www` eliminato in favore di `CNAME www → cname.vercel-dns.com`. MX, `jobroom`, `crm`, TXT SPF/DKIM/DMARC e nameserver non toccati — verificati intatti dopo.
+* **SSL emesso in ~12 minuti.** Nella finestra intermedia l'apex funzionava già (308 → www, `Server: Vercel`) mentre `www` dava `SEC_E_WRONG_PRINCIPAL`: certificato non ancora emesso, comportamento atteso e coperto dal playbook §6.3, che tollera fino a 1 ora.
+* **Redirect verificati uno per uno, non a campione.** Tutte e **211 le URL** di `docs/old-urls-snapshot.txt` testate sul deployment: 211/211 arrivano a 200, nessuna orfana, nessun soft-404.
+* **`main` non era la produzione.** Il deploy live veniva da `claude/site-final-updates-ed071a`, tre commit avanti a `main`: il primo push su `main` avrebbe fatto regredire il sito. Sanato con fast-forward prima di toccare il DNS. **È la terza volta che questo pattern si presenta** (vedi sezioni 2 e 3) — prima di ogni push su `main`, confrontare i branch remoti.
+* **Fix SEO canonical.** Apex e www rispondevano entrambi 200 senza `<link rel="canonical">`: duplicate content sulle 213 URL indicizzate, tutte su www. Aggiunto canonical + og:url derivati dal pathname nell'Helmet di `App.jsx`, e rimosso l'`og:url` statico da `index.html` (react-helmet-async non sostituisce i tag che non ha creato → ne comparivano due).
+* **Redirect apex → www a 308** configurato in Vercel Domains: www resta il dominio servito, coerente con sitemap, robots.txt e le URL indicizzate.
+* **⚠️ Backup DB: il sito è andato 503 per ~7 minuti.** Il dump di `uzohucip_wp1` è quasi 1 GB e su hosting condiviso ha saturato la capacità. Aggravante: il primo click su DOWNLOAD non scriveva nulla su disco dopo 60s, ho ricliccato, e sono partiti **due dump da 1 GB in parallelo**. Su Hostpoint un dump grosso può metterci minuti prima del primo byte — controllare i file `*.crdownload`, non l'assenza del file finale. Il backup file completo (9.2 GB) è stato rimandato a **dopo** lo switch, quando Hostpoint non serviva più traffico pubblico.
+* **Vetrina home con cap 2 offerte per azienda** portata in produzione con un cherry-pick chirurgico da `claude/offerte-vetrina-lingua-cantone-d4d073`: quel branch divergeva da un `main` precedente all'i18n batch2, e un merge diretto avrebbe toccato 37 file reintroducendo regressioni già risolte. Portati solo hook, utility e 5 patch mirate; esclusi i suoi `Offerte.jsx`, `index.css` e i locale stantii (246 chiavi contro 342).
+* **Rollback sempre disponibile:** WordPress su Hostpoint intatto e non disdetto, ripristino DNS in ~10 minuti con TTL 600s. Non toccare per almeno 4 settimane.
+* **Rimasto in sospeso:** submit sitemap su Search Console.
+
+---
+
+## 2. i18n: regressione EN/DE/FR, recupero branch, sistematizzazione (31 Luglio 2026) — 🟡 *IN PROGRESS*
 
 **Handoff completo:** [`docs/handoff-2026-07-31.md`](handoff-2026-07-31.md)
 **Modello:** Claude Opus 5 (`claude-opus-5`), caveman mode full · 2 sessioni
@@ -22,7 +62,7 @@
 
 ---
 
-## 1. Go-Live: integrazione branch e correzioni SEO (28 Luglio 2026) — ✅ *COMPLETED*
+## 3. Go-Live: integrazione branch e correzioni SEO (28 Luglio 2026) — ✅ *COMPLETED*
 
 **Handoff completo:** [`docs/handoff-2026-07-28.md`](handoff-2026-07-28.md) · **Registro operazioni:** [`docs/ROLLBACK-LOG.md`](ROLLBACK-LOG.md)
 **Modello:** Claude Opus 5 (`claude-opus-5`), caveman mode full · 60 minuti
@@ -147,6 +187,17 @@
 ---
 
 ## 🚀 Prossime Operazioni & Task Rimasti (Missing Tasks)
+
+### 🔴 Aperti dal go-live e dall'outage (agosto 2026)
+
+0. **Feed XML completo Arca24 — la priorità.** 6.639 offerte, 17 aziende, date reali, contro le poche centinaia di 4 aziende con date identiche che si ottengono sfogliando l'HTML. L'URL ricevuto il 30/07 era pre-firmato a 30 minuti ed è scaduto: serve un **indirizzo permanente**, da chiedere ad Arca24 tramite Laura e Gabriele. Risolve l'outage di agosto e tre limiti storici in un colpo. Chiesto nella mail del 03/08.
+0b. **Ricerca jobroom da ripristinare** (lato Arca24). Quando torna, verificare che il fallback si spenga da solo: `curl /api/jobs?singlePage=1` e controllare che le aziende tornino ad essere quelle della ricerca.
+0c. **Search Console:** submit `sitemap.xml` + richiesta indicizzazione su home e pagine chiave. In sospeso dal go-live del 31/07. Monitorare 404/soft-404 nei giorni successivi.
+0d. **Backup file completo Hostpoint** (9.2 GB): avviato il 01/08 alle 01:09, verificare che sia stato completato e scaricarlo. I due dump DB sono già su disco ma **nella cartella Download** — vanno spostati in un archivio stabile.
+0e. **Filtri di ricerca vuoti durante l'outage:** scelta deliberata (meglio zero onesto che un campione del 2% presentato come risultato). Se l'outage supera i due giorni, aggiungere un messaggio esplicito "ricerca temporaneamente limitata".
+0f. **Test email @jobcourier.ch con Laura:** MX non è stato toccato dallo switch DNS, ma manca la conferma di un invio/ricezione reale.
+
+### Backlog prodotto
 
 1. **Paywall Incrementale a 3 Click**:
    * Sviluppare nello state globale (o local storage) il contatore di click sugli annunci: giunto al terzo click, l'utente visualizza `RegistrationWallModal` per costringerlo alla registrazione gratuita.
