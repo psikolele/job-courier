@@ -292,9 +292,11 @@ Ref: `00_Wiki/concepts/token-optimization.md` § Temporary File Policy
 **Model:** Haiku 4.5  
 **Status:** 🔴 CRITICAL  
 **Deadline:** URGENT  
-**Last Updated:** 2026-06-25
+**Last Updated:** 2026-08-03
 
-**Ultimo handoff:** [docs/handoff-2026-06-25.md](docs/handoff-2026-06-25.md)
+**Ultimo handoff:** [docs/handoff-2026-08-03.md](docs/handoff-2026-08-03.md)
+
+**📡 FEED OFFERTE:** prima di diagnosticare offerte mancanti, poche card in vetrina o una pagina offerta vuota, leggere `00_Wiki/job-courier/jobroom-feed-resilience.md` — forme note del guasto Arca24 e invarianti da rispettare (varietà ≠ volume, id = prefisso numerico, mai `find(...) || list[0]`).
 
 **🚨 GO-LIVE DOMINIO:** prima di QUALSIASI operazione su DNS, Vercel domains o deploy produzione, leggere [docs/GOLIVE-PLAN.md](docs/GOLIVE-PLAN.md) — mappa infrastruttura verificata (GoDaddy=DNS, Hostpoint=WP vecchio), redirect map obbligatoria (213 URL), playbook errori e rollback. NB: handoff precedenti che dicono "sito live su Vercel" sono errati — produzione è ancora su Hostpoint.
 
