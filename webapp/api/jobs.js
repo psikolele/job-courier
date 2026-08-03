@@ -7,6 +7,8 @@ import {
   fetchJobs as fetchArca24Jobs,
   fetchCompanies as fetchArca24Companies,
   fetchCompanyDetail as fetchArca24CompanyDetail,
+  fetchJobsForQuery as fetchArca24Query,
+  fetchFacetIndex as fetchArca24FacetIndex,
 } from './_arca24.js';
 
 const fetchHeaders = {
@@ -336,45 +338,56 @@ export function parseJobsFromHtml(html, offset = 0, options = {}) {
   return jobs;
 }
 
-/**
- * Apply the caller's filters ourselves, for the Arca24 portal only.
- *
- * The old listing honoured `keyword`/`location`/`region`/`sector`/`role_id` as query
- * params. The new portal does not: its search is a client-side form posting to an
- * endpoint we have not identified, and the routes we read ignore every param we tried
- * (verified 03/08/2026 against `cand_search-keyword`, `keyword`, `q`, `search`).
- *
- * So the choice is between filtering here and answering a filtered query with unfiltered
- * ads. The second is not an option — it hands back a grab-bag that reads as real matches.
- *
- * `keyword` and `location` are matched against the fields we actually carry. `region`,
- * `sector` and `role_id` are upstream numeric codes with no counterpart in our data
- * (the list pages expose no sector or role at all), so a request carrying one cannot be
- * answered honestly and gets an empty result rather than a wrong one. That is a real
- * loss of function, logged so it does not pass unnoticed, and it lifts as soon as the
- * portal's search endpoint is identified.
- */
-export function applyArca24Filters(jobs, callerParams = {}, arca24 = false) {
-  if (!arca24) return jobs;
+/** Accent- and punctuation-insensitive, so "Basilea Città" matches "basilea citta". */
+function normalizeText(value) {
+  return String(value ?? '')
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
 
-  const unsupported = ['region', 'sector', 'role_id'].filter(k => callerParams[k]);
-  if (unsupported.length > 0) {
-    console.warn(`Arca24 source cannot honour ${unsupported.join('/')} — answering empty rather than unfiltered.`);
-    return [];
+/**
+ * Apply whatever the chosen upstream route did not.
+ *
+ * Only one faceted route can answer a query on the Arca24 portal, so a request combining
+ * filters comes back filtered by one of them. The rest are applied here, over that pool:
+ * `keyword` and `location` against the text we carry, `sector` as the free text it is
+ * (the search widget sends a typed word, not a code), and `region` by resolving its code
+ * to the canton named in the facet's own path.
+ *
+ * `role_id` is deliberately absent: the list pages expose no role or sector at all, so it
+ * cannot be re-checked here. That is exactly why it wins the route in `fetchJobsForQuery`.
+ */
+async function applyArca24LeftoverFilters(jobs, callerParams = {}, honoured = null) {
+  let out = jobs;
+
+  const keyword = normalizeText(callerParams.keyword);
+  if (keyword && honoured !== 'keyword') {
+    out = out.filter(job => normalizeText(`${job.title} ${job.company?.name || ''}`).includes(keyword));
   }
 
-  const keyword = String(callerParams.keyword || '').trim().toLowerCase();
-  const location = String(callerParams.location || '').trim().toLowerCase();
-  if (!keyword && !location) return jobs;
+  const location = normalizeText(callerParams.location);
+  if (location) {
+    out = out.filter(job => normalizeText(job.location).includes(location));
+  }
 
-  return jobs.filter((job) => {
-    if (keyword) {
-      const haystack = `${job.title} ${job.company?.name || ''} ${job.role} ${job.sector}`.toLowerCase();
-      if (!haystack.includes(keyword)) return false;
-    }
-    if (location && !String(job.location || '').toLowerCase().includes(location)) return false;
-    return true;
-  });
+  const sector = normalizeText(callerParams.sector);
+  if (sector) {
+    out = out.filter(job => normalizeText(`${job.sector} ${job.role} ${job.title}`).includes(sector));
+  }
+
+  if (callerParams.region && honoured !== 'region') {
+    // Facet paths read `/it/careers/jobs_by_region/3115-214-svizzera-ticino/` — id,
+    // country code, country, then the canton, which is what the location text carries.
+    const path = (await fetchArca24FacetIndex('region')).get(String(callerParams.region));
+    const canton = path
+      ? normalizeText(decodeURIComponent(path).split('/').filter(Boolean).pop().split('-').slice(3).join(' '))
+      : '';
+    if (canton) out = out.filter(job => normalizeText(job.location).includes(canton));
+  }
+
+  return out;
 }
 
 export default async function handler(req, res) {
@@ -419,8 +432,21 @@ export default async function handler(req, res) {
     });
 
     const allJobs = [];
+    let honoured = null;
 
-    if (arca24) {
+    if (arca24 && isFiltered) {
+      // Filtered queries are answered by the portal's faceted routes, not by us.
+      const query = await fetchArca24Query(callerParams, { pages: pageNumbers.length, maxJobs });
+      if (!query) {
+        // The query names a facet the portal does not list, so we cannot answer it.
+        // Saying "no matching ads" would be a claim we have not checked.
+        console.warn(`Arca24: no faceted route for ${JSON.stringify(callerParams)} — answering empty.`);
+        res.status(200).json([]);
+        return;
+      }
+      allJobs.push(...query.jobs);
+      honoured = query.honoured;
+    } else if (arca24) {
       // The stride in SHOWCASE_PAGE_NUMBERS bought company variety on the old listing.
       // It buys nothing here — every page is the same company — so only the page count
       // carries over, and variety comes from the company pages below.
@@ -485,7 +511,7 @@ export default async function handler(req, res) {
     const listingHealthy = allJobs.length >= MIN_HEALTHY_JOBS
       && listingCompanies >= MIN_HEALTHY_COMPANIES;
 
-    if (!listingHealthy && (arca24 || !isFiltered)) {
+    if (!listingHealthy && !isFiltered) {
       const fromCompanies = await fetchJobsFromCompanyPages(maxJobs);
       // Interleaved, not appended. A monobrand listing can fill `maxJobs` on its own,
       // and appending behind it would push every company-page ad past the limit — the
@@ -522,12 +548,16 @@ export default async function handler(req, res) {
         } else {
           console.warn(`Job fallback returned a weak result (${fallbackJobs.length} ads, ${companyCount} companies) — serving it without the long TTL.`);
         }
-        res.status(200).json(applyArca24Filters(fallbackJobs, callerParams, arca24));
+        res.status(200).json(fallbackJobs);
         return;
       }
     }
 
-    res.status(200).json(applyArca24Filters(allJobs, callerParams, arca24));
+    res.status(200).json(
+      arca24 && isFiltered
+        ? await applyArca24LeftoverFilters(allJobs, callerParams, honoured)
+        : allJobs
+    );
   } catch (error) {
     console.error('Error fetching jobs:', error);
     res.setHeader('Cache-Control', 'no-store');

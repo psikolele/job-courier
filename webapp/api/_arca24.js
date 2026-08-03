@@ -257,6 +257,111 @@ export async function fetchJobDetail(id) {
   return parseJobDetailFromHtml(await fetchHtml(`/${LANG}/careers/jobad/${id}`), id);
 }
 
+/* ------------------------------------------------------------------ *
+ * Filtered search
+ *
+ * The portal's own search box posts to /viso/viewControllers.php, which stores the
+ * criteria server-side and hands back a `uiid`; the results page for that uiid is then
+ * rendered entirely in the browser, so there is no HTML for us to read. Unusable.
+ *
+ * What is usable are the faceted routes the same response advertises — jobs_by_keyword,
+ * jobs_by_region, jobs_by_role, jobs_by_sector. They are plain server-rendered pages in
+ * the same `.resultstring` markup as the listing, they paginate with `?page=`, and their
+ * paths carry the facet's numeric id: `/it/careers/jobs_by_region/3115-214-svizzera-
+ * ticino/`. Those ids are the same codes our own dropdowns already send — `region=3115`
+ * is Ticino on both sides — so the index is read at runtime and no table is hardcoded.
+ * ------------------------------------------------------------------ */
+
+const FACET_TTL_MS = 60 * 60 * 1000;
+const facetCache = new Map();
+
+/** "Ristorazione/Hotellerie" -> "ristorazione-hotellerie" */
+export function slugify(value) {
+  return String(value ?? '')
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/** Map of facet id -> path, read from the portal's own index page for that facet. */
+export async function fetchFacetIndex(kind) {
+  const cached = facetCache.get(kind);
+  if (cached && Date.now() - cached.at < FACET_TTL_MS) return cached.map;
+
+  const map = new Map();
+  try {
+    const $ = cheerio.load(await fetchHtml(`/${LANG}/careers/jobs_by_${kind}`));
+    $(`a[href*="/careers/jobs_by_${kind}/"]`).each((_, el) => {
+      const href = $(el).attr('href') || '';
+      const id = (href.match(/jobs_by_[a-z]+\/(\d+)/) || [])[1];
+      if (!id || map.has(id)) return;
+      map.set(id, href.startsWith('/') ? href : `/${href}`);
+    });
+  } catch {
+    // An unreadable index means no facet can be resolved; the caller treats that as
+    // "cannot honour this filter" rather than as "no matching ads".
+  }
+
+  facetCache.set(kind, { map, at: Date.now() });
+  return map;
+}
+
+async function fetchPagesFrom(path, pages, maxJobs) {
+  const sep = path.includes('?') ? '&' : '?';
+  const urls = Array.from({ length: pages }, (_, i) => `${path}${sep}page=${i + 1}`);
+  const htmls = await Promise.all(urls.map(u => fetchHtml(u).catch(() => '')));
+
+  const seen = new Set();
+  const out = [];
+  htmls.forEach((html, p) => {
+    if (!html) return;
+    for (const job of parseJobsFromHtml(html, p * 15)) {
+      const key = job.jobroom_id || job.title;
+      if (seen.has(key) || out.length >= maxJobs) continue;
+      seen.add(key);
+      out.push(job);
+    }
+  });
+  return out;
+}
+
+/**
+ * Answer a filtered query from the faceted routes.
+ *
+ * One route is chosen, because they cannot be combined upstream. The order is by what
+ * cannot be re-checked afterwards: `role_id` first — the list pages carry no role or
+ * sector at all, so a role filter has to be the route or it is lost — then `region`,
+ * whose slug names the canton and so can also be matched against the location text, then
+ * `keyword`, which is plain text and the easiest to apply ourselves.
+ *
+ * Returns the pool plus which filter the route honoured, so the caller knows what is
+ * left to apply. A null result means the query names a facet the portal does not list —
+ * that is "we cannot answer this", not "there is nothing".
+ */
+export async function fetchJobsForQuery(params = {}, { pages = 3, maxJobs = 45 } = {}) {
+  const byFacet = async (kind, id) => {
+    const path = (await fetchFacetIndex(kind)).get(String(id));
+    if (!path) return null;
+    return { jobs: await fetchPagesFrom(path, pages, maxJobs), honoured: kind, path };
+  };
+
+  if (params.role_id) return byFacet('role', params.role_id);
+  if (params.region) return byFacet('region', params.region);
+
+  if (params.keyword) {
+    const slug = slugify(params.keyword);
+    if (!slug) return null;
+    return {
+      jobs: await fetchPagesFrom(`/${LANG}/careers/jobs_by_keyword/${slug}`, pages, maxJobs),
+      honoured: 'keyword',
+      path: `/${LANG}/careers/jobs_by_keyword/${slug}`,
+    };
+  }
+
+  return null;
+}
+
 export function parseCompaniesFromHtml(html) {
   const $ = cheerio.load(html);
   const companies = [];
