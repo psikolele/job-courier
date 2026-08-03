@@ -1,5 +1,7 @@
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
+import { isArca24Enabled, fetchJobDetail as fetchArca24JobDetail } from './_arca24.js';
+import { sanitizeHtml } from './_sanitize.js';
 
 export default async function handler(req, res) {
   // Add CORS headers
@@ -26,6 +28,11 @@ export default async function handler(req, res) {
   }
 
   try {
+    if (await isArca24Enabled()) {
+      res.status(200).json(await fetchArca24JobDetail(String(id)));
+      return;
+    }
+
     // 1. Fetch a latest-and-all-job-ads.php per estrarre i cookie di sessione reali del server
     const sessionUrl = 'https://jobroom.jobcourier.ch/job/latest-and-all-job-ads.php?language=it&country=214&source=https%3A%2F%2Fwww.jobcourier.ch%2F';
     const sessionHeaders = {
@@ -153,6 +160,10 @@ export default async function handler(req, res) {
     if (!descriptionHtml || descriptionHtml.includes('localStorage.clear') || descriptionHtml.includes('window.location.reload')) {
       descriptionHtml = '<p>La descrizione dettagliata per questa offerta di lavoro è consultabile premendo il tasto "Candidati ora".</p>';
     }
+
+    // Upstream markup is attacker-controlled (anyone publishing an ad writes it) and the
+    // front-end renders it with dangerouslySetInnerHTML, so it must be sanitised here.
+    descriptionHtml = sanitizeHtml(descriptionHtml);
 
     // RILEVAMENTO REDIRECT E CANDIDATURA ESTERNA
     let redirect = false;

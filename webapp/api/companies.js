@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
+import { isArca24Enabled, fetchCompanies as fetchArca24Companies } from './_arca24.js';
 
 const LIST_URL = 'https://jobroom.jobcourier.ch/jobs-by-company.php?lan=it&language=it&source=direct';
 const MAX_RETRIES = 3;
@@ -125,6 +126,11 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') { res.status(200).end(); return; }
 
   try {
+    if (await isArca24Enabled()) {
+      res.status(200).json(await fetchArca24Companies());
+      return;
+    }
+
     const html = await fetchCompanyListHtml();
 
     if (isStub(html)) {

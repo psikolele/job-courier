@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import { parseJobsFromHtml } from './jobs.js';
+import { isArca24Enabled, fetchCompanyDetail as fetchArca24CompanyDetail } from './_arca24.js';
 
 const MAX_RETRIES = 3;
 const MIN_VALID_LENGTH = 2000;
@@ -144,6 +145,11 @@ export default async function handler(req, res) {
   }
 
   try {
+    if (await isArca24Enabled()) {
+      res.status(200).json(await fetchArca24CompanyDetail(String(id), slug || ''));
+      return;
+    }
+
     const html = await fetchCompanyDetailHtml(id, slug || '');
 
     if (isStub(html)) {

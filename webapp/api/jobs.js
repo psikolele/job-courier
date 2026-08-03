@@ -2,6 +2,12 @@ import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import { fetchCompanyListHtml, parseCompaniesFromHtml } from './companies.js';
 import { warmUpSessionCookies } from './company-detail.js';
+import {
+  isArca24Enabled,
+  fetchJobs as fetchArca24Jobs,
+  fetchCompanies as fetchArca24Companies,
+  fetchCompanyDetail as fetchArca24CompanyDetail,
+} from './_arca24.js';
 
 const fetchHeaders = {
   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -93,7 +99,57 @@ function adKey(job) {
  * (Adecco alone carries most of the catalogue) and a naive concat would make every
  * caller — the showcase especially — look single-brand again.
  */
+/**
+ * Round-robin across per-company lists.
+ *
+ * Never concatenate: one company usually carries most of the catalogue, and a naive
+ * concat hands the showcase a single-brand list — the exact problem the per-company cap
+ * exists to prevent.
+ */
+function interleaveByCompany(perCompany, maxJobs) {
+  const seen = new Set();
+  const out = [];
+  const depth = Math.max(...perCompany.map(list => list.length), 0);
+  for (let rank = 0; rank < depth && out.length < maxJobs; rank++) {
+    for (const list of perCompany) {
+      if (out.length >= maxJobs) break;
+      const job = list[rank];
+      if (!job) continue;
+      const key = adKey(job);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push(job);
+    }
+  }
+  return out;
+}
+
+/**
+ * Same idea as the jobroom fallback below, against the Arca24 portal.
+ *
+ * It is not a fallback there but the only source of variety: the new listing is ordered
+ * so that one company fills every page — measured on 03/08/2026, pages 1 through 50 were
+ * Adecco without exception — while the company pages carry the rest of the catalogue.
+ */
+async function fetchArca24CompanyJobs(maxJobs) {
+  const companies = await fetchArca24Companies();
+  if (companies.length === 0) return [];
+
+  const perCompany = [];
+  for (let i = 0; i < companies.length; i += FALLBACK_BATCH_SIZE) {
+    const batch = companies.slice(i, i + FALLBACK_BATCH_SIZE).map(company =>
+      fetchArca24CompanyDetail(company.id, company.slug)
+        .then(detail => detail.jobs || [])
+        .catch(() => [])
+    );
+    perCompany.push(...await Promise.all(batch));
+  }
+  return interleaveByCompany(perCompany, maxJobs);
+}
+
 async function fetchJobsFromCompanyPages(maxJobs) {
+  if (await isArca24Enabled()) return fetchArca24CompanyJobs(maxJobs);
+
   const listHtml = await fetchCompanyListHtml();
   // `jobs_count` reads 0 for every company on the current listing page, so it cannot be
   // used to skip empty ones — a company with no ads simply yields an empty list here.
@@ -126,21 +182,7 @@ async function fetchJobsFromCompanyPages(maxJobs) {
     perCompany.push(...await Promise.all(batch));
   }
 
-  const seen = new Set();
-  const out = [];
-  const depth = Math.max(...perCompany.map(list => list.length), 0);
-  for (let rank = 0; rank < depth && out.length < maxJobs; rank++) {
-    for (const list of perCompany) {
-      if (out.length >= maxJobs) break;
-      const job = list[rank];
-      if (!job) continue;
-      const key = adKey(job);
-      if (seen.has(key)) continue;
-      seen.add(key);
-      out.push(job);
-    }
-  }
-  return out;
+  return interleaveByCompany(perCompany, maxJobs);
 }
 
 export function parseJobsFromHtml(html, offset = 0, options = {}) {
@@ -288,6 +330,47 @@ export function parseJobsFromHtml(html, offset = 0, options = {}) {
   return jobs;
 }
 
+/**
+ * Apply the caller's filters ourselves, for the Arca24 portal only.
+ *
+ * The old listing honoured `keyword`/`location`/`region`/`sector`/`role_id` as query
+ * params. The new portal does not: its search is a client-side form posting to an
+ * endpoint we have not identified, and the routes we read ignore every param we tried
+ * (verified 03/08/2026 against `cand_search-keyword`, `keyword`, `q`, `search`).
+ *
+ * So the choice is between filtering here and answering a filtered query with unfiltered
+ * ads. The second is not an option — it hands back a grab-bag that reads as real matches.
+ *
+ * `keyword` and `location` are matched against the fields we actually carry. `region`,
+ * `sector` and `role_id` are upstream numeric codes with no counterpart in our data
+ * (the list pages expose no sector or role at all), so a request carrying one cannot be
+ * answered honestly and gets an empty result rather than a wrong one. That is a real
+ * loss of function, logged so it does not pass unnoticed, and it lifts as soon as the
+ * portal's search endpoint is identified.
+ */
+export function applyArca24Filters(jobs, callerParams = {}, arca24 = false) {
+  if (!arca24) return jobs;
+
+  const unsupported = ['region', 'sector', 'role_id'].filter(k => callerParams[k]);
+  if (unsupported.length > 0) {
+    console.warn(`Arca24 source cannot honour ${unsupported.join('/')} — answering empty rather than unfiltered.`);
+    return [];
+  }
+
+  const keyword = String(callerParams.keyword || '').trim().toLowerCase();
+  const location = String(callerParams.location || '').trim().toLowerCase();
+  if (!keyword && !location) return jobs;
+
+  return jobs.filter((job) => {
+    if (keyword) {
+      const haystack = `${job.title} ${job.company?.name || ''} ${job.role} ${job.sector}`.toLowerCase();
+      if (!haystack.includes(keyword)) return false;
+    }
+    if (location && !String(job.location || '').toLowerCase().includes(location)) return false;
+    return true;
+  });
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -311,6 +394,15 @@ export default async function handler(req, res) {
       Object.entries(req.query).filter(([k]) => UPSTREAM_PARAMS.has(k))
     ) : {};
 
+    // Which upstream generation is live. The Arca24 portal answers on the same hostname
+    // and is detected, not announced — see `_arca24.js`.
+    const arca24 = await isArca24Enabled();
+
+    // `global` widens the search beyond Switzerland rather than narrowing it, and every
+    // source carries those ads, so it is not a filter. `language`/`country` are defaults.
+    const isFiltered = Object.keys(callerParams)
+      .some(k => k !== 'language' && k !== 'country' && k !== 'global');
+
     const pageUrls = pageNumbers.map((pageNumber) => {
       const url = new URL(baseUrl);
       url.searchParams.set('language', callerParams.language || 'it');
@@ -320,31 +412,38 @@ export default async function handler(req, res) {
       return url.toString();
     });
 
-    // Batched parallel fetch (BATCH_SIZE concurrent to avoid rate-limiting)
-    const responses = [];
-    for (let i = 0; i < pageUrls.length; i += BATCH_SIZE) {
-      const batch = pageUrls.slice(i, i + BATCH_SIZE).map(url =>
-        fetchPage(url, fetchHeaders)
-      );
-      responses.push(...await Promise.all(batch));
-    }
-
-    // Parse + flatten, offset IDs by page to avoid collision
-    const seen = new Set();
     const allJobs = [];
 
-    for (let p = 0; p < responses.length; p++) {
-      if (!responses[p]) continue;
-      const pageJobs = parseJobsFromHtml(responses[p], p * 15);
-      for (const job of pageJobs) {
-        const key = adKey(job);
-        if (!seen.has(key)) {
-          seen.add(key);
-          allJobs.push(job);
+    if (arca24) {
+      // The stride in SHOWCASE_PAGE_NUMBERS bought company variety on the old listing.
+      // It buys nothing here — every page is the same company — so only the page count
+      // carries over, and variety comes from the company pages below.
+      allJobs.push(...await fetchArca24Jobs({ pages: pageNumbers.length, maxJobs }));
+    } else {
+      // Batched parallel fetch (BATCH_SIZE concurrent to avoid rate-limiting)
+      const responses = [];
+      for (let i = 0; i < pageUrls.length; i += BATCH_SIZE) {
+        const batch = pageUrls.slice(i, i + BATCH_SIZE).map(url =>
+          fetchPage(url, fetchHeaders)
+        );
+        responses.push(...await Promise.all(batch));
+      }
+
+      // Parse + flatten, offset IDs by page to avoid collision
+      const seen = new Set();
+      for (let p = 0; p < responses.length; p++) {
+        if (!responses[p]) continue;
+        const pageJobs = parseJobsFromHtml(responses[p], p * 15);
+        for (const job of pageJobs) {
+          const key = adKey(job);
+          if (!seen.has(key)) {
+            seen.add(key);
+            allJobs.push(job);
+          }
+          if (allJobs.length >= maxJobs) break;
         }
         if (allJobs.length >= maxJobs) break;
       }
-      if (allJobs.length >= maxJobs) break;
     }
 
     // The search listing went dry on 02/08/2026 (Arca24 platform work): it renders its
@@ -361,8 +460,11 @@ export default async function handler(req, res) {
     // answering it from them is honest. It sat in this list only because it arrives as
     // a caller param — which left `/offerte?global=1`, the URL every home-showcase card
     // links to, as the one page the fallback never covered.
-    const isFiltered = Object.keys(callerParams)
-      .some(k => k !== 'language' && k !== 'country' && k !== 'global');
+    //
+    // On the Arca24 portal the company pages are not a fallback but the only source of
+    // variety, and the filtering below is done by us rather than upstream, so a filtered
+    // request wants that wider pool too.
+    //
     // Not just on zero. A half-recovered listing answering with a handful of ads is worse
     // than one answering with none: the page looks like real data — "three jobs in all of
     // Switzerland" — instead of an obvious outage, and would stay that way indefinitely
@@ -377,7 +479,7 @@ export default async function handler(req, res) {
     const listingHealthy = allJobs.length >= MIN_HEALTHY_JOBS
       && listingCompanies >= MIN_HEALTHY_COMPANIES;
 
-    if (!listingHealthy && !isFiltered) {
+    if (!listingHealthy && (arca24 || !isFiltered)) {
       const fromCompanies = await fetchJobsFromCompanyPages(maxJobs);
       // Interleaved, not appended. A monobrand listing can fill `maxJobs` on its own,
       // and appending behind it would push every company-page ad past the limit — the
@@ -414,12 +516,12 @@ export default async function handler(req, res) {
         } else {
           console.warn(`Job fallback returned a weak result (${fallbackJobs.length} ads, ${companyCount} companies) — serving it without the long TTL.`);
         }
-        res.status(200).json(fallbackJobs);
+        res.status(200).json(applyArca24Filters(fallbackJobs, callerParams, arca24));
         return;
       }
     }
 
-    res.status(200).json(allJobs);
+    res.status(200).json(applyArca24Filters(allJobs, callerParams, arca24));
   } catch (error) {
     console.error('Error fetching jobs:', error);
     res.setHeader('Cache-Control', 'no-store');

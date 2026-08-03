@@ -2,13 +2,30 @@ import { describe, it, expect } from 'vitest';
 import { blogIndex, findBySlug, listByCategory } from '../blogIndex.js';
 import { getArticle } from '../loader.js';
 
+const LANGS = ['it', 'en', 'de', 'fr'];
+
 describe('blogIndex', () => {
-  it('contiene 10 articoli IT', () => {
-    expect(blogIndex.it).toHaveLength(10);
+  // Conteggi esatti evitati di proposito: si rompevano a ogni articolo aggiunto
+  // (10 → 12 il 28.07). Questi invarianti reggono la crescita e catturano comunque
+  // traduzioni mancanti, slug copiati e categorie sbilanciate.
+  it('tutte le lingue hanno lo stesso numero di articoli', () => {
+    const counts = Object.fromEntries(LANGS.map(l => [l, blogIndex[l]?.length ?? 0]));
+    expect(new Set(Object.values(counts)).size, `conteggi disallineati: ${JSON.stringify(counts)}`).toBe(1);
   });
-  it('5 per categoria', () => {
-    expect(listByCategory('carriera', 'it')).toHaveLength(5);
-    expect(listByCategory('recruiting', 'it')).toHaveLength(5);
+  it('almeno 10 articoli IT', () => {
+    expect(blogIndex.it.length).toBeGreaterThanOrEqual(10);
+  });
+  it('nessuno slug duplicato in nessuna lingua', () => {
+    for (const lang of LANGS) {
+      const slugs = blogIndex[lang].map(e => e.slug);
+      expect(new Set(slugs).size, `slug duplicati in ${lang}`).toBe(slugs.length);
+    }
+  });
+  it('le due categorie restano bilanciate', () => {
+    const carriera = listByCategory('carriera', 'it').length;
+    const recruiting = listByCategory('recruiting', 'it').length;
+    expect(carriera).toBe(recruiting);
+    expect(carriera + recruiting).toBe(blogIndex.it.length);
   });
   it('findBySlug trova articolo e lingua', () => {
     const hit = findBySlug('employer-branding-pmi-guida-pratica');
