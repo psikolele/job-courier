@@ -137,20 +137,14 @@ const Filters = () => {
                     });
                     setLatestJobs(formattedJobs);
                 } else {
-                    throw new Error('No data from API');
+                    // No invented ads here. This block used to fall back to eight
+                    // hardcoded listings with made-up companies, which on a live job
+                    // board reads as real vacancies. An empty showcase says so instead.
+                    setLatestJobs([]);
                 }
             } catch (err) {
-                console.warn('API error in Filters:', err.message, 'Using graceful local mock data.');
-                setLatestJobs([
-                    { id: 1, jobroom_id: '6688865', title: 'Validation Engineer', location: 'Mezzovico TI, Svizzera', sector: 'Generale', role: 'Specialist', company: 'Randstad Svizzera SA', companyLogo: 'https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244729.jpg', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688865-validation-engineer-mezzovico-ti-mezzovico&language=en' },
-                    { id: 2, jobroom_id: '6688871', title: 'Parchettista', location: 'Sottoceneri, Svizzera', sector: 'Costruzioni/Mestieri', role: 'Specialist', company: 'Team Personnel Solutions SA', companyLogo: 'https://www.google.com/s2/favicons?domain=team.jobs&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6688871-parchettista-sottoceneri&language=en' },
-                    { id: 3, jobroom_id: '6680678', title: 'Responsabile Magazzino', location: 'Schönbühl BE, Svizzera', sector: 'Logistica', role: 'Manager', company: 'TechSwiss Distribution', companyLogo: 'https://www.google.com/s2/favicons?domain=techswiss.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6680678-assistant-warehouse-manager-a-schönbuhl-be&language=en' },
-                    { id: 4, jobroom_id: '6675564', title: 'Chauffeur / Chauffeuse Kat. B, Region Luzern 80%-100% (m/w/d)', location: 'Switzerland, 6003 Luzern', sector: 'Other', role: 'Other', company: 'DasTeam', companyLogo: 'https://www.google.com/s2/favicons?domain=dasteam.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675564-chauffeur-chauffeuse-kat-b-region-luzern-80-100-m-w-d-6003-luzern&language=en' },
-                    { id: 5, jobroom_id: '6675565', title: 'Impiegato Amministrativo', location: 'Lugano TI, Svizzera', sector: 'Amministrazione/Paghe e contributi', role: 'Specialist', company: 'Adecco Risorse Umane', companyLogo: 'https://www.google.com/s2/favicons?domain=adecco.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675565-impiegato-amministrativo-lugano&language=en' },
-                    { id: 6, jobroom_id: '6675566', title: 'Frontend Developer React', location: 'Bellinzona TI, Svizzera', sector: 'IT/Technology', role: 'Specialist', company: 'Kraken Sviluppo Web', companyLogo: 'https://www.google.com/s2/favicons?domain=kraken.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675566-frontend-developer-react-bellinzona&language=en' },
-                    { id: 7, jobroom_id: '6675567', title: 'Autista Consegnatario Kat. B', location: 'Mendrisio TI, Svizzera', sector: 'Trasporti', role: 'Specialist', company: 'DHL Logistics', companyLogo: 'https://www.google.com/s2/favicons?domain=dhl.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675567-autista-consegnatario-kat-b-mendrisio&language=en' },
-                    { id: 8, jobroom_id: '6675568', title: 'Elettricista Impiantista', location: 'Locarno TI, Svizzera', sector: 'Costruzioni/Mestieri', role: 'Specialist', company: 'Manpower Svizzera', companyLogo: 'https://www.google.com/s2/favicons?domain=manpower.ch&sz=128', link: 'https://jobroom.jobcourier.ch/job/view-job.php?id=6675568-elettricista-impiantista-locarno&language=en' }
-                ]);
+                console.warn('API error in Filters:', err.message, '— showing the unavailable state.');
+                setLatestJobs([]);
             } finally {
                 setJobsLoading(false);
             }
@@ -161,6 +155,7 @@ const Filters = () => {
             if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
         };
     }, []);
+
 
     const resumeAutoScroll = () => {
         if (!sliderRef.current) return;
@@ -391,6 +386,14 @@ const Filters = () => {
                     >
                         {jobsLoading ? (
                             [...Array(12)].map((_, i) => <ShowcaseCardSkeleton key={i} />)
+                        ) : showcaseJobs.length === 0 ? (
+                            <div style={{
+                                width: '100%', padding: '48px 8px', textAlign: 'center',
+                                fontFamily: 'var(--font-editorial)', fontStyle: 'italic',
+                                fontSize: 18, color: 'var(--brand-gray-mid)'
+                            }}>
+                                {t('jobs.showcase_unavailable')}
+                            </div>
                         ) : (
                             showcaseJobs.map((job, idx) => (
                                 <motion.div

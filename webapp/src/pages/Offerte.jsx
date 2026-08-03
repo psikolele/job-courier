@@ -223,6 +223,10 @@ const Offerte = ({ setShowLoginModal }) => {
         fetchJobs();
     }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location')]);
 
+    // `jobId` names an offer and `global` widens the scope — neither narrows the result,
+    // so neither makes an empty answer a matter of filters.
+    const hasActiveFilters = [...searchParams.keys()].some(k => k !== 'jobId' && k !== 'global');
+
     const listJob = selectedJobId
         ? jobs.find(j => jobIdKey(j.id) === jobIdKey(selectedJobId))
         : undefined;
@@ -433,7 +437,10 @@ const Offerte = ({ setShowLoginModal }) => {
                                 <div style={{ padding: 16, background: '#FFF0F0', color: '#C00', fontFamily: body, fontSize: 13 }}>{error}</div>
                             ) : jobs.length === 0 ? (
                                 <div style={{ padding: 32, textAlign: 'center', color: GM, fontFamily: body, fontSize: 14 }}>
-                                    {t('jobs.none_found')}
+                                    {/* "No offer matches the current filters" is only true when there
+                                        are filters. With none set, an empty result means the feed
+                                        itself has nothing to give. */}
+                                    {hasActiveFilters ? t('jobs.none_found') : t('jobs.showcase_unavailable')}
                                 </div>
                             ) : (
                                 <div className="flex flex-col gap-1 overflow-y-auto scroll-fade" style={{ maxHeight: 'calc(100vh - 320px)', background: 'rgba(5,11,43,0.04)' }}>

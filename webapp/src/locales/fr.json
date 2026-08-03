@@ -236,6 +236,7 @@
     "tab_list": "Liste",
     "tab_details": "Détails",
     "none_found": "Aucune offre ne correspond aux filtres actuels.",
+    "showcase_unavailable": "Les offres sont momentanément indisponibles. Réessayez dans quelques minutes.",
     "external_badge": "Externe",
     "label_location": "Lieu",
     "label_sector": "Secteur",
