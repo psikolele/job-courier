@@ -72,6 +72,20 @@ const MIN_HEALTHY_JOBS = 10;
 const MIN_HEALTHY_COMPANIES = 3;
 
 /**
+ * Identity of an ad, for de-duplication.
+ *
+ * The two sources spell the same ad differently — `6727905` on a company page,
+ * `6727905-aiuto-cuoco-lugano` in the search listing — so keying on the raw id
+ * would let a merged result carry it twice. The leading jobroom number is what
+ * they share. Ads with no id at all fall back to their title, as before.
+ */
+function adKey(job) {
+  const id = String(job.jobroom_id ?? '');
+  const m = id.match(/^(\d+)/);
+  return m ? m[1] : (id || job.title);
+}
+
+/**
  * Read jobs from the per-company pages instead of the global search listing.
  *
  * Companies are read in parallel batches, then interleaved round-robin so the result
@@ -120,7 +134,7 @@ async function fetchJobsFromCompanyPages(maxJobs) {
       if (out.length >= maxJobs) break;
       const job = list[rank];
       if (!job) continue;
-      const key = job.jobroom_id || job.title;
+      const key = adKey(job);
       if (seen.has(key)) continue;
       seen.add(key);
       out.push(job);
@@ -323,7 +337,7 @@ export default async function handler(req, res) {
       if (!responses[p]) continue;
       const pageJobs = parseJobsFromHtml(responses[p], p * 15);
       for (const job of pageJobs) {
-        const key = job.jobroom_id || job.title;
+        const key = adKey(job);
         if (!seen.has(key)) {
           seen.add(key);
           allJobs.push(job);
@@ -354,16 +368,31 @@ export default async function handler(req, res) {
     // Switzerland" — instead of an obvious outage, and would stay that way indefinitely
     // while the ads sit reachable on the company pages. Whatever the listing did return is
     // kept and merged, never discarded.
-    if (allJobs.length < MIN_HEALTHY_JOBS && !isFiltered) {
+    // Volume alone does not mean the listing is well: on 03/08/2026 it came back
+    // answering with 120 ads that were all Adecco, which sailed past a count-only check
+    // while the rest of the catalogue stayed invisible. The showcase caps each company
+    // at two cards, so a single-company pool renders as two cards and the by-language
+    // ordering has nothing from Ticino to put first. Variety is part of health.
+    const listingCompanies = new Set(allJobs.map(j => j.company?.name)).size;
+    const listingHealthy = allJobs.length >= MIN_HEALTHY_JOBS
+      && listingCompanies >= MIN_HEALTHY_COMPANIES;
+
+    if (!listingHealthy && !isFiltered) {
       const fromCompanies = await fetchJobsFromCompanyPages(maxJobs);
-      const merged = [...allJobs];
-      const known = new Set(allJobs.map(j => j.jobroom_id || j.title));
-      for (const job of fromCompanies) {
-        if (merged.length >= maxJobs) break;
-        const key = job.jobroom_id || job.title;
-        if (known.has(key)) continue;
-        known.add(key);
-        merged.push(job);
+      // Interleaved, not appended. A monobrand listing can fill `maxJobs` on its own,
+      // and appending behind it would push every company-page ad past the limit — the
+      // fallback would run, cost its requests, and change nothing.
+      const merged = [];
+      const known = new Set();
+      const depth = Math.max(allJobs.length, fromCompanies.length);
+      for (let i = 0; i < depth && merged.length < maxJobs; i++) {
+        for (const job of [allJobs[i], fromCompanies[i]]) {
+          if (!job || merged.length >= maxJobs) continue;
+          const key = adKey(job);
+          if (known.has(key)) continue;
+          known.add(key);
+          merged.push(job);
+        }
       }
       const fallbackJobs = merged;
       if (fallbackJobs.length > 0) {
