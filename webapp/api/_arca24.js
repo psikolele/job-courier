@@ -288,8 +288,30 @@ export function parseCompaniesFromHtml(html) {
   return companies;
 }
 
+// The company index is paginated fifteen at a time, and the order is not stable: the
+// same company shows up on page 1 and page 4 of consecutive reads. Reading only the
+// first page therefore returns a random slice of the roster — which made the company
+// list page show fifteen of thirty-three employers, and made keyword search answer
+// differently on every request depending on who happened to be in the slice.
+// Pages are read until one brings nothing new, with a hard stop so a portal that
+// paginates forever cannot spin here.
+const COMPANY_INDEX_MAX_PAGES = 8;
+
 export async function fetchCompanies() {
-  const companies = parseCompaniesFromHtml(await fetchHtml(`/${LANG}/careers/jobs_by_company`));
+  const byId = new Map();
+  for (let page = 1; page <= COMPANY_INDEX_MAX_PAGES; page++) {
+    let batch = [];
+    try {
+      batch = parseCompaniesFromHtml(await fetchHtml(`/${LANG}/careers/jobs_by_company?page=${page}`));
+    } catch {
+      break;
+    }
+    const before = byId.size;
+    for (const company of batch) if (!byId.has(company.id)) byId.set(company.id, company);
+    if (batch.length === 0 || byId.size === before) break;
+  }
+
+  const companies = [...byId.values()];
   companies.sort((a, b) => a.name.localeCompare(b.name, 'it', { sensitivity: 'base' }));
   return companies;
 }

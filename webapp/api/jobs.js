@@ -131,13 +131,19 @@ function interleaveByCompany(perCompany, maxJobs) {
  * so that one company fills every page — measured on 03/08/2026, pages 1 through 50 were
  * Adecco without exception — while the company pages carry the rest of the catalogue.
  */
+// The Arca24 roster is 33 companies against jobroom's 12 with ads, and each page answers
+// in about a second, so the jobroom concurrency of 6 put this at ~34s — uncomfortably
+// close to the function's 60s ceiling for a request the showcase waits on. At 12 it is
+// ~15s. Still one request per company, just fewer rounds.
+const ARCA24_BATCH_SIZE = 12;
+
 async function fetchArca24CompanyJobs(maxJobs) {
   const companies = await fetchArca24Companies();
   if (companies.length === 0) return [];
 
   const perCompany = [];
-  for (let i = 0; i < companies.length; i += FALLBACK_BATCH_SIZE) {
-    const batch = companies.slice(i, i + FALLBACK_BATCH_SIZE).map(company =>
+  for (let i = 0; i < companies.length; i += ARCA24_BATCH_SIZE) {
+    const batch = companies.slice(i, i + ARCA24_BATCH_SIZE).map(company =>
       fetchArca24CompanyDetail(company.id, company.slug)
         .then(detail => detail.jobs || [])
         .catch(() => [])
