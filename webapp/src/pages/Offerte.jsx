@@ -39,6 +39,22 @@ const deriveSector = (title, sector) => {
     return null;
 };
 
+/**
+ * Stable key for comparing job ids across sources.
+ *
+ * The same ad is identified as `6727905` on a company page and as
+ * `6727905-aiuto-cuoco-lugano` in the search listing, so a plain string compare
+ * fails whenever a link crosses from one source to the other. The leading
+ * jobroom number is the part both formats share. Synthetic ids (`job-12`, used
+ * when upstream exposes no id at all) do not start with a digit and are
+ * compared whole, so they never collapse into one another.
+ */
+const jobIdKey = (value) => {
+    const s = String(value ?? '');
+    const m = s.match(/^(\d+)/);
+    return m ? m[1] : s;
+};
+
 const deriveRole = (role) => {
     const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
     if (!role || skip.includes(role)) return null;
@@ -125,7 +141,8 @@ const Offerte = ({ setShowLoginModal }) => {
     const [error, setError] = useState(null);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [searchQuery, setSearchQuery] = useState(searchParams.get('keyword') || '');
-    const [activeTab, setActiveTab] = useState('list');
+    // A URL that already names an offer opens on it, not on the list behind it.
+    const [activeTab, setActiveTab] = useState(() => (searchParams.get('jobId') ? 'detail' : 'list'));
 
     // States for extended job description scraping
     const [selectedJobDetail, setSelectedJobDetail] = useState(null);
@@ -195,30 +212,63 @@ const Offerte = ({ setShowLoginModal }) => {
         fetchJobs();
     }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location')]);
 
-    const selectedJob = jobs.find(j => j.id.toString() === selectedJobId) || jobs[0];
+    const listJob = selectedJobId
+        ? jobs.find(j => jobIdKey(j.id) === jobIdKey(selectedJobId))
+        : undefined;
+
+    // The id in the URL is not guaranteed to exist in this page's own list. The home
+    // showcase and this page can be served from different upstream sources — the
+    // company-page fallback vs. the search listing — so a card click can carry an id
+    // this list has never seen. Resolve it from the detail endpoint, which accepts any
+    // jobroom id, rather than silently falling back to an unrelated offer.
+    const detailId = listJob
+        ? (listJob.jobroom_id || listJob.id)
+        : (selectedJobId || jobs[0]?.jobroom_id || jobs[0]?.id);
+
+    // Usable only once the fetch for THIS id has landed: `selectedJobDetail` is cleared
+    // at the start of every fetch, so there is no stale-detail window.
+    const detailAsJob = (!listJob && selectedJobDetail && jobIdKey(selectedJobDetail.id) === jobIdKey(detailId))
+        ? {
+            id: selectedJobDetail.id,
+            jobroom_id: selectedJobDetail.id,
+            title: selectedJobDetail.title,
+            company: selectedJobDetail.company,
+            location: selectedJobDetail.location,
+            sector: selectedJobDetail.sector,
+            role: selectedJobDetail.role,
+            link: selectedJobDetail.original_link,
+            apply_url: selectedJobDetail.apply_url,
+            redirect: selectedJobDetail.redirect,
+            external_url: selectedJobDetail.external_url,
+        }
+        : null;
+
+    // With no `jobId` the page still opens on the first offer, as before. With one, it
+    // never shows a different offer in its place.
+    const selectedJob = listJob || detailAsJob || (selectedJobId ? null : jobs[0]);
     const applyData = getApplyData(selectedJob, selectedJobDetail);
 
     useEffect(() => {
-        if (selectedJob) {
-            const fetchDetail = async () => {
-                setDetailLoading(true);
-                setSelectedJobDetail(null);
-                try {
-                    const jobId = selectedJob.jobroom_id || selectedJob.id;
-                    const response = await fetch(`/api/job-detail?id=${jobId}`);
-                    if (response.ok) {
-                        const data = await response.json();
-                        setSelectedJobDetail(data);
-                    }
-                } catch (err) {
-                    console.error("Errore caricamento dettagli posizione:", err);
-                } finally {
-                    setDetailLoading(false);
+        if (!detailId) return;
+        let cancelled = false;
+        const fetchDetail = async () => {
+            setDetailLoading(true);
+            setSelectedJobDetail(null);
+            try {
+                const response = await fetch(`/api/job-detail?id=${encodeURIComponent(detailId)}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (!cancelled) setSelectedJobDetail(data);
                 }
-            };
-            fetchDetail();
-        }
-    }, [selectedJob?.id, jobs]);
+            } catch (err) {
+                console.error("Errore caricamento dettagli posizione:", err);
+            } finally {
+                if (!cancelled) setDetailLoading(false);
+            }
+        };
+        fetchDetail();
+        return () => { cancelled = true; };
+    }, [detailId]);
 
     const handleSelectJob = (id) => {
         const selected = jobs.find(j => j.id === id);
@@ -251,7 +301,7 @@ const Offerte = ({ setShowLoginModal }) => {
         }
 
         // Combine list job parameters with scraped detail parameters if available
-        const isCurrentlySelected = selectedJobDetail && (selectedJobDetail.id === job.jobroom_id || selectedJobDetail.id === job.id.toString());
+        const isCurrentlySelected = selectedJobDetail && (jobIdKey(selectedJobDetail.id) === jobIdKey(job.jobroom_id || job.id));
         const applyInfo = getApplyData(job, isCurrentlySelected ? selectedJobDetail : null);
 
         if (applyInfo.redirect && applyInfo.url) {
@@ -267,10 +317,15 @@ const Offerte = ({ setShowLoginModal }) => {
         const newParams = new URLSearchParams(searchParams);
         newParams.delete('jobId');
         setSearchParams(newParams);
+        setActiveTab('list');
     };
 
-    const showList = !isMobile || (isMobile && !selectedJobId);
-    const showDetail = !isMobile || (isMobile && selectedJobId);
+    // On mobile the two panes are tabs, so the tab is what decides which one shows.
+    // Keying these off `selectedJobId` instead made the panes contradict the tab bar:
+    // a deep link (`?jobId=…`) hid the list while the tab was still "list", and tapping
+    // "lista" with a job selected hid it again — both rendered a blank page.
+    const showList = !isMobile || activeTab === 'list';
+    const showDetail = !isMobile || activeTab === 'detail';
 
     return (
         <div className="pt-24 min-h-screen" style={{ background: GL }}>
@@ -374,7 +429,7 @@ const Offerte = ({ setShowLoginModal }) => {
                             ) : (
                                 <div className="flex flex-col gap-1 overflow-y-auto scroll-fade" style={{ maxHeight: 'calc(100vh - 320px)', background: 'rgba(5,11,43,0.04)' }}>
                                     {jobs.map(job => {
-                                        const isSelected = selectedJobId === job.id.toString();
+                                        const isSelected = !!selectedJobId && jobIdKey(selectedJobId) === jobIdKey(job.id);
                                         return (
                                             <motion.div
                                                 key={job.id}

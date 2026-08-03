@@ -342,7 +342,13 @@ export default async function handler(req, res) {
     // region, so answering a filtered query from them would return a grab-bag of
     // unrelated jobs instead of an honest "no match" — wrong data rather than none.
     // A filtered search that finds nothing must keep saying so.
-    const isFiltered = Object.keys(callerParams).some(k => k !== 'language' && k !== 'country');
+    // `global` is not one of those: it widens the search to ads outside Switzerland
+    // rather than narrowing it, and the company pages carry exactly those ads too, so
+    // answering it from them is honest. It sat in this list only because it arrives as
+    // a caller param — which left `/offerte?global=1`, the URL every home-showcase card
+    // links to, as the one page the fallback never covered.
+    const isFiltered = Object.keys(callerParams)
+      .some(k => k !== 'language' && k !== 'country' && k !== 'global');
     // Not just on zero. A half-recovered listing answering with a handful of ads is worse
     // than one answering with none: the page looks like real data — "three jobs in all of
     // Switzerland" — instead of an obvious outage, and would stay that way indefinitely
