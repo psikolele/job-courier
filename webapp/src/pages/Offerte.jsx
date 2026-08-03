@@ -10,6 +10,7 @@ import { getApplyData } from '../utils/applyHelper';
 import { saveReturnUrl } from '../hooks/useReturnUrl';
 import JobSearchWidget from '../components/JobSearchWidget';
 import { getCantonValueFromParams } from '../utils/searchData';
+import { JobListItemSkeleton, JobDetailSkeleton } from '../components/ui/Skeleton';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -190,7 +191,11 @@ const Offerte = ({ setShowLoginModal }) => {
                 if (!r1.ok) throw new Error('Failed to fetch jobs');
                 const firstData = await r1.json();
                 setJobs(firstData);
-                setLoading(false);
+                // An empty first page is not an answer yet: phase 2 reads more pages and,
+                // when the upstream listing is down, the slower company-page fallback.
+                // Dropping the loading flag here would show "nessuna offerta trovata" for
+                // several seconds before the offers appeared.
+                if (firstData.length > 0) setLoading(false);
                 if (!isMobile && !selectedJobId && firstData.length > 0) {
                     const newParams = new URLSearchParams(searchParams);
                     newParams.set('jobId', firstData[0].id.toString());
@@ -202,7 +207,13 @@ const Offerte = ({ setShowLoginModal }) => {
                 if (r2.ok) {
                     const allData = await r2.json();
                     setJobs(allData);
+                    if (!isMobile && !selectedJobId && firstData.length === 0 && allData.length > 0) {
+                        const newParams = new URLSearchParams(searchParams);
+                        newParams.set('jobId', allData[0].id.toString());
+                        setSearchParams(newParams, { replace: true });
+                    }
                 }
+                setLoading(false);
             } catch (err) {
                 console.error(err);
                 setError(err.message);
@@ -415,10 +426,8 @@ const Offerte = ({ setShowLoginModal }) => {
                         <div className="w-full md:w-[40%] lg:w-[35%] flex flex-col" style={{ background: '#FFFFFF', padding: '28px 24px' }}>
 
                             {loading ? (
-                                <div className="space-y-2">
-                                    {[1, 2, 3, 4, 5].map(i => (
-                                        <div key={i} className="animate-pulse" style={{ background: GL, padding: 20, height: 110 }} />
-                                    ))}
+                                <div className="flex flex-col gap-1" style={{ background: 'rgba(5,11,43,0.04)' }}>
+                                    {[1, 2, 3, 4, 5, 6].map(i => <JobListItemSkeleton key={i} />)}
                                 </div>
                             ) : error ? (
                                 <div style={{ padding: 16, background: '#FFF0F0', color: '#C00', fontFamily: body, fontSize: 13 }}>{error}</div>
@@ -701,6 +710,11 @@ const Offerte = ({ setShowLoginModal }) => {
                                             </div>
                                         </div>
                                     </>
+                                ) : (loading || detailLoading) ? (
+                                    // Still resolving: a deep-linked offer is loaded from the detail
+                                    // endpoint, which can answer after the list does. "Seleziona
+                                    // un'offerta" here would claim nothing is coming.
+                                    <JobDetailSkeleton />
                                 ) : (
                                     <div className="flex-1 flex items-center justify-center p-8 text-center" style={{
                                         fontFamily: editorial, fontStyle: 'italic',

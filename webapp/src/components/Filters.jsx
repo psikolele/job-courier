@@ -8,6 +8,7 @@ import { fetchLatestJobs } from '../services/api';
 import useRegistrationWall from '../hooks/useRegistrationWall';
 import useShowcaseJobs from '../hooks/useShowcaseJobs';
 import RegistrationWallModal from './RegistrationWallModal';
+import { ShowcaseCardSkeleton } from './ui/Skeleton';
 
 
 const deriveSector = (title, sector) => {
@@ -389,9 +390,7 @@ const Filters = () => {
                         }}
                     >
                         {jobsLoading ? (
-                            [...Array(12)].map((_, i) => (
-                                <div key={i} className="w-[290px] md:w-[340px] shrink-0 flex-none animate-pulse bg-white p-6 h-[235px] snap-center" style={{ borderBottom: '2.5px solid var(--brand-fuchsia)' }}></div>
-                            ))
+                            [...Array(12)].map((_, i) => <ShowcaseCardSkeleton key={i} />)
                         ) : (
                             showcaseJobs.map((job, idx) => (
                                 <motion.div
