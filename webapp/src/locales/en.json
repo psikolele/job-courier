@@ -1,4 +1,42 @@
 {
+  "seo": {
+    "home": {
+      "title": "JobCourier - The Swiss job portal",
+      "description": "Switzerland's leading portal connecting the best talent with successful companies. Search thousands of job openings across every sector."
+    },
+    "offerte": {
+      "title": "Jobs in Switzerland - JobCourier",
+      "description": "Every job published on JobCourier: filter by sector, role and canton and apply in a few clicks."
+    },
+    "pricing": {
+      "title": "Solutions and pricing for companies - JobCourier",
+      "description": "Post your openings and find candidates in Switzerland: JobCourier plans, pricing and services for companies and agencies."
+    },
+    "come_funziona": {
+      "title": "How it works - JobCourier",
+      "description": "How JobCourier works for candidates and companies, from finding the opening to applying, step by step."
+    },
+    "contatti": {
+      "title": "Contact - JobCourier",
+      "description": "Get in touch about posting jobs, applications and partnerships. The JobCourier team will get back to you."
+    },
+    "faq": {
+      "title": "Frequently asked questions - JobCourier",
+      "description": "Answers to the questions candidates and companies ask most about JobCourier."
+    },
+    "condizioni": {
+      "title": "Terms and conditions - JobCourier",
+      "description": "General terms of use for the JobCourier portal."
+    },
+    "cookie": {
+      "title": "Cookie Policy - JobCourier",
+      "description": "How JobCourier uses cookies and how to manage your preferences."
+    },
+    "offerta": {
+      "title": "{{title}} - {{company}} - JobCourier",
+      "description": "{{title}} at {{company}} - {{location}}. Apply on JobCourier."
+    }
+  },
   "nav": {
     "candidates": "CANDIDATES",
     "companies": "COMPANIES",

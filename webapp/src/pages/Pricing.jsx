@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Lock, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SectionLabel from '../components/ui/SectionLabel.jsx';
+import PageSeo from '../components/PageSeo';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -228,6 +229,7 @@ const Pricing = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen overflow-x-hidden" style={{ background: GL }}>
+            <PageSeo page="pricing" />
 
             {/* HERO */}
             <section className="relative min-h-[60vh] pt-32 pb-20 px-6 md:px-12 flex flex-col justify-center animate-fade-in" style={{ background: N }}>

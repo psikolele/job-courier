@@ -11,6 +11,9 @@
     <title>JobCourier - Il portale svizzero per il lavoro</title>
 
     <!-- Open Graph / Facebook -->
+    <!-- These stay static: they are what a crawler that does not run JavaScript sees.
+         Helmet appends rather than replaces them, so per-page Open Graph tags are not
+         set from the app — see components/PageSeo.jsx. -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="JobCourier - Il portale svizzero per il lavoro">
     <meta property="og:description" content="Il portale leader in Svizzera per connettere i migliori talenti con le aziende di successo. Cerca migliaia di offerte di lavoro in tutti i settori.">

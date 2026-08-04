@@ -1,4 +1,42 @@
 {
+  "seo": {
+    "home": {
+      "title": "JobCourier - Das Schweizer Stellenportal",
+      "description": "Das führende Schweizer Portal, das die besten Talente mit erfolgreichen Unternehmen verbindet. Tausende Stellenangebote aus allen Branchen."
+    },
+    "offerte": {
+      "title": "Stellenangebote in der Schweiz - JobCourier",
+      "description": "Alle auf JobCourier veröffentlichten Stellen: nach Branche, Funktion und Kanton filtern und mit wenigen Klicks bewerben."
+    },
+    "pricing": {
+      "title": "Lösungen und Preise für Unternehmen - JobCourier",
+      "description": "Inserate schalten und Kandidaten in der Schweiz finden: Pläne, Preise und Services von JobCourier für Unternehmen und Agenturen."
+    },
+    "come_funziona": {
+      "title": "So funktioniert es - JobCourier",
+      "description": "Wie JobCourier für Kandidaten und Unternehmen funktioniert — von der Stellensuche bis zur Bewerbung, Schritt für Schritt."
+    },
+    "contatti": {
+      "title": "Kontakt - JobCourier",
+      "description": "Schreiben Sie uns zu Stelleninseraten, Bewerbungen und Kooperationen. Das JobCourier-Team meldet sich."
+    },
+    "faq": {
+      "title": "Häufige Fragen - JobCourier",
+      "description": "Antworten auf die häufigsten Fragen von Kandidaten und Unternehmen zu JobCourier."
+    },
+    "condizioni": {
+      "title": "Allgemeine Geschäftsbedingungen - JobCourier",
+      "description": "Allgemeine Nutzungsbedingungen des Portals JobCourier."
+    },
+    "cookie": {
+      "title": "Cookie-Richtlinie - JobCourier",
+      "description": "Wie JobCourier Cookies verwendet und wie Sie Ihre Einstellungen verwalten."
+    },
+    "offerta": {
+      "title": "{{title}} - {{company}} - JobCourier",
+      "description": "{{title}} bei {{company}} - {{location}}. Jetzt auf JobCourier bewerben."
+    }
+  },
   "nav": {
     "candidates": "KANDIDATEN",
     "companies": "UNTERNEHMEN",

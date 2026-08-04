@@ -9,6 +9,7 @@ import ApplyRedirectModal from '../components/ApplyRedirectModal';
 import { getApplyData } from '../utils/applyHelper';
 import { saveReturnUrl } from '../hooks/useReturnUrl';
 import JobSearchWidget from '../components/JobSearchWidget';
+import PageSeo from '../components/PageSeo';
 import { getCantonValueFromParams } from '../utils/searchData';
 import { JobListItemSkeleton, JobDetailSkeleton } from '../components/ui/Skeleton';
 
@@ -344,6 +345,7 @@ const Offerte = ({ setShowLoginModal }) => {
 
     return (
         <div className="pt-24 min-h-screen" style={{ background: GL }}>
+            <PageSeo page="offerte" />
             <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-8 pb-24 md:pb-32">
                 {/* Page header */}
                 <div className="mb-8 flex flex-col md:flex-row md:items-end gap-8 md:gap-12">

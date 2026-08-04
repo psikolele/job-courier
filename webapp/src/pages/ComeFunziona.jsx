@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, UserPlus, CreditCard, FileText, Users, MapPin, Zap, Headphones } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import PageSeo from '../components/PageSeo';
 import {
     HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover,
 } from '@/components/ui/animated-slideshow';
@@ -66,6 +67,7 @@ const ComeFunziona = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen overflow-x-hidden" style={{ background: GL }}>
+            <PageSeo page="come_funziona" />
 
             {/* HERO */}
             <section className="relative min-h-[60vh] pt-32 pb-20 px-6 md:px-12 flex flex-col justify-center" style={{ background: N }}>

@@ -7,6 +7,7 @@ import RegistrationWallModal from '../components/RegistrationWallModal';
 import ApplyRedirectModal from '../components/ApplyRedirectModal';
 import { isUserLoggedIn } from '../hooks/useRegistrationWall';
 import { saveReturnUrl } from '../hooks/useReturnUrl';
+import PageSeo from '../components/PageSeo';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -178,6 +179,14 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
 
     return (
         <div className="pt-24 min-h-screen pb-16" style={{ background: GL }}>
+            <PageSeo
+                page="offerta"
+                values={{
+                    title: job.title,
+                    company: job.company?.name || 'JobCourier',
+                    location: job.location || 'Svizzera',
+                }}
+            />
             <div className="max-w-6xl mx-auto px-6 md:px-12 py-8">
                 
                 {/* Back button */}

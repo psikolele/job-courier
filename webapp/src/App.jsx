@@ -96,9 +96,11 @@ function App() {
 
   return (
     <div className="relative w-full min-h-screen" style={{ background: 'var(--brand-gray-light)', color: 'var(--brand-navy)' }}>
+      {/* Canonical and og:url only. The title and description live with the page that
+          knows what it is about — see components/PageSeo.jsx. Repeating a description
+          here does not act as a fallback: both tags end up in the head, and the generic
+          one comes first. */}
       <Helmet>
-        <title>JobCourier - Il portale svizzero per il lavoro</title>
-        <meta name="description" content="Trova il lavoro dei tuoi sogni in Svizzera o pubblica un annuncio per i migliori talenti su JobCourier." />
         <link rel="canonical" href={canonical} />
         <meta property="og:url" content={canonical} />
       </Helmet>

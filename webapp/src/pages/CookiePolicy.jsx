@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PageSeo from '../components/PageSeo';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -70,6 +71,7 @@ const CookieDeclaration = () => {
 const CookiePolicy = () => {
     return (
         <div className="min-h-screen overflow-x-hidden" style={{ background: GL }}>
+            <PageSeo page="cookie" />
             {/* HERO */}
             <section className="relative min-h-[40vh] pt-32 pb-16 px-6 md:px-12 flex flex-col justify-center" style={{ background: N }}>
                 <div className="container mx-auto w-full">

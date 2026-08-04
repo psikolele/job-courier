@@ -1,4 +1,42 @@
 {
+  "seo": {
+    "home": {
+      "title": "JobCourier - Le portail suisse de l'emploi",
+      "description": "Le portail suisse de référence pour relier les meilleurs talents aux entreprises qui recrutent. Des milliers d'offres dans tous les secteurs."
+    },
+    "offerte": {
+      "title": "Offres d'emploi en Suisse - JobCourier",
+      "description": "Toutes les offres publiées sur JobCourier : filtrez par secteur, fonction et canton, et postulez en quelques clics."
+    },
+    "pricing": {
+      "title": "Solutions et tarifs pour les entreprises - JobCourier",
+      "description": "Publiez vos annonces et trouvez des candidats en Suisse : forfaits, tarifs et services JobCourier pour entreprises et agences."
+    },
+    "come_funziona": {
+      "title": "Comment ça marche - JobCourier",
+      "description": "Comment JobCourier fonctionne pour les candidats et les entreprises, de la recherche d'offre à la candidature, étape par étape."
+    },
+    "contatti": {
+      "title": "Contact - JobCourier",
+      "description": "Écrivez-nous pour la publication d'annonces, les candidatures et les partenariats. L'équipe JobCourier vous répond."
+    },
+    "faq": {
+      "title": "Questions fréquentes - JobCourier",
+      "description": "Les réponses aux questions les plus fréquentes des candidats et des entreprises sur JobCourier."
+    },
+    "condizioni": {
+      "title": "Conditions générales - JobCourier",
+      "description": "Conditions générales d'utilisation du portail JobCourier."
+    },
+    "cookie": {
+      "title": "Politique de cookies - JobCourier",
+      "description": "Comment JobCourier utilise les cookies et comment gérer vos préférences."
+    },
+    "offerta": {
+      "title": "{{title}} - {{company}} - JobCourier",
+      "description": "{{title}} chez {{company}} - {{location}}. Postulez sur JobCourier."
+    }
+  },
   "nav": {
     "candidates": "CANDIDATS",
     "companies": "ENTREPRISES",

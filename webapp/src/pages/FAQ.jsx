@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import PageSeo from '../components/PageSeo';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -126,6 +127,7 @@ const FAQ = () => {
     const { t } = useTranslation();
     return (
     <div className="min-h-screen overflow-x-hidden" style={{ background: GL }}>
+        <PageSeo page="faq" />
         {/* HERO */}
         <section className="relative min-h-[40vh] pt-32 pb-16 px-6 md:px-12 flex flex-col justify-center" style={{ background: N }}>
             <div className="container mx-auto w-full">

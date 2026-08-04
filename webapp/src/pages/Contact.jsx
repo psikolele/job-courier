@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router-dom';
 import { Send, ArrowRight, Check, X, BookOpen, Headphones } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import PageSeo from '../components/PageSeo';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,6 +95,7 @@ const Contact = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen relative overflow-x-hidden" style={{ background: GL }}>
+            <PageSeo page="contatti" />
 
             {/* HERO */}
             <section className="relative pt-40 pb-24 overflow-hidden px-6 md:px-12 flex flex-col justify-center" style={{ background: N, minHeight: '60vh' }}>
