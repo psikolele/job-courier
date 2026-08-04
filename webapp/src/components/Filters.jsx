@@ -131,7 +131,9 @@ const Filters = () => {
                             sector: job.sector || 'Other',
                             role: job.role || 'Other',
                             company: job.company?.name || job.company,
-                            companyLogo: job.company?.logo || job.companyLogo || `https://www.google.com/s2/favicons?domain=${job.company?.domain || 'jobcourier.ch'}&sz=128`,
+                            // No jobcourier.ch favicon as a last resort: it stamped the
+                            // JobCourier mark onto other employers' ads.
+                            companyLogo: job.company?.logo || job.companyLogo || '',
                             link: job.link
                         };
                     });
@@ -455,12 +457,12 @@ const Filters = () => {
                                             </span>
                                         </div>
                                         {/* Right: logo, large */}
-                                        <img
+                                        {job.companyLogo && <img
                                             src={job.companyLogo}
                                             alt={job.company}
                                             onError={e => { e.currentTarget.style.display='none'; }}
                                             style={{ width: 64, height: 64, objectFit: 'contain', flexShrink: 0, borderRadius: 6, background: '#f8f8f8', padding: 4 }}
-                                        />
+                                        />}
                                     </div>
 
                                     {/* Tags row — always shown, label outside chip */}

@@ -248,9 +248,11 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                                     src={job.company?.logo} 
                                     alt={job.company?.name} 
                                     className="max-w-full max-h-full object-contain"
-                                    onError={(e) => {
-                                        e.target.src = `https://www.google.com/s2/favicons?domain=${job.company?.name.toLowerCase().replace(/[^a-z0-9]/g, '') + '.ch'}&sz=128`;
-                                    }}
+                                    // The old fallback guessed a domain from the company name and
+                                    // asked Google for its favicon, which answers with a generic
+                                    // globe — or JobCourier's own mark — for anything it does not
+                                    // know. An empty frame is honest; the name sits right below.
+                                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
                                 />
                             </div>
                             <h3 style={{ fontFamily: brand, fontWeight: 700, fontSize: 16, color: N, textTransform: 'uppercase', letterSpacing: '0.05em' }}>

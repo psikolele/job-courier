@@ -7,6 +7,7 @@ import fetch from 'node-fetch';
 
 import {
   parseCompanyRef, parseJobsFromHtml, parseJobDetailFromHtml,
+  parseCompaniesFromHtml, companyLogo,
   isArca24Enabled, resetSourceProbe,
 } from './_arca24.js';
 
@@ -139,5 +140,53 @@ describe('parseJobDetailFromHtml', () => {
   it('prende il corpo annuncio e non i blocchi rumore', () => {
     expect(detail.description).toContain('manutentore elettrico');
     expect(detail.description).not.toContain('Altri annunci');
+  });
+});
+
+// The company index the new portal serves: employer links carry a uiid and no slug,
+// and the logo is lazy-loaded so its `<img>` holds only a base64 placeholder.
+const COMPANIES_HTML = `
+<div class="resultstring">
+  <a href="/it/careers/company/profile?uiid=3244630">Gi Group SA</a>
+  <div class="imgContainer"><img src="data:image/jpeg;base64,/9j/4AAQ"></div>
+</div>
+<div class="resultstring">
+  <a href="/it/careers/company/profile?uiid=3243389">4 U Consulting</a>
+</div>`;
+
+describe('logo azienda', () => {
+  it('lo costruisce dall id azienda invece di ripiegare sulla favicon JobCourier', () => {
+    expect(companyLogo('3243389', '4 U Consulting'))
+      .toBe('https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243389.jpg');
+  });
+
+  it('senza id resta il ripiego per nome — mai un logo di un altra azienda', () => {
+    expect(companyLogo(null, 'Randstad Svizzera SA')).toContain('domain=randstad.ch');
+  });
+
+  it('azienda sconosciuta: nessun logo, non la favicon di JobCourier', () => {
+    expect(companyLogo(null, 'Azienda Riservata')).toBe('');
+  });
+
+  it('le offerte portano il logo dell azienda che assume, non quello di JobCourier', () => {
+    const [job] = parseJobsFromHtml(LIST_HTML);
+    expect(job.company.logo).toContain('logo_company_3244729');
+    expect(job.company.logo).not.toContain('jobcourier.ch&sz=');
+  });
+});
+
+describe('parseCompaniesFromHtml', () => {
+  const companies = parseCompaniesFromHtml(COMPANIES_HTML);
+
+  it('deriva lo slug dal nome quando il portale non lo espone più', () => {
+    // An empty slug made every card link to `/azienda/`, which matches no route
+    // and rendered the 404 page for all 35 employers.
+    expect(companies.map((c) => c.slug)).toEqual(['gi-group-sa', '4-u-consulting']);
+    expect(companies.every((c) => c.slug.length > 0)).toBe(true);
+  });
+
+  it('non prende il placeholder base64 come logo', () => {
+    expect(companies[0].logo).toBe(
+      'https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244630.jpg');
   });
 });

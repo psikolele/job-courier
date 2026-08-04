@@ -31,7 +31,11 @@ const AziendaDettaglio = () => {
                 const listRes = await fetch('/api/companies');
                 if (!listRes.ok) throw new Error('Impossibile recuperare l\'elenco aziende');
                 const list = await listRes.json();
-                const match = Array.isArray(list) ? list.find((c) => c.slug === slug) : null;
+                // Matching on the id too keeps links working when the upstream slug
+                // changes shape — it did once already, at the Arca24 switchover.
+                const match = Array.isArray(list)
+                    ? list.find((c) => c.slug === slug) || list.find((c) => String(c.id) === slug)
+                    : null;
 
                 if (!match) {
                     if (!cancelled) setStatus('not-found');

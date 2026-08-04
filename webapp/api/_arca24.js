@@ -96,14 +96,34 @@ export function parseCompanyRef(href = '') {
   return { id: null, slug: '' };
 }
 
+/**
+ * Last resort for ads published without a company profile — anonymous listings, mostly.
+ * It used to default to jobcourier.ch's own favicon, which put the JobCourier mark on
+ * other employers' ads. Better to return nothing and let the front-end show the name.
+ */
 function fallbackLogo(companyName = '') {
   const n = companyName.toLowerCase();
-  let domain = 'jobcourier.ch';
+  let domain = '';
   if (n.includes('randstad')) domain = 'randstad.ch';
   else if (n.includes('adecco')) domain = 'adecco.ch';
   else if (n.includes('manpower')) domain = 'manpower.ch';
   else if (n.includes('gi group')) domain = 'gigroup.com';
-  return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+  return domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128` : '';
+}
+
+/**
+ * The portal serves every employer logo it holds under a path keyed by the company id,
+ * redirecting to a presigned S3 object. The list markup cannot be read for it — the
+ * `<img>` there carries a base64 placeholder and the real source is set by the portal's
+ * own script — but the id is in the company link, so the URL can be built instead.
+ *
+ * 30 of the 35 employers currently have one; the rest answer 404 and the front-end falls
+ * back to the company name. Without this every ad carried the JobCourier favicon, which
+ * read as "this ad belongs to JobCourier".
+ */
+export function companyLogo(id, companyName = '') {
+  if (!id) return fallbackLogo(companyName);
+  return `${ARCA24_HOST}/custom_visojobcourier/media/logo/logo_company_${id}.jpg`;
 }
 
 /**
@@ -154,9 +174,10 @@ export function parseJobsFromHtml(html, offset = 0) {
       role: 'Non specificato',
       company: {
         name: companyName,
-        logo: fallbackLogo(companyName),
+        logo: companyLogo(companyRef.id, companyName),
         domain: companyName.toLowerCase().replace(/[^a-z0-9]/g, '') + '.ch',
         arca24_id: companyRef.id,
+        slug: companyRef.slug || slugify(companyName),
       },
       location,
       image: `${PLACEHOLDER_IMG}&sig=${offset + i}`,
@@ -223,17 +244,18 @@ export function parseJobDetailFromHtml(html, id) {
   // Attacker-controlled markup: whoever publishes the ad writes it. See _sanitize.js.
   description = sanitizeHtml(description);
 
+  const companyRef = parseCompanyRef($('a[href*="/careers/company/"]').first().attr('href') || '');
+
   const logo = $('[itemprop="image"]').first().attr('content')
     || $('[itemprop="image"]').first().attr('src')
-    || fallbackLogo(companyName);
+    || companyLogo(companyRef.id, companyName);
 
-  const companyRef = parseCompanyRef($('a[href*="/careers/company/"]').first().attr('href') || '');
   const apply_url = `${ARCA24_HOST}/${LANG}/careers/jobad/${id}`;
 
   return {
     id,
     title,
-    company: { name: companyName, logo, arca24_id: companyRef.id },
+    company: { name: companyName, logo, arca24_id: companyRef.id, slug: companyRef.slug || slugify(companyName) },
     location,
     sector: prop('industry') || 'Non specificato',
     role: prop('occupationalCategory') || 'Non specificato',
@@ -383,8 +405,11 @@ export function parseCompaniesFromHtml(html) {
     companies.push({
       id,
       name,
-      slug,
-      logo: fallbackLogo(name),
+      // The new portal links employers as `profile?uiid=<id>` and no longer carries a
+      // slug, so one is derived from the name. Without it every card linked to
+      // `/azienda/` — a path that matches no route and rendered the 404 page.
+      slug: slug || slugify(name),
+      logo: companyLogo(id, name),
       jobs_count,
       jobroom_url: new URL($link.attr('href') || '', `${ARCA24_HOST}/`).toString(),
     });
@@ -433,8 +458,8 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
   return {
     id,
     name,
-    slug: slug || '',
-    logo: $('[itemprop="image"]').first().attr('content') || fallbackLogo(name || ''),
+    slug: slug || slugify(name || ''),
+    logo: $('[itemprop="image"]').first().attr('content') || companyLogo(id, name || ''),
     location,
     sector: '',
     brand_title: '',

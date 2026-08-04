@@ -614,7 +614,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                         flexShrink: 0
                                                     }}>
-                                                        <img src={selectedJob.company.logo} alt={selectedJob.company.name} className="max-w-full max-h-full object-contain grayscale" />
+                                                        <img src={selectedJob.company.logo} alt={selectedJob.company.name} onError={e => { e.currentTarget.style.display = 'none'; }} className="max-w-full max-h-full object-contain grayscale" />
                                                     </div>
                                                 )}
                                             </div>

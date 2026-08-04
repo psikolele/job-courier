@@ -141,7 +141,7 @@ const AziendeCheAssumono = () => {
                                 transition={{ delay: Math.min(idx, 20) * 0.03 }}
                             >
                                 <Link
-                                    to={`/azienda/${company.slug}`}
+                                    to={`/azienda/${company.slug || company.id}`}
                                     className="group relative aspect-square flex flex-col items-center justify-center p-6 transition-colors duration-200"
                                     style={{ background: '#FFFFFF', borderRadius: 0 }}
                                 >

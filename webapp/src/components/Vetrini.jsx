@@ -4,23 +4,32 @@ import { motion } from 'framer-motion';
 
 const Vetrini = () => {
     const { t } = useTranslation();
+    // Both the logo and the profile link are keyed by the employer's portal id, so the
+    // showcase holds ids and builds the URLs. Previously each entry carried a full
+    // `employer/view-company.php` link, which the Arca24 portal answers with a page whose
+    // only content is `localStorage.clear(); location.reload(true)` — an endless reload
+    // loop. Its logo path (`custom_jobcourier/`) is the retired one and is on borrowed time.
+    const PORTAL = 'https://jobroom.jobcourier.ch';
+    const logoUrl = (id) => `${PORTAL}/custom_visojobcourier/media/logo/logo_company_${id}.jpg`;
+    const profileUrl = (id) => `${PORTAL}/it/careers/company/profile?uiid=${id}`;
+
     const companies = [
-        { name: "Orienta SA", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243388.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243388&company-name=orienta-sa" },
-        { name: "Randstad Svizzera SA", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244729.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244729&company-name=randstad-svizzera-sa" },
-        { name: "Manpower", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244661.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244661&company-name=manpower" },
-        { name: "PKB Private Bank SA", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244624.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244624&company-name=pkb-private-bank-sa" },
-        { name: "Finders SA", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243489.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243489&company-name=finders-sa" },
-        { name: "FISIOTERAPIA IGEA SAGL", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244807.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244807&company-name=fisioterapia-igea-sagl" },
-        { name: "Aposto Personal GmbH", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244399.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244399&company-name=aposto-personal-gmbh" },
-        { name: "Approach People Recruitment", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244226.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244226&company-name=approach-people-recruitment" },
-        { name: "Team Personnel Solutions SA", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243352.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243352&company-name=team-personnel-solutions-sa" },
-        { name: "Work Selection AG", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243557.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243557&company-name=work-selection-ag" },
-        { name: "4 U Consulting", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243389.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243389&company-name=4-u-consulting" },
-        { name: "Rapelli - ORIOR Food AG", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244679.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244679&company-name=rapelli---orior-food-ag" },
-        { name: "Lares Sagl", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244801.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244801&company-name=lares-sagl" },
-        { name: "E-Work Sagl", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3244738.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3244738&company-name=e-work-sagl" },
-        { name: "ER Services Sagl", logo: "https://jobroom.jobcourier.ch/custom_jobcourier/media/logo/logo_company_3243694.jpg", link: "https://jobroom.jobcourier.ch/employer/view-company.php?id=3243694&company-name=er-services-sagl" }
-    ];
+        { name: "Orienta SA", id: 3243388 },
+        { name: "Randstad Svizzera SA", id: 3244729 },
+        { name: "Manpower", id: 3244661 },
+        { name: "PKB Private Bank SA", id: 3244624 },
+        { name: "Finders SA", id: 3243489 },
+        { name: "FISIOTERAPIA IGEA SAGL", id: 3244807 },
+        { name: "Aposto Personal GmbH", id: 3244399 },
+        { name: "Approach People Recruitment", id: 3244226 },
+        { name: "Team Personnel Solutions SA", id: 3243352 },
+        { name: "Work Selection AG", id: 3243557 },
+        { name: "4 U Consulting", id: 3243389 },
+        { name: "Rapelli - ORIOR Food AG", id: 3244679 },
+        { name: "Lares Sagl", id: 3244801 },
+        { name: "E-Work Sagl", id: 3244738 },
+        { name: "ER Services Sagl", id: 3243694 }
+    ].map((c) => ({ ...c, logo: logoUrl(c.id), link: profileUrl(c.id) }));
 
     const N = 'var(--brand-navy)';
     const F = 'var(--brand-fuchsia)';
@@ -79,6 +88,7 @@ const Vetrini = () => {
                                 <img
                                     src={company.logo}
                                     alt={company.name}
+                                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
                                     className="max-w-full max-h-[70%] object-contain transition-all duration-300 mix-blend-multiply grayscale group-hover:grayscale-0"
                                 />
                             </div>
