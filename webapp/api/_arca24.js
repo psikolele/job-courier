@@ -429,7 +429,49 @@ export function parseCompaniesFromHtml(html) {
 // paginates forever cannot spin here.
 const COMPANY_INDEX_MAX_PAGES = 8;
 
-export async function fetchCompanies() {
+/**
+ * Whether an employer has any open position right now.
+ *
+ * The company index lists everyone who has a profile, with no count and no way to tell
+ * the two apart — which put employers with nothing to offer in the home showcase while
+ * Adecco and Gi Group, both hiring, were missing from it. The profile page answers 404
+ * when there is nothing to list, so a HEAD is the whole check: no body, one request.
+ *
+ * `null` means the probe itself failed. Callers keep those: hiding an employer because
+ * the portal was briefly slow would be a worse error than showing an empty profile.
+ */
+async function probeHasJobs(id, attempts = 2) {
+  for (let i = 0; i < attempts; i++) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), REQUEST_TIMEOUT_MS);
+    try {
+      const res = await fetch(`${ARCA24_HOST}/${LANG}/careers/company/profile?uiid=${id}`,
+        { method: 'HEAD', headers, signal: ctrl.signal });
+      if (res.status === 404) return false;
+      if (res.ok) return true;
+    } catch {
+      // Timeout or connection reset — worth one more try before giving up on this one.
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  return null;
+}
+
+/** Probing thirty-odd employers at once is what made the portal start refusing us. */
+const PROBE_CONCURRENCY = 6;
+
+async function withHasJobs(companies) {
+  const out = [];
+  for (let i = 0; i < companies.length; i += PROBE_CONCURRENCY) {
+    const batch = companies.slice(i, i + PROBE_CONCURRENCY);
+    const flags = await Promise.all(batch.map(c => probeHasJobs(c.id)));
+    batch.forEach((c, j) => out.push({ ...c, has_jobs: flags[j] }));
+  }
+  return out;
+}
+
+export async function fetchCompanies({ withJobStatus = false } = {}) {
   const byId = new Map();
   for (let page = 1; page <= COMPANY_INDEX_MAX_PAGES; page++) {
     let batch = [];
@@ -445,7 +487,7 @@ export async function fetchCompanies() {
 
   const companies = [...byId.values()];
   companies.sort((a, b) => a.name.localeCompare(b.name, 'it', { sensitivity: 'base' }));
-  return companies;
+  return withJobStatus ? withHasJobs(companies) : companies;
 }
 
 export function parseCompanyDetailFromHtml(html, id, slug) {

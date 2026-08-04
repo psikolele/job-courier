@@ -8,6 +8,9 @@
   "functions": {
     "api/jobs.js": {
       "maxDuration": 60
+    },
+    "api/companies.js": {
+      "maxDuration": 60
     }
   },
   "rewrites": [

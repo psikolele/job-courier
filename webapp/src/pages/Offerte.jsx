@@ -309,19 +309,21 @@ const Offerte = ({ setShowLoginModal }) => {
     const handleApply = (job) => {
         if (!job) return;
 
-        // Gate: must be logged in to apply
-        if (!wall.isAuthed) {
-            saveReturnUrl();
-            wall.setIsOpen(true);
-            return;
-        }
-
         // Combine list job parameters with scraped detail parameters if available
         const isCurrentlySelected = selectedJobDetail && (jobIdKey(selectedJobDetail.id) === jobIdKey(job.jobroom_id || job.id));
         const applyInfo = getApplyData(job, isCurrentlySelected ? selectedJobDetail : null);
 
+        // An ad that applies on the employer's own site skips the wall: asking for an
+        // account to reach someone else's form gains us nothing and costs the candidate
+        // the application. The wall guards our own apply flow, not the exit.
         if (applyInfo.redirect && applyInfo.url) {
             setRedirectModal({ open: true, url: applyInfo.url, company: job.company?.name || '' });
+            return;
+        }
+
+        if (!wall.isAuthed) {
+            saveReturnUrl();
+            wall.setIsOpen(true);
             return;
         }
 

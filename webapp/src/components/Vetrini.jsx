@@ -1,44 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+const MAX_TILES = 15;
+
 const Vetrini = () => {
     const { t } = useTranslation();
-    // Both the logo and the link are keyed by the employer's portal id, so the showcase
-    // holds ids and builds the URLs.
-    //
-    // Each entry used to carry a full `employer/view-company.php` link, which the Arca24
-    // portal answers with a page whose only content is
-    // `localStorage.clear(); location.reload(true)` — an endless reload loop. Its logo
-    // path (`custom_jobcourier/`) is the retired one and is on borrowed time.
-    //
-    // The link stays on our own company page rather than going out to the portal: the
-    // portal answers 404 for an employer with no open position, which is three of these
-    // fifteen on any given day, and that is not a reason to show the visitor a dead end.
-    // Numeric on purpose — four of the fifteen are missing from the company index our
-    // slugs come from, and the detail page reads an id without needing that index.
-    const PORTAL = 'https://jobroom.jobcourier.ch';
-    const logoUrl = (id) => `${PORTAL}/custom_visojobcourier/media/logo/logo_company_${id}.jpg`;
-    const profileUrl = (id) => `/azienda/${id}`;
 
-    const companies = [
-        { name: "Orienta SA", id: 3243388 },
-        { name: "Randstad Svizzera SA", id: 3244729 },
-        { name: "Manpower", id: 3244661 },
-        { name: "PKB Private Bank SA", id: 3244624 },
-        { name: "Finders SA", id: 3243489 },
-        { name: "FISIOTERAPIA IGEA SAGL", id: 3244807 },
-        { name: "Aposto Personal GmbH", id: 3244399 },
-        { name: "Approach People Recruitment", id: 3244226 },
-        { name: "Team Personnel Solutions SA", id: 3243352 },
-        { name: "Work Selection AG", id: 3243557 },
-        { name: "4 U Consulting", id: 3243389 },
-        { name: "Rapelli - ORIOR Food AG", id: 3244679 },
-        { name: "Lares Sagl", id: 3244801 },
-        { name: "E-Work Sagl", id: 3244738 },
-        { name: "ER Services Sagl", id: 3243694 }
-    ].map((c) => ({ ...c, logo: logoUrl(c.id), link: profileUrl(c.id) }));
+    // The showcase was a hardcoded list of fifteen employers, written before the Arca24
+    // migration and never revisited. By August it showed six who had no open position and
+    // left out Adecco and Gi Group, both hiring — a wall of logos that says "these are the
+    // companies on JobCourier" while contradicting the offers page. It now reads the live
+    // roster and keeps only employers with something to apply to.
+    //
+    // The link stays on our own company page rather than going out to the portal, which
+    // answers 404 for an employer between openings. Its old `employer/view-company.php`
+    // links were worse still: Arca24 serves those as `localStorage.clear();
+    // location.reload(true)` — an endless reload loop.
+    const [companies, setCompanies] = useState([]);
+    const [failedLogos, setFailedLogos] = useState({});
+
+    useEffect(() => {
+        let cancelled = false;
+        fetch('/api/companies?withJobs=1')
+            .then((r) => (r.ok ? r.json() : []))
+            .then((list) => {
+                if (cancelled || !Array.isArray(list)) return;
+                setCompanies(
+                    list
+                        // Strictly true: `null` means the probe failed, and a tile that
+                        // opens on "nessuna offerta attiva" is the thing being fixed here.
+                        // If the portal is unreachable the section hides itself instead.
+                        .filter((c) => c.has_jobs === true)
+                        .slice(0, MAX_TILES)
+                        .map((c) => ({ ...c, link: `/azienda/${c.id}` }))
+                );
+            })
+            .catch(() => {});
+        return () => { cancelled = true; };
+    }, []);
 
     const N = 'var(--brand-navy)';
     const F = 'var(--brand-fuchsia)';
@@ -47,6 +48,9 @@ const Vetrini = () => {
     const brand = 'var(--font-brand)';
     const editorial = 'var(--font-editorial)';
     const body = 'var(--font-body)';
+
+    // Nothing to show yet, or the roster came back empty: no heading over an empty grid.
+    if (companies.length === 0) return null;
 
     return (
         <section className="py-16 md:py-20 px-6 md:px-12 w-full" id="vetrini" style={{ background: '#FFFFFF' }}>
@@ -93,12 +97,22 @@ const Vetrini = () => {
                                 style={{ background: '#FFFFFF', borderRadius: 0 }}
                             >
                             <div className="w-full h-full flex items-center justify-center mb-2">
-                                <img
-                                    src={company.logo}
-                                    alt={company.name}
-                                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                                    className="max-w-full max-h-[70%] object-contain transition-all duration-300 mix-blend-multiply grayscale group-hover:grayscale-0"
-                                />
+                                {/* Five of the roster's employers have no logo on the portal;
+                                    the name carries the tile for those. */}
+                                {failedLogos[company.id] || !company.logo ? (
+                                    <span style={{
+                                        fontFamily: brand, fontWeight: 700, fontSize: 13,
+                                        color: GM, textAlign: 'center', textTransform: 'uppercase',
+                                        letterSpacing: '0.04em'
+                                    }}>{company.name}</span>
+                                ) : (
+                                    <img
+                                        src={company.logo}
+                                        alt={company.name}
+                                        onError={() => setFailedLogos((f) => ({ ...f, [company.id]: true }))}
+                                        className="max-w-full max-h-[70%] object-contain transition-all duration-300 mix-blend-multiply grayscale group-hover:grayscale-0"
+                                    />
+                                )}
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                                 <span style={{ width: 6, height: 6, background: F, display: 'inline-block' }} />

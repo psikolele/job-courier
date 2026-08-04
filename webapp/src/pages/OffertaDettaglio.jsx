@@ -123,19 +123,21 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
     const handleApplyClick = () => {
         if (!job) return;
 
+        // An ad that applies on the employer's own site is checked before the wall: asking
+        // for an account to reach someone else's form gains us nothing and costs the
+        // candidate the application. The wall guards our own apply flow, not the exit.
+        if (job.redirect && job.external_url) {
+            setRedirectModal({ open: true, url: job.external_url, company: job.company?.name || '' });
+            return;
+        }
+
         if (!isUserLoggedIn()) {
             saveReturnUrl();
             setWallOpen(true);
             return;
         }
 
-        // Logged in: external job → redirect modal, internal → open directly
-        if (job.redirect && job.external_url) {
-            setRedirectModal({ open: true, url: job.external_url, company: job.company?.name || '' });
-        } else {
-            const targetUrl = job.apply_url || job.original_link;
-            window.open(targetUrl, '_blank', 'noopener,noreferrer');
-        }
+        window.open(job.apply_url || job.original_link, '_blank', 'noopener,noreferrer');
     };
 
     if (loading) {
