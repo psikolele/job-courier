@@ -75,12 +75,14 @@ export async function isArca24Enabled() {
 // page only means fewer ads in the pool, which every caller already tolerates.
 const REQUEST_TIMEOUT_MS = 6000;
 
-export async function fetchHtml(path) {
+export async function fetchHtml(path, { acceptNotFound = false } = {}) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), REQUEST_TIMEOUT_MS);
   try {
     const res = await fetch(`${ARCA24_HOST}${path}`, { headers, signal: ctrl.signal });
-    if (!res.ok) throw new Error(`Arca24 responded ${res.status} for ${path}`);
+    if (!res.ok && !(acceptNotFound && res.status === 404)) {
+      throw new Error(`Arca24 responded ${res.status} for ${path}`);
+    }
     return await res.text();
   } finally {
     clearTimeout(timer);
@@ -450,7 +452,9 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
   const $ = cheerio.load(html);
 
   const heading = $('h1, h2').first().text().replace(/\s+/g, ' ').trim();
-  const name = heading.replace(/Annunci totali\s*:\s*\d+\s*$/, '').trim() || null;
+  // The count is missing, not zero, when the employer has no open position — so the
+  // digits are optional here, or the label itself ends up glued to the company name.
+  const name = heading.replace(/Annunci totali\s*:\s*\d*\s*$/, '').trim() || null;
 
   const jobs = parseJobsFromHtml(html);
   const location = jobs[0]?.location || '';
@@ -472,6 +476,9 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
 }
 
 export async function fetchCompanyDetail(id, slug) {
-  const html = await fetchHtml(`/${LANG}/careers/company/profile?uiid=${id}`);
+  // An employer with no open position answers 404 — but with its real profile page in
+  // the body, name and all. Treating that as an error turned "no ads right now" into a
+  // dead link, which is what the home showcase used to do to three of its fifteen tiles.
+  const html = await fetchHtml(`/${LANG}/careers/company/profile?uiid=${id}`, { acceptNotFound: true });
   return parseCompanyDetailFromHtml(html, id, slug);
 }

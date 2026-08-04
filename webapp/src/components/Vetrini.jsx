@@ -1,17 +1,26 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Vetrini = () => {
     const { t } = useTranslation();
-    // Both the logo and the profile link are keyed by the employer's portal id, so the
-    // showcase holds ids and builds the URLs. Previously each entry carried a full
-    // `employer/view-company.php` link, which the Arca24 portal answers with a page whose
-    // only content is `localStorage.clear(); location.reload(true)` — an endless reload
-    // loop. Its logo path (`custom_jobcourier/`) is the retired one and is on borrowed time.
+    // Both the logo and the link are keyed by the employer's portal id, so the showcase
+    // holds ids and builds the URLs.
+    //
+    // Each entry used to carry a full `employer/view-company.php` link, which the Arca24
+    // portal answers with a page whose only content is
+    // `localStorage.clear(); location.reload(true)` — an endless reload loop. Its logo
+    // path (`custom_jobcourier/`) is the retired one and is on borrowed time.
+    //
+    // The link stays on our own company page rather than going out to the portal: the
+    // portal answers 404 for an employer with no open position, which is three of these
+    // fifteen on any given day, and that is not a reason to show the visitor a dead end.
+    // Numeric on purpose — four of the fifteen are missing from the company index our
+    // slugs come from, and the detail page reads an id without needing that index.
     const PORTAL = 'https://jobroom.jobcourier.ch';
     const logoUrl = (id) => `${PORTAL}/custom_visojobcourier/media/logo/logo_company_${id}.jpg`;
-    const profileUrl = (id) => `${PORTAL}/it/careers/company/profile?uiid=${id}`;
+    const profileUrl = (id) => `/azienda/${id}`;
 
     const companies = [
         { name: "Orienta SA", id: 3243388 },
@@ -71,19 +80,18 @@ const Vetrini = () => {
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" style={{ gap: 1, background: 'rgba(5,11,43,0.06)' }}>
                     {companies.map((company, idx) => (
-                        <motion.a
+                        <motion.div
                             key={idx}
-                            href={company.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
                             initial={{ opacity: 0, y: 12 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.03 }}
-                            className="group relative aspect-square flex flex-col items-center justify-center p-6 transition-colors duration-200"
-                            style={{ background: '#FFFFFF', borderRadius: 0 }}
-                            whileHover={{ backgroundColor: GL }}
                         >
+                            <Link
+                                to={company.link}
+                                className="group relative aspect-square flex flex-col items-center justify-center p-6 transition-colors duration-200 hover:bg-[var(--brand-gray-light)]"
+                                style={{ background: '#FFFFFF', borderRadius: 0 }}
+                            >
                             <div className="w-full h-full flex items-center justify-center mb-2">
                                 <img
                                     src={company.logo}
@@ -105,7 +113,8 @@ const Vetrini = () => {
                                     {t('showcase.see_jobs')}
                                 </span>
                             </div>
-                        </motion.a>
+                            </Link>
+                        </motion.div>
                     ))}
                 </div>
             </div>

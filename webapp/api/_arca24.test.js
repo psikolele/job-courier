@@ -7,7 +7,7 @@ import fetch from 'node-fetch';
 
 import {
   parseCompanyRef, parseJobsFromHtml, parseJobDetailFromHtml,
-  parseCompaniesFromHtml, companyLogo,
+  parseCompaniesFromHtml, parseCompanyDetailFromHtml, companyLogo,
   isArca24Enabled, resetSourceProbe,
 } from './_arca24.js';
 
@@ -172,6 +172,15 @@ describe('logo azienda', () => {
     const [job] = parseJobsFromHtml(LIST_HTML);
     expect(job.company.logo).toContain('logo_company_3244729');
     expect(job.company.logo).not.toContain('jobcourier.ch&sz=');
+  });
+});
+
+describe('parseCompanyDetailFromHtml', () => {
+  it('stacca il conteggio annunci dal nome anche quando manca il numero', () => {
+    // An employer with no open position gets the bare label, and the page answers 404
+    // while still carrying its profile — that is "no ads today", not a dead company.
+    const html = '<h1>FISIOTERAPIA IGEA SAGL Annunci totali:</h1>';
+    expect(parseCompanyDetailFromHtml(html, '3244807', '').name).toBe('FISIOTERAPIA IGEA SAGL');
   });
 });
 

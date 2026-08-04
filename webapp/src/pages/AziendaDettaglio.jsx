@@ -37,12 +37,17 @@ const AziendaDettaglio = () => {
                     ? list.find((c) => c.slug === slug) || list.find((c) => String(c.id) === slug)
                     : null;
 
-                if (!match) {
+                // The roster only lists employers the portal's company index returns, and
+                // that index leaves some out — four of the fifteen in the home showcase.
+                // A numeric url is an employer id, so it can be read on its own.
+                const target = match || (/^\d+$/.test(slug) ? { id: slug, slug: '' } : null);
+
+                if (!target) {
                     if (!cancelled) setStatus('not-found');
                     return;
                 }
 
-                const detailRes = await fetch(`/api/company-detail?id=${match.id}&slug=${match.slug}`);
+                const detailRes = await fetch(`/api/company-detail?id=${target.id}&slug=${target.slug}`);
                 if (!detailRes.ok) throw new Error('Impossibile recuperare i dettagli azienda');
                 const data = await detailRes.json();
 
