@@ -93,6 +93,9 @@ const Vetrini = () => {
                         >
                             <Link
                                 to={company.link}
+                                // Hand the name and logo to the detail page so its header
+                                // is real while the portal answers.
+                                state={{ name: company.name, logo: company.logo }}
                                 className="group relative aspect-square flex flex-col items-center justify-center p-6 transition-colors duration-200 hover:bg-[var(--brand-gray-light)]"
                                 style={{ background: '#FFFFFF', borderRadius: 0 }}
                             >

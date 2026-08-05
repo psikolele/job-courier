@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { MapPin, Briefcase, ExternalLink, ChevronLeft } from 'lucide-react';
 import SectionLabel from '../components/ui/SectionLabel.jsx';
+import { CompanyDetailSkeleton } from '../components/ui/Skeleton';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -16,6 +17,14 @@ const body = 'var(--font-body)';
 const AziendaDettaglio = () => {
     const { t } = useTranslation();
     const { slug } = useParams();
+
+    // The company grid and the home showcase already hold the name and logo of the tile
+    // being clicked, so they hand them over. That makes the header real from the first
+    // frame instead of a pair of grey bars — the portal takes seconds to answer, and
+    // those seconds are the whole reason this page looked broken. Absent when the visitor
+    // arrives from a direct URL or a search result; the skeleton covers that.
+    const { state } = useLocation();
+    const preview = state && typeof state === 'object' ? state : {};
 
     // 'loading' | 'not-found' | 'error' | 'ready'
     const [status, setStatus] = useState('loading');
@@ -67,8 +76,11 @@ const AziendaDettaglio = () => {
 
     // Single top-level Helmet (not re-mounted per branch) to avoid react-helmet-async
     // losing the title tag during rapid status transitions (loading -> ready).
-    const helmetTitle = status === 'ready' && detail
-        ? `${detail.name} - Lavora con noi - JobCourier`
+    // `preview.name` covers the loading frame when we arrived from a tile: the browser tab
+    // names the company straight away instead of the generic listing title.
+    const shownName = (status === 'ready' && detail?.name) || preview.name || null;
+    const helmetTitle = shownName
+        ? `${shownName} - Lavora con noi - JobCourier`
         : status === 'not-found'
             ? 'Azienda non trovata - JobCourier'
             : 'Aziende che assumono - JobCourier';
@@ -87,12 +99,25 @@ const AziendaDettaglio = () => {
         return (
             <div className="pt-24 min-h-screen" style={{ background: GL }}>
                 {helmet}
-                <div className="max-w-[1000px] mx-auto px-6 md:px-12 py-16">
-                    <div className="animate-pulse flex flex-col gap-4">
-                        <div style={{ height: 24, width: '30%', background: '#FFFFFF' }} />
-                        <div style={{ height: 48, width: '70%', background: '#FFFFFF' }} />
-                        <div style={{ height: 120, width: '100%', background: '#FFFFFF' }} />
-                    </div>
+                <div className="max-w-[1000px] mx-auto px-6 md:px-12 py-10 md:py-16">
+                    <Link to="/aziende-che-assumono" style={{
+                        fontFamily: brand, fontWeight: 700, fontSize: 11,
+                        letterSpacing: '0.14em', textTransform: 'uppercase',
+                        color: F, textDecoration: 'none',
+                        display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 24
+                    }}>
+                        <ChevronLeft size={14} /> {t('company.back_to_companies')}
+                    </Link>
+
+                    <CompanyDetailSkeleton
+                        name={preview.name}
+                        logo={preview.logo}
+                        labels={{
+                            profile: t('company.profile_label'),
+                            listings: t('company.active_listings'),
+                            status: t('company.loading'),
+                        }}
+                    />
                 </div>
             </div>
         );

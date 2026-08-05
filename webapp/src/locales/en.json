@@ -346,6 +346,7 @@
     "back_to_companies": "Back to companies",
     "load_error": "An error occurred while loading the company. Please try again later.",
     "profile_label": "Company profile",
+    "loading": "Loading company profile",
     "spontaneous_application": "Spontaneous application",
     "active_listings": "Active listings",
     "no_active_jobs": "No active job offers for this company at the moment."

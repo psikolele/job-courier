@@ -346,6 +346,7 @@
     "back_to_companies": "Torna alle aziende",
     "load_error": "Si è verificato un errore nel caricamento dell'azienda. Riprova più tardi.",
     "profile_label": "Profilo azienda",
+    "loading": "Caricamento scheda azienda",
     "spontaneous_application": "Candidatura spontanea",
     "active_listings": "Annunci attivi",
     "no_active_jobs": "Nessuna offerta attiva per questa azienda al momento."

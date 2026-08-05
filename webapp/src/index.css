@@ -270,6 +270,23 @@
   .jc-skeleton::after { animation: none; }
 }
 
+/* The square that sits beside a "loading" label. Same 1.4s as the skeleton sweep, so
+   the two read as one signal rather than two competing rhythms. */
+.jc-loading-dot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  background: var(--brand-fuchsia);
+  animation: jc-loading-pulse 1.4s ease-in-out infinite;
+}
+@keyframes jc-loading-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jc-loading-dot { animation: none; }
+}
+
 /* Spotlight Card — glassmorphic with mouse tracking */
 .jc-spotlight-card {
   position: relative;
