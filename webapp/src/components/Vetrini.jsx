@@ -21,23 +21,47 @@ const Vetrini = () => {
     const [companies, setCompanies] = useState([]);
     const [failedLogos, setFailedLogos] = useState({});
 
+    // Loaded in two phases, because knowing who is hiring is slow and being on screen is
+    // not. The roster alone answers in well under a second; enriching it costs one request
+    // per employer against a portal that has been taking twenty seconds cold, and blocking
+    // the section on that leaves a hole in the home page — which is exactly how a
+    // Vercel-protected preview made the whole showcase look deleted.
+    //
+    // So: paint the roster as soon as it lands, then narrow it to employers with open
+    // positions when that answer arrives. If the second call never does, the section keeps
+    // the roster rather than vanishing. Below the fold, the swap is almost never seen.
     useEffect(() => {
         let cancelled = false;
-        fetch('/api/companies?withJobs=1')
-            .then((r) => (r.ok ? r.json() : []))
+        let refined = false;
+
+        const shape = (list) => list.slice(0, MAX_TILES).map((c) => ({ ...c, link: `/azienda/${c.id}` }));
+        const read = async (url) => {
+            const res = await fetch(url);
+            if (!res.ok) return null;
+            const list = await res.json();
+            return Array.isArray(list) ? list : null;
+        };
+
+        read('/api/companies')
             .then((list) => {
-                if (cancelled || !Array.isArray(list)) return;
-                setCompanies(
-                    list
-                        // Strictly true: `null` means the probe failed, and a tile that
-                        // opens on "nessuna offerta attiva" is the thing being fixed here.
-                        // If the portal is unreachable the section hides itself instead.
-                        .filter((c) => c.has_jobs === true)
-                        .slice(0, MAX_TILES)
-                        .map((c) => ({ ...c, link: `/azienda/${c.id}` }))
-                );
+                // `refined` guards the race: on a warm cache the enriched call can win, and
+                // the roster must not overwrite the better answer with the broader one.
+                if (!cancelled && !refined && list) setCompanies(shape(list));
             })
             .catch(() => {});
+
+        read('/api/companies?withJobs=1')
+            .then((list) => {
+                if (cancelled || !list) return;
+                // Strictly true: `null` means the probe failed, and a tile that opens on
+                // "nessuna offerta attiva" is what this section was fixed to stop showing.
+                const hiring = list.filter((c) => c.has_jobs === true);
+                if (hiring.length === 0) return;
+                refined = true;
+                setCompanies(shape(hiring));
+            })
+            .catch(() => {});
+
         return () => { cancelled = true; };
     }, []);
 
