@@ -96,6 +96,61 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
         return clean;
     };
 
+    // Strips HTML tags for the JobPosting `description` field: it accepts markup, but the
+    // feed's HTML carries only formatting (see api/_sanitize.js) that Google's parser
+    // doesn't need, and a plain string sidesteps any risk of the wrong thing surviving
+    // into a JSON.stringify'd script tag.
+    const stripHtml = (html) => {
+        if (!html) return '';
+        return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    };
+
+    // `entryDate`/`validThrough` on arca24 job details are ISO "YYYY-MM-DD" strings (see
+    // api/_arca24.js parseJobDetailFromHtml — entryDate is confusingly named but actually
+    // holds the item's `datePosted` microdata). The jobroom-scrape source leaves both
+    // fields as free Italian text ("Immediata", "31.12.2026"), which this regex rejects
+    // rather than fabricate a date Google would penalize harder than a missing one.
+    const toIsoDate = (value) => {
+        if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+        return value;
+    };
+
+    const buildJobPostingSchema = (j) => {
+        if (!j) return null;
+        const schema = {
+            '@context': 'https://schema.org',
+            '@type': 'JobPosting',
+            title: j.title,
+            description: stripHtml(j.description) || j.title,
+            hiringOrganization: {
+                '@type': 'Organization',
+                name: j.company?.name || 'JobCourier',
+            },
+            jobLocation: {
+                '@type': 'Place',
+                address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: formatLocation(j.location) || undefined,
+                    addressCountry: 'CH',
+                },
+            },
+        };
+
+        // Only a real, absolute logo URL — never the Google-favicon fallback used by the
+        // legacy jobroom-scrape source when no logo could be found (see job-detail.js).
+        if (j.company?.logo && /^https?:\/\//i.test(j.company.logo) && !j.company.logo.includes('google.com/s2/favicons')) {
+            schema.hiringOrganization.logo = j.company.logo;
+        }
+
+        const datePosted = toIsoDate(j.details?.entryDate);
+        if (datePosted) schema.datePosted = datePosted;
+
+        const validThrough = toIsoDate(j.details?.validThrough);
+        if (validThrough) schema.validThrough = validThrough;
+
+        return schema;
+    };
+
     // Modal states
     const [wallOpen, setWallOpen] = useState(false);
     const [redirectModal, setRedirectModal] = useState({ open: false, url: '', company: '' });
@@ -188,6 +243,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                     company: job.company?.name || 'JobCourier',
                     location: job.location || 'Svizzera',
                 }}
+                jsonLd={[buildJobPostingSchema(job)]}
             />
             <div className="max-w-6xl mx-auto px-6 md:px-12 py-8">
                 
