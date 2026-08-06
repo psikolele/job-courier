@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.jobcourier.ch/sitemap.xml
+Sitemap: https://www.jobcourier.ch/api/sitemap-jobs.xml
