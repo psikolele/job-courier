@@ -414,6 +414,11 @@ const AdBanner = ({ type = 'top' }) => {
     const slots = isTop ? topSlots : bottomSlots;
 
     return (
+        // Every sibling section on the home page (Filters, Vetrini, Blog) carries its own
+        // py-16 md:py-20 vertical rhythm. This one didn't, and instead leaned on Vetrini's
+        // padding above and below it — which collapses to zero when Vetrini has nothing to
+        // show (empty roster, or still loading) and the two banners sit stacked with no gap.
+        <div className="w-full py-16 md:py-20">
         <div className="w-[95%] mx-auto">
             {!isTop && (
                 <SectionTitle
@@ -465,6 +470,7 @@ const AdBanner = ({ type = 'top' }) => {
                     );
                 })}
             </div>
+        </div>
         </div>
     );
 };
