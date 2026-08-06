@@ -254,18 +254,26 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                         
                         {/* Company Logo and Name Block */}
                         <div className="flex flex-col items-center text-center pb-6 border-b border-[#050B2B]/6">
-                            <div className="w-20 h-20 border border-[#050B2B]/10 p-2 flex items-center justify-center rounded-none bg-slate-50 mb-4 overflow-hidden">
-                                <img 
-                                    src={job.company?.logo} 
-                                    alt={job.company?.name} 
-                                    className="max-w-full max-h-full object-contain"
-                                    // The old fallback guessed a domain from the company name and
-                                    // asked Google for its favicon, which answers with a generic
-                                    // globe — or JobCourier's own mark — for anything it does not
-                                    // know. An empty frame is honest; the name sits right below.
-                                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                                />
-                            </div>
+                            {job.company?.logo && (
+                                <div className="w-20 h-20 border border-[#050B2B]/10 p-2 flex items-center justify-center rounded-none bg-slate-50 mb-4 overflow-hidden">
+                                    <img
+                                        src={job.company.logo}
+                                        alt={job.company?.name}
+                                        className="max-w-full max-h-full object-contain"
+                                        // The old fallback guessed a domain from the company name and
+                                        // asked Google for its favicon, which answers with a generic
+                                        // globe — or JobCourier's own mark — for anything it does not
+                                        // know. An empty frame is honest; the name sits right below.
+                                        //
+                                        // An empty `logo` (ads with no company link at all) is not just
+                                        // "no fallback needed" — an unconditional <img src=""> renders a
+                                        // broken-image glyph in some browsers before onError ever fires,
+                                        // since an empty src can resolve to the current document. Guarding
+                                        // the whole block skips that render instead of racing to hide it.
+                                        onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                                    />
+                                </div>
+                            )}
                             <h3 style={{ fontFamily: brand, fontWeight: 700, fontSize: 16, color: N, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                                 {job.company?.name}
                             </h3>

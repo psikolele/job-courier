@@ -7,6 +7,7 @@ import {
   fetchJobs as fetchArca24Jobs,
   fetchCompanies as fetchArca24Companies,
   fetchCompanyDetail as fetchArca24CompanyDetail,
+  fetchJobDetail as fetchArca24JobDetail,
   fetchJobsForQuery as fetchArca24Query,
   fetchFacetIndex as fetchArca24FacetIndex,
 } from './_arca24.js';
@@ -46,6 +47,36 @@ const UPSTREAM_PARAMS = new Set([
 // showcase request past the function's time limit; a missing page just means
 // fewer jobs in the pool, which the caller already tolerates.
 const PAGE_TIMEOUT_MS = 6000;
+
+// Arca24 quirk: a handful of ads carry no company link at all on the results list —
+// the row itself has nothing to scrape, not even a name — yet name their employer once
+// the ad is opened, in structured data the list never exposes. The list parser falls
+// back to "Azienda Riservata" for these, which reads as "this employer chose to stay
+// anonymous" when in fact the name is one request away. Rare (about 1 in 120 on the
+// live feed) and worth resolving rather than showing a fallback that looks intentional.
+// Bounded so a portal that anonymises many ads at once can't turn one page load into
+// dozens of extra requests.
+const MAX_RESERVED_ENRICH = 6;
+
+export async function enrichReservedCompanies(jobs) {
+  const targets = jobs.filter(j => j.company?.name === 'Azienda Riservata').slice(0, MAX_RESERVED_ENRICH);
+  if (targets.length === 0) return jobs;
+
+  const details = await Promise.all(
+    targets.map(j => fetchArca24JobDetail(j.id).catch(() => null))
+  );
+  const byId = new Map(targets.map((j, i) => [j.id, details[i]]));
+
+  return jobs.map(job => {
+    const detail = byId.get(job.id);
+    const realName = detail?.company?.name;
+    if (!realName || realName === 'Azienda Riservata') return job;
+    return {
+      ...job,
+      company: { ...job.company, name: realName, logo: detail.company.logo || job.company.logo },
+    };
+  });
+}
 
 async function fetchPage(url, headers) {
   const ctrl = new AbortController();
@@ -548,16 +579,23 @@ export default async function handler(req, res) {
         } else {
           console.warn(`Job fallback returned a weak result (${fallbackJobs.length} ads, ${companyCount} companies) — serving it without the long TTL.`);
         }
-        res.status(200).json(fallbackJobs);
+        // On Arca24, this path is not an outage recovery — the comment above the
+        // health check explains why: the sequential pages read above are typically a
+        // single company, so most requests end up here by design, not as a fallback.
+        // `fromCompanies` jobs always carry a real name (each comes off that company's
+        // own page), but the sequential `allJobs` interleaved into `merged` can still
+        // include the odd anonymous-on-the-list ad, so this is the path that actually
+        // needs enriching, not the one below it.
+        res.status(200).json(arca24 ? await enrichReservedCompanies(fallbackJobs) : fallbackJobs);
         return;
       }
     }
 
-    res.status(200).json(
-      arca24 && isFiltered
-        ? await applyArca24LeftoverFilters(allJobs, callerParams, honoured)
-        : allJobs
-    );
+    const finalJobs = arca24 && isFiltered
+      ? await applyArca24LeftoverFilters(allJobs, callerParams, honoured)
+      : allJobs;
+
+    res.status(200).json(arca24 ? await enrichReservedCompanies(finalJobs) : finalJobs);
   } catch (error) {
     console.error('Error fetching jobs:', error);
     res.setHeader('Cache-Control', 'no-store');

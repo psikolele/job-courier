@@ -248,9 +248,14 @@ export function parseJobDetailFromHtml(html, id) {
 
   const companyRef = parseCompanyRef($('a[href*="/careers/company/"]').first().attr('href') || '');
 
-  const logo = $('[itemprop="image"]').first().attr('content')
-    || $('[itemprop="image"]').first().attr('src')
-    || companyLogo(companyRef.id, companyName);
+  // `itemprop="image"` is the company logo for a normal ad — verified against ads from
+  // half a dozen employers, each pointing at that employer's own `logo_company_<id>.jpg`.
+  // But when the page carries no company link at all (`companyRef.id` stays null — an ad
+  // the portal renders anonymously), the same tag falls back to the site's own social-share
+  // cover image, and the code was showing that as if it were the employer's logo: the
+  // JobCourier mark, on someone else's ad. That fallback image is excluded on purpose.
+  const rawImg = $('[itemprop="image"]').first().attr('content') || $('[itemprop="image"]').first().attr('src') || '';
+  const logo = (companyRef.id && rawImg) ? rawImg : companyLogo(companyRef.id, companyName);
 
   const apply_url = `${ARCA24_HOST}/${LANG}/careers/jobad/${id}`;
 

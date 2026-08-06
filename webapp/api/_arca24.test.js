@@ -143,6 +143,37 @@ describe('parseJobDetailFromHtml', () => {
   });
 });
 
+describe('logo nel dettaglio annuncio', () => {
+  it('usa itemprop=image quando la pagina porta un link azienda', () => {
+    const html = `
+      <div class="mainContent">
+        <span itemprop="title">Contabile</span>
+        <div itemprop="hiringOrganization"><span itemprop="name">Randstad Svizzera SA</span></div>
+        <meta itemprop="image" content="https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244729.jpg">
+        <a href="/it/careers/company/profile?uiid=3244729">Randstad Svizzera SA</a>
+        <div class="textBlock">Un annuncio qualsiasi con testo a sufficienza per essere scelto come corpo.</div>
+      </div>`;
+    expect(parseJobDetailFromHtml(html, '1').company.logo).toBe(
+      'https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244729.jpg');
+  });
+
+  it('ignora itemprop=image quando non c e alcun link azienda — e la cover social del sito, non un logo', () => {
+    // An ad the portal renders with no company link at all: itemprop=image still
+    // resolves, but to the site's own social-share cover — the JobCourier mark —
+    // not to any employer. Showing that as the logo put our own mark on someone
+    // else's ad.
+    const html = `
+      <div class="mainContent">
+        <span itemprop="title">Operatore Carroponte / Gru</span>
+        <div itemprop="hiringOrganization"><span itemprop="name">Team Personnel Solutions SA</span></div>
+        <meta itemprop="image" content="https://jobroom.jobcourier.ch/custom_visojobcourier/assets/img/socialCover.jpg">
+        <div class="textBlock">Un annuncio qualsiasi con testo a sufficienza per essere scelto come corpo.</div>
+      </div>`;
+    const logo = parseJobDetailFromHtml(html, '1').company.logo;
+    expect(logo || '').not.toContain('socialCover');
+  });
+});
+
 // The company index the new portal serves: employer links carry a uiid and no slug,
 // and the logo is lazy-loaded so its `<img>` holds only a base64 placeholder.
 const COMPANIES_HTML = `
