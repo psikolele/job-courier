@@ -29,6 +29,32 @@ const deriveSector = (title, sector) => {
     return null;
 };
 
+// Last good showcase payload, kept so a repeat visit paints cards on the first frame.
+// Short-lived on purpose: these are live vacancies, and an ad that closed should not sit
+// on the home page for a day. Any storage failure (Safari private mode, quota) is silent
+// — the cache is an optimisation, never a source of truth.
+const SHOWCASE_CACHE_KEY = 'jc_showcase_v1';
+const SHOWCASE_CACHE_TTL_MS = 30 * 60 * 1000;
+
+const readCachedShowcase = () => {
+    try {
+        const raw = localStorage.getItem(SHOWCASE_CACHE_KEY);
+        if (!raw) return null;
+        const { at, jobs } = JSON.parse(raw);
+        if (!Array.isArray(jobs) || jobs.length === 0) return null;
+        if (Date.now() - at > SHOWCASE_CACHE_TTL_MS) return null;
+        return jobs;
+    } catch {
+        return null;
+    }
+};
+
+const writeCachedShowcase = (jobs) => {
+    try {
+        localStorage.setItem(SHOWCASE_CACHE_KEY, JSON.stringify({ at: Date.now(), jobs }));
+    } catch { /* storage unavailable or full — skip the cache, not the render */ }
+};
+
 const deriveRole = (role) => {
     const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
     if (!role || skip.includes(role)) return null;
@@ -117,7 +143,17 @@ const Filters = () => {
         }, 800);
 
         const fetchJobs = async () => {
-            setJobsLoading(true);
+            // The showcase pool is assembled from one upstream request per company, so a
+            // cold API answer takes seconds. Painting last visit's cards straight away
+            // turns that into a background refresh instead of a wall of skeletons; the
+            // response replaces them as soon as it lands.
+            const cached = readCachedShowcase();
+            if (cached) {
+                setLatestJobs(cached);
+                setJobsLoading(false);
+            } else {
+                setJobsLoading(true);
+            }
             try {
                 const data = await fetchLatestJobs({ showcase: '1' });
                 if (data && data.length > 0) {
@@ -138,7 +174,8 @@ const Filters = () => {
                         };
                     });
                     setLatestJobs(formattedJobs);
-                } else {
+                    writeCachedShowcase(formattedJobs);
+                } else if (!cached) {
                     // No invented ads here. This block used to fall back to eight
                     // hardcoded listings with made-up companies, which on a live job
                     // board reads as real vacancies. An empty showcase says so instead.
@@ -146,7 +183,7 @@ const Filters = () => {
                 }
             } catch (err) {
                 console.warn('API error in Filters:', err.message, '— showing the unavailable state.');
-                setLatestJobs([]);
+                if (!cached) setLatestJobs([]);
             } finally {
                 setJobsLoading(false);
             }

@@ -167,23 +167,93 @@ function interleaveByCompany(perCompany, maxJobs) {
 // The Arca24 roster is 33 companies against jobroom's 12 with ads, and each page answers
 // in about a second, so the jobroom concurrency of 6 put this at ~34s — uncomfortably
 // close to the function's 60s ceiling for a request the showcase waits on. At 12 it is
-// ~15s. Still one request per company, just fewer rounds.
-const ARCA24_BATCH_SIZE = 12;
+// ~15s. Pushing it to 20 made the portal time out far more of them than it saved time
+// (03-06/08/2026: 25 of 29 aborted at 20, 16 at 8), so the pool cache below carries the
+// latency win instead and this stays gentle.
+const ARCA24_BATCH_SIZE = 8;
 
-async function fetchArca24CompanyJobs(maxJobs) {
+// One request per company against a portal that answers in ~1-2s is the whole cost of
+// this endpoint, and on Arca24 nearly every request lands here (see the health check
+// below). Nothing upstream caches it, so without this the home showcase paid the full
+// fan-out on every cold instance — measured at 26s warm, 65s cold. Ads do not move in
+// ten minutes; a stale pool is served rather than re-read.
+const POOL_TTL_MS = 10 * 60 * 1000;
+// How long a pool stays usable as a fallback after it has gone stale. The portal answers
+// this fan-out with timeouts when it is under load — measured 03-06/08/2026, a run that
+// normally returns 120 ads across a dozen companies came back with 18 ads from two — and
+// a thin refresh must not replace a good pool with a two-company showcase.
+const POOL_STALE_MAX_MS = 6 * 60 * 60 * 1000;
+let companyPool = { jobs: [], companies: 0, at: 0 };
+let poolInFlight = null;
+
+const distinctCompanies = (jobs) => new Set(jobs.map(j => j.company?.name).filter(Boolean)).size;
+
+// Reading the whole roster costs 30s when the portal is slow, and the visitor is waiting
+// on it. Past this point no further batch is started: what came back is enough for a
+// showcase that shows ten cards from at most two companies each, and the next refresh
+// picks up where this one stopped caring. `POOL_MIN_BATCHES` keeps a deadline hit from
+// producing a two-company pool.
+const POOL_DEADLINE_MS = 10_000;
+const POOL_MIN_BATCHES = 2;
+
+async function readCompanyPool() {
   const companies = await fetchArca24Companies();
   if (companies.length === 0) return [];
 
+  const deadline = Date.now() + POOL_DEADLINE_MS;
   const perCompany = [];
+  let batches = 0;
   for (let i = 0; i < companies.length; i += ARCA24_BATCH_SIZE) {
+    if (batches >= POOL_MIN_BATCHES && Date.now() > deadline) {
+      console.warn(`Job pool stopped at ${i} of ${companies.length} companies — deadline reached.`);
+      break;
+    }
     const batch = companies.slice(i, i + ARCA24_BATCH_SIZE).map(company =>
-      fetchArca24CompanyDetail(company.id, company.slug)
+      // Wider than the shared 6s budget, not narrower: measured 06/08/2026 the portal
+      // needs ~5s for a company page under load, and a 4.5s cut-off failed every single
+      // one — a fan-out that times out uniformly returns an empty pool, which is worse
+      // than a slow one. The global deadline below is what bounds the wait.
+      fetchArca24CompanyDetail(company.id, company.slug, { timeoutMs: 8000 })
         .then(detail => detail.jobs || [])
         .catch(() => [])
     );
     perCompany.push(...await Promise.all(batch));
+    batches++;
   }
-  return interleaveByCompany(perCompany, maxJobs);
+  // Interleaved at full depth, not at `maxJobs`: the cache is shared by callers wanting
+  // different slice sizes, so the cut happens on the way out.
+  return interleaveByCompany(perCompany, Number.MAX_SAFE_INTEGER);
+}
+
+async function fetchArca24CompanyJobs(maxJobs) {
+  const fresh = Date.now() - companyPool.at < POOL_TTL_MS;
+  if (companyPool.jobs.length > 0 && fresh) return companyPool.jobs.slice(0, maxJobs);
+
+  // Concurrent cold requests share one fan-out instead of each starting their own —
+  // otherwise a burst multiplies the load on a portal that is already the bottleneck.
+  if (!poolInFlight) {
+    poolInFlight = readCompanyPool()
+      .then(jobs => {
+        const companies = distinctCompanies(jobs);
+        const cacheUsable = companyPool.jobs.length > 0
+          && Date.now() - companyPool.at < POOL_STALE_MAX_MS;
+        // A refresh that comes back thinner than what is held is the portal struggling,
+        // not the catalogue shrinking. Keep the richer pool and try again next window.
+        if (cacheUsable && companies < companyPool.companies) {
+          console.warn(`Job pool refresh degraded (${jobs.length} ads, ${companies} companies) — keeping the cached pool.`);
+          return companyPool.jobs;
+        }
+        if (jobs.length > 0) companyPool = { jobs, companies, at: Date.now() };
+        return jobs;
+      })
+      .catch(() => [])
+      .finally(() => { poolInFlight = null; });
+  }
+
+  const jobs = await poolInFlight;
+  // A failed refresh keeps serving the expired pool: stale ads beat an empty showcase.
+  const usable = jobs.length > 0 ? jobs : companyPool.jobs;
+  return usable.slice(0, maxJobs);
 }
 
 async function fetchJobsFromCompanyPages(maxJobs) {
