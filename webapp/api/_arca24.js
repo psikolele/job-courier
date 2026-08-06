@@ -75,18 +75,24 @@ export async function isArca24Enabled() {
 // page only means fewer ads in the pool, which every caller already tolerates.
 const REQUEST_TIMEOUT_MS = 6000;
 
-export async function fetchHtml(path, { acceptNotFound = false } = {}) {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), REQUEST_TIMEOUT_MS);
-  try {
-    const res = await fetch(`${ARCA24_HOST}${path}`, { headers, signal: ctrl.signal });
-    if (!res.ok && !(acceptNotFound && res.status === 404)) {
-      throw new Error(`Arca24 responded ${res.status} for ${path}`);
+export async function fetchHtml(path, { acceptNotFound = false, timeoutMs = REQUEST_TIMEOUT_MS, attempts = 1 } = {}) {
+  let lastErr;
+  for (let i = 0; i < attempts; i++) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+    try {
+      const res = await fetch(`${ARCA24_HOST}${path}`, { headers, signal: ctrl.signal });
+      if (!res.ok && !(acceptNotFound && res.status === 404)) {
+        throw new Error(`Arca24 responded ${res.status} for ${path}`);
+      }
+      return await res.text();
+    } catch (err) {
+      lastErr = err;
+    } finally {
+      clearTimeout(timer);
     }
-    return await res.text();
-  } finally {
-    clearTimeout(timer);
   }
+  throw lastErr;
 }
 
 /** Company links come in two shapes: "profile:id_3244729&company_name=x" and "profile?uiid=3244729". */
@@ -204,6 +210,7 @@ export async function fetchJobs({ pages = 3, maxJobs = 45 } = {}) {
       if (all.length < maxJobs) all.push(job);
     }
   });
+  await dropMissingLogos(all.map((j) => j.company).filter(Boolean));
   return all;
 }
 
@@ -433,6 +440,10 @@ export function parseCompaniesFromHtml(html) {
 // Pages are read until one brings nothing new, with a hard stop so a portal that
 // paginates forever cannot spin here.
 const COMPANY_INDEX_MAX_PAGES = 8;
+// How many index pages go out in parallel before falling back to the one-at-a-time walk.
+// Three covers the current roster (2 full pages + the empty one that ends it) in a
+// single round-trip instead of three.
+const COMPANY_INDEX_LOOKAHEAD = 3;
 
 /**
  * Whether an employer has any open position right now.
@@ -476,15 +487,33 @@ async function withHasJobs(companies) {
   return out;
 }
 
-export async function fetchCompanies({ withJobStatus = false } = {}) {
+export async function fetchCompanies({ withJobStatus = false, verifyLogos = false } = {}) {
   const byId = new Map();
-  for (let page = 1; page <= COMPANY_INDEX_MAX_PAGES; page++) {
-    let batch = [];
-    try {
-      batch = parseCompaniesFromHtml(await fetchHtml(`/${LANG}/careers/jobs_by_company?page=${page}`));
-    } catch {
-      break;
-    }
+  const readPage = (page) =>
+    fetchHtml(`/${LANG}/careers/jobs_by_company?page=${page}`)
+      .then(parseCompaniesFromHtml)
+      .catch(() => null);
+
+  // The roster is two pages of fifteen plus an empty third that proves there is no more,
+  // and reading them one after another put three round-trips in front of every showcase
+  // build. The first `COMPANY_INDEX_LOOKAHEAD` go out together; the sequential walk only
+  // resumes if the roster turns out to be longer than that.
+  let page = 1;
+  const head = await Promise.all(
+    Array.from({ length: COMPANY_INDEX_LOOKAHEAD }, (_, i) => readPage(i + 1))
+  );
+  let exhausted = false;
+  for (const batch of head) {
+    page++;
+    if (batch === null) { exhausted = true; break; }
+    const before = byId.size;
+    for (const company of batch) if (!byId.has(company.id)) byId.set(company.id, company);
+    if (batch.length === 0 || byId.size === before) { exhausted = true; break; }
+  }
+
+  for (; !exhausted && page <= COMPANY_INDEX_MAX_PAGES; page++) {
+    const batch = await readPage(page);
+    if (batch === null) break;
     const before = byId.size;
     for (const company of batch) if (!byId.has(company.id)) byId.set(company.id, company);
     if (batch.length === 0 || byId.size === before) break;
@@ -492,7 +521,55 @@ export async function fetchCompanies({ withJobStatus = false } = {}) {
 
   const companies = [...byId.values()];
   companies.sort((a, b) => a.name.localeCompare(b.name, 'it', { sensitivity: 'base' }));
+  // Opt-in: `api/jobs` reads this roster only to know which company pages to visit and
+  // never shows these logos, so the HEAD checks would be pure latency on the path the
+  // home showcase waits for.
+  if (verifyLogos) await dropMissingLogos(companies);
   return withJobStatus ? withHasJobs(companies) : companies;
+}
+
+// Five of the thirty-five employers have no logo stored, so the built URL answers 404.
+// The front-end already falls back to the name, but only after the browser has fired the
+// request — which is what fills the console with red. Checking here means the missing
+// ones are never handed to the client at all. HEAD is cheap, the answer is cached for the
+// life of the warm instance, and a failed check keeps the URL (a transient upstream
+// hiccup must not strip logos that do exist).
+const LOGO_CHECK_TTL_MS = 30 * 60 * 1000;
+const logoCache = new Map(); // url -> { ok, at }
+
+async function logoExists(url) {
+  const cached = logoCache.get(url);
+  if (cached && Date.now() - cached.at < LOGO_CHECK_TTL_MS) return cached.ok;
+
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 3000);
+  let ok = true;
+  try {
+    const res = await fetch(url, { method: 'HEAD', headers, signal: ctrl.signal });
+    ok = res.status !== 404;
+  } catch {
+    ok = true;
+  } finally {
+    clearTimeout(timer);
+  }
+  logoCache.set(url, { ok, at: Date.now() });
+  return ok;
+}
+
+/** Blanks out `logo` on any item whose logo URL answers 404. Mutates and returns `items`. */
+export async function dropMissingLogos(items = []) {
+  const urls = [...new Set(items.map((it) => it?.logo).filter((u) => u && u.startsWith(ARCA24_HOST)))];
+  const verdicts = new Map();
+  const CONCURRENCY = 6;
+  for (let i = 0; i < urls.length; i += CONCURRENCY) {
+    const slice = urls.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(slice.map((u) => logoExists(u)));
+    slice.forEach((u, j) => verdicts.set(u, results[j]));
+  }
+  for (const it of items) {
+    if (it && it.logo && verdicts.get(it.logo) === false) it.logo = '';
+  }
+  return items;
 }
 
 export function parseCompanyDetailFromHtml(html, id, slug) {
@@ -522,10 +599,24 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
   };
 }
 
-export async function fetchCompanyDetail(id, slug) {
+export async function fetchCompanyDetail(id, slug, { verifyLogos = false, patient = false, timeoutMs } = {}) {
   // An employer with no open position answers 404 — but with its real profile page in
   // the body, name and all. Treating that as an error turned "no ads right now" into a
   // dead link, which is what the home showcase used to do to three of its fifteen tiles.
-  const html = await fetchHtml(`/${LANG}/careers/company/profile?uiid=${id}`, { acceptNotFound: true });
-  return parseCompanyDetailFromHtml(html, id, slug);
+  // `patient` is for the company page, where this one read IS the whole response: no
+  // partial result to fall back on, so it gets more room and a second try. The showcase
+  // fan-out calls this once per company and can afford to lose a straggler, so it keeps
+  // the short single-shot budget — 30 companies × 2 patient attempts is a minute.
+  const html = await fetchHtml(`/${LANG}/careers/company/profile?uiid=${id}`, {
+    acceptNotFound: true,
+    timeoutMs: patient ? 9000 : (timeoutMs || REQUEST_TIMEOUT_MS),
+    attempts: patient ? 2 : 1,
+  });
+  const detail = parseCompanyDetailFromHtml(html, id, slug);
+  // Opt-in for the same reason as `fetchCompanies`: `api/jobs` calls this once per
+  // company to build the showcase pool and shows none of these logos.
+  if (verifyLogos) {
+    await dropMissingLogos([detail, ...(detail.jobs || []).map((j) => j.company).filter(Boolean)]);
+  }
+  return detail;
 }

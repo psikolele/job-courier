@@ -130,7 +130,7 @@ export default async function handler(req, res) {
       // `?withJobs=1` costs one extra HEAD per employer, so it is opt-in: only the home
       // showcase needs to know who is actually hiring.
       const withJobStatus = String(req.query?.withJobs || '') === '1';
-      res.status(200).json(await fetchArca24Companies({ withJobStatus }));
+      res.status(200).json(await fetchArca24Companies({ withJobStatus, verifyLogos: true }));
       return;
     }
 

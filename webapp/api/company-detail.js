@@ -146,7 +146,7 @@ export default async function handler(req, res) {
 
   try {
     if (await isArca24Enabled()) {
-      res.status(200).json(await fetchArca24CompanyDetail(String(id), slug || ''));
+      res.status(200).json(await fetchArca24CompanyDetail(String(id), slug || '', { verifyLogos: true, patient: true }));
       return;
     }
 

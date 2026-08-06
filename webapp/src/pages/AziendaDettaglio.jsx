@@ -56,7 +56,16 @@ const AziendaDettaglio = () => {
                     return;
                 }
 
-                const detailRes = await fetch(`/api/company-detail?id=${target.id}&slug=${target.slug}`);
+                // The portal times out on a single profile page often enough that one
+                // failed read used to be the whole page. Give it a second go before
+                // calling it broken.
+                const url = `/api/company-detail?id=${target.id}&slug=${target.slug}`;
+                let detailRes = await fetch(url);
+                if (!detailRes.ok) {
+                    await new Promise((r) => setTimeout(r, 1200));
+                    if (cancelled) return;
+                    detailRes = await fetch(url);
+                }
                 if (!detailRes.ok) throw new Error('Impossibile recuperare i dettagli azienda');
                 const data = await detailRes.json();
 

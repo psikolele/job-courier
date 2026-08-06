@@ -11,6 +11,9 @@
     },
     "api/companies.js": {
       "maxDuration": 60
+    },
+    "api/company-detail.js": {
+      "maxDuration": 60
     }
   },
   "rewrites": [
