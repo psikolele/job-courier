@@ -3,6 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="29601bde-40d6-45d8-be15-4b7bdef2d50c" data-blockingmode="auto" type="text/javascript"></script>
+
+    <!-- Google Analytics (GA4) — same property as jobroom.jobcourier.ch, so
+         traffic across both hosts lands in one dataset. Gated on Cookiebot's
+         "statistics" consent category via type="text/plain": Cookiebot only
+         rewrites the type to text/javascript and runs it after the visitor
+         opts in, so no analytics fires pre-consent. -->
+    <script type="text/plain" data-cookieconsent="statistics" async src="https://www.googletagmanager.com/gtag/js?id=G-06VZ8XHHPH"></script>
+    <script type="text/plain" data-cookieconsent="statistics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-06VZ8XHHPH');
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="/logo-square.svg" />
     <link rel="icon" type="image/png" href="/logo-square.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
