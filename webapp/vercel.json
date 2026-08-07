@@ -10,7 +10,7 @@
       "maxDuration": 60
     },
     "api/companies.js": {
-      "maxDuration": 60
+      "maxDuration": 120
     },
     "api/company-detail.js": {
       "maxDuration": 60

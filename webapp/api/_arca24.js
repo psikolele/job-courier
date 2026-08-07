@@ -580,7 +580,7 @@ async function probeHasJobs(id, attempts = 2) {
     // `acceptNotFound` because a 404 body is exactly the case this probe exists to read;
     // `attempts` because a timeout or connection reset is worth one more try.
     const html = await fetchHtml(`/${LANG}/careers/company/profile?uiid=${id}`,
-      { acceptNotFound: true, attempts });
+      { acceptNotFound: true, attempts, timeoutMs: PROBE_TIMEOUT_MS });
     const value = cheerio.load(html)('.resultstring').length > 0;
     hasJobsCache.set(id, { value, at: Date.now() });
     return value;
@@ -590,16 +590,55 @@ async function probeHasJobs(id, attempts = 2) {
   }
 }
 
-/** Probing thirty-odd employers at once is what made the portal start refusing us. */
+// Probing thirty-odd employers at once is what made the portal start refusing us.
+//
+// Six is not arbitrary and raising it does not help. Measured 07.08.2026: one profile page
+// is 200-340 KB and takes ~5s, and six fetched together also take ~5s — but twelve
+// together take longer than two rounds of six, and the full roster went from 33s to 47s
+// with three employers falling off the end into "unknown". The host throttles past roughly
+// this width. What bounds this endpoint is therefore the CDN in front of it, not the
+// concurrency here.
 const PROBE_CONCURRENCY = 6;
 
-async function withHasJobs(companies) {
+// The shared 6s budget is below what a profile page actually costs, so a probe would time
+// out, retry, and spend twelve seconds discovering nothing. Give it room to succeed once.
+const PROBE_TIMEOUT_MS = 9000;
+
+// A cold instance probes the whole roster before it can answer, and on 07.08.2026 that
+// run took long enough for production to return 504 on `/api/companies?withJobs=1` — the
+// ceiling was 60s. `vercel.json` now allows this function 120s and the measured cold run
+// is around 45s, so this is the backstop, not the normal path: past it no further batch
+// is started and whoever is left is reported unknown, which the showcase renders as fewer
+// tiles. Fewer tiles on one cold request beats an error page for it.
+const PROBE_DEADLINE_MS = 80_000;
+
+/**
+ * `known` holds ids already proven to be hiring, so they cost no request. Everyone the
+ * job feed named is in it by definition: the feed is a list of open positions, so an
+ * employer appearing there has at least the ad that put it there.
+ */
+async function withHasJobs(companies, known = new Set()) {
   const out = [];
-  for (let i = 0; i < companies.length; i += PROBE_CONCURRENCY) {
-    const batch = companies.slice(i, i + PROBE_CONCURRENCY);
+  const toProbe = [];
+  for (const c of companies) {
+    if (known.has(c.id)) out.push({ ...c, has_jobs: true });
+    else toProbe.push(c);
+  }
+
+  const deadline = Date.now() + PROBE_DEADLINE_MS;
+  let i = 0;
+  for (; i < toProbe.length; i += PROBE_CONCURRENCY) {
+    if (i > 0 && Date.now() > deadline) {
+      console.warn(`has_jobs probe stopped at ${i} of ${toProbe.length} companies — deadline reached.`);
+      break;
+    }
+    const batch = toProbe.slice(i, i + PROBE_CONCURRENCY);
     const flags = await Promise.all(batch.map(c => probeHasJobs(c.id)));
     batch.forEach((c, j) => out.push({ ...c, has_jobs: flags[j] }));
   }
+  for (const c of toProbe.slice(i)) out.push({ ...c, has_jobs: null });
+
+  out.sort((a, b) => a.name.localeCompare(b.name, 'it', { sensitivity: 'base' }));
   return out;
 }
 
@@ -641,17 +680,29 @@ export async function fetchCompanies({ withJobStatus = false, verifyLogos = fals
   }
 
   // Index entries were inserted first and stay: they carry the real "Annunci totali" count.
+  const fromFeed = new Set();
   for (const company of await feedRoster) {
+    fromFeed.add(company.id);
     if (!byId.has(company.id)) byId.set(company.id, company);
   }
 
   const companies = [...byId.values()];
   companies.sort((a, b) => a.name.localeCompare(b.name, 'it', { sensitivity: 'base' }));
+
+  const withStatus = withJobStatus ? await withHasJobs(companies, fromFeed) : companies;
+
   // Opt-in: `api/jobs` reads this roster only to know which company pages to visit and
   // never shows these logos, so the HEAD checks would be pure latency on the path the
   // home showcase waits for.
-  if (verifyLogos) await dropMissingLogos(companies);
-  return withJobStatus ? withHasJobs(companies) : companies;
+  //
+  // Ordered after the probe on purpose. Half the roster has no open position and is never
+  // rendered, so checking every logo was checking twice as many as anyone would see —
+  // latency spent on the request the home page waits for. Only what can reach the screen
+  // is verified.
+  if (verifyLogos) {
+    await dropMissingLogos(withJobStatus ? withStatus.filter(c => c.has_jobs !== false) : withStatus);
+  }
+  return withStatus;
 }
 
 // Five of the thirty-five employers have no logo stored, so the built URL answers 404.
