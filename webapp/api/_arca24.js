@@ -432,6 +432,106 @@ export function parseCompaniesFromHtml(html) {
   return companies;
 }
 
+/**
+ * Second, independent source for the roster: the job feed.
+ *
+ * `jobs_by_company` only lists employers the portal holds a hand-made profile for.
+ * Employers whose ads arrive through the RSS feed import are absent from it even though
+ * their profile page exists and carries live ads — Manpower, Work Selection AG and
+ * Work & Work SA were each missing from the home showcase for exactly that reason, all
+ * three answering 200 with ten open positions. Their ads do show up in `latest_jobs`,
+ * and every ad links its employer as `profile?uiid=<id>`, so the feed names them.
+ *
+ * `jobs_count` stays 0 here: the feed proves an employer is present, not how many ads it
+ * holds. Where the index knows the same employer its entry wins the union, count included.
+ *
+ * The whole feed gets read, not the first few pages. It is ordered by publication date, so
+ * an employer surfaces wherever its most recent ad happens to fall: measured 2026-08-07 the
+ * feed was 42 pages / ~630 ads, and while Manpower showed up on page 3, Work & Work SA did
+ * not appear until page 26. A shallow read finds the first and silently loses the second.
+ *
+ * Pages go out in bounded batches rather than all at once — firing forty-odd requests in
+ * one breath is what makes this host start answering with stubs. Batches of
+ * FEED_CONCURRENCY covered the full feed in about four seconds. A batch that yields no ads
+ * at all ends the walk, so a shorter feed costs proportionally less.
+ */
+const FEED_MAX_PAGES = 45;
+const FEED_CONCURRENCY = 12;
+
+// `fetchCompanies` is not only the showcase's: `api/jobs` calls it to know which company
+// pages to fan out over, and does so under a 10s deadline that starts *after* the roster
+// is in hand. Reading the whole feed on every one of those would be several seconds of
+// pure added latency on the path the home page waits for — and the answer barely moves,
+// since a new employer appears in the feed on the order of days. So the walk happens once
+// per warm instance per TTL and every caller shares it. An in-flight read is shared too,
+// so two concurrent callers cannot both walk 42 pages.
+const FEED_ROSTER_TTL_MS = 10 * 60 * 1000;
+let feedRosterCache = { value: null, at: 0 };
+let feedRosterInFlight = null;
+
+/** Test seam — the suite exercises the walk itself and must not read a warm cache. */
+export function resetFeedRosterCache() {
+  feedRosterCache = { value: null, at: 0 };
+  feedRosterInFlight = null;
+}
+
+export async function fetchCompaniesFromJobFeed({ pages = FEED_MAX_PAGES, concurrency = FEED_CONCURRENCY } = {}) {
+  const byId = new Map();
+
+  for (let start = 0; start < pages; start += concurrency) {
+    const batch = Array.from(
+      { length: Math.min(concurrency, pages - start) },
+      (_, i) => `/${LANG}/careers/latest_jobs?page=${start + i + 1}`
+    );
+    const htmls = await Promise.all(batch.map((u) => fetchHtml(u).catch(() => '')));
+
+    let adsInBatch = 0;
+    for (const html of htmls) {
+      if (!html) continue;
+      // parseJobsFromHtml already resolves the company ref through parseCompanyRef and
+      // derives name, slug and logo, so reading the ads is also how the employers are read.
+      for (const job of parseJobsFromHtml(html)) {
+        adsInBatch++;
+        const { arca24_id: id, name, slug } = job.company || {};
+        // Ads the portal renders anonymously carry no company link at all: no id, and the
+        // name reads "Azienda Riservata". There is no employer to name, so they are skipped.
+        if (!id || !name || byId.has(id)) continue;
+        byId.set(id, {
+          id,
+          name,
+          slug: slug || slugify(name),
+          logo: companyLogo(id, name),
+          jobs_count: 0,
+          jobroom_url: `${ARCA24_HOST}/${LANG}/careers/company/profile?uiid=${id}`,
+        });
+      }
+    }
+    if (adsInBatch === 0) break;
+  }
+
+  return [...byId.values()];
+}
+
+/** `fetchCompaniesFromJobFeed` behind the shared TTL described above. */
+function cachedFeedRoster() {
+  const now = Date.now();
+  if (feedRosterCache.value && now - feedRosterCache.at < FEED_ROSTER_TTL_MS) {
+    return Promise.resolve(feedRosterCache.value);
+  }
+  if (feedRosterInFlight) return feedRosterInFlight;
+
+  feedRosterInFlight = fetchCompaniesFromJobFeed()
+    .then((list) => {
+      // An empty walk means the portal stubbed us, not that the feed has no employers.
+      // Caching that would blank the three feed-only employers for the whole TTL.
+      if (list.length > 0) feedRosterCache = { value: list, at: Date.now() };
+      return list;
+    })
+    .finally(() => { feedRosterInFlight = null; });
+
+  return feedRosterInFlight;
+}
+
 // The company index is paginated fifteen at a time, and the order is not stable: the
 // same company shows up on page 1 and page 4 of consecutive reads. Reading only the
 // first page therefore returns a random slice of the roster — which made the company
@@ -445,33 +545,49 @@ const COMPANY_INDEX_MAX_PAGES = 8;
 // single round-trip instead of three.
 const COMPANY_INDEX_LOOKAHEAD = 3;
 
+// One showcase build probes the whole roster, and `api/companies` is hit on every home
+// page view, so the same thirty-odd profiles were being read over and over. Same shape as
+// `logoCache` below: remember the verdict for a few minutes, keep it out of the cold path.
+const HAS_JOBS_TTL_MS = 5 * 60 * 1000;
+const hasJobsCache = new Map(); // id -> { value, at }
+
+/** Test seam — lets the suite probe the same id twice without waiting out the TTL. */
+export function resetHasJobsCache() {
+  hasJobsCache.clear();
+}
+
 /**
  * Whether an employer has any open position right now.
  *
  * The company index lists everyone who has a profile, with no count and no way to tell
  * the two apart — which put employers with nothing to offer in the home showcase while
- * Adecco and Gi Group, both hiring, were missing from it. The profile page answers 404
- * when there is nothing to list, so a HEAD is the whole check: no body, one request.
+ * Adecco and Gi Group, both hiring, were missing from it.
  *
- * `null` means the probe itself failed. Callers keep those: hiding an employer because
+ * The check used to be a HEAD, reading the status alone: 404 meant "no ads". That is not
+ * what the status means. PKB Private Bank answers 404 on a page that lists two real ads,
+ * and other employers answer 200 on a profile with nothing on it — the code is about the
+ * profile record, not about its contents. So the body is what gets read, and the count of
+ * `.resultstring` (one per ad, the same marker the list parser keys on) is the answer.
+ *
+ * `null` means the request itself failed. Callers keep those: hiding an employer because
  * the portal was briefly slow would be a worse error than showing an empty profile.
  */
 async function probeHasJobs(id, attempts = 2) {
-  for (let i = 0; i < attempts; i++) {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), REQUEST_TIMEOUT_MS);
-    try {
-      const res = await fetch(`${ARCA24_HOST}/${LANG}/careers/company/profile?uiid=${id}`,
-        { method: 'HEAD', headers, signal: ctrl.signal });
-      if (res.status === 404) return false;
-      if (res.ok) return true;
-    } catch {
-      // Timeout or connection reset — worth one more try before giving up on this one.
-    } finally {
-      clearTimeout(timer);
-    }
+  const cached = hasJobsCache.get(id);
+  if (cached && Date.now() - cached.at < HAS_JOBS_TTL_MS) return cached.value;
+
+  try {
+    // `acceptNotFound` because a 404 body is exactly the case this probe exists to read;
+    // `attempts` because a timeout or connection reset is worth one more try.
+    const html = await fetchHtml(`/${LANG}/careers/company/profile?uiid=${id}`,
+      { acceptNotFound: true, attempts });
+    const value = cheerio.load(html)('.resultstring').length > 0;
+    hasJobsCache.set(id, { value, at: Date.now() });
+    return value;
+  } catch {
+    // Unknown, not "no ads" — and deliberately not cached, so the next build re-asks.
+    return null;
   }
-  return null;
 }
 
 /** Probing thirty-odd employers at once is what made the portal start refusing us. */
@@ -493,6 +609,11 @@ export async function fetchCompanies({ withJobStatus = false, verifyLogos = fals
     fetchHtml(`/${LANG}/careers/jobs_by_company?page=${page}`)
       .then(parseCompaniesFromHtml)
       .catch(() => null);
+
+  // The index is not the whole roster — see fetchCompaniesFromJobFeed — so the feed goes
+  // out at the same time as the index pages and is unioned in below. Started here rather
+  // than awaited here so the two reads overlap instead of queueing.
+  const feedRoster = cachedFeedRoster().catch(() => []);
 
   // The roster is two pages of fifteen plus an empty third that proves there is no more,
   // and reading them one after another put three round-trips in front of every showcase
@@ -517,6 +638,11 @@ export async function fetchCompanies({ withJobStatus = false, verifyLogos = fals
     const before = byId.size;
     for (const company of batch) if (!byId.has(company.id)) byId.set(company.id, company);
     if (batch.length === 0 || byId.size === before) break;
+  }
+
+  // Index entries were inserted first and stay: they carry the real "Annunci totali" count.
+  for (const company of await feedRoster) {
+    if (!byId.has(company.id)) byId.set(company.id, company);
   }
 
   const companies = [...byId.values()];

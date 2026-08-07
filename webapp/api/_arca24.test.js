@@ -9,6 +9,7 @@ import {
   parseCompanyRef, parseJobsFromHtml, parseJobDetailFromHtml,
   parseCompaniesFromHtml, parseCompanyDetailFromHtml, companyLogo,
   isArca24Enabled, resetSourceProbe,
+  fetchCompanies, resetHasJobsCache, resetFeedRosterCache,
 } from './_arca24.js';
 
 // Trimmed copies of the real markup, kept small on purpose: these guard the selectors
@@ -38,7 +39,7 @@ const DETAIL_HTML = `
 describe('rilevamento automatico della sorgente', () => {
   const realEnv = process.env.JOBS_SOURCE;
 
-  beforeEach(() => { resetSourceProbe(); vi.mocked(fetch).mockReset(); delete process.env.JOBS_SOURCE; });
+  beforeEach(() => { resetSourceProbe(); resetFeedRosterCache(); vi.mocked(fetch).mockReset(); delete process.env.JOBS_SOURCE; });
   afterEach(() => {
     if (realEnv === undefined) delete process.env.JOBS_SOURCE;
     else process.env.JOBS_SOURCE = realEnv;
@@ -228,5 +229,131 @@ describe('parseCompaniesFromHtml', () => {
   it('non prende il placeholder base64 come logo', () => {
     expect(companies[0].logo).toBe(
       'https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244630.jpg');
+  });
+});
+
+// One ad from Manpower — an employer the RSS feed import publishes for, so it has a live
+// profile with open positions but no entry in `jobs_by_company`.
+const FEED_HTML = `
+<div class="resultstring">
+  <div class="md-caption title_heading">05/08/2026</div>
+  <div class="titleContainer"><a href="/it/careers/jobad/7000001-magazziniere-lugano">Magazziniere</a></div>
+  <table class="columns"><tbody><tr><td class="valueCell">
+    Svizzera, Ticino, Lugano - <a href="/it/careers/company/profile?uiid=3244661">Manpower</a>
+  </td></tr></tbody></table>
+</div>`;
+
+/**
+ * Serves the portal's three families of page off one fetch mock: the company index, the
+ * job feed, and the per-employer profile. `profiles` maps uiid -> body, or to the string
+ * 'boom' to make that one request fail outright.
+ */
+function mockPortal({ index = COMPANIES_HTML, feed = FEED_HTML, profiles = {} } = {}) {
+  vi.mocked(fetch).mockImplementation(async (url) => {
+    const ok = (html) => ({ ok: true, status: 200, text: async () => html });
+
+    if (url.includes('jobs_by_company')) return ok(url.includes('page=1') ? index : '');
+    if (url.includes('latest_jobs')) return ok(url.includes('page=1') ? feed : '');
+
+    const uiid = (url.match(/uiid=(\d+)/) || [])[1];
+    const body = profiles[uiid];
+    if (body === 'boom') throw new Error('ECONNRESET');
+    // 404 with a body is a real portal answer, not an error — see probeHasJobs.
+    return { ok: body !== undefined, status: body === undefined ? 404 : 200, text: async () => body ?? '' };
+  });
+}
+
+const PROFILE_WITH_ADS = `
+<h1>PKB Private Bank Annunci totali: 2</h1>
+<div class="resultstring"><a href="/it/careers/jobad/7100001-analista">Analista</a></div>
+<div class="resultstring"><a href="/it/careers/jobad/7100002-contabile">Contabile</a></div>`;
+
+const PROFILE_WITHOUT_ADS = '<h1>Betacom Annunci totali:</h1><p>Nessun annuncio attivo.</p>';
+
+describe('roster aziende: indice + feed offerte', () => {
+  beforeEach(() => { vi.mocked(fetch).mockReset(); resetHasJobsCache(); resetFeedRosterCache(); });
+
+  it('unisce al roster le aziende che compaiono solo nel feed offerte', async () => {
+    // Manpower, Work Selection AG e Work & Work SA hanno profilo attivo con annunci ma
+    // non sono nell indice `jobs_by_company`: senza il feed la vetrina le perdeva.
+    mockPortal();
+    const names = (await fetchCompanies()).map((c) => c.name);
+    expect(names).toContain('Manpower');
+    expect(names).toContain('Gi Group SA');
+    expect(names).toContain('4 U Consulting');
+  });
+
+  it('l azienda derivata dal feed ha la stessa forma di quelle dell indice', async () => {
+    mockPortal();
+    const manpower = (await fetchCompanies()).find((c) => c.name === 'Manpower');
+    expect(manpower).toMatchObject({
+      id: '3244661',
+      slug: 'manpower',
+      logo: 'https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244661.jpg',
+      jobs_count: 0,
+      jobroom_url: 'https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244661',
+    });
+  });
+
+  it('trova anche un azienda che compare solo in fondo al feed', async () => {
+    // Il feed è ordinato per data: Work & Work SA non compariva prima di pagina 26 e una
+    // lettura corta la perdeva in silenzio. Qui sta a pagina 20, oltre il primo batch.
+    const deep = FEED_HTML.replace(/uiid=3244661/, 'uiid=3174540').replace(/>Manpower</, '>Work &amp; Work SA<');
+    vi.mocked(fetch).mockImplementation(async (url) => {
+      const ok = (html) => ({ ok: true, status: 200, text: async () => html });
+      if (url.includes('jobs_by_company')) return ok(url.includes('page=1') ? COMPANIES_HTML : '');
+      if (url.includes('latest_jobs')) {
+        if (url.includes('page=1&') || url.endsWith('page=1')) return ok(FEED_HTML);
+        return ok(url.includes('page=20') ? deep : '');
+      }
+      return { ok: false, status: 404, text: async () => '' };
+    });
+    const names = (await fetchCompanies()).map((c) => c.name);
+    expect(names).toContain('Work & Work SA');
+    expect(names).toContain('Manpower');
+  });
+
+  it('non duplica un azienda presente in entrambe le fonti e tiene il conteggio dell indice', async () => {
+    mockPortal({ feed: FEED_HTML.replace(/uiid=3244661/, 'uiid=3244630').replace(/>Manpower</, '>Gi Group SA<') });
+    const giGroup = (await fetchCompanies()).filter((c) => c.id === '3244630');
+    expect(giGroup).toHaveLength(1);
+  });
+});
+
+describe('has_jobs: si legge il corpo della pagina, non lo status', () => {
+  beforeEach(() => { vi.mocked(fetch).mockReset(); resetHasJobsCache(); resetFeedRosterCache(); });
+
+  const flagFor = async (id, profiles) => {
+    mockPortal({ profiles });
+    return (await fetchCompanies({ withJobStatus: true })).find((c) => c.id === id)?.has_jobs;
+  };
+
+  it('404 con annunci nel corpo conta come "sta assumendo"', async () => {
+    // PKB Private Bank risponde 404 su una pagina che elenca due annunci reali: lo status
+    // parla del record profilo, non del suo contenuto. Con la vecchia HEAD spariva.
+    vi.mocked(fetch).mockImplementation(async (url) => {
+      if (url.includes('jobs_by_company')) return { ok: true, status: 200, text: async () => (url.includes('page=1') ? COMPANIES_HTML : '') };
+      if (url.includes('latest_jobs')) return { ok: true, status: 200, text: async () => (url.includes('page=1') ? FEED_HTML : '') };
+      return { ok: false, status: 404, text: async () => PROFILE_WITH_ADS };
+    });
+    const list = await fetchCompanies({ withJobStatus: true });
+    expect(list.find((c) => c.id === '3244630').has_jobs).toBe(true);
+  });
+
+  it('200 senza .resultstring conta come "nessuna offerta"', async () => {
+    expect(await flagFor('3244630', { 3244630: PROFILE_WITHOUT_ADS })).toBe(false);
+  });
+
+  it('errore di rete resta null — sconosciuto, non "nessuna offerta"', async () => {
+    expect(await flagFor('3244630', { 3244630: 'boom' })).toBe(null);
+  });
+
+  it('non risonda lo stesso profilo entro il TTL', async () => {
+    mockPortal({ profiles: { 3244630: PROFILE_WITH_ADS, 3243389: PROFILE_WITHOUT_ADS, 3244661: PROFILE_WITHOUT_ADS } });
+    await fetchCompanies({ withJobStatus: true });
+    const before = vi.mocked(fetch).mock.calls.filter((c) => String(c[0]).includes('uiid=')).length;
+    await fetchCompanies({ withJobStatus: true });
+    const after = vi.mocked(fetch).mock.calls.filter((c) => String(c[0]).includes('uiid=')).length;
+    expect(after).toBe(before);
   });
 });

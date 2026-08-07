@@ -127,8 +127,8 @@ export default async function handler(req, res) {
 
   try {
     if (await isArca24Enabled()) {
-      // `?withJobs=1` costs one extra HEAD per employer, so it is opt-in: only the home
-      // showcase needs to know who is actually hiring.
+      // `?withJobs=1` costs one extra profile read per employer (cached for a few minutes
+      // upstream), so it is opt-in: only the home showcase needs to know who is hiring.
       const withJobStatus = String(req.query?.withJobs || '') === '1';
       res.status(200).json(await fetchArca24Companies({ withJobStatus, verifyLogos: true }));
       return;

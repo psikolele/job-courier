@@ -3,7 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const MAX_TILES = 15;
+// 15 was the length of the old hardcoded list, and it silently truncated the real one:
+// 16 employers are hiring as of 07.08, so the cap alone dropped the last one alphabetically
+// (Work Selection AG) right after the roster fix had gone to the trouble of finding it.
+// 20 leaves headroom and fills whole rows at the 2- and 4- and 5-column breakpoints.
+const MAX_TILES = 20;
 
 const Vetrini = () => {
     const { t } = useTranslation();
@@ -21,44 +25,27 @@ const Vetrini = () => {
     const [companies, setCompanies] = useState([]);
     const [failedLogos, setFailedLogos] = useState({});
 
-    // Loaded in two phases, because knowing who is hiring is slow and being on screen is
-    // not. The roster alone answers in well under a second; enriching it costs one request
-    // per employer against a portal that has been taking twenty seconds cold, and blocking
-    // the section on that leaves a hole in the home page — which is exactly how a
-    // Vercel-protected preview made the whole showcase look deleted.
+    // One request, and only employers with open positions are painted.
     //
-    // So: paint the roster as soon as it lands, then narrow it to employers with open
-    // positions when that answer arrives. If the second call never does, the section keeps
-    // the roster rather than vanishing. Below the fold, the swap is almost never seen.
+    // This used to load in two phases: paint the plain roster immediately, then narrow it
+    // to who is hiring when the slower `withJobs` answer arrived, keeping the roster if it
+    // never did. That fallback is what the client saw. Whenever the second call was slow,
+    // failed, or was swallowed by a preview gate, the unfiltered roster stayed on screen —
+    // which is how Betacom, Blackpoints, Arca24.com, ated and Banca Credinvest, none of
+    // them with a single open position, ended up in a wall of logos that claims to be the
+    // companies hiring on JobCourier. A hole below the fold for a second is cheaper than
+    // advertising employers who have nothing to apply to, so the roster phase is gone.
     useEffect(() => {
         let cancelled = false;
-        let refined = false;
 
-        const shape = (list) => list.slice(0, MAX_TILES).map((c) => ({ ...c, link: `/azienda/${c.id}` }));
-        const read = async (url) => {
-            const res = await fetch(url);
-            if (!res.ok) return null;
-            const list = await res.json();
-            return Array.isArray(list) ? list : null;
-        };
-
-        read('/api/companies')
+        fetch('/api/companies?withJobs=1')
+            .then((res) => (res.ok ? res.json() : null))
             .then((list) => {
-                // `refined` guards the race: on a warm cache the enriched call can win, and
-                // the roster must not overwrite the better answer with the broader one.
-                if (!cancelled && !refined && list) setCompanies(shape(list));
-            })
-            .catch(() => {});
-
-        read('/api/companies?withJobs=1')
-            .then((list) => {
-                if (cancelled || !list) return;
+                if (cancelled || !Array.isArray(list)) return;
                 // Strictly true: `null` means the probe failed, and a tile that opens on
                 // "nessuna offerta attiva" is what this section was fixed to stop showing.
                 const hiring = list.filter((c) => c.has_jobs === true);
-                if (hiring.length === 0) return;
-                refined = true;
-                setCompanies(shape(hiring));
+                setCompanies(hiring.slice(0, MAX_TILES).map((c) => ({ ...c, link: `/azienda/${c.id}` })));
             })
             .catch(() => {});
 
