@@ -2,7 +2,18 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="29601bde-40d6-45d8-be15-4b7bdef2d50c" data-blockingmode="auto" type="text/javascript"></script>
+    <!-- data-framework="TCFv2.2" makes Cookiebot the site's IAB TCF consent
+         provider (CMP id 134). The attribute name is stale on Cookiebot's side:
+         it emits TCF 2.3, which IAB has required for new consent signals since
+         28.02.2026. Without it the TC string that advertisers read comes from
+         Google's own GDPR message instead, which is why the site used to show
+         two consent banners. -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="29601bde-40d6-45d8-be15-4b7bdef2d50c" data-blockingmode="auto" data-framework="TCFv2.2" type="text/javascript"></script>
+
+    <!-- Must run before any Google tag, and must NOT be consent-gated: it only
+         tells Google's tags to read consent from the TCF string rather than
+         assume it. -->
+    <script>window['gtag_enable_tcf_support'] = true;</script>
 
     <!-- Google Analytics (GA4) — same property as jobroom.jobcourier.ch, so
          traffic across both hosts lands in one dataset. Gated on Cookiebot's
