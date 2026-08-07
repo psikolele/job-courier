@@ -120,6 +120,52 @@ il messaggio: torna la situazione a due banner, che è brutta ma sicura.
 
 ---
 
+## 3-bis. Restrizione della lista vendor — DECISIONE APERTA, non applicata
+
+Il banner dichiara **1022 partner**; il vecchio messaggio Google ne dichiarava 210.
+La differenza non è un errore di configurazione: 1022 è la Global Vendor List IAB completa,
+210 erano i soli partner ad tech di Google.
+
+**Perché non è stato ridotto:** l'unica leva è `AllowedVendors`, e i vendor esclusi non
+compaiono nella sezione "Disclosed vendors" della TC string, quindi non ricevono consenso e
+non fanno offerte personalizzate. Con AdSense in Auto ads questo riduce la domanda e quindi
+l'RPM. Il codice di errore TCF **1.4** (Disclosed vendors incompleta o priva di Google)
+porta a *Limited Ads*, con cali di ricavo riportati nell'ordine del 40-60%.
+
+I Google AC vendor (non-IAB) sono già limitati alla selezione predefinita di Google, perché
+l'array `AllowedGoogleACVendors` non è incluso. Non c'è margine ulteriore da quel lato.
+
+**Se si decide di restringere**, il blocco va inserito in `webapp/index.html`
+**prima** del tag Cookiebot:
+
+```html
+<script id="CookiebotConfiguration" type="application/json" data-cookieconsent="ignore">
+  {
+    "Frameworks": {
+      "IABTCF2": {
+        "AllowedVendors": [755],
+        "AllowedGoogleACVendors": [],
+        "AllowedPurposes": [1, 2, 3, 4, 7, 9, 10]
+      }
+    }
+  }
+</script>
+```
+
+`755` è Google Advertising Products e **deve sempre esserci**: senza, scatta l'errore 1.4.
+I purposes elencati sono quelli che AdSense usa. Gli id si prendono dalla Global Vendor
+List: <https://vendor-list.consensu.org/v3/vendor-list.json>
+
+**Rollback:** rimuovere il blocco `CookiebotConfiguration`. Il banner torna a dichiarare la
+GVL completa entro il deploy successivo, senza attese lato Cookiebot.
+
+**Come accorgersi che si è stretto troppo:** in AdSense, comparsa dell'errore TCF 1.4,
+aumento della quota di annunci non personalizzati, calo di RPM. Sono segnali che arrivano
+in 24-48 h, non immediatamente — quindi conviene applicare la restrizione da sola, senza
+altre modifiche in contemporanea, per poterla attribuire.
+
+---
+
 ## 4. Attestazione di conformità IAB — da scrivere
 
 Cookiebot lo richiede a chi attiva il TCF: una dichiarazione di conformità alle policy
