@@ -1,5 +1,32 @@
 # Handoff — AdSense su www.jobcourier.ch
 
+> **CHIUSO il 07.08.2026** — commit `f415dc7` su `main`, in produzione.
+> `https://www.jobcourier.ch/ads.txt` risponde 200 `text/plain` e il loader
+> AdSense è nel `<head>` gated su consenso marketing.
+>
+> **Publisher ID: `pub-4406252930350703`.** Il bloccante "manca l'accesso ad
+> AdSense" descritto sotto è stato aggirato senza aspettare Laura: l'ID è stato
+> ricostruito dagli snapshot Wayback del vecchio WordPress (`ads.txt` cambia da
+> `pub-8558634965080879` a `pub-4406252930350703` tra apr e mag 2025, e la home
+> archiviata di gen 2026 contiene `ca-pub-4406252930350703`), poi **confermato
+> dalla dashboard reale** — l'URL della pagina Siti è
+> `adsense.google.com/adsense/u/3/pub-4406252930350703/sites/list`, profilo
+> jobcourier24@gmail.com.
+>
+> La vecchia home non aveva blocchi `<ins class="adsbygoogle">` → account su
+> **Annunci automatici**, quindi il punto 3 del piano (unità annuncio) non
+> serviva: il solo loader basta.
+>
+> **Cosa resta, e non dipende da noi:** AdSense rilegge `ads.txt` in 24-48 h, la
+> cella "Stato di ads.txt" resta "Non trovato" fino ad allora e non c'è modo di
+> forzare il ricontrollo. Gli annunci automatici impiegano qualche ora a
+> comparire sul dominio nuovo.
+>
+> **Non verificato:** che accettando la categoria marketing su Cookiebot lo
+> script parta davvero — richiede un browser reale con consenso dato. Il
+> pattern è identico a quello di GA4 già in produzione. Da rifiutato, nessuna
+> chiamata a `pagead2.googlesyndication.com` (verificato).
+
 **Data:** 2026-08-07
 **Sessione consigliata:** dedicata (questo tema è stato scorporato dalla sessione "vetrina aziende")
 **Modello consigliato:** Sonnet 5, effort **medium**
