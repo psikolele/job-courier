@@ -601,8 +601,14 @@ async function probeHasJobs(id, attempts = 2) {
 const PROBE_CONCURRENCY = 6;
 
 // The shared 6s budget is below what a profile page actually costs, so a probe would time
-// out, retry, and spend twelve seconds discovering nothing. Give it room to succeed once.
-const PROBE_TIMEOUT_MS = 9000;
+// out, retry, and spend twelve seconds discovering nothing.
+//
+// 9s was still not enough from Vercel: the same roster that takes ~30s from a desk takes
+// ~57s there, and two employers — Rapelli among them — came back `null` on a timeout and
+// so vanished from the showcase. Nothing about them was wrong; the portal was just slower
+// than the budget. The function has 120s and the loop has its own deadline, so a probe can
+// afford to wait rather than fail and drop an employer that is in fact hiring.
+const PROBE_TIMEOUT_MS = 15_000;
 
 // A cold instance probes the whole roster before it can answer, and on 07.08.2026 that
 // run took long enough for production to return 504 on `/api/companies?withJobs=1` — the
