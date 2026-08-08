@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -24,6 +24,40 @@ const Vetrini = () => {
     // location.reload(true)` — an endless reload loop.
     const [companies, setCompanies] = useState([]);
     const [failedLogos, setFailedLogos] = useState({});
+
+    // Mirrors the grid's own grid-cols-2/3/4/5 breakpoints (Tailwind's default
+    // sm/md/lg) so the CTA tile below can span exactly the columns the last row
+    // has left, at whatever width the browser currently is.
+    const [cols, setCols] = useState(() =>
+        typeof window === 'undefined' ? 5
+            : window.innerWidth >= 1024 ? 5 : window.innerWidth >= 768 ? 4 : window.innerWidth >= 640 ? 3 : 2
+    );
+    useEffect(() => {
+        const compute = () => {
+            const w = window.innerWidth;
+            setCols(w >= 1024 ? 5 : w >= 768 ? 4 : w >= 640 ? 3 : 2);
+        };
+        window.addEventListener('resize', compute);
+        return () => window.removeEventListener('resize', compute);
+    }, []);
+
+    // Sharing a row with real tiles gives the CTA the exact same stretched height
+    // for free (grid's own align-items: stretch), no measuring needed. But when the
+    // roster count divides evenly into the current column count, the CTA lands
+    // alone in a fresh row with no tile to stretch to match — its own text-and-arrow
+    // content would size that row to a fraction of the others'. Measuring an actual
+    // tile and applying it as an explicit height covers that one case.
+    const firstTileRef = useRef(null);
+    const [tileHeight, setTileHeight] = useState(null);
+    useEffect(() => {
+        const el = firstTileRef.current;
+        if (!el) return;
+        const measure = () => setTileHeight(el.getBoundingClientRect().height);
+        measure();
+        const observer = new ResizeObserver(measure);
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [companies]);
 
     // One request, and only employers with open positions are painted.
     //
@@ -97,6 +131,7 @@ const Vetrini = () => {
                     {companies.map((company, idx) => (
                         <motion.div
                             key={idx}
+                            ref={idx === 0 ? firstTileRef : undefined}
                             initial={{ opacity: 0, y: 12 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -147,16 +182,30 @@ const Vetrini = () => {
                     {/* Always the last tile: turns an incomplete final row (a lone logo
                         the grid can't help but leave stranded, since the roster count
                         changes daily and never lines up with every breakpoint's column
-                        count) into a deliberate CTA instead of an accident. */}
+                        count) into a deliberate CTA instead of an accident. Spans
+                        exactly the columns the last row has left (a full row of its
+                        own when the count divides evenly), so it shares that row's
+                        grid track and inherits the exact same stretched height as the
+                        square tiles — which run a hair taller than their own width
+                        once their logo/label content is laid out, so a fixed aspect
+                        ratio here would always be a few px short. */}
                     <motion.div
+                        key="cta"
                         initial={{ opacity: 0, y: 12 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: companies.length * 0.03 }}
+                        style={{
+                            gridColumn: `span ${cols - (companies.length % cols)}`,
+                            // Only needed when the CTA has no row-mate to stretch
+                            // against (see comment above); harmless otherwise since
+                            // grid stretch already produces this same value.
+                            ...(companies.length % cols === 0 && tileHeight ? { height: tileHeight } : {})
+                        }}
                     >
                         <Link
                             to="/aziende-che-assumono"
-                            className="group relative aspect-square flex flex-col items-center justify-center gap-2 p-6 transition-colors duration-200"
+                            className="group relative flex flex-row items-center justify-center gap-3 w-full h-full p-6 transition-colors duration-200"
                             style={{ background: N }}
                         >
                             <span style={{
