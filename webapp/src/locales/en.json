@@ -384,7 +384,8 @@
   "showcase": {
     "label": "PARTNER COMPANIES",
     "title": "Companies and Recruiters who trust Job Courier",
-    "see_jobs": "See Listings"
+    "see_jobs": "See Listings",
+    "see_all": "See all companies"
   },
   "wall": {
     "title": "Sign In or Register",

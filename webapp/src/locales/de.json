@@ -384,7 +384,8 @@
   "showcase": {
     "label": "PARTNERUNTERNEHMEN",
     "title": "Unternehmen und Recruiter, die JobCourier vertrauen",
-    "see_jobs": "Anzeigen ansehen"
+    "see_jobs": "Anzeigen ansehen",
+    "see_all": "Alle Unternehmen ansehen"
   },
   "wall": {
     "title": "Anmelden oder Registrieren",

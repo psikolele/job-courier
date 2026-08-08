@@ -384,7 +384,8 @@
   "showcase": {
     "label": "ENTREPRISES PARTENAIRES",
     "title": "Entreprises et recruteurs qui font confiance à Job Courier",
-    "see_jobs": "Voir les annonces"
+    "see_jobs": "Voir les annonces",
+    "see_all": "Voir toutes les entreprises"
   },
   "wall": {
     "title": "Se connecter ou s'inscrire",

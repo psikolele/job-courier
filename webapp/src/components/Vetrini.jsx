@@ -144,6 +144,38 @@ const Vetrini = () => {
                             </Link>
                         </motion.div>
                     ))}
+                    {/* Always the last tile: turns an incomplete final row (a lone logo
+                        the grid can't help but leave stranded, since the roster count
+                        changes daily and never lines up with every breakpoint's column
+                        count) into a deliberate CTA instead of an accident. */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: companies.length * 0.03 }}
+                    >
+                        <Link
+                            to="/aziende-che-assumono"
+                            className="group relative aspect-square flex flex-col items-center justify-center gap-2 p-6 transition-colors duration-200"
+                            style={{ background: N }}
+                        >
+                            <span style={{
+                                fontFamily: brand,
+                                fontWeight: 700,
+                                fontSize: 13,
+                                color: '#FFFFFF',
+                                textAlign: 'center',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.04em'
+                            }}>
+                                {t('showcase.see_all')}
+                            </span>
+                            <span
+                                className="transition-transform duration-200 group-hover:translate-x-1"
+                                style={{ color: F, fontSize: 18, lineHeight: 1 }}
+                            >→</span>
+                        </Link>
+                    </motion.div>
                 </div>
             </div>
         </section>
