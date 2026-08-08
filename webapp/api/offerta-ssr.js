@@ -17,7 +17,9 @@ import {
   serveFallback,
 } from './_ssr.js';
 
-const UPSTREAM_TIMEOUT_MS = 8000;
+// ~2.5s cold against production, well under this; the headroom is for a slow upstream
+// rather than a cold lambda. See the note in azienda-ssr.js.
+const UPSTREAM_TIMEOUT_MS = 12000;
 
 async function fetchJson(url) {
   const ctrl = new AbortController();

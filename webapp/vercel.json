@@ -19,7 +19,7 @@
       "maxDuration": 30
     },
     "api/azienda-ssr.js": {
-      "maxDuration": 30
+      "maxDuration": 60
     }
   },
   "rewrites": [

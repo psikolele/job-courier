@@ -17,7 +17,12 @@ import {
   serveFallback,
 } from './_ssr.js';
 
-const UPSTREAM_TIMEOUT_MS = 8000;
+// Measured against production: /api/companies answers in ~0.3s warm but ~7.6s on a cold
+// lambda, and this route waits on it before it can even resolve the slug to an id. At 8s
+// the snapshot fell back to the bare shell on exactly the requests that matter — the first
+// of a crawl, when nothing is warm. Only direct loads and crawlers reach this function at
+// all; in-app navigation is client-side.
+const UPSTREAM_TIMEOUT_MS = 12000;
 
 async function fetchJson(url) {
   const ctrl = new AbortController();
