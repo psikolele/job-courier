@@ -16,8 +16,13 @@ import './i18n.js'
 // these produced two <title> on every page and two og:title wherever a page set its own.
 // Removing them before the first render keeps the no-JS fallback intact and leaves exactly
 // one of each afterwards.
+// Keep this list matching everything index.html ships and everything renderShell() injects
+// in api/_ssr.js — a tag left off shows up twice on the SSR routes, which is how canonical
+// and description slipped through the first time.
 document
-  .querySelectorAll('head > title, head > meta[property^="og:"]')
+  .querySelectorAll(
+    'head > title, head > meta[property^="og:"], head > meta[name="description"], head > meta[name="twitter:card"], head > link[rel="canonical"]'
+  )
   .forEach((el) => el.remove())
 
 createRoot(document.getElementById('root')).render(
