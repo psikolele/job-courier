@@ -359,19 +359,15 @@ const Offerte = ({ setShowLoginModal }) => {
                                 {t('jobs.title')}
                             </span>
                         </div>
+                        {/* One heading over two coloured lines — it used to be two separate
+                            h1 elements, which read as two competing page titles. */}
                         <h1 style={{
                             fontFamily: brand, fontWeight: 900, fontSize: 'clamp(24px, 5vw, 34px)',
                             color: N, textTransform: 'uppercase',
-                            letterSpacing: '-0.025em', lineHeight: 0.95
+                            letterSpacing: '-0.025em', lineHeight: 0.95, margin: 0
                         }}>
-                            Ultimi annunci
-                        </h1>
-                        <h1 style={{
-                            fontFamily: brand, fontWeight: 900, fontSize: 'clamp(24px, 5vw, 34px)',
-                            color: F, textTransform: 'uppercase',
-                            letterSpacing: '-0.025em', lineHeight: 0.95
-                        }}>
-                            Pubblicati
+                            <span style={{ display: 'block' }}>Ultimi annunci</span>
+                            <span style={{ display: 'block', color: F }}>Pubblicati</span>
                         </h1>
                     </div>
 
@@ -450,10 +446,27 @@ const Offerte = ({ setShowLoginModal }) => {
                                 <div className="flex flex-col gap-1 overflow-y-auto scroll-fade" style={{ maxHeight: 'calc(100vh - 320px)', background: 'rgba(5,11,43,0.04)' }}>
                                     {jobs.map(job => {
                                         const isSelected = !!selectedJobId && jobIdKey(selectedJobId) === jobIdKey(job.id);
+                                        // The card is the link. It used to be a div with only an onClick,
+                                        // so an offer had no href anywhere on the site and stayed an orphan
+                                        // page even while sitemapped — a crawler never runs handleSelectJob.
+                                        //
+                                        // An <a> wrapper around the card would have done the same job for
+                                        // crawlers, but `display: contents` (needed to keep the flex layout
+                                        // intact) drops the element from the accessibility tree in several
+                                        // browsers, trading a crawler problem for a screen-reader one.
+                                        //
+                                        // Plain clicks are still handled in-app; modified clicks are left
+                                        // alone so cmd/ctrl-click and middle-click open the offer in a new
+                                        // tab the way any other link does.
                                         return (
-                                            <motion.div
+                                            <motion.a
                                                 key={job.id}
-                                                onClick={() => handleSelectJob(job.id)}
+                                                href={`/offerta/${jobIdKey(job.id)}`}
+                                                onClick={(e) => {
+                                                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                                                    e.preventDefault();
+                                                    handleSelectJob(job.id);
+                                                }}
                                                 style={{
                                                     cursor: 'pointer',
                                                     padding: '20px 24px',
@@ -462,7 +475,9 @@ const Offerte = ({ setShowLoginModal }) => {
                                                     borderBottom: '1px solid rgba(5,11,43,0.05)',
                                                     display: 'flex',
                                                     flexDirection: 'column',
-                                                    transition: 'background 0.15s'
+                                                    transition: 'background 0.15s',
+                                                    textDecoration: 'none',
+                                                    color: 'inherit'
                                                 }}
                                                 whileHover={{ backgroundColor: 'var(--brand-gray-light)' }}
                                             >
@@ -525,7 +540,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         </div>
                                                     );
                                                 })()}
-                                            </motion.div>
+                                            </motion.a>
                                         );
                                     })}
                                 </div>
@@ -566,12 +581,15 @@ const Offerte = ({ setShowLoginModal }) => {
                                                             {selectedJob.company?.name || 'Azienda Riservata'}
                                                         </span>
                                                     </div>
-                                                    <h1 className="text-[22px] md:text-[32px]" style={{
+                                                    {/* h2: the page's own heading is the listing title above.
+                                                        This pane is the selected offer within it, and the offer
+                                                        has its own page (/offerta/:id) where it is the h1. */}
+                                                    <h2 className="text-[22px] md:text-[32px]" style={{
                                                         fontFamily: brand, fontWeight: 900,
                                                         color: N, textTransform: 'uppercase',
                                                         letterSpacing: '-0.025em', lineHeight: 1.05, marginBottom: 20,
                                                         wordBreak: 'break-word'
-                                                    }}>{selectedJob.title}</h1>
+                                                    }}>{selectedJob.title}</h2>
 
                                                     {/* Meta row — label outside chip */}
                                                     {(() => {

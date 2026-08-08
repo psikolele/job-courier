@@ -46,16 +46,23 @@ const BlogSeo = ({ type, lang, categoryId, article, itSlug, title, description }
 
   return (
     <Helmet>
+      {/* index.html hardcodes lang="it", so without this every translation still declared
+          itself Italian — directly contradicting the hreflang set below. */}
+      <html lang={lang} />
       <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={canonical} />
+      {/* canonical and og:url are emitted once for every route by App.jsx, from the same
+          pathname this component derives `canonical` from. Repeating them here shipped two
+          of each on blog pages: this version of react-helmet-async does not merge tags
+          across Helmet instances, it appends them. */}
       {LANGS.map((l) => (<link key={l} rel="alternate" hrefLang={l} href={urlFor(l)} />))}
       <link rel="alternate" hrefLang="x-default" href={urlFor('it')} />
       <meta property="og:type" content={type === 'article' ? 'article' : 'website'} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={canonical} />
-      {article?.image && <meta property="og:image" content={article.image} />}
+      {/* Category pages have no image of their own. They used to inherit index.html's
+          generic og:image; main.jsx now strips that on boot, so the fallback lives here. */}
+      <meta property="og:image" content={article?.image || `${SITE}/logo-square.png`} />
       {jsonLd.map((obj, i) => (<script key={i} type="application/ld+json">{JSON.stringify(obj)}</script>))}
     </Helmet>
   );

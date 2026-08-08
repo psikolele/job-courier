@@ -430,3 +430,23 @@ export function slugFor(itSlug, lang) {
   if (lang === 'it') return itSlug;
   return slugTranslations[itSlug]?.[lang] || itSlug;
 }
+
+/**
+ * Any-language slug → the Italian slug that keys `slugTranslations`.
+ *
+ * Every other per-language URL is derived from that key via slugFor, so passing a
+ * non-Italian slug in its place silently produces a URL set that is all one language:
+ * slugTranslations has no entry for an English slug, so slugFor falls back to the slug it
+ * was given and every hreflang points at the English page under a different category
+ * segment. Those pages then never link back, which is exactly the "missing reciprocal
+ * hreflang" the site audit reports.
+ */
+export function itSlugFor(slug) {
+  if (slugTranslations[slug]) return slug;
+  for (const [it, translated] of Object.entries(slugTranslations)) {
+    if (Object.values(translated).includes(slug)) return it;
+  }
+  // An article with no translations listed is its own Italian slug — the honest answer,
+  // and it keeps hreflang self-consistent rather than inventing URLs.
+  return slug;
+}

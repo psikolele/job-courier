@@ -101,6 +101,13 @@ const AziendaDettaglio = () => {
         <Helmet>
             <title>{helmetTitle}</title>
             <meta name="description" content={helmetDescription} />
+            {/* main.jsx strips index.html's generic Open Graph set once the app boots, so a
+                page that wants og tags on the rendered document has to say so itself. The
+                served HTML already carries the per-company set from api/azienda-ssr.js. */}
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content={helmetTitle} />
+            <meta property="og:description" content={helmetDescription} />
+            <meta property="og:image" content={(status === 'ready' && detail?.logo) || preview.logo || 'https://www.jobcourier.ch/logo-square.png'} />
         </Helmet>
     );
 
@@ -117,6 +124,8 @@ const AziendaDettaglio = () => {
                     }}>
                         <ChevronLeft size={14} /> {t('company.back_to_companies')}
                     </Link>
+
+                    <h1 className="sr-only">{shownName || t('company.profile_label')}</h1>
 
                     <CompanyDetailSkeleton
                         name={preview.name}
@@ -161,9 +170,9 @@ const AziendaDettaglio = () => {
             <div className="pt-24 min-h-screen flex items-center justify-center" style={{ background: GL }}>
                 {helmet}
                 <div className="text-center px-6 max-w-md">
-                    <p style={{ fontFamily: body, fontSize: 14, color: '#C00', marginBottom: 24 }}>
+                    <h1 style={{ fontFamily: body, fontSize: 14, color: '#C00', marginBottom: 24, fontWeight: 400 }}>
                         {t('company.load_error')}
-                    </p>
+                    </h1>
                     <Link to="/aziende-che-assumono" style={{
                         fontFamily: brand, fontWeight: 700, fontSize: 11,
                         letterSpacing: '0.14em', textTransform: 'uppercase',

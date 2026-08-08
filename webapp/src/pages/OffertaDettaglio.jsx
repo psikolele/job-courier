@@ -96,60 +96,12 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
         return clean;
     };
 
-    // Strips HTML tags for the JobPosting `description` field: it accepts markup, but the
-    // feed's HTML carries only formatting (see api/_sanitize.js) that Google's parser
-    // doesn't need, and a plain string sidesteps any risk of the wrong thing surviving
-    // into a JSON.stringify'd script tag.
-    const stripHtml = (html) => {
-        if (!html) return '';
-        return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-    };
-
-    // `entryDate`/`validThrough` on arca24 job details are ISO "YYYY-MM-DD" strings (see
-    // api/_arca24.js parseJobDetailFromHtml — entryDate is confusingly named but actually
-    // holds the item's `datePosted` microdata). The jobroom-scrape source leaves both
-    // fields as free Italian text ("Immediata", "31.12.2026"), which this regex rejects
-    // rather than fabricate a date Google would penalize harder than a missing one.
-    const toIsoDate = (value) => {
-        if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
-        return value;
-    };
-
-    const buildJobPostingSchema = (j) => {
-        if (!j) return null;
-        const schema = {
-            '@context': 'https://schema.org',
-            '@type': 'JobPosting',
-            title: j.title,
-            description: stripHtml(j.description) || j.title,
-            hiringOrganization: {
-                '@type': 'Organization',
-                name: j.company?.name || 'JobCourier',
-            },
-            jobLocation: {
-                '@type': 'Place',
-                address: {
-                    '@type': 'PostalAddress',
-                    addressLocality: formatLocation(j.location) || undefined,
-                    addressCountry: 'CH',
-                },
-            },
-        };
-
-        // Only a real, absolute logo URL — never the Google-favicon fallback used by the
-        // legacy jobroom-scrape source when no logo could be found (see job-detail.js).
-        if (j.company?.logo && /^https?:\/\//i.test(j.company.logo) && !j.company.logo.includes('google.com/s2/favicons')) {
-            schema.hiringOrganization.logo = j.company.logo;
-        }
-
-        const datePosted = toIsoDate(j.details?.entryDate);
-        if (datePosted) schema.datePosted = datePosted;
-
-        const validThrough = toIsoDate(j.details?.validThrough);
-        if (validThrough) schema.validThrough = validThrough;
-
-        return schema;
-    };
+    // The JobPosting schema is emitted server-side by api/offerta-ssr.js, which renders it
+    // into the initial HTML — where Google Jobs can read it without executing anything.
+    // Building a second copy here only duplicated the same schema for JS-rendering
+    // crawlers. The tradeoff: on the SSR fallback path (upstream down, plain shell served)
+    // the page now ships no JobPosting at all, which is the honest outcome — there was no
+    // ad data to describe.
 
     // Modal states
     const [wallOpen, setWallOpen] = useState(false);
@@ -195,10 +147,27 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
         window.open(job.apply_url || job.original_link, '_blank', 'noopener,noreferrer');
     };
 
+    // Rendered unconditionally so the crawler's snapshot — taken before the client-side
+    // fetch resolves — still carries a title, meta description and canonical instead of
+    // whatever <head> the previous route left behind. Falls back to generic Offerta copy
+    // until `job` loads; PageSeo re-renders with the real values once it does.
+    const seo = (
+        <PageSeo
+            page="offerta"
+            values={{
+                title: job?.title || 'Offerta di lavoro',
+                company: job?.company?.name || "un'azienda svizzera",
+                location: job?.location || 'Svizzera',
+            }}
+        />
+    );
+
     if (loading) {
         return (
             <div className="pt-32 min-h-screen flex items-center justify-center" style={{ background: GL }}>
+                {seo}
                 <div className="flex flex-col items-center gap-4">
+                    <h1 className="sr-only">{t('jobs.loading')}</h1>
                     <span className="w-12 h-12 border-4 border-t-transparent animate-spin rounded-full" style={{ borderColor: `${F} transparent transparent transparent` }} />
                     <p style={{ fontFamily: brand, fontWeight: 700, fontSize: 12, letterSpacing: '0.15em', textTransform: 'uppercase', color: N }}>
                         {t('jobs.loading')}
@@ -211,10 +180,11 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
     if (error || !job) {
         return (
             <div className="pt-32 min-h-screen flex items-center justify-center px-4" style={{ background: GL }}>
+                {seo}
                 <div className="max-w-md w-full text-center bg-white px-8 py-10 border border-red-200 rounded-none shadow-sm">
-                    <h2 style={{ fontFamily: brand, fontWeight: 900, fontSize: 24, color: '#e63946', marginBottom: 12, textTransform: 'uppercase' }}>
+                    <h1 style={{ fontFamily: brand, fontWeight: 900, fontSize: 24, color: '#e63946', marginBottom: 12, textTransform: 'uppercase' }}>
                         {t('jobs.load_error')}
-                    </h2>
+                    </h1>
                     <p style={{ fontFamily: body, fontSize: 14, color: GM, marginBottom: 24 }}>
                         {error || "L'offerta di lavoro richiesta non è stata trovata o non è più disponibile."}
                     </p>
@@ -236,15 +206,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
 
     return (
         <div className="pt-24 min-h-screen pb-16" style={{ background: GL }}>
-            <PageSeo
-                page="offerta"
-                values={{
-                    title: job.title,
-                    company: job.company?.name || 'JobCourier',
-                    location: job.location || 'Svizzera',
-                }}
-                jsonLd={[buildJobPostingSchema(job)]}
-            />
+            {seo}
             <div className="max-w-6xl mx-auto px-6 md:px-12 py-8">
                 
                 {/* Back button */}

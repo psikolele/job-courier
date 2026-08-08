@@ -256,7 +256,12 @@ const Hero = ({ setShowLoginModal }) => {
                         >
                             {t('hero.candidates.h1') || 'Trova il tuo'}
                         </h1>
-                        <h1
+                        {/* Second line of the same sentence, not a second page title. It was
+                            an h1: together with the companies panel the home page carried four
+                            of them. Tailwind's preflight zeroes heading margins and font-size,
+                            so the tag carried no styling of its own — all of it is here and in
+                            .hero-h1-sub. */}
+                        <div
                             className="hero-h1-sub"
                             style={{
                                 fontFamily: 'var(--font-editorial)',
@@ -268,7 +273,7 @@ const Hero = ({ setShowLoginModal }) => {
                             }}
                         >
                             {t('hero.candidates.h1_sub') || 'Prossimo Lavoro.'}
-                        </h1>
+                        </div>
                     </div>
  
                     {/* SEARCH CARD */}
@@ -387,7 +392,8 @@ const Hero = ({ setShowLoginModal }) => {
                         }}>
                             {t('hero.companies.subtitle') || 'PER LE AZIENDE'}
                         </p>
-                        <h1
+                        {/* h2: the candidates panel above carries the page's single h1. */}
+                        <h2
                             className="hero-h1"
                             style={{
                                 fontFamily: 'var(--font-brand)',
@@ -401,8 +407,8 @@ const Hero = ({ setShowLoginModal }) => {
                             }}
                         >
                             {t('hero.companies.h1') || 'I candidati giusti'}
-                        </h1>
-                        <h1
+                        </h2>
+                        <div
                             className="hero-h1-sub"
                             style={{
                                 fontFamily: 'var(--font-editorial)',
@@ -414,7 +420,7 @@ const Hero = ({ setShowLoginModal }) => {
                             }}
                         >
                             {t('hero.companies.h1_sub') || 'sono già qui.'}
-                        </h1>
+                        </div>
                     </div>
 
                     {/* Stat aziende + CTA — same container as candidati form */}

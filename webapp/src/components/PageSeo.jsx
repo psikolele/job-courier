@@ -14,11 +14,11 @@ import { useTranslation } from 'react-i18next';
  * `page` names a block under `seo` in the locale files; `values` fills the
  * placeholders the job-ad entry uses.
  *
- * Only title and description otherwise. This version of Helmet appends meta tags
- * instead of replacing ones already in the document, so adding og:title here would
- * ship two of them with the static one from index.html first — worse than the generic
- * tag alone. Per-page Open Graph needs those static tags gone, and they are what a
- * crawler that does not run JavaScript sees.
+ * Open Graph is set per page here. It could not be before: this version of Helmet appends
+ * meta tags rather than replacing ones already in the document, so an og:title here shipped
+ * two of them with index.html's generic one first. main.jsx now removes those static tags
+ * once the app boots — they stay in the served HTML for clients that do not run JavaScript,
+ * which is every social scraper — so this is the only og:title on a rendered page.
  *
  * `jsonLd` is an optional array of plain objects, each rendered as its own
  * `<script type="application/ld+json">` — one script per object, JSON.stringify'd
@@ -26,6 +26,10 @@ import { useTranslation } from 'react-i18next';
  * of the script tag. Pages that need structured data (JobPosting today, Organization
  * later for AziendaDettaglio) pass it here instead of adding a local <Helmet>.
  */
+// Same asset index.html points at, so a page that says nothing more specific still shares
+// with the site's own mark rather than whatever the network picks.
+const OG_IMAGE = 'https://www.jobcourier.ch/logo-square.png';
+
 const PageSeo = ({ page, values, jsonLd }) => {
   const { t } = useTranslation();
   const title = t(`seo.${page}.title`, values);
@@ -35,6 +39,10 @@ const PageSeo = ({ page, values, jsonLd }) => {
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={OG_IMAGE} />
       {(jsonLd || []).map((schema, i) => (
         <script key={i} type="application/ld+json">
           {JSON.stringify(schema)}

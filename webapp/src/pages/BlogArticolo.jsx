@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link, Navigate, useNavigate } from 'react-router-dom';
 import { Clock, ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { getArticle } from '../data/blog/loader.js';
-import { findBySlug, slugFor } from '../data/blog/blogIndex.js';
+import { findBySlug, slugFor, itSlugFor } from '../data/blog/blogIndex.js';
 import { resolveCategorySegment, categorySegmentFor } from '../data/blog/categories.js';
 import BlogSeo from '../components/blog/BlogSeo.jsx';
 import BlogSidebar from '../components/blog/BlogSidebar.jsx';
@@ -18,8 +18,23 @@ const BlogArticolo = () => {
   const { categoria, slug } = useParams();
   const navigate = useNavigate();
   const { i18n } = useTranslation();
-  const lang = i18n.language?.slice(0, 2) || 'it';
+
+  // The URL decides which language this page IS; the UI toggle only decides where the
+  // visitor goes next.
+  //
+  // Deriving it from i18n.language instead meant the language detector — which reads
+  // navigator.language for a first-time visitor — overrode the URL: a request for the
+  // Italian article from an English-locale client rendered the English translation and
+  // then rewrote the address bar to the English URL. Every crawler is such a client, so
+  // the Italian URLs were never indexed as Italian, and canonical/hreflang were emitted
+  // for whichever language the client happened to prefer.
+  const uiLang = i18n.language?.slice(0, 2) || 'it';
+  const urlLang = findBySlug(slug)?.lang;
+  const lang = urlLang || uiLang;
   const [article, setArticle] = useState(undefined); // undefined=loading, null=404
+
+  // Distinguishes a real user switch from the sync below, which also moves i18n.language.
+  const lastUiLang = useRef(uiLang);
 
   const categoryId = resolveCategorySegment(categoria);
 
@@ -29,15 +44,36 @@ const BlogArticolo = () => {
     return () => { alive = false; };
   }, [slug, lang]);
 
-  // Normalizza URL: segmento categoria + slug nella lingua attiva
-  // (copre slug di altra lingua, categoria errata nell'URL, cambio lingua)
+  // Only an actual change of the UI language moves the URL — never a mere disagreement
+  // between the two. Landing on a URL whose language is not the visitor's preference is
+  // normal (a shared link, a search result, any crawler) and must render that language
+  // where it stands, not bounce somewhere nobody asked for.
+  //
+  // The ref is written on every run, before any branch, so re-running with unchanged
+  // inputs is a no-op. That matters beyond tidiness: StrictMode invokes effects twice in
+  // development, and a version that wrote the ref only on some paths read its own first
+  // pass as a language click on the second and redirected the English article to the
+  // Italian one.
+  useEffect(() => {
+    const previous = lastUiLang.current;
+    lastUiLang.current = uiLang;
+    if (previous === uiLang) return;
+    if (!urlLang || uiLang === urlLang) return;
+
+    const hit = findBySlug(slug);
+    if (!hit) return;
+    const target = slugFor(itSlugFor(slug), uiLang);
+    navigate(`/blog/${categorySegmentFor(hit.entry.category, uiLang)}/${target}`, { replace: true });
+  }, [uiLang, urlLang, slug, navigate]);
+
+  // A correct slug reached under the wrong category segment still has to settle on one
+  // URL — otherwise the same article is reachable, and indexable, at two addresses.
   useEffect(() => {
     const hit = findBySlug(slug);
     if (!hit) return;
-    const targetSlug = slugFor(hit.lang === 'it' ? slug : hit.entry.slug, lang);
     const targetSeg = categorySegmentFor(hit.entry.category, lang);
-    if (targetSlug !== slug || targetSeg !== categoria) {
-      navigate(`/blog/${targetSeg}/${targetSlug}`, { replace: true });
+    if (targetSeg && targetSeg !== categoria) {
+      navigate(`/blog/${targetSeg}/${slug}`, { replace: true });
     }
   }, [slug, categoria, lang, navigate]);
 
@@ -50,7 +86,7 @@ const BlogArticolo = () => {
   return (
     <div className="w-full px-6 md:px-12 pt-28 pb-20" style={{ background: 'var(--brand-gray-light)' }}>
       <div className="max-w-[1400px] mx-auto w-full">
-        <BlogSeo type="article" lang={lang} categoryId={article.category} article={article} itSlug={findBySlug(slug)?.entry.slug || slug}
+        <BlogSeo type="article" lang={lang} categoryId={article.category} article={article} itSlug={itSlugFor(slug)}
           title={article.metaTitle} description={article.metaDescription} />
 
         <Link to={`/blog/${seg}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 24, fontFamily: 'var(--font-brand)', fontWeight: 700, fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--brand-navy)', textDecoration: 'none' }}>

@@ -65,13 +65,23 @@ const AziendeCheAssumono = () => {
                     name="description"
                     content="Scopri le aziende con un profilo attivo su JobCourier e trova quelle che stanno cercando personale in Svizzera."
                 />
+                {/* main.jsx strips index.html's generic Open Graph set once the app boots. */}
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={t('companies_list.meta_title')} />
+                <meta
+                    property="og:description"
+                    content="Scopri le aziende con un profilo attivo su JobCourier e trova quelle che stanno cercando personale in Svizzera."
+                />
+                <meta property="og:image" content="https://www.jobcourier.ch/logo-square.png" />
             </Helmet>
 
             <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12 md:py-16">
                 {/* Header */}
                 <div className="mb-10 md:mb-12 text-left max-w-3xl">
                     <SectionLabel>{t('companies_list.title')}</SectionLabel>
-                    <h2 style={{
+                    {/* An h2, before: this is the page's own heading, and the page had no
+                        h1 at all — one of the "H1 tag missing or empty" errors. */}
+                    <h1 style={{
                         fontFamily: editorial,
                         fontStyle: 'italic',
                         fontSize: 'clamp(26px, 4vw, 40px)',
@@ -80,7 +90,7 @@ const AziendeCheAssumono = () => {
                         marginBottom: 12
                     }}>
                         {t('companies_list.subtitle')}
-                    </h2>
+                    </h1>
                     <p style={{ fontFamily: body, fontSize: 14, color: GM, lineHeight: 1.6 }}>
                         {t('companies_list.intro')}
                     </p>

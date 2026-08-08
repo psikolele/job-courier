@@ -14,14 +14,20 @@
     },
     "api/company-detail.js": {
       "maxDuration": 60
+    },
+    "api/offerta-ssr.js": {
+      "maxDuration": 30
+    },
+    "api/azienda-ssr.js": {
+      "maxDuration": 30
     }
   },
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/offerte", "destination": "/index.html" },
-    { "source": "/offerta/:id", "destination": "/index.html" },
+    { "source": "/offerta/:id", "destination": "/api/offerta-ssr?id=:id" },
     { "source": "/aziende-che-assumono", "destination": "/index.html" },
-    { "source": "/azienda/:slug", "destination": "/index.html" },
+    { "source": "/azienda/:slug", "destination": "/api/azienda-ssr?slug=:slug" },
     { "source": "/blog", "destination": "/index.html" },
     { "source": "/blog/:categoria", "destination": "/index.html" },
     { "source": "/blog/:categoria/:slug", "destination": "/index.html" },

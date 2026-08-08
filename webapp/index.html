@@ -44,9 +44,12 @@
     <title>JobCourier - Il portale svizzero per il lavoro</title>
 
     <!-- Open Graph / Facebook -->
-    <!-- These stay static: they are what a crawler that does not run JavaScript sees.
-         Helmet appends rather than replaces them, so per-page Open Graph tags are not
-         set from the app — see components/PageSeo.jsx. -->
+    <!-- The generic fallback, and the only one a client that does not run JavaScript
+         sees — every social scraper included. For /offerta and /azienda the SSR
+         functions rewrite these per page before serving (api/_ssr.js). Once the app
+         boots, main.jsx removes this set and the page's own Helmet takes over, so
+         nothing ends up with two of anything. Keep the title and these four tags in
+         sync as a pair: main.jsx removes exactly `head > title` and `og:*`. -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="JobCourier - Il portale svizzero per il lavoro">
     <meta property="og:description" content="Il portale leader in Svizzera per connettere i migliori talenti con le aziende di successo. Cerca migliaia di offerte di lavoro in tutti i settori.">
