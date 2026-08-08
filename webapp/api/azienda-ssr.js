@@ -17,16 +17,25 @@ import {
   serveFallback,
 } from './_ssr.js';
 
-// Measured against production: /api/companies answers in ~0.3s warm but ~7.6s on a cold
-// lambda, and this route waits on it before it can even resolve the slug to an id. At 8s
-// the snapshot fell back to the bare shell on exactly the requests that matter — the first
-// of a crawl, when nothing is warm. Only direct loads and crawlers reach this function at
-// all; in-app navigation is client-side.
-const UPSTREAM_TIMEOUT_MS = 12000;
+// Measured against production, and the two calls are nothing alike:
+//   /api/companies       ~0.3s warm, ~7.6s cold
+//   /api/company-detail  ~9.3s warm, ~18.4s cold (and 500s on its own internal abort)
+//
+// company-detail scrapes a profile page the upstream is slow and flaky about — the reason
+// AziendaDettaglio.jsx retries it client-side too. A single shared 12s budget timed it out
+// on every cold request, so company pages silently served the bare shell, which is most of
+// what this function exists to fix.
+//
+// The cost is latency on a cold miss. Only direct loads and crawlers reach this function
+// (in-app navigation is client-side), a successful render is edge-cached for 10 minutes
+// with a 30 minute stale-while-revalidate window, and a timeout still falls back to the
+// shell rather than failing.
+const COMPANIES_TIMEOUT_MS = 12000;
+const DETAIL_TIMEOUT_MS = 25000;
 
-async function fetchJson(url) {
+async function fetchJson(url, timeoutMs) {
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), UPSTREAM_TIMEOUT_MS);
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
     const res = await fetch(url, { signal: ctrl.signal });
     if (!res.ok) return null;
@@ -54,7 +63,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const list = await fetchJson(`${origin}/api/companies`);
+  const list = await fetchJson(`${origin}/api/companies`, COMPANIES_TIMEOUT_MS);
   const match = Array.isArray(list)
     ? list.find((c) => c.slug === slug) || list.find((c) => String(c.id) === slug)
     : null;
@@ -66,7 +75,8 @@ export default async function handler(req, res) {
   if (!target) return serveFallback(res, origin, 404);
 
   const detail = await fetchJson(
-    `${origin}/api/company-detail?id=${encodeURIComponent(target.id)}&slug=${encodeURIComponent(target.slug || '')}`
+    `${origin}/api/company-detail?id=${encodeURIComponent(target.id)}&slug=${encodeURIComponent(target.slug || '')}`,
+    DETAIL_TIMEOUT_MS
   );
 
   // The upstream times out on a single profile often enough that one failed read is not
