@@ -6,8 +6,6 @@ import Filters from '../components/Filters';
 import Vetrini from '../components/Vetrini';
 import Blog from '../components/Blog';
 
-import AdBanner from '../components/AdBanner';
-
 const Home = ({ setShowLoginModal }) => {
   return (
     <main className="flex flex-col w-full">
@@ -16,11 +14,7 @@ const Home = ({ setShowLoginModal }) => {
       <div style={{display:'none'}}><Stats /></div>
       <Filters />
 
-      <AdBanner type="top" />
-
       <Vetrini />
-
-      <AdBanner type="bottom" />
 
       <Blog />
     </main>
