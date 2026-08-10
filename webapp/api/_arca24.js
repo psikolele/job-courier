@@ -790,6 +790,39 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
   };
 }
 
+export const RESERVED_COMPANY = 'Azienda Riservata';
+
+/**
+ * Names the employer on ads read from that employer's own page.
+ *
+ * The listing rows on a company page carry no company link and no company in their
+ * location cell — verified 10.08.2026, all fifteen rows on every page — so the row parser,
+ * which has only the row to go on, falls back to "Azienda Riservata". On the global
+ * listing that fallback is right about once in a hundred rows; here it was wrong every
+ * single time, because we fetched the page by `uiid` and therefore know exactly whose ads
+ * these are. Randstad's "Meccanico DISPONIBILE DA SUBITO" reached the home page labelled
+ * anonymous while the ad's own page named Randstad in its header.
+ *
+ * A name the row did supply always wins: this fills a gap, it does not overwrite.
+ */
+export function withKnownEmployer(jobs, detail, id) {
+  if (!detail?.name || detail.name === RESERVED_COMPANY) return jobs;
+  return (jobs || []).map((job) => {
+    if (job.company?.name && job.company.name !== RESERVED_COMPANY) return job;
+    return {
+      ...job,
+      company: {
+        ...job.company,
+        name: detail.name,
+        logo: detail.logo || job.company?.logo || '',
+        domain: detail.name.toLowerCase().replace(/[^a-z0-9]/g, '') + '.ch',
+        arca24_id: id,
+        slug: detail.slug || job.company?.slug || slugify(detail.name),
+      },
+    };
+  });
+}
+
 export async function fetchCompanyDetail(id, slug, { verifyLogos = false, patient = false, timeoutMs } = {}) {
   // An employer with no open position answers 404 — but with its real profile page in
   // the body, name and all. Treating that as an error turned "no ads right now" into a
@@ -822,6 +855,7 @@ export async function fetchCompanyDetail(id, slug, { verifyLogos = false, patien
       detail.location = detail.location || fromJobsPage.location;
     }
   }
+  detail.jobs = withKnownEmployer(detail.jobs, detail, id);
   // Opt-in for the same reason as `fetchCompanies`: `api/jobs` calls this once per
   // company to build the showcase pool and shows none of these logos.
   if (verifyLogos) {

@@ -10,6 +10,7 @@ import {
   parseCompaniesFromHtml, parseCompanyDetailFromHtml, companyLogo,
   isArca24Enabled, resetSourceProbe,
   fetchCompanies, resetHasJobsCache, resetFeedRosterCache,
+  withKnownEmployer, RESERVED_COMPANY,
 } from './_arca24.js';
 
 // Trimmed copies of the real markup, kept small on purpose: these guard the selectors
@@ -355,5 +356,31 @@ describe('has_jobs: si legge il corpo della pagina, non lo status', () => {
     await fetchCompanies({ withJobStatus: true });
     const after = vi.mocked(fetch).mock.calls.filter((c) => String(c[0]).includes('uiid=')).length;
     expect(after).toBe(before);
+  });
+});
+
+describe('withKnownEmployer', () => {
+  const detail = { name: 'Randstad Svizzera SA', logo: 'https://x/randstad.jpg', slug: 'randstad' };
+  const anonymous = { id: '6725948', title: 'Meccanico DISPONIBILE DA SUBITO', company: { name: RESERVED_COMPANY, logo: '' } };
+
+  // The rows on a company page carry no company at all, so the row parser falls back to
+  // "Azienda Riservata" for every one of them — while we are reading that very company's
+  // page and know the answer.
+  it('names the employer on ads that came back anonymous', () => {
+    const [job] = withKnownEmployer([anonymous], detail, '3244729');
+    expect(job.company.name).toBe('Randstad Svizzera SA');
+    expect(job.company.logo).toBe('https://x/randstad.jpg');
+    expect(job.company.arca24_id).toBe('3244729');
+  });
+
+  it('never overwrites a name the row did supply', () => {
+    const named = { id: '1', company: { name: 'Adecco', logo: 'a.jpg' } };
+    expect(withKnownEmployer([named], detail, '3244729')[0].company.name).toBe('Adecco');
+  });
+
+  it('leaves the ads alone when the company page had no name either', () => {
+    const jobs = [anonymous];
+    expect(withKnownEmployer(jobs, { name: RESERVED_COMPANY }, '1')).toBe(jobs);
+    expect(withKnownEmployer(jobs, {}, '1')).toBe(jobs);
   });
 });
