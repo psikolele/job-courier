@@ -56,6 +56,9 @@ export default async function handler(req, res) {
   const html = withCanonical(template, canonical);
 
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate=1800');
+  // Same reason index.html is no-store in vercel.json: the shell names hashed asset files
+  // that only exist in the deployment that built them. A cached copy outliving a deploy
+  // asks for a bundle that is gone — a blank page, not a stale one.
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.status(200).send(html);
 }
