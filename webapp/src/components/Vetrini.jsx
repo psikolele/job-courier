@@ -69,21 +69,42 @@ const Vetrini = () => {
     // them with a single open position, ended up in a wall of logos that claims to be the
     // companies hiring on JobCourier. A hole below the fold for a second is cheaper than
     // advertising employers who have nothing to apply to, so the roster phase is gone.
+    //
+    // One shot was not enough. The endpoint walks the portal and probes every employer, so
+    // a cold instance can answer slowly, fail, or come back with nobody flagged as hiring —
+    // and a single attempt turns any of those into a section that stays hidden for the whole
+    // page view. Retrying costs nothing when the first answer is good (it is not sent) and
+    // is the difference between a hole and a showcase when it is not.
     useEffect(() => {
         let cancelled = false;
+        const timers = [];
 
-        fetch('/api/companies?withJobs=1')
-            .then((res) => (res.ok ? res.json() : null))
-            .then((list) => {
-                if (cancelled || !Array.isArray(list)) return;
-                // Strictly true: `null` means the probe failed, and a tile that opens on
-                // "nessuna offerta attiva" is what this section was fixed to stop showing.
-                const hiring = list.filter((c) => c.has_jobs === true);
-                setCompanies(hiring.slice(0, MAX_TILES).map((c) => ({ ...c, link: `/azienda/${c.id}` })));
-            })
-            .catch(() => {});
+        const attempt = (n) => {
+            fetch('/api/companies?withJobs=1')
+                .then((res) => (res.ok ? res.json() : null))
+                .then((list) => {
+                    if (cancelled) return;
+                    // Strictly true: `null` means the probe failed, and a tile that opens on
+                    // "nessuna offerta attiva" is what this section was fixed to stop showing.
+                    const hiring = Array.isArray(list) ? list.filter((c) => c.has_jobs === true) : [];
+                    if (hiring.length === 0) { retry(n); return; }
+                    setCompanies(hiring.slice(0, MAX_TILES).map((c) => ({ ...c, link: `/azienda/${c.id}` })));
+                })
+                .catch(() => retry(n));
+        };
 
-        return () => { cancelled = true; };
+        // Spaced out enough for the degraded answer's own 30s edge cache to expire between
+        // tries, so the second and third attempts can reach a fresh run rather than re-read
+        // the same empty one.
+        const DELAYS_MS = [4000, 35000];
+        const retry = (n) => {
+            if (cancelled || n >= DELAYS_MS.length) return;
+            timers.push(setTimeout(() => attempt(n + 1), DELAYS_MS[n]));
+        };
+
+        attempt(0);
+
+        return () => { cancelled = true; timers.forEach(clearTimeout); };
     }, []);
 
     const N = 'var(--brand-navy)';

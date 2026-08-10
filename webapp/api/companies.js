@@ -117,6 +117,24 @@ export function parseCompaniesFromHtml(html) {
   return companies;
 }
 
+// The home showcase renders nothing at all when no employer comes back flagged as hiring,
+// and a run can end that way without anything being wrong upstream: a cold instance that
+// hits the probe deadline reports everyone `null`, and a refused index page plus a failed
+// feed read yields an empty roster. Both answers used to be handed to the CDN with the
+// normal `s-maxage=300`, so one bad run hid the section for five minutes for every
+// visitor — which is what a private window sees, having no browser cache of its own to
+// paper over it.
+//
+// So a degraded answer is never allowed to evict a good one: the last roster that had
+// somebody hiring is kept here and served in its place, and whatever we do answer in that
+// state is cached for seconds rather than minutes so the next request re-asks.
+const LAST_GOOD_TTL_MS = 30 * 60_000;
+const DEGRADED_CACHE_HEADER = 's-maxage=30, stale-while-revalidate=600';
+let lastGoodHiring = { list: null, at: 0 };
+
+/** Test seam. */
+export function resetLastGoodHiring() { lastGoodHiring = { list: null, at: 0 }; }
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -130,7 +148,23 @@ export default async function handler(req, res) {
       // `?withJobs=1` costs one extra profile read per employer (cached for a few minutes
       // upstream), so it is opt-in: only the home showcase needs to know who is hiring.
       const withJobStatus = String(req.query?.withJobs || '') === '1';
-      res.status(200).json(await fetchArca24Companies({ withJobStatus, verifyLogos: true }));
+      const list = await fetchArca24Companies({ withJobStatus, verifyLogos: true });
+
+      if (!withJobStatus) {
+        if (list.length === 0) res.setHeader('Cache-Control', DEGRADED_CACHE_HEADER);
+        res.status(200).json(list);
+        return;
+      }
+
+      if (list.some((c) => c.has_jobs === true)) {
+        lastGoodHiring = { list, at: Date.now() };
+        res.status(200).json(list);
+        return;
+      }
+
+      res.setHeader('Cache-Control', DEGRADED_CACHE_HEADER);
+      const fresh = lastGoodHiring.list && Date.now() - lastGoodHiring.at < LAST_GOOD_TTL_MS;
+      res.status(200).json(fresh ? lastGoodHiring.list : list);
       return;
     }
 
