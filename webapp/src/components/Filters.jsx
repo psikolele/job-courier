@@ -33,7 +33,10 @@ const deriveSector = (title, sector) => {
 // Short-lived on purpose: these are live vacancies, and an ad that closed should not sit
 // on the home page for a day. Any storage failure (Safari private mode, quota) is silent
 // — the cache is an optimisation, never a source of truth.
-const SHOWCASE_CACHE_KEY = 'jc_showcase_v1';
+// v2: entries written before `published_at` was carried through have no date on them, and
+// a returning visitor would paint that undated payload — in feed order, the very thing the
+// sort exists to correct — for as long as it stayed fresh. A new key retires them at once.
+const SHOWCASE_CACHE_KEY = 'jc_showcase_v2';
 const SHOWCASE_CACHE_TTL_MS = 30 * 60 * 1000;
 
 const readCachedShowcase = () => {
@@ -164,6 +167,11 @@ const Filters = () => {
                             jobroom_id: job.jobroom_id || linkId,
                             title: job.title,
                             location: job.location,
+                            // Carried, not dropped: useShowcaseJobs sorts on it, and
+                            // without it every card looked equally old and the order fell
+                            // back to feed position — which is how ads from 22/07 stayed
+                            // in front of ones posted that morning.
+                            published_at: job.published_at,
                             sector: job.sector || 'Other',
                             role: job.role || 'Other',
                             company: job.company?.name || job.company,
