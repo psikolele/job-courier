@@ -199,13 +199,26 @@ export function snapshotBody({ heading, subheading, facts, paragraphs, links, li
  * A snapshot that could not be built is served as the plain shell, so the app still boots
  * and fetches the data client-side — exactly the behaviour before this function existed.
  * Never cached: the next crawl should get a chance at a real snapshot.
+ *
+ * `canonical` is still written into the shell. The upstream feed is slow often enough that
+ * a crawl sweeping every ad and company page in a burst lands here on most of them, and a
+ * shell without a canonical is a page whose URL is indistinguishable from every other one
+ * that fell back — which is exactly the "Duplicate pages without canonical" report. The
+ * page's own identity does not depend on the data we failed to read.
  */
-export async function serveFallback(res, origin, status = 200) {
+export async function serveFallback(res, origin, status = 200, canonical = null) {
   try {
     const template = await loadTemplate(origin);
+    const html = canonical
+      ? template.replace(
+          '</head>',
+          `  <link rel="canonical" href="${escapeHtml(canonical)}">\n` +
+            `    <meta property="og:url" content="${escapeHtml(canonical)}">\n  </head>`
+        )
+      : template;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('Cache-Control', 'no-store');
-    res.status(status).send(template);
+    res.status(status).send(html);
   } catch (err) {
     console.error('ssr: template unavailable', err);
     res.setHeader('Cache-Control', 'no-store');
