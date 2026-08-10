@@ -79,11 +79,11 @@ describe('shell-ssr handler', () => {
     expect(res.body).toContain('href="https://www.jobcourier.ch/blog/carriera"');
   });
 
-  it('canonicalises the home page without a trailing path', async () => {
+  it('canonicalises the home page with the slash the sitemap lists', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, text: async () => SHELL })));
 
     const res = await run('/');
 
-    expect(res.body).toContain('<link rel="canonical" href="https://www.jobcourier.ch">');
+    expect(res.body).toContain('<link rel="canonical" href="https://www.jobcourier.ch/">');
   });
 });

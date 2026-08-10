@@ -42,7 +42,8 @@ export function canonicalPath(raw) {
 export default async function handler(req, res) {
   const origin = siteOrigin(req);
   const path = canonicalPath(req.query?.path);
-  const canonical = path === '/' ? SITE : `${SITE}${path}`;
+  // '/' keeps its slash, matching the sitemap and the prerendered home page.
+  const canonical = `${SITE}${path}`;
 
   let template;
   try {

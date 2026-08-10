@@ -40,7 +40,9 @@ const shell = readFileSync(distFile('index.html'), 'utf8');
 if (!shell.includes('</head>')) throw new Error('prerender: built shell has no </head>');
 
 for (const [route, file] of Object.entries(ROUTES)) {
-  const canonical = route === '/' ? SITE : `${SITE}${route}`;
+  // The home page keeps its trailing slash: that is the form the sitemap lists and the
+  // form the site is indexed under. Every other route drops it (trailingSlash: false).
+  const canonical = `${SITE}${route}`;
   // Stripping first keeps the script idempotent: index.html is both an input and one of
   // the outputs, so a second run over the same dist would otherwise stack a second tag.
   const html = shell

@@ -55,7 +55,9 @@ function App() {
   const routeLoaderVisible = useRouteLoader();
   const { pathname } = useLocation();
   // Blog pages render their own BlogSeo canonical, which overrides this one.
-  const canonical = `${SITE}${pathname === '/' ? '' : pathname.replace(/\/+$/, '')}`;
+  // '/' keeps its slash — the sitemap lists the home page that way and it is the form the
+  // prerendered index.html ships, so the tag does not change when the app boots.
+  const canonical = `${SITE}${pathname === '/' ? '/' : pathname.replace(/\/+$/, '')}`;
 
   // Return-from-JobRoom redirect
   useEffect(() => {
