@@ -15,7 +15,7 @@
  * The tags it injects are the same ones main.jsx strips before the first render, so the
  * booted app still ends up with exactly one of each — see the list in main.jsx.
  */
-import { siteOrigin, loadTemplate, escapeHtml, serveFallback } from './_ssr.js';
+import { siteOrigin, loadTemplate, withCanonical, serveFallback } from './_ssr.js';
 
 // The indexed hostname. Hard-coded for the same reason as in the other SSR handlers:
 // preview deployments and the apex must not canonicalise to themselves.
@@ -42,7 +42,7 @@ export function canonicalPath(raw) {
 export default async function handler(req, res) {
   const origin = siteOrigin(req);
   const path = canonicalPath(req.query?.path);
-  const canonical = escapeHtml(path === '/' ? SITE : `${SITE}${path}`);
+  const canonical = path === '/' ? SITE : `${SITE}${path}`;
 
   let template;
   try {
@@ -52,11 +52,7 @@ export default async function handler(req, res) {
     return serveFallback(res, origin, 500);
   }
 
-  const html = template.replace(
-    '</head>',
-    `  <link rel="canonical" href="${canonical}">\n` +
-      `    <meta property="og:url" content="${canonical}">\n  </head>`
-  );
+  const html = withCanonical(template, canonical);
 
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate=1800');

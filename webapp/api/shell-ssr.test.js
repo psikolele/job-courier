@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
-import handler, { canonicalPath } from './shell-ssr.js';
+import { canonicalPath } from './shell-ssr.js';
 
 const SHELL = '<!doctype html><html><head><title>JobCourier</title></head><body><div id="root"></div></body></html>';
 
@@ -12,7 +12,11 @@ const makeRes = () => {
   return res;
 };
 
+// A fresh module per call: _ssr.js caches the fetched template in module scope, so a
+// second test would otherwise render against the first one's stub.
 const run = async (path) => {
+  vi.resetModules();
+  const { default: handler } = await import('./shell-ssr.js');
   const res = makeRes();
   await handler({ headers: { host: 'www.jobcourier.ch' }, query: { path } }, res);
   return res;
@@ -57,6 +61,22 @@ describe('shell-ssr handler', () => {
     // One canonical only: main.jsx strips it before React renders its own.
     expect(res.body.match(/rel="canonical"/g)).toHaveLength(1);
     expect(res.body).toContain('id="root"');
+  });
+
+  it('replaces the template canonical instead of adding a second one', async () => {
+    // The template is the built index.html, which is the home page and carries the home
+    // page's canonical. Appending here would give every blog page two.
+    const homeShell = SHELL.replace(
+      '</head>',
+      '<link rel="canonical" href="https://www.jobcourier.ch"><meta property="og:url" content="https://www.jobcourier.ch"></head>'
+    );
+    vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, text: async () => homeShell })));
+
+    const res = await run('/blog/carriera');
+
+    expect(res.body.match(/rel="canonical"/g)).toHaveLength(1);
+    expect(res.body.match(/property="og:url"/g)).toHaveLength(1);
+    expect(res.body).toContain('href="https://www.jobcourier.ch/blog/carriera"');
   });
 
   it('canonicalises the home page without a trailing path', async () => {

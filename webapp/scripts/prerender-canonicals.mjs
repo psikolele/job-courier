@@ -17,12 +17,13 @@ const SITE = 'https://www.jobcourier.ch';
 // Must stay in step with the non-blog rewrites in vercel.json: a route listed there and
 // missing here goes back to serving a shell with no canonical.
 //
-// index.html itself is deliberately left untouched — it is the template api/_ssr.js
-// fetches for the /offerta and /azienda snapshots, and renderShell() appends a canonical
-// rather than replacing one, so a canonical baked into the template would give those
-// pages two. The home page gets its own file instead.
+// The home page writes into index.html itself: Vercel serves that file for "/" straight
+// off the filesystem, before any rewrite runs, so "/" cannot be pointed at a copy. That
+// same file is the template api/_ssr.js fetches for the /offerta and /azienda snapshots,
+// which is why withCanonical() there strips the template's canonical before injecting the
+// page's own — otherwise every snapshot would carry the home page's too.
 const ROUTES = {
-  '/': 'home.html',
+  '/': 'index.html',
   '/offerte': 'offerte.html',
   '/aziende-che-assumono': 'aziende-che-assumono.html',
   '/soluzioni-e-tariffe': 'soluzioni-e-tariffe.html',
@@ -40,14 +41,18 @@ if (!shell.includes('</head>')) throw new Error('prerender: built shell has no <
 
 for (const [route, file] of Object.entries(ROUTES)) {
   const canonical = route === '/' ? SITE : `${SITE}${route}`;
-  writeFileSync(
-    distFile(file),
-    shell.replace(
+  // Stripping first keeps the script idempotent: index.html is both an input and one of
+  // the outputs, so a second run over the same dist would otherwise stack a second tag.
+  const html = shell
+    .replace(/\s*<link\s+rel="canonical"[^>]*>/gi, '')
+    .replace(/\s*<meta\s+property="og:url"[^>]*>/gi, '')
+    .replace(
       '</head>',
       `  <link rel="canonical" href="${canonical}">\n` +
         `    <meta property="og:url" content="${canonical}">\n  </head>`
-    )
-  );
+    );
+
+  writeFileSync(distFile(file), html);
 }
 
 console.log(`prerender: ${Object.keys(ROUTES).length} canonical URL`);

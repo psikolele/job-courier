@@ -105,6 +105,27 @@ function jsonLdScript(schema) {
 }
 
 /**
+ * The shell with `canonical` as its one canonical URL — the template's own (the home
+ * page's, since the template is index.html) is dropped rather than kept alongside.
+ */
+export function withCanonical(template, canonical) {
+  const stripped = template
+    .replace(/\s*<link\s+rel="canonical"[^>]*>/gi, '')
+    .replace(/\s*<meta\s+property="og:url"[^>]*>/gi, '');
+
+  // No canonical to give — a 404, say. Better none than the template's, which would
+  // point a page that does not exist at the home page.
+  if (!canonical) return stripped;
+
+  const url = escapeHtml(canonical);
+  return stripped
+    .replace(
+      '</head>',
+      `  <link rel="canonical" href="${url}">\n    <meta property="og:url" content="${url}">\n  </head>`
+    );
+}
+
+/**
  * Writes the page's identity into the shell.
  *
  * The static Open Graph tags in index.html are REPLACED, not appended to: the app cannot
@@ -117,7 +138,10 @@ export function renderShell(template, { title, description, canonical, ogImage, 
   const d = escapeHtml(description);
   const url = escapeHtml(canonical);
 
-  let html = template;
+  // The template is the built index.html, which is also the home page and therefore
+  // carries the home page's canonical (scripts/prerender-canonicals.mjs). It is stripped
+  // here and this page's own is injected below, so a snapshot never ships two.
+  let html = withCanonical(template, null);
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${t}</title>`);
 
@@ -209,13 +233,7 @@ export function snapshotBody({ heading, subheading, facts, paragraphs, links, li
 export async function serveFallback(res, origin, status = 200, canonical = null) {
   try {
     const template = await loadTemplate(origin);
-    const html = canonical
-      ? template.replace(
-          '</head>',
-          `  <link rel="canonical" href="${escapeHtml(canonical)}">\n` +
-            `    <meta property="og:url" content="${escapeHtml(canonical)}">\n  </head>`
-        )
-      : template;
+    const html = withCanonical(template, canonical);
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('Cache-Control', 'no-store');
     res.status(status).send(html);

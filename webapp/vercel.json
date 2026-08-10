@@ -26,7 +26,6 @@
     }
   },
   "rewrites": [
-    { "source": "/", "destination": "/home.html" },
     { "source": "/offerte", "destination": "/offerte.html" },
     { "source": "/offerta/:id", "destination": "/api/offerta-ssr?id=:id" },
     { "source": "/aziende-che-assumono", "destination": "/aziende-che-assumono.html" },
