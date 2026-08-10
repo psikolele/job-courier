@@ -3,7 +3,7 @@
 // The roster of employers with at least one open position, as of the last build. Read by
 // api/companies.js as the answer of last resort while a cold instance computes the real
 // one. See that file for why it is allowed to be a little out of date.
-export const generatedAt = '2026-08-10T08:56:16.699Z';
+export const generatedAt = '2026-08-10T13:08:59.453Z';
 export const companies = [
   {
     "id": "3243389",
