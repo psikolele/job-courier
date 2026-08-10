@@ -579,7 +579,15 @@ async function probeHasJobs(id, attempts = 2) {
   try {
     // `acceptNotFound` because a 404 body is exactly the case this probe exists to read;
     // `attempts` because a timeout or connection reset is worth one more try.
-    const html = await fetchHtml(`/${LANG}/careers/company/profile?uiid=${id}`,
+    //
+    // `company/jobs`, not `company/profile`. The profile page used to render the ad list
+    // server-side and stopped: measured 10.08.2026 it answers 200 with the heading
+    // "Annunci dell'azienda" and not one `.resultstring` under it for any of the sixteen
+    // employers who were hiring that morning — the list now arrives by script. Reading it
+    // from here therefore reported nobody hiring at all, which is what collapsed the
+    // showcase to the handful the job feed names. `company/jobs` still renders them:
+    // Adecco 15, Manpower 4, PKB 1 on the same run that saw zero on every profile.
+    const html = await fetchHtml(`/${LANG}/careers/company/jobs?uiid=${id}`,
       { acceptNotFound: true, attempts, timeoutMs: PROBE_TIMEOUT_MS });
     const value = cheerio.load(html)('.resultstring').length > 0;
     hasJobsCache.set(id, { value, at: Date.now() });
@@ -790,12 +798,30 @@ export async function fetchCompanyDetail(id, slug, { verifyLogos = false, patien
   // partial result to fall back on, so it gets more room and a second try. The showcase
   // fan-out calls this once per company and can afford to lose a straggler, so it keeps
   // the short single-shot budget — 30 companies × 2 patient attempts is a minute.
-  const html = await fetchHtml(`/${LANG}/careers/company/profile?uiid=${id}`, {
+  //
+  // Two pages, read together, because upstream split what used to be on one. The profile
+  // still carries the employer's identity — the name comes off its first heading — but as
+  // of 10.08.2026 it renders its ad list by script, so server-side it shows none. The ads
+  // live on `company/jobs`, whose own heading is the label "Annunci attivi dell'azienda"
+  // rather than the company, so neither page answers the whole question alone. Parallel,
+  // so this still costs one round-trip's worth of waiting.
+  const read = (path) => fetchHtml(`/${LANG}/careers/company/${path}?uiid=${id}`, {
     acceptNotFound: true,
     timeoutMs: patient ? 9000 : (timeoutMs || REQUEST_TIMEOUT_MS),
     attempts: patient ? 2 : 1,
   });
+  const [html, jobsHtml] = await Promise.all([read('profile'), read('jobs').catch(() => '')]);
+
   const detail = parseCompanyDetailFromHtml(html, id, slug);
+  if (jobsHtml) {
+    const fromJobsPage = parseCompanyDetailFromHtml(jobsHtml, id, slug);
+    // Only ever adds: a failed or empty jobs page must not blank out a profile that did
+    // parse, and the profile's name stays the name whatever the other heading says.
+    if (fromJobsPage.jobs.length > 0) {
+      detail.jobs = fromJobsPage.jobs;
+      detail.location = detail.location || fromJobsPage.location;
+    }
+  }
   // Opt-in for the same reason as `fetchCompanies`: `api/jobs` calls this once per
   // company to build the showcase pool and shows none of these logos.
   if (verifyLogos) {
