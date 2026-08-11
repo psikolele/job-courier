@@ -430,3 +430,63 @@
   -moz-transform: translateY(-100%);
   transform: translateY(-100%);
 }
+/* ---------- Rotating gradient border (ADV slots) ----------
+   Spun with transform, not an animated conic angle: the gradient layer is
+   static so the browser composites it instead of repainting the banner
+   underneath every frame. See components/ui/BorderRotate.jsx. */
+.jc-ring-frame {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--brand-navy);
+}
+
+/* Square, not 200%-per-axis: the banners are far wider than they are tall, and
+   a wide rectangle spun about its centre leaves the corners uncovered. Side =
+   2x the frame width, which clears the diagonal at every aspect we ship. */
+.jc-ring-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  z-index: 0;
+  will-change: transform;
+  animation: jc-ring-spin var(--jc-ring-duration, 8s) linear infinite;
+}
+
+@keyframes jc-ring-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.jc-ring-inner {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.jc-ring-hover .jc-ring-spinner { animation-play-state: paused; }
+.jc-ring-hover:hover .jc-ring-spinner,
+.jc-ring-hover:focus-visible .jc-ring-spinner { animation-play-state: running; }
+
+.jc-ring-stop-hover:hover .jc-ring-spinner,
+.jc-ring-stop-hover:focus-visible .jc-ring-spinner { animation-play-state: paused; }
+
+/* Keyboard focus has to be visible on top of the ring, not behind it. */
+.jc-ring-frame:focus-visible {
+  outline: 3px solid var(--brand-fuchsia);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jc-ring-spinner {
+    animation: none;
+    /* Static ring still reads as a brand frame, just not a moving one. */
+    transform: rotate(35deg);
+  }
+}

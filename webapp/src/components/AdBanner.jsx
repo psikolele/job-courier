@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import BorderRotate from './ui/BorderRotate';
 
 // ---------- RECONSTRUCTED HTML BANNERS ----------
 
@@ -426,34 +427,36 @@ const AdBanner = ({ type = 'top' }) => {
                     title={t('ads.forma_alt')}
                 />
             )}
-            <div
-                className={`w-full grid grid-cols-1 ${slots.length > 1 ? 'md:grid-cols-2' : ''} gap-4`}
-                style={isTop ? {} : { gap: 1, background: 'rgba(5,11,43,0.06)' }}
-            >
+            {/* gap-6/gap-8: the two bottom banners used to be welded together by a 1px
+                hairline. With the animated border each one needs its own breathing
+                room, otherwise the two rotating rings read as a single busy frame. */}
+            <div className={`w-full grid grid-cols-1 ${slots.length > 1 ? 'md:grid-cols-2' : ''} gap-6 md:gap-8`}>
                 {slots.map((slot, i) => {
                     const Banner = slot.Component;
                     return (
-                        <motion.a
+                        <BorderRotate
                             key={slot.key}
+                            as={motion.a}
                             href={slot.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="overflow-hidden relative group block"
+                            className="group block"
+                            animationSpeed={8}
+                            backgroundColor={slot.bg}
+                            borderWidth={2}
+                            borderRadius={14}
                             variants={bannerVariants}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.15 }}
                             custom={i}
                             style={{
-                                backgroundColor: slot.bg,
-                                position: 'relative',
                                 display: 'block',
-                                height: 235,
-                                ...(!isTop && { border: '1.5px solid rgba(255,31,122,0.22)' })
+                                height: 235
                             }}
                             whileHover={{
-                                boxShadow: '0 0 0 2px rgba(255,31,122,0.35), inset 0 0 0 1px rgba(255,31,122,0.12)',
-                                transition: { duration: 0.2, ease: 'easeOut' }
+                                boxShadow: '0 10px 30px -12px rgba(255,31,122,0.35)',
+                                transition: { duration: 0.25, ease: 'easeOut' }
                             }}
                         >
                             <span style={{
@@ -466,7 +469,7 @@ const AdBanner = ({ type = 'top' }) => {
                             }}>ADV</span>
 
                             <Banner />
-                        </motion.a>
+                        </BorderRotate>
                     );
                 })}
             </div>
