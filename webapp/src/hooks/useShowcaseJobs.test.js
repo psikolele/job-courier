@@ -124,6 +124,56 @@ describe('buildShowcase — anti-monopoly cap', () => {
     });
 });
 
+describe('buildShowcase — recency', () => {
+    const dated = (id, company, date) => ({
+        id, company: { name: company }, location: 'Svizzera, Lugano, Ti', published_at: date,
+    });
+
+    it('puts the newest ad first regardless of feed position', () => {
+        const feed = [
+            dated(1, 'A', '22/07/2026'),
+            dated(2, 'B', '10/08/2026 Nuovo!'),
+            dated(3, 'C', '31/07/2026'),
+        ];
+        expect(buildShowcase(feed, 'it', { target: 3 }).jobs.map(j => j.id)).toEqual([2, 3, 1]);
+    });
+
+    it('keeps undated ads last without dropping them', () => {
+        const feed = [dated(1, 'A', null), dated(2, 'B', '01/08/2026')];
+        expect(buildShowcase(feed, 'it', { target: 2 }).jobs.map(j => j.id)).toEqual([2, 1]);
+    });
+});
+
+describe('buildShowcase — anonymous employers', () => {
+    const reserved = (id, date) => ({
+        id, company: { name: 'Azienda Riservata' }, location: 'Svizzera, Lugano, Ti', published_at: date,
+    });
+
+    it('gives each anonymous ad its own bucket instead of one shared company', () => {
+        const a = companyKey(reserved(1, '10/08/2026'));
+        const b = companyKey(reserved(2, '10/08/2026'));
+        expect(a).not.toBe(b);
+    });
+
+    // The bug this exists to prevent: one bucket plus a cap of 2 meant two anonymous ads
+    // reached the showcase, and with no date sort they were the two oldest in the pool.
+    it('shows today\'s anonymous ads rather than two ancient ones', () => {
+        const feed = [
+            reserved(1, '22/07/2026'),
+            reserved(2, '20/07/2026'),
+            reserved(3, '10/08/2026 Nuovo!'),
+            reserved(4, '10/08/2026 Nuovo!'),
+        ];
+        const ids = buildShowcase(feed, 'it', { target: 4 }).jobs.map(j => j.id);
+        expect(ids.slice(0, 2)).toEqual([3, 4]);
+    });
+
+    it('still bounds how much of the showcase they may take', () => {
+        const feed = Array.from({ length: 12 }, (_, i) => reserved(i + 1, '10/08/2026'));
+        expect(buildShowcase(feed, 'it', { target: 10 }).jobs).toHaveLength(4);
+    });
+});
+
 describe('buildShowcase — degenerate input', () => {
     it('handles an empty feed', () => {
         expect(buildShowcase([], 'it').jobs).toEqual([]);

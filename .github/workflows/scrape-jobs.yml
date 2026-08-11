@@ -1,9 +1,19 @@
+# RETIRED — kept for reference only, no longer scheduled.
+#
+# This scraped jobroom's old `latest-and-all-job-ads.php` into a JSON file on the
+# `data` branch. Nothing reads that file any more: the site serves jobs live from
+# `webapp/api/jobs.js` (Arca24 via `webapp/api/_arca24.js`), and `webapp/vercel.json`
+# already disables deployments for the `data` branch.
+#
+# Meanwhile the scraped page now answers a 718-byte stub — it needs the session
+# cookie warm-up that `_arca24.js` does and this script never did — so every hourly
+# run exited 1 on "Nessun job estratto" and mailed a failure notice. The cron is
+# gone; `workflow_dispatch` stays so the job can still be run by hand if the old
+# path is ever needed.
 name: Hourly Job Scraper
 
 on:
-  schedule:
-    - cron: '0 * * * *' # Ogni ora, al minuto 0
-  workflow_dispatch: # Permette avvio manuale
+  workflow_dispatch: # Solo avvio manuale
 
 permissions:
   contents: write

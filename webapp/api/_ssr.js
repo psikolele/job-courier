@@ -105,6 +105,27 @@ function jsonLdScript(schema) {
 }
 
 /**
+ * The shell with `canonical` as its one canonical URL — the template's own (the home
+ * page's, since the template is index.html) is dropped rather than kept alongside.
+ */
+export function withCanonical(template, canonical) {
+  const stripped = template
+    .replace(/\s*<link\s+rel="canonical"[^>]*>/gi, '')
+    .replace(/\s*<meta\s+property="og:url"[^>]*>/gi, '');
+
+  // No canonical to give — a 404, say. Better none than the template's, which would
+  // point a page that does not exist at the home page.
+  if (!canonical) return stripped;
+
+  const url = escapeHtml(canonical);
+  return stripped
+    .replace(
+      '</head>',
+      `  <link rel="canonical" href="${url}">\n    <meta property="og:url" content="${url}">\n  </head>`
+    );
+}
+
+/**
  * Writes the page's identity into the shell.
  *
  * The static Open Graph tags in index.html are REPLACED, not appended to: the app cannot
@@ -117,7 +138,10 @@ export function renderShell(template, { title, description, canonical, ogImage, 
   const d = escapeHtml(description);
   const url = escapeHtml(canonical);
 
-  let html = template;
+  // The template is the built index.html, which is also the home page and therefore
+  // carries the home page's canonical (scripts/prerender-canonicals.mjs). It is stripped
+  // here and this page's own is injected below, so a snapshot never ships two.
+  let html = withCanonical(template, null);
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${t}</title>`);
 
@@ -199,13 +223,20 @@ export function snapshotBody({ heading, subheading, facts, paragraphs, links, li
  * A snapshot that could not be built is served as the plain shell, so the app still boots
  * and fetches the data client-side — exactly the behaviour before this function existed.
  * Never cached: the next crawl should get a chance at a real snapshot.
+ *
+ * `canonical` is still written into the shell. The upstream feed is slow often enough that
+ * a crawl sweeping every ad and company page in a burst lands here on most of them, and a
+ * shell without a canonical is a page whose URL is indistinguishable from every other one
+ * that fell back — which is exactly the "Duplicate pages without canonical" report. The
+ * page's own identity does not depend on the data we failed to read.
  */
-export async function serveFallback(res, origin, status = 200) {
+export async function serveFallback(res, origin, status = 200, canonical = null) {
   try {
     const template = await loadTemplate(origin);
+    const html = withCanonical(template, canonical);
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('Cache-Control', 'no-store');
-    res.status(status).send(template);
+    res.status(status).send(html);
   } catch (err) {
     console.error('ssr: template unavailable', err);
     res.setHeader('Cache-Control', 'no-store');

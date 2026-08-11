@@ -20,23 +20,25 @@
     },
     "api/azienda-ssr.js": {
       "maxDuration": 60
+    },
+    "api/shell-ssr.js": {
+      "maxDuration": 15
     }
   },
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/offerte", "destination": "/index.html" },
+    { "source": "/offerte", "destination": "/offerte.html" },
     { "source": "/offerta/:id", "destination": "/api/offerta-ssr?id=:id" },
-    { "source": "/aziende-che-assumono", "destination": "/index.html" },
+    { "source": "/aziende-che-assumono", "destination": "/aziende-che-assumono.html" },
     { "source": "/azienda/:slug", "destination": "/api/azienda-ssr?slug=:slug" },
-    { "source": "/blog", "destination": "/index.html" },
-    { "source": "/blog/:categoria", "destination": "/index.html" },
-    { "source": "/blog/:categoria/:slug", "destination": "/index.html" },
-    { "source": "/soluzioni-e-tariffe", "destination": "/index.html" },
-    { "source": "/come-funziona", "destination": "/index.html" },
-    { "source": "/contatti", "destination": "/index.html" },
-    { "source": "/faq", "destination": "/index.html" },
-    { "source": "/condizioni-generali", "destination": "/index.html" },
-    { "source": "/cookie-policy", "destination": "/index.html" }
+    { "source": "/blog", "destination": "/api/shell-ssr?path=/blog" },
+    { "source": "/blog/:categoria", "destination": "/api/shell-ssr?path=/blog/:categoria" },
+    { "source": "/blog/:categoria/:slug", "destination": "/api/shell-ssr?path=/blog/:categoria/:slug" },
+    { "source": "/soluzioni-e-tariffe", "destination": "/soluzioni-e-tariffe.html" },
+    { "source": "/come-funziona", "destination": "/come-funziona.html" },
+    { "source": "/contatti", "destination": "/contatti.html" },
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/condizioni-generali", "destination": "/condizioni-generali.html" },
+    { "source": "/cookie-policy", "destination": "/cookie-policy.html" }
   ],
   "redirects": [
     {
@@ -647,7 +649,7 @@
   ],
   "headers": [
     {
-      "source": "/index.html",
+      "source": "/(.*).html",
       "headers": [
         {
           "key": "Cache-Control",

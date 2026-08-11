@@ -63,6 +63,8 @@ export default async function handler(req, res) {
     return;
   }
 
+  const canonical = `https://www.jobcourier.ch/azienda/${encodeURIComponent(slug)}`;
+
   const list = await fetchJson(`${origin}/api/companies`, COMPANIES_TIMEOUT_MS);
 
   // A roster we could not read — timed out, errored, or came back empty because the feed
@@ -71,7 +73,7 @@ export default async function handler(req, res) {
   // page its status the first time /api/companies ran slow, and a 404 is how a live,
   // indexed page gets dropped from the index.
   const roster = Array.isArray(list) && list.length > 0 ? list : null;
-  if (!roster && !/^\d+$/.test(slug)) return serveFallback(res, origin);
+  if (!roster && !/^\d+$/.test(slug)) return serveFallback(res, origin, 200, canonical);
 
   const match = roster
     ? roster.find((c) => c.slug === slug) || roster.find((c) => String(c.id) === slug)
@@ -90,9 +92,8 @@ export default async function handler(req, res) {
 
   // The upstream times out on a single profile often enough that one failed read is not
   // an answer. The app retries client-side; serving the plain shell lets it.
-  if (!detail || !detail.name) return serveFallback(res, origin);
+  if (!detail || !detail.name) return serveFallback(res, origin, 200, canonical);
 
-  const canonical = `https://www.jobcourier.ch/azienda/${encodeURIComponent(slug)}`;
   const jobs = Array.isArray(detail.jobs) ? detail.jobs : [];
 
   // Same title the client sets, so the tab does not change text on mount.

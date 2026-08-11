@@ -102,13 +102,15 @@ export default async function handler(req, res) {
     return;
   }
 
+  const canonical = `https://www.jobcourier.ch/offerta/${encodeURIComponent(id)}`;
+
   const job = await fetchJson(`${origin}/api/job-detail?id=${encodeURIComponent(id)}`);
 
   // No ad, or the feed is having one of its bad minutes: hand over the plain shell and let
-  // the app retry client-side rather than publish a snapshot claiming the ad is gone.
-  if (!job || !job.title) return serveFallback(res, origin);
+  // the app retry client-side rather than publish a snapshot claiming the ad is gone. The
+  // canonical goes with it — this URL is still this URL.
+  if (!job || !job.title) return serveFallback(res, origin, 200, canonical);
 
-  const canonical = `https://www.jobcourier.ch/offerta/${encodeURIComponent(id)}`;
   const company = job.company?.name || 'JobCourier';
   const location = job.location || 'Svizzera';
   const bodyText = htmlToText(job.description);
