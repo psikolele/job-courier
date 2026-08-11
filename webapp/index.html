@@ -33,8 +33,9 @@
          picks the placements). Gated on Cookiebot's "marketing" category with
          the same type="text/plain" pattern as GA4 above, so nothing is
          requested from pagead2.googlesyndication.com before the visitor opts
-         in. The matching seller line lives in public/ads.txt. -->
-    <script type="text/plain" data-cookieconsent="marketing" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4406252930350703" crossorigin="anonymous"></script>
+         in. The matching seller line lives in public/ads.txt.
+         Loaded per-route by AdsenseGate.jsx instead of statically here, so the
+         homepage never requests it — see that file for why. -->
 
     <link rel="icon" type="image/svg+xml" href="/logo-square.svg" />
     <link rel="icon" type="image/png" href="/logo-square.png" />

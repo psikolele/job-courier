@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import RouteLoader from './components/ui/RouteLoader';
+import AdsenseGate from './components/AdsenseGate';
 import useRouteLoader from './hooks/useRouteLoader';
 import Home from './pages/Home';
 import Pricing from './pages/Pricing';
@@ -107,6 +108,7 @@ function App() {
         <meta property="og:url" content={canonical} />
       </Helmet>
       <ScrollToTop />
+      <AdsenseGate />
       <Navbar showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
       <Routes>
         <Route path="/" element={<Home setShowLoginModal={setShowLoginModal} />} />
