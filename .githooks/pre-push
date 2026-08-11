@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Installed via `git config core.hooksPath .githooks` (set automatically by
+# webapp's `npm install`, see webapp/scripts/install-git-hooks.mjs). Runs
+# before every push and, for pushes to main, diffs what's about to go to
+# production against what's currently there — see
+# webapp/scripts/verify-no-unintended-deletions.mjs for what it checks and why.
+set -e
+
+repo_root="$(git rev-parse --show-toplevel)"
+blocked=0
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$remote_ref" = "refs/heads/main" ] || continue
+  [ "$local_sha" = "0000000000000000000000000000000000000000" ] && continue
+  node "$repo_root/webapp/scripts/verify-no-unintended-deletions.mjs" "$remote_sha" "$local_sha" || blocked=1
+done
+
+exit $blocked

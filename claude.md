@@ -18,6 +18,16 @@
 
 ---
 
+## 🚫 Scope discipline — non-negotiable
+
+**Never touch files, components, or content that were not explicitly part of the current task.** Not "cleanup while I'm in here", not "this looked unused", not a side effect of an unrelated refactor. If a change isn't the thing the user asked for, it doesn't go in the same commit — flag it separately and ask.
+
+**Why:** 11/08/2026 — a homepage-only AdSense/banner removal (explicitly scoped to `Home.jsx`) turned out to delete BLC/Ated/Formaty/SUPSI sponsor banners **site-wide**, because `AdBanner` had only ever been used on the homepage and nobody checked that before removing it. The user found out from a client-facing production regression, not from the session that caused it. This is exactly the failure mode `.githooks/pre-push` (`webapp/scripts/verify-no-unintended-deletions.mjs`) now exists to catch — but the hook is a backstop, not a substitute for checking scope before editing.
+
+**How to apply:** before removing or replacing anything, `git log --oneline --all -- <file>` and grep for other usages of the component/export you're about to touch. If a change would affect anything beyond the file(s) the user named, say so and wait for confirmation before proceeding — don't proceed and mention it in the summary afterward.
+
+---
+
 ## 🎯 Critical Token Optimizations
 
 ### Problem 1: Filter Combinations
