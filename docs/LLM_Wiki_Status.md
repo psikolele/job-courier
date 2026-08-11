@@ -1,4 +1,4 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 2 Agosto 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 11 Agosto 2026)
 
 > ⚠️ **Avvertenza sull'attendibilità di questo wiki.** Ri-verificato il 02/08/2026, e la
 > verifica precedente era imprecisa: `IMPLEMENTATION_PLAN_2026-06-25.md`,
@@ -11,6 +11,43 @@
 > Prima di citare un file da qui, controllare che ci sia davvero **e che sia committato**:
 > `git ls-files --error-unmatch <path>`. Il wiki non è fonte di verità, e nemmeno il
 > filesystem locale — lo è il repo.
+
+## Annunci esclusi da home page + tile "vedi tutte le aziende" (9-11 Agosto 2026) — ✅ *COMPLETED*
+
+**Commit:** `02f85e1`, `f268aec`, `13b7ce2` su `main`
+**Modello:** Claude Sonnet 5, caveman mode full · 60 minuti (insieme alle due sessioni sotto)
+
+* **AdSense Auto ads escluso dalla home.** I banner house rimossi da `Home.jsx` non erano la causa del banner ancora visibile in home dopo il deploy: era Auto ads di Google (account senza slot manuali, vedi `docs/handoff-adsense-2026-08-07.md`), impostazione lato dashboard, non nel repo. Fix: AdSense → Annunci → Pagine escluse → `jobcourier.ch` ("Solo questa pagina", match automatico con/senza `www`). Applicato dal vivo con la sessione Google già autenticata dell'utente — non tramite codice o CLI.
+* **Tile "Vedi tutte le aziende" chiude la griglia loghi.** `Vetrini.jsx` mostra il roster live di aziende che assumono (conteggio cambia ogni giorno) in una griglia 2/3/4/5 colonne responsive: un resto non multiplo delle colonne lasciava un logo solo, isolato, nell'ultima riga (screenshot cliente). Aggiunta una tile CTA finale verso `/aziende-che-assumono` che riempie esattamente le colonne rimaste (o l'intera riga se il conteggio è multiplo esatto) — span calcolato in JS dal conteggio colonne live via `matchMedia`-style breakpoint tracking, non un valore CSS fisso.
+* **Altezza tile: niente aspect-ratio a occhio.** I box quadrati risultano ~256px anziché 233px teorici (il contenuto logo+etichetta eccede l'`aspect-square`). Condividere la stessa riga grid dà l'altezza esatta gratis via `align-items: stretch`; per il caso raro senza vicino (conteggio esatto multiplo delle colonne) misurata via `ResizeObserver` su un tile reale e applicata come fallback esplicito.
+* Verificato dal vivo su produzione l'11/08: 11 tile totali, riga propria a larghezza piena, 256px = 256px, bordo destro allineato al grid.
+
+---
+
+## Sezione aziende partner: quattro guasti concatenati (10 Agosto 2026) — ✅ *COMPLETED*
+
+**Commit:** `bfedaa8`, `72ad582`, `708cebc`, `2977998`, `f250aa3`, `d3ef2d3`, `2547030`, `c4251b3` su `main`
+
+* **Scraper orario jobroom ritirato.** Falliva ogni run (exit 1, mail di errore) — la pagina serve uno stub da 718 byte senza il warm-up cookie che questo script non fa mai, e comunque nessuno legge più il suo JSON: il sito serve le offerte live da `api/jobs.js`/`_arca24.js`.
+* **Un run a freddo poteva nascondere l'intera sezione.** `/api/companies?withJobs=1` misurato fino a 93s a freddo; se scadeva il probe, la sezione spariva per 5 minuti (cache CDN `s-maxage=300` applicata anche a risposte degradate) senza secondo tentativo. Fix: tiene l'ultimo roster buono, cache 30s sulle risposte degradate, retry del componente a +4s/+35s.
+* **Precalcolo in build.** Lettura prod (edge cache, ~0.2s) invece di rileggerla da prod stessa in loop — impossibile, il probe live ha già solo 4s di budget e la sua risposta è già uno stand-in. Calcolato in build contro `company/jobs` (46s pieno), non più contro `profile` (150s+, metà aziende non probate).
+* **Le pagine azienda avevano smesso di elencare annunci.** `careers/company/profile` risponde 200 con l'intestazione ma zero `.resultstring`: gli annunci ora arrivano via script. `careers/company/jobs` li rende ancora (Adecco 15, Manpower 4, PKB 1 sullo stesso run che vedeva zero su profile) — probe letto da lì, identità dal profilo, in parallelo.
+* **"Azienda Riservata" in cima alla home erano annunci reali, non anonimi davvero.** Le pagine azienda non portano il link/company della riga, quindi ogni annuncio del pool vetrina arrivava anonimo — anche quelli di Randstad. Nome recuperato dal profilo aziendale via uiid, senza sovrascrivere un nome che la riga aveva già dato.
+* **Ordine e cap per azienda.** `companyKey` raggruppava tutti gli anonimi come "un'azienda sola" (cap 2 → solo 2 mostrati su decine); ora bucket separati con tetto proprio di 4. Ordinamento per data reale via `published_at` (prima cadeva nel mapping di `Filters`, quindi tornava all'ordine feed nonostante il sort).
+
+---
+
+## Canonical URL: 107 pagine duplicate secondo Ahrefs (10 Agosto 2026) — ✅ *COMPLETED, backlog aperto*
+
+**Commit:** `c179db1`, `96f55f1`, `c09290f`, `6a9c9fb` su `main` · **Backlog dettagliato:** `00_Wiki/job-courier/seo-audit-backlog-2026-08-10.md`
+
+* **Ogni route SPA veniva riscritta su `index.html`, senza canonical finché il bundle non bootava.** Ahrefs vede lo stesso shell, stesso title, nessun canonical su `/`, `/offerte`, `/faq`, blog — report "Duplicate pages without canonical", 107 URL. Fix: route fisse prerenderizzate in build (`scripts/prerender-canonicals.mjs`); route blog dinamiche via `api/shell-ssr.js`; `serveFallback()` mantiene il canonical (un crawl in burst che fa timeout su annuncio/azienda finiva lì).
+* **Home canonicalizzata da `index.html` stesso** (Vercel la serve da filesystem prima dei rewrite, quindi il rewrite su una copia prerenderizzata non scattava mai) **e nella forma con slash finale** (`/`, come sitemap e URL indicizzata — prima era senza, stringhe diverse per l'audit anche se stessa pagina).
+* **Shell blog non più cacheata tra deploy.** Asset hashati esistono solo nel deploy che li ha creati; una copia cache HTML chiedeva un bundle sparito (404 in produzione). `index.html` era già `no-store` per questo, la function che serve le route blog ora fa lo stesso.
+* **Risultato:** dalle 107 duplicate a zero sul crawl delle 16:17 (crawl precedente 14:25, Ahrefs progetto `10208912`). **Resta aperto**, dettagliato nel backlog: shell SPA senza H1/description/testo per i crawler (107 pagine, P0), 84 pagine indicizzabili fuori sitemap, pagine orfane, 251 pagine lente, title/description fuori misura, hreflang senza return-tag, escape doppio nei titoli SSR aziende con `&` nel nome.
+* ⚠️ **Curl a raffica sul dominio fa scattare il Vercel Security Checkpoint** (403 anche su `robots.txt`, qualche minuto) — falso "Robots.txt is not accessible" al crawl delle 14:25, e ricapitato in questa stessa sessione durante la verifica finale. `sleep 2` tra le richieste, o usare un browser reale, se si verifica a mano.
+
+---
 
 ## 0. Outage jobroom: le offerte spariscono il giorno dopo il go-live (2 Agosto 2026) — ✅ *MITIGATO, causa a monte aperta*
 
