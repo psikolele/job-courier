@@ -8,44 +8,44 @@ import BorderRotate from './ui/BorderRotate';
 const AsflBanner = () => {
     const { t } = useTranslation();
     return (
-        <div 
-            className="w-full h-full flex select-none overflow-hidden" 
-            style={{ 
-                background: '#7b7c7e', 
-                containerType: 'inline-size', 
+        <div
+            className="w-full h-full flex flex-col md:flex-row select-none overflow-hidden"
+            style={{
+                background: '#7b7c7e',
+                containerType: 'inline-size',
                 height: '100%',
                 width: '100%'
             }}
         >
-            {/* Left yellow block */}
-            <div 
-                className="w-[18%] h-full bg-[#ffff01] flex flex-col justify-center items-center font-sans font-black italic text-black leading-none shrink-0" 
+            {/* Left yellow block — compact horizontal bar on mobile, full-height column on desktop */}
+            <div
+                className="w-full md:w-[18%] h-auto md:h-full bg-[#ffff01] flex flex-row md:flex-col justify-center items-center gap-[6px] md:gap-0 py-2 md:py-0 font-sans font-black italic text-black leading-none shrink-0"
                 style={{ fontSize: 'clamp(14px, 3.8cqw, 36px)' }}
             >
                 <span>ASFL</span>
-                <span className="mt-[0.3cqw]">SVBL</span>
+                <span className="md:mt-[0.3cqw]">SVBL</span>
             </div>
 
             {/* Middle team photo - Using high-res AI generated logistics visual */}
-            <div className="w-[47%] h-full relative overflow-hidden shrink-0">
-                <img 
-                    src="/img/banner-asfl-bg-generated.png" 
-                    alt="ASFL SVBL Team" 
+            <div className="w-full md:w-[47%] h-40 md:h-full relative overflow-hidden shrink-0">
+                <img
+                    src="/img/banner-asfl-bg-generated.png"
+                    alt="ASFL SVBL Team"
                     className="w-full h-full object-cover"
                 />
             </div>
 
             {/* Right dark grey text area */}
-            <div className="w-[35%] h-full flex flex-col justify-center px-[3cqw] text-white font-sans text-left leading-normal shrink-0">
-                <h4 
-                    className="font-extrabold leading-tight tracking-wide" 
+            <div className="w-full md:w-[35%] h-auto md:h-full flex flex-col justify-center px-4 md:px-[3cqw] py-3 md:py-0 text-white font-sans text-left leading-normal shrink-0">
+                <h4
+                    className="font-extrabold leading-tight tracking-wide"
                     style={{ fontSize: 'clamp(11px, 2.3cqw, 24px)' }}
                 >
                     {t('ads.asfl_tagline')}
                 </h4>
-                <div className="w-full h-[2px] bg-[#ffff01] my-[0.8cqw]"></div>
-                <p 
-                    className="font-semibold opacity-95 leading-tight" 
+                <div className="w-full h-[2px] bg-[#ffff01] my-[0.6em]"></div>
+                <p
+                    className="font-semibold opacity-95 leading-tight"
                     style={{ fontSize: 'clamp(8px, 1.35cqw, 14px)' }}
                 >
                     {t('ads.asfl_desc')}
@@ -62,38 +62,38 @@ const AsflBanner = () => {
 const FormaBanner = () => {
     const { t } = useTranslation();
     return (
-        <div 
-            className="w-full h-full flex select-none overflow-hidden" 
-            style={{ 
-                background: '#000000', 
-                containerType: 'inline-size', 
+        <div
+            className="w-full h-full flex flex-col md:flex-row select-none overflow-hidden"
+            style={{
+                background: '#000000',
+                containerType: 'inline-size',
                 height: '100%',
                 width: '100%'
             }}
         >
-            {/* Section 1: Black box "QUATTRO PERCORSI APF" */}
-            <div 
-                className="w-[18%] h-full bg-black flex flex-col justify-center items-center text-white font-sans font-black text-center leading-none px-[0.5cqw] shrink-0" 
+            {/* Section 1: Black box "QUATTRO PERCORSI APF" — horizontal row on mobile, stacked column on desktop */}
+            <div
+                className="w-full md:w-[18%] h-auto md:h-full bg-black flex flex-row md:flex-col justify-center items-center gap-[0.4em] md:gap-0 text-white font-sans font-black text-center leading-none px-4 md:px-[0.5cqw] py-2 md:py-0 shrink-0"
                 style={{ fontSize: 'clamp(11px, 2.3cqw, 24px)', letterSpacing: '0.05em' }}
             >
                 <div>QUATTRO</div>
-                <div className="mt-[0.3cqw]">PERCORSI</div>
-                <div className="mt-[0.3cqw] text-[#fc1452]">APF</div>
+                <div className="md:mt-[0.3cqw]">PERCORSI</div>
+                <div className="md:mt-[0.3cqw] text-[#fc1452]">APF</div>
             </div>
 
             {/* Section 2: Cyber graphics slice - Using high-res AI generated cyber background */}
-            <div className="w-[15%] h-full relative overflow-hidden shrink-0">
-                <img 
-                    src="/img/banner-cyber-bg-generated.png" 
-                    alt="Cyber Security Graphics" 
+            <div className="w-full md:w-[15%] h-24 md:h-full relative overflow-hidden shrink-0">
+                <img
+                    src="/img/banner-cyber-bg-generated.png"
+                    alt="Cyber Security Graphics"
                     className="w-full h-full object-cover"
                 />
             </div>
 
             {/* Section 3: Red course list */}
-            <div className="w-[38%] h-full bg-[#fc1452] flex flex-col justify-center shrink-0" style={{ paddingLeft: '3cqw' }}>
-                <ul 
-                    className="list-none flex flex-col justify-center gap-[0.4cqw] text-white font-sans text-left font-black uppercase leading-tight" 
+            <div className="w-full md:w-[38%] h-auto md:h-full bg-[#fc1452] flex flex-col justify-center shrink-0 px-4 md:pl-[3cqw] md:pr-0 py-3 md:py-0">
+                <ul
+                    className="list-none flex flex-col justify-center gap-[0.4em] md:gap-[0.4cqw] text-white font-sans text-left font-black uppercase leading-tight"
                     style={{ fontSize: 'clamp(9px, 1.55cqw, 15px)', letterSpacing: '0.02em' }}
                 >
                     <li className="flex items-center gap-[0.6cqw]">
@@ -112,7 +112,7 @@ const FormaBanner = () => {
             </div>
 
             {/* Section 4/5: Multimedia graphics with glassmorphic overlay card containing both logos */}
-            <div className="w-[29%] h-full relative overflow-hidden shrink-0 flex items-center justify-center">
+            <div className="w-full md:w-[29%] h-40 md:h-full relative overflow-hidden shrink-0 flex items-center justify-center">
                 <img 
                     src="/img/banner-multimedia-bg-generated.png" 
                     alt="Multimedia Graphics" 
@@ -157,17 +157,17 @@ const FormaBanner = () => {
 const BlcBanner = () => {
     const { t } = useTranslation();
     return (
-        <div 
-            className="w-full h-full flex select-none overflow-hidden" 
-            style={{ 
-                background: '#ffffff', 
-                containerType: 'inline-size', 
+        <div
+            className="w-full h-full flex flex-col md:flex-row select-none overflow-hidden"
+            style={{
+                background: '#ffffff',
+                containerType: 'inline-size',
                 height: '100%',
                 width: '100%'
             }}
         >
             {/* Section 1: White BLC Logo block */}
-            <div className="w-[22%] h-full bg-white flex flex-col justify-center items-center py-[1cqw] px-[1.5cqw] shrink-0 border-r border-slate-100">
+            <div className="w-full md:w-[22%] h-auto md:h-full bg-white flex flex-col justify-center items-center py-3 md:py-[1cqw] px-[1.5cqw] shrink-0 border-b md:border-b-0 md:border-r border-slate-100">
                 {/* BLC SVG Logo */}
                 <svg viewBox="0 0 228 128" className="shrink-0" style={{ width: 'clamp(55px, 9.5cqw, 95px)', height: 'auto' }}>
                     {/* B and C in navy blue (#002544), L in red (#e2231a) */}
@@ -201,7 +201,7 @@ const BlcBanner = () => {
             </div>
 
             {/* Section 2: Photo area with bottom gradient and 3 icons at the bottom */}
-            <div className="w-[43%] h-full relative overflow-hidden shrink-0 flex flex-col justify-end p-[1.5cqw] pb-[2cqw]">
+            <div className="w-full md:w-[43%] h-40 md:h-full relative overflow-hidden shrink-0 flex flex-col justify-end p-[1.5cqw] pb-[2cqw]">
                 <img 
                     src="/img/blc-learning-bg.png" 
                     alt="Corporate Training BLC" 
@@ -245,7 +245,7 @@ const BlcBanner = () => {
             </div>
 
             {/* Section 3: BLC Navy blue courses block */}
-            <div className="w-[35%] h-full bg-[#002544] flex flex-col justify-center px-[3cqw] text-white font-sans text-left leading-normal shrink-0">
+            <div className="w-full md:w-[35%] h-auto md:h-full bg-[#002544] flex flex-col justify-center px-4 md:px-[3cqw] py-3 md:py-0 text-white font-sans text-left leading-normal shrink-0">
                 <h4 
                     className="font-extrabold leading-tight tracking-wide uppercase text-white" 
                     style={{ fontSize: 'clamp(11px, 2.1cqw, 22px)' }}
@@ -440,7 +440,7 @@ const AdBanner = ({ type = 'top' }) => {
                             href={slot.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group block"
+                            className="group block h-auto md:h-[235px]"
                             animationSpeed={8}
                             backgroundColor={slot.bg}
                             borderWidth={1}
@@ -450,8 +450,7 @@ const AdBanner = ({ type = 'top' }) => {
                             viewport={{ once: true, amount: 0.15 }}
                             custom={i}
                             style={{
-                                display: 'block',
-                                height: 235
+                                display: 'block'
                             }}
                             whileHover={{
                                 boxShadow: '0 10px 30px -12px rgba(255,31,122,0.35)',
