@@ -34,8 +34,8 @@ const BorderRotate = React.forwardRef(function BorderRotate(
     animationSpeed = 8,
     gradientColors = defaultGradientColors,
     backgroundColor = '#FFFFFF',
-    borderWidth = 2,
-    borderRadius = 14,
+    borderWidth = 1,
+    borderRadius = 0,
     style = {},
     ...props
   },

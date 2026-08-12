@@ -443,8 +443,7 @@ const AdBanner = ({ type = 'top' }) => {
                             className="group block"
                             animationSpeed={8}
                             backgroundColor={slot.bg}
-                            borderWidth={2}
-                            borderRadius={14}
+                            borderWidth={1}
                             variants={bannerVariants}
                             initial="hidden"
                             whileInView="visible"
