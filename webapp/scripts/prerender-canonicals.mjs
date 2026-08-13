@@ -11,6 +11,9 @@
 // are the exception — their paths are dynamic, so api/shell-ssr.js handles those.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { escapeHtml, snapshotBody } from '../api/_ssr.js';
+import { jobs as jobsSnapshot } from '../api/_jobs-snapshot.js';
+import { companies as companiesSnapshot } from '../api/_companies-snapshot.js';
 
 const SITE = 'https://www.jobcourier.ch';
 
@@ -39,13 +42,84 @@ const shell = readFileSync(distFile('index.html'), 'utf8');
 
 if (!shell.includes('</head>')) throw new Error('prerender: built shell has no </head>');
 
+const NON_SPECIFICATO = 'Non specificato';
+
+/**
+ * Unique, non-empty values of `key` across the jobs snapshot, in first-seen order and
+ * capped — this feeds the hub's facet links, not a filter UI, so a few dozen is plenty
+ * and keeps offerte.html from ballooning with one link per distinct string on the feed.
+ */
+function uniqueJobField(key, max = 30) {
+  const seen = new Set();
+  const out = [];
+  for (const job of jobsSnapshot) {
+    const value = job[key];
+    if (!value || value === NON_SPECIFICATO || seen.has(value)) continue;
+    seen.add(value);
+    out.push(value);
+    if (out.length >= max) break;
+  }
+  return out;
+}
+
+/**
+ * Static markup for the two hubs that were pure shells: their whole purpose in the site
+ * audit is to give a crawler <a href> toward every job ad / company profile, so the body
+ * here IS the fix — see the file header for why sitemap-jobs.xml alone could not do this.
+ */
+const HUB_CONTENT = {
+  '/offerte': {
+    title: 'Offerte di lavoro in Svizzera - JobCourier',
+    description: 'Tutte le offerte di lavoro pubblicate su JobCourier: filtra per settore, ruolo e cantone e candidati in pochi clic.',
+    body: () => snapshotBody({
+      heading: 'Offerte di lavoro in Svizzera',
+      subheading: `${jobsSnapshot.length} annunci attivi su JobCourier, aggiornati regolarmente dalle aziende che assumono.`,
+      links: [
+        ...jobsSnapshot.map((job) => ({
+          href: `/offerta/${job.id}`,
+          label: job.title,
+          meta: [job.company, job.location].filter(Boolean).join(', '),
+        })),
+        ...uniqueJobField('sector').map((sector) => ({
+          href: `/offerte?sector=${encodeURIComponent(sector)}`,
+          label: `Offerte nel settore ${sector}`,
+        })),
+        ...uniqueJobField('role').map((role) => ({
+          href: `/offerte?keyword=${encodeURIComponent(role)}`,
+          label: `Offerte per il ruolo ${role}`,
+        })),
+        { href: '/aziende-che-assumono', label: 'Aziende che assumono' },
+      ],
+      linksHeading: 'Tutte le offerte',
+      backLink: { href: '/', label: 'Torna alla home' },
+    }),
+  },
+  '/aziende-che-assumono': {
+    title: 'Aziende che assumono in Svizzera - JobCourier',
+    description: 'Le aziende con un profilo attivo su JobCourier che stanno assumendo in Svizzera: scopri chi sono e candidati alle loro offerte.',
+    body: () => snapshotBody({
+      heading: 'Aziende che assumono',
+      subheading: `${companiesSnapshot.length} aziende con almeno una posizione aperta su JobCourier.`,
+      links: [
+        ...companiesSnapshot.map((company) => ({
+          href: `/azienda/${company.slug}`,
+          label: company.name,
+        })),
+        { href: '/offerte', label: 'Vedi tutte le offerte' },
+      ],
+      linksHeading: 'Tutte le aziende',
+      backLink: { href: '/', label: 'Torna alla home' },
+    }),
+  },
+};
+
 for (const [route, file] of Object.entries(ROUTES)) {
   // The home page keeps its trailing slash: that is the form the sitemap lists and the
   // form the site is indexed under. Every other route drops it (trailingSlash: false).
   const canonical = `${SITE}${route}`;
   // Stripping first keeps the script idempotent: index.html is both an input and one of
   // the outputs, so a second run over the same dist would otherwise stack a second tag.
-  const html = shell
+  let html = shell
     .replace(/\s*<link\s+rel="canonical"[^>]*>/gi, '')
     .replace(/\s*<meta\s+property="og:url"[^>]*>/gi, '')
     .replace(
@@ -54,7 +128,35 @@ for (const [route, file] of Object.entries(ROUTES)) {
         `    <meta property="og:url" content="${canonical}">\n  </head>`
     );
 
+  // Only /offerte and /aziende-che-assumono get hub content injected. index.html (the
+  // home page) must stay untouched — it doubles as the SSR template api/_ssr.js fetches
+  // for every /offerta and /azienda snapshot, so anything added here would leak into all
+  // of those too. See the module comment above ROUTES.
+  const hub = HUB_CONTENT[route];
+  if (hub) {
+    const t = escapeHtml(hub.title);
+    const d = escapeHtml(hub.description);
+
+    html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${t}</title>`);
+    html = html
+      .replace(/<meta\s+property="og:title"[^>]*>/i, `<meta property="og:title" content="${t}">`)
+      .replace(/<meta\s+property="og:description"[^>]*>/i, `<meta property="og:description" content="${d}">`);
+
+    // index.html ships no meta description or twitter:card at all (only the homepage's
+    // og:title/og:description exist statically) — both are added fresh here rather than
+    // replaced, same reasoning as api/_ssr.js's renderShell for the ad/company snapshots.
+    html = html.replace(
+      '</head>',
+      `  <meta name="description" content="${d}">\n` +
+        `    <meta name="twitter:card" content="summary_large_image">\n  </head>`
+    );
+
+    // createRoot().render() replaces #root's children on mount (see api/_ssr.js's header
+    // comment), so this is a pre-boot snapshot, not markup the client has to reconcile.
+    html = html.replace(/<div id="root">\s*<\/div>/i, `<div id="root">${hub.body()}</div>`);
+  }
+
   writeFileSync(distFile(file), html);
 }
 
-console.log(`prerender: ${Object.keys(ROUTES).length} canonical URL`);
+console.log(`prerender: ${Object.keys(ROUTES).length} canonical URL, ${Object.keys(HUB_CONTENT).length} hub con contenuto`);

@@ -23,8 +23,14 @@
     },
     "api/shell-ssr.js": {
       "maxDuration": 15
+    },
+    "api/rebuild.js": {
+      "maxDuration": 15
     }
   },
+  "crons": [
+    { "path": "/api/rebuild", "schedule": "0 2 * * *" }
+  ],
   "rewrites": [
     { "source": "/offerte", "destination": "/offerte.html" },
     { "source": "/offerta/:id", "destination": "/api/offerta-ssr?id=:id" },

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-sitemap.mjs && node scripts/generate-companies-snapshot.mjs && vite build && node scripts/prerender-canonicals.mjs",
+    "build": "node scripts/generate-sitemap.mjs && node scripts/generate-companies-snapshot.mjs && node scripts/generate-jobs-snapshot.mjs && vite build && node scripts/prerender-canonicals.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
