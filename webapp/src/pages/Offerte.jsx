@@ -28,16 +28,38 @@ const deriveSector = (title, sector) => {
     if (sector && !skip.includes(sector)) return sector;
     if (!title) return null;
     const t = title.toLowerCase();
-    if (/trasport|autista|camion|courier|spediz|logist|magazz|driver|corriere/.test(t)) return 'Logistica';
-    if (/inferm|medic|farmac|salute|dental|fisio|cura|health|clinica/.test(t)) return 'Medicina';
+    if (/trasport|autista|camion|courier|spediz|logist|magazz|driver|corriere|chauffeur|fahrer/.test(t)) return 'Logistica';
+    if (/inferm|medic|farmac|salute|dental|fisio|cura|health|clinica|pflege|soins/.test(t)) return 'Medicina';
     if (/sviluppa|programm|developer|software|engineer|devops|cloud|\.net|java|python|frontend|backend|fullstack/.test(t)) return 'IT';
-    if (/contab|finanz|paghe|banca|audit|fiscal|revisio|accounting|treuhand/.test(t)) return 'Finanza';
-    if (/vendita|commerc|sales|account|business dev/.test(t)) return 'Commerciale';
-    if (/amministr|segret|assistente|reception|back.?office/.test(t)) return 'Amministrazione';
-    if (/costruzion|edil|parchett|muratore|idraulic|elettric|carpent|impianti|architett|projekt/.test(t)) return 'Costruzioni';
-    if (/ristora|chef|cuoc|camerier|pasticcier|hotell/.test(t)) return 'Ristorazione';
+    if (/contab|finanz|paghe|banca|audit|fiscal|revisio|accounting|treuhand|comptab/.test(t)) return 'Finanza';
+    if (/vendita|commerc|sales|account|business dev|verkauf|vente/.test(t)) return 'Commerciale';
+    if (/amministr|segret|assistente|reception|back.?office|sekretariat|secretariat/.test(t)) return 'Amministrazione';
+    if (/costruzion|edil|parchett|muratore|idraulic|elettr|carpent|impianti|architett|projekt|installateur|electricien|monteur|elektrik|chauffage|heizung/.test(t)) return 'Costruzioni';
+    if (/ristora|chef|cuoc|camerier|pasticcier|hotell|cuisin|kellner|koch/.test(t)) return 'Ristorazione';
     if (/marketing|social media|communic|brand|digital/.test(t)) return 'Marketing';
-    if (/risorse umane|\bhr\b|human resource|selezione|reclutament/.test(t)) return 'HR';
+    if (/risorse umane|\bhr\b|human resource|selezione|reclutament|personalwesen/.test(t)) return 'HR';
+    if (/puliz|nettoy|reinigung|facility|cleaning/.test(t)) return 'Servizi Generali';
+    return null;
+};
+
+const deriveRoleFromTitle = (title) => {
+    if (!title) return null;
+    const t = title.toLowerCase();
+    if (/autista|driver|chauffeur|fahrer/.test(t)) return 'Autista';
+    if (/installateur|installator|monteur|elektrik|electricien/.test(t)) return 'Installatore';
+    if (/tecnic|technician|tester|technicien/.test(t)) return 'Tecnico';
+    if (/specialist/.test(t)) return 'Specialista';
+    if (/responsabile|manager|leiter/.test(t)) return 'Responsabile';
+    if (/consulente|consultant|berater/.test(t)) return 'Consulente';
+    if (/addett|employe|mitarbeiter/.test(t)) return 'Addetto';
+    if (/operai|ouvrier|arbeiter/.test(t)) return 'Operaio';
+    if (/camerier|serveur|kellner/.test(t)) return 'Cameriere';
+    if (/cuoc|cuisinier|koch/.test(t)) return 'Cuoco';
+    if (/segreta|secretaire|sekretär/.test(t)) return 'Segretario';
+    if (/contabil|comptable|buchhalter/.test(t)) return 'Contabile';
+    if (/vendit|commercial|verkäufer/.test(t)) return 'Venditore';
+    if (/magazzin|lagerist/.test(t)) return 'Magazziniere';
+    if (/inferm|nurse|pflege/.test(t)) return 'Infermiere';
     return null;
 };
 
@@ -57,10 +79,10 @@ const jobIdKey = (value) => {
     return m ? m[1] : s;
 };
 
-const deriveRole = (role) => {
+const deriveRole = (role, title) => {
     const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
-    if (!role || skip.includes(role)) return null;
-    return role;
+    if (role && !skip.includes(role)) return role;
+    return deriveRoleFromTitle(title);
 };
 
 const PercheCandidatiWidget = () => {
@@ -516,7 +538,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 {/* Tags */}
                                                 {(() => {
                                                     const settore = deriveSector(job.title, job.sector) || 'Altro';
-                                                    const ruolo = deriveRole(job.role) || 'Altro';
+                                                    const ruolo = deriveRole(job.role, job.title) || 'Altro';
                                                     const chip = {
                                                         fontFamily: body, fontSize: 11, fontWeight: 600,
                                                         letterSpacing: '0.06em', textTransform: 'uppercase',
