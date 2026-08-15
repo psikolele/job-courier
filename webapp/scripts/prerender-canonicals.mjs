@@ -21,10 +21,10 @@ const SITE = 'https://www.jobcourier.ch';
 // missing here goes back to serving a shell with no canonical.
 //
 // The home page writes into index.html itself: Vercel serves that file for "/" straight
-// off the filesystem, before any rewrite runs, so "/" cannot be pointed at a copy. That
-// same file is the template api/_ssr.js fetches for the /offerta and /azienda snapshots,
-// which is why withCanonical() there strips the template's canonical before injecting the
-// page's own — otherwise every snapshot would carry the home page's too.
+// off the filesystem, before any rewrite runs, so "/" cannot be pointed at a copy. A
+// pristine copy is saved as dist/_template.html before index.html is touched — that copy,
+// not index.html, is what api/_ssr.js fetches as the template for /offerta and /azienda
+// snapshots, so the home page's own h1/links never leak into those.
 const ROUTES = {
   '/': 'index.html',
   '/offerte': 'offerte.html',
@@ -41,6 +41,11 @@ const distFile = (name) => fileURLToPath(new URL(`../dist/${name}`, import.meta.
 const shell = readFileSync(distFile('index.html'), 'utf8');
 
 if (!shell.includes('</head>')) throw new Error('prerender: built shell has no </head>');
+
+// api/_ssr.js fetches this pristine copy — with its #root still empty — to build the
+// /offerta and /azienda snapshots. It has to be written before index.html gets the home
+// page's own h1/links below, or every snapshot would inherit the home page's markup too.
+writeFileSync(distFile('_template.html'), shell);
 
 const NON_SPECIFICATO = 'Non specificato';
 
@@ -68,6 +73,28 @@ function uniqueJobField(key, max = 30) {
  * here IS the fix — see the file header for why sitemap-jobs.xml alone could not do this.
  */
 const HUB_CONTENT = {
+  '/': {
+    // index.html already ships the right static <title>/og tags — only the body (empty
+    // until React boots) needs a real h1 and real links for a crawler.
+    body: () => snapshotBody({
+      heading: 'JobCourier - Il portale svizzero per il lavoro',
+      subheading: `${jobsSnapshot.length} offerte attive e ${companiesSnapshot.length} aziende che assumono in Svizzera.`,
+      links: [
+        { href: '/offerte', label: 'Vedi tutte le offerte' },
+        { href: '/aziende-che-assumono', label: 'Aziende che assumono' },
+        { href: '/soluzioni-e-tariffe', label: 'Soluzioni e tariffe per aziende' },
+        { href: '/come-funziona', label: 'Come funziona' },
+        { href: '/faq', label: 'Domande frequenti' },
+        { href: '/contatti', label: 'Contatti' },
+        ...jobsSnapshot.slice(0, 20).map((job) => ({
+          href: `/offerta/${job.id}`,
+          label: job.title,
+          meta: [job.company, job.location].filter(Boolean).join(', '),
+        })),
+      ],
+      linksHeading: 'Ultime offerte pubblicate',
+    }),
+  },
   '/offerte': {
     title: 'Offerte di lavoro in Svizzera - JobCourier',
     description: 'Tutte le offerte di lavoro pubblicate su JobCourier: filtra per settore, ruolo e cantone e candidati in pochi clic.',
@@ -128,28 +155,32 @@ for (const [route, file] of Object.entries(ROUTES)) {
         `    <meta property="og:url" content="${canonical}">\n  </head>`
     );
 
-  // Only /offerte and /aziende-che-assumono get hub content injected. index.html (the
-  // home page) must stay untouched — it doubles as the SSR template api/_ssr.js fetches
-  // for every /offerta and /azienda snapshot, so anything added here would leak into all
-  // of those too. See the module comment above ROUTES.
+  // Every route in HUB_CONTENT gets real markup injected into #root — the home page
+  // included. api/_ssr.js fetches dist/_template.html (the pristine copy saved above),
+  // never this file, so home's body doesn't leak into the /offerta and /azienda snapshots.
   const hub = HUB_CONTENT[route];
   if (hub) {
-    const t = escapeHtml(hub.title);
-    const d = escapeHtml(hub.description);
+    // The home page's <title>/og:title/og:description are already correct static values
+    // in index.html — only /offerte and /aziende-che-assumono (born as an empty shell
+    // with the home page's own metadata) need those overwritten.
+    if (hub.title) {
+      const t = escapeHtml(hub.title);
+      const d = escapeHtml(hub.description);
 
-    html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${t}</title>`);
-    html = html
-      .replace(/<meta\s+property="og:title"[^>]*>/i, `<meta property="og:title" content="${t}">`)
-      .replace(/<meta\s+property="og:description"[^>]*>/i, `<meta property="og:description" content="${d}">`);
+      html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${t}</title>`);
+      html = html
+        .replace(/<meta\s+property="og:title"[^>]*>/i, `<meta property="og:title" content="${t}">`)
+        .replace(/<meta\s+property="og:description"[^>]*>/i, `<meta property="og:description" content="${d}">`);
 
-    // index.html ships no meta description or twitter:card at all (only the homepage's
-    // og:title/og:description exist statically) — both are added fresh here rather than
-    // replaced, same reasoning as api/_ssr.js's renderShell for the ad/company snapshots.
-    html = html.replace(
-      '</head>',
-      `  <meta name="description" content="${d}">\n` +
-        `    <meta name="twitter:card" content="summary_large_image">\n  </head>`
-    );
+      // index.html ships no meta description or twitter:card at all (only the homepage's
+      // og:title/og:description exist statically) — both are added fresh here rather than
+      // replaced, same reasoning as api/_ssr.js's renderShell for the ad/company snapshots.
+      html = html.replace(
+        '</head>',
+        `  <meta name="description" content="${d}">\n` +
+          `    <meta name="twitter:card" content="summary_large_image">\n  </head>`
+      );
+    }
 
     // createRoot().render() replaces #root's children on mount (see api/_ssr.js's header
     // comment), so this is a pre-boot snapshot, not markup the client has to reconcile.

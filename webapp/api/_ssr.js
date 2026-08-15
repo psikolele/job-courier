@@ -21,7 +21,11 @@
  * rule behind it — without copying any of it here.
  */
 
-const TEMPLATE_PATH = '/index.html';
+// A separate, untouched copy of the built shell — not /index.html. That file now carries
+// the home page's own h1/links (scripts/prerender-canonicals.mjs), and renderShell()
+// below only replaces an EMPTY #root, so fetching the home page here would silently skip
+// the injection and leak the home page's markup into every /offerta and /azienda snapshot.
+const TEMPLATE_PATH = '/_template.html';
 
 // Warm invocations reuse the shell instead of re-fetching it. It only changes on deploy,
 // and a new deploy gets new lambdas, so there is no stale-template window to worry about.
