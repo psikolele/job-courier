@@ -54,9 +54,27 @@ function escapeXml(value) {
   }[c]));
 }
 
-function buildUrlset(locs) {
-  const body = locs.map((loc) => `  <url>\n    <loc>${escapeXml(loc)}</loc>\n  </url>`).join('\n');
+function buildUrlset(entries) {
+  const body = entries.map(({ loc, lastmod }) => {
+    const lm = lastmod ? `\n    <lastmod>${escapeXml(lastmod)}</lastmod>` : '';
+    return `  <url>\n    <loc>${escapeXml(loc)}</loc>${lm}\n  </url>`;
+  }).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
+}
+
+/**
+ * The feed's own "published" label, in whatever loose day-month-year shape the portal
+ * happens to render it ("15/08/2026", "15/08/2026 Nuovo!", dot- or dash-separated). Only
+ * emitted as `<lastmod>` when it parses to a real calendar date — Google explicitly warns
+ * against a guessed or constant lastmod, so a date we can't trust is better left off than
+ * fabricated.
+ */
+function parsePublishedAt(raw) {
+  const m = String(raw ?? '').match(/(\d{1,2})[./-](\d{1,2})[./-](\d{4})/);
+  if (!m) return null;
+  const [, d, mo, y] = m;
+  const iso = `${y}-${mo.padStart(2, '0')}-${d.padStart(2, '0')}`;
+  return Number.isNaN(new Date(`${iso}T00:00:00Z`).getTime()) ? null : iso;
 }
 
 /**
@@ -68,25 +86,29 @@ function buildUrlset(locs) {
  */
 async function collectArca24(maxJobs) {
   const companies = await fetchArca24Companies();
-  const jobIds = new Set();
+  const jobDates = new Map();
 
   for (const job of await fetchArca24Jobs({ pages: ARCA24_LISTING_PAGES, maxJobs }).catch(() => [])) {
-    if (job.jobroom_id) jobIds.add(job.jobroom_id);
+    if (job.jobroom_id && !jobDates.has(job.jobroom_id)) {
+      jobDates.set(job.jobroom_id, parsePublishedAt(job.published_at));
+    }
   }
 
-  for (let i = 0; i < companies.length && jobIds.size < maxJobs; i += ARCA24_BATCH_SIZE) {
+  for (let i = 0; i < companies.length && jobDates.size < maxJobs; i += ARCA24_BATCH_SIZE) {
     const batch = companies.slice(i, i + ARCA24_BATCH_SIZE).map((c) =>
       fetchArca24CompanyDetail(c.id, c.slug).then((d) => d.jobs || []).catch(() => [])
     );
     const results = await Promise.all(batch);
     for (const jobs of results) {
       for (const job of jobs) {
-        if (job.jobroom_id) jobIds.add(job.jobroom_id);
+        if (job.jobroom_id && !jobDates.has(job.jobroom_id)) {
+          jobDates.set(job.jobroom_id, parsePublishedAt(job.published_at));
+        }
       }
     }
   }
 
-  return { jobIds: [...jobIds].slice(0, maxJobs), companies };
+  return { jobIds: [...jobDates.keys()].slice(0, maxJobs), jobDates, companies };
 }
 
 async function fetchJobroomPage(url) {
@@ -116,15 +138,17 @@ async function collectJobroom(maxJobs) {
   ]);
 
   const companies = parseCompaniesFromHtml(listHtml);
-  const jobIds = new Set();
+  const jobDates = new Map();
   pages.forEach((html, i) => {
-    if (!html || jobIds.size >= maxJobs) return;
+    if (!html || jobDates.size >= maxJobs) return;
     for (const job of parseJobsFromHtml(html, i * 15)) {
-      if (job.jobroom_id) jobIds.add(job.jobroom_id);
+      if (job.jobroom_id && !jobDates.has(job.jobroom_id)) {
+        jobDates.set(job.jobroom_id, parsePublishedAt(job.published_at));
+      }
     }
   });
 
-  return { jobIds: [...jobIds].slice(0, maxJobs), companies };
+  return { jobIds: [...jobDates.keys()].slice(0, maxJobs), jobDates, companies };
 }
 
 export default async function handler(req, res) {
@@ -132,7 +156,7 @@ export default async function handler(req, res) {
 
   try {
     const arca24 = await isArca24Enabled();
-    const { jobIds, companies } = arca24
+    const { jobIds, jobDates, companies } = arca24
       ? await collectArca24(MAX_JOB_URLS)
       : await collectJobroom(MAX_JOB_URLS);
 
@@ -142,8 +166,10 @@ export default async function handler(req, res) {
       .slice(0, MAX_COMPANY_URLS);
 
     const locs = [
-      ...jobIds.map((id) => `${SITE}/offerta/${id}`),
-      ...companySlugs.map((slug) => `${SITE}/azienda/${slug}`),
+      ...jobIds.map((id) => ({ loc: `${SITE}/offerta/${id}`, lastmod: jobDates.get(id) || null })),
+      // No reliable per-company "last changed" signal in the feed — omitted rather than
+      // guessed, same reasoning as parsePublishedAt above.
+      ...companySlugs.map((slug) => ({ loc: `${SITE}/azienda/${slug}`, lastmod: null })),
     ];
 
     // A thin result is still served — an honest small sitemap beats a fabricated or
