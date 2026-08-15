@@ -68,6 +68,41 @@ function uniqueJobField(key, max = 30) {
 }
 
 /**
+ * Title + meta description for the six static routes that, until now, only got a
+ * canonical from this script — the audit's "duplicate titles pre-render" finding: every
+ * one of them shipped the home page's fallback `<title>` because nothing overwrote it.
+ * Values mirror src/locales/it.json's `seo.*` block (same convention as api/offerta-ssr.js
+ * and the HUB_CONTENT titles below) — kept here rather than imported so this script has
+ * no runtime dependency on the i18n bundle.
+ */
+const STATIC_META = {
+  '/soluzioni-e-tariffe': {
+    title: 'Soluzioni e tariffe per le aziende - JobCourier',
+    description: 'Pubblica i tuoi annunci e trova candidati in Svizzera: piani, tariffe e servizi JobCourier per aziende e agenzie.',
+  },
+  '/come-funziona': {
+    title: 'Come funziona - JobCourier',
+    description: "Come funziona JobCourier per candidati e aziende: dalla ricerca dell'offerta alla candidatura, passo per passo.",
+  },
+  '/contatti': {
+    title: 'Contatti - JobCourier',
+    description: 'Scrivici per informazioni su pubblicazione annunci, candidature e collaborazioni. Il team JobCourier ti risponde.',
+  },
+  '/faq': {
+    title: 'Domande frequenti - JobCourier',
+    description: 'Le risposte alle domande più frequenti di candidati e aziende su JobCourier.',
+  },
+  '/condizioni-generali': {
+    title: 'Condizioni generali - JobCourier',
+    description: 'Condizioni generali di utilizzo del portale JobCourier.',
+  },
+  '/cookie-policy': {
+    title: 'Cookie Policy - JobCourier',
+    description: 'Come JobCourier utilizza i cookie e come gestire le tue preferenze.',
+  },
+};
+
+/**
  * Static markup for the two hubs that were pure shells: their whole purpose in the site
  * audit is to give a crawler <a href> toward every job ad / company profile, so the body
  * here IS the fix — see the file header for why sitemap-jobs.xml alone could not do this.
@@ -155,36 +190,38 @@ for (const [route, file] of Object.entries(ROUTES)) {
         `    <meta property="og:url" content="${canonical}">\n  </head>`
     );
 
-  // Every route in HUB_CONTENT gets real markup injected into #root — the home page
-  // included. api/_ssr.js fetches dist/_template.html (the pristine copy saved above),
-  // never this file, so home's body doesn't leak into the /offerta and /azienda snapshots.
-  const hub = HUB_CONTENT[route];
-  if (hub) {
-    // The home page's <title>/og:title/og:description are already correct static values
-    // in index.html — only /offerte and /aziende-che-assumono (born as an empty shell
-    // with the home page's own metadata) need those overwritten.
-    if (hub.title) {
-      const t = escapeHtml(hub.title);
-      const d = escapeHtml(hub.description);
+  // Every route in HUB_CONTENT or STATIC_META gets its title/og/meta description
+  // overwritten. The home page's entry in HUB_CONTENT carries no `title` — its
+  // <title>/og:title/og:description are already correct static values in index.html, and
+  // (unlike every other route here) index.html doubles as the pristine dist/_template.html
+  // api/_ssr.js fetches for /offerta and /azienda snapshots, so nothing here may append a
+  // second meta description that would leak into those.
+  const meta = HUB_CONTENT[route] || STATIC_META[route];
+  if (meta?.title) {
+    const t = escapeHtml(meta.title);
+    const d = escapeHtml(meta.description);
 
-      html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${t}</title>`);
-      html = html
-        .replace(/<meta\s+property="og:title"[^>]*>/i, `<meta property="og:title" content="${t}">`)
-        .replace(/<meta\s+property="og:description"[^>]*>/i, `<meta property="og:description" content="${d}">`);
+    html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${t}</title>`);
+    html = html
+      .replace(/<meta\s+property="og:title"[^>]*>/i, `<meta property="og:title" content="${t}">`)
+      .replace(/<meta\s+property="og:description"[^>]*>/i, `<meta property="og:description" content="${d}">`);
 
-      // index.html ships no meta description or twitter:card at all (only the homepage's
-      // og:title/og:description exist statically) — both are added fresh here rather than
-      // replaced, same reasoning as api/_ssr.js's renderShell for the ad/company snapshots.
-      html = html.replace(
-        '</head>',
-        `  <meta name="description" content="${d}">\n` +
-          `    <meta name="twitter:card" content="summary_large_image">\n  </head>`
-      );
-    }
+    // Every route reaching here is a standalone copy of the shell (not fetched as a
+    // template by anything else — see the module comment on why '/' is the exception),
+    // so appending fresh here never risks a duplicate: none of them ship a meta
+    // description or twitter:card of their own.
+    html = html.replace(
+      '</head>',
+      `  <meta name="description" content="${d}">\n` +
+        `    <meta name="twitter:card" content="summary_large_image">\n  </head>`
+    );
+  }
 
+  // Only the two hubs get real body content — see HUB_CONTENT's own comment for why.
+  if (HUB_CONTENT[route]) {
     // createRoot().render() replaces #root's children on mount (see api/_ssr.js's header
     // comment), so this is a pre-boot snapshot, not markup the client has to reconcile.
-    html = html.replace(/<div id="root">\s*<\/div>/i, `<div id="root">${hub.body()}</div>`);
+    html = html.replace(/<div id="root">\s*<\/div>/i, `<div id="root">${HUB_CONTENT[route].body()}</div>`);
   }
 
   writeFileSync(distFile(file), html);

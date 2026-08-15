@@ -212,6 +212,10 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Error fetching job details:', error);
     res.setHeader('Cache-Control', 'no-store');
+    if (error?.jobNotFound) {
+      res.status(404).json({ error: 'Job not found' });
+      return;
+    }
     res.status(500).json({ error: 'Failed to fetch job details data', details: error.message });
   }
 }

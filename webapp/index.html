@@ -2,13 +2,20 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://consent.cookiebot.com" />
     <!-- data-framework="TCFv2.2" makes Cookiebot the site's IAB TCF consent
          provider (CMP id 134). The attribute name is stale on Cookiebot's side:
          it emits TCF 2.3, which IAB has required for new consent signals since
          28.02.2026. Without it the TC string that advertisers read comes from
          Google's own GDPR message instead, which is why the site used to show
-         two consent banners. -->
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="29601bde-40d6-45d8-be15-4b7bdef2d50c" data-blockingmode="auto" data-framework="TCFv2.2" type="text/javascript"></script>
+         two consent banners.
+         async+defer: safe with blockingmode="auto" here specifically because every
+         third-party tag this site loads itself (GA4, AdSense below) is already
+         manually gated behind type="text/plain"+data-cookieconsent — nothing on
+         the page depends on Cookiebot's own auto-block racing the parser, so the
+         non-blocking load only delays how soon the banner paints, not consent
+         enforcement. -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="29601bde-40d6-45d8-be15-4b7bdef2d50c" data-blockingmode="auto" data-framework="TCFv2.2" type="text/javascript" async defer></script>
 
     <!-- Must run before any Google tag, and must NOT be consent-gated: it only
          tells Google's tags to read consent from the TCF string rather than
@@ -74,6 +81,15 @@
         "target": "/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "JobCourier",
+      "url": "https://www.jobcourier.ch",
+      "logo": "https://www.jobcourier.ch/logo-square.png"
     }
     </script>
   </head>

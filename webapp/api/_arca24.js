@@ -289,8 +289,30 @@ export function parseJobDetailFromHtml(html, id) {
   };
 }
 
+/**
+ * Unlike fetchHtml's other callers, this one needs to tell "the ad does not exist" (a
+ * real 404 from Arca24 — job-detail.js turns that into an HTTP 404/410) apart from "the
+ * feed is having a bad minute" (timeout/5xx — stays a 500, so offerta-ssr keeps serving
+ * the safe 200 shell rather than de-indexing a live ad). fetchHtml's shared contract
+ * doesn't carry that distinction, so it is not reused here.
+ */
 export async function fetchJobDetail(id) {
-  return parseJobDetailFromHtml(await fetchHtml(`/${LANG}/careers/jobad/${id}`), id);
+  const path = `/${LANG}/careers/jobad/${id}`;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), REQUEST_TIMEOUT_MS);
+  let res;
+  try {
+    res = await fetch(`${ARCA24_HOST}${path}`, { headers, signal: ctrl.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+  if (res.status === 404) {
+    const err = new Error(`Arca24 job ${id} not found`);
+    err.jobNotFound = true;
+    throw err;
+  }
+  if (!res.ok) throw new Error(`Arca24 responded ${res.status} for ${path}`);
+  return parseJobDetailFromHtml(await res.text(), id);
 }
 
 /* ------------------------------------------------------------------ *

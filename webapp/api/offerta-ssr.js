@@ -26,10 +26,9 @@ async function fetchJson(url) {
   const timer = setTimeout(() => ctrl.abort(), UPSTREAM_TIMEOUT_MS);
   try {
     const res = await fetch(url, { signal: ctrl.signal });
-    if (!res.ok) return null;
-    return await res.json();
+    return { status: res.status, data: res.ok ? await res.json() : null };
   } catch (_) {
-    return null;
+    return { status: null, data: null };
   } finally {
     clearTimeout(timer);
   }
@@ -104,12 +103,24 @@ export default async function handler(req, res) {
 
   const canonical = `https://www.jobcourier.ch/offerta/${encodeURIComponent(id)}`;
 
-  const job = await fetchJson(`${origin}/api/job-detail?id=${encodeURIComponent(id)}`);
+  const { status: jobStatus, data: job } = await fetchJson(
+    `${origin}/api/job-detail?id=${encodeURIComponent(id)}`
+  );
 
-  // No ad, or the feed is having one of its bad minutes: hand over the plain shell and let
-  // the app retry client-side rather than publish a snapshot claiming the ad is gone. The
-  // canonical goes with it — this URL is still this URL.
+  // job-detail.js said explicitly the ad does not exist (a real 404 from Arca24) — not a
+  // feed hiccup, which comes back as 500/timeout and falls through to the shell below.
+  if (jobStatus === 404) return serveFallback(res, origin, 404, canonical);
+
+  // Feed is having one of its bad minutes: hand over the plain shell and let the app retry
+  // client-side rather than publish a snapshot claiming the ad is gone. The canonical goes
+  // with it — this URL is still this URL.
   if (!job || !job.title) return serveFallback(res, origin, 200, canonical);
+
+  // Ad existed and carries a real expiry date in the past: gone on purpose, not missing.
+  const expiredThrough = toIsoDate(job.details?.validThrough);
+  if (expiredThrough && new Date(expiredThrough) < new Date()) {
+    return serveFallback(res, origin, 410, canonical);
+  }
 
   const company = job.company?.name || 'JobCourier';
   const location = job.location || 'Svizzera';
