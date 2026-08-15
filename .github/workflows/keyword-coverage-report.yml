@@ -1,0 +1,51 @@
+# Weekly review loop for src/utils/jobTaxonomy.js.
+#
+# Sector/role are guessed from job titles by keyword regex (see jobTaxonomy.js — the
+# feed never carries real sector/role). New job titles bring new synonyms the regex
+# doesn't know yet, so this refreshes webapp/docs/keyword-coverage-report.md against
+# live titles and opens a PR when it changed. It only ever proposes a report for a
+# human to read — it never edits jobTaxonomy.js itself, so a bad keyword can't slip
+# into production unreviewed.
+name: Keyword coverage report
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # every Monday 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: webapp
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run keyword coverage audit
+        run: npm run audit:keywords
+
+      - name: Open PR if the report changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore(jobs): refresh keyword coverage report'
+          title: 'chore(jobs): refresh keyword coverage report'
+          body: |
+            Report settimanale automatico — vedi `webapp/docs/keyword-coverage-report.md`.
+
+            Nessuna keyword è stata aggiunta automaticamente a `jobTaxonomy.js`: questa PR
+            aggiorna solo il report da rivedere. Se qualche parola nella tabella vale la
+            pena aggiungerla, farlo a mano in `webapp/src/utils/jobTaxonomy.js`.
+          branch: chore/keyword-coverage-report
+          add-paths: webapp/docs/keyword-coverage-report.md

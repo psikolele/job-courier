@@ -12,6 +12,7 @@ import JobSearchWidget from '../components/JobSearchWidget';
 import PageSeo from '../components/PageSeo';
 import { getCantonValueFromParams } from '../utils/searchData';
 import { JobListItemSkeleton, JobDetailSkeleton } from '../components/ui/Skeleton';
+import { deriveSector, deriveRole } from '../utils/jobTaxonomy';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -22,58 +23,6 @@ const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
 
-
-const deriveSector = (title, sector) => {
-    const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
-    if (sector && !skip.includes(sector)) return sector;
-    if (!title) return null;
-    const t = title.toLowerCase();
-    if (/trasport|autista|camion|courier|spediz|logist|magazz|magazin|lagerist|disponent|driver|corriere|chauffeur|fahrer/.test(t)) return 'Logistica';
-    if (/inferm|medic|farmac|salute|dental|fisio|cura|health|clinica|pflege|soins|infirmier|aide.soignant|auxiliaire de sant|\bmpa\b/.test(t)) return 'Medicina';
-    if (/sviluppa|programm|developer|software|engineer|devops|cloud|\.net|java|python|frontend|backend|fullstack/.test(t)) return 'IT';
-    if (/contab|finanz|paghe|banca|audit|fiscal|revisio|accounting|treuhand|comptab/.test(t)) return 'Finanza';
-    if (/vendita|commerc|sales|account|business dev|verkauf|vente|detailhandel|vertrieb|kundenbetreu|kundendienst/.test(t)) return 'Commerciale';
-    if (/amministr|segret|assistente|reception|back.?office|sekretariat|secretariat|controller|einkäuf|einkauf/.test(t)) return 'Amministrazione';
-    if (/ingénieur|ingenieur|konstrukteur|dessinateur|génie civil|entwicklungsingenieur/.test(t)) return 'Ingegneria';
-    if (/costruzion|edil|parchett|muratore|idraulic|elettr|carpent|impianti|architett|projekt|installateur|electricien|monteur|elektrik|chauffage|heizung|zimmermann|schreiner|menuisier|maçon|maurer|maler|dachdecker|schweisser|mechanik|polymechanik|automatiker|kranführer|strassenbauer|carrosserie|klempner|schlosser|gärtner|paysagiste|bauleiter/.test(t)) return 'Costruzioni';
-    if (/ristora|chef|cuoc|camerier|pasticcier|hotell|cuisin|kellner|koch|boulanger/.test(t)) return 'Ristorazione';
-    if (/marketing|social media|communic|brand|digital/.test(t)) return 'Marketing';
-    if (/risorse umane|\bhr\b|human resource|selezione|reclutament|personalwesen/.test(t)) return 'HR';
-    if (/puliz|nettoy|reinigung|facility|cleaning/.test(t)) return 'Servizi Generali';
-    return null;
-};
-
-const deriveRoleFromTitle = (title) => {
-    if (!title) return null;
-    const t = title.toLowerCase();
-    if (/autista|driver|chauffeur|fahrer/.test(t)) return 'Autista';
-    if (/installateur|installator|monteur|elektrik|electricien/.test(t)) return 'Installatore';
-    if (/schweisser|soudeur/.test(t)) return 'Saldatore';
-    if (/schreiner|menuisier|zimmermann|falegname/.test(t)) return 'Falegname';
-    if (/maçon|maurer|muratore/.test(t)) return 'Muratore';
-    if (/\bmaler\b|peintre|imbianchino/.test(t)) return 'Imbianchino';
-    if (/mechanik|meccanic|mecanicien/.test(t)) return 'Meccanico';
-    if (/kranführer|gruista/.test(t)) return 'Gruista';
-    if (/gärtner|paysagiste|giardin/.test(t)) return 'Giardiniere';
-    if (/konstrukteur|dessinateur|projeteur|progettista/.test(t)) return 'Progettista';
-    if (/ingénieur|ingenieur|ingegnere/.test(t)) return 'Ingegnere';
-    if (/tecnic|technician|tester|technicien|techniker|technik/.test(t)) return 'Tecnico';
-    if (/specialist/.test(t)) return 'Specialista';
-    if (/responsabile|manager|leiter/.test(t)) return 'Responsabile';
-    if (/einkäuf|einkauf|acquisti/.test(t)) return 'Responsabile Acquisti';
-    if (/controller/.test(t)) return 'Controller';
-    if (/consulente|consultant|berater/.test(t)) return 'Consulente';
-    if (/addett|employe|mitarbeiter/.test(t)) return 'Addetto';
-    if (/operai|ouvrier|arbeiter/.test(t)) return 'Operaio';
-    if (/camerier|serveur|kellner/.test(t)) return 'Cameriere';
-    if (/cuoc|cuisinier|koch|boulanger/.test(t)) return 'Cuoco';
-    if (/segreta|secretaire|sekretär/.test(t)) return 'Segretario';
-    if (/contabil|comptable|buchhalter/.test(t)) return 'Contabile';
-    if (/vendit|commercial|verkäufer|kundenbetreu/.test(t)) return 'Venditore';
-    if (/magazzin|magazin|lagerist|disponent/.test(t)) return 'Magazziniere';
-    if (/inferm|nurse|pflege|infirmier|aide.soignant/.test(t)) return 'Infermiere';
-    return null;
-};
 
 /**
  * Stable key for comparing job ids across sources.
@@ -89,12 +38,6 @@ const jobIdKey = (value) => {
     const s = String(value ?? '');
     const m = s.match(/^(\d+)/);
     return m ? m[1] : s;
-};
-
-const deriveRole = (role, title) => {
-    const skip = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
-    if (role && !skip.includes(role)) return role;
-    return deriveRoleFromTitle(title);
 };
 
 const PercheCandidatiWidget = () => {
