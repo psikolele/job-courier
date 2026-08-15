@@ -110,6 +110,18 @@ const FALLBACK_BATCH_SIZE = 6;
 const MIN_HEALTHY_JOBS = 10;
 const MIN_HEALTHY_COMPANIES = 3;
 
+// `published_at` is scraped free text ("31/07/2026", "15/08/2026 Nuovo!", "14/08/2026
+// Urgente!") — always DD/MM/YYYY optionally followed by a badge word, from both the
+// sequential listing and each company's own page (both go through parseJobsFromHtml
+// in _arca24.js). Undated/unparseable ads sort last rather than being dropped: a
+// missing date is not evidence the ad is old.
+function publishedAtRank(job) {
+  const m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})/.exec(job?.published_at || '');
+  if (!m) return -Infinity;
+  const [, d, mo, y] = m;
+  return Date.UTC(Number(y), Number(mo) - 1, Number(d));
+}
+
 /**
  * Identity of an ad, for de-duplication.
  *
@@ -617,19 +629,28 @@ export default async function handler(req, res) {
       // Interleaved, not appended. A monobrand listing can fill `maxJobs` on its own,
       // and appending behind it would push every company-page ad past the limit — the
       // fallback would run, cost its requests, and change nothing.
+      // Collected at full interleave depth, capped only by `known` de-dup — the maxJobs
+      // cut happens after sorting below, not here, or a job pushed past position
+      // `maxJobs` in interleave order would never get the chance to sort back in front
+      // of an older one that happened to land earlier.
       const merged = [];
       const known = new Set();
       const depth = Math.max(allJobs.length, fromCompanies.length);
-      for (let i = 0; i < depth && merged.length < maxJobs; i++) {
+      for (let i = 0; i < depth; i++) {
         for (const job of [allJobs[i], fromCompanies[i]]) {
-          if (!job || merged.length >= maxJobs) continue;
+          if (!job) continue;
           const key = adKey(job);
           if (known.has(key)) continue;
           known.add(key);
           merged.push(job);
         }
       }
-      const fallbackJobs = merged;
+      // Interleaving by company mixes today's sequential-listing ads with older ones
+      // still sitting on a company's own page — sort by date so "ultimi annunci" is
+      // actually chronological instead of just alternating sources.
+      const fallbackJobs = merged
+        .sort((a, b) => publishedAtRank(b) - publishedAtRank(a))
+        .slice(0, maxJobs);
       if (fallbackJobs.length > 0) {
         // Each miss on this path costs one upstream request per company, so the default
         // 5-minute TTL would mean ~420 requests/hour against a partner platform that is
@@ -661,9 +682,10 @@ export default async function handler(req, res) {
       }
     }
 
-    const finalJobs = arca24 && isFiltered
+    const finalJobs = (arca24 && isFiltered
       ? await applyArca24LeftoverFilters(allJobs, callerParams, honoured)
-      : allJobs;
+      : allJobs
+    ).sort((a, b) => publishedAtRank(b) - publishedAtRank(a));
 
     res.status(200).json(arca24 ? await enrichReservedCompanies(finalJobs) : finalJobs);
   } catch (error) {
