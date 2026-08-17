@@ -21,7 +21,7 @@ import './i18n.js'
 // and description slipped through the first time.
 document
   .querySelectorAll(
-    'head > title, head > meta[property^="og:"], head > meta[name="description"], head > meta[name="twitter:card"], head > link[rel="canonical"]'
+    'head > title, head > meta[property^="og:"], head > meta[name="description"], head > meta[name="twitter:card"], head > link[rel="canonical"], head > link[rel="alternate"][hreflang]'
   )
   .forEach((el) => el.remove())
 

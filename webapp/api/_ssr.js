@@ -137,7 +137,7 @@ export function withCanonical(template, canonical) {
  * tags — see components/PageSeo.jsx), so a per-page og:title has to be set here or not
  * at all. Same for the <title> and the canonical link.
  */
-export function renderShell(template, { title, description, canonical, ogImage, jsonLd, body }) {
+export function renderShell(template, { title, description, canonical, ogImage, jsonLd, body, hreflang }) {
   const t = escapeHtml(title);
   const d = escapeHtml(description);
   const url = escapeHtml(canonical);
@@ -171,6 +171,9 @@ export function renderShell(template, { title, description, canonical, ogImage, 
     `<link rel="canonical" href="${url}">`,
     `<meta property="og:url" content="${url}">`,
     `<meta name="twitter:card" content="summary_large_image">`,
+    ...(Array.isArray(hreflang) ? hreflang : []).map(
+      (h) => `<link rel="alternate" hreflang="${escapeHtml(h.lang)}" href="${escapeHtml(h.href)}">`
+    ),
     ...(Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map(jsonLdScript),
   ].join('\n    ');
 

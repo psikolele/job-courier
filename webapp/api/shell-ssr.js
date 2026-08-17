@@ -1,5 +1,6 @@
 /**
- * Canonical link for the routes that are pure client-side React.
+ * Canonical link for the routes that are pure client-side React, and a full SEO snapshot
+ * (title, description, H1, body text, hreflang, JSON-LD) for blog routes specifically.
  *
  * Every SPA route was rewritten straight to the static index.html, which carries no
  * <link rel="canonical"> at all — App.jsx only adds it once the bundle has booted. A
@@ -7,15 +8,19 @@
  * generic title and no canonical, for /, /offerte, /faq, every blog page and so on: that
  * is the site audit's "Duplicate pages without canonical" bucket.
  *
- * There is nothing to fetch here — a self-referencing canonical is derivable from the
- * requested path alone, which is why this handler takes the path as an explicit `path`
- * query parameter written by the rewrite in vercel.json rather than guessing it from
- * req.url (the rewrite has already replaced that).
+ * Blog routes get more than a canonical: they were still the site audit's largest
+ * remaining bucket (H1/meta description/twitter card missing, ~55 URLs each; part of
+ * "orphan page" and "missing reciprocal hreflang") because a non-JS crawler read the empty
+ * shell for every one of the 56 blog URLs. api/_blog-snapshot.js — built at deploy time by
+ * scripts/generate-blog-snapshot.mjs from src/data/blog/* — has that content ready for
+ * every article and category page, so no live fetch is needed here (unlike offerta-ssr.js
+ * and azienda-ssr.js, which depend on a live, slow upstream).
  *
  * The tags it injects are the same ones main.jsx strips before the first render, so the
  * booted app still ends up with exactly one of each — see the list in main.jsx.
  */
-import { siteOrigin, loadTemplate, withCanonical, serveFallback } from './_ssr.js';
+import { siteOrigin, loadTemplate, withCanonical, renderShell, snapshotBody, serveFallback } from './_ssr.js';
+import { blogPages } from './_blog-snapshot.js';
 
 // The indexed hostname. Hard-coded for the same reason as in the other SSR handlers:
 // preview deployments and the apex must not canonicalise to themselves.
@@ -53,12 +58,45 @@ export default async function handler(req, res) {
     return serveFallback(res, origin, 500);
   }
 
-  const html = withCanonical(template, canonical);
+  const page = blogPages[path];
+
+  // Not a blog URL, or one this build's snapshot does not recognise (a stale link, a typo)
+  // — the plain canonical-only shell, same as before. The client-side 404 handling still
+  // runs once the bundle boots.
+  if (!page) {
+    const html = withCanonical(template, canonical);
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.status(200).send(html);
+    return;
+  }
+
+  const html = renderShell(template, {
+    title: page.title,
+    description: page.description,
+    canonical: page.canonical,
+    ogImage: page.ogImage,
+    jsonLd: page.jsonLd,
+    hreflang: page.hreflang,
+    body:
+      page.type === 'article'
+        ? snapshotBody({
+            heading: page.heading,
+            subheading: page.subheading,
+            paragraphs: page.bodyText.split('\n\n'),
+            backLink: { href: page.backHref, label: 'Tutti gli articoli' },
+          })
+        : snapshotBody({
+            heading: page.heading,
+            links: page.links,
+            linksHeading: 'Articoli',
+            backLink: { href: '/blog/carriera', label: 'Torna al blog' },
+          }),
+  });
 
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  // Same reason index.html is no-store in vercel.json: the shell names hashed asset files
-  // that only exist in the deployment that built them. A cached copy outliving a deploy
-  // asks for a bundle that is gone — a blank page, not a stale one.
-  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  // Static blog data, rebuilt only on deploy — safe to cache at the edge, unlike the
+  // canonical-only branch above which must stay fresh for every other SPA route.
+  res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
   res.status(200).send(html);
 }

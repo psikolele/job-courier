@@ -126,7 +126,10 @@ export default async function handler(req, res) {
   const location = job.location || 'Svizzera';
   const bodyText = htmlToText(job.description);
 
-  const title = `${job.title} - ${company} - JobCourier`;
+  // The ad title comes straight from the feed and is sometimes very long — clamping only
+  // it, not the whole string, keeps "- {company} - JobCourier" always visible in a SERP
+  // rather than being the part that gets cut off.
+  const title = `${clamp(job.title, 70)} - ${company} - JobCourier`;
   const description = clamp(
     bodyText
       ? `${job.title} presso ${company} - ${location}. ${bodyText}`
