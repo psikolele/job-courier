@@ -1,4 +1,21 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 11 Agosto 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 17 Agosto 2026)
+
+## Sistema SEO dinamico per il blog + fix Ahrefs (17 Agosto 2026) — ✅ *COMPLETED, deploy manuale in prod*
+
+**Commit:** `e31c851` su `main` (pushato dopo il deploy manuale dell'utente, per allineare il tracciamento)
+**Modello:** Claude Sonnet 5, caveman mode full
+
+* **Ahrefs Site Audit MCP: "Insufficient plan".** Il connettore API non copre Site Audit su questo account. Dati presi dalla UI web Ahrefs via browser (login diretto dell'utente, non tramite credenziali gestite da Claude) — crawl del 17/08, health score 80/100, progetto `10208912`.
+* **Causa radice del cluster di issue più grosso: blog senza SSR.** 56 URL blog (2 categorie + 12 articoli × 4 lingue) servivano shell vuota pre-JS — solo canonical iniettato, mai title/H1/description/JSON-LD. Stesso pattern già risolto per `/offerta` e `/azienda` (vedi entry Canonical del 10/08 sotto), mai esteso al blog. Causava: `H1 tag missing` (57), `Meta description missing` (54), `X card missing` (54), gran parte di `Orphan page` (72) e `Missing reciprocal hreflang` (52).
+* **Sistema costruito (non solo un fix una tantum):** `scripts/generate-blog-snapshot.mjs`, eseguito a ogni `npm run build`, legge `src/data/blog/*` e genera `api/_blog-snapshot.js` con title/H1/testo/JSON-LD/hreflang per ogni pagina. `api/shell-ssr.js` serve quello snapshot sulle rotte blog. **Un nuovo articolo (o traduzione) aggiunto ai dati ottiene SEO completa al prossimo deploy, senza toccare codice** — è la risposta diretta alla richiesta "sito sempre dinamico, serve un sistema che si aggiorni da solo".
+* **Bug hreflang reale trovato durante il lavoro:** `/blog/recruiting` è la stessa URL in tutte e 4 le lingue (`categories.js`: stesso segmento). Generator e sitemap dichiaravano comunque 4 hreflang reciproci sulla stessa pagina — esattamente l'issue Ahrefs "referenced for more than one language". Fix: raggruppamento per URL reale, non per lingua.
+* **Sitemap: EN/DE/FR del blog non avevano una `<loc>` propria**, esistevano solo come hreflang alternate dentro l'entry IT — non scopribili direttamente. Ora ogni lingua ha la sua entry (60 URL contro 14 prima).
+* **Title clamp su `/offerta/:id`**: il titolo annuncio arriva illimitato dal feed (issue Ahrefs "Title too long", 130 URL). Clampato il titolo annuncio, non il suffisso brand.
+* **Non toccato:** orphan page residue su `/offerta`/`/azienda` — dipendono dal cron notturno delle 04:00 CEST (`api/rebuild.js`, già esistente) che rigenera gli hub statici; lag fisiologico tra pubblicazione annuncio e rebuild, non un bug. Mojibake UTF-8 nei JSON-LD — verificato non riproducibile (già chiuso il 15/08).
+* ⚠️ **Deploy manuale in produzione fatto dall'utente prima del commit** — verificare che sia stato fatto da questo stesso stato del codice (worktree `gradient-border-animation-d37323`, branch `claude/seo-dynamic-pages-system-819dde`) e non da un `vercel --prod` con modifiche diverse in mezzo. Vedi `feedback_git_push_vs_vercel_cli_deploy` in memoria per il motivo per cui questo va sempre controllato.
+
+---
+
 
 > ⚠️ **Avvertenza sull'attendibilità di questo wiki.** Ri-verificato il 02/08/2026, e la
 > verifica precedente era imprecisa: `IMPLEMENTATION_PLAN_2026-06-25.md`,
