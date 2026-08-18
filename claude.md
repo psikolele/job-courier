@@ -306,6 +306,8 @@ Ref: `00_Wiki/concepts/token-optimization.md` § Temporary File Policy
 
 **Ultimo handoff:** [docs/handoff-2026-08-03.md](docs/handoff-2026-08-03.md)
 
+**🏢 VETRINA AZIENDE:** prima di diagnosticare la vetrina in home o `/aziende-che-assumono` (pochi loghi, un logo solo, aziende "sparite"), leggere `00_Wiki/job-courier/arca24-company-index.md` — la paginazione dell'indice è client-side (la prima risposta contiene già tutte le aziende, `?page=2` risponde 410 a ragione), i formati di link azienda vivi sono tre, e il selettore CSS va tenuto accanto al parser perché il disallineamento svuota il roster senza errori.
+
 **📡 FEED OFFERTE:** prima di diagnosticare offerte mancanti, poche card in vetrina o una pagina offerta vuota, leggere `00_Wiki/job-courier/jobroom-feed-resilience.md` — forme note del guasto Arca24 e invarianti da rispettare (varietà ≠ volume, id = prefisso numerico, mai `find(...) || list[0]`).
 
 **🚨 GO-LIVE DOMINIO:** prima di QUALSIASI operazione su DNS, Vercel domains o deploy produzione, leggere [docs/GOLIVE-PLAN.md](docs/GOLIVE-PLAN.md) — mappa infrastruttura verificata (GoDaddy=DNS, Hostpoint=WP vecchio), redirect map obbligatoria (213 URL), playbook errori e rollback. NB: handoff precedenti che dicono "sito live su Vercel" sono errati — produzione è ancora su Hostpoint.
