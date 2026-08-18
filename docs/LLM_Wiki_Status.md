@@ -1,4 +1,20 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 17 Agosto 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 18 Agosto 2026)
+
+## Vetrina aziende crollata a un solo logo + snapshot SEO inguardabile (18 Agosto 2026) — ✅ *COMPLETED, in prod*
+
+**Commit:** `db59459`, `3e39a93` su `main`
+**Stack operativo:** Claude Opus 5, effort medio, caveman mode full · tool: Bash/Read/Edit, browser pane (`mcp__Claude_Browser__*`) per la verifica dal vivo, Gmail MCP per la bozza · 45 minuti
+
+* **Sintomo cliente:** la sezione "Aziende e Recruiter che si affidano a Job Courier" mostrava **una sola azienda** (Adecco), con la tile CTA navy stirata su tutta la riga rimasta vuota — e un blocco di testo grezzo visibile un istante prima del caricamento di ogni pagina.
+* **Causa 1 — formato link aziende cambiato a monte.** Il portale è passato da `company/profile?uiid=<id>` a `/it/careers/<id>-<slug>/profile`. `parseCompanyRef` conosceva solo i due formati vecchi, quindi l'indice aziende tornava **zero record**; è sopravvissuta la sola Adecco, l'unica ancora linkata alla vecchia maniera dentro `latest_jobs`. Stesso bug faceva leggere come "Azienda Riservata" annunci con azienda pubblica. Fix: il parser legge tutti e tre i formati, e **il selettore CSS vive accanto al parser** (`COMPANY_LINK_SELECTOR`) — il disallineamento fra i due è esattamente ciò che ha svuotato il roster *senza produrre un solo errore*.
+* **Causa 2 — la paginazione dell'indice è client-side, e leggevamo un terzo del roster anche prima.** `jobs_by_company` renderizza 15 aziende in `.resultstring` ma ne consegna **32 nel payload JSON della stessa risposta**: i controlli "2" e "3" sono `<button>` senza `href`, spostano solo un hash (`#by-page=2`) e ri-affettano dati già arrivati. `parseCompaniesFromPayload` legge il blob (titoli **doppiamente encodati**: `S &amp;amp; M beauty SA`). Risultato: roster **1 → 32**, aziende che assumono **1 → 12**.
+* ⚠️ **Errore di diagnosi da non ripetere.** `?page=2` risponde **410** e da lì avevo concluso che Arca24 avesse rotto la paginazione, arrivando a scrivere la mail di segnalazione a Laura e Gabriele. È l'utente ad avermi fermato ("se clicco sul 2 mi apre la seconda pagina, prova anche tu"). Il 410 è **corretto**: `?page=2` non è una richiesta che un click produce mai. Regola: su questo portale (SPA Vue) il markup renderizzato è un sottoinsieme di quello che arriva — prima di attribuire un guasto a monte, riprodurre l'azione nel browser e leggere il traffico di rete. In memoria come `feedback_verify_upstream_before_blaming`.
+* **Snapshot di riserva scaduto lo stesso giorno.** `api/_companies-snapshot.js` è valido 7 giorni (`SNAPSHOT_MAX_AGE_MS`) ed era del 10/08: ha smesso di coprire il buco proprio il 17-18. Rigenerato (12 aziende). **Soglia di salute ora doppia** in `api/companies.js`: `hiring >= 8` **oppure** `roster >= 12`, perché quante aziende assumono è stagionale mentre "l'indice si è letto o no" non lo è — con la sola soglia sugli hiring, un'azienda che chiude l'ultima posizione avrebbe fissato il sito su uno snapshot che continuava a pubblicizzarla.
+* **Snapshot SEO dentro `#root` vestito da JobCourier.** `snapshotBody()` in `api/_ssr.js` è ciò che un visitatore vede finché React non monta, ed era un h1 nero maiuscolo sopra un elenco puntato di URL su fondo bianco: leggeva come sito rotto, non come sito che carica. Ora ha barra brand, occhiello "Caricamento", titolo editorial e link impaginati. **Stessi testi, stessi link, stesso ordine** — nulla cambia per un crawler, cambia solo la presentazione. Punto unico: tutte le route SSR (`shell-ssr`, `offerta-ssr`, `azienda-ssr`, prerender) passano da lì.
+* **Test:** 230 passano (5 nuovi: formato a path, roster dal payload, roster pieno con pochi hiring servito come `live`).
+* **Non fatto di proposito:** nessuna mail al cliente. La bozza preparata conteneva la segnalazione sbagliata ad Arca24 ed è stata scartata su indicazione dell'utente — il fix è invisibile lato cliente e non richiede comunicazione.
+
+---
 
 ## Sistema SEO dinamico per il blog + fix Ahrefs (17 Agosto 2026) — ✅ *COMPLETED, deploy manuale in prod*
 
