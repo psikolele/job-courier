@@ -3,17 +3,8 @@
 // The roster of employers with at least one open position, as of the last build. Read by
 // api/companies.js as the answer of last resort while a cold instance computes the real
 // one. See that file for why it is allowed to be a little out of date.
-export const generatedAt = '2026-08-10T13:08:59.453Z';
+export const generatedAt = '2026-08-18T07:41:55.944Z';
 export const companies = [
-  {
-    "id": "3243389",
-    "name": "4 U Consulting",
-    "slug": "4-u-consulting",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243389.jpg",
-    "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3243389",
-    "has_jobs": true
-  },
   {
     "id": "3244683",
     "name": "Adecco",
@@ -24,39 +15,12 @@ export const companies = [
     "has_jobs": true
   },
   {
-    "id": "3244226",
-    "name": "Approach People Recruitment",
-    "slug": "approach-people-recruitment",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244226.jpg",
-    "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244226",
-    "has_jobs": true
-  },
-  {
     "id": "3244464",
     "name": "DasTeam",
     "slug": "dasteam",
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244464.jpg",
     "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244464",
-    "has_jobs": true
-  },
-  {
-    "id": "3244738",
-    "name": "E-Work Sagl",
-    "slug": "e-work-sagl",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244738.jpg",
-    "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244738",
-    "has_jobs": true
-  },
-  {
-    "id": "3243694",
-    "name": "ER Services Sagl",
-    "slug": "er-services-sagl",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243694.jpg",
-    "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3243694",
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244464-dasteam/profile",
     "has_jobs": true
   },
   {
@@ -65,7 +29,7 @@ export const companies = [
     "slug": "finders-sa",
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243489.jpg",
     "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3243489",
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3243489-finders-sa/profile",
     "has_jobs": true
   },
   {
@@ -74,25 +38,7 @@ export const companies = [
     "slug": "gi-group-sa",
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244630.jpg",
     "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244630",
-    "has_jobs": true
-  },
-  {
-    "id": "3244661",
-    "name": "Manpower",
-    "slug": "manpower",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244661.jpg",
-    "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244661",
-    "has_jobs": true
-  },
-  {
-    "id": "3244246",
-    "name": "Michael Bailey Associates",
-    "slug": "michael-bailey-associates",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244246.jpg",
-    "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244246",
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244630-gi-group-sa/profile",
     "has_jobs": true
   },
   {
@@ -101,16 +47,7 @@ export const companies = [
     "slug": "orienta-sa",
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243388.jpg",
     "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3243388",
-    "has_jobs": true
-  },
-  {
-    "id": "3244624",
-    "name": "PKB Private Bank SA",
-    "slug": "pkb-private-bank-sa",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244624.jpg",
-    "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244624",
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3243388-orienta-sa/profile",
     "has_jobs": true
   },
   {
@@ -128,16 +65,7 @@ export const companies = [
     "slug": "rapelli-orior-food-ag",
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244679.jpg",
     "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244679",
-    "has_jobs": true
-  },
-  {
-    "id": "3174540",
-    "name": "Work & Work SA",
-    "slug": "work-work-sa",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3174540.jpg",
-    "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3174540",
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244679-rapelli-orior-food-ag/profile",
     "has_jobs": true
   },
   {

@@ -79,6 +79,20 @@ describe('GET /api/companies?withJobs=1', () => {
     expect(res.headers['cache-control']).toContain('s-maxage=30');
   });
 
+  // Since upstream started answering 410 past the first index page a sound run is 18
+  // employers and 8 hiring, sitting on the old floor. One of them filling its last vacancy
+  // must not turn every run into a degraded one pinned to a snapshot that still lists them.
+  it('serves a full roster live even when few of it are hiring', async () => {
+    const fullButQuiet = [
+      ...Array.from({ length: 3 }, (_, i) => ({ id: `q${i}`, name: `Hiring ${i}`, has_jobs: true })),
+      ...Array.from({ length: 15 }, (_, i) => ({ id: `i${i}`, name: `Idle ${i}`, has_jobs: false })),
+    ];
+    vi.mocked(fetchCompanies).mockResolvedValue(fullButQuiet);
+    const res = await call();
+    expect(res.body).toEqual(fullButQuiet);
+    expect(res.headers['x-roster-source']).toBe('live');
+  });
+
   it('keeps a degraded run from evicting the good roster it follows', async () => {
     vi.mocked(fetchCompanies).mockResolvedValue(healthy);
     await call();

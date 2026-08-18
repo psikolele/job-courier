@@ -101,8 +101,39 @@ describe('parseCompanyRef', () => {
       .toEqual({ id: '3244729', slug: 'randstad-svizzera-sa' });
   });
 
+  it('legge il formato a path dell indice aziende (dal 08.2026)', () => {
+    expect(parseCompanyRef('/it/careers/3243375-tior-sa/profile'))
+      .toEqual({ id: '3243375', slug: 'tior-sa' });
+  });
+
   it('non esplode su href sconosciuti', () => {
     expect(parseCompanyRef('/it/careers/latest_jobs')).toEqual({ id: null, slug: '' });
+  });
+});
+
+// L'indice aziende ha smesso di linkare `profile?uiid=` e nessun test lo copriva: il
+// parser tornava zero aziende e la vetrina della home cadeva a un solo logo.
+describe('parseCompaniesFromHtml — formato a path', () => {
+  const HTML = `
+<div class="resultstring">
+  <div class="titleContainerInner"><a href="/it/careers/3243375-tior-sa/profile">TIOR SA</a></div>
+  <div class="valueCellInner"><a href="/it/careers/3243375-tior-sa/profile">Cadenazzo</a></div>
+</div>
+<div class="resultstring">
+  <div class="titleContainerInner"><a href="/it/careers/3244630-gi-group-sa/profile">Gi Group SA</a></div>
+</div>`;
+
+  it('legge id, nome e slug dai link a path', () => {
+    const companies = parseCompaniesFromHtml(HTML);
+    expect(companies.map((c) => [c.id, c.name, c.slug])).toEqual([
+      ['3243375', 'TIOR SA', 'tior-sa'],
+      ['3244630', 'Gi Group SA', 'gi-group-sa'],
+    ]);
+  });
+
+  it('costruisce jobroom_url assoluto', () => {
+    expect(parseCompaniesFromHtml(HTML)[0].jobroom_url)
+      .toBe('https://jobroom.jobcourier.ch/it/careers/3243375-tior-sa/profile');
   });
 });
 

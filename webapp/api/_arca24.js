@@ -95,13 +95,46 @@ export async function fetchHtml(path, { acceptNotFound = false, timeoutMs = REQU
   throw lastErr;
 }
 
-/** Company links come in two shapes: "profile:id_3244729&company_name=x" and "profile?uiid=3244729". */
+/**
+ * Company links come in three shapes, all of them still in circulation:
+ *   - "profile:id_3244729&company_name=x"          (the old jobroom portal)
+ *   - "profile?uiid=3244729"                       (Arca24, still used by the job feed)
+ *   - "/it/careers/3243375-tior-sa/profile"        (Arca24, the company index since 08.2026)
+ *
+ * The third is not a cosmetic change: on 18.08.2026 the `jobs_by_company` index served
+ * every employer that way and nothing else did, so the roster read came back empty and the
+ * home showcase fell to the single employer the job feed still names in the old shape —
+ * one logo under a heading that promises the companies who trust Job Courier. The path
+ * form is matched first because it carries the slug the query form dropped.
+ */
 export function parseCompanyRef(href = '') {
+  const path = href.match(/\/careers\/(\d+)-([^/?#]+)\/(?:profile|jobs)/);
+  if (path) return { id: path[1], slug: path[2] };
   const uiid = href.match(/[?&]uiid=(\d+)/);
   if (uiid) return { id: uiid[1], slug: '' };
   const legacy = href.match(/profile:id_(\d+)(?:&company_name=([^&"']*))?/);
   if (legacy) return { id: legacy[1], slug: legacy[2] || '' };
   return { id: null, slug: '' };
+}
+
+/**
+ * Every markup shape parseCompanyRef understands, as a cheerio selector. Kept next to it:
+ * a selector that finds fewer link shapes than the parser reads is exactly how the roster
+ * emptied out, and the two drifting apart is easy to miss because nothing errors — the
+ * page just quietly has no employers on it.
+ */
+export const COMPANY_LINK_SELECTOR =
+  'a[href*="/careers/company/"], a[href*="/profile"], a[href*="profile:id_"]';
+
+/** First link in `$scope` that actually resolves to a company. */
+function findCompanyLink($, $scope) {
+  const $links = $scope ? $scope.find(COMPANY_LINK_SELECTOR) : $(COMPANY_LINK_SELECTOR);
+  let $found = null;
+  $links.each((i, el) => {
+    if ($found) return;
+    if (parseCompanyRef($(el).attr('href') || '').id) $found = $(el);
+  });
+  return $found;
 }
 
 /**
@@ -155,9 +188,9 @@ export function parseJobsFromHtml(html, offset = 0) {
     const id = (href.match(/\/jobad\/(\d+)/) || [])[1] || null;
     const link = new URL(href, `${ARCA24_HOST}/`).toString();
 
-    const $companyLink = $el.find('a[href*="/careers/company/"]').first();
-    const companyName = $companyLink.text().replace(/\s+/g, ' ').trim() || 'Azienda Riservata';
-    const companyRef = parseCompanyRef($companyLink.attr('href') || '');
+    const $companyLink = findCompanyLink($, $el);
+    const companyName = ($companyLink ? $companyLink.text() : '').replace(/\s+/g, ' ').trim() || 'Azienda Riservata';
+    const companyRef = parseCompanyRef(($companyLink && $companyLink.attr('href')) || '');
 
     // First value cell reads "Svizzera, Ticino, Bellinzona, Bellinzona - Randstad Svizzera SA";
     // the company is appended after " - " and has to come off.
@@ -227,7 +260,7 @@ export function parseJobDetailFromHtml(html, id) {
   const $org = $('[itemprop="hiringOrganization"]').first();
   const companyName = $org.find('[itemprop="name"]').first().text().replace(/\s+/g, ' ').trim()
     || $org.text().replace(/\s+/g, ' ').trim()
-    || $('a[href*="/careers/company/"]').first().text().replace(/\s+/g, ' ').trim()
+    || (findCompanyLink($)?.text() || '').replace(/\s+/g, ' ').trim()
     || 'Azienda Riservata';
 
   const location = [prop('addressCountry'), prop('addressRegion'), prop('addressLocality')]
@@ -253,7 +286,7 @@ export function parseJobDetailFromHtml(html, id) {
   // Attacker-controlled markup: whoever publishes the ad writes it. See _sanitize.js.
   description = sanitizeHtml(description);
 
-  const companyRef = parseCompanyRef($('a[href*="/careers/company/"]').first().attr('href') || '');
+  const companyRef = parseCompanyRef(findCompanyLink($)?.attr('href') || '');
 
   // `itemprop="image"` is the company logo for a normal ad — verified against ads from
   // half a dozen employers, each pointing at that employer's own `logo_company_<id>.jpg`.
@@ -427,11 +460,11 @@ export function parseCompaniesFromHtml(html) {
 
   $('.resultstring').each((i, el) => {
     const $el = $(el);
-    const $link = $el.find('a[href*="/careers/company/"]').first();
-    const { id, slug } = parseCompanyRef($link.attr('href') || '');
+    const $link = findCompanyLink($, $el);
+    const { id, slug } = parseCompanyRef(($link && $link.attr('href')) || '');
     if (!id || seen.has(id)) return;
 
-    const name = $link.text().replace(/\s+/g, ' ').trim()
+    const name = ($link ? $link.text() : '').replace(/\s+/g, ' ').trim()
       || $el.find('.md-headline.title, .titleContainer').first().text().replace(/\s+/g, ' ').trim();
     if (!name) return;
 
@@ -447,7 +480,7 @@ export function parseCompaniesFromHtml(html) {
       slug: slug || slugify(name),
       logo: companyLogo(id, name),
       jobs_count,
-      jobroom_url: new URL($link.attr('href') || '', `${ARCA24_HOST}/`).toString(),
+      jobroom_url: new URL(($link && $link.attr('href')) || '', `${ARCA24_HOST}/`).toString(),
     });
   });
 

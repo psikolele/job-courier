@@ -3,2290 +3,754 @@
 // Offerte pubblicate sul feed, come risultavano all'ultimo build. Letto da
 // scripts/prerender-canonicals.mjs per dare a /offerte una lista reale di
 // <a href="/offerta/:id"> — vedi quel file per il perché.
-export const generatedAt = '2026-08-13T16:52:34.891Z';
+export const generatedAt = '2026-08-18T07:41:59.084Z';
 export const jobs = [
   {
-    "id": "6740144",
-    "title": "Technischer Verkaufsberater (m/w/d) für Automationslösungen 100%",
+    "id": "6740561",
+    "title": "Logistiker/in mit Ausbildung (m/w/d) 100%",
     "company": "Adecco",
-    "location": "Svizzera, Sarnen, Obwalden",
+    "location": "Svizzera, Muri, Ag",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6740145",
-    "title": "Stellvertretende Teamleitung im Bereich Fertigung (m/w) 100%",
+    "id": "6740553",
+    "title": "Warenkontrolleur (a) 100%",
     "company": "Adecco",
-    "location": "Svizzera, Kriens, Luzern",
+    "location": "Svizzera, Kerzers, Fr",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6740146",
-    "title": "Koch EFZ (m/w/d) (50%?80%)",
-    "company": "Adecco",
-    "location": "Svizzera, Urnäsch, Ar",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740150",
-    "title": "Professional Specialist (m/f/d) Customer Service / Charter",
-    "company": "Adecco",
-    "location": "Svizzera, Lausanne, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740148",
-    "title": "Konstrukteur HF (m/w/d) 80-100%",
-    "company": "Adecco",
-    "location": "Svizzera, Nebikon, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740152",
-    "title": "Lagermitarbeiter im Tagesbetrieb (Bereich Leergebinde) m/w/d, ab sofort",
-    "company": "Adecco",
-    "location": "Svizzera, Hägendorf, So",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740143",
-    "title": "Un·e Gestionnaire LPP (français?italien)",
-    "company": "Adecco",
-    "location": "Svizzera, Lausanne, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740153",
-    "title": "Konstruktionsingenieur Maschinenbau (m/w/d)100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740149",
-    "title": "Produktionsmitarbeiter, Maschinen-Bediener Lebensmittelbranche (Tagesbetrieb) ab sofort m/w/d",
-    "company": "Adecco",
-    "location": "Svizzera, Langenthal, Bern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740157",
-    "title": "Infermiere/a - 50%",
+    "id": "6740564",
+    "title": "SALDATORE METALCOSTRUTTORE",
     "company": "Azienda Riservata",
-    "location": "Svizzera, Ticino, Sopraceneri",
+    "location": "Svizzera, Ticino, LOCARNO",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6740155",
-    "title": "Saldatore in Quota qualificato",
+    "id": "6740555",
+    "title": "Produktionsmitarbeiter/in Industrie (2-Schicht) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Affoltern am Albis, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740565",
+    "title": "GIARDINIERE SELVICOLTORE",
     "company": "Azienda Riservata",
-    "location": "Svizzera, Ticino, Locarno",
+    "location": "Svizzera, Ticino, LOCARNO",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6740154",
-    "title": "Carrozziere/Verniciatore d'auto",
-    "company": "Randstad Svizzera SA",
-    "location": "Svizzera, Ticino, Lugano, Lugano",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740147",
-    "title": "Kalkulator / Technischer Projektberater 80-100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Sarmenstorf, Ag",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740151",
-    "title": "Konstrukteur (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Küssnacht am Rigi, Schwyz",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740156",
-    "title": "OSS - 50%",
-    "company": "Azienda Riservata",
-    "location": "Svizzera, Ticino, Sopraceneri",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740134",
-    "title": "Technico commercial",
-    "company": "Adecco",
-    "location": "Svizzera, Morges, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740129",
-    "title": "Technischer Projektleiter/in (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Dagmersellen, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740128",
-    "title": "Technischer Projektleiter (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Dagmersellen, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740139",
-    "title": "Reifenmonteur (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Gümligen, Be",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740133",
-    "title": "Servicetechniker Automation (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Emmenbrücke, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740136",
-    "title": "Konstrukteur/ Design (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Stans, Nidwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740135",
-    "title": "Polymechaniker 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Zürich-Oerlikon, Zh",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740140",
-    "title": "Teamleiter/in Produktion (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Horw, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740130",
-    "title": "Systemtechniker/in (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740141",
-    "title": "Konstrukteur (m/w/d) 80-100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740131",
-    "title": "Assistante de Direction",
-    "company": "Adecco",
-    "location": "Svizzera, Lausanne, Vaud",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740137",
-    "title": "Reifenmonteur (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Worblaufen, Be",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740142",
-    "title": "Pittori edilizia Stradale",
-    "company": "Adecco",
-    "location": "Svizzera, Lugano, Ticino",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740138",
-    "title": "Entwicklungsingenieur Elektrotechnik (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740132",
-    "title": "Ingenieur/in für technische Auslegung und Projektleitung (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740126",
-    "title": "Dipl. Pflegefachfachperson HF 50-100% m,w,d",
-    "company": "Adecco",
-    "location": "Svizzera, Olten, So",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740120",
-    "title": "Mechaniker (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Sursee, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740114",
-    "title": "Logistiker 2-schichtig (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Oensingen, Solothurn",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740119",
-    "title": "Servicetechniker im Aussendienst (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Kriens, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740113",
-    "title": "Produktionsmitarbeiter - Standort Thal",
-    "company": "Adecco",
-    "location": "Svizzera, Bazenheid, Sg",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740121",
-    "title": "Produktionsmitarbeiter",
-    "company": "Adecco",
-    "location": "Svizzera, Kloten, Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740117",
-    "title": "Opérateur industriel (H/F/D)",
-    "company": "Adecco",
-    "location": "Svizzera, Palézieux, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740122",
-    "title": "Polymechaniker (m/w) 80-100%",
-    "company": "Adecco",
-    "location": "Svizzera, Sarnen, Obwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740127",
-    "title": "Leidenschaftlicher Automatiker/ Weiterbildung Techniker HF (m/w)100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740115",
-    "title": "Konstrukteur (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Cham, Zug",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740124",
-    "title": "Software-Entwickler für Testsysteme (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740116",
-    "title": "Directeur de travaux",
-    "company": "Adecco",
-    "location": "Svizzera, Lausanne, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740125",
-    "title": "Konstrukteur EFZ / Maschinentechniker HF (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Zug, Zug",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740118",
-    "title": "Sachbearbeiter/in Technischer Support (a) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Rothenburg, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740123",
-    "title": "Montagemitarbeiter 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Zürich-Altstetten, Zh",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740098",
-    "title": "Maschinenzeichner / Konstrukteur (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Dagmersellen, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740105",
-    "title": "Logistiker 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Turgi, Ag",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740110",
-    "title": "Prozessfachfrau/-mann AVOR (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Entlebuch, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740104",
-    "title": "Verniciatore carrozzeria",
-    "company": "Adecco",
-    "location": "Svizzera, Lugano, Ticino",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740100",
-    "title": "Anlagenführer 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Lenzburg, Ag",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740108",
-    "title": "CNC Mechaniker (m/w) 80-100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740099",
-    "title": "Ingenieur/in Elektrotechnik (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Sursee, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740107",
-    "title": "Dipl. Pflegefachperson HF 50%-100% (m,w,d)",
-    "company": "Adecco",
-    "location": "Svizzera, Balsthal, So",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740112",
-    "title": "Ingenieur/in Maschinenbau (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Wohlen, Aargau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740101",
-    "title": "Muratore",
-    "company": "Adecco",
-    "location": "Svizzera, Lugano, Ticino",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740106",
-    "title": "Betriebsmechaniker*in (m/w/d) 80-100%",
-    "company": "Adecco",
-    "location": "Svizzera, Lucerne, Lu",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740109",
-    "title": "Konstrukteur/in (m/w/d) im Product Engineering 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Nebikon, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740103",
-    "title": "Entwicklungsingenieur (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Lucerne",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740111",
-    "title": "Produktionsmitarbeiter 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Schaffhausen, Sh",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740102",
-    "title": "Konstrukteur (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Rothenburg, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740094",
-    "title": "Betriebsmitarbeiter Färberei (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Flawil, Sankt Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740097",
-    "title": "SPS-Programmierer Automationstechnik(m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Reinach, Aargau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740085",
-    "title": "Architecte",
-    "company": "Adecco",
-    "location": "Svizzera, Lausanne, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740088",
-    "title": "Professional Specialist (m/f/d) Customer Service / Charter",
-    "company": "Adecco",
-    "location": "Svizzera, Lausanne, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740093",
-    "title": "Ingenieur im Bereich Instandhaltung (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Sarnen, Obwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740086",
-    "title": "Gérant·e d'immeubles confirmé·e",
-    "company": "Adecco",
-    "location": "Svizzera, Lausanne, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740092",
-    "title": "Polymechaniker CNC Fräsen (a) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Ebikon, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740096",
-    "title": "Logistiker 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Schaffhausen, Sh",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740089",
-    "title": "Mécanicien Automobile avec CFC",
-    "company": "Adecco",
-    "location": "Svizzera, Lausanne, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740083",
-    "title": "Prozessfachmann AVOR (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Hochdorf, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740095",
-    "title": "Entwicklungsingenieur (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Hitzkirch, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740091",
-    "title": "Konstrukteur 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740084",
-    "title": "Techniker/in für Montageplanung und Prozessoptimierung (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Horw, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740090",
-    "title": "Servicetechniker / Techniker (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Ebikon, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740087",
-    "title": "Verantwortliche/r Administration & Marketing (60?80 %)",
-    "company": "Adecco",
-    "location": "Svizzera, Winterthur, Zh",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740075",
-    "title": "System Techniker in der Entwicklung (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Buchrain, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740074",
-    "title": "Systemtechniker/in (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740072",
-    "title": "Ingenieur im Bereich Entwicklung (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Alpnach, Obwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740078",
-    "title": "Mechaniker 2-Schicht (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Burg, Aargau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740069",
-    "title": "Küchenchef (m/w/d) 100 %, 5400 Baden",
-    "company": "Adecco",
-    "location": "Svizzera, Baden, Ag",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740070",
-    "title": "Küchenchef (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Walenstadt, Sg",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740068",
-    "title": "Fachperson Soziale Arbeit 80% (m,w,d)",
-    "company": "Adecco",
-    "location": "Svizzera, Liestal, Bl",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740081",
-    "title": "Spezialist Instandhaltung (all genders) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740071",
-    "title": "Entwicklungsingenieur Mechatronik (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Dagmersellen, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740082",
-    "title": "Prozessingenieur Projekte (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Wohlen, Aargau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740077",
-    "title": "Produktionsassistentin Administration & Einkauf (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Schlieren, Zh",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740073",
-    "title": "Spezialist Maschinentechnik 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Küssnacht am Rigi, Schwyz",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740076",
-    "title": "Ingenieur im Bereich Mechanik (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Cham, Zug",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740080",
-    "title": "Assistent der Geschäftsleitung Gastronomie (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Gstaad, Be",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740079",
-    "title": "Production Engineer (w/m/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Stans, Nidwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740060",
-    "title": "Meccanico Industriale",
-    "company": "Adecco",
-    "location": "Svizzera, Lugano, Ticino",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740065",
-    "title": "Montagemitarbeiter 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Oberentfelden, Ag",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740055",
-    "title": "SPS-Programmierungsprofi Maschinenbau 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Lucerne",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740056",
-    "title": "Techniker/in Automation (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Ebikon, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740061",
-    "title": "Produktionsingenieur/in Digitalisierung (m/w/d)100%",
-    "company": "Adecco",
-    "location": "Svizzera, Hergiswil, Nidwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740062",
-    "title": "Polymechaniker zwei Schicht (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Stans, Nidwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740053",
-    "title": "Reifenmonteur (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Gümligen, Be",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740054",
-    "title": "Entwicklungsingenieur (m/w/d) 80 - 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Dagmersellen, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740067",
-    "title": "Technische/r Vertriebsmitarbeiter/in (m/w/d) im Aussendienst 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Ebikon, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740058",
-    "title": "Mitarbeiter AVOR (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Sursee, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740057",
-    "title": "Messtechniker 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740066",
-    "title": "Spezialist im Bereich Mechanical Engineering (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Sursee, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740059",
-    "title": "Entwicklungsingenieur/in im Bereich Produktion (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Sarnen, Obwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740063",
-    "title": "Softwareentwicklungsprofi 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740064",
-    "title": "Nachtwache 40-60% FAGE,FABE,Dipl (m,w,d)",
-    "company": "Adecco",
-    "location": "Svizzera, Bettlach, So",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740047",
-    "title": "Prozessingenieur (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Horw, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740038",
-    "title": "Software-Ingenieur (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Zug, Zug",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740041",
-    "title": "Konstruktionsexperte (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740048",
-    "title": "Mitarbeiter/in Product-Engineering (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Küssnacht am Rigi, Schwyz",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740049",
-    "title": "Software-Ingenieur im Bereich Produktion (m/w/d) 80-100%",
-    "company": "Adecco",
-    "location": "Svizzera, Hochdorf, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740044",
-    "title": "Polymechaniker (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Hergiswil, Nidwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740039",
-    "title": "Konstrukteur:in EFZ (alle) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740042",
-    "title": "Specialist Versand & Kommissionierung (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Wohlen AG, Ag",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740040",
-    "title": "Teamverantwortliche/r im Bereich Endmontage (w/m/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Kriens, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740043",
-    "title": "Technischer Support Spezialist mit DE, IT (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Kriens, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740051",
-    "title": "Produktionsingenieur (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Stans, Nidwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740046",
-    "title": "Polymechaniker 2-Schichtbetrieb (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740045",
-    "title": "Assistent Gesundheit und Soziales 10-100% (m,w,d)",
-    "company": "Adecco",
-    "location": "Svizzera, solothurn, So",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740052",
-    "title": "Maschinenzeichner/ Konstrukteur (a) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Dagmersellen, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740050",
-    "title": "Berufseinsteiger Instandhaltung (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740033",
-    "title": "Lagermitarbeiter mit Staplerausweis (m/w/d) 100% - im 2-Schicht-Betrieb",
-    "company": "Adecco",
-    "location": "Svizzera, Wohlen, Ag",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740023",
-    "title": "Prozessingenieur/in (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Emmenbrücke, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740037",
-    "title": "Electro-Engineer (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740025",
-    "title": "Reifenmonteur (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Worblaufen, Be",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740034",
-    "title": "Produktionsmitarbeiter/in Charcuterie",
-    "company": "Adecco",
-    "location": "Svizzera, Bazenheid, Sankt Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740029",
-    "title": "Polymechaniker (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Sarnen, Obwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740036",
-    "title": "Chef de Service / Stv. Restaurantleitung (m/w/d) 100 %",
-    "company": "Adecco",
-    "location": "Svizzera, Oerlikon, Zh",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740035",
-    "title": "Projektleiter Systemprojekte (m/w/d)100%",
-    "company": "Adecco",
-    "location": "Svizzera, Küssnacht am Rigi, Schwyz",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740031",
-    "title": "Servicetechniker (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Sursee, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740026",
-    "title": "AGS/PH 50% (m,w,d)",
-    "company": "Adecco",
-    "location": "Svizzera, Derendingen, So",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740024",
-    "title": "Automatiker (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740027",
-    "title": "Mechaniker im Unterhalt (Tagesbetrieb) m/w/d",
-    "company": "Adecco",
-    "location": "Svizzera, Langenthal, Bern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740030",
-    "title": "Gérant d'Immeubles",
-    "company": "Adecco",
-    "location": "Svizzera, Lausanne, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740028",
-    "title": "Junior Applikation Manager (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740032",
-    "title": "Polymechaniker CNC-Maschinen (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Kriens, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740011",
-    "title": "Mécaniciens monteurs et d'électriciens industriels",
-    "company": "Adecco",
-    "location": "Svizzera, Vevey, Vd",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740010",
-    "title": "Techniker*in für Vorrichtungs- und Fertigungsprozesse (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Kriens, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740019",
-    "title": "Maintenance Operator 100% (m/d/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Lenzburg, Ag",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740008",
-    "title": "Entwicklungsingenieur Maschinen und Baugruppen (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Zofingen, Aargau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740009",
-    "title": "CAD-Konstrukteur (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Alpnach, Obwalden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740021",
-    "title": "Comptable fiduciaire 80-100% CDI (H/F/D)",
-    "company": "Adecco",
-    "location": "Svizzera, Martigny, Vs",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740020",
-    "title": "Technischer Projektleiter Prozesse (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Kriens, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740016",
-    "title": "Applikations-Ingenieur für Automations- und Robotersysteme (m/w/d)100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740013",
-    "title": "Elektromechaniker 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Turgi, Ag",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740015",
-    "title": "Instandhaltungsfachmann in der Maschinenbaubranche (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740012",
-    "title": "Dessinteur/trice en bâtiment",
-    "company": "Adecco",
-    "location": "Svizzera, Lausanne, Vaud",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740018",
-    "title": "Betriebselektriker (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Muri, Aargau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740022",
-    "title": "CNC-Fertigung 2-Schicht (m/w/d) 100%",
+    "id": "6740559",
+    "title": "Addetto controllo qualità (U/D/N) - 100%",
     "company": "Adecco",
-    "location": "Svizzera, Hochdorf, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740017",
-    "title": "Operaia settore elettronico",
-    "company": "Adecco",
-    "location": "Svizzera, Lugano, Ticino",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740014",
-    "title": "Automatiker 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Zürich-Oerlikon, Zh",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739940",
-    "title": "Schweisser/in mit Zertifikat (m/w/d) ? Bock auf flexible Top-Einsätze?",
-    "company": "DasTeam",
-    "location": "Svizzera, 6003 Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739939",
-    "title": "Holzbearbeiter/in (m/w/d)",
-    "company": "DasTeam",
-    "location": "Svizzera, 4002 Basel",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740006",
-    "title": "Anlagen- und Apparatebauer (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740004",
-    "title": "Polymechaniker / Werkstattmontage (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Kriens, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740003",
-    "title": "Fachperson Gesundheit EFZ 40-100% m,w,d",
-    "company": "Adecco",
-    "location": "Svizzera, Olten, So",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740001",
-    "title": "Produktionsmitarbeiter/in (L1), Lackiererei (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Olten, Solothurn",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739936",
-    "title": "Elektroinstallateur/in 100% (m/w/d) im Raum Zürich ab sofort oder nach Vereinbarung",
-    "company": "DasTeam",
-    "location": "Svizzera, 8005 Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740007",
-    "title": "Personalberater ? Technische Fachkräfte / Industrie (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Lucerne, Lu",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740005",
-    "title": "Briefzusteller/-in (m/w) 80- 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739937",
-    "title": "Logistiker/in EFZ (m/f/d)",
-    "company": "DasTeam",
-    "location": "Svizzera, 4600 Olten",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6740002",
-    "title": "Konstrukteur 100% (m/w/d)",
-    "company": "Adecco",
-    "location": "Svizzera, Luzern, Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739938",
-    "title": "Boulanger/ère (H/F/D)",
-    "company": "DasTeam",
-    "location": "Svizzera, 1005 Lausanne",
+    "location": "Svizzera, Bellinzona, Ti",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6740000",
-    "title": "Konstrukteur im Bereich Medizintechnik (m/w/d) 100%",
+    "id": "6740552",
+    "title": "Assistant RH 50-100% CDD (H/F/D)",
     "company": "Adecco",
-    "location": "Svizzera, Hergiswil, Nidwalden",
+    "location": "Svizzera, Sierre, Vs",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739999",
-    "title": "Immobilienbewirtschafter:in",
+    "id": "6740551",
+    "title": "Sachbearbeiter Buchhaltung m/w/d 80-100%",
     "company": "Adecco",
     "location": "Svizzera, Basel, Bs",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739997",
-    "title": "Chief Financial Officer Rapelli & Spiess, 100% (m/w/d)",
-    "company": "Rapelli - ORIOR Food AG",
-    "location": "Svizzera, Stabio, TI",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739934",
-    "title": "Montage-Elektriker/in 100% (m/w/d) im Raum Zürich ab soforf oder nach Vereinbarung",
-    "company": "DasTeam",
-    "location": "Svizzera, 8005 Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739926",
-    "title": "Bauleitender Sanitärinstallateur (m/w/d) 100%",
-    "company": "DasTeam",
-    "location": "Svizzera, 9000 St. Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739922",
-    "title": "Kalkulator Heizung / Lüftung (m/w/d) 80?100% Arbeitsort: St. Gallen, Chur oder Bütschwil",
-    "company": "DasTeam",
-    "location": "Svizzera, 9000 St. Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739927",
-    "title": "Wir suchen Maler/in (m/f/d), die Ihr Handwerk lieben!",
-    "company": "DasTeam",
-    "location": "Svizzera, 4002 Basel",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739935",
-    "title": "Chauffeur/euse Kat. C im Werk 100% (m/f/d)",
-    "company": "DasTeam",
-    "location": "Svizzera, 4600 Olten",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739931",
-    "title": "Kantinenmitarbeiter/in (60% befristet) (m/f/d) vom 01.10.2026 bis 31.12.2026 in Langnau i.E",
-    "company": "DasTeam",
-    "location": "Svizzera, 3012 Bern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739923",
-    "title": "Servicetechniker Feuerung (m/w/d) 80?100%",
-    "company": "DasTeam",
-    "location": "Svizzera, 9000 St. Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739930",
-    "title": "Logistiker/in EFZ (m/w/d) ? Produktionslogistik",
-    "company": "DasTeam",
-    "location": "Svizzera, 5400 Baden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739925",
-    "title": "Projektleiter/in Service MSRT 80% - 100%",
-    "company": "DasTeam",
-    "location": "Svizzera, 9000 St. Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739932",
-    "title": "Malerpraktiker/in 100& (m/w/d) im Raum Zürich ab sofort oder nach Vereinbarung",
-    "company": "DasTeam",
-    "location": "Svizzera, 8005 Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739929",
-    "title": "Maler/in mit Qualität (m/w/d)",
-    "company": "DasTeam",
-    "location": "Svizzera, 9000 St. Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739924",
-    "title": "Maçon Coffreur Métallique HUSSOR / Maçonne Coffreuse Métallique HUSSOR (H/F/D)",
-    "company": "DasTeam",
-    "location": "Svizzera, 1800 Vevey",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739928",
-    "title": "Strassenbauer/in | Tiefbauer/in | Eisenleger/in | Bauarbeiter/in (m/f/d)",
-    "company": "DasTeam",
-    "location": "Svizzera, 4002 Basel",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739921",
-    "title": "Boulanger/ère (H/F/D)",
-    "company": "DasTeam",
-    "location": "Svizzera, 1005 Lausanne",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739933",
-    "title": "Maler/in 100% (m/w/d) im Raum Zürich ab sofort oder nach Vereinbarung",
-    "company": "DasTeam",
-    "location": "Svizzera, 8005 Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739911",
-    "title": "Kranführer/in (m/w/d) - Region Bern / Bern Oberland",
-    "company": "DasTeam",
-    "location": "Svizzera, 3601 Thun",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739918",
-    "title": "Anlage- und Apparatebauer/in (m/w/d) EFZ oder mehrjährige Erfahrung",
-    "company": "DasTeam",
-    "location": "Svizzera, 3601 Thun",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739915",
-    "title": "Bauarbeiter/in (m/w/d)",
-    "company": "DasTeam",
-    "location": "Svizzera, 3601 Thun",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739914",
-    "title": "Strassenbauer/in (m/w/d) ? Berner Oberland",
-    "company": "DasTeam",
-    "location": "Svizzera, 3601 Thun",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739908",
-    "title": "Mitarbeiter Endkontrolle (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Gossau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739920",
-    "title": "Kunststofftechnologe/-login (m/w/d) 80-100%",
-    "company": "DasTeam",
-    "location": "Svizzera, 5400 Baden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739909",
-    "title": "Personalberater/in 100% (m/w/d) Luzern",
-    "company": "DasTeam",
-    "location": "Svizzera, 6003 Luzern",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739917",
-    "title": "Maurer/in EFZ (m/w/d) mit aussicht auf Festanstellung",
-    "company": "DasTeam",
-    "location": "Svizzera, 3601 Thun",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739907",
-    "title": "Mitarbeiter Qualitätssicherung (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Gossau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739919",
-    "title": "Lagermitarbeiter/innen im Umschlag gesucht 30-60% (m/w/d)",
-    "company": "DasTeam",
-    "location": "Svizzera, 5000 Aarau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739912",
-    "title": "Baumaschinenführer/in (m/w/d)",
-    "company": "DasTeam",
-    "location": "Svizzera, 3601 Thun",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739906",
-    "title": "Zimmermann (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Weinfelden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739916",
-    "title": "Zimmermann/Zimmerin (m/w/d) EFZ oder mehrjährige Berufserfahrung",
-    "company": "DasTeam",
-    "location": "Svizzera, 3601 Thun",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739913",
-    "title": "Gipser/in (m/w/d) EFZ / EBA oder mehrjähriger Berufserfahrung",
-    "company": "DasTeam",
-    "location": "Svizzera, 3601 Thun",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739910",
-    "title": "Elektrotechniker:in / Elektroingenieur:in Automation (80 bis 100 %) | Region Basel",
-    "company": "DasTeam",
-    "location": "Svizzera, 4002 Basel",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739902",
-    "title": "Gärtner (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Oberuzwil",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739905",
-    "title": "Maschinenführer Extrusion (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, St. Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739894",
-    "title": "Abdichter EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Schaffhausen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739896",
-    "title": "Dachdecker (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739901",
-    "title": "Mitarbeiter Flechten Kabelproduktion (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Gossau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739893",
-    "title": "Polybaupraktiker (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Schaffhausen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739899",
-    "title": "Oberflächenbeschichter EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, St. Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739904",
-    "title": "Anlagenführer Kabelproduktion (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, St. Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739897",
-    "title": "Zaunmonteur (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739900",
-    "title": "Operator Micro Manufacturing (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, St. Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739892",
-    "title": "Flachdachbauer (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Kreuzlingen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739898",
-    "title": "Heizungsinstallateur EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739903",
-    "title": "Montagemitarbeiter CAYCOM (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Gossau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739891",
-    "title": "Gärtner EBA (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739895",
-    "title": "Heizungsinstallateur EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Frauenfeld",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739878",
-    "title": "Kundenberater Versicherung (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739881",
-    "title": "Gärtner (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739883",
-    "title": "Heizungsinstallateur EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739880",
-    "title": "Versicherungsberater (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739886",
-    "title": "Dachdecker EBA (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739887",
-    "title": "Zimmermann (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739884",
-    "title": "Sanitärinstalateur EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739876",
-    "title": "Instandhaltungstechniker Mechanik (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739882",
-    "title": "Gärtner EFZ / Bauführer (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739890",
-    "title": "Gärtner EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739879",
-    "title": "Versicherungsspezialist (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Wallisellen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739888",
-    "title": "Zimmermann EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739889",
-    "title": "Gärtner EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Oberuzwil",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739885",
-    "title": "Dachdecker EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Frauenfeld",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739877",
-    "title": "Schweisser TIG/MAG (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Aarau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739864",
-    "title": "Quereinsteiger Kanaltechnik (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739865",
-    "title": "Chauffeur C/CE (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739871",
-    "title": "Mitarbeiter Qualitätskontrolle (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739872",
-    "title": "Mitarbeiter Schlusskontrolle (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739863",
-    "title": "Schweisser MAG/TIG (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739874",
-    "title": "Polymechaniker (w/m/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Bubikon",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739862",
-    "title": "Qualitätsprüfer Wareneingang (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739870",
-    "title": "Elektroniker EFZ Lehrabgänger (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739875",
-    "title": "Automatiker (w/m/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Bubikon",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739873",
-    "title": "Stv. Leiter Logistik Ost (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739866",
-    "title": "Kanalinspektor TV-Inspektion (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739867",
-    "title": "Quereinsteiger Kanaltechnik (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739868",
-    "title": "Gärtner EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Uster",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739869",
-    "title": "Löter (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739861",
-    "title": "CNC-Polymechaniker Fräsen (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739859",
-    "title": "Schweisser / Verputzer (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Weinfelden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739854",
-    "title": "Mechaniker Kundennacharbeiten (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739848",
-    "title": "Store Verkäufer Telekom (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, St. Gallen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739858",
-    "title": "Schweisser Aluminium (m/w/d) (Schweiz)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Singen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739850",
-    "title": "Servicemechaniker (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739851",
-    "title": "Serviceelektriker (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739860",
-    "title": "Mechaniker Fertigstellung (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739856",
-    "title": "Getriebemonteur (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739847",
-    "title": "Store Jumper Agent (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739853",
-    "title": "Mechaniker EFZ (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739849",
-    "title": "Store Agent Jumper (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739846",
-    "title": "Fassadenbauer (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739855",
-    "title": "Schreiner (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Kreuzlingen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739857",
-    "title": "Klebepraktiker (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739852",
-    "title": "Schreiner Innenausbau (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Kreuzlingen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739831",
-    "title": "Carrosseriespengler / in EFZ (m/w/d)",
+    "id": "6740554",
+    "title": "Chauffeur Kat. C/E (a) 100%",
     "company": "Adecco",
-    "location": "Svizzera, Oerlikon, Zürich",
+    "location": "Svizzera, Bern, Be",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739832",
-    "title": "Automobildiagnostiker (m/w/d) mit eidg. Fachausweis",
+    "id": "6740558",
+    "title": "Elektro / Automation Teamleiter (a) 100%",
     "company": "Adecco",
-    "location": "Svizzera, Zürich, Zh",
+    "location": "Svizzera, Sumiswald, Be",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739834",
-    "title": "Macher:in als Kundenschreiner:in 100% (m/w/d)",
+    "id": "6740556",
+    "title": "Baufacharbeiter Q 100% (m/w/d)",
     "company": "Adecco",
-    "location": "Svizzera, Winterthur, Zh",
+    "location": "Svizzera, Martigny, Be",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739840",
-    "title": "Maurer (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Weinfelden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739835",
-    "title": "Mehrere Montageelektriker EFZ in der Region Laufenburg",
+    "id": "6740562",
+    "title": "Bauleitende/r Lüftungsanlagenbauer/in 100%",
     "company": "Adecco",
-    "location": "Svizzera, Mettau und Umgebung, Aargau",
+    "location": "Svizzera, Bern, Be",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739841",
-    "title": "Maler (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Winterthur",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739842",
-    "title": "Monteur (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Pfungen",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739833",
-    "title": "Automatikmonteur EFZ als Betriebselektriker Instandhaltung Zürich",
-    "company": "Adecco",
-    "location": "Svizzera, Zürich, Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739836",
-    "title": "Tecnico Manutenzione Automazione Industriale",
-    "company": "Randstad Svizzera SA",
-    "location": "Svizzera, Ticino, bellinzona, Bellinzona",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739843",
-    "title": "Metallbauschlosser (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Baden",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739837",
-    "title": "Operatore linee produzione settore logistico 20h/settimanali h. 05-09",
-    "company": "Randstad Svizzera SA",
-    "location": "Svizzera, Ticino, Grancia, Lugano",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739845",
-    "title": "Aplicadores de Pavimentos (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739844",
-    "title": "Flachdachisoleur (m/w/d)",
-    "company": "Work Selection AG",
-    "location": "Svizzera, Wetzikon",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739838",
-    "title": "CARROZZIERE LATTONIERE AFC",
+    "id": "6740563",
+    "title": "ASSEMBLATORI E COLLAUDATORI ELETTRONICI",
     "company": "Azienda Riservata",
-    "location": "Svizzera, Ticino, Sopraeneri",
+    "location": "Svizzera, Ticino, Locarno",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739839",
-    "title": "Operatore Carroponte/Gru",
-    "company": "Azienda Riservata",
-    "location": "Svizzera, Ticino, Airolo",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739825",
-    "title": "Fachmann Betriebsunterhalt EFZ (m/w/d) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Zürich, Zh",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739817",
-    "title": "Collaboratore/trice commerciale con ottimo tedesco",
-    "company": "Adecco",
-    "location": "Svizzera, Luganese, Ti",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739828",
-    "title": "Elektroinstallateur / Montage-Elektriker EFZ (a)",
-    "company": "Adecco",
-    "location": "Svizzera, Ostermundigen, Be",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739816",
-    "title": "Chauffeur CE",
-    "company": "Adecco",
-    "location": "Svizzera, Kräiligen, Be",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739822",
-    "title": "Kundendiensttechniker:in (m/w/d) Jura Südfuss 80-100 %",
-    "company": "Adecco",
-    "location": "Svizzera, Suhr, Ag",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739818",
-    "title": "Head of Medizintechnik im Spitalumfeld (m/w/d) 80 - 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Zürich, Zh",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739830",
-    "title": "Montageelektriker EFZ als FTTH Monteur für die Region Brugg (m/w) 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Birmenstorf AG, Aargau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739829",
-    "title": "Elektroplaner für IT-Projekte Kanton Aargau m/w/d 100%",
-    "company": "Adecco",
-    "location": "Svizzera, Aargau, Aargau",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739823",
-    "title": "Elektroinstallateur als Netzelektriker",
-    "company": "Adecco",
-    "location": "Svizzera, Rikon im Tösstal, Zürich",
-    "sector": "Non specificato",
-    "role": "Non specificato"
-  },
-  {
-    "id": "6739819",
-    "title": "Vorarbeiter Reinigung & technischer Unterhalt (m/w/d) 100%",
+    "id": "6740560",
+    "title": "Produktionsmitarbeiter (m/w/d) 50-60%",
     "company": "Adecco",
     "location": "Svizzera, Schlieren, Zh",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739820",
-    "title": "Elektroinstallateur mit Erfahrung im Büro + Solar Branche",
+    "id": "6740557",
+    "title": "CNC Fräser (m/w/d)",
     "company": "Adecco",
-    "location": "Svizzera, Bremgarten AG, Aargau",
+    "location": "Svizzera, Aarau, Ag",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739824",
-    "title": "Messe- und Ladenbauer (m/w/d)",
+    "id": "6741606",
+    "title": "Facharbeiter Instandhaltung (m/w/d)",
     "company": "Adecco",
-    "location": "Svizzera, Zug, Zg",
+    "location": "Svizzera, Aarau, Ag",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739827",
-    "title": "Teamleitung Gastronomie / Küchenchef 100 % (m/w/d)",
+    "id": "6741615",
+    "title": "Kundenberater im Aussendienst (m/w) 60-100% Basel",
     "company": "Adecco",
-    "location": "Svizzera, Stetten, Sh",
+    "location": "Svizzera, Basel, Bs",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739826",
-    "title": "Tecnico SMD",
+    "id": "6741611",
+    "title": "Sachbearbeiter/in Region Westschweiz (m/w/d), 100%",
     "company": "Adecco",
-    "location": "Svizzera, Mendrisio, Ti",
+    "location": "Svizzera, Reinach, Ag",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739821",
-    "title": "Elektroinstallateur EFZ für Elektro-Mobilität in der Region Spreitenbach m/w/d 100%",
+    "id": "6741609",
+    "title": "Elektroinstallateur / Montage-Elektriker EFZ 100% für Grossprojekt",
     "company": "Adecco",
-    "location": "Svizzera, Baden, Aargau",
+    "location": "Svizzera, Niederwangen, Be",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739803",
+    "id": "6741608",
+    "title": "Elektro-Projektleiter mit Zusatzverantwortung (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Solothurn, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741613",
+    "title": "Senior Buchhalter m/w/d 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Bs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741612",
+    "title": "Servicetechniker/in (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Winterthur, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741610",
+    "title": "Dipl. Wirtschaftsprüfer als Nachfolgelösung 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Cham, Zg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741604",
+    "title": "Produktionsmitarbeiterin 2-Schicht (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Inkwil, Heimenhausen, Wangen a",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741607",
+    "title": "CNC-Mechaniker 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Herisau, Ar",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741603",
+    "title": "Konstrukteur EFZ Anlagenbau / Technik 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Baar, Zg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741614",
+    "title": "Koch / Köchin 80% ( 14 Wochen Schulferien) für eine Mensa",
+    "company": "Adecco",
+    "location": "Svizzera, Wädenswil, Sz",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741602",
+    "title": "Elektroinstallateur oder Montage-Elektriker (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Bern-Mittelland",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741601",
+    "title": "Polymechaniker CNC 5-Achs Fräsen (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Aarau, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741605",
+    "title": "Mitarbeiter Lager (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740524",
+    "title": "Chauffeur Kat. B Lieferservice 100% m/w/d",
+    "company": "Adecco",
+    "location": "Svizzera, Spreitenbach, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740528",
+    "title": "Produktionsmitarbeiter Fisch- und Kaviarverarbeitung (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Frutigen, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740534",
+    "title": "Montagemitarbeiter/in Industrie/Produktion (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Lenzburg, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740530",
+    "title": "Lüftungsmonteur EFZ 100% (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740535",
+    "title": "Technical Illustrator (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Aarau, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740526",
+    "title": "Technische:r Hauswart:in",
+    "company": "Adecco",
+    "location": "Svizzera, Biel/Bienne, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740523",
+    "title": "Logistikfachmann EFZ als Stv. Teamleiter Versand (a) 80 ? 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Sumiswald, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740522",
+    "title": "Telematiker / Automatiker / Elektroinstallateur als Servicetechniker (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740533",
+    "title": "Chef de projet bâtiment 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sion, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740527",
+    "title": "Reifenmonteur (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Gümligen, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740531",
+    "title": "Automatikmonteur:in / Automatiker:in / Elektromonteur:in / Elektroinstallateur:in",
+    "company": "Adecco",
+    "location": "Svizzera, Solothurn, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740532",
+    "title": "Betriebselektriker",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740521",
+    "title": "Sanitärinstallateur EFZ (m/w/d) 80?100%",
+    "company": "Adecco",
+    "location": "Svizzera, Oensingen, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740525",
+    "title": "Logistiker/in mit Ausbildung ? Industrie & Produktion (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740529",
+    "title": "Kurierfahrer 60% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Ostermundigen, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741585",
+    "title": "Reifenmonteur (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Gümligen, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741583",
+    "title": "Betriebsmechaniker/in 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Baden, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741584",
+    "title": "Montage-Elektriker oder Elektroinstallateur EFZ (a) 80 - 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741571",
+    "title": "Qualitätskontrolleur (m/d/w) 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Inkwil, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741579",
+    "title": "Finance Manager D/E (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Sursee, Lu",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741577",
+    "title": "Techniker / Prozessspezialist Produktion & Montage (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Horgen, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741575",
+    "title": "Mécanicien machines de chantier 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Martigny, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741576",
+    "title": "Leitung Restauration (a) 100 %",
+    "company": "Adecco",
+    "location": "Svizzera, Saanenmöser bei Gstaad, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741573",
+    "title": "Montage- / Baustellenleiter für Photovoltaikanlagen (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Solothurn, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741572",
+    "title": "Gebäudereiniger / Spezialreiniger (w/m/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Frick, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741582",
+    "title": "Talent Acquisition Consultant ? Permanent Placement 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Bs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741581",
+    "title": "Anlagen- und Apparatebauer EFZ (a) 100% ? TIG-Schweisser gesucht!",
+    "company": "Adecco",
+    "location": "Svizzera, Flamatt, Fr",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741578",
+    "title": "Projektingenieur:in Gebäudeautomation (m/w/d) ? 100% ? Region St. Gallen",
+    "company": "Adecco",
+    "location": "Svizzera, St. Gallen, Sg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741580",
+    "title": "Buchhalter m/w/d 60-80%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Bs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741574",
+    "title": "Baumaschinenführer 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Langenthal, Bern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741564",
+    "title": "Elektroinstallateur oder Montage-Elektriker (a) für Grossbaustellen",
+    "company": "Adecco",
+    "location": "Svizzera, Solothurn, Solothurn",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741563",
+    "title": "Mitarbeiter Kommissionierung m/w/d 100% Spreitenbach",
+    "company": "Adecco",
+    "location": "Svizzera, Spreitenbach, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741561",
+    "title": "Produktionsplanner 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Herisau, Ar",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741557",
+    "title": "AGS/PH temporär 50-80% (m,w,d)",
+    "company": "Adecco",
+    "location": "Svizzera, Solothurn, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741558",
+    "title": "Metzger Frühschicht 100% (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Urtenen-Schönbühl, Bern-Mittel",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741570",
+    "title": "Automatiker (m/w/d) 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Rümlang, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741556",
+    "title": "Logistikmitarbeiter - 2-Schicht (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741569",
+    "title": "Rangierdienstmitarbeiter (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Spreitenbach, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741562",
+    "title": "CRM Specialist Luxury Automotive Marketing 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Baar, Zg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741567",
+    "title": "Produktionsmitarbeiter/in Industrie (2-Schicht) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Baden, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741559",
+    "title": "Bauarbeiter Hoch- und TIefbau 100% (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741560",
+    "title": "Ingegnere meccanico junior",
+    "company": "Adecco",
+    "location": "Svizzera, Mendrisiotto, Ti",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741566",
+    "title": "Sachbearbeiter Debitorenbuchhaltung m/w/d/ 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Bs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741568",
+    "title": "Office ManagerIn International Environment (w/m/d) 80%",
+    "company": "Adecco",
+    "location": "Svizzera, Zürich, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741565",
+    "title": "Einrichter / Schichtführer, 2 Schicht, 100%, w/m/d",
+    "company": "Adecco",
+    "location": "Svizzera, Inkwil, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741544",
+    "title": "Sachbearbeiter Treuhand, Payroll & Legal Support (50%?100%)",
+    "company": "Adecco",
+    "location": "Svizzera, Schwyz, Sz",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741549",
+    "title": "Automobilfachmann EFZ (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741553",
+    "title": "Liegenschaftenbuchhater/in (w/m/d) 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Zürich, Kreis 5, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741547",
+    "title": "Servicemonteur Elektro (a) 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741545",
+    "title": "Baumaschinenführer/in Zweiwegbagger im Gleisbau 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Bern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741554",
+    "title": "Mechaniker in Anlage- und Maschinentechnik (w/m/d) 80% ? 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Dürrenäsch, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741548",
+    "title": "Servicetechniker (Automechaniker / Carrosseriespengler)",
+    "company": "Adecco",
+    "location": "Svizzera, Zofingen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741542",
+    "title": "Architecte HES/EPF 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sion, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741550",
+    "title": "Dessinateur en construction métallique 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sion, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741541",
+    "title": "Dessinateur en bâtiment spécialisé architecture d'intérieur 80-100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Vevey, Vd",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741555",
+    "title": "Entwurfsarchitekt:in",
+    "company": "Adecco",
+    "location": "Svizzera, Zürich, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741543",
+    "title": "Kundenberater Gastronomie Region Bern und Wallis (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741551",
+    "title": "Ingénieur structure bois 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Monthey, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741546",
+    "title": "Bauleitender Obermonteur & Servicetechnik (m/w/d) 100%, ganze Schweiz",
+    "company": "Adecco",
+    "location": "Svizzera, ganze Schweiz, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741552",
+    "title": "Backoffice ManagerIn Luxusautomobile 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Baar, Zg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741532",
+    "title": "Coordinateur technique événementiel 60-100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sion, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741535",
+    "title": "Technicien GC ou bâtiment 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Martigny, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741527",
+    "title": "Stv. Leiter:in Restaurant & Events 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Alberswil, Lu",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741528",
     "title": "Walzenführer / Einbaumaschinisten für Strassen- / Tiefbau in Stadt Zürich / Kanton Zürich",
     "company": "Adecco",
     "location": "Svizzera, Zürich, Zh",
@@ -2294,103 +758,679 @@ export const jobs = [
     "role": "Non specificato"
   },
   {
-    "id": "6739806",
-    "title": "Elektroinstallateur EFZ für Elektro-Mobilität in der Region Brugg m/w/d 100%",
+    "id": "6741529",
+    "title": "Restaurantleiter",
     "company": "Adecco",
-    "location": "Svizzera, Baden, Aargau",
+    "location": "Svizzera, Horw, Lu",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739812",
-    "title": "Betriebselektriker",
+    "id": "6741536",
+    "title": "Conseiller de vente 100% CDI (H/F/D)",
     "company": "Adecco",
-    "location": "Svizzera, Zürich, Zürich",
+    "location": "Svizzera, Sion, Vs",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739810",
-    "title": "Servicetechniker Solar/Holz (m/w/d) - Region Bern",
+    "id": "6741533",
+    "title": "Géomaticien CFC 100% (H/F/D)",
     "company": "Adecco",
-    "location": "Svizzera, Bern, Bs",
+    "location": "Svizzera, Sierre, Vs",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739805",
-    "title": "Site Logistics Coordinator",
+    "id": "6741537",
+    "title": "Elektro-Projektleiter",
     "company": "Adecco",
-    "location": "Svizzera, Grand-Lancy, Ge",
+    "location": "Svizzera, Bern, Be",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739808",
-    "title": "Elektroinstallateur im Solarbereich m/w/d 100%",
+    "id": "6741531",
+    "title": "Chef de projet 100% CDI (H/F/D)",
     "company": "Adecco",
-    "location": "Svizzera, Baden, Aargau",
+    "location": "Svizzera, Sion, Vs",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739801",
-    "title": "Fachmann Betriebsunterhalt EFZ (m/w/d) 100%",
+    "id": "6741540",
+    "title": "Produktionsmitarbeiter Reinraum 100% (w/m/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Bülach, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741538",
+    "title": "Régleur CNC (H/F)",
+    "company": "Adecco",
+    "location": "Svizzera, La Chaux-de-Fonds, Ne",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741539",
+    "title": "Dipl. Pflegefachperson",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741526",
+    "title": "Immobilienbewirtschafter 80% bis 100% (alle) - Fokus auf Qualität statt Quantität",
+    "company": "Adecco",
+    "location": "Svizzera, Winterthur, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741530",
+    "title": "Elektroplaner/in (a) 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Solothurn, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741534",
+    "title": "Administrateur systèmes & réseaux IT 80-100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sierre, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741520",
+    "title": "Planungsleiter:in",
+    "company": "Adecco",
+    "location": "Svizzera, Zurich, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741519",
+    "title": "Montagemitarbeiter/in Industrie/Produktion (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741517",
+    "title": "Produktionsmitarbeiter 100 %",
     "company": "Adecco",
     "location": "Svizzera, Zürich, Zh",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739802",
-    "title": "Installateur-électricien CFC (H/F)",
+    "id": "6741512",
+    "title": "Secrétaire (h/f/d)",
     "company": "Adecco",
-    "location": "Svizzera, Bex, Vd",
+    "location": "Svizzera, Lausanne, Vd",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739807",
-    "title": "Gebäudetechnikplanerin / Gebäudetechnikplaner Heizung / Kälte (m/w/d)",
+    "id": "6741511",
+    "title": "Netzelektriker (a) 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Bern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741514",
+    "title": "Reifenmonteur (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Worblaufen, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741522",
+    "title": "Allrounder Logistik im wechselnden Schichtbetrieb (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741525",
+    "title": "Spezialist:in Treuhand und Lohnadministration 60% bis 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Zug, Zg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741518",
+    "title": "Produktionsanlagenführer (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Affoltern am Albis, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741524",
+    "title": "Polymechaniker / CNC-Dreher 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Herisau, Ar",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741513",
+    "title": "SUVA Staplerfahrer/in (w/m/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen AG, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741516",
+    "title": "Ingegnere Elettronico / Telecomunicazioni",
+    "company": "Adecco",
+    "location": "Svizzera, Bellinzonese, Ti",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741523",
+    "title": "Anlagen- und Maschinenführer (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Lenzburg, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741515",
+    "title": "Liegenschaftsbuchhalter/in 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Bs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741521",
+    "title": "Montage-Elektriker oder Elektroinstallateur EFZ (a) 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Solothurn, Solothurn",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741502",
+    "title": "Sachbearbeiter Finanz- und Rechnungswesen m/w/d 50-60%",
+    "company": "Adecco",
+    "location": "Svizzera, basel, Bs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741509",
+    "title": "Kundenmaurer (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Langenthal, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741506",
+    "title": "Sachbearbeiter/in Bewohneradministration 80-100% (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Lengnau, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741498",
+    "title": "CNC-Mechaniker 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Herisau, Ar",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741496",
+    "title": "Senior Accountant International mit Fachausweis 100% D/E",
+    "company": "Adecco",
+    "location": "Svizzera, Stadt Zürich , Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741507",
+    "title": "Strassenbauer (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741503",
+    "title": "Accountant m/w/d 60-80%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Bl",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741504",
+    "title": "Sachbearbeiter Debitoren (m/w/d) 40%",
+    "company": "Adecco",
+    "location": "Svizzera, Luzern, Lu",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741510",
+    "title": "Kundenberatung Sanitär (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741500",
+    "title": "Mitarbeiter Verpackung 100% (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Schönbühl, Bern-Mittelland",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741501",
+    "title": "Sachbearbeiter/in Treuhand 60?80 % (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741505",
+    "title": "Restaurantleiter",
+    "company": "Adecco",
+    "location": "Svizzera, Horw, Lu",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741497",
+    "title": "Mitarbeiter technischer Unterhalt (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Kerzers, Fr",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741499",
+    "title": "Luxury Style Consultant Automotive 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Baar, Zg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741508",
+    "title": "Polier/in im Hoch- und Tiefbau 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741486",
+    "title": "Chef de projets 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Fribourg, Fr",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741488",
+    "title": "Mécanicien automobile 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Martigny, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741483",
+    "title": "Kundenmaurer (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741495",
+    "title": "Elektroinstallateur oder Montage-Elektriker (a) für Grossbaustelle",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Bern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741485",
+    "title": "Polisseur CFC 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Bulle, Fr",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741489",
+    "title": "Directeur de travaux 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Monthey, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741484",
+    "title": "Sanitärinstallateur EFZ - 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Solothurn, Solothurn",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741481",
+    "title": "Technicien en menuiserie 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sierre, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741493",
+    "title": "Dipl. Pflegefachperson ohne Nachtwache 40-60% (m,w,d)",
+    "company": "Adecco",
+    "location": "Svizzera, Biberist, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741491",
+    "title": "Zimmermann 100 % (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Bern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741487",
+    "title": "Technicien/Conducteur de travaux 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sierre, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741482",
+    "title": "Baumaschinenführer 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741492",
+    "title": "Elektroinstallateur EFZ oder Montage-Elektriker EFZ gesucht (temporär, langfristiger Einsatz) (a) 80",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Bern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741490",
+    "title": "Elektro-Projektleiter mit Zusatzverantwortung (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741494",
+    "title": "Elektroinstallateur EFZ oder Montage-Elektriker EFZ gesucht (temporär, langfristiger Einsatz) (a) 10",
+    "company": "Adecco",
+    "location": "Svizzera, Thun, Thun",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741468",
+    "title": "Sanitärinstallateur EFZ (m/w/d) 80?100%",
+    "company": "Adecco",
+    "location": "Svizzera, Langendorf, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741470",
+    "title": "Servicemonteur Elektro, Eigenständiger Elektroinstallateur, Vergoldeter Elektroinstallateur (a) 80-1",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741474",
+    "title": "Produktionsmitarbeiter/in Abmischung (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Niederwangen, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741467",
+    "title": "Chauffeur CE",
+    "company": "Adecco",
+    "location": "Svizzera, Kräiligen, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741469",
+    "title": "Aftersales SpezialistIn Luxus Fahrzeugaufbereitung 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Baar, Zg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741477",
+    "title": "Verantwortliche:r Human Resources, 80%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Bs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741476",
+    "title": "MandatsleiterIn Treuhand (a) 80-100%, in Zürich",
     "company": "Adecco",
     "location": "Svizzera, Zürich, Zh",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739811",
-    "title": "Elektroinstallateur EFZ für Elektro-Mobilität in der Region Dietikon m/w/d 100%",
+    "id": "6741466",
+    "title": "Maler (a)",
     "company": "Adecco",
-    "location": "Svizzera, Baden, Aargau",
+    "location": "Svizzera, Solothurn, Solothurn",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739815",
-    "title": "Elektrozeichner Region Aarau m/w/d 100%",
+    "id": "6741471",
+    "title": "Kunststofftechnologie in der Materialentwicklung 80-100%",
     "company": "Adecco",
-    "location": "Svizzera, Aarau, Aargau",
+    "location": "Svizzera, Herisau, Ar",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739809",
-    "title": "Servicetechniker Gewerbemaschinen (m/w/d) 100%",
+    "id": "6741480",
+    "title": "Montagemitarbeiter/in Industrie/Produktion (m/w/d) 100%",
     "company": "Adecco",
-    "location": "Svizzera, Sitten, Vs",
+    "location": "Svizzera, Muri, Ag",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739814",
-    "title": "Mitarbeiter für Ladestation in der Region Baden m/w/d 100%",
+    "id": "6741475",
+    "title": "Marketing Coordinator 100% (a)",
     "company": "Adecco",
-    "location": "Svizzera, Baden, Aargau",
+    "location": "Svizzera, Zug, Zg",
     "sector": "Non specificato",
     "role": "Non specificato"
   },
   {
-    "id": "6739804",
+    "id": "6741472",
+    "title": "Senior Sachbearbeiter/in Immobilienbewirtschaftung 60% bis 100% (w/m/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Kriens, Lu",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741478",
+    "title": "Elektroinstallateur EFZ (a) 100% Thun",
+    "company": "Adecco",
+    "location": "Svizzera, Thun, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741473",
+    "title": "Reinigungsmitarbeiter/in",
+    "company": "Adecco",
+    "location": "Svizzera, Aarau, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741479",
+    "title": "Immobilienbewirtschafter STWEG / Immobilienbuchhalter (m/w/d) 80?100%",
+    "company": "Adecco",
+    "location": "Svizzera, Hünenberg, Zg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741461",
+    "title": "Ferblantier CFC 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sion, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741453",
+    "title": "Projektleiter Brandmeldetechnik (a) 80?100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Bern-Mittelland",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741463",
+    "title": "Poseur de cuisines 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sion, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741452",
+    "title": "Betriebsverantwortlicher Fernwärme / Energiezentralen (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741460",
+    "title": "Aide-comptable - (h/f/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Bussigny, Vd",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741455",
+    "title": "AGS/FAGE/DIPL für Jobpool 05-100% (m,w,d)",
+    "company": "Adecco",
+    "location": "Svizzera, Olten, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741462",
+    "title": "Métreur en construction métallique 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sion, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741465",
+    "title": "Meccanico / polimeccanico / elettromeccanico (U/D/N)",
+    "company": "Adecco",
+    "location": "Svizzera, Bellinzona, Ti",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741454",
+    "title": "Teamleiter Treuhand 80% - 100% (w/m/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Stadt Zürich , Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741457",
+    "title": "Sanitärinstallateur EFZ - 100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741464",
+    "title": "Betriebsmitarbeiter Power-to-Gas (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Aarau, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741459",
+    "title": "Elektroinstallateur oder Montage-Elektriker EFZ (a) für Grossbaustelle",
+    "company": "Adecco",
+    "location": "Svizzera, Solothurn, Solothurn",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741451",
+    "title": "Elektroinstallateur EFZ oder Montage-Elektriker EFZ gesucht (temporär, langfristiger Einsatz) (a) 80",
+    "company": "Adecco",
+    "location": "Svizzera, Biel, Biel",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741456",
     "title": "Standortleiter Elektro (a) 100%",
     "company": "Adecco",
     "location": "Svizzera, Thun, Be",
@@ -2398,10 +1438,850 @@ export const jobs = [
     "role": "Non specificato"
   },
   {
-    "id": "6739813",
-    "title": "Mitarbeiter Konstruktion/Entwicklung (m/w) 100%",
+    "id": "6741458",
+    "title": "Elektroinstallateur EFZ (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Bern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741440",
+    "title": "Dipl. Pflegefachfrau HF (w,m,d) 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Tübach, Sg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741450",
+    "title": "Bewirtschaftung Stockwerkeigentum & Mietliegenschaften 60-100% (w/m/d) - Luzern",
+    "company": "Adecco",
+    "location": "Svizzera, Kriens, Luzern, Lu",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741441",
+    "title": "Chef de projet 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sion, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741445",
+    "title": "Paketsortierer 30% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Ostermundigen, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741449",
+    "title": "Mitarbeiter Logistik (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Dintikon, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741361",
+    "title": "Projektleiter/in / Servicemonteur/in / Technischer Verantwortliche/r Storenbau (m/w)",
+    "company": "DasTeam",
+    "location": "Svizzera, 3012 Bern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741439",
+    "title": "Géomaticien CFC 100% (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sierre, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741446",
+    "title": "Anlagenführer ? Produktion & Maschinen (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741362",
+    "title": "Aide-Maçon 100% (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741438",
+    "title": "Sachbearbeiter Treuhand 50 % bis 100 % (w/m/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Wollerau SZ, Sz",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741443",
+    "title": "Assemblatore meccanico (U/D/N) - 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Locarno, Ti",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741447",
+    "title": "Servicetechniker erneuerbare Energie (a) 100% Thun",
+    "company": "Adecco",
+    "location": "Svizzera, Thun, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741442",
+    "title": "Conseiller SAV 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Monthey, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741444",
+    "title": "International Trust Officer / Senior Trust Officer (w/m/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Zürich, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6741448",
+    "title": "CNC-Polymechaniker im 2-Schichtbetrieb",
+    "company": "Adecco",
+    "location": "Svizzera, Aarau, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740321",
+    "title": "Sales Consultant / Personalberater in Luzern (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Luzern, Lu",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740326",
+    "title": "Monteur en chauffage CFC 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Martigny, Valais",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740322",
+    "title": "Facility Services Manager 80-100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Martigny, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740319",
+    "title": "Sachbearbeiter Export w/m 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Dietikon, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740328",
+    "title": "Teamleiter Produktion (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Root, Luzern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740323",
+    "title": "Spezialist Industialisierung E-Mobility (m/w) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Kriens, Luzern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740331",
+    "title": "Carreleur CFC",
+    "company": "Adecco",
+    "location": "Svizzera, Peseux, Ne",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740332",
+    "title": "Peintre industriel",
+    "company": "Adecco",
+    "location": "Svizzera, Villeneuve VD, Vd",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740329",
+    "title": "Buchhalter m/w/d 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Basel",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740320",
+    "title": "Sachbearbeitung im Innendienst m/w/d 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Basel",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740330",
+    "title": "Instandhaltungstechniker (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Buchrain, Luzern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740325",
+    "title": "Ingénieur en Génie Civil bâtiment 80-100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Vevey, Vd",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740324",
+    "title": "Chef de Partie (m/w/d) 80 bis 100 %, 4450 Sissach",
+    "company": "Adecco",
+    "location": "Svizzera, Sissach, Bl",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740327",
+    "title": "Buchhalter m/w/d 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Basel",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740318",
+    "title": "Automation Engineer",
+    "company": "Adecco",
+    "location": "Svizzera, Muttenz, Bl",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740549",
+    "title": "Dipl. Pflegefachperson HF (m,w,d) 80-100%, Akutgeriatrie",
+    "company": "Adecco",
+    "location": "Svizzera, Thalwil, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740550",
+    "title": "Automobilassistent EBA (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740288",
+    "title": "Physiotherapeut (m,w,d) 40-50%",
+    "company": "Adecco",
+    "location": "Svizzera, Bergün, Gr",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740299",
+    "title": "Sachbearbeiter Datenerfassung (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Olten, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740300",
+    "title": "Maschineningenieur (m/w) 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Stans, Nidwalden",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740289",
+    "title": "Instandhaltungsfachmann in der Maschinenbaubranche (m/w) 100%",
     "company": "Adecco",
     "location": "Svizzera, Luzern, Luzern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740292",
+    "title": "Allrounder Logistik (m/w/d) 100% im 2-Schicht-Betrieb",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740291",
+    "title": "CNC-Operateur/in (m/w) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Horw, Luzern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740294",
+    "title": "Accountant m/w/d 70%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Basel",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740298",
+    "title": "Sales Consultant / Personalberater in Wohlen (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740297",
+    "title": "Teamleiter/in im Bereich Produktion (m/w) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Hergiswil, Nidwalden",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740301",
+    "title": "Kaufmännischer Allrounder mit Schwerpunkt Personal 80?100 % (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Aargau",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740295",
+    "title": "Sachbearbeiter Rechnungswesen m/w/d 80?100%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Basel",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740302",
+    "title": "AGS/PH/FAGE/DIPL/MPA 10-100% (m,w,d)",
+    "company": "Adecco",
+    "location": "Svizzera, Solothurn, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740296",
+    "title": "Produktionsmitarbeiter/in Abmischung (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Niederwangen, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740293",
+    "title": "Ingénieur en Génie Civil bâtiment 80-100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Martigny, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740290",
+    "title": "HR-Sachbearbeiter 100 % (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen AG, Aargau",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740286",
+    "title": "Wohngruppenleitung mit Herz",
+    "company": "Adecco",
+    "location": "Svizzera, Interlaken, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740279",
+    "title": "Assemblatore industriale - Elettrico / Elettronico / Meccanico 100% U/D/N",
+    "company": "Adecco",
+    "location": "Svizzera, Cadenazzo, Ti",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740276",
+    "title": "Pflegepool: Du entscheidest, wann du arbeitest ? wir finden deinen Einsatz",
+    "company": "Adecco",
+    "location": "Svizzera, Oensingen, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740275",
+    "title": "Installateur/Monteur sanitaire CFC 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Sion, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740280",
+    "title": "Ingénieur en Génie Civil infrastructures 80-100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Vevey, Vd",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740282",
+    "title": "Flexible Einsätze in der Betreuung (m,w,d)",
+    "company": "Adecco",
+    "location": "Svizzera, Derendingen, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740281",
+    "title": "Préparateur technique & Aide-Serrurier",
+    "company": "Adecco",
+    "location": "Svizzera, Lausanne, Vd",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740278",
+    "title": "Servicetechniker - Quereinsteiger willkommen - Zürich (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Zürich, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740274",
+    "title": "Sous-Chef / Sous-Chefin ? Stv. Küchenleitung 100 % (befristet)",
+    "company": "Adecco",
+    "location": "Svizzera, Biel, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740283",
+    "title": "Ingenieur*in für industrielle Fertigung und Prozessentwicklung (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Luzern, Luzern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740277",
+    "title": "Accountant / Controller m/w/d 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Basel, Basel",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740285",
+    "title": "Automatikmonteur (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Hochdorf, Luzern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740287",
+    "title": "Menuisier Poseur de cuisines 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Martigny, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740284",
+    "title": "Lagermitarbeiter/in für Textillogistik ab ca. Mitte August (Tagesbetrieb)",
+    "company": "Adecco",
+    "location": "Svizzera, Egerkingen, So",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740269",
+    "title": "Konstrukteur",
+    "company": "Adecco",
+    "location": "Svizzera, Thun, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740270",
+    "title": "Maschinentechniker (m/w) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Weggis, Schwyz",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740272",
+    "title": "Profi im Bereich Automatik (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Küssnacht am Rigi, Schwyz",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740263",
+    "title": "Ingenieur 100% (m/w)",
+    "company": "Adecco",
+    "location": "Svizzera, Luzern, Luzern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740236",
+    "title": "Paysagiste autonome (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740235",
+    "title": "Serrurier/ière autonome atelier et pose 100% (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740268",
+    "title": "Elektroniker (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Baar, Zug",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740262",
+    "title": "Koch / Köchin (m/w/d) 100 % ? Montag bis Freitag",
+    "company": "Adecco",
+    "location": "Svizzera, Lausen, Bl",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740267",
+    "title": "Dessinateur en Génie Civil 80-100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Lausanne, Vd",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740265",
+    "title": "Ingénieur en Génie Civil infrastructures 80-100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Lausanne, Vs",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740234",
+    "title": "Chaudronnier/ère autonome (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740233",
+    "title": "Monteur/euse en Chauffage CFC 100% (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740271",
+    "title": "Entwicklungsingenieur im Bereich Mechanik 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Malters, Luzern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740266",
+    "title": "Dessinateur en bâtiment 100% CDI (H/F/D)",
+    "company": "Adecco",
+    "location": "Svizzera, Vevey, Vaud",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740264",
+    "title": "Stv. Teamleitung geschützte Wohngruppe (m,w,d) 80-100%",
+    "company": "Adecco",
+    "location": "Svizzera, Sankt Gallen, Sg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740230",
+    "title": "Menuisier/ière - aluminium autonome 100% (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740232",
+    "title": "Paysagiste création autonome 100% (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740220",
+    "title": "Monteur/euse en échafaudages 100% (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1005 Lausanne",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740226",
+    "title": "Ferblantier-Couvreur CFC / Ferblantière-Couvreuse CFC 100% (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740225",
+    "title": "Installateur/trice-Electricien/ne autonome (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740229",
+    "title": "Monteur/se-électricien/ne (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740223",
+    "title": "Monteur/euse électricien/ne industriel 100% (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740228",
+    "title": "Installateur/trice-Electricien/ne autonome (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740222",
+    "title": "Leiter/in Niederlassung Winterthur Gebäudetechnik (m/w/d) 100%",
+    "company": "DasTeam",
+    "location": "Svizzera, 9000 St. Gallen",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740224",
+    "title": "Monteur/euse électricien/ne autonome (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740227",
+    "title": "Installateur/trice Sanitaire CFC 100% (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740231",
+    "title": "Installateur/trice-Electricien/ne CFC 100% (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1920 Martigny",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740219",
+    "title": "Maçon/ne CFC - Bâtiment ou Génie Civil (H/F/D)",
+    "company": "DasTeam",
+    "location": "Svizzera, 1005 Lausanne",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740221",
+    "title": "Mehrere Handwerklich begabte Mitarbeiter/Mitarbeiterinnen für den Rückbau des Kernkraftwerk Mühleber",
+    "company": "DasTeam",
+    "location": "Svizzera, 3012 Bern",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740472",
+    "title": "ASSC (h/f/d) 40 à 100% missions temporaires",
+    "company": "Adecco",
+    "location": "Svizzera, Lausanne à Genève, Vd",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740473",
+    "title": "Anlagenführer / Anlagenführer (3-4 Schichtig)",
+    "company": "Adecco",
+    "location": "Svizzera, Brugg, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740478",
+    "title": "Koch / Köchin (m/w/d) (80?100%) per August",
+    "company": "Adecco",
+    "location": "Svizzera, St. Margrethen, Sg",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740469",
+    "title": "Montage- / Baustellenleiter für Photovoltaikanlagen (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Bern, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740477",
+    "title": "Mitarbeiter/in Logistik (m/w/d) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Wohlen, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740474",
+    "title": "HR Recruiter Hotel & Catering (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Luzern, Lu",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740467",
+    "title": "MPA 50-70% (m,w,d)",
+    "company": "Adecco",
+    "location": "Svizzera, Pratteln, Bl",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740468",
+    "title": "Materialfluss- & Warehouse Process Specialist (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Horgen, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740481",
+    "title": "Fachperson Gesundheit (m, w, d) EFZ 60-80%, Langzeitpflege",
+    "company": "Adecco",
+    "location": "Svizzera, Zürich, Zh",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740476",
+    "title": "Sanitärinstallateur EFZ (a) 80 - 100% für temporäre Einsätze oder Festanstellung",
+    "company": "Adecco",
+    "location": "Svizzera, Köniz, Bern-Mittelland",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740479",
+    "title": "Capocuoco/a capopartita",
+    "company": "Randstad Svizzera SA",
+    "location": "Svizzera, Ticino, Lugano, Lugano",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740475",
+    "title": "Elektriker im Tunnelbau (a) 100%",
+    "company": "Adecco",
+    "location": "Svizzera, Ligerz, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740465",
+    "title": "Senior Buchhalter 80-100% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Rheinfelden, Ag",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740482",
+    "title": "Lagermitarbeiter Paketsortierung Abend 60% (a)",
+    "company": "Adecco",
+    "location": "Svizzera, Ostermundigen, Be",
+    "sector": "Non specificato",
+    "role": "Non specificato"
+  },
+  {
+    "id": "6740466",
+    "title": "Carrosseriespengler für Einsatz- und Rettungsfahrzeuge 100% (m/w/d)",
+    "company": "Adecco",
+    "location": "Svizzera, Zürich, Zh",
     "sector": "Non specificato",
     "role": "Non specificato"
   }

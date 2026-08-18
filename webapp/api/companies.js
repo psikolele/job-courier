@@ -164,14 +164,30 @@ function standIn() {
 }
 
 // Health is variety, not "did anything come back" — the same lesson the job feed taught
-// (see 00_Wiki/job-courier/jobroom-feed-resilience.md). Measured 10.08.2026: a sound run
-// answers 32 employers of whom 16 are hiring, but when the `jobs_by_company` index refuses
-// us the roster collapses to the five the job feed names — Adecco, DasTeam, Manpower,
-// Randstad, Work Selection — every one of them flagged hiring, because a feed is a list of
-// open positions and so cannot name anybody who has none. That answer passes any "is
-// somebody hiring?" test while showing a third of the showcase, so the test is a floor
-// instead: below it the run is treated as degraded and the richer stand-in wins.
+// (see 00_Wiki/job-courier/jobroom-feed-resilience.md). When the `jobs_by_company` index
+// refuses us the roster collapses to the handful the job feed names, every one of them
+// flagged hiring, because a feed is a list of open positions and so cannot name anybody
+// who has none. That answer passes any "is somebody hiring?" test while showing a fraction
+// of the showcase, so a floor is applied instead: below it the run is treated as degraded
+// and the richer stand-in wins.
+//
+// Two floors, because either one alone gets a real case wrong:
+//
+//   - The hiring count was the original test, measured 10.08.2026 when a sound run answered
+//     32 employers of whom 16 were hiring. It stopped being sufficient on 18.08.2026, when
+//     upstream started answering 410 to every `jobs_by_company` page past the first: a
+//     sound run is now 18 employers and 8 hiring, sitting exactly on the floor, so one
+//     employer filling its last vacancy would have made every subsequent run "degraded"
+//     and pinned the site to a snapshot that still advertised them.
+//   - So a full roster passes on its own. Reading the index is the thing that can fail
+//     here; a quiet week is not. Feed-only is 4 employers, the index adds a dozen more, and
+//     there is no overlap between those two numbers to be ambiguous about.
 const MIN_HEALTHY_HIRING = 8;
+const MIN_HEALTHY_ROSTER = 12;
+
+const isHealthy = (list) =>
+  hiringCount(list) >= MIN_HEALTHY_HIRING ||
+  (hiringCount(list) >= 1 && list.length >= MIN_HEALTHY_ROSTER);
 
 const hiringCount = (list) => list.filter((c) => c.has_jobs === true).length;
 
@@ -203,7 +219,7 @@ export default async function handler(req, res) {
 
       const work = fetchArca24Companies({ withJobStatus: true, verifyLogos: true })
         .then((result) => {
-          if (hiringCount(result) >= MIN_HEALTHY_HIRING) lastGoodHiring = { list: result, at: Date.now() };
+          if (isHealthy(result)) lastGoodHiring = { list: result, at: Date.now() };
           return result;
         });
 
@@ -233,7 +249,7 @@ export default async function handler(req, res) {
         list = await work;
       }
 
-      if (hiringCount(list) >= MIN_HEALTHY_HIRING) {
+      if (isHealthy(list)) {
         // Read by scripts/generate-companies-snapshot.mjs, which must never record a
         // stand-in as the new snapshot: doing so would let one stale roster feed the next
         // build's snapshot and the one after that, drifting with nothing to correct it.

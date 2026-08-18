@@ -196,33 +196,74 @@ export function renderShell(template, { title, description, canonical, ogImage, 
  * employer's own ads, which is the only place some of them are linked from at all: the
  * offers list reaches ads through the search feed, so a company's back catalogue was
  * otherwise orphaned.
+ *
+ * It is dressed as the site rather than left as raw markup because a visitor sees it. The
+ * snapshot lives inside `#root` until React mounts and clears it, so on a cold cache — or
+ * any connection slow enough to make the JS bundle take a moment — the first thing that
+ * paints is this, and until 18.08.2026 that was an unstyled heading over a bulleted list
+ * of URLs on a white page: it read as a broken site, not a loading one. Same words, same
+ * links, same markup order; only the presentation changed, so nothing about what a crawler
+ * reads here differs from what a person does.
  */
 export function snapshotBody({ heading, subheading, facts, paragraphs, links, linksHeading, backLink }) {
+  const N = '#050B2B';
+  const F = '#FF1F7A';
+  const MUTED = '#8B8FA8';
+  // Webfonts are loaded by the app's own stylesheet and are not necessarily there yet
+  // when this paints, so every stack names something the OS already has.
+  const SANS = "'Satoshi','Inter',system-ui,-apple-system,'Segoe UI',sans-serif";
+  const SERIF = "'Playfair Display',Georgia,'Times New Roman',serif";
+
   const rows = (facts || [])
     .filter((f) => f && f.value)
-    .map((f) => `<li><strong>${escapeHtml(f.label)}:</strong> ${escapeHtml(f.value)}</li>`)
+    .map((f) => `<li style="display:inline-block;margin:0 8px 8px 0;padding:6px 12px;background:#F4F5F9;border-radius:2px;font-size:13px"><strong style="font-weight:700">${escapeHtml(f.label)}:</strong> ${escapeHtml(f.value)}</li>`)
     .join('');
 
   const text = (paragraphs || [])
     .filter(Boolean)
-    .map((p) => `<p>${escapeHtml(p)}</p>`)
+    .map((p) => `<p style="margin:0 0 14px;color:#2A3050">${escapeHtml(p)}</p>`)
     .join('');
 
   const linkItems = (links || [])
     .filter((l) => l && l.href && l.label)
-    .map((l) => `<li><a href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a>${l.meta ? ` — ${escapeHtml(l.meta)}` : ''}</li>`)
+    .map((l) => [
+      '<li style="border-bottom:1px solid rgba(5,11,43,0.08)">',
+      `<a href="${escapeHtml(l.href)}" style="display:block;padding:12px 0;color:${N};text-decoration:none;font-weight:600">`,
+      escapeHtml(l.label),
+      l.meta ? `<span style="display:block;margin-top:2px;font-size:13px;font-weight:400;color:${MUTED}">${escapeHtml(l.meta)}</span>` : '',
+      '</a></li>',
+    ].join(''))
     .join('');
 
   return [
-    '<div style="max-width:900px;margin:0 auto;padding:120px 24px 64px;font-family:Inter,system-ui,sans-serif;color:#050B2B;line-height:1.7">',
-    `<h1 style="font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.1;margin:0 0 12px">${escapeHtml(heading)}</h1>`,
-    subheading ? `<p style="font-size:16px;color:#8B8FA8;margin:0 0 20px">${escapeHtml(subheading)}</p>` : '',
+    `<div style="min-height:100vh;background:#FFFFFF;font-family:${SANS};color:${N};line-height:1.6">`,
+
+    // Brand bar: without it the page has no header at all until React arrives, which is
+    // most of what made the snapshot look like a stray document rather than JobCourier.
+    `<div style="background:${N};padding:18px 24px">`,
+    `<div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:10px">`,
+    `<span style="width:10px;height:10px;background:${F};display:inline-block"></span>`,
+    '<span style="color:#FFFFFF;font-weight:800;letter-spacing:-0.01em;font-size:18px">JobCourier</span>',
+    '</div></div>',
+
+    '<div style="max-width:900px;margin:0 auto;padding:56px 24px 64px">',
+
+    // The same eyebrow-plus-headline rhythm the real sections use.
+    `<div style="display:flex;align-items:center;gap:10px;margin:0 0 10px">`,
+    `<span style="width:24px;height:2px;background:${F};display:inline-block"></span>`,
+    `<span style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${F}">Caricamento</span>`,
+    '</div>',
+
+    `<h1 style="font-family:${SERIF};font-style:italic;font-weight:400;font-size:clamp(28px,4vw,40px);line-height:1.15;margin:0 0 12px;color:${N}">${escapeHtml(heading)}</h1>`,
+    subheading ? `<p style="font-size:16px;color:${MUTED};margin:0 0 24px">${escapeHtml(subheading)}</p>` : '',
     rows ? `<ul style="list-style:none;padding:0;margin:0 0 28px">${rows}</ul>` : '',
     text,
-    linkItems && linksHeading ? `<h2 style="font-size:20px;margin:32px 0 12px">${escapeHtml(linksHeading)}</h2>` : '',
-    linkItems ? `<ul style="padding-left:18px;margin:0">${linkItems}</ul>` : '',
-    backLink ? `<p style="margin-top:32px"><a href="${escapeHtml(backLink.href)}">${escapeHtml(backLink.label)}</a></p>` : '',
-    '</div>',
+    linkItems && linksHeading
+      ? `<h2 style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:${MUTED};margin:36px 0 4px">${escapeHtml(linksHeading)}</h2>`
+      : '',
+    linkItems ? `<ul style="list-style:none;padding:0;margin:0;border-top:1px solid rgba(5,11,43,0.08)">${linkItems}</ul>` : '',
+    backLink ? `<p style="margin-top:32px"><a href="${escapeHtml(backLink.href)}" style="color:${F};font-weight:600;text-decoration:none">${escapeHtml(backLink.label)}</a></p>` : '',
+    '</div></div>',
   ].join('');
 }
 
