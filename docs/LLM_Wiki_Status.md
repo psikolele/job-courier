@@ -1,5 +1,17 @@
 # LLM Wiki: Job Courier Redesign (Aggiornato: 18 Agosto 2026)
 
+## Snapshot SEO: da "vestito" a invisibile per l'utente (18 Agosto 2026) — ✅ *COMPLETED*
+
+**Stack operativo:** Claude Opus 5, effort medio, caveman mode full · tool: Bash, browser pane (`mcp__Claude_Browser__*`) su `vite preview` del `dist` per la verifica
+
+* **Sintomo:** vestire lo snapshot (voce sotto) ne aveva migliorato l'aspetto ma non l'aveva tolto di mezzo — su ogni caricamento a freddo si vedeva ancora una frazione di secondo di quella pagina prima del route loader.
+* **Fix:** lo snapshot è ora **condizionato al JavaScript, non allo user agent**. `snapshotBody()` marca il wrapper con `data-preboot`; `index.html` porta in `<head>` uno `<style>` con `html.js #root > [data-preboot] { display:none }` e uno script inline che aggiunge la classe `js` a `<html>`. Chi esegue il bundle non dipinge mai lo snapshot; chi non lo esegue lo vede tutto.
+* **Perché non è cloaking:** il gate è la stessa condizione che decide se l'app React verrà renderizzata. Un agente che esegue lo script prosegue e legge l'app vera; uno che non lo esegue legge lo snapshot. Non esiste un caso in cui a un crawler venga mostrato qualcosa che a una persona non arriva. Corollario da rispettare: **tutto ciò che si aggiunge allo snapshot deve restare qualcosa che mostreremmo a un utente**, perché con JS disattivato è esattamente ciò che accade.
+* **Verifica dal vivo** su `vite preview` del build: HTML grezzo di `/offerte` contiene lo snapshot e 300 link `/offerta/...`; con classe `js` la regola calcola `display:none` e altezza resa 0; togliendo la classe torna `block`.
+* **Test:** 232 passano (2 nuovi, in `api/shell-ssr.test.js`, che legano attributo e selettore attraverso i due file — è la stessa classe di guasto silenzioso di `COMPANY_LINK_SELECTOR`).
+
+---
+
 ## Vetrina aziende crollata a un solo logo + snapshot SEO inguardabile (18 Agosto 2026) — ✅ *COMPLETED, in prod*
 
 **Commit:** `db59459`, `3e39a93` su `main`

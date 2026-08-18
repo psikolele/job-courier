@@ -87,3 +87,28 @@ describe('shell-ssr handler', () => {
     expect(res.body).toContain('<link rel="canonical" href="https://www.jobcourier.ch/">');
   });
 });
+
+describe('pre-boot snapshot gate', () => {
+  it('marks the snapshot wrapper with the attribute index.html hides', async () => {
+    const { snapshotBody } = await import('./_ssr.js');
+    const html = snapshotBody({ heading: 'Offerte', links: [{ href: '/offerta/1', label: 'Autista' }] });
+
+    expect(html.startsWith('<div data-preboot')).toBe(true);
+    // The content itself must stay intact: hiding it from a browser is not the same as
+    // dropping it, and every client that skips the bundle still reads this.
+    expect(html).toContain('href="/offerta/1"');
+    expect(html).toContain('Offerte');
+  });
+
+  it('index.html hides that attribute only once JavaScript has run', async () => {
+    const { readFile } = await import('node:fs/promises');
+    const shell = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+
+    // Selector and attribute live in different files; when they drift the snapshot goes
+    // back to painting on every cold load and nothing errors.
+    expect(shell).toContain('html.js #root > [data-preboot] { display: none !important; }');
+    expect(shell).toMatch(/documentElement\.className \+=.*'js'/);
+    // Both must sit above #root, or the rule arrives after the snapshot has painted.
+    expect(shell.indexOf('data-preboot')).toBeLessThan(shell.indexOf('<div id="root">'));
+  });
+});

@@ -190,20 +190,28 @@ export function renderShell(template, { title, description, canonical, ogImage, 
 }
 
 /**
- * Wrapper for the snapshot: real, visible content — never hidden text served only to bots.
+ * Wrapper for the snapshot: the entire page for any client that does not execute the
+ * bundle.
+ *
+ * The outer element carries `data-preboot`, which index.html hides with a rule scoped to
+ * `html.js` — a class an inline script in <head> sets. The gate is JavaScript, not the
+ * user agent: an agent that runs the script goes on to render the real app and reads that,
+ * an agent that does not sees this and nothing else. So this is a no-JS fallback rather
+ * than text served only to bots, which is what it would be if the hiding were
+ * unconditional. Anything added here must therefore stay something we would be content to
+ * show a person, because with JS off that is exactly what happens.
  *
  * `links` is rendered as ordinary anchors. On a company page those point at that
  * employer's own ads, which is the only place some of them are linked from at all: the
  * offers list reaches ads through the search feed, so a company's back catalogue was
  * otherwise orphaned.
  *
- * It is dressed as the site rather than left as raw markup because a visitor sees it. The
- * snapshot lives inside `#root` until React mounts and clears it, so on a cold cache — or
- * any connection slow enough to make the JS bundle take a moment — the first thing that
- * paints is this, and until 18.08.2026 that was an unstyled heading over a bulleted list
- * of URLs on a white page: it read as a broken site, not a loading one. Same words, same
- * links, same markup order; only the presentation changed, so nothing about what a crawler
- * reads here differs from what a person does.
+ * It is dressed as the site rather than left as raw markup because with JS off a visitor
+ * sees it and never gets anything else. Until 18.08.2026 it was an unstyled heading over a
+ * bulleted list of URLs on a white page, which read as a broken site; the styling landed
+ * then, and the `data-preboot` gate on 18.08.2026 as well, once it turned out that styling
+ * the flash was not the same as removing it — the snapshot still painted for a beat ahead
+ * of the route loader on every cold load.
  */
 export function snapshotBody({ heading, subheading, facts, paragraphs, links, linksHeading, backLink }) {
   const N = '#050B2B';
@@ -236,7 +244,7 @@ export function snapshotBody({ heading, subheading, facts, paragraphs, links, li
     .join('');
 
   return [
-    `<div style="min-height:100vh;background:#FFFFFF;font-family:${SANS};color:${N};line-height:1.6">`,
+    `<div data-preboot style="min-height:100vh;background:#FFFFFF;font-family:${SANS};color:${N};line-height:1.6">`,
 
     // Brand bar: without it the page has no header at all until React arrives, which is
     // most of what made the snapshot look like a stray document rather than JobCourier.

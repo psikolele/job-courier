@@ -92,6 +92,21 @@
       "logo": "https://www.jobcourier.ch/logo-square.png"
     }
     </script>
+
+    <!-- Pre-boot SEO snapshot (api/_ssr.js -> snapshotBody) is injected inside #root and
+         stays there until React mounts and clears it. It is the whole page for any client
+         that never executes this bundle: social scrapers, LLM crawlers and the raw-HTML
+         pass that discovers the internal link graph. For everyone else it used to paint
+         for a beat before the route loader arrived, which read as a broken page.
+
+         So it is gated on JavaScript, not on the user agent: this script only runs where
+         the bundle will run too, and the rule below only applies once it has. No JS -> the
+         snapshot is visible and is the fallback. JS -> it is never painted, and the same
+         agent goes on to render the real app, so nothing is shown to a crawler that a
+         person would not get. Both tags must stay in <head>, above #root, or the rule
+         lands after the snapshot has already painted and the flash comes back. -->
+    <style>html.js #root > [data-preboot] { display: none !important; }</style>
+    <script>document.documentElement.className += (document.documentElement.className ? ' ' : '') + 'js';</script>
   </head>
   <body>
     <div id="root"></div>
