@@ -132,8 +132,7 @@ Job_Courier/
 │   │   ├── JobList.tsx (main results + infinite scroll)
 │   │   ├── FilterBar.tsx (filters with caching)
 │   │   ├── JobCard.tsx (individual job display)
-│   │   ├── SearchBox.tsx (debounced search)
-│   │   └── Filters_old.jsx (legacy, replace)
+│   │   └── SearchBox.tsx (debounced search)
 │   │
 │   ├── pages/
 │   │   ├── Browse.tsx (job listing page)
