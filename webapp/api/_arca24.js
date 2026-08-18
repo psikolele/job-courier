@@ -453,6 +453,62 @@ export async function fetchJobsForQuery(params = {}, { pages = 3, maxJobs = 45 }
   return null;
 }
 
+/**
+ * The company index ships its whole roster in the first response and paginates it in the
+ * browser: the "2" and "3" controls are buttons with no href, they only move a hash
+ * (`#by-page=2`) and re-slice data that already arrived. Requesting `?page=2` from the
+ * server is not what a click does and upstream answers 410 to it — which is how a walk
+ * over `?page=N` came to look like an upstream outage on 18.08.2026. It was not: the
+ * pages beyond the first were never a server round-trip to begin with.
+ *
+ * Only 15 employers are rendered into `.resultstring`; the remaining sixteen sit in the
+ * page's own JSON payload waiting for a click that, for us, never comes. Reading that
+ * payload is how the roster gets to be whole from a single request — measured 31
+ * employers against the 15 the markup shows.
+ *
+ * Scanned as text rather than parsed as JSON: the payload is one deeply nested blob
+ * spread over a Vue bootstrap, and the four fields wanted here (id, name, slug, logo)
+ * appear together in a shape that has been stable across the portal's rewrites.
+ */
+function parseCompaniesFromPayload(html) {
+  const out = [];
+  const seen = new Set();
+  const entry = /"subject_id":(\d+),"subject_type":"company"[\s\S]{0,600}?"title":"([^"]+)"/g;
+
+  let m;
+  while ((m = entry.exec(html)) !== null) {
+    const id = m[1];
+    if (seen.has(id)) continue;
+    seen.add(id);
+
+    // `&amp;` reaches us doubly encoded — JSON inside HTML — and "S &amp;amp; M beauty"
+    // is what the tile would have read.
+    const name = decodeEntities(m[2]).replace(/\s+/g, ' ').trim();
+    if (!name) continue;
+
+    const path = html.match(new RegExp(`/[a-z]{2}/careers/${id}-([^"'\\ ]+)/profile`));
+    out.push({
+      id,
+      name,
+      slug: (path && path[1]) || slugify(name),
+      logo: companyLogo(id, name),
+      jobs_count: 0,
+      jobroom_url: `${ARCA24_HOST}${path ? path[0] : `/${LANG}/careers/company/profile?uiid=${id}`}`,
+    });
+  }
+  return out;
+}
+
+/** The handful of entities the portal's titles actually carry. */
+function decodeEntities(text) {
+  return String(text)
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#0?39;|&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+
 export function parseCompaniesFromHtml(html) {
   const $ = cheerio.load(html);
   const companies = [];
@@ -483,6 +539,14 @@ export function parseCompaniesFromHtml(html) {
       jobroom_url: new URL(($link && $link.attr('href')) || '', `${ARCA24_HOST}/`).toString(),
     });
   });
+
+  // The rendered tiles come first — they carry "Annunci totali", which the payload does
+  // not — and the rest of the roster is unioned in behind them.
+  for (const company of parseCompaniesFromPayload(html)) {
+    if (seen.has(company.id)) continue;
+    seen.add(company.id);
+    companies.push(company);
+  }
 
   return companies;
 }

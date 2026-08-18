@@ -79,9 +79,8 @@ describe('GET /api/companies?withJobs=1', () => {
     expect(res.headers['cache-control']).toContain('s-maxage=30');
   });
 
-  // Since upstream started answering 410 past the first index page a sound run is 18
-  // employers and 8 hiring, sitting on the old floor. One of them filling its last vacancy
-  // must not turn every run into a degraded one pinned to a snapshot that still lists them.
+  // How many employers are hiring is seasonal; whether the index could be read is not.
+  // A quiet week must not be mistaken for a broken read and pin the site to a snapshot.
   it('serves a full roster live even when few of it are hiring', async () => {
     const fullButQuiet = [
       ...Array.from({ length: 3 }, (_, i) => ({ id: `q${i}`, name: `Hiring ${i}`, has_jobs: true })),

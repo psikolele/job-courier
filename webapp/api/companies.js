@@ -165,7 +165,7 @@ function standIn() {
 
 // Health is variety, not "did anything come back" — the same lesson the job feed taught
 // (see 00_Wiki/job-courier/jobroom-feed-resilience.md). When the `jobs_by_company` index
-// refuses us the roster collapses to the handful the job feed names, every one of them
+// cannot be read the roster collapses to the handful the job feed names, every one of them
 // flagged hiring, because a feed is a list of open positions and so cannot name anybody
 // who has none. That answer passes any "is somebody hiring?" test while showing a fraction
 // of the showcase, so a floor is applied instead: below it the run is treated as degraded
@@ -173,15 +173,13 @@ function standIn() {
 //
 // Two floors, because either one alone gets a real case wrong:
 //
-//   - The hiring count was the original test, measured 10.08.2026 when a sound run answered
-//     32 employers of whom 16 were hiring. It stopped being sufficient on 18.08.2026, when
-//     upstream started answering 410 to every `jobs_by_company` page past the first: a
-//     sound run is now 18 employers and 8 hiring, sitting exactly on the floor, so one
-//     employer filling its last vacancy would have made every subsequent run "degraded"
-//     and pinned the site to a snapshot that still advertised them.
-//   - So a full roster passes on its own. Reading the index is the thing that can fail
-//     here; a quiet week is not. Feed-only is 4 employers, the index adds a dozen more, and
-//     there is no overlap between those two numbers to be ambiguous about.
+//   - The hiring count is the original test, and it is the one that catches a roster that
+//     came back long but stale.
+//   - It cannot be the only test, though, because it reads a quiet job market as a broken
+//     one. A sound run is 32 employers; how many of them are hiring is genuinely seasonal
+//     and has been measured as low as 8. A full roster is therefore sound on its own —
+//     reading the index is the thing that can fail here, and feed-only is 4 employers
+//     against the index's 32, with nothing in between to be ambiguous about.
 const MIN_HEALTHY_HIRING = 8;
 const MIN_HEALTHY_ROSTER = 12;
 

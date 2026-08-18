@@ -3,15 +3,24 @@
 // The roster of employers with at least one open position, as of the last build. Read by
 // api/companies.js as the answer of last resort while a cold instance computes the real
 // one. See that file for why it is allowed to be a little out of date.
-export const generatedAt = '2026-08-18T07:41:55.944Z';
+export const generatedAt = '2026-08-18T08:33:12.334Z';
 export const companies = [
+  {
+    "id": "3243389",
+    "name": "4 U Consulting",
+    "slug": "4-u-consulting",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243389.jpg",
+    "jobs_count": 0,
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3243389-4-u-consulting/profile",
+    "has_jobs": true
+  },
   {
     "id": "3244683",
     "name": "Adecco",
     "slug": "adecco",
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244683.jpg",
     "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244683",
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244683-adecco/profile",
     "has_jobs": true
   },
   {
@@ -21,6 +30,24 @@ export const companies = [
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244464.jpg",
     "jobs_count": 0,
     "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244464-dasteam/profile",
+    "has_jobs": true
+  },
+  {
+    "id": "3244738",
+    "name": "E-Work Sagl",
+    "slug": "e-work-sagl",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244738.jpg",
+    "jobs_count": 0,
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244738-e-work-sagl/profile",
+    "has_jobs": true
+  },
+  {
+    "id": "3243694",
+    "name": "ER Services Sagl",
+    "slug": "er-services-sagl",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243694.jpg",
+    "jobs_count": 0,
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3243694-er-services-sagl/profile",
     "has_jobs": true
   },
   {
@@ -42,6 +69,15 @@ export const companies = [
     "has_jobs": true
   },
   {
+    "id": "3244246",
+    "name": "Michael Bailey Associates",
+    "slug": "michael-bailey-associates",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244246.jpg",
+    "jobs_count": 0,
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244246-michael-bailey-associates/profile",
+    "has_jobs": true
+  },
+  {
     "id": "3243388",
     "name": "Orienta SA",
     "slug": "orienta-sa",
@@ -56,7 +92,7 @@ export const companies = [
     "slug": "randstad-svizzera-sa",
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244729.jpg",
     "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244729",
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244729-randstad-svizzera-sa/profile",
     "has_jobs": true
   },
   {

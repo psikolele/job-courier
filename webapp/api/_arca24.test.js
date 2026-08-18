@@ -131,6 +131,21 @@ describe('parseCompaniesFromHtml — formato a path', () => {
     ]);
   });
 
+  // La paginazione dell'indice e' lato browser: i controlli "2" e "3" sono bottoni senza
+  // href che spostano solo un hash e ri-affettano dati gia' arrivati. Le aziende oltre le
+  // prime quindici stanno nel payload della pagina, non dietro a `?page=2` (che upstream
+  // rifiuta con 410, non essendo una richiesta che un click produce mai).
+  it('recupera dal payload le aziende non renderizzate nel markup', () => {
+    const withPayload = HTML + `
+<script>window.__DATA__ = {"3244801":{"subject_id":3244801,"subject_type":"company","resultstring_config":{"title":"Lares Sagl","title_action":{"router_link":{"path":"/it/careers/3244801-lares-sagl/profile"}}}},
+"3243652":{"subject_id":3243652,"subject_type":"company","resultstring_config":{"title":"S &amp; M beauty SA","title_action":{"router_link":{"path":"/it/careers/3243652-s-m-beauty-sa/profile"}}}}}</script>`;
+    const companies = parseCompaniesFromHtml(withPayload);
+    expect(companies.map((c) => c.name)).toEqual([
+      'TIOR SA', 'Gi Group SA', 'Lares Sagl', 'S & M beauty SA',
+    ]);
+    expect(companies.find((c) => c.id === '3244801').slug).toBe('lares-sagl');
+  });
+
   it('costruisce jobroom_url assoluto', () => {
     expect(parseCompaniesFromHtml(HTML)[0].jobroom_url)
       .toBe('https://jobroom.jobcourier.ch/it/careers/3243375-tior-sa/profile');
