@@ -134,7 +134,7 @@ export default async function handler(req, res) {
         { label: 'Settore', value: detail.sector },
       ],
       paragraphs: [detail.brand_description],
-      linksHeading: jobs.length ? 'Annunci attivi' : '',
+      linksHeading: 'Annunci attivi',
       links: jobs.map((job) => ({
         href: `/offerta/${job.id}`,
         label: job.title,

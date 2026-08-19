@@ -535,15 +535,6 @@ export default async function handler(req, res) {
     const isFiltered = Object.keys(callerParams)
       .some(k => k !== 'language' && k !== 'country' && k !== 'global');
 
-    const pageUrls = pageNumbers.map((pageNumber) => {
-      const url = new URL(baseUrl);
-      url.searchParams.set('language', callerParams.language || 'it');
-      url.searchParams.set('country', callerParams.country || '214');
-      Object.entries(callerParams).forEach(([k, v]) => url.searchParams.set(k, v));
-      url.searchParams.set('page', pageNumber);
-      return url.toString();
-    });
-
     const allJobs = [];
     let honoured = null;
 
@@ -565,6 +556,17 @@ export default async function handler(req, res) {
       // carries over, and variety comes from the company pages below.
       allJobs.push(...await fetchArca24Jobs({ pages: pageNumbers.length, maxJobs }));
     } else {
+      // Built here rather than above because this is the only branch that reads them:
+      // with Arca24 as the live source, building them for every request bought nothing.
+      const pageUrls = pageNumbers.map((pageNumber) => {
+        const url = new URL(baseUrl);
+        url.searchParams.set('language', callerParams.language || 'it');
+        url.searchParams.set('country', callerParams.country || '214');
+        Object.entries(callerParams).forEach(([k, v]) => url.searchParams.set(k, v));
+        url.searchParams.set('page', pageNumber);
+        return url.toString();
+      });
+
       // Batched parallel fetch (BATCH_SIZE concurrent to avoid rate-limiting)
       const responses = [];
       for (let i = 0; i < pageUrls.length; i += BATCH_SIZE) {

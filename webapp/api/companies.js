@@ -183,9 +183,10 @@ function standIn() {
 const MIN_HEALTHY_HIRING = 8;
 const MIN_HEALTHY_ROSTER = 12;
 
-const isHealthy = (list) =>
-  hiringCount(list) >= MIN_HEALTHY_HIRING ||
-  (hiringCount(list) >= 1 && list.length >= MIN_HEALTHY_ROSTER);
+const isHealthy = (list) => {
+  const hiring = hiringCount(list);
+  return hiring >= MIN_HEALTHY_HIRING || (hiring >= 1 && list.length >= MIN_HEALTHY_ROSTER);
+};
 
 const hiringCount = (list) => list.filter((c) => c.has_jobs === true).length;
 

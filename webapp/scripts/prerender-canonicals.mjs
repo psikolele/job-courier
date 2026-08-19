@@ -11,7 +11,7 @@
 // are the exception — their paths are dynamic, so api/shell-ssr.js handles those.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { escapeHtml, snapshotBody } from '../api/_ssr.js';
+import { escapeHtml, snapshotBody, withCanonical } from '../api/_ssr.js';
 import { jobs as jobsSnapshot } from '../api/_jobs-snapshot.js';
 import { companies as companiesSnapshot } from '../api/_companies-snapshot.js';
 
@@ -179,16 +179,12 @@ for (const [route, file] of Object.entries(ROUTES)) {
   // The home page keeps its trailing slash: that is the form the sitemap lists and the
   // form the site is indexed under. Every other route drops it (trailingSlash: false).
   const canonical = `${SITE}${route}`;
-  // Stripping first keeps the script idempotent: index.html is both an input and one of
-  // the outputs, so a second run over the same dist would otherwise stack a second tag.
-  let html = shell
-    .replace(/\s*<link\s+rel="canonical"[^>]*>/gi, '')
-    .replace(/\s*<meta\s+property="og:url"[^>]*>/gi, '')
-    .replace(
-      '</head>',
-      `  <link rel="canonical" href="${canonical}">\n` +
-        `    <meta property="og:url" content="${canonical}">\n  </head>`
-    );
+  // Shared with the SSR routes rather than reimplemented: it strips before injecting,
+  // which is what keeps this script idempotent (index.html is both an input and one of
+  // the outputs, so a second run over the same dist would otherwise stack a second tag).
+  // Reimplemented, the two could drift into emitting different markup for the same page
+  // without anything failing.
+  let html = withCanonical(shell, canonical);
 
   // Every route in HUB_CONTENT or STATIC_META gets its title/og/meta description
   // overwritten. The home page's entry in HUB_CONTENT carries no `title` — its
