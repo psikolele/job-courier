@@ -1,5 +1,16 @@
 # LLM Wiki: Job Courier Redesign (Aggiornato: 18 Agosto 2026)
 
+## CSP: chiusa la catena AdSense sulle rotte con annunci (18 Agosto 2026) — ✅ *COMPLETED, in prod*
+
+**Commit:** `60111ec`, `965876f` su `main`
+
+* **Come è saltata fuori:** i passaggi CSP precedenti erano stati verificati **solo in home**, dove AdSense non arriva a caricare le sue frame. Su `/offerte` la console riportava due violazioni `frame-src` che in home non esistono.
+* **AdSense si srotola a strati.** Sbloccate le frame (`ep2.adtrafficquality.google`, `www.google.com`), sotto sono comparse le richieste che quelle frame facevano a loro volta: `sodar2.js` su `script-src`, il suo `getconfig` e il beacon Funding Choices su `connect-src`. Aggiunta tutta la catena nota in un colpo invece di inseguire un host per giro: `https://*.adtrafficquality.google` (l'endpoint è numerato — ep1, ep2 — e Google lo ruota) e `https://fundingchoicesmessages.google.com` su script-src e connect-src.
+* **Verifica:** tab pulita su `/offerte` con annunci effettivamente caricati (iframe `googleads.g.doubleclick.net` e `www.google.com` presenti) → zero violazioni; idem `/aziende-che-assumono` (34 loghi). La policy resta **Report-Only**.
+* **Regola operativa:** una CSP verificata su una sola rotta non è verificata. Le rotte con annunci, il blog nelle altre lingue e le pagine annuncio caricano origini che la home non tocca.
+
+---
+
 ## Snapshot SEO: da "vestito" a invisibile per l'utente (18 Agosto 2026) — ✅ *COMPLETED*
 
 **Stack operativo:** Claude Opus 5, effort medio, caveman mode full · tool: Bash, browser pane (`mcp__Claude_Browser__*`) su `vite preview` del `dist` per la verifica
