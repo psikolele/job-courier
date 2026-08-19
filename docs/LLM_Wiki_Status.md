@@ -1,5 +1,21 @@
 # LLM Wiki: Job Courier Redesign (Aggiornato: 18 Agosto 2026)
 
+## Code review: quattro ridondanze rimosse, una lasciata (18 Agosto 2026) — ✅ *COMPLETED, in prod*
+
+**Commit:** `bfb116c` su `main` · review eseguita da subagent `superpowers:code-reviewer` in sola lettura, applicazione e verifica fatte in sessione principale
+
+Nessuna modifica cambia comportamento. Perimetro: i file toccati in giornata più le loro dipendenze dirette.
+
+* **`scripts/prerender-canonicals.mjs` reimplementava `withCanonical()` regex per regex.** Ora la importa da `api/_ssr.js`. Era accoppiamento silenzioso: se `_ssr.js` cambiasse cosa strippa, il prerender continuerebbe a produrre l'altra forma senza che nulla fallisca. **Verifica: tutti e 11 i file prerenderizzati sono byte-identici prima e dopo.**
+* **`api/jobs.js` costruiva `pageUrls` a ogni richiesta** benché solo il ramo jobroom li legga — e la sorgente viva è Arca24. Spostati dentro quel ramo.
+* **`api/azienda-ssr.js` passava `linksHeading` condizionato a `jobs.length`**: `snapshotBody` già sopprime l'heading quando non ci sono link.
+* **`api/companies.js` scorreva il roster due volte** in `isHealthy`. Stesse due soglie, una passata sola.
+* **Lasciata di proposito:** `fetchJobs` duplica `fetchPagesFrom` in `_arca24.js` (~15 righe). I corpi sono equivalenti, ma **nessun test copre né l'una né l'altra** ed è il percorso del feed vivo: vuole un test prima di volere un refactor.
+* **Non toccata** tutta la machinery difensiva (last-good roster, stand-in, doppia soglia, tre formati di link azienda, gate `data-preboot`): è ridondanza voluta, ogni commento sopra registra un incidente reale.
+* **Verifica in produzione dopo il deploy:** 232 test verdi; `/api/companies` → roster **33**, hiring **13**, `X-Roster-Source: live`; `/api/jobs` → 45 annunci; `/offerte` renderizza 60 card; un solo `canonical` e un solo `og:url` nell'HTML grezzo; zero errori console. Durante la propagazione il roster ha risposto `stand-in` con 13 aziende per qualche minuto — è il comportamento previsto delle istanze fredde, non un guasto.
+
+---
+
 ## CSP: chiusa la catena AdSense sulle rotte con annunci (18 Agosto 2026) — ✅ *COMPLETED, in prod*
 
 **Commit:** `60111ec`, `965876f` su `main`
