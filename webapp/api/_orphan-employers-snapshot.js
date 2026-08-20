@@ -3,12 +3,12 @@
 // Employers with at least one ad online that is not attached to their own Arca24 record.
 // Names normalized with normalizeCompanyName. Read by api/_arca24.js to mark as hiring the
 // companies the `company/jobs` probe cannot see. See api/_orphan-employers.js.
-export const generatedAt = '2026-08-20T19:07:13.991Z';
+export const generatedAt = '2026-08-20T19:09:05.736Z';
 export const names = [
-  "er services",
-  "gi group",
-  "team personnel solutions",
-  "finders",
   "dinamic hub",
-  "michael bailey associates"
+  "er services",
+  "finders",
+  "gi group",
+  "michael bailey associates",
+  "team personnel solutions"
 ];
