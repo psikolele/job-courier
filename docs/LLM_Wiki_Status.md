@@ -1,4 +1,21 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 18 Agosto 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 20 Agosto 2026)
+
+## Azienda "mancante" in vetrina: Dinamic Hub, e non era un guasto (20 Agosto 2026) — ✅ *DIAGNOSI CHIUSA, nessuna modifica al codice*
+
+**Stack operativo:** Claude Opus 5, effort medio, caveman mode full · tool: Bash (curl/node) contro il portale e la nostra API, Gmail MCP per leggere il thread e preparare la bozza · nessun commit
+
+* **Segnalazione cliente (Laura, 19/08, thread "Richiesta RSS Arca 24"):** Dinamic Hub ha pubblicato il primo annuncio il 14.06 ma non compare in vetrina. Nella stessa mail dice che la vetrina "non si comporta ancora come dovrebbe" e che il pezzo a monte è di Arca24.
+* **Cosa dicono i dati.** L'azienda è nell'indice (`3244828-dinamic-hub`, Gorduno) ed è nel nostro roster: `/api/companies?withJobs=1` la restituisce con `has_jobs: false`. La sonda su `company/jobs?uiid=3244828` torna `subjects_store.subjects.jobad = {}`, cioè **zero annunci attivi**; Adecco (`3244683`) sulla stessa chiamata torna decine di annunci reali. Nessun annuncio Dinamic compare nemmeno nel feed offerte (45 annunci vivi al 20/08). **La vetrina la esclude correttamente.**
+* **Il 404 non c'entra.** `company/jobs?uiid=3244828` risponde 404 con 100 KB di corpo: è il caso PKB già noto, e la sonda legge il corpo, non lo status. Il `false` è vero, non un falso negativo.
+* **Verifica col click, perché una mail al cliente non si manda su due sonde HTTP.** È stato l'utente a chiedere la controprova prima dell'invio. Nel browser, sulla scheda azienda, il bottone "Annunci dell'azienda" porta a **una quarta forma di URL che non era censita**: `/it/careers/<id>-<slug>/jobs` (le tre note stanno nella tabella di `arca24-company-index.md`). Quella pagina risponde, testuale: *"Non ci sono annunci di lavoro online per questa azienda al momento."* **Controprova sullo stesso percorso con Adecco: 4458 annunci attivi.** È il portale a dire zero, non il nostro parser.
+* **Limite dichiarato, da non spacciare per prova.** La ricerca per parola chiave del portale (8006 annunci totali) gira via XHR con nazione obbligatoria e non si è lasciata pilotare né da curl (`?cand_search-keyword=` viene solo riecheggiato nel path config) né da input programmatico nel pane. Quindi è verificato che **l'azienda non ha annunci attivi sulla sua scheda**, non che nessun annuncio suo esista sotto un'altra ragione sociale. Alla cliente è stato scritto solo il primo.
+* **Secondo difetto lato Arca, minore:** il logo non è caricato. L'indice serve `assets/img/genericLogo.jpg` e l'URL per id (`media/logo/logo_company_3244828.jpg`) risponde 404. Anche quando l'azienda tornerà a pubblicare, uscirebbe in vetrina senza logo.
+* **Cosa resta ignoto, e non va indovinato:** quale comando/flag Laura usa nel backend Arca24 per "mettere in vetrina" e dove il portale lo rende. Il backend è dietro login e non ho accesso. Se quel flag esiste ed è **distinto** dagli annunci attivi, allora il criterio del sito (`has_jobs === true`) è la regola sbagliata e va sostituita. Richiesta di screenshot già fatta il 19/08 e ripetuta nella bozza del 20/08: **non cambiare il criterio della vetrina finché non arriva quella risposta**, a indovinare si svuota il roster in produzione.
+* **Falso allarme mio, registrato per non ripeterlo.** Avevo letto `X-Roster-Source: stand-in` su una chiamata su tre e proposto di indagarlo come guasto. Misurando i tempi: `stand-in` esce **solo** quando la corsa a freddo supera `FAST_ANSWER_MS` (4s: osservato 4.34s → stand-in, 3.49s → live, poi 0.55s a caldo), e il payload servito è identico (roster 33, hiring 12). È il comportamento progettato, già documentato nella voce del 18/08. Regola: prima di aprire un caso su un header di degrado, misurare la latenza e confrontare i payload.
+* **Verifica in produzione:** roster **33**, hiring **12**, feed **45** annunci.
+* **Comunicazione:** bozza di risposta a Laura pronta in Drafts (thread `1a01948223ec5660`), non inviata.
+
+---
 
 ## Code review: quattro ridondanze rimosse, una lasciata (18 Agosto 2026) — ✅ *COMPLETED, in prod*
 
