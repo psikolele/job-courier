@@ -460,4 +460,12 @@ describe('normalizeCompanyName', () => {
   it('fa combaciare le due grafie reali dello stesso datore', () => {
     expect(normalizeCompanyName('S &amp;amp; M beauty SA')).toBe(normalizeCompanyName('S & M beauty'));
   });
+
+  // L'altro lato del contratto. Una convergenza di troppo mette in vetrina l'azienda
+  // sbagliata, che è il guasto visibile al pubblico: qui si fissa che due datori diversi
+  // restino diversi anche dopo lo strip della forma societaria.
+  it('tiene distinti due datori diversi', () => {
+    expect(normalizeCompanyName('Rossi SA')).not.toBe(normalizeCompanyName('Rossi Bianchi SA'));
+    expect(normalizeCompanyName('Dinamic Hub')).not.toBe(normalizeCompanyName('Dinamic Hub Ticino'));
+  });
 });
