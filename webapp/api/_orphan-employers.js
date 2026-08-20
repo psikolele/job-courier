@@ -34,11 +34,20 @@ const LANG = 'it';
 export const DEFAULT_PAGES = 120;
 
 // Same number as `PROBE_CONCURRENCY` in _arca24.js, but not the same evidence: that figure
-// was measured on a burst of ~33 requests, whereas this scan sustains 6-wide across up to
-// 270 requests. Sustained 6-wide at this volume is NOT covered by the 07.08.2026
-// measurement. The risk being managed is not latency — nobody is waiting on a build — it
-// is the portal classifying us as a scraper part-way through a build.
+// was measured on a burst of ~33 requests, whereas this scan sustains 6-wide across a far
+// larger budget — 120 listing pages at up to 2 attempts each plus up to 150 detail pages
+// is 390 HTTP requests worst case, and the circuit breaker below is what keeps a portal
+// that is actively refusing us down to ~24 (two full batches, two attempts each) instead
+// of the full 240 listing attempts. Sustained 6-wide at this volume is NOT covered by the
+// 07.08.2026 measurement. The risk being managed is not latency — nobody is waiting on a
+// build — it is the portal classifying us as a scraper part-way through a build.
 export const DEFAULT_CONCURRENCY = 6;
+
+// Stop after this many consecutive batches in which every single fetch failed. A portal
+// that is refusing us answers the 7th batch exactly like the 1st, so continuing only adds
+// load during the window where we are least welcome (see the 07.08.2026 throttling
+// incident). One bad batch followed by a good one is a blip, not a refusal.
+export const MAX_CONSECUTIVE_FAILED_BATCHES = 2;
 
 // Runaway guard, not a target: today's roster is ~33 employers and the observed rate of
 // anonymous ads is roughly 1 in 120, so a legitimate scan finds a handful and 150 is far
@@ -74,6 +83,7 @@ export async function collectOrphanEmployerNames({
   const seenIds = new Set();
   let pagesRequested = 0;
   let pagesFailed = 0;
+  let consecutiveFailedBatches = 0;
 
   for (let start = 1; start <= pageCount; start += batchSize) {
     const batch = Array.from(
@@ -103,11 +113,24 @@ export async function collectOrphanEmployerNames({
     }
     pagesFailed += failedInBatch;
 
-    // The listing ran dry: past the end of the catalogue there is nothing left to find, so
-    // spending the rest of the page budget is pure load on the portal. Same stop condition
-    // as `fetchCompaniesFromJobFeed`. A batch that returned no ads only because its fetches
-    // failed is not "dry" — that must not be mistaken for the end of the listing.
+    // Measured 20.08.2026: a listing page past the end of the catalogue does NOT come back
+    // empty. `latest_jobs?page=600` and `?page=900` both answer HTTP 404 (with a full ~126KB
+    // error page as the body), and `fetchHtml` throws on a 404 unless `acceptNotFound` is
+    // set. So on this portal the end of the catalogue arrives as a rejected fetch, not as a
+    // zero-ad page, and this branch — the stop condition `fetchCompaniesFromJobFeed` uses —
+    // effectively never fires. It is kept because it costs nothing and is the correct
+    // response if the portal ever starts serving 200-with-no-ads instead, but the stop that
+    // actually ends an over-long scan here is the consecutive-failure breaker below.
+    //
+    // The consequence for the caller: past the end of the catalogue, `pagesFailed` climbs
+    // for a perfectly healthy portal. A high `pagesFailed` is not on its own evidence that
+    // the portal is down.
     if (adsInBatch === 0 && failedInBatch === 0) break;
+
+    // Every fetch in this batch failed. Two of those in a row and we stop: see
+    // MAX_CONSECUTIVE_FAILED_BATCHES.
+    consecutiveFailedBatches = failedInBatch === batch.length ? consecutiveFailedBatches + 1 : 0;
+    if (consecutiveFailedBatches >= MAX_CONSECUTIVE_FAILED_BATCHES) break;
   }
 
   const names = new Set();

@@ -143,6 +143,35 @@ describe('collectOrphanEmployerNames', () => {
     expect(res.names).toEqual(['dinamic hub']);
   });
 
+  it('si arrende dopo due batch interamente falliti invece di consumare il budget', async () => {
+    vi.mocked(fetchHtml).mockRejectedValue(new Error('connection reset'));
+
+    const res = await collectOrphanEmployerNames({ pages: 50, concurrency: 2 });
+
+    expect(res.pagesRequested).toBe(4);
+    expect(res.pagesFailed).toBe(4);
+    expect(vi.mocked(fetchHtml)).toHaveBeenCalledTimes(4);
+    expect(res.names).toEqual([]);
+  });
+
+  it('un batch fallito seguito da uno buono non fa scattare il breaker', async () => {
+    vi.mocked(fetchHtml)
+      .mockRejectedValueOnce(new Error('timeout'))
+      .mockRejectedValueOnce(new Error('timeout'))
+      .mockResolvedValueOnce(row('1', 'a', null))
+      .mockResolvedValueOnce(row('2', 'b', null))
+      .mockRejectedValueOnce(new Error('timeout'))
+      .mockRejectedValueOnce(new Error('timeout'))
+      .mockResolvedValue(row('3', 'c', null));
+    vi.mocked(fetchJobDetail).mockResolvedValue({ company: { name: 'Dinamic Hub' } });
+
+    const res = await collectOrphanEmployerNames({ pages: 8, concurrency: 2 });
+
+    expect(res.pagesRequested).toBe(8);
+    expect(res.pagesFailed).toBe(4);
+    expect(res.names).toEqual(['dinamic hub']);
+  });
+
   it('una concorrenza non valida non blocca la scansione', async () => {
     vi.mocked(fetchHtml).mockResolvedValue(row('6740371', 'pulizie', null));
     vi.mocked(fetchJobDetail).mockResolvedValue({ company: { name: 'Dinamic Hub' } });
