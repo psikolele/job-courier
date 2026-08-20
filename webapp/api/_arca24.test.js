@@ -10,7 +10,7 @@ import {
   parseCompaniesFromHtml, parseCompanyDetailFromHtml, companyLogo,
   isArca24Enabled, resetSourceProbe,
   fetchCompanies, resetHasJobsCache, resetFeedRosterCache,
-  withKnownEmployer, RESERVED_COMPANY,
+  withKnownEmployer, RESERVED_COMPANY, normalizeCompanyName,
 } from './_arca24.js';
 
 // Trimmed copies of the real markup, kept small on purpose: these guard the selectors
@@ -428,5 +428,28 @@ describe('withKnownEmployer', () => {
     const jobs = [anonymous];
     expect(withKnownEmployer(jobs, { name: RESERVED_COMPANY }, '1')).toBe(jobs);
     expect(withKnownEmployer(jobs, {}, '1')).toBe(jobs);
+  });
+});
+
+describe('normalizeCompanyName', () => {
+  it('ignora maiuscole, spazi e punteggiatura', () => {
+    expect(normalizeCompanyName('Dinamic Hub')).toBe('dinamic hub');
+    expect(normalizeCompanyName('  DINAMIC   HUB  ')).toBe('dinamic hub');
+  });
+
+  it('decodifica le entità, anche doppie', () => {
+    expect(normalizeCompanyName('S &amp;amp; M beauty SA')).toBe('s & m beauty');
+  });
+
+  it('toglie la forma societaria in coda', () => {
+    expect(normalizeCompanyName('Work & Work SA')).toBe('work & work');
+    expect(normalizeCompanyName('Work & Work S.A.')).toBe('work & work');
+    expect(normalizeCompanyName('Nene e Associati Sagl')).toBe('nene e associati');
+  });
+
+  it('restituisce stringa vuota per input non utile', () => {
+    expect(normalizeCompanyName('')).toBe('');
+    expect(normalizeCompanyName(undefined)).toBe('');
+    expect(normalizeCompanyName('Azienda Riservata')).toBe('');
   });
 });

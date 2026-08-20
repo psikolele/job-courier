@@ -911,6 +911,30 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
 
 export const RESERVED_COMPANY = 'Azienda Riservata';
 
+// I due lati del confronto arrivano da sorgenti diverse: l'indice aziende consegna i
+// titoli doppiamente encodati (`S &amp;amp; M beauty SA`), il microdato dell'annuncio li
+// consegna puliti. Le forme societarie compaiono in una fonte e non nell'altra, quindi
+// vanno tolte da entrambe o il confronto fallisce su aziende che sono la stessa.
+//
+// `Azienda Riservata` non è un datore: è il segnaposto che il listing usa quando la riga
+// non porta azienda, e mapparlo darebbe un nome finto a tutti gli annunci scollegati.
+const COMPANY_SUFFIXES = /\s+(s\.?\s?a\.?|s\.?a\.?g\.?l\.?|s\.?r\.?l\.?|ag|gmbh|sarl|inc|ltd)\.?$/;
+
+export function normalizeCompanyName(value) {
+  let out = String(value ?? '');
+  // Due passate: l'indice consegna `&amp;amp;`, che una sola decodifica lascia `&amp;`.
+  for (let i = 0; i < 2; i++) {
+    out = out
+      .replace(/&amp;/g, '&')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'");
+  }
+  out = out.toLowerCase().replace(/\s+/g, ' ').trim();
+  if (!out || out === RESERVED_COMPANY.toLowerCase()) return '';
+  return out.replace(COMPANY_SUFFIXES, '').trim();
+}
+
 /**
  * Names the employer on ads read from that employer's own page.
  *
