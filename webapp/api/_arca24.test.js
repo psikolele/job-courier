@@ -432,13 +432,17 @@ describe('withKnownEmployer', () => {
 });
 
 describe('normalizeCompanyName', () => {
-  it('ignora maiuscole, spazi e punteggiatura', () => {
+  it('ignora maiuscole e spazi', () => {
     expect(normalizeCompanyName('Dinamic Hub')).toBe('dinamic hub');
     expect(normalizeCompanyName('  DINAMIC   HUB  ')).toBe('dinamic hub');
   });
 
   it('decodifica le entità, anche doppie', () => {
     expect(normalizeCompanyName('S &amp;amp; M beauty SA')).toBe('s & m beauty');
+  });
+
+  it('decodifica anche le entità numeriche dell\'apostrofo', () => {
+    expect(normalizeCompanyName("O&#039;Brien Ltd")).toBe(normalizeCompanyName("O'Brien"));
   });
 
   it('toglie la forma societaria in coda', () => {
@@ -451,5 +455,9 @@ describe('normalizeCompanyName', () => {
     expect(normalizeCompanyName('')).toBe('');
     expect(normalizeCompanyName(undefined)).toBe('');
     expect(normalizeCompanyName('Azienda Riservata')).toBe('');
+  });
+
+  it('fa combaciare le due grafie reali dello stesso datore', () => {
+    expect(normalizeCompanyName('S &amp;amp; M beauty SA')).toBe(normalizeCompanyName('S & M beauty'));
   });
 });

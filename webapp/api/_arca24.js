@@ -911,24 +911,44 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
 
 export const RESERVED_COMPANY = 'Azienda Riservata';
 
-// I due lati del confronto arrivano da sorgenti diverse: l'indice aziende consegna i
-// titoli doppiamente encodati (`S &amp;amp; M beauty SA`), il microdato dell'annuncio li
-// consegna puliti. Le forme societarie compaiono in una fonte e non nell'altra, quindi
-// vanno tolte da entrambe o il confronto fallisce su aziende che sono la stessa.
-//
-// `Azienda Riservata` non è un datore: è il segnaposto che il listing usa quando la riga
-// non porta azienda, e mapparlo darebbe un nome finto a tutti gli annunci scollegati.
+// Both sides of the comparison come from different sources: the company index delivers
+// titles double-HTML-encoded (`S &amp;amp; M beauty SA`), the ad's microdata delivers them
+// clean. Legal suffixes show up in one source and not the other, so they have to be
+// stripped from both or the comparison fails on companies that are the same one.
 const COMPANY_SUFFIXES = /\s+(s\.?\s?a\.?|s\.?a\.?g\.?l\.?|s\.?r\.?l\.?|ag|gmbh|sarl|inc|ltd)\.?$/;
 
+/**
+ * Builds a comparison key for an employer name so a name from the company index and the
+ * same name from an ad's microdata can be checked for equality.
+ *
+ * Decodes HTML entities (including the double-encoding the company index emits, and
+ * numeric entities such as `&#039;`/`&apos;` for an apostrophe — the form PHP's
+ * `htmlspecialchars` produces, which matters for names like `L'Atelier` or `D'Angelo`),
+ * lowercases, collapses whitespace, and strips a trailing legal-form suffix
+ * (SA, S.A., Sagl, AG, GmbH, Sarl, Inc, Ltd).
+ *
+ * Lossy on purpose, in two ways a caller must account for:
+ * - Legal form is discarded, so "Immobiliare Ticino SA" and "Immobiliare Ticino Sagl"
+ *   normalize to the same key even though in Ticino those are frequently two distinct
+ *   legal entities of the same group. Stripping the suffix is still necessary because one
+ *   source omits it; a caller that needs certainty must disambiguate with a second signal
+ *   (id, slug, logo).
+ * - `''` means "not comparable, never matches" — returned for empty/missing input and for
+ *   `RESERVED_COMPANY` ("Azienda Riservata"), the placeholder used when a listing row
+ *   carries no company at all. A caller doing a bare `map.get(normalizeCompanyName(x))`
+ *   without guarding the empty-string case would collapse every nameless record onto one
+ *   key and produce exactly the false match this helper exists to prevent.
+ */
 export function normalizeCompanyName(value) {
   let out = String(value ?? '');
-  // Due passate: l'indice consegna `&amp;amp;`, che una sola decodifica lascia `&amp;`.
+  // Two passes: the index emits `&amp;amp;`, which a single decode only unwinds to `&amp;`.
   for (let i = 0; i < 2; i++) {
     out = out
       .replace(/&amp;/g, '&')
       .replace(/&nbsp;/g, ' ')
       .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'");
+      .replace(/&apos;/g, "'")
+      .replace(/&#0*(\d+);/g, (_, code) => String.fromCharCode(Number(code)));
   }
   out = out.toLowerCase().replace(/\s+/g, ' ').trim();
   if (!out || out === RESERVED_COMPANY.toLowerCase()) return '';
