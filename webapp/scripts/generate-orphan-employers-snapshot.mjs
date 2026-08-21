@@ -5,69 +5,50 @@
 // are invisible to the `company/jobs` probe and why the only way to find them is to open
 // the anonymous ads. That module tolerates individual failures on purpose and reports
 // counters instead; deciding whether the run is trustworthy is this script's job, because
-// this is where the result gets committed to the repo.
+// this is where the result gets committed to the repo. The verdict itself lives in
+// _assess-orphan-scan.mjs, which is pure and tested — this file is only the plumbing.
 //
 // Any rejection leaves the committed file alone and the build carries on: a slightly stale
 // list of employers is worth something, a truncated one is worth less than nothing.
 import { writeFileSync } from 'node:fs';
-import { collectOrphanEmployerNames, DEFAULT_PAGES } from '../api/_orphan-employers.js';
+import { collectOrphanEmployerNames } from '../api/_orphan-employers.js';
+import { names as committedNames } from '../api/_orphan-employers-snapshot.js';
+import { assessScan } from './_assess-orphan-scan.mjs';
 
 const OUT = new URL('../api/_orphan-employers-snapshot.js', import.meta.url);
 
-const MAX_FAILED_RATIO = 0.2;
+// Same shape as generate-companies-snapshot.mjs. The `.unref()` matters: without it the
+// pending timer keeps the process alive for the whole budget after the work is done.
+const withTimeout = (promise, ms) => Promise.race([
+  promise,
+  new Promise((_, reject) => {
+    setTimeout(() => reject(new Error(`nessuna risposta in ${ms}ms`)), ms).unref();
+  }),
+]);
+
+// Four minutes. The two live runs on 20.08.2026 each finished in about a minute and a half,
+// so this is more than double a healthy run — wide enough that a merely slow portal still
+// produces a usable snapshot. The ceiling exists for the other case: 120 listing pages at
+// two attempts plus 150 detail pages, all crawling at the 6s request timeout, is roughly
+// six and a half minutes added to every build, and that happens exactly when the portal is
+// sick, i.e. when the run was going to be rejected anyway. Higher than the sibling's 120s
+// because this scan is an order of magnitude more requests.
+const BUDGET_MS = 240_000;
 
 // Declared outside the try because the error branch must be able to print the counters.
 let scan = null;
 
 try {
-  scan = await collectOrphanEmployerNames();
-  const { names, pagesRequested, pagesFailed, detailsRequested, detailsFailed, truncated } = scan;
+  scan = await withTimeout(collectOrphanEmployerNames(), BUDGET_MS);
 
-  // An empty result and a scan that quietly went nowhere look exactly the same from here,
-  // and overwriting with zero would throw away every employer we already know about. The
-  // asymmetry is safe: an employer who genuinely stopped publishing disappears from the
-  // showcase regardless, because the name match only applies to companies already on the
-  // roster and the roster is recomputed on every request.
-  if (names.length === 0) {
-    throw new Error('nessun datore con annunci scollegati: sospetto scansione fallita');
-  }
-
-  // The scan gave up before spending its page budget. Measured 20.08.2026 the catalogue was
-  // 8006 ads at 15 per listing page — about 534 pages against a budget of 120 — so stopping
-  // early cannot mean "reached the end of the catalogue" today: it means the listing stopped
-  // answering. This also covers an empty first page and the pages: 0 case, where the ratio
-  // checks below would be 0/0 (NaN) and would sail past every threshold unnoticed. No magic
-  // number here on purpose: if the catalogue ever really shrinks under the budget, this
-  // fires loudly and a human lowers DEFAULT_PAGES deliberately, which is the right way to
-  // find that out.
-  if (pagesRequested < DEFAULT_PAGES) {
-    throw new Error(`scansione ferma a ${pagesRequested} pagine su ${DEFAULT_PAGES}: il listing non sta rispondendo`);
-  }
-
-  // Failures are swallowed by design, so the only signal that a run was thin is the ratio.
-  // Each lost listing page silently removes fifteen ads from the scan.
-  if (pagesRequested > 0 && pagesFailed / pagesRequested > MAX_FAILED_RATIO) {
-    throw new Error(`${pagesFailed} pagine fallite su ${pagesRequested}: scansione degradata`);
-  }
-
-  // Detail failures are the nastier half: they lose employers one at a time while
-  // pagesFailed stays at zero, so a run where half the details fail reports healthy pages, a
-  // healthy page ratio, and half the names.
-  if (detailsRequested > 0 && detailsFailed / detailsRequested > MAX_FAILED_RATIO) {
-    throw new Error(`${detailsFailed} dettagli falliti su ${detailsRequested}: scansione degradata`);
-  }
-
-  // The detail cap bit, so the module knows for a fact that anonymous ads were left
-  // unopened. A knowingly partial list must never be committed.
-  if (truncated) {
-    throw new Error('scansione troncata dal tetto sui dettagli: risultato parziale');
-  }
+  const rejection = assessScan(scan, committedNames);
+  if (rejection) throw new Error(rejection);
 
   // Alphabetical purely so the committed diff stays readable: this file is rewritten on
   // every build, and in scan order (newest ad first) a single new employer inserts at the
   // top and shifts every line. No consumer depends on the order — the lookup is by name.
   // Same comparison as the company sorts in _arca24.js so the two orderings agree.
-  names.sort((a, b) => a.localeCompare(b, 'it', { sensitivity: 'base' }));
+  const names = [...scan.names].sort((a, b) => a.localeCompare(b, 'it', { sensitivity: 'base' }));
 
   const body = `// Generated by scripts/generate-orphan-employers-snapshot.mjs — do not edit by hand.
 //
@@ -78,11 +59,28 @@ export const generatedAt = '${new Date().toISOString()}';
 export const names = ${JSON.stringify(names, null, 2)};
 `;
   writeFileSync(OUT, body);
-  console.log(`orphan employers snapshot: ${names.length} datori`);
+
+  // The delta, not just the count: a healthy run has to leave a baseline in the build log,
+  // or the counters printed on a future rejection have nothing to be compared against.
+  const previous = new Set(committedNames);
+  const added = names.filter((n) => !previous.has(n)).length;
+  const removed = committedNames.filter((n) => !names.includes(n)).length;
+  console.log(`orphan employers snapshot: ${names.length} datori (+${added} / -${removed})`);
+  console.log(`  contatori: ${counters(scan)}`);
 } catch (error) {
-  // Print the counters, not just the message. A file that did not get updated is invisible
-  // in a build log, and the numbers that caused the rejection are exactly what someone will
-  // need six weeks from now.
-  console.warn(`orphan employers snapshot: non aggiornato (${error.message}) — resta quello committato.`);
-  if (scan) console.warn(`  contatori: ${JSON.stringify(scan)}`);
+  // `[SNAPSHOT-REJECTED]` is a stable token on purpose: a build log is searched by someone
+  // who does not know this script exists, let alone the Italian wording of its messages.
+  //
+  // And print the counters, not just the message. A file that did not get updated is
+  // invisible in a build log, and the numbers that caused the rejection are exactly what
+  // someone will need six weeks from now.
+  console.warn(`[SNAPSHOT-REJECTED] orphan employers snapshot: non aggiornato (${error.message}) — resta quello committato.`);
+  if (scan) console.warn(`  contatori: ${counters(scan)}`);
+}
+
+/** The counters without the names array, which is noise near the detail cap. */
+function counters({ names, pagesRequested, pagesFailed, detailsRequested, detailsFailed, truncated }) {
+  return JSON.stringify({
+    found: names.length, pagesRequested, pagesFailed, detailsRequested, detailsFailed, truncated,
+  });
 }
