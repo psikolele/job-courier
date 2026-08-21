@@ -671,9 +671,15 @@ const COMPANY_INDEX_LOOKAHEAD = 3;
 const HAS_JOBS_TTL_MS = 5 * 60 * 1000;
 const hasJobsCache = new Map(); // id -> { value, at }
 
-/** Test seam — lets the suite probe the same id twice without waiting out the TTL. */
+/**
+ * Test seam — lets the suite probe the same id twice without waiting out the TTL.
+ *
+ * Also rearms the one-shot expiry warning below, so a test that asserts the warning does
+ * not depend on whether some earlier test already burned it.
+ */
 export function resetHasJobsCache() {
   hasJobsCache.clear();
+  orphanExpiryWarned = false;
 }
 
 /**
@@ -752,8 +758,30 @@ const PROBE_DEADLINE_MS = 80_000;
 // back to the probe.
 const ORPHAN_SNAPSHOT_MAX_AGE_MS = 7 * 24 * 60 * 60_000;
 
-const freshOrphanNames = () =>
-  Date.now() - Date.parse(orphanGeneratedAt) < ORPHAN_SNAPSHOT_MAX_AGE_MS ? orphanNames : [];
+// Warn once per process, not once per company and not once per request. On day 8 every
+// orphan employer reverts to a probe that structurally answers false, so the showcase
+// quietly loses them all and an operator looking at "the vetrina lost six companies
+// again" would otherwise find nothing in the logs. A module-level flag is enough: the
+// snapshot's `generatedAt` is a build-time constant, so within one instance the verdict
+// can only flip once (fresh → expired) and there is nothing else to key on. Warning per
+// request instead would flood a warm instance for the entire week the snapshot stays
+// stale, which is exactly how a real signal gets tuned out.
+let orphanExpiryWarned = false;
+
+const freshOrphanNames = () => {
+  if (Date.now() - Date.parse(orphanGeneratedAt) < ORPHAN_SNAPSHOT_MAX_AGE_MS) return orphanNames;
+  if (!orphanExpiryWarned) {
+    orphanExpiryWarned = true;
+    // `[SNAPSHOT-EXPIRED]` is a stable greppable token, same family as the generator's
+    // `[SNAPSHOT-REJECTED]`: whoever searches a log for one should find the other.
+    // A missing or malformed `generatedAt` parses to NaN and lands here too — fail
+    // closed, which is the safe direction: nobody gets marked hiring without evidence.
+    console.warn(
+      `[SNAPSHOT-EXPIRED] orphan employers snapshot: generatedAt=${orphanGeneratedAt} oltre i ${ORPHAN_SNAPSHOT_MAX_AGE_MS}ms — nessun datore orfano marcato hiring, tutti tornano alla sonda (che per loro risponde sempre false). Rigenerare con scripts/generate-orphan-employers-snapshot.mjs e committare.`
+    );
+  }
+  return [];
+};
 
 /**
  * `known` holds ids already proven to be hiring, so they cost no request. Everyone the
@@ -769,19 +797,74 @@ export async function withHasJobs(companies, known = new Set(), knownNames = new
   // `normalizeCompanyName` discards the legal form, so "Immobiliare Ticino SA" and
   // "Immobiliare Ticino Sagl" share a key — and in Ticino those are frequently two
   // distinct entities of the same group. An orphan ad carries no company id, so there is
-  // no second signal to disambiguate with: when a key belongs to more than one employer
-  // on the roster, matching it would put a coin flip in the public showcase. Those keys
-  // are dropped, and the employers fall through to the probe exactly as before.
+  // no second signal to disambiguate with, and a bare key match would put a coin flip in
+  // the public showcase. Refused employers just fall through to the probe, as before.
+  //
+  // THE RULE — do not loosen it. A roster company matches a snapshot name when ALL of:
+  //   1. its stripped key is non-empty, and exactly one roster company holds that stripped
+  //      key (the roster-vs-roster ambiguity guard), AND
+  //   2. some snapshot raw name has the same stripped key, AND
+  //   3. the legal forms are COMPATIBLE: the two raw forms are identical, or at least one
+  //      of the two carries no legal suffix at all.
+  //
+  // (3) covers the half (1) cannot. The dangerous arrangement is an orphan ad published by
+  // an entity that is NOT on the roster — "Finders SA" — while the roster holds
+  // "Finders Sagl", a different legal entity that is genuinely not hiring. Only one roster
+  // company holds the key `finders`, so (1) sees no ambiguity and the showcase would
+  // advertise the wrong company. Both sides carry a suffix and the suffixes differ:
+  // refused. Where one side merely omits the form ("s & m beauty" from an ad vs
+  // "s & m beauty sa" on the roster) the match still works — that is the case the feature
+  // was built for.
   const byKey = new Map();
   for (const c of companies) {
     const key = normalizeCompanyName(c.name);
     if (!key) continue;
     byKey.set(key, byKey.has(key) ? null : c.id);
   }
+
+  // Snapshot names arrive raw (legal form intact); index them by their stripped key.
+  const rawNamesByKey = new Map();
+  for (const raw of knownNames) {
+    const key = stripLegalForm(raw);
+    if (!key) continue;
+    if (!rawNamesByKey.has(key)) rawNamesByKey.set(key, []);
+    rawNamesByKey.get(key).push(raw);
+  }
+
+  // Incompatible only when BOTH sides carry a legal form and the two forms differ.
+  const compatible = (a, b) => {
+    const fa = legalFormOf(a);
+    const fb = legalFormOf(b);
+    return !fa || !fb || fa === fb;
+  };
+
   const unambiguous = (c) => {
     const key = normalizeCompanyName(c.name);
-    return Boolean(key) && knownNames.has(key) && byKey.get(key) === c.id;
+    if (!key || byKey.get(key) !== c.id) return false;
+    const candidates = rawNamesByKey.get(key);
+    if (!candidates) return false;
+    const raw = normalizeCompanyNameRaw(c.name);
+    return candidates.some((n) => compatible(n, raw));
   };
+
+  // A shared key with an orphan ad behind it means one of these employers is hiring and we
+  // cannot tell which. Refusing the match is right; letting the probe's `false` stand
+  // afterwards is not, because the probe is structurally blind to orphan ads — that
+  // blindness is the entire reason the snapshot exists. So these resolve to `null`
+  // ("unknown"), which the showcase already handles, instead of asserting "not hiring"
+  // about a company we have reason to think might be.
+  //
+  // ONLY key collisions land here. A legal-form refusal (the Finders crossover) does not:
+  // there we have a positive reason to believe the ad belongs to a different entity, so
+  // the probe's `false` is a real answer about this one and must survive.
+  const ambiguousUnknown = new Set(
+    companies
+      .filter((c) => {
+        const key = normalizeCompanyName(c.name);
+        return Boolean(key) && byKey.get(key) === null && rawNamesByKey.has(key);
+      })
+      .map((c) => c.id)
+  );
 
   const out = [];
   const toProbe = [];
@@ -799,7 +882,12 @@ export async function withHasJobs(companies, known = new Set(), knownNames = new
     }
     const batch = toProbe.slice(i, i + PROBE_CONCURRENCY);
     const flags = await Promise.all(batch.map(c => probeHasJobs(c.id)));
-    batch.forEach((c, j) => out.push({ ...c, has_jobs: flags[j] }));
+    // Only `false` is downgraded: a suppressed company that the probe finds hiring anyway
+    // (it has linked ads too) keeps its `true`, and `null` is already unknown.
+    batch.forEach((c, j) => out.push({
+      ...c,
+      has_jobs: flags[j] === false && ambiguousUnknown.has(c.id) ? null : flags[j],
+    }));
   }
   for (const c of toProbe.slice(i)) out.push({ ...c, has_jobs: null });
 
@@ -951,6 +1039,18 @@ export const RESERVED_COMPANY = 'Azienda Riservata';
 // stripped from both or the comparison fails on companies that are the same one.
 const COMPANY_SUFFIXES = /\s+(s\.?\s?a\.?|s\.?a\.?g\.?l\.?|s\.?r\.?l\.?|ag|gmbh|sarl|inc|ltd)\.?$/;
 
+const stripLegalForm = (raw) => raw.replace(COMPANY_SUFFIXES, '').trim();
+
+// Answers "does this raw name carry a legal suffix, and which one" with a form canonical
+// enough to compare across sources: punctuation and inner spacing are dropped, so
+// "x s.a." and "x SA" report the same form `sa`, while `sa` and `sagl` stay distinct.
+// `''` means the name carries no legal form at all. Kept next to the regex on purpose —
+// the two must move together.
+const legalFormOf = (raw) => {
+  const m = COMPANY_SUFFIXES.exec(raw);
+  return m ? m[1].replace(/[.\s]/g, '') : '';
+};
+
 /**
  * Builds a comparison key for an employer name so a name from the company index and the
  * same name from an ad's microdata can be checked for equality.
@@ -966,7 +1066,8 @@ const COMPANY_SUFFIXES = /\s+(s\.?\s?a\.?|s\.?a\.?g\.?l\.?|s\.?r\.?l\.?|ag|gmbh|
  *   normalize to the same key even though in Ticino those are frequently two distinct
  *   legal entities of the same group. Stripping the suffix is still necessary because one
  *   source omits it; a caller that needs certainty must disambiguate with a second signal
- *   (id, slug, logo).
+ *   (id, slug, logo) — or with `normalizeCompanyNameRaw` below, which keeps the legal form
+ *   so two candidates sharing a key can at least be checked for compatibility.
  * - `''` means "not comparable, never matches" — returned for empty/missing input and for
  *   `RESERVED_COMPANY` ("Azienda Riservata"), the placeholder used when a listing row
  *   carries no company at all. A caller doing a bare `map.get(normalizeCompanyName(x))`
@@ -974,6 +1075,23 @@ const COMPANY_SUFFIXES = /\s+(s\.?\s?a\.?|s\.?a\.?g\.?l\.?|s\.?r\.?l\.?|ag|gmbh|
  *   key and produce exactly the false match this helper exists to prevent.
  */
 export function normalizeCompanyName(value) {
+  return stripLegalForm(normalizeCompanyNameRaw(value));
+}
+
+/**
+ * Everything `normalizeCompanyName` does EXCEPT stripping the legal form: decodes entities
+ * (twice, plus numeric ones), lowercases, collapses whitespace, and returns `''` for
+ * empty/missing input and for `RESERVED_COMPANY` — `''` carrying the same
+ * "not comparable, never matches" contract as above.
+ *
+ * It exists because the stripped key alone cannot tell a crossover from a match. An ad
+ * published by "Finders SA" — an entity absent from the roster — and a roster entry
+ * "Finders Sagl" share the key `finders`, and matching on that key alone would advertise
+ * a company that is not hiring on the client's public home page. Keeping the raw form lets
+ * the consumer refuse that pair while still accepting the case the feature was built for,
+ * where one source simply omits the form ("s & m beauty" vs "s & m beauty sa").
+ */
+export function normalizeCompanyNameRaw(value) {
   let out = String(value ?? '');
   // Two passes: the index emits `&amp;amp;`, which a single decode only unwinds to `&amp;`.
   for (let i = 0; i < 2; i++) {
@@ -986,7 +1104,7 @@ export function normalizeCompanyName(value) {
   }
   out = out.toLowerCase().replace(/\s+/g, ' ').trim();
   if (!out || out === RESERVED_COMPANY.toLowerCase()) return '';
-  return out.replace(COMPANY_SUFFIXES, '').trim();
+  return out;
 }
 
 /**

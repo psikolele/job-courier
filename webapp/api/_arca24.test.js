@@ -10,7 +10,7 @@ import {
   parseCompaniesFromHtml, parseCompanyDetailFromHtml, companyLogo,
   isArca24Enabled, resetSourceProbe,
   fetchCompanies, resetHasJobsCache, resetFeedRosterCache,
-  withKnownEmployer, RESERVED_COMPANY, normalizeCompanyName, withHasJobs,
+  withKnownEmployer, RESERVED_COMPANY, normalizeCompanyName, normalizeCompanyNameRaw, withHasJobs,
 } from './_arca24.js';
 import { generatedAt as orphanGeneratedAt } from './_orphan-employers-snapshot.js';
 
@@ -515,6 +515,83 @@ describe('withHasJobs con nomi noti', () => {
 
     expect(out.every((c) => c.has_jobs !== true)).toBe(true);
   });
+
+  // One of the two IS hiring — the orphan ad proves it — we just cannot tell which. The
+  // probe is structurally blind to orphan ads, so its `false` is not evidence here and
+  // must not become a public "non assume". `null` is the honest answer.
+  it('lascia unknown, non false, le aziende zittite dalla guardia sull ambiguità', async () => {
+    const out = await withHasJobs(
+      [{ id: '1', name: 'Immobiliare Ticino SA' }, { id: '2', name: 'Immobiliare Ticino Sagl' }],
+      new Set(),
+      new Set(['immobiliare ticino sa'])
+    );
+
+    expect(out.every((c) => c.has_jobs === null)).toBe(true);
+  });
+
+  // Il declassamento vale SOLO per la collisione di chiave. Qui la chiave è di una sola
+  // azienda e il rifiuto viene dalla forma giuridica: abbiamo motivo di credere che l
+  // annuncio sia di un altro soggetto, quindi il `false` della sonda è una risposta vera.
+  it('non declassa a unknown chi è rifiutato per forma giuridica', async () => {
+    const out = await withHasJobs(
+      [{ id: '1', name: 'Finders Sagl' }],
+      new Set(),
+      new Set(['finders sa'])
+    );
+
+    expect(out[0].has_jobs).toBe(false);
+  });
+
+  // Both sides carry the same legal form: nothing to arbitrate, the match holds.
+  it('marca hiring quando le due forme giuridiche coincidono', async () => {
+    const out = await withHasJobs(
+      [{ id: '1', name: 'Finders SA' }],
+      new Set(),
+      new Set(['finders sa'])
+    );
+
+    expect(out[0].has_jobs).toBe(true);
+  });
+
+  // The case the feature was built for: the ad's microdata omits the legal form that the
+  // company index spells out. One side has no suffix, so the forms stay compatible.
+  it('marca hiring quando l annuncio omette la forma giuridica che il roster riporta', async () => {
+    const out = await withHasJobs(
+      [{ id: '1', name: 'S &amp;amp; M beauty SA' }],
+      new Set(),
+      new Set(['s & m beauty'])
+    );
+
+    expect(out[0].has_jobs).toBe(true);
+  });
+
+  // The crossover this rule exists to refuse. "Finders SA" publishes an orphan ad but is
+  // NOT on the roster; the roster holds "Finders Sagl", a different legal entity that is
+  // genuinely not hiring. Only one roster company holds the key `finders`, so the
+  // roster-vs-roster ambiguity guard sees nothing wrong — only the legal forms do.
+  it('non marca hiring Finders Sagl per un annuncio di Finders SA', async () => {
+    const out = await withHasJobs(
+      [{ id: '1', name: 'Finders Sagl' }],
+      new Set(),
+      new Set(['finders sa'])
+    );
+
+    expect(out[0].has_jobs).not.toBe(true);
+  });
+});
+
+describe('normalizeCompanyNameRaw', () => {
+  it('conserva la forma giuridica che normalizeCompanyName elimina', () => {
+    expect(normalizeCompanyNameRaw('Finders SA')).toBe('finders sa');
+    expect(normalizeCompanyName('Finders SA')).toBe('finders');
+  });
+
+  it('applica le stesse decodifiche e lo stesso contratto sulla stringa vuota', () => {
+    expect(normalizeCompanyNameRaw('S &amp;amp; M beauty SA')).toBe('s & m beauty sa');
+    expect(normalizeCompanyNameRaw('')).toBe('');
+    expect(normalizeCompanyNameRaw(undefined)).toBe('');
+    expect(normalizeCompanyNameRaw('Azienda Riservata')).toBe('');
+  });
 });
 
 describe('snapshot orfani scaduto', () => {
@@ -524,6 +601,14 @@ describe('snapshot orfani scaduto', () => {
   // Gi Group è nello snapshot degli orfani e nell indice mockato, e il suo profilo qui
   // non ha annunci: se lo snapshot vale, risulta hiring; scaduto, torna alla sonda.
   it('finché è fresco marca hiring il datore orfano', async () => {
+    // L orologio va fissato come nel test gemello: senza, questo gira sull ora reale
+    // contro il `generatedAt` committato, che nessuno aggiorna da solo (Vercel riscrive
+    // lo snapshot nella sandbox di build e non lo ricommitta). Otto giorni dopo l ultima
+    // build committata da un umano la suite diventerebbe rossa da sola, su un branch che
+    // nessuno ha toccato.
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(Date.parse(orphanGeneratedAt) + 24 * 60 * 60_000));
+
     mockPortal({ profiles: { 3244630: PROFILE_WITHOUT_ADS } });
     const list = await fetchCompanies({ withJobStatus: true });
     expect(list.find((c) => c.id === '3244630').has_jobs).toBe(true);
@@ -537,5 +622,46 @@ describe('snapshot orfani scaduto', () => {
     mockPortal({ profiles: { 3244630: PROFILE_WITHOUT_ADS } });
     const list = await fetchCompanies({ withJobStatus: true });
     expect(list.find((c) => c.id === '3244630').has_jobs).toBe(false);
+  });
+
+  // Day 8 is otherwise completely silent: sei datori spariscono dalla vetrina e nei log
+  // non resta niente. Il token è greppabile e della stessa famiglia di [SNAPSHOT-REJECTED].
+  it('segnala lo snapshot scaduto una volta sola, con un token greppabile', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(Date.parse(orphanGeneratedAt) + 8 * 24 * 60 * 60_000));
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    mockPortal({ profiles: { 3244630: PROFILE_WITHOUT_ADS } });
+    await fetchCompanies({ withJobStatus: true });
+    resetFeedRosterCache();
+    mockPortal({ profiles: { 3244630: PROFILE_WITHOUT_ADS } });
+    await fetchCompanies({ withJobStatus: true });
+
+    const expired = warn.mock.calls.filter(([m]) => String(m).includes('[SNAPSHOT-EXPIRED]'));
+    expect(expired).toHaveLength(1);
+    expect(expired[0][0]).toContain(orphanGeneratedAt);
+    warn.mockRestore();
+  });
+
+  // Il fail-closed esiste già, ma solo come effetto collaterale del confronto con NaN:
+  // `Date.parse('')` è NaN e ogni confronto con NaN è false, quindi si cade nel ramo
+  // scaduto. È esattamente il tipo di comportamento che un refactor rompe in silenzio.
+  it('con generatedAt malformato non marca hiring nessuno', async () => {
+    vi.resetModules();
+    vi.doMock('./_orphan-employers-snapshot.js', () => ({
+      generatedAt: 'non-una-data',
+      names: ['gi group sa'],
+    }));
+
+    const fresh = await import('./_arca24.js');
+    fresh.resetHasJobsCache();
+    fresh.resetFeedRosterCache();
+    mockPortal({ profiles: { 3244630: PROFILE_WITHOUT_ADS } });
+
+    const list = await fresh.fetchCompanies({ withJobStatus: true });
+
+    expect(list.find((c) => c.id === '3244630').has_jobs).toBe(false);
+    vi.doUnmock('./_orphan-employers-snapshot.js');
+    vi.resetModules();
   });
 });

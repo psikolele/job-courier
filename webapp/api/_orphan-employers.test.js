@@ -29,6 +29,10 @@ beforeEach(() => {
 });
 
 describe('collectOrphanEmployerNames', () => {
+  // The names come out raw, i.e. with the legal form intact — see the module header and
+  // `withHasJobs`. The fixtures here use names that carry no suffix ("Dinamic Hub"), so
+  // the raw and stripped forms coincide and the expectations below read the same either
+  // way; the test right after pins the difference explicitly.
   it('apre solo gli annunci senza azienda nel listing e ne legge il nome', async () => {
     vi.mocked(fetchHtml).mockResolvedValue(
       row('6740371', 'pulizie', null) + row('6742220', 'ebeniste', '/it/careers/3244683-adecco/profile')
@@ -99,6 +103,17 @@ describe('collectOrphanEmployerNames', () => {
     expect(res.names).toEqual(['dinamic hub']);
     expect(res.detailsRequested).toBe(2);
     expect(res.detailsFailed).toBe(1);
+  });
+
+  // The snapshot must keep the legal form: "finders sa" and "finders sagl" are different
+  // employers, and the consumer can only refuse the crossover if the form survives here.
+  it('conserva la forma giuridica nel nome raccolto', async () => {
+    vi.mocked(fetchHtml).mockResolvedValue(row('6740371', 'pulizie', null));
+    vi.mocked(fetchJobDetail).mockResolvedValue({ company: { name: 'Finders SA' } });
+
+    const res = await collectOrphanEmployerNames({ pages: 1, concurrency: 1 });
+
+    expect(res.names).toEqual(['finders sa']);
   });
 
   it('rispetta il tetto di dettagli aperti e lo segnala', async () => {

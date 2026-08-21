@@ -23,7 +23,7 @@
 // complete one, and this project has already shipped a degraded roster once for exactly
 // that reason (10.08.2026). Deciding what is acceptable is the caller's job, not this
 // module's; here we only report what happened.
-import { fetchHtml, fetchJobDetail, parseJobsFromHtml, normalizeCompanyName, RESERVED_COMPANY } from './_arca24.js';
+import { fetchHtml, fetchJobDetail, parseJobsFromHtml, normalizeCompanyNameRaw, RESERVED_COMPANY } from './_arca24.js';
 
 const LANG = 'it';
 
@@ -61,7 +61,8 @@ export const DEFAULT_MAX_DETAILS = 150;
  *
  * @returns {Promise<{names: string[], pagesRequested: number, pagesFailed: number,
  *   detailsRequested: number, detailsFailed: number, truncated: boolean}>}
- *   `names` is de-duplicated and normalized via `normalizeCompanyName`. The counters
+ *   `names` is de-duplicated and normalized via `normalizeCompanyNameRaw`, i.e. it KEEPS
+ *   the legal form ("finders sa", not "finders"). The counters
  *   describe how complete the scan was; `truncated` is true when the `maxDetails` cap
  *   actually bit, i.e. anonymous ads were found and left unopened.
  */
@@ -146,7 +147,10 @@ export async function collectOrphanEmployerNames({
     const details = await Promise.all(batch.map((id) => fetchJobDetail(id).catch(() => null)));
     for (const detail of details) {
       if (!detail) { detailsFailed++; continue; }
-      const name = normalizeCompanyName(detail?.company?.name);
+      // Raw on purpose: the legal form has to survive into the snapshot, or the consumer
+      // cannot tell "Finders SA" (an employer absent from the roster) from "Finders Sagl"
+      // (a different entity that is on it and is not hiring). See `withHasJobs`.
+      const name = normalizeCompanyNameRaw(detail?.company?.name);
       if (name) names.add(name);
     }
   }
