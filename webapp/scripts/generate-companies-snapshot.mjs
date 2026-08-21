@@ -19,6 +19,17 @@
 //
 // Any failure leaves the committed file alone: a stale roster is worth something, an empty
 // one is worth nothing.
+// ORDER DEPENDENCY, do not reorder in package.json: this must run AFTER
+// generate-orphan-employers-snapshot.mjs. `fetchCompanies` reads
+// api/_orphan-employers-snapshot.js to know which employers publish ads that are not
+// linked to their profile, and that file is only refreshed by the orphan generator.
+//
+// Vercel rewrites the snapshot inside the build sandbox and never commits it back, so the
+// copy in git never ages forward. Run this first and, from the eighth day after the last
+// human-committed build, it reads an EXPIRED snapshot: the roster it writes — and the
+// static hub page prerendered from it — silently lose the orphan employers, while the
+// runtime lambda, which by then has the freshly regenerated file, still shows them. The
+// two disagree and nothing fails.
 import { writeFileSync } from 'node:fs';
 import { fetchCompanies } from '../api/_arca24.js';
 

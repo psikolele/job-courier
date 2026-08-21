@@ -851,8 +851,14 @@ export async function withHasJobs(companies, known = new Set(), knownNames = new
   // cannot tell which. Refusing the match is right; letting the probe's `false` stand
   // afterwards is not, because the probe is structurally blind to orphan ads — that
   // blindness is the entire reason the snapshot exists. So these resolve to `null`
-  // ("unknown"), which the showcase already handles, instead of asserting "not hiring"
-  // about a company we have reason to think might be.
+  // ("unknown") instead of asserting "not hiring" about a company we have reason to think
+  // might be.
+  //
+  // No visible difference today: both api/companies.js and src/components/Vetrini.jsx
+  // filter on `has_jobs === true`, so `null` and `false` render identically. The point is
+  // the data model, not the pixels — the next consumer that wants to tell "we checked and
+  // no" from "we could not check" will find the distinction already recorded rather than
+  // having to reconstruct it.
   //
   // ONLY key collisions land here. A legal-form refusal (the Finders crossover) does not:
   // there we have a positive reason to believe the ad belongs to a different entity, so

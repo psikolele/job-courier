@@ -1,6 +1,11 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
-vi.mock('./_arca24.js', () => ({
+// `slugify` comes through from the real module rather than being reimplemented here: a
+// hand-rolled copy can drift from the real one, and the test would keep passing while
+// production built a different slug — which is the very defect the enrichment test exists
+// to catch. Only the network-facing functions are stubbed.
+vi.mock('./_arca24.js', async (importOriginal) => ({
+  ...(await importOriginal()),
   isArca24Enabled: vi.fn(),
   fetchJobs: vi.fn(),
   fetchCompanies: vi.fn(),
@@ -8,11 +13,6 @@ vi.mock('./_arca24.js', () => ({
   fetchJobDetail: vi.fn(),
   fetchJobsForQuery: vi.fn(),
   fetchFacetIndex: vi.fn(),
-  slugify: (value) => String(value ?? '')
-    .toLowerCase()
-    .normalize('NFD').replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, ''),
 }));
 vi.mock('./companies.js', () => ({
   fetchCompanyListHtml: vi.fn(),
