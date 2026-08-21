@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import { assessScan, countRemoved, MAX_FAILED_RATIO } from './_assess-orphan-scan.mjs';
+import { assessScan, MAX_FAILED_RATIO } from './_assess-orphan-scan.mjs';
 import { DEFAULT_PAGES } from '../api/_orphan-employers.js';
 
 /** Una corsa sana: budget pagine consumato per intero, nessuna perdita, sei datori. */
