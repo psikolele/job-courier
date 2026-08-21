@@ -8,7 +8,18 @@
 // convention for non-endpoint modules in api/.
 import { DEFAULT_PAGES } from '../api/_orphan-employers.js';
 
-const MAX_FAILED_RATIO = 0.2;
+export const MAX_FAILED_RATIO = 0.2;
+
+/**
+ * How many of the committed employers the new scan no longer names.
+ *
+ * Exported because the generator logs the same figure in its delta line: one definition,
+ * so the number that rejects a run and the number printed in the log cannot drift apart.
+ */
+export function countRemoved(committedNames = [], names = []) {
+  const found = new Set(names);
+  return committedNames.filter((n) => !found.has(n)).length;
+}
 
 /**
  * @param {{names: string[], pagesRequested: number, pagesFailed: number,
@@ -77,9 +88,22 @@ export function assessScan(scan, committedNames = []) {
   // stays advertised as hiring forever and the file's error only grows toward false
   // positives. Losing a name is cheap — that employer falls back to the probe, exactly as
   // today. Inventing one is not.
+  // Measured in membership, not in length: a lossy run that drops `dinamic hub` while
+  // picking up some other employer keeps the count identical and would otherwise sail
+  // through, overwriting the file with a name swapped out.
+  //
+  // Coupling worth knowing about before touching DEFAULT_PAGES: api/_orphan-employers.js
+  // records that a listing page past the end of the catalogue answers 404, so `fetchHtml`
+  // rejects and `pagesFailed` climbs even against a healthy portal. Today the catalogue is
+  // ~534 pages against a budget of 120, so that cannot happen. Raise the budget past the
+  // real depth of the catalogue — which is exactly what the `pagesRequested < DEFAULT_PAGES`
+  // guard above invites when the catalogue shrinks — and `pagesFailed > 0` becomes
+  // permanently true, every removal is rejected forever, and the file quietly freezes with
+  // only a `[SNAPSHOT-REJECTED]` line per build to show for it.
   const baseline = committedNames?.length ?? 0;
-  if (baseline > 0 && names.length < baseline && (pagesFailed > 0 || detailsFailed > 0)) {
-    return `${names.length} datori contro i ${baseline} committati, con perdite (${pagesFailed} pagine, ${detailsFailed} dettagli): calo non distinguibile dalle perdite`;
+  const removed = countRemoved(committedNames, names);
+  if (baseline > 0 && removed > 0 && (pagesFailed > 0 || detailsFailed > 0)) {
+    return `${removed} datori spariti rispetto ai ${baseline} committati, con perdite (${pagesFailed} pagine, ${detailsFailed} dettagli): calo non distinguibile dalle perdite`;
   }
 
   return null;

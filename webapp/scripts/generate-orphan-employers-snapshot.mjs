@@ -13,7 +13,7 @@
 import { writeFileSync } from 'node:fs';
 import { collectOrphanEmployerNames } from '../api/_orphan-employers.js';
 import { names as committedNames } from '../api/_orphan-employers-snapshot.js';
-import { assessScan } from './_assess-orphan-scan.mjs';
+import { assessScan, countRemoved } from './_assess-orphan-scan.mjs';
 
 const OUT = new URL('../api/_orphan-employers-snapshot.js', import.meta.url);
 
@@ -64,7 +64,7 @@ export const names = ${JSON.stringify(names, null, 2)};
   // or the counters printed on a future rejection have nothing to be compared against.
   const previous = new Set(committedNames);
   const added = names.filter((n) => !previous.has(n)).length;
-  const removed = committedNames.filter((n) => !names.includes(n)).length;
+  const removed = countRemoved(committedNames, names);
   console.log(`orphan employers snapshot: ${names.length} datori (+${added} / -${removed})`);
   console.log(`  contatori: ${counters(scan)}`);
 } catch (error) {
@@ -77,6 +77,17 @@ export const names = ${JSON.stringify(names, null, 2)};
   console.warn(`[SNAPSHOT-REJECTED] orphan employers snapshot: non aggiornato (${error.message}) — resta quello committato.`);
   if (scan) console.warn(`  contatori: ${counters(scan)}`);
 }
+
+// `withTimeout` is a race: when the budget wins, the scan keeps running, and its pending
+// sockets keep the event loop alive. Without this the build would still wait out the full
+// ~6.5 minute worst case, having printed the rejection at minute four and then gone silent
+// — which reads as a hung build rather than a handled one, and is worse to diagnose than
+// no budget at all. The exit is what makes BUDGET_MS an actual ceiling.
+//
+// Through the write callback rather than bare `process.exit(0)`: stdout to a pipe is async
+// on Windows, and exiting straight after a `console.log` can truncate it — losing exactly
+// the diagnostic lines above.
+process.stdout.write('', () => process.exit(0));
 
 /** The counters without the names array, which is noise near the detail cap. */
 function counters({ names, pagesRequested, pagesFailed, detailsRequested, detailsFailed, truncated }) {

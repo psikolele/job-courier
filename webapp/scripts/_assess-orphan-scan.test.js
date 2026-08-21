@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import { assessScan } from './_assess-orphan-scan.mjs';
+import { assessScan, countRemoved, MAX_FAILED_RATIO } from './_assess-orphan-scan.mjs';
 import { DEFAULT_PAGES } from '../api/_orphan-employers.js';
 
 /** Una corsa sana: budget pagine consumato per intero, nessuna perdita, sei datori. */
@@ -38,8 +38,8 @@ describe('assessScan', () => {
   // atteso in una corsa che ha perso qualcosa senza essere degradata, e bocciarlo
   // congelerebbe il file per un guasto che non c'è.
   it('lascia passare un rapporto esattamente alla soglia', () => {
-    expect(assessScan(healthy({ pagesFailed: DEFAULT_PAGES * 0.2 }), [])).toBeNull();
-    expect(assessScan(healthy({ detailsRequested: 10, detailsFailed: 2 }), [])).toBeNull();
+    expect(assessScan(healthy({ pagesFailed: DEFAULT_PAGES * MAX_FAILED_RATIO }), [])).toBeNull();
+    expect(assessScan(healthy({ detailsRequested: 10, detailsFailed: 10 * MAX_FAILED_RATIO }), [])).toBeNull();
   });
 
   // `0/0` è `NaN`, e ogni confronto con `NaN` è falso: senza la guardia sul budget pagine
@@ -92,6 +92,13 @@ describe('assessScan', () => {
         detailsFailed: 1,
       });
       expect(assessScan(scan, committed)).toBeNull();
+    });
+
+    // Il caso che una misura sulla sola lunghezza non vede: un datore esce, un altro entra,
+    // il conto torna. Su una corsa con perdite l'uscita è indistinguibile da una perdita.
+    it('rifiuta un ricambio a somma zero su una corsa con perdite', () => {
+      const scan = healthy({ names: ['alpha', 'beta', 'gamma', 'nuovo'], pagesFailed: 1 });
+      expect(assessScan(scan, committed)).toMatch(/1 datori spariti/);
     });
 
     it('non ha nulla da confrontare alla prima esecuzione', () => {
