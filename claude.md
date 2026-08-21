@@ -305,6 +305,8 @@ Ref: `00_Wiki/concepts/token-optimization.md` § Temporary File Policy
 
 **Ultimo handoff:** [docs/handoff-2026-08-03.md](docs/handoff-2026-08-03.md)
 
+**🏢 VETRINA AZIENDE — DATORI CON ANNUNCI SCOLLEGATI:** se la vetrina mostra *meno* aziende del previsto, o `/aziende-che-assumono` non concorda con `/api/companies?withJobs=1`, cercare `[SNAPSHOT-EXPIRED]` e `[SNAPSHOT-REJECTED]` nei log e leggere la sezione "Datori con annunci scollegati" in `00_Wiki/job-courier/arca24-company-index.md`. Tre trappole: il file `api/_orphan-employers-snapshot.js` committato **non** è quello che legge la produzione; nella `build` il generatore orfani deve girare **prima** di quello del roster; lo snapshot scade a 7 giorni e da lì la pagina statica perde quei datori senza che nulla fallisca.
+
 **🏢 VETRINA AZIENDE:** prima di diagnosticare la vetrina in home o `/aziende-che-assumono` (pochi loghi, un logo solo, aziende "sparite"), leggere `00_Wiki/job-courier/arca24-company-index.md` — la paginazione dell'indice è client-side (la prima risposta contiene già tutte le aziende, `?page=2` risponde 410 a ragione), i formati di link azienda vivi sono tre, e il selettore CSS va tenuto accanto al parser perché il disallineamento svuota il roster senza errori.
 
 **📡 FEED OFFERTE:** prima di diagnosticare offerte mancanti, poche card in vetrina o una pagina offerta vuota, leggere `00_Wiki/job-courier/jobroom-feed-resilience.md` — forme note del guasto Arca24 e invarianti da rispettare (varietà ≠ volume, id = prefisso numerico, mai `find(...) || list[0]`).
