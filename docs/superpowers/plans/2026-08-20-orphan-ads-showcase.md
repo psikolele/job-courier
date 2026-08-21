@@ -22,6 +22,8 @@ Vincolo misurato, da non riaprire: la ricerca upstream **non** indicizza quel no
 
 Costo del listing: `/it/careers/latest_jobs?page=N` risponde 200 con 15 annunci per pagina, 8006 annunci totali al 20/08. Scandagliare tutto sarebbe 534 richieste. Il piano ne scandaglia 120 (i 1800 annunci più recenti), che coprono il caso d'uso reale — un'azienda nuova che ha appena pubblicato — e restano dentro il tempo di una build.
 
+Misurato il 20/08/2026, e va tenuto a mente leggendo i contatori: **una pagina oltre la fine del catalogo risponde `404` con un corpo di ~126 KB**, non vuota e non `410` come fa l'indice aziende. `fetchHtml` solleva sui 404 se non gli si passa `acceptNotFound`, quindi su questo portale la fine del catalogo si presenta come una *fetch fallita*. Due conseguenze: lo stop "a secco" non scatta mai e a fermare una scansione troppo lunga è l'interruttore sui batch falliti; e oltre la fine del catalogo `pagesFailed` sale anche con un portale perfettamente sano. Un `pagesFailed` alto non è di per sé prova che il portale sia giù — oggi non morde perché il catalogo è quattro volte più profondo del budget.
+
 ## File Structure
 
 | File | Responsabilità |
@@ -319,6 +321,13 @@ git commit -m "feat(arca24): collect employers whose ads are not linked to their
 
 ### Task 3: Snapshot generato a build-time
 
+> **Contratto aggiornato dopo la review del Task 2.** `collectOrphanEmployerNames` non
+> restituisce più un array ma `{ names, pagesRequested, pagesFailed, detailsRequested,
+> detailsFailed, truncated }`. Il modulo riporta cosa è successo, la policy su cosa sia
+> accettabile sta qui nel generatore. Motivo: i fallimenti vengono inghiottiti per non
+> fermare la scansione, quindi senza contatori una corsa degradata è indistinguibile da
+> una pulita — ed è lo stesso guasto del 10/08/2026, ma stavolta scritto su file.
+
 **Files:**
 - Create: `webapp/scripts/generate-orphan-employers-snapshot.mjs`
 - Create: `webapp/api/_orphan-employers-snapshot.js`
@@ -350,12 +359,23 @@ Crea `webapp/scripts/generate-orphan-employers-snapshot.mjs`:
 // Qualunque errore lascia in pace il file committato: un elenco vecchio di un giorno vale
 // qualcosa, uno vuoto toglie dalla vetrina aziende che ci stavano legittimamente.
 import { writeFileSync } from 'node:fs';
-import { collectOrphanEmployerNames } from '../api/_orphan-employers.js';
+import { collectOrphanEmployerNames, DEFAULT_PAGES } from '../api/_orphan-employers.js';
 
 const OUT = new URL('../api/_orphan-employers-snapshot.js', import.meta.url);
 
+// Soglia di degrado. `collectOrphanEmployerNames` inghiotte i fallimenti per non fermare
+// la scansione, quindi senza guardare i contatori una corsa in cui 118 pagine su 120 sono
+// andate in timeout produce una lista corta identica a una completa — e qui non finisce in
+// una cache che scade fra cinque minuti, finisce committata. Oltre questa quota il file
+// committato resta dov'è.
+const MAX_FAILED_RATIO = 0.2;
+
+// Dichiarato fuori dal try perché il ramo di errore deve poter stampare i contatori.
+let scan = null;
+
 try {
-  const names = await collectOrphanEmployerNames();
+  scan = await collectOrphanEmployerNames();
+  const { names, pagesRequested, pagesFailed, detailsRequested, detailsFailed, truncated } = scan;
 
   // Zero non si distingue da "scansione fallita in silenzio", e sovrascrivere con zero
   // significherebbe perdere i datori già noti. Chi ha davvero smesso di pubblicare esce
@@ -363,6 +383,30 @@ try {
   // roster viene ricalcolato a ogni richiesta.
   if (names.length === 0) {
     throw new Error('nessun datore con annunci scollegati: sospetto scansione fallita');
+  }
+  // La scansione si è fermata prima di consumare il budget di pagine. Oggi è impossibile
+  // che significhi "finito il catalogo": 8006 annunci a 15 per pagina sono ~534 pagine
+  // contro un budget di 120. Significa che il listing ha smesso di rispondere, e copre in
+  // un colpo sia la prima pagina vuota sia il caso `pages: 0` (dove il rapporto sarebbe
+  // `0/0`, cioè `NaN`, che non supera nessuna soglia e passerebbe indisturbato).
+  //
+  // Nessun numero magico: se un domani il catalogo scendesse davvero sotto le 120 pagine
+  // questo scatta rumorosamente e qualcuno abbassa DEFAULT_PAGES con cognizione, che è il
+  // modo giusto di scoprirlo.
+  if (pagesRequested < DEFAULT_PAGES) {
+    throw new Error(`scansione ferma a ${pagesRequested} pagine su ${DEFAULT_PAGES}: il listing non sta rispondendo`);
+  }
+  if (pagesRequested > 0 && pagesFailed / pagesRequested > MAX_FAILED_RATIO) {
+    throw new Error(`${pagesFailed} pagine fallite su ${pagesRequested}: scansione degradata`);
+  }
+  // I dettagli falliti si perdono uno per uno, ed è dove spariscono i nomi: una corsa in
+  // cui metà dei dettagli fallisce riporta `pagesFailed: 0`, un rapporto sano e metà dei
+  // datori. Senza questo controllo non la vede nessuno.
+  if (detailsRequested > 0 && detailsFailed / detailsRequested > MAX_FAILED_RATIO) {
+    throw new Error(`${detailsFailed} dettagli falliti su ${detailsRequested}: scansione degradata`);
+  }
+  if (truncated) {
+    throw new Error('scansione troncata dal tetto sui dettagli: risultato parziale');
   }
 
   const body = `// Generated by scripts/generate-orphan-employers-snapshot.mjs — do not edit by hand.
@@ -376,7 +420,11 @@ export const names = ${JSON.stringify(names, null, 2)};
   writeFileSync(OUT, body);
   console.log(`orphan employers snapshot: ${names.length} datori`);
 } catch (error) {
+  // I contatori, non solo il messaggio: il file che non è stato aggiornato è invisibile in
+  // un log di build, e i numeri che hanno causato lo scarto sono esattamente ciò che
+  // servirà a chi guarda fra sei settimane.
   console.warn(`orphan employers snapshot: non aggiornato (${error.message}) — resta quello committato.`);
+  if (scan) console.warn(`  contatori: ${JSON.stringify(scan)}`);
 }
 ```
 
@@ -466,15 +514,46 @@ In `webapp/api/_arca24.js`, sostituire la firma e il preambolo di `withHasJobs` 
  * two sides share — see api/_orphan-employers.js for how the list is built.
  */
 export async function withHasJobs(companies, known = new Set(), knownNames = new Set()) {
+  // `normalizeCompanyName` discards the legal form, so "Immobiliare Ticino SA" and
+  // "Immobiliare Ticino Sagl" share a key — and in Ticino those are frequently two
+  // distinct entities of the same group. An orphan ad carries no company id, so there is
+  // no second signal to disambiguate with: when a key belongs to more than one employer
+  // on the roster, matching it would put a coin flip in the public showcase. Those keys
+  // are dropped, and the employers fall through to the probe exactly as before.
+  const byKey = new Map();
+  for (const c of companies) {
+    const key = normalizeCompanyName(c.name);
+    if (!key) continue;
+    byKey.set(key, byKey.has(key) ? null : c.id);
+  }
+  const unambiguous = (c) => {
+    const key = normalizeCompanyName(c.name);
+    return Boolean(key) && knownNames.has(key) && byKey.get(key) === c.id;
+  };
+
   const out = [];
   const toProbe = [];
   for (const c of companies) {
-    if (known.has(c.id) || knownNames.has(normalizeCompanyName(c.name))) {
+    if (known.has(c.id) || unambiguous(c)) {
       out.push({ ...c, has_jobs: true });
     } else {
       toProbe.push(c);
     }
   }
+```
+
+Test aggiuntivo da includere nel Task 4, perché è il caso che mette l'azienda sbagliata in vetrina:
+
+```js
+  it('non marca hiring due aziende che condividono la stessa chiave', async () => {
+    const out = await withHasJobs(
+      [{ id: '1', name: 'Immobiliare Ticino SA' }, { id: '2', name: 'Immobiliare Ticino Sagl' }],
+      new Set(),
+      new Set(['immobiliare ticino'])
+    );
+
+    expect(out.every((c) => c.has_jobs !== true)).toBe(true);
+  });
 ```
 
 Il resto del corpo della funzione resta invariato.
@@ -496,8 +575,24 @@ con:
 e aggiungere l'import in cima al file, accanto agli altri:
 
 ```js
-import { names as orphanEmployerNames } from './_orphan-employers-snapshot.js';
+import { names as orphanNames, generatedAt as orphanGeneratedAt } from './_orphan-employers-snapshot.js';
 ```
+
+**Lo snapshot va scartato quando invecchia, e qui serve più che altrove.** `_companies-snapshot.js` ha già `SNAPSHOT_MAX_AGE_MS` a 7 giorni, ma l'asimmetria è nella direzione sbagliata: quello, se stantio, produce **omissioni** (mostro meno aziende del vero); questo, se stantio, produce **falsi positivi**, perché marca "assume" un datore scavalcando la sonda `company/jobs` che direbbe correttamente di no. Uno snapshot che *contraddice* una lettura viva ha bisogno del controllo di età più di uno che semplicemente la anticipa.
+
+Aggrava il caso il fatto che il generatore inghiotte ogni errore per non far fallire la build: un `TypeError` introdotto da un refactor esce come "non aggiornato", build verde, e il file resta congelato per mesi senza che nessuno guardi `generatedAt`.
+
+```js
+// Stessa soglia del roster (api/companies.js), per la ragione opposta: là un file vecchio
+// mostra meno aziende del vero, qui ne marca come attive di più, scavalcando la sonda.
+// Oltre la settimana il file non risponde più a nessuno e ogni azienda torna alla sonda.
+const ORPHAN_SNAPSHOT_MAX_AGE_MS = 7 * 24 * 60 * 60_000;
+
+const freshOrphanNames = () =>
+  Date.now() - Date.parse(orphanGeneratedAt) < ORPHAN_SNAPSHOT_MAX_AGE_MS ? orphanNames : [];
+```
+
+e usare `new Set(freshOrphanNames())` nella chiamata a `withHasJobs`. Il test corrispondente: uno snapshot datato otto giorni fa non marca hiring nessuno.
 
 - [ ] **Step 4: Run test to verify it passes**
 
