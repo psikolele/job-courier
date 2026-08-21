@@ -815,9 +815,12 @@ export async function withHasJobs(companies, known = new Set(), knownNames = new
   // refused. Where one side merely omits the form ("s & m beauty" from an ad vs
   // "s & m beauty sa" on the roster) the match still works — that is the case the feature
   // was built for.
+  // Key per company, computed once: it is needed again by `unambiguous` and by the
+  // ambiguity sweep below, and it must be the same string in all three.
+  const keyOf = new Map(companies.map((c) => [c, normalizeCompanyName(c.name)]));
   const byKey = new Map();
   for (const c of companies) {
-    const key = normalizeCompanyName(c.name);
+    const key = keyOf.get(c);
     if (!key) continue;
     byKey.set(key, byKey.has(key) ? null : c.id);
   }
@@ -831,20 +834,17 @@ export async function withHasJobs(companies, known = new Set(), knownNames = new
     rawNamesByKey.get(key).push(raw);
   }
 
-  // Incompatible only when BOTH sides carry a legal form and the two forms differ.
-  const compatible = (a, b) => {
-    const fa = legalFormOf(a);
-    const fb = legalFormOf(b);
-    return !fa || !fb || fa === fb;
-  };
-
   const unambiguous = (c) => {
-    const key = normalizeCompanyName(c.name);
+    const key = keyOf.get(c);
     if (!key || byKey.get(key) !== c.id) return false;
     const candidates = rawNamesByKey.get(key);
     if (!candidates) return false;
-    const raw = normalizeCompanyNameRaw(c.name);
-    return candidates.some((n) => compatible(n, raw));
+    // Incompatible only when BOTH sides carry a legal form and the two forms differ.
+    const form = legalFormOf(normalizeCompanyNameRaw(c.name));
+    return candidates.some((n) => {
+      const other = legalFormOf(n);
+      return !form || !other || form === other;
+    });
   };
 
   // A shared key with an orphan ad behind it means one of these employers is hiring and we
@@ -866,7 +866,7 @@ export async function withHasJobs(companies, known = new Set(), knownNames = new
   const ambiguousUnknown = new Set(
     companies
       .filter((c) => {
-        const key = normalizeCompanyName(c.name);
+        const key = keyOf.get(c);
         return Boolean(key) && byKey.get(key) === null && rawNamesByKey.has(key);
       })
       .map((c) => c.id)
