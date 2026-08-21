@@ -10,6 +10,7 @@ import {
   fetchJobDetail as fetchArca24JobDetail,
   fetchJobsForQuery as fetchArca24Query,
   fetchFacetIndex as fetchArca24FacetIndex,
+  slugify,
 } from './_arca24.js';
 
 const fetchHeaders = {
@@ -73,7 +74,14 @@ export async function enrichReservedCompanies(jobs) {
     if (!realName || realName === 'Azienda Riservata') return job;
     return {
       ...job,
-      company: { ...job.company, name: realName, logo: detail.company.logo || job.company.logo },
+      company: {
+        ...job.company,
+        name: realName,
+        logo: detail.company.logo || job.company.logo,
+        domain: realName.toLowerCase().replace(/[^a-z0-9]/g, '') + '.ch',
+        slug: detail.company.slug || slugify(realName),
+        arca24_id: detail.company.arca24_id ?? job.company.arca24_id,
+      },
     };
   });
 }

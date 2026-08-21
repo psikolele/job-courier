@@ -8,6 +8,11 @@ vi.mock('./_arca24.js', () => ({
   fetchJobDetail: vi.fn(),
   fetchJobsForQuery: vi.fn(),
   fetchFacetIndex: vi.fn(),
+  slugify: (value) => String(value ?? '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, ''),
 }));
 vi.mock('./companies.js', () => ({
   fetchCompanyListHtml: vi.fn(),
@@ -44,6 +49,20 @@ describe('enrichReservedCompanies', () => {
     return enrichReservedCompanies([reservedJob('6738804')]).then((out) => {
       expect(out[0].company.name).toBe('Team Personnel Solutions SA');
     });
+  });
+
+  it('rebuilds slug and domain from the recovered name, not the placeholder\'s', async () => {
+    // Reproduces ad 6740371 live 20/08/2026: only the name was recovered, so the link
+    // built from it pointed at "azienda-riservata" — a slug that does not exist.
+    vi.mocked(fetchJobDetail).mockResolvedValue({
+      company: { name: 'Dinamic Hub', logo: '', slug: '', arca24_id: null },
+    });
+
+    const out = await enrichReservedCompanies([reservedJob('6740371')]);
+
+    expect(out[0].company.name).toBe('Dinamic Hub');
+    expect(out[0].company.slug).toBe('dinamic-hub');
+    expect(out[0].company.domain).toBe('dinamichub.ch');
   });
 
   it('leaves jobs that already carry a real company name untouched, without calling the detail page', async () => {
