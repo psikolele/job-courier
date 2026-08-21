@@ -10,8 +10,9 @@ import {
   parseCompaniesFromHtml, parseCompanyDetailFromHtml, companyLogo,
   isArca24Enabled, resetSourceProbe,
   fetchCompanies, resetHasJobsCache, resetFeedRosterCache,
-  withKnownEmployer, RESERVED_COMPANY, normalizeCompanyName,
+  withKnownEmployer, RESERVED_COMPANY, normalizeCompanyName, withHasJobs,
 } from './_arca24.js';
+import { generatedAt as orphanGeneratedAt } from './_orphan-employers-snapshot.js';
 
 // Trimmed copies of the real markup, kept small on purpose: these guard the selectors
 // that must survive the hostname swap at release.
@@ -375,6 +376,9 @@ describe('has_jobs: si legge il corpo della pagina, non lo status', () => {
     return (await fetchCompanies({ withJobStatus: true })).find((c) => c.id === id)?.has_jobs;
   };
 
+  // 4 U Consulting e non Gi Group: quest ultima è nello snapshot dei datori orfani, viene
+  // marcata per nome e non passa più dalla sonda — che è proprio ciò che qui si vuole
+  // esercitare.
   it('404 con annunci nel corpo conta come "sta assumendo"', async () => {
     // PKB Private Bank risponde 404 su una pagina che elenca due annunci reali: lo status
     // parla del record profilo, non del suo contenuto. Con la vecchia HEAD spariva.
@@ -384,15 +388,15 @@ describe('has_jobs: si legge il corpo della pagina, non lo status', () => {
       return { ok: false, status: 404, text: async () => PROFILE_WITH_ADS };
     });
     const list = await fetchCompanies({ withJobStatus: true });
-    expect(list.find((c) => c.id === '3244630').has_jobs).toBe(true);
+    expect(list.find((c) => c.id === '3243389').has_jobs).toBe(true);
   });
 
   it('200 senza .resultstring conta come "nessuna offerta"', async () => {
-    expect(await flagFor('3244630', { 3244630: PROFILE_WITHOUT_ADS })).toBe(false);
+    expect(await flagFor('3243389', { 3243389: PROFILE_WITHOUT_ADS })).toBe(false);
   });
 
   it('errore di rete resta null — sconosciuto, non "nessuna offerta"', async () => {
-    expect(await flagFor('3244630', { 3244630: 'boom' })).toBe(null);
+    expect(await flagFor('3243389', { 3243389: 'boom' })).toBe(null);
   });
 
   it('non risonda lo stesso profilo entro il TTL', async () => {
@@ -467,5 +471,71 @@ describe('normalizeCompanyName', () => {
   it('tiene distinti due datori diversi', () => {
     expect(normalizeCompanyName('Rossi SA')).not.toBe(normalizeCompanyName('Rossi Bianchi SA'));
     expect(normalizeCompanyName('Dinamic Hub')).not.toBe(normalizeCompanyName('Dinamic Hub Ticino'));
+  });
+});
+
+describe('withHasJobs con nomi noti', () => {
+  // Nessuno di questi test deve toccare la rete: il fetch di node-fetch è già mockato in
+  // cima al file e qui risponde sempre 404 a corpo vuoto, così chi non viene marcato per
+  // nome cade sulla sonda e ne esce con un verdetto deterministico invece che casuale.
+  beforeEach(() => {
+    resetHasJobsCache();
+    vi.mocked(fetch).mockReset();
+    vi.mocked(fetch).mockImplementation(async () => ({ ok: false, status: 404, text: async () => '' }));
+  });
+
+  it('marca hiring chi è nei nomi noti, senza sondarlo', async () => {
+    const companies = [
+      { id: '3244828', name: 'Dinamic Hub' },
+      { id: '9999999', name: 'Nessun Annuncio' },
+    ];
+
+    const out = await withHasJobs(companies, new Set(), new Set(['dinamic hub']));
+
+    expect(out.find((c) => c.id === '3244828').has_jobs).toBe(true);
+    expect(vi.mocked(fetch).mock.calls.some((c) => String(c[0]).includes('uiid=3244828'))).toBe(false);
+  });
+
+  it('confronta sulla forma normalizzata, non sulla stringa grezza', async () => {
+    const out = await withHasJobs(
+      [{ id: '1', name: 'Work &amp;amp; Work SA' }],
+      new Set(),
+      new Set(['work & work'])
+    );
+
+    expect(out[0].has_jobs).toBe(true);
+  });
+
+  it('non marca hiring due aziende che condividono la stessa chiave', async () => {
+    const out = await withHasJobs(
+      [{ id: '1', name: 'Immobiliare Ticino SA' }, { id: '2', name: 'Immobiliare Ticino Sagl' }],
+      new Set(),
+      new Set(['immobiliare ticino'])
+    );
+
+    expect(out.every((c) => c.has_jobs !== true)).toBe(true);
+  });
+});
+
+describe('snapshot orfani scaduto', () => {
+  beforeEach(() => { vi.mocked(fetch).mockReset(); resetHasJobsCache(); resetFeedRosterCache(); });
+  afterEach(() => { vi.useRealTimers(); });
+
+  // Gi Group è nello snapshot degli orfani e nell indice mockato, e il suo profilo qui
+  // non ha annunci: se lo snapshot vale, risulta hiring; scaduto, torna alla sonda.
+  it('finché è fresco marca hiring il datore orfano', async () => {
+    mockPortal({ profiles: { 3244630: PROFILE_WITHOUT_ADS } });
+    const list = await fetchCompanies({ withJobStatus: true });
+    expect(list.find((c) => c.id === '3244630').has_jobs).toBe(true);
+  });
+
+  it('dopo otto giorni non marca hiring nessuno', async () => {
+    // Solo Date: falsificare anche i timer bloccherebbe i timeout interni dell adapter.
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(Date.parse(orphanGeneratedAt) + 8 * 24 * 60 * 60_000));
+
+    mockPortal({ profiles: { 3244630: PROFILE_WITHOUT_ADS } });
+    const list = await fetchCompanies({ withJobStatus: true });
+    expect(list.find((c) => c.id === '3244630').has_jobs).toBe(false);
   });
 });

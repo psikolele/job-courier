@@ -10,6 +10,7 @@
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import { sanitizeHtml } from './_sanitize.js';
+import { names as orphanNames, generatedAt as orphanGeneratedAt } from './_orphan-employers-snapshot.js';
 
 // Confirmed by Laura on 29.07: production keeps the jobroom.jobcourier.ch hostname and
 // only the path structure changes. viso-jobcourier.arca24.careers is the test environment
@@ -745,16 +746,47 @@ const PROBE_TIMEOUT_MS = 15_000;
 // tiles. Fewer tiles on one cold request beats an error page for it.
 const PROBE_DEADLINE_MS = 80_000;
 
+// Same 7 days as the roster snapshot in api/companies.js, for the opposite reason: a stale
+// roster shows fewer companies than reality, a stale orphan list marks more of them as
+// hiring, bypassing the probe. Past the week it answers for nobody and every company falls
+// back to the probe.
+const ORPHAN_SNAPSHOT_MAX_AGE_MS = 7 * 24 * 60 * 60_000;
+
+const freshOrphanNames = () =>
+  Date.now() - Date.parse(orphanGeneratedAt) < ORPHAN_SNAPSHOT_MAX_AGE_MS ? orphanNames : [];
+
 /**
  * `known` holds ids already proven to be hiring, so they cost no request. Everyone the
  * job feed named is in it by definition: the feed is a list of open positions, so an
  * employer appearing there has at least the ad that put it there.
+ *
+ * `knownNames` holds employers the probe structurally cannot see: they have ads online
+ * that are not attached to their own Arca24 record, so `company/jobs` shows an empty page
+ * and reports them idle. Those ads carry no company id, so the normalized name is the only
+ * identifier the two sides share — hence a name match here and an id match above.
  */
-async function withHasJobs(companies, known = new Set()) {
+export async function withHasJobs(companies, known = new Set(), knownNames = new Set()) {
+  // `normalizeCompanyName` discards the legal form, so "Immobiliare Ticino SA" and
+  // "Immobiliare Ticino Sagl" share a key — and in Ticino those are frequently two
+  // distinct entities of the same group. An orphan ad carries no company id, so there is
+  // no second signal to disambiguate with: when a key belongs to more than one employer
+  // on the roster, matching it would put a coin flip in the public showcase. Those keys
+  // are dropped, and the employers fall through to the probe exactly as before.
+  const byKey = new Map();
+  for (const c of companies) {
+    const key = normalizeCompanyName(c.name);
+    if (!key) continue;
+    byKey.set(key, byKey.has(key) ? null : c.id);
+  }
+  const unambiguous = (c) => {
+    const key = normalizeCompanyName(c.name);
+    return Boolean(key) && knownNames.has(key) && byKey.get(key) === c.id;
+  };
+
   const out = [];
   const toProbe = [];
   for (const c of companies) {
-    if (known.has(c.id)) out.push({ ...c, has_jobs: true });
+    if (known.has(c.id) || unambiguous(c)) out.push({ ...c, has_jobs: true });
     else toProbe.push(c);
   }
 
@@ -822,7 +854,9 @@ export async function fetchCompanies({ withJobStatus = false, verifyLogos = fals
   const companies = [...byId.values()];
   companies.sort((a, b) => a.name.localeCompare(b.name, 'it', { sensitivity: 'base' }));
 
-  const withStatus = withJobStatus ? await withHasJobs(companies, fromFeed) : companies;
+  const withStatus = withJobStatus
+    ? await withHasJobs(companies, fromFeed, new Set(freshOrphanNames()))
+    : companies;
 
   // Opt-in: `api/jobs` reads this roster only to know which company pages to visit and
   // never shows these logos, so the HEAD checks would be pure latency on the path the
