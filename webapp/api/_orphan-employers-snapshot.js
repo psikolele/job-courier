@@ -7,7 +7,7 @@
 // and is not hiring), and matching across the two would advertise the wrong company.
 // Read by api/_arca24.js to mark as hiring the companies the `company/jobs` probe cannot
 // see. See api/_orphan-employers.js.
-export const generatedAt = '2026-08-21T06:40:48.688Z';
+export const generatedAt = '2026-08-21T07:00:38.979Z';
 export const names = [
   "dinamic hub",
   "er services sagl",

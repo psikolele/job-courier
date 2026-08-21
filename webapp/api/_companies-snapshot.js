@@ -3,7 +3,7 @@
 // The roster of employers with at least one open position, as of the last build. Read by
 // api/companies.js as the answer of last resort while a cold instance computes the real
 // one. See that file for why it is allowed to be a little out of date.
-export const generatedAt = '2026-08-18T08:33:12.334Z';
+export const generatedAt = '2026-08-21T07:00:47.597Z';
 export const companies = [
   {
     "id": "3243389",
@@ -30,6 +30,15 @@ export const companies = [
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244464.jpg",
     "jobs_count": 0,
     "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244464-dasteam/profile",
+    "has_jobs": true
+  },
+  {
+    "id": "3244828",
+    "name": "Dinamic Hub",
+    "slug": "dinamic-hub",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244828.jpg",
+    "jobs_count": 0,
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244828-dinamic-hub/profile",
     "has_jobs": true
   },
   {
@@ -102,6 +111,24 @@ export const companies = [
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244679.jpg",
     "jobs_count": 0,
     "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244679-rapelli-orior-food-ag/profile",
+    "has_jobs": true
+  },
+  {
+    "id": "3243352",
+    "name": "Team Personnel Solutions SA",
+    "slug": "team-personnel-solutions-sa",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243352.jpg",
+    "jobs_count": 0,
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3243352",
+    "has_jobs": true
+  },
+  {
+    "id": "3174540",
+    "name": "Work & Work SA",
+    "slug": "work-work-sa",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3174540.jpg",
+    "jobs_count": 0,
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3174540",
     "has_jobs": true
   },
   {
