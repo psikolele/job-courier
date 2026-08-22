@@ -48,6 +48,11 @@
   ],
   "redirects": [
     {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
       "source": "/de/:path*",
       "destination": "/",
       "permanent": true
