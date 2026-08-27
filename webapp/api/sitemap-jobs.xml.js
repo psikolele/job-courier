@@ -37,7 +37,7 @@ const MAX_COMPANY_URLS = 250;
 const MIN_HEALTHY_JOBS = 10;
 
 const ARCA24_BATCH_SIZE = 12;
-const ARCA24_LISTING_PAGES = 5;
+const ARCA24_LISTING_PAGES = 3;
 
 const JOBROOM_HEADERS = {
   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -46,7 +46,7 @@ const JOBROOM_HEADERS = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120',
   'Referer': 'https://jobroom.jobcourier.ch/',
 };
-const JOBROOM_LISTING_PAGES = 20;
+const JOBROOM_LISTING_PAGES = 12;
 
 function escapeXml(value) {
   return String(value).replace(/[<>&'"]/g, (c) => ({
@@ -180,7 +180,7 @@ export default async function handler(req, res) {
       console.warn(`sitemap-jobs: degraded result (${jobIds.length} jobs, ${companySlugs.length} companies) — short TTL.`);
     }
     res.setHeader('Cache-Control', healthy
-      ? 's-maxage=1800, stale-while-revalidate=3600'
+      ? 's-maxage=3600, stale-while-revalidate=7200'
       : 's-maxage=60, stale-while-revalidate=120');
 
     res.status(200).send(buildUrlset(locs));
