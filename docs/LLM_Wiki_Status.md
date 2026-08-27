@@ -1,4 +1,14 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 20 Agosto 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 27 Agosto 2026)
+
+## Vercel: sforamento CPU free-tier, fix + decisione di migrare a account dedicato (27 Agosto 2026) — 🟡 *IN CORSO, migrazione da eseguire*
+
+**Stack operativo:** Claude Sonnet 5, effort basso, caveman mode full · tool: Gmail MCP, Claude in Chrome, Bash/Edit · commit `06c748a` su `main`
+
+Team Vercel `kraken-solutions` (Hobby) ha sforato 300% della quota Fluid Active CPU → account pausato → JC offline. Utente ha già upgradato a Pro (ricevuta #2949-1681, $24.40) prima del mio intervento. Analisi Observability: causa non è bug ma costo intrinseco di `/api/companies` e `/api/sitemap-jobs.xml` (scraping live Arca24 per natura del progetto, no sorgente statica), aggravato dal fatto che il team è condiviso con altri progetti Kraken (noisy neighbor). Mitigato in `sitemap-jobs.xml.js`: meno pagine scandite + cache TTL raddoppiata.
+
+**Decisione:** migrare JC su account Vercel ex-novo, mail dedicata, così l'utente non tiene mai due piani a pagamento sul proprio account e può delegare la fatturazione al cliente in futuro senza una seconda migrazione forzata. Accettato downtime 10-15 min per il cutover DNS. Piano dettagliato passo-passo in [handoff-2026-08-27-vercel-migration.md](handoff-2026-08-27-vercel-migration.md) — **da leggere per intero prima di iniziare la migrazione in una nuova sessione**.
+
+---
 
 ## Azienda "mancante" in vetrina: Dinamic Hub, e non era un guasto (20 Agosto 2026) — ✅ *DIAGNOSI CHIUSA, nessuna modifica al codice*
 
