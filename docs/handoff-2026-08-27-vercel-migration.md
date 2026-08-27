@@ -53,3 +53,32 @@ Opzioni valutate:
 - **Controllare se il progetto usa Storage Vercel** (KV/Postgres/Blob) prima di dare per scontato che l'import cross-account sia solo codice+env vars — lo storage NON segue un import GitHub, va ricreato/ripopolato a parte
 - **Impostare alert di spesa/uso Vercel** sul nuovo account con la mail dell'utente in copia — è la mancanza che ha reso invisibile lo sforamento del 27/08 fino a sito già giù
 - Verificare che tutte le integrazioni esterne (Google Search Console, GA4, AdSense, Arca24 se richiede whitelist IP/referrer) non abbiano hardcoded riferimenti al vecchio `.vercel.app` o project-ID
+
+---
+
+## Prep-check eseguito (27/08, sessione 2) — prima di aprire il nuovo account
+
+Verifiche fatte sul repo, così il giorno del cutover non ci sono sorprese.
+
+**1. Storage Vercel: NON usato.** Zero dipendenze `@vercel/kv|postgres|blob|edge-config`, zero `process.env.KV_*|POSTGRES_*|BLOB_*|EDGE_CONFIG` nel codice. L'import cross-account è quindi davvero solo **codice + env vars**: niente da ricreare/ripopolare a parte. (Il caching è tutto in-memory di funzione + `Cache-Control` edge, e gli snapshot sono file committati nel repo.)
+
+**2. Env vars da ricopiare — sono 5, non di più:**
+
+| Var | Note per il nuovo progetto |
+|---|---|
+| `ARCA24_HOST` | copia identica |
+| `JOBS_SOURCE` | copia identica |
+| `ALLOW_CONTENT_REMOVAL` | copia identica |
+| `CRON_SECRET` | ⚠️ **rigenerare**, non riusare il vecchio valore |
+| `VERCEL_DEPLOY_HOOK_URL` | ⚠️ **non copiabile**: è un URL legato al progetto vecchio. Va creato un deploy hook NUOVO sul progetto nuovo e incollato qui, altrimenti il cron notturno ridispiega il progetto vecchio |
+
+`VERCEL_DEPLOY_HOOK_URL` è la trappola vera: il cron `0 2 * * *` → `/api/rebuild` ([webapp/api/rebuild.js](../webapp/api/rebuild.js)) non fallisce, chiama semplicemente l'hook che trova. Se resta quello vecchio, il progetto nuovo smette silenziosamente di rigenerarsi e quello vecchio continua a farlo anche dopo che l'avremmo dato per spento.
+
+**3. Nessun riferimento hardcoded a rimuovere.** L'unico `*.vercel.app` nel repo è `uicat.vercel.app` in [webapp/src/components/ui/demo.jsx](../webapp/src/components/ui/demo.jsx) — link esterno di un componente demo, non nostro dominio. Nessun `prj_` / `team_` nel codice.
+
+**4. Config da replicare a mano nel nuovo progetto:** tutto ciò che sta in `webapp/vercel.json` (crons, `maxDuration` per funzione, rewrites, redirect) segue il repo e **non** va reimpostato da UI. Da reimpostare da UI invece: **root directory = `webapp`**, le 5 env vars sopra, e il branch di produzione = `main`.
+
+**5. GitHub Actions restano dove sono.** `.github/workflows/{scrape-jobs,keyword-coverage-report}.yml` girano su GitHub, non su Vercel — la migrazione non li tocca. Da controllare solo se contengono secrets che puntano al vecchio progetto.
+
+### Cosa serve dall'utente per procedere (bloccante)
+Passi 1 e 2 del piano sono suoi e non ancora fatti: **creare la casella mail dedicata** e **aprire il nuovo account Vercel** con quella. Dal passo 3 in poi si può procedere in sessione.
