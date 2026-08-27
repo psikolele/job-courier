@@ -82,3 +82,61 @@ Verifiche fatte sul repo, così il giorno del cutover non ci sono sorprese.
 
 ### Cosa serve dall'utente per procedere (bloccante)
 Passi 1 e 2 del piano sono suoi e non ancora fatti: **creare la casella mail dedicata** e **aprire il nuovo account Vercel** con quella. Dal passo 3 in poi si può procedere in sessione.
+
+---
+
+## Esecuzione passi 1-5 (27/08, sessione 2) — progetto nuovo in piedi e verificato
+
+**Stack operativo:** Claude Opus 5, effort basso, caveman mode full · tool: Claude in Chrome (browser reale dell'utente, su autorizzazione esplicita), Bash/PowerShell per le sonde HTTP
+
+### Fatto
+
+| Passo | Esito |
+|---|---|
+| 1-2. Mail + account | `jobcourier24@gmail.com`, username `jobcourier24`, team `jobcourier24-4812`, piano **Hobby** |
+| 3. Import repo | `psikolele/job-courier`, branch `main`, **root directory `webapp`**, preset Vite (auto-rilevato dopo il cambio di root) |
+| 4. Env vars | **nessuna** — vedi sotto, il piano originale era sbagliato |
+| 5. Deploy di verifica | build **verde al primo colpo**, `dpl_81zDCuEotLXCKi7g3tx8tZsDHWGx` |
+| — | 2FA TOTP attivata sull'account; recovery codes rigenerati e conservati nel Keep di quella casella |
+| — | Vercel Authentication disattivata (vedi sotto) |
+| — | Deploy hook `nightly-rebuild` → `main` creato |
+| 6-9. Dominio, cutover, dismissione | **non iniziati**, `jobcourier.ch` ancora sul progetto vecchio |
+
+### Correzione al piano: le env vars da copiare sono zero
+
+Il prep-check diceva "5 env vars, 3 da copiare". Sbagliato in entrambe le direzioni.
+
+Vercel ne ha auto-rilevate 3 (`JC_GOOGLE_EMAIL`, `JC_GOOGLE_PASSWORD`, `COOKIEBOT_ID`) dal `.env.example` nella **root del repo** — le legge anche con root directory `webapp`. **Non sono referenziate da nessuna riga di codice**: quel file è un promemoria di credenziali, non configurazione di build. Rimosse tutte e tre in fase di import; la password di un account del cliente non ha motivo di stare in Vercel.
+
+Le tre "vere" hanno default corretti e non vanno settate:
+
+- `ARCA24_HOST` — default nel codice già `https://jobroom.jobcourier.ch`, cioè l'host vivo (`api/_arca24.js:18`)
+- `JOBS_SOURCE` — **non settata è lo stato normale**: il codice sonda la sorgente da solo. Settarla è il *rollback manuale* (`api/_arca24.js:51`), quindi copiarla ciecamente avrebbe congelato la sorgente
+- `ALLOW_CONTENT_REMOVAL` — la legge solo l'hook git locale `scripts/verify-no-unintended-deletions.mjs`, mai il build Vercel
+
+**Restano da inserire solo `CRON_SECRET` (nuovo, rigenerato) e `VERCEL_DEPLOY_HOOK_URL` (l'hook `nightly-rebuild` appena creato).** Finché mancano, `/api/rebuild` risponde 500 `CRON_SECRET non configurato` — che è il comportamento voluto, non un guasto.
+
+### Trappola trovata: Vercel Authentication attiva di default
+
+Il progetto nuovo nasce con *Require Log In* su **tutti** i deployment, produzione inclusa: ogni rotta rispondeva `302 → vercel.com/sso-api`. Se il dominio fosse stato agganciato prima di accorgersene, i visitatori avrebbero visto un login Vercel al posto del sito. Disattivata. Non ha nulla a che vedere con la 2FA dell'account, che protegge il pannello e resta attiva.
+
+### Verifica: il progetto nuovo serve gli stessi dati della produzione
+
+Confronto fatto sugli **insiemi**, non sui conteggi:
+
+| | nuovo | prod |
+|---|---|---|
+| `/api/companies?withJobs=1` | 33 | 33 — **zero differenze**, stesse aziende |
+| `/api/jobs` | 45 | 45 — **zero differenze**, stessi annunci |
+| rotte `/`, `/offerte`, `/aziende-che-assumono`, `/blog`, `/sitemap.xml`, `/robots.txt` | tutte 200 | — |
+| cron | `/api/rebuild` `0 2 * * *` registrato da `vercel.json` | — |
+
+**Da non confondere per un guasto:** il nuovo risponde `X-Roster-Source: stand-in` dove la prod risponde `live`. Il payload è identico, quindi è solo quale ramo ha servito la risposta. Nota metodologica: la baseline presa a inizio sessione registrava `stand-in` **anche sulla produzione** per tre corse a caldo di fila, e poche ore dopo la stessa prod rispondeva `live` — quell'header oscilla, e prenderlo come criterio di confronto porta a diagnosi inventate. Confrontare i payload.
+
+**Latenza a freddo del nuovo progetto:** prima chiamata a `/api/companies?withJobs=1` **28s**, poi 0.2-0.6s a caldo. È lo scraping Arca24 su istanza fredda — lo stesso costo CPU che ha causato l'incidente del 27/08. Da tenere d'occhio nei 30gg di monitoraggio su Hobby.
+
+### Cose da NON dimenticare (aggiornate)
+
+- **Su Hobby i cron hanno una finestra flessibile di 1 ora**: `/api/rebuild` non partirà alle 02:00 esatte come sul progetto Pro. Se qualcosa a valle dipende dall'orario preciso, va saputo prima del cutover.
+- I due progetti sono ora **entrambi agganciati allo stesso repo**: ogni push su `main` fa partire due build. È voluto (rete di sicurezza), ma va ricordato quando si spegne il vecchio.
+- Alert di spesa/uso sul nuovo account: **ancora da impostare**. È la mancanza che ha reso invisibile lo sforamento del 27/08.
