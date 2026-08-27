@@ -49,13 +49,13 @@ describe('GET /api/companies?withJobs=1', () => {
   });
   afterEach(() => vi.useRealTimers());
 
-  it('serves a sound roster, marked live, cached for the full five minutes', async () => {
+  it('serves a sound roster, marked live, cached for the full thirty minutes', async () => {
     vi.mocked(fetchCompanies).mockResolvedValue(healthy);
     const res = await call();
     expect(res.code).toBe(200);
     expect(res.body).toEqual(healthy);
     expect(res.headers['x-roster-source']).toBe('live');
-    expect(res.headers['cache-control']).toContain('s-maxage=300');
+    expect(res.headers['cache-control']).toContain('s-maxage=1800');
   });
 
   // A cold instance that hits the probe deadline reports everyone `null`, which the

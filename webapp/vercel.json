@@ -15,6 +15,12 @@
     "api/company-detail.js": {
       "maxDuration": 60
     },
+    "api/job-detail.js": {
+      "maxDuration": 60
+    },
+    "api/sitemap-jobs.xml.js": {
+      "maxDuration": 60
+    },
     "api/offerta-ssr.js": {
       "maxDuration": 30
     },

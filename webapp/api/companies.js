@@ -138,7 +138,7 @@ let lastGoodHiring = { list: null, at: 0 };
 // the difference is the whole latency problem: with a ten-minute window, a PoP that saw no
 // traffic for a quarter of an hour made the next visitor wait out a full cold run. Now it
 // answers instantly from what it has and refreshes behind them.
-const GOOD_CACHE_HEADER = 's-maxage=300, stale-while-revalidate=86400';
+const GOOD_CACHE_HEADER = 's-maxage=1800, stale-while-revalidate=86400';
 
 // How long a cold run is allowed to keep the caller waiting before we answer with the
 // stand-in instead. A warm run takes ~2s, so a real answer normally still wins the race.
