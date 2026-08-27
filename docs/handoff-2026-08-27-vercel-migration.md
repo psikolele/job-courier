@@ -140,3 +140,19 @@ Confronto fatto sugli **insiemi**, non sui conteggi:
 - **Su Hobby i cron hanno una finestra flessibile di 1 ora**: `/api/rebuild` non partirà alle 02:00 esatte come sul progetto Pro. Se qualcosa a valle dipende dall'orario preciso, va saputo prima del cutover.
 - I due progetti sono ora **entrambi agganciati allo stesso repo**: ogni push su `main` fa partire due build. È voluto (rete di sicurezza), ma va ricordato quando si spegne il vecchio.
 - Alert di spesa/uso sul nuovo account: **ancora da impostare**. È la mancanza che ha reso invisibile lo sforamento del 27/08.
+
+### Passo 5 completato: cron e deploy hook verificati end-to-end
+
+`CRON_SECRET` e `VERCEL_DEPLOY_HOOK_URL` inserite (entrambe Production, tipo Secret) e attivate con un redeploy — le env valgono dal build successivo, non da subito.
+
+Verifica in tre stadi, perche' nessuno dei tre da solo prova la catena:
+
+1. `/api/rebuild` senza auth e' passato da `500 CRON_SECRET non configurato` a **`401 non autorizzato`** → il segreto c'e' ed e' letto.
+2. *Run* sul cron dal pannello → nei log **`200` su `/api/rebuild`**. Nel codice quel 200 esce **solo** se il POST all'hook ha risposto ok (`api/rebuild.js`), quindi l'hook e' raggiungibile e valido.
+3. Nella lista deployment e' comparsa **una nuova build originata dall'hook su questo progetto**, andata Ready e promossa a Production → l'hook punta al progetto giusto, non al vecchio.
+
+Il punto 3 e' quello che chiude la trappola descritta sopra: con un hook sbagliato i punti 1 e 2 sarebbero identici, e a ridispiegarsi sarebbe stato il progetto che stiamo dismettendo.
+
+**Nota diagnostica:** il primo click su *Run* non aveva prodotto nulla. Non era l'hook: nei log **non c'era alcuna invocazione**, cioe' il click aveva mancato il bottone (le coordinate si spostano tra un render e l'altro del pannello). Regola: prima di sospettare la configurazione, controllare che la richiesta sia stata fatta davvero.
+
+**Stato a fine sessione 2:** passi 1-5 chiusi e verificati. `jobcourier.ch` **non toccato**, produzione ancora interamente sul progetto vecchio. Prossimo passo il 6 — aggiungere il dominio al progetto nuovo senza toccare GoDaddy — che e' ancora reversibile; il downtime arriva solo al 7.
