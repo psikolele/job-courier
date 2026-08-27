@@ -35,3 +35,36 @@ NON sono stati verificati** e vanno trattati come ipotesi da controllare sul cam
 
 Il piano in §3 li tratta comunque con gate difensivi (es. C1-C7), ma nessuno di questi 15 ha avuto una
 conferma indipendente della sua gravità reale — solo la fase di piano li ha usati come input.
+
+---
+
+## Addendum (28/08): GitHub App condivisa tra i due account Vercel — accettato come rischio noto
+
+Durante la sessione, due mail Vercel (27/08 16:57-17:04) hanno segnalato tentativi di deploy bloccati
+cross-account: uno attribuito a `jobcourier24@gmail.com` sul progetto `kraken-solution` (team vecchio),
+uno via CLI attribuito a `61227821+psikolele@users.noreply.github.com` sul team `Kraken Solutions`.
+
+**Causa verificata** (non dedotta): `github.com/settings/installations/98684449` mostra **una sola app
+"Vercel"**, installata da 8 mesi, scope **"All repositories"** sull'account GitHub personale `psikolele`.
+Non esistono due installazioni separate per i due team Vercel — ne condividono una sola, perche' il repo
+`job-courier` vive sotto l'account GitHub personale dell'utente, e una GitHub App e' installata per-account,
+non per-team-Vercel.
+
+**Implicazione per la migrazione:** l'isolamento ottenuto con l'account Vercel dedicato (`jobcourier24-4812`)
+e' reale per CPU/billing/dominio, ma **non per GitHub**. Qualunque evento (push, PR, deploy hook, Action)
+su un qualsiasi repo dell'account puo' generare notifiche o tentativi cross-team, perche' entrambi i team
+Vercel sono agganciati alla stessa installazione condivisa.
+
+**Decisione presa (28/08):** accettare questo come rischio noto e monitorato, non risolverlo ora.
+Restringere lo scope dell'app a "Only select repositories" isolerebbe il nuovo account ma **romperebbe
+i deploy del team vecchio** (kraken-solution-site e altri progetti Kraken), perche' lo scope e' condiviso
+tra tutti i team collegati, non configurabile per-team. Le uniche vie per un isolamento GitHub completo —
+spostare `job-courier` in un account/org GitHub separato, o vivere con il rischio — restano fuori scope
+per questa sessione.
+
+**Non approvare** richieste di membership automatiche che Vercel genera tra i due team in seguito a questo
+tipo di evento: accettarle fonderebbe l'accesso che la migrazione vuole tenere separato.
+
+**Nota collaterale, non urgente:** durante la verifica e' stata accettata una richiesta di permessi
+dell'app Vercel su GitHub (Actions: read, Workflows: read&write) — aggiornamento generico di piattaforma
+documentato nel changelog pubblico Vercel, non collegato all'incidente cross-account.
