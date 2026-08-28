@@ -236,3 +236,53 @@ tipo di evento: accettarle fonderebbe l'accesso che la migrazione vuole tenere s
 **Nota collaterale, non urgente:** durante la verifica e' stata accettata una richiesta di permessi
 dell'app Vercel su GitHub (Actions: read, Workflows: read&write) — aggiornamento generico di piattaforma
 documentato nel changelog pubblico Vercel, non collegato all'incidente cross-account.
+
+---
+
+## Pre-flight eseguito il 28/08/2026 — gate C2, C3, C4, C5, C6
+
+Eseguiti dal vivo, prima di qualunque modifica ai domini. **C1 non eseguito** (serve il valore di
+`VERCEL_DEPLOY_HOOK_URL`, che e' un segreto del progetto). **C7 non eseguito**: la scrittura nel campo
+dominio del pannello Vercel e' bloccata dal classificatore del harness — e' un passo da fare a mano.
+
+| Gate | Esito |
+|---|---|
+| **C2** link azienda nuovo vs prod | ✅ 33 = 33 |
+| **C3** hash asset identici | ✅ `index-3Q1DE9NH.js` + `index-DY35QCrf.css` su entrambi |
+| **C4** valori Domains del vecchio | ✅ catturati, vedi sotto |
+| **C5** Hostpoint vivo su HTTPS | ✅ `200`, `Server: Apache`, **al primo tentativo** (l'analisi avvisava di un possibile timeout a freddo: non si e' verificato) |
+| **C6** Deployment Protection OFF | ✅ `/`, `/api/companies?withJobs=1`, `/offerta/:id`, `/azienda/:slug` tutte `200`, zero redirect verso `sso-api` |
+
+### C4 — i due valori da ricreare a mano al passo D2
+
+Da qui in poi questi non sono piu' leggibili da nessuna dashboard una volta rimosso il dominio dal
+progetto vecchio. Misurati il 28/08:
+
+```
+curl -I https://jobcourier.ch/
+  HTTP/1.1 308 Permanent Redirect
+  Location: https://www.jobcourier.ch/
+  Strict-Transport-Security: max-age=63072000
+
+curl -I https://www.jobcourier.ch/
+  HTTP/1.1 200 OK
+  Strict-Transport-Security: max-age=63072000
+```
+
+**Redirect da ricreare:** apex `jobcourier.ch` → `https://www.jobcourier.ch/`, **308 permanente**.
+
+**Sull'HSTS, correzione all'analisi.** Il rischio "ereditare `includeSubDomains; preload`" e' piu'
+piccolo di come era stato scritto. Verificato: l'header **non** e' in `vercel.json` (che definisce solo
+X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, CSP-Report-Only e due
+Cache-Control) — lo applica la piattaforma, e la versione severa e' legata ai domini `.vercel.app`, che
+stanno gia' nella preload list dei browser:
+
+```
+job-courier.vercel.app  →  max-age=63072000; includeSubDomains; preload
+www.jobcourier.ch       →  max-age=63072000
+```
+
+Un dominio custom prende quindi la versione nuda da sola. **Resta da verificare dopo D1, non prima**:
+se dopo lo swap comparisse `includeSubDomains`, va corretto subito, perche' forzerebbe HTTPS su
+`jobroom.` e `crm.` (host Arca24). Controllati oggi: entrambi servono HTTPS valido, quindi non si
+romperebbero all'istante — ma `preload` e' una porta a senso unico e va evitata comunque.
