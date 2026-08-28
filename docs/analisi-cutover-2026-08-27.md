@@ -286,3 +286,48 @@ Un dominio custom prende quindi la versione nuda da sola. **Resta da verificare 
 se dopo lo swap comparisse `includeSubDomains`, va corretto subito, perche' forzerebbe HTTPS su
 `jobroom.` e `crm.` (host Arca24). Controllati oggi: entrambi servono HTTPS valido, quindi non si
 romperebbero all'istante — ma `preload` e' una porta a senso unico e va evitata comunque.
+
+---
+
+## C7 eseguito il 28/08/2026 — **RAMO A**: pre-verifica possibile
+
+Aggiunti `jobcourier.ch` e `www.jobcourier.ch` al progetto nuovo mentre sono **ancora sul progetto
+vecchio**. Vercel li accetta e li mette in `Verification Required` — quindi la pre-verifica si puo' fare
+in anticipo e il passo D si riduce a uno swap di secondi. Produzione verificata subito dopo l'aggiunta:
+`200`, apex→www `308`, 33 aziende, API a `200` in 0,18s. **Nessuno spostamento di traffico.**
+
+Messaggio di Vercel: *"This domain is linked to another Vercel account. To use it with this project,
+add a TXT record at `_vercel.jobcourier.ch` to verify ownership. You can remove it after verification
+completes."*
+
+### I due record TXT da creare su GoDaddy
+
+Stesso nome, **valori diversi**: sono due record distinti, non uno che sostituisce l'altro.
+
+| Tipo | Nome | Valore |
+|---|---|---|
+| TXT | `_vercel` | `vc-domain-verify=jobcourier.ch,88801d0f6b5471f33e19` |
+| TXT | `_vercel` | `vc-domain-verify=www.jobcourier.ch,c98794f5e66500b61c7b` |
+
+Stato DNS prima dell'inserimento (28/08): `_vercel.jobcourier.ch` → **NXDOMAIN**. E' esattamente la
+cache negativa che impone di **attendere almeno 10 minuti** (TTL 600s della zona) prima di premere
+Refresh: chiedere la verifica subito fallisce e basta, non e' un guasto.
+
+### Cosa NON toccare
+
+Vercel propone dei record nuovi perche' sta ampliando il suo range IP — **ignorarli adesso**:
+
+```
+A     @     216.198.79.1                              ← NON inserire ora
+CNAME www   45ffe703adc5a495.vercel-dns-017.com.      ← NON inserire ora
+```
+
+La pagina stessa dice che i legacy `cname.vercel-dns.com` e `76.76.21.21` continuano a funzionare, ed
+e' su quelli che il dominio gira oggi (verificato: apex `76.76.21.21`, www `cname.vercel-dns.com`).
+Cambiarli **e'** il cutover, non la sua preparazione. In questa fase si aggiunge solo il TXT.
+
+### Correzione al piano: D2 e' meno lavoro del previsto
+
+Aggiungendo apex e www insieme, **Vercel ha creato da solo il redirect `308` apex→www** (visibile nella
+riga `jobcourier.ch` del pannello nuovo). Il passo D2 diceva di ricrearlo a mano: non serve, ma va
+**riverificato dopo lo swap** con `curl -I https://jobcourier.ch/`, non dato per fatto.
