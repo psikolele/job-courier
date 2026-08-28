@@ -7,7 +7,7 @@ import fetch from 'node-fetch';
 
 import {
   parseCompanyRef, parseJobsFromHtml, parseJobDetailFromHtml,
-  parseCompaniesFromHtml, parseCompanyDetailFromHtml, companyLogo,
+  parseCompaniesFromHtml, parseCompanyDetailFromHtml, companyLogo, servedCompanyId,
   isArca24Enabled, resetSourceProbe,
   fetchCompanies, resetHasJobsCache, resetFeedRosterCache,
   withKnownEmployer, RESERVED_COMPANY, normalizeCompanyName, normalizeCompanyNameRaw, withHasJobs,
@@ -261,6 +261,40 @@ describe('parseCompanyDetailFromHtml', () => {
     // while still carrying its profile — that is "no ads today", not a dead company.
     const html = '<h1>FISIOTERAPIA IGEA SAGL Annunci totali:</h1>';
     expect(parseCompanyDetailFromHtml(html, '3244807', '').name).toBe('FISIOTERAPIA IGEA SAGL');
+  });
+
+  it('costruisce il link al profilo con id e slug nel path, non con ?uiid=', () => {
+    // `company/profile?uiid=` lands on an arbitrary employer upstream, so this link would
+    // send every visitor to the same wrong company page.
+    const detail = parseCompanyDetailFromHtml('<h1>Adecco</h1>', '3244683', 'adecco');
+    expect(detail.jobroom_url).toContain('/careers/3244683-adecco/profile');
+    expect(detail.jobroom_url).not.toContain('uiid=');
+  });
+});
+
+describe('servedCompanyId — la pagina dichiara chi ha servito davvero', () => {
+  const canonical = (href) => `<link href="${href}" rel="canonical">`;
+
+  it('legge l id dal canonical', () => {
+    const html = canonical('https://jobroom.jobcourier.ch/it/careers/3244683-adecco/profile');
+    expect(servedCompanyId(html)).toBe('3244683');
+  });
+
+  it('regge anche rel prima di href', () => {
+    const html = '<link rel="canonical" href="https://x/it/careers/3243415-wwf-svizzera/profile">';
+    expect(servedCompanyId(html)).toBe('3243415');
+  });
+
+  it('smaschera la risposta di un altro datore', () => {
+    // Exactly the 28.08.2026 outage: /profile?uiid=3244683 answered with Rapelli (3244679).
+    // A wrong company renders as a perfectly working page, so the id is the only tell.
+    const html = canonical('https://jobroom.jobcourier.ch/it/careers/3244679-rapelli-orior-food-ag/profile');
+    expect(servedCompanyId(html)).not.toBe('3244683');
+  });
+
+  it('resta null senza canonical, cosi un id ignoto non viene scambiato per un errore', () => {
+    expect(servedCompanyId('<h1>Adecco</h1>')).toBeNull();
+    expect(servedCompanyId('')).toBeNull();
   });
 });
 

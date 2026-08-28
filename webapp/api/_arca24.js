@@ -1010,6 +1010,18 @@ export async function dropMissingLogos(items = []) {
   return items;
 }
 
+// Which employer upstream believes it just served, read off the canonical link it renders
+// (`…/careers/<id>-<slug>/profile`). Null when the page carries no canonical — an unknown
+// identity is not a mismatch, so callers only reject on a positive disagreement.
+export function servedCompanyId(html) {
+  const tag = /<link[^>]+rel=["']canonical["'][^>]*>|<link[^>]*rel=["']canonical["'][^>]+>/i.exec(html || '');
+  if (!tag) return null;
+  const href = /href=["']([^"']+)["']/i.exec(tag[0]);
+  if (!href) return null;
+  const seg = /\/careers\/(\d+)-/.exec(href[1]);
+  return seg ? seg[1] : null;
+}
+
 export function parseCompanyDetailFromHtml(html, id, slug) {
   const $ = cheerio.load(html);
 
@@ -1032,7 +1044,13 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
     brand_description: $('[itemprop="description"]').first().text().replace(/\s+/g, ' ').trim(),
     website: '',
     spontaneous_url: '',
-    jobroom_url: `${ARCA24_HOST}/${LANG}/careers/company/profile?uiid=${id}`,
+    // Same reason the fetch above stopped using it: `company/profile?uiid=` lands on an
+    // arbitrary employer, so this link — the "vai al profilo" the visitor clicks — has to
+    // carry the id in the path too. Falls back to the old shape only when there is no slug
+    // to build one with, which is the case where nothing better exists.
+    jobroom_url: (slug || slugify(name || ''))
+      ? `${ARCA24_HOST}/${LANG}/careers/${id}-${slug || slugify(name || '')}/profile`
+      : `${ARCA24_HOST}/${LANG}/careers/company/profile?uiid=${id}`,
     jobs,
   };
 }
@@ -1159,12 +1177,31 @@ export async function fetchCompanyDetail(id, slug, { verifyLogos = false, patien
   // live on `company/jobs`, whose own heading is the label "Annunci attivi dell'azienda"
   // rather than the company, so neither page answers the whole question alone. Parallel,
   // so this still costs one round-trip's worth of waiting.
-  const read = (path) => fetchHtml(`/${LANG}/careers/company/${path}?uiid=${id}`, {
+  // As of 28.08.2026 upstream ignores `?uiid=` on the shared `company/` path and answers
+  // with one arbitrary employer for every id — observed as Rapelli for all 33 companies,
+  // so every company page on the site showed Rapelli's name and ads. The id has to travel
+  // in the path segment instead, which is the form the roster's own links already use and
+  // which was verified working for all 33, including the two whose roster link is still
+  // the `?uiid=` form. The query stays only for the slugless call, where there is no path
+  // to build — and that one is guarded below, because it is the broken shape.
+  const base = slug ? `${id}-${slug}` : 'company';
+  const query = slug ? '' : `?uiid=${id}`;
+  const read = (page) => fetchHtml(`/${LANG}/careers/${base}/${page}${query}`, {
     acceptNotFound: true,
     timeoutMs: patient ? 9000 : (timeoutMs || REQUEST_TIMEOUT_MS),
     attempts: patient ? 2 : 1,
   });
   const [html, jobsHtml] = await Promise.all([read('profile'), read('jobs').catch(() => '')]);
+
+  // The page says which employer it actually is, in its canonical link. When that id is not
+  // the one asked for, the response belongs to somebody else: serving it would put another
+  // company's name, logo and ads under this slug — which is exactly how the outage above
+  // stayed invisible, since a wrong company looks like a working page.
+  const servedId = servedCompanyId(html);
+  if (servedId && servedId !== String(id)) {
+    console.warn(`[COMPANY-MISMATCH] richiesto ${id}, upstream ha servito ${servedId} — risposta scartata`);
+    return parseCompanyDetailFromHtml('', id, slug);
+  }
 
   const detail = parseCompanyDetailFromHtml(html, id, slug);
   if (jobsHtml) {
