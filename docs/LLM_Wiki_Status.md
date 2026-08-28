@@ -1,6 +1,20 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 27 Agosto 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 28 Agosto 2026)
 
-## Vercel: sforamento CPU free-tier, fix + decisione di migrare a account dedicato (27 Agosto 2026) — 🟡 *IN CORSO, migrazione da eseguire*
+## Migrazione Vercel: progetto nuovo verificato, cutover dominio bloccato da due decisioni (28 Agosto 2026) — 🟡 *IN CORSO, riprendere da qui*
+
+**Stack operativo:** Claude Opus 5 (analisi architetturale) poi Sonnet 5 (resto sessione) · caveman mode full · tool: Claude in Chrome, Gmail MCP, Bash/Edit, Workflow (2 run, ~1,81M token nei subagent) · commit locali non pushati `b07f8cf`..`7762f98`
+
+**Leggere per intero prima di continuare:** [handoff-2026-08-28-vercel-migration-part2.md](handoff-2026-08-28-vercel-migration-part2.md) — riprende da qui.
+
+Progetto Vercel nuovo (`jobcourier24-4812`, Hobby) completamente verificato: build, cron, deploy hook, payload identici a produzione (33 aziende/45 annunci). **Cutover del dominio bloccato da due decisioni non tecniche**, entrambe fuori dal controllo di questa sessione: (1) Pro vs Hobby sul nuovo account — da decidere con Gabriele, costo diviso; (2) alert di spesa via inoltro Gmail — la verifica SMS di Google chiede il numero di **Laura Ballinari**, non dell'utente, troppo tardi stasera per contattarla. Analisi architetturale completa (14 agenti) in [analisi-cutover-2026-08-27.md](analisi-cutover-2026-08-27.md): il cutover **non è un'operazione DNS**, il vero blocco è capacità CPU (Hobby ~3x sotto il fabbisogno misurato).
+
+**Scoperta oggi, non ovvia:** i due account Vercel condividono **un'unica GitHub App installation** (scope "All repositories" sull'account GitHub personale `psikolele`) — causa di due mail Vercel di deploy bloccato cross-account il 27/08. Non risolvibile senza rompere il team vecchio; accettato come rischio noto. Dettaglio in `00_Wiki/job-courier/vercel-dedicated-account-migration-2026-08-28.md`. Risolto invece il PAT GitHub in chiaro nel remote: spostato a SSH (chiave dedicata), non ruotati i 4 PAT esistenti perché non identificabile quale fosse in uso altrove.
+
+Pre-hardening di codice applicato e committato (non pushato): 3 endpoint di test esposti pubblicamente rinominati, `maxDuration` esplicito su 2 route, cache `/api/companies` allungata a 1800s. 282/282 test verdi.
+
+---
+
+## Vercel: sforamento CPU free-tier, fix + decisione di migrare a account dedicato (27 Agosto 2026) — ✅ *progetto nuovo pronto, vedi entry sopra per lo stato attuale*
 
 **Stack operativo:** Claude Sonnet 5, effort basso, caveman mode full · tool: Gmail MCP, Claude in Chrome, Bash/Edit · commit `06c748a` su `main`
 
