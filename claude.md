@@ -311,7 +311,7 @@ Ref: `00_Wiki/concepts/token-optimization.md` § Temporary File Policy
 
 **📡 FEED OFFERTE:** prima di diagnosticare offerte mancanti, poche card in vetrina o una pagina offerta vuota, leggere `00_Wiki/job-courier/jobroom-feed-resilience.md` — forme note del guasto Arca24 e invarianti da rispettare (varietà ≠ volume, id = prefisso numerico, mai `find(...) || list[0]`).
 
-**🚨 GO-LIVE DOMINIO:** prima di QUALSIASI operazione su DNS, Vercel domains o deploy produzione, leggere [docs/GOLIVE-PLAN.md](docs/GOLIVE-PLAN.md) — mappa infrastruttura verificata (GoDaddy=DNS, Hostpoint=WP vecchio), redirect map obbligatoria (213 URL), playbook errori e rollback. NB: handoff precedenti che dicono "sito live su Vercel" sono errati — produzione è ancora su Hostpoint.
+**🚨 GO-LIVE DOMINIO:** prima di QUALSIASI operazione su DNS, Vercel domains o deploy produzione, leggere [docs/GOLIVE-PLAN.md](docs/GOLIVE-PLAN.md) — mappa infrastruttura verificata (GoDaddy=DNS, Hostpoint=WP vecchio), redirect map obbligatoria (213 URL), playbook errori e rollback. **Aggiornamento 28/08/2026: il go-live è FATTO** (DNS switch 01/08/2026, `jobcourier.ch` live su Vercel) — GOLIVE-PLAN.md ora è playbook storico/rollback, non più pre-flight. È in corso una migrazione **diversa e separata**: da account Vercel condiviso (`kraken-solutions`) a uno dedicato (`jobcourier24-4812`), bloccata da 2 decisioni non tecniche — vedi `docs/handoff-2026-08-28-vercel-migration-part2.md` e memoria `project_vercel_migration_cutover_blocked_2026-08-28`.
 
 ---
 
