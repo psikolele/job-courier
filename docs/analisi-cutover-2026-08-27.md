@@ -356,3 +356,24 @@ produzione normalmente), e i domini possono restare in quello stato a tempo inde
 
 Sequenza corretta: **B1 deciso → TXT inseriti → attesa propagazione → verifica = cutover → D2/D3**.
 Non l'inverso.
+
+---
+
+## B1 deciso (28/08/2026): Hobby monitorato, trigger 60%, carta dopo il cutover
+
+**Decisione utente:** restare su Hobby dopo il cutover, non attivare Pro preventivamente. Verificare
+empiricamente il consumo reale invece di fidarsi della proiezione (~11 CPU-ore/mese contro 4h di quota).
+
+**Trigger d'azione: 60% della quota (non 85%).** Al ritmo proiettato, 60% arriva al giorno ~6,5, contro
+l'85% al giorno ~9. Margine fino al 100%: **~4 giorni** contro ~1,5. La misura cercata (quanto dura
+Hobby) e' identica in entrambi i casi — si estrapola dalla curva, non serve arrivare al bordo.
+
+**Carta di pagamento: aggiunta DOPO il cutover, non prima.** Scelta esplicita dell'utente, contro la
+raccomandazione di pre-caricarla. Tradeoff accettato: se il 60% scatta prima che la carta sia inserita,
+l'upgrade a Pro richiede in quel momento sia l'inserimento carta sia l'eventuale allineamento con
+Gabriele su chi paga — tempo che si sottrae al margine di 4 giorni sopra.
+
+**Il buco resta lo stesso:** nessun alert nativo su Hobby, nessuna API pubblica per i consumi. Il 60%
+va letto a mano sul pannello Usage (`vercel.com/jobcourier24-4812/~/usage`, sezione Fluid Active CPU).
+Baseline pre-cutover (28/08): 1m14s/4h — quasi zero perche' il dominio non e' ancora sul progetto nuovo;
+la curva vera parte solo da D1.
