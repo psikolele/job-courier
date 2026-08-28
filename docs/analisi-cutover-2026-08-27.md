@@ -331,3 +331,28 @@ Cambiarli **e'** il cutover, non la sua preparazione. In questa fase si aggiunge
 Aggiungendo apex e www insieme, **Vercel ha creato da solo il redirect `308` apex→www** (visibile nella
 riga `jobcourier.ch` del pannello nuovo). Il passo D2 diceva di ricrearlo a mano: non serve, ma va
 **riverificato dopo lo swap** con `curl -I https://jobcourier.ch/`, non dato per fatto.
+
+### ⚠️ Correzione critica (28/08): la verifica **e'** il cutover, non la sua preparazione
+
+Dalla documentazione Vercel, `POST /v9/domains/{domain}/claim`, testuale:
+
+> *"If the TXT record is verified, the domain ownership will be transferred to the caller's team,
+> **even if the domain is currently owned by another user or team**."*
+
+Quindi **mettere il TXT e completare la verifica trasferisce il dominio**, staccandolo dal team vecchio.
+Non e' un passo preparatorio reversibile: e' il passo D1. Il "Refresh" nel pannello del progetto nuovo,
+con il TXT propagato, esegue il cutover.
+
+**Ignoto e consequenziale:** non risulta dalla documentazione se Vercel riverifichi **da solo in
+background** i domini in stato `Verification Required`, o solo su richiesta esplicita. Se lo facesse,
+il solo inserimento del TXT basterebbe a far partire il trasferimento, senza che nessuno prema niente.
+Non e' stato verificato — e non va scoperto sul dominio di un cliente.
+
+**Conseguenza sulla sequenza.** I due record TXT **non vanno inseriti** finche' non si e' pronti al
+cutover vero, cioe' finche' non e' chiuso il gate **B1** (Pro vs Hobby). Aggiungere i domini in stato
+`Verification Required` e' invece sicuro e reversibile: non sposta traffico, non tocca il progetto
+vecchio (verificato il 28/08: `job-courier-webapp` elenca ancora entrambi i domini e serve la
+produzione normalmente), e i domini possono restare in quello stato a tempo indefinito.
+
+Sequenza corretta: **B1 deciso → TXT inseriti → attesa propagazione → verifica = cutover → D2/D3**.
+Non l'inverso.
