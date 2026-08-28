@@ -2,8 +2,10 @@
 
 **Verificato:** 2026-07-26 con fonti autorevoli (RDAP nic.ch, DNS pubblico, header HTTP, pannello GoDaddy, pannello Hostpoint)
 **Owner:** Emanuele Serra
-**Status:** 🟡 PRE-FLIGHT — bloccanti aperti (vedi §4)
-**Riferimento memoria Claude:** `project_dns_hosting_map.md`
+**Status:** 🟢 FATTO — DNS switch eseguito 01/08/2026 (`561bf6f`), `jobcourier.ch` live su Vercel da allora. Doc tenuto come playbook storico/rollback, non più pre-flight.
+**Riferimento memoria Claude:** `project_dns_hosting_map.md`, `project_vercel_migration_cutover_blocked_2026-08-28.md`
+
+**⚠️ Migrazione in corso (28/08/2026):** produzione oggi gira sul progetto Vercel `job-courier-webapp`, team `kraken-solutions` (account condiviso con altri progetti Kraken). È in corso lo spostamento a un account Vercel dedicato (`jobcourier24-4812`) per isolare CPU/billing — vedi `handoff-2026-08-27-vercel-migration.md` + `handoff-2026-08-28-vercel-migration-part2.md`. Il dominio `jobcourier.ch` **non è ancora stato spostato** al nuovo account: quel cutover è un'operazione diversa da quella descritta in questo file (qui sotto è Hostpoint→Vercel, il prossimo è Vercel-vecchio-account→Vercel-nuovo-account) ed è bloccato da due decisioni non tecniche (Pro/Hobby, alert Gmail). Non confondere i due playbook.
 
 ---
 
