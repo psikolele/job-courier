@@ -1,6 +1,31 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 28 Agosto 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 29 Agosto 2026)
 
-## Migrazione Vercel: progetto nuovo verificato, cutover dominio bloccato da due decisioni (28 Agosto 2026) — 🟡 *IN CORSO, riprendere da qui*
+## Cutover dominio ESEGUITO + due guasti della vetrina trovati eseguendo il gate C1 (29 Agosto 2026) — ✅ *CHIUSO, tutto in produzione*
+
+**Stack operativo:** Claude Opus 5 · caveman mode full · skill `superpowers:systematic-debugging` e `superpowers:test-driven-development` · tool: Bash/Edit, Claude in Chrome, MCP Vercel, Playwright via CDP, PowerShell, Monitor · commit `0e00918`, `f08fc10` su `main` · ~300k token (stima, nessun subagente)
+
+**Il cutover è fatto:** `jobcourier.ch` e `www.jobcourier.ch` sono su `jobcourier24-4812/job-courier`, **zero disservizio**. Dettaglio e runbook aggiornato in [handoff-2026-08-28-cutover-ready.md](handoff-2026-08-28-cutover-ready.md).
+
+**Le due cose non ovvie del cutover:**
+1. **Il DNS non si tocca.** Lo swap cambia la proprietà dell'hostname *dentro* Vercel; i record legacy (`76.76.21.21`, `cname.vercel-dns.com`) restano e continuano a servire. È la ragione per cui non c'è stato un secondo di buco — il piano prevedeva invece 10-15 minuti di downtime.
+2. **Vercel non riverifica da solo i domini pending.** I TXT sono rimasti propagati senza che accadesse nulla: il trasferimento parte solo col Refresh esplicito. Sequenza di stati sul progetto nuovo: `Verification Required` → `No Deployment` (transitorio, non è un guasto) → `DNS Change Recommended` (stato sano — è *recommended*, i legacy funzionano, non va inseguito).
+
+⚠️ **Trappola diagnostica che mi ha fatto sbagliare una diagnosi in corsa:** il campo `domains[]` dell'API di un progetto Vercel elenca le associazioni **anche quando non sono più verificate**. Il progetto vecchio ha continuato a elencare entrambi i domini per tutto il cutover mentre la sua UI diceva già `Verification Required`. Per capire chi serve il traffico si guardano gli stati dei due progetti a confronto, non `domains[]` — e nemmeno gli ETag, identici perché lo stesso commit produce lo stesso output.
+
+**Eseguire il gate C1 ha fatto emergere due guasti veri della vetrina, entrambi client-facing e nessuno dei due era ciò che sembrava:**
+
+- **La sonda `has_jobs` marcava "che assumono" tutte e 34 le aziende** (banche e WWF comprese). Stesso guasto della pagina azienda corretto il 28/08 in `418c2a0` — upstream ha smesso di onorare `?uiid=` sul path condiviso `/careers/company/` e risponde con **un datore arbitrario per qualunque id, anche inventato** — ma su un path che quel fix non copriva. Misura: `?uiid=` restituiva gli stessi 15 annunci per tutti e 34 gli id; la forma a path restituisce il conteggio vero di ciascuno, **16 su 34**. Fix `0e00918`: id nel path + guardia sul canonical (`[PROBE-MISMATCH]`, risposta scartata come `null`, non `false`).
+- **Tutti i 34 `jobroom_url` mandavano all'azienda sbagliata** (id di Adecco e di Arca24.com SA → profilo di 4 U Consulting). Fix `f08fc10`: la forma vive ora in un solo helper `companyProfilePath` condiviso dai tre chiamanti.
+
+> **Il segnale diagnostico da ricordare è una relazione, non un numero: `hiring == roster` significa sonda rotta**, non mercato del lavoro in fiamme. Un valore sano è una frazione del roster (misurato da 8 a 16).
+
+**`[SNAPSHOT-REJECTED]` a ogni build NON è un guasto** (verificato a fondo, il parser era sano e stavo per "ripararlo"): `assessScan` legge "zero orfani trovati" come "scansione fallita", ma con `pagesFailed: 0` la scansione è sana e il vuoto è la verità — upstream non espone più `hiringOrganization` sui dettagli degli annunci anonimi (0 occorrenze in 163 KB), e i 5 datori dello snapshot 21/08 non sono più orfani. Lasciato com'è di proposito. Dettaglio in `00_Wiki/job-courier/arca24-company-index.md`.
+
+**Lezione trasversale, già costata tre giri:** quando upstream cambia una forma di URL, vanno censiti **tutti** i consumatori (`grep -rn`), distinguendo chi costruisce richieste/link da chi fa parsing di href in arrivo — e poi far convergere la costruzione in un helper unico. Un test asseriva la forma rotta pur chiamandosi *"stessa forma di quelle dell'indice"*: un test così rende il bug permanente.
+
+---
+
+## Migrazione Vercel: progetto nuovo verificato, cutover dominio bloccato da due decisioni (28 Agosto 2026) — ✅ *SUPERATO dalla entry sopra: il cutover è stato eseguito il 29/08*
 
 **Stack operativo:** Claude Opus 5 (analisi architetturale) poi Sonnet 5 (resto sessione) · caveman mode full · tool: Claude in Chrome, Gmail MCP, Bash/Edit, Workflow (2 run, ~1,81M token nei subagent) · commit locali non pushati `b07f8cf`..`7762f98`
 

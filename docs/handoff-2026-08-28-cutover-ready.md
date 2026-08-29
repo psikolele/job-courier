@@ -1,4 +1,30 @@
-# Handoff: cutover jobcourier.ch pronto all'esecuzione (28 Agosto 2026)
+# Handoff: cutover jobcourier.ch — ESEGUITO il 29 Agosto 2026
+
+> **✅ D1 FATTO — 29/08/2026, ~09:40 CEST.** `jobcourier.ch` e `www.jobcourier.ch` sono sul progetto
+> `jobcourier24-4812/job-courier`. Nessun buco di servizio: il DNS non è stato cambiato (i legacy
+> `76.76.21.21` / `cname.vercel-dns.com` restano), è cambiata solo la proprietà dell'hostname lato Vercel.
+> Verifiche post-swap tutte verdi — www 200, apex 308→www, HSTS senza `includeSubDomains`, offerta e
+> canonical azienda corretti, vetrina 16, Deployment Protection OFF su tutte le rotte controllate.
+>
+> **Le due incognite del piano, ora risolte:**
+> 1. *Vercel riverifica da solo i domini pending?* **No.** I TXT sono rimasti nel DNS propagati senza che
+>    succedesse nulla; il trasferimento è partito solo col Refresh esplicito nel pannello del progetto nuovo.
+> 2. *Che aspetto ha il passaggio?* Sequenza osservata sul progetto nuovo:
+>    `Verification Required` → `No Deployment` (transitorio, non è un guasto) → `DNS Change Recommended`.
+>    Quest'ultimo è lo stato **sano**: è la raccomandazione di passare ai nuovi IP, non un errore.
+>    Specularmente, il progetto vecchio è passato a `Verification Required`.
+>
+> ⚠️ **Trappola diagnostica:** il campo `domains[]` dell'API di un progetto elenca le associazioni **anche
+> quando non sono più verificate**. Durante questo cutover il progetto vecchio ha continuato a elencare
+> entrambi i domini per tutto il tempo, mentre la sua UI diceva già `Verification Required`. Non usarlo per
+> stabilire chi serve il traffico — usare la UI, o gli stati dei due progetti a confronto.
+>
+> I TXT `_vercel` sono stati lasciati nel DNS di proposito: costano nulla e tolgono un passaggio se
+> servisse rifare una verifica.
+
+---
+
+## (storico) Handoff: cutover pronto all'esecuzione (28 Agosto 2026)
 
 **Perché questo file esiste:** la sessione che ha preparato tutto era diventata pesante (dump JSON ripetuti, un incidente di test che ha mandato mail/Telegram reali, troubleshooting non correlato). Per eseguire lo swap del dominio — l'unica parte irreversibile — meglio partire puliti. Questo file è autosufficiente: non serve rileggere la sessione precedente né tutto `docs/analisi-cutover-2026-08-27.md` per agire, solo per il dettaglio dei rischi scartati/confermati.
 
@@ -43,6 +69,15 @@ Dalla documentazione Vercel (`POST /v9/domains/{domain}/claim`), testuale:
 Stesso nome, valori diversi — sono due record distinti, non uno che sostituisce l'altro. Su GoDaddy (`jobcourier.ch`, DNS management).
 
 **Non toccare** i record che Vercel propone in alternativa (`A @ 216.198.79.1`, `CNAME www 45ffe703adc5a495.vercel-dns-017.com.`) — sono per l'espansione del range IP di Vercel, i legacy `76.76.21.21` e `cname.vercel-dns.com` restano validi e sono quelli su cui gira oggi il sito. Cambiarli è il cutover, non la preparazione.
+
+> **Post-cutover (29/08): l'avviso `DNS Change Recommended` resta e va lasciato stare.** È *recommended*,
+> non *required*: Vercel scrive esplicitamente che i legacy continuano a funzionare, e non ha annunciato
+> una dismissione. Il beneficio è suo (espansione del range IP), non nostro — stesso edge, stesse
+> prestazioni. Cambiarli sposterebbe il percorso reale del traffico, con propagazione e TTL di mezzo,
+> mentre il cutover del 29/08 il DNS non l'ha toccato affatto ed è per questo che non ha avuto buchi.
+> Da rifare solo se Vercel annuncia la dismissione dei legacy o se emergono problemi di performance
+> attribuibili all'edge, e in quel caso come operazione a sé — con il vantaggio che lì il rollback è
+> banale: si rimettono i record di prima.
 
 **Dopo l'inserimento, aspettare almeno 10 minuti** prima di chiedere la verifica: `_vercel.jobcourier.ch` risultava NXDOMAIN il 28/08, e la zona ha cache negativa da 600s. Chiedere subito fallisce e basta, non è un guasto.
 
