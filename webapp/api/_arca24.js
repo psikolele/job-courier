@@ -163,6 +163,20 @@ function fallbackLogo(companyName = '') {
  * back to the company name. Without this every ad carried the JobCourier favicon, which
  * read as "this ad belongs to JobCourier".
  */
+/**
+ * The employer profile URL, with the id in the path segment.
+ *
+ * One helper rather than the same template in three places: this shape had already been
+ * corrected once, on 28.08.2026, in the one caller whose breakage was visible, and the two
+ * that were left behind kept handing out `company/profile?uiid=` — which upstream answers
+ * with an arbitrary employer's page. Falls back to that old shape only with no slug to
+ * build from, where nothing better exists.
+ */
+export function companyProfilePath(id, slug, name = '') {
+  const s = slug || slugify(name);
+  return s ? `/${LANG}/careers/${id}-${s}/profile` : `/${LANG}/careers/company/profile?uiid=${id}`;
+}
+
 export function companyLogo(id, companyName = '') {
   if (!id) return fallbackLogo(companyName);
   return `${ARCA24_HOST}/custom_visojobcourier/media/logo/logo_company_${id}.jpg`;
@@ -488,13 +502,19 @@ function parseCompaniesFromPayload(html) {
     if (!name) continue;
 
     const path = html.match(new RegExp(`/[a-z]{2}/careers/${id}-([^"'\\ ]+)/profile`));
+    // The payload stopped carrying these paths at some point before 29.08.2026, so the
+    // fallback below is not the rare case it reads as — it fired for all 34 employers.
+    // It must not be `company/profile?uiid=`: upstream answers that shape with one
+    // arbitrary employer, so the link would send visitors to the wrong company. The slug
+    // is still known either way, read from the path or derived from the name.
+    const slug = (path && path[1]) || slugify(name);
     out.push({
       id,
       name,
-      slug: (path && path[1]) || slugify(name),
+      slug,
       logo: companyLogo(id, name),
       jobs_count: 0,
-      jobroom_url: `${ARCA24_HOST}${path ? path[0] : `/${LANG}/careers/company/profile?uiid=${id}`}`,
+      jobroom_url: `${ARCA24_HOST}${path ? path[0] : companyProfilePath(id, slug)}`,
     });
   }
   return out;
@@ -622,7 +642,7 @@ export async function fetchCompaniesFromJobFeed({ pages = FEED_MAX_PAGES, concur
           slug: slug || slugify(name),
           logo: companyLogo(id, name),
           jobs_count: 0,
-          jobroom_url: `${ARCA24_HOST}/${LANG}/careers/company/profile?uiid=${id}`,
+          jobroom_url: `${ARCA24_HOST}${companyProfilePath(id, slug, name)}`,
         });
       }
     }
@@ -698,7 +718,9 @@ export function resetHasJobsCache() {
  * `null` means the request itself failed. Callers keep those: hiding an employer because
  * the portal was briefly slow would be a worse error than showing an empty profile.
  */
-async function probeHasJobs(id, attempts = 2) {
+async function probeHasJobs(company, attempts = 2) {
+  const id = String(company?.id ?? company);
+  const slug = company?.slug || slugify(company?.name || '');
   const cached = hasJobsCache.get(id);
   if (cached && Date.now() - cached.at < HAS_JOBS_TTL_MS) return cached.value;
 
@@ -713,8 +735,28 @@ async function probeHasJobs(id, attempts = 2) {
     // from here therefore reported nobody hiring at all, which is what collapsed the
     // showcase to the handful the job feed names. `company/jobs` still renders them:
     // Adecco 15, Manpower 4, PKB 1 on the same run that saw zero on every profile.
-    const html = await fetchHtml(`/${LANG}/careers/company/jobs?uiid=${id}`,
+    // And the id in the path segment, not `?uiid=`. Same upstream change that 28.08.2026
+    // fixed for the company detail page (`[COMPANY-MISMATCH]` above): the shared
+    // `company/` path stopped honouring the query and answers with one arbitrary employer
+    // for any id. This probe kept the old shape, so it read that employer's ad list for
+    // every company and reported the entire roster as hiring. Measured 29.08.2026:
+    // `company/jobs?uiid=` returned the same 15 ads for all 34 employers and for a
+    // made-up id, while the path form returned each one's own count — 16 of 34 hiring.
+    const base = slug ? `${id}-${slug}` : 'company';
+    const query = slug ? '' : `?uiid=${id}`;
+    const html = await fetchHtml(`/${LANG}/careers/${base}/jobs${query}`,
       { acceptNotFound: true, attempts, timeoutMs: PROBE_TIMEOUT_MS });
+
+    // The page states whose ads these are. Answering `false` on a mismatch would be a
+    // second guess dressed as a fact, so it goes back as `null` — unknown, uncached, and
+    // re-asked next build. This is the guard that keeps the slugless fallback above safe:
+    // it uses the broken shape, and its answer gets dropped rather than believed.
+    const servedId = servedCompanyId(html);
+    if (servedId && servedId !== id) {
+      console.warn(`[PROBE-MISMATCH] has_jobs ${id}: upstream ha servito ${servedId} — risposta scartata`);
+      return null;
+    }
+
     const value = cheerio.load(html)('.resultstring').length > 0;
     hasJobsCache.set(id, { value, at: Date.now() });
     return value;
@@ -887,7 +929,7 @@ export async function withHasJobs(companies, known = new Set(), knownNames = new
       break;
     }
     const batch = toProbe.slice(i, i + PROBE_CONCURRENCY);
-    const flags = await Promise.all(batch.map(c => probeHasJobs(c.id)));
+    const flags = await Promise.all(batch.map(c => probeHasJobs(c)));
     // Only `false` is downgraded: a suppressed company that the probe finds hiring anyway
     // (it has linked ads too) keeps its `true`, and `null` is already unknown.
     batch.forEach((c, j) => out.push({
@@ -1048,9 +1090,7 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
     // arbitrary employer, so this link — the "vai al profilo" the visitor clicks — has to
     // carry the id in the path too. Falls back to the old shape only when there is no slug
     // to build one with, which is the case where nothing better exists.
-    jobroom_url: (slug || slugify(name || ''))
-      ? `${ARCA24_HOST}/${LANG}/careers/${id}-${slug || slugify(name || '')}/profile`
-      : `${ARCA24_HOST}/${LANG}/careers/company/profile?uiid=${id}`,
+    jobroom_url: `${ARCA24_HOST}${companyProfilePath(id, slug, name)}`,
     jobs,
   };
 }

@@ -151,6 +151,18 @@ describe('parseCompaniesFromHtml — formato a path', () => {
     expect(parseCompaniesFromHtml(HTML)[0].jobroom_url)
       .toBe('https://jobroom.jobcourier.ch/it/careers/3243375-tior-sa/profile');
   });
+
+  // Measured 29.08.2026: the payload stopped carrying the `router_link` paths, so this
+  // branch now fires for the whole roster — and `company/profile?uiid=` lands the visitor
+  // on one arbitrary employer (Adecco's id and Arca24's both answered as 4 U Consulting).
+  // The slug is still known, it is just derived from the name instead of read.
+  it('usa la forma a path anche quando il payload non porta il link', () => {
+    const noPath = `
+<script>window.__DATA__ = {"3244801":{"subject_id":3244801,"subject_type":"company","resultstring_config":{"title":"Lares Sagl"}}}</script>`;
+    const lares = parseCompaniesFromHtml(noPath).find((c) => c.id === '3244801');
+    expect(lares.slug).toBe('lares-sagl');
+    expect(lares.jobroom_url).toBe('https://jobroom.jobcourier.ch/it/careers/3244801-lares-sagl/profile');
+  });
 });
 
 describe('parseJobsFromHtml', () => {
@@ -337,8 +349,10 @@ function mockPortal({ index = COMPANIES_HTML, feed = FEED_HTML, profiles = {} } 
     if (url.includes('jobs_by_company')) return ok(url.includes('page=1') ? index : '');
     if (url.includes('latest_jobs')) return ok(url.includes('page=1') ? feed : '');
 
-    const uiid = (url.match(/uiid=(\d+)/) || [])[1];
-    const body = profiles[uiid];
+    // The probe asks for `/careers/<id>-<slug>/jobs`; the slugless fallback and the
+    // roster's own links still carry `?uiid=`. Either shape names the same employer.
+    const id = (url.match(/uiid=(\d+)/) || url.match(/\/careers\/(\d+)-/) || [])[1];
+    const body = profiles[id];
     if (body === 'boom') throw new Error('ECONNRESET');
     // 404 with a body is a real portal answer, not an error — see probeHasJobs.
     return { ok: body !== undefined, status: body === undefined ? 404 : 200, text: async () => body ?? '' };
@@ -373,7 +387,10 @@ describe('roster aziende: indice + feed offerte', () => {
       slug: 'manpower',
       logo: 'https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244661.jpg',
       jobs_count: 0,
-      jobroom_url: 'https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244661',
+      // "Same shape as the index" is what this test is named for, and until 29.08.2026 it
+      // asserted the opposite: the feed branch built `company/profile?uiid=`, the one URL
+      // shape upstream answers with somebody else's page.
+      jobroom_url: 'https://jobroom.jobcourier.ch/it/careers/3244661-manpower/profile',
     });
   });
 
@@ -436,12 +453,65 @@ describe('has_jobs: si legge il corpo della pagina, non lo status', () => {
   it('non risonda lo stesso profilo entro il TTL', async () => {
     mockPortal({ profiles: { 3244630: PROFILE_WITH_ADS, 3243389: PROFILE_WITHOUT_ADS, 3244661: PROFILE_WITHOUT_ADS } });
     await fetchCompanies({ withJobStatus: true });
-    const before = vi.mocked(fetch).mock.calls.filter((c) => String(c[0]).includes('uiid=')).length;
+    // Counted on the probe's own URL: it stopped carrying `uiid=` on 29.08.2026, and
+    // filtering on that here would have counted zero calls both times and passed whatever
+    // the cache did.
+    const probes = () => vi.mocked(fetch).mock.calls
+      .map((c) => String(c[0]))
+      .filter((u) => /\/careers\/\d+-[^/]+\/jobs/.test(u)).length;
+    const before = probes();
+    expect(before).toBeGreaterThan(0);
     await fetchCompanies({ withJobStatus: true });
-    const after = vi.mocked(fetch).mock.calls.filter((c) => String(c[0]).includes('uiid=')).length;
-    expect(after).toBe(before);
+    expect(probes()).toBe(before);
   });
 });
+
+// 28.08.2026 fixed the company DETAIL page, which had the same cause; the probe kept the
+// broken URL shape and so kept answering "hiring" for the whole roster. Measured live on
+// 29.08.2026: `company/jobs?uiid=` returned the same employer's 15 ads for every id asked,
+// a made-up id included, while the path form returned each employer's own count.
+describe('sonda has_jobs: l id viaggia nel path, non in ?uiid=', () => {
+  beforeEach(() => { vi.mocked(fetch).mockReset(); resetHasJobsCache(); resetFeedRosterCache(); });
+
+  const probeCalls = () => vi.mocked(fetch).mock.calls
+    .map((c) => String(c[0]))
+    .filter((u) => u.includes('/jobs') && !u.includes('jobs_by_company') && !u.includes('latest_jobs'));
+
+  it('chiede la pagina annunci con l id nel segmento di path', async () => {
+    mockPortal({ profiles: { 3243389: PROFILE_WITH_ADS } });
+    await fetchCompanies({ withJobStatus: true });
+    expect(probeCalls().some((u) => u.includes('/careers/3243389-4-u-consulting/jobs'))).toBe(true);
+    expect(probeCalls().some((u) => u.includes('company/jobs?uiid='))).toBe(false);
+  });
+
+  it('scarta la risposta quando la pagina dichiara un altro datore', async () => {
+    // The failure that made the outage invisible: a page full of somebody else's ads is
+    // indistinguishable from a working answer, so only the canonical id can tell.
+    expect(await flagWhenServed('3243389', PROFILE_OF_ANOTHER_COMPANY)).toBe(null);
+  });
+
+  it('accetta la risposta quando il canonical è quello richiesto', async () => {
+    expect(await flagWhenServed('3243389', PROFILE_WITH_ADS_CANONICAL)).toBe(true);
+  });
+
+  it('si fida della pagina che non dichiara alcun canonical', async () => {
+    // Same rule as the company detail guard: reject only on positive disagreement.
+    expect(await flagWhenServed('3243389', PROFILE_WITH_ADS)).toBe(true);
+  });
+});
+
+async function flagWhenServed(id, body) {
+  mockPortal({ profiles: { [id]: body } });
+  return (await fetchCompanies({ withJobStatus: true })).find((c) => c.id === id)?.has_jobs;
+}
+
+const canonical = (id, slug) =>
+  `<link rel="canonical" href="https://jobroom.jobcourier.ch/it/careers/${id}-${slug}/jobs">`;
+
+const PROFILE_OF_ANOTHER_COMPANY = `${canonical('3244630', 'gi-group-sa')}
+<div class="resultstring"><a href="/it/careers/jobad/7100003-magazziniere">Magazziniere</a></div>`;
+
+const PROFILE_WITH_ADS_CANONICAL = `${canonical('3243389', '4-u-consulting')}${PROFILE_WITH_ADS}`;
 
 describe('withKnownEmployer', () => {
   const detail = { name: 'Randstad Svizzera SA', logo: 'https://x/randstad.jpg', slug: 'randstad' };
