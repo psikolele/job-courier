@@ -190,6 +190,34 @@ export function renderShell(template, { title, description, canonical, ogImage, 
 }
 
 /**
+ * The destinations Navbar.jsx and Footer.jsx link to from every page, once the bundle has
+ * booted. Both components are client-only (react-router-dom hooks, react-i18next,
+ * framer-motion, `window`/`document` reads in effects) and are never rendered into any
+ * SSR/prerender output — so until this constant existed, a crawler reading raw HTML found
+ * these destinations only on whatever page's own snapshot happened to link to them, which
+ * for /faq, /contatti, /come-funziona and /soluzioni-e-tariffe was a single link from the
+ * home page's own body. That is Semrush's 2026-08-29 "only one internal link pointing to
+ * this page" finding (defect 213) across 72 crawled URLs.
+ *
+ * This is not a server-rendered Navbar/Footer — see snapshotBody's header for why the
+ * snapshot is markup, not a hydration-safe render of the React tree. It is the same
+ * destinations as plain anchors, appended to every snapshot so a crawler's raw-HTML read of
+ * any one page always finds a path to every other section of the site.
+ */
+const SITE_NAV_LINKS = [
+  { href: '/offerte', label: 'Offerte di lavoro' },
+  { href: '/aziende-che-assumono', label: 'Aziende che assumono' },
+  { href: '/come-funziona', label: 'Come funziona' },
+  { href: '/soluzioni-e-tariffe', label: 'Soluzioni e tariffe' },
+  { href: '/blog/carriera', label: 'Consigli di carriera' },
+  { href: '/blog/recruiting', label: 'Consigli di recruiting' },
+  { href: '/faq', label: 'Domande frequenti' },
+  { href: '/contatti', label: 'Contatti' },
+  { href: '/condizioni-generali', label: 'Condizioni generali' },
+  { href: '/cookie-policy', label: 'Cookie policy' },
+];
+
+/**
  * Wrapper for the snapshot: the entire page for any client that does not execute the
  * bundle.
  *
@@ -232,6 +260,10 @@ export function snapshotBody({ heading, subheading, facts, paragraphs, links, li
     .map((p) => `<p style="margin:0 0 14px;color:#2A3050">${escapeHtml(p)}</p>`)
     .join('');
 
+  const siteNavItems = SITE_NAV_LINKS
+    .map((l) => `<a href="${escapeHtml(l.href)}" style="color:${MUTED};text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap">${escapeHtml(l.label)}</a>`)
+    .join('<span style="color:rgba(5,11,43,0.15)">&nbsp;·&nbsp;</span>');
+
   const linkItems = (links || [])
     .filter((l) => l && l.href && l.label)
     .map((l) => [
@@ -271,6 +303,10 @@ export function snapshotBody({ heading, subheading, facts, paragraphs, links, li
       : '',
     linkItems ? `<ul style="list-style:none;padding:0;margin:0;border-top:1px solid rgba(5,11,43,0.08)">${linkItems}</ul>` : '',
     backLink ? `<p style="margin-top:32px"><a href="${escapeHtml(backLink.href)}" style="color:${F};font-weight:600;text-decoration:none">${escapeHtml(backLink.label)}</a></p>` : '',
+
+    // Site-wide nav, present on every snapshot regardless of the page-specific links
+    // above — see SITE_NAV_LINKS for why this exists.
+    `<nav aria-label="JobCourier" style="margin-top:40px;padding-top:20px;border-top:1px solid rgba(5,11,43,0.08);display:flex;flex-wrap:wrap;gap:6px 4px">${siteNavItems}</nav>`,
     '</div></div>',
   ].join('');
 }

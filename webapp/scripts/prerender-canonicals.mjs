@@ -213,11 +213,30 @@ for (const [route, file] of Object.entries(ROUTES)) {
     );
   }
 
-  // Only the two hubs get real body content — see HUB_CONTENT's own comment for why.
+  // createRoot().render() replaces #root's children on mount (see api/_ssr.js's header
+  // comment), so this is a pre-boot snapshot, not markup the client has to reconcile.
+  //
+  // The two hubs get their full body from HUB_CONTENT. The six STATIC_META-only routes
+  // (faq, contatti, come-funziona, soluzioni-e-tariffe, condizioni-generali, cookie-policy)
+  // used to get no body at all — <div id="root"></div> stayed empty, so a non-JS crawler
+  // read zero <a href> on any of them. That is exactly Semrush's 2026-08-29 "only one
+  // internal link pointing to this page" finding (defect 213) for those four marketing
+  // pages: reachable only via the one link the home page's own snapshot happens to include.
+  // snapshotBody's own site-wide nav (see api/_ssr.js) now gives every one of these a real
+  // link graph too; the heading/subheading below reuse this same route's own title/
+  // description rather than inventing new copy.
   if (HUB_CONTENT[route]) {
-    // createRoot().render() replaces #root's children on mount (see api/_ssr.js's header
-    // comment), so this is a pre-boot snapshot, not markup the client has to reconcile.
     html = html.replace(/<div id="root">\s*<\/div>/i, `<div id="root">${HUB_CONTENT[route].body()}</div>`);
+  } else if (STATIC_META[route]) {
+    const heading = STATIC_META[route].title.split(' - ')[0];
+    html = html.replace(
+      /<div id="root">\s*<\/div>/i,
+      `<div id="root">${snapshotBody({
+        heading,
+        subheading: STATIC_META[route].description,
+        backLink: { href: '/', label: 'Torna alla home' },
+      })}</div>`
+    );
   }
 
   writeFileSync(distFile(file), html);

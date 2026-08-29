@@ -23,6 +23,8 @@ import {
 } from './_arca24.js';
 import { parseJobsFromHtml } from './jobs.js';
 import { fetchCompanyListHtml, parseCompaniesFromHtml } from './companies.js';
+import { jobs as jobsSnapshot } from './_jobs-snapshot.js';
+import { companies as companiesSnapshot } from './_companies-snapshot.js';
 import fetch from 'node-fetch';
 
 const SITE = 'https://www.jobcourier.ch';
@@ -35,6 +37,24 @@ const MAX_COMPANY_URLS = 250;
 
 // Same threshold jobs.js uses to call a listing result "healthy" rather than degraded.
 const MIN_HEALTHY_JOBS = 10;
+
+// How long the live collection (Arca24 batches, or the jobroom listing walk) is allowed to
+// run before this endpoint answers from the build-time snapshots instead. Neither
+// collectArca24 nor collectJobroom bounds its own upstream calls — _arca24.js has no
+// AbortController on this path, unlike fetchJobroomPage's own 6s timeout below — so a slow
+// or hanging Arca24 response can otherwise run this function well past what a crawler is
+// willing to wait, which reads to it as "no sitemap" (see 00_Wiki/job-courier/
+// jobroom-feed-resilience.md for prior forms of this same upstream's flakiness). Same
+// race/stand-in shape as api/companies.js's FAST_ANSWER_MS.
+const FAST_ANSWER_MS = 8000;
+
+const PENDING = Symbol('pending');
+
+/** Sitemap entries built from the build-time snapshots — no live fetch, so no lastmod. */
+function snapshotFallback(maxJobs) {
+  const jobIds = jobsSnapshot.map((j) => j.id).filter(Boolean).slice(0, maxJobs);
+  return { jobIds, jobDates: new Map(), companies: companiesSnapshot };
+}
 
 const ARCA24_BATCH_SIZE = 12;
 const ARCA24_LISTING_PAGES = 3;
@@ -156,9 +176,29 @@ export default async function handler(req, res) {
 
   try {
     const arca24 = await isArca24Enabled();
-    const { jobIds, jobDates, companies } = arca24
-      ? await collectArca24(MAX_JOB_URLS)
-      : await collectJobroom(MAX_JOB_URLS);
+    const work = arca24 ? collectArca24(MAX_JOB_URLS) : collectJobroom(MAX_JOB_URLS);
+
+    // Race the live collection against a fast-answer budget so a slow/hanging upstream
+    // cannot stall this response past what a crawler will wait for. The live run is left
+    // to keep going after the budget fires — there is nothing here to hand its result to
+    // once we've answered, so it is just left to settle and its rejection swallowed.
+    let timer;
+    const budget = new Promise((resolve) => { timer = setTimeout(() => resolve(PENDING), FAST_ANSWER_MS); });
+    let collected;
+    try {
+      collected = await Promise.race([work, budget]);
+    } finally {
+      clearTimeout(timer);
+    }
+
+    let usedFallback = false;
+    if (collected === PENDING) {
+      usedFallback = true;
+      collected = snapshotFallback(MAX_JOB_URLS);
+      work.catch(() => {});
+    }
+
+    const { jobIds, jobDates, companies } = collected;
 
     const companySlugs = companies
       .map((c) => c.slug)
@@ -174,10 +214,12 @@ export default async function handler(req, res) {
 
     // A thin result is still served — an honest small sitemap beats a fabricated or
     // crashed one — but it is not cached at the long TTL, same reasoning as api/jobs.js's
-    // MIN_HEALTHY_JOBS gate: the next crawl should get a chance at a healthier read.
-    const healthy = jobIds.length >= MIN_HEALTHY_JOBS;
+    // MIN_HEALTHY_JOBS gate: the next crawl should get a chance at a healthier read. A
+    // snapshot fallback is always treated as degraded, regardless of its size, so the next
+    // request still gets a shot at the live path.
+    const healthy = !usedFallback && jobIds.length >= MIN_HEALTHY_JOBS;
     if (!healthy) {
-      console.warn(`sitemap-jobs: degraded result (${jobIds.length} jobs, ${companySlugs.length} companies) — short TTL.`);
+      console.warn(`sitemap-jobs: degraded result (${jobIds.length} jobs, ${companySlugs.length} companies, fallback=${usedFallback}) — short TTL.`);
     }
     res.setHeader('Cache-Control', healthy
       ? 's-maxage=3600, stale-while-revalidate=7200'
