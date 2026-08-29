@@ -282,6 +282,8 @@
     "label_employment": "Anstellung",
     "label_duration": "Dauer",
     "label_start": "Eintritt",
+    "label_deadline": "Bewerbungsfrist",
+    "label_salary": "Lohn",
     "back_to_jobs": "Zurück zu den Stellen",
     "back_to_jobs_title": "Zurück zu den Stellenangeboten",
     "go_back": "Zurück",

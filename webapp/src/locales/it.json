@@ -282,6 +282,8 @@
     "label_employment": "Impiego",
     "label_duration": "Durata",
     "label_start": "Entrata",
+    "label_deadline": "Scadenza",
+    "label_salary": "Retribuzione",
     "back_to_jobs": "Torna alle offerte",
     "back_to_jobs_title": "Torna alle Offerte",
     "go_back": "Torna indietro",

@@ -282,6 +282,8 @@
     "label_employment": "Employment",
     "label_duration": "Duration",
     "label_start": "Start date",
+    "label_deadline": "Deadline",
+    "label_salary": "Salary",
     "back_to_jobs": "Back to job offers",
     "back_to_jobs_title": "Back to Job Offers",
     "go_back": "Go back",

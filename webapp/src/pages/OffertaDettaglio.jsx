@@ -329,9 +329,21 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                                     </div>
                                 )}
                                 {job.details?.entryDate && (
-                                    <div className="flex justify-between items-center text-sm py-1">
+                                    <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
                                         <span style={{ fontFamily: body, color: GM }}>{t('jobs.label_start')}</span>
                                         <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">{job.details.entryDate}</span>
+                                    </div>
+                                )}
+                                {job.details?.validThrough && (
+                                    <div className="flex justify-between items-center text-sm py-1 border-b border-[#050B2B]/3">
+                                        <span style={{ fontFamily: body, color: GM }}>{t('jobs.label_deadline')}</span>
+                                        <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">{job.details.validThrough}</span>
+                                    </div>
+                                )}
+                                {job.details?.salaryMin && job.details?.salaryMax && (
+                                    <div className="flex justify-between items-center text-sm py-1">
+                                        <span style={{ fontFamily: body, color: GM }}>{t('jobs.label_salary')}</span>
+                                        <span style={{ fontFamily: brand, fontWeight: 700, color: N }} className="text-right">CHF {job.details.salaryMin} - {job.details.salaryMax}</span>
                                     </div>
                                 )}
                             </div>

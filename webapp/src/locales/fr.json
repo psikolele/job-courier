@@ -282,6 +282,8 @@
     "label_employment": "Emploi",
     "label_duration": "Durée",
     "label_start": "Entrée en fonction",
+    "label_deadline": "Délai de postulation",
+    "label_salary": "Salaire",
     "back_to_jobs": "Retour aux offres",
     "back_to_jobs_title": "Retour aux offres d'emploi",
     "go_back": "Retour",
