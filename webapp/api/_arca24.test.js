@@ -151,6 +151,18 @@ describe('parseCompaniesFromHtml — formato a path', () => {
     expect(parseCompaniesFromHtml(HTML)[0].jobroom_url)
       .toBe('https://jobroom.jobcourier.ch/it/careers/3243375-tior-sa/profile');
   });
+
+  // Measured 29.08.2026: the payload stopped carrying the `router_link` paths, so this
+  // branch now fires for the whole roster — and `company/profile?uiid=` lands the visitor
+  // on one arbitrary employer (Adecco's id and Arca24's both answered as 4 U Consulting).
+  // The slug is still known, it is just derived from the name instead of read.
+  it('usa la forma a path anche quando il payload non porta il link', () => {
+    const noPath = `
+<script>window.__DATA__ = {"3244801":{"subject_id":3244801,"subject_type":"company","resultstring_config":{"title":"Lares Sagl"}}}</script>`;
+    const lares = parseCompaniesFromHtml(noPath).find((c) => c.id === '3244801');
+    expect(lares.slug).toBe('lares-sagl');
+    expect(lares.jobroom_url).toBe('https://jobroom.jobcourier.ch/it/careers/3244801-lares-sagl/profile');
+  });
 });
 
 describe('parseJobsFromHtml', () => {
@@ -375,7 +387,10 @@ describe('roster aziende: indice + feed offerte', () => {
       slug: 'manpower',
       logo: 'https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244661.jpg',
       jobs_count: 0,
-      jobroom_url: 'https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3244661',
+      // "Same shape as the index" is what this test is named for, and until 29.08.2026 it
+      // asserted the opposite: the feed branch built `company/profile?uiid=`, the one URL
+      // shape upstream answers with somebody else's page.
+      jobroom_url: 'https://jobroom.jobcourier.ch/it/careers/3244661-manpower/profile',
     });
   });
 

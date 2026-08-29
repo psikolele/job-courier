@@ -163,6 +163,20 @@ function fallbackLogo(companyName = '') {
  * back to the company name. Without this every ad carried the JobCourier favicon, which
  * read as "this ad belongs to JobCourier".
  */
+/**
+ * The employer profile URL, with the id in the path segment.
+ *
+ * One helper rather than the same template in three places: this shape had already been
+ * corrected once, on 28.08.2026, in the one caller whose breakage was visible, and the two
+ * that were left behind kept handing out `company/profile?uiid=` — which upstream answers
+ * with an arbitrary employer's page. Falls back to that old shape only with no slug to
+ * build from, where nothing better exists.
+ */
+export function companyProfilePath(id, slug, name = '') {
+  const s = slug || slugify(name);
+  return s ? `/${LANG}/careers/${id}-${s}/profile` : `/${LANG}/careers/company/profile?uiid=${id}`;
+}
+
 export function companyLogo(id, companyName = '') {
   if (!id) return fallbackLogo(companyName);
   return `${ARCA24_HOST}/custom_visojobcourier/media/logo/logo_company_${id}.jpg`;
@@ -488,13 +502,19 @@ function parseCompaniesFromPayload(html) {
     if (!name) continue;
 
     const path = html.match(new RegExp(`/[a-z]{2}/careers/${id}-([^"'\\ ]+)/profile`));
+    // The payload stopped carrying these paths at some point before 29.08.2026, so the
+    // fallback below is not the rare case it reads as — it fired for all 34 employers.
+    // It must not be `company/profile?uiid=`: upstream answers that shape with one
+    // arbitrary employer, so the link would send visitors to the wrong company. The slug
+    // is still known either way, read from the path or derived from the name.
+    const slug = (path && path[1]) || slugify(name);
     out.push({
       id,
       name,
-      slug: (path && path[1]) || slugify(name),
+      slug,
       logo: companyLogo(id, name),
       jobs_count: 0,
-      jobroom_url: `${ARCA24_HOST}${path ? path[0] : `/${LANG}/careers/company/profile?uiid=${id}`}`,
+      jobroom_url: `${ARCA24_HOST}${path ? path[0] : companyProfilePath(id, slug)}`,
     });
   }
   return out;
@@ -622,7 +642,7 @@ export async function fetchCompaniesFromJobFeed({ pages = FEED_MAX_PAGES, concur
           slug: slug || slugify(name),
           logo: companyLogo(id, name),
           jobs_count: 0,
-          jobroom_url: `${ARCA24_HOST}/${LANG}/careers/company/profile?uiid=${id}`,
+          jobroom_url: `${ARCA24_HOST}${companyProfilePath(id, slug, name)}`,
         });
       }
     }
@@ -1070,9 +1090,7 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
     // arbitrary employer, so this link — the "vai al profilo" the visitor clicks — has to
     // carry the id in the path too. Falls back to the old shape only when there is no slug
     // to build one with, which is the case where nothing better exists.
-    jobroom_url: (slug || slugify(name || ''))
-      ? `${ARCA24_HOST}/${LANG}/careers/${id}-${slug || slugify(name || '')}/profile`
-      : `${ARCA24_HOST}/${LANG}/careers/company/profile?uiid=${id}`,
+    jobroom_url: `${ARCA24_HOST}${companyProfilePath(id, slug, name)}`,
     jobs,
   };
 }
