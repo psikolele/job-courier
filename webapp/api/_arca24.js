@@ -698,7 +698,9 @@ export function resetHasJobsCache() {
  * `null` means the request itself failed. Callers keep those: hiding an employer because
  * the portal was briefly slow would be a worse error than showing an empty profile.
  */
-async function probeHasJobs(id, attempts = 2) {
+async function probeHasJobs(company, attempts = 2) {
+  const id = String(company?.id ?? company);
+  const slug = company?.slug || slugify(company?.name || '');
   const cached = hasJobsCache.get(id);
   if (cached && Date.now() - cached.at < HAS_JOBS_TTL_MS) return cached.value;
 
@@ -713,8 +715,28 @@ async function probeHasJobs(id, attempts = 2) {
     // from here therefore reported nobody hiring at all, which is what collapsed the
     // showcase to the handful the job feed names. `company/jobs` still renders them:
     // Adecco 15, Manpower 4, PKB 1 on the same run that saw zero on every profile.
-    const html = await fetchHtml(`/${LANG}/careers/company/jobs?uiid=${id}`,
+    // And the id in the path segment, not `?uiid=`. Same upstream change that 28.08.2026
+    // fixed for the company detail page (`[COMPANY-MISMATCH]` above): the shared
+    // `company/` path stopped honouring the query and answers with one arbitrary employer
+    // for any id. This probe kept the old shape, so it read that employer's ad list for
+    // every company and reported the entire roster as hiring. Measured 29.08.2026:
+    // `company/jobs?uiid=` returned the same 15 ads for all 34 employers and for a
+    // made-up id, while the path form returned each one's own count — 16 of 34 hiring.
+    const base = slug ? `${id}-${slug}` : 'company';
+    const query = slug ? '' : `?uiid=${id}`;
+    const html = await fetchHtml(`/${LANG}/careers/${base}/jobs${query}`,
       { acceptNotFound: true, attempts, timeoutMs: PROBE_TIMEOUT_MS });
+
+    // The page states whose ads these are. Answering `false` on a mismatch would be a
+    // second guess dressed as a fact, so it goes back as `null` — unknown, uncached, and
+    // re-asked next build. This is the guard that keeps the slugless fallback above safe:
+    // it uses the broken shape, and its answer gets dropped rather than believed.
+    const servedId = servedCompanyId(html);
+    if (servedId && servedId !== id) {
+      console.warn(`[PROBE-MISMATCH] has_jobs ${id}: upstream ha servito ${servedId} — risposta scartata`);
+      return null;
+    }
+
     const value = cheerio.load(html)('.resultstring').length > 0;
     hasJobsCache.set(id, { value, at: Date.now() });
     return value;
@@ -887,7 +909,7 @@ export async function withHasJobs(companies, known = new Set(), knownNames = new
       break;
     }
     const batch = toProbe.slice(i, i + PROBE_CONCURRENCY);
-    const flags = await Promise.all(batch.map(c => probeHasJobs(c.id)));
+    const flags = await Promise.all(batch.map(c => probeHasJobs(c)));
     // Only `false` is downgraded: a suppressed company that the probe finds hiring anyway
     // (it has linked ads too) keeps its `true`, and `null` is already unknown.
     batch.forEach((c, j) => out.push({

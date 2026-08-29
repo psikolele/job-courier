@@ -55,7 +55,9 @@ Stesso nome, valori diversi — sono due record distinti, non uno che sostituisc
 Forzare deploy hook del progetto nuovo (pannello Vercel o valore VERCEL_DEPLOY_HOOK_URL)
 Controllare i log: nessun [SNAPSHOT-REJECTED] / [SNAPSHOT-EXPIRED]
 ```
-Se rifiutato: rilanciare l'hook, non muovere ancora il dominio.
+**C1 eseguito il 29/08** (redeploy pulito del progetto nuovo, `3aJM6LiZQ`, Ready in 1m 4s). Esito: entrambi i token compaiono, **e vanno bene** — i log del deploy notturno di produzione sullo stesso commit mostrano gli stessi contatori identici, quindi non è una regressione del progetto nuovo. `[SNAPSHOT-REJECTED]` con `pagesFailed: 0` è il falso positivo descritto sopra.
+
+Da rilanciare l'hook solo se compare qualcosa di **diverso** da questi due token, o se `pagesFailed` è alto.
 
 **D1 — lo swap:**
 1. Inserire i due TXT su GoDaddy (tabella sopra).
@@ -70,9 +72,13 @@ curl -sI https://jobcourier.ch/                               # atteso: 308, Loc
 curl -s https://www.jobcourier.ch/offerta/6744089 | grep -o '<title>[^<]*'
 curl -s https://www.jobcourier.ch/azienda/adecco | grep -o 'canonical" href="[^"]*"'
 curl -sI https://www.jobcourier.ch/ | grep -i strict-transport   # atteso: max-age=63072000 SENZA includeSubDomains/preload — se compare, correggere subito (vedi nota HSTS sotto)
-curl -s https://www.jobcourier.ch/aziende-che-assumono | grep -oE '/azienda/[a-z0-9-]*' | sort -u | wc -l   # atteso: 33
+curl -s https://www.jobcourier.ch/aziende-che-assumono | grep -oE '/azienda/[a-z0-9-]*' | sort -u | wc -l   # atteso: ~16 (vedi nota sotto)
 ```
 Verificare anche Deployment Protection ancora OFF su `/`, `/api/companies?withJobs=1`, `/offerta/:id`, `/azienda/:slug` — nessun 302 verso `sso-api`.
+
+**Nota sul numero di aziende in vetrina (corretta 29/08):** il valore atteso qui era 33, misurato quando la sonda `has_jobs` era rotta e marcava "che assume" l'intero roster. Il 29/08 la sonda è stata portata sulla forma di URL corretta: il numero sano è ora **una frazione del roster** — 16 su 34 alla misura del 29/08, con 0 unknown. Il segnale di guasto non è più un numero preciso ma una relazione: **se le aziende in vetrina sono tante quante il roster (34), la sonda è di nuovo rotta.** Dettaglio in `00_Wiki/job-courier/arca24-company-index.md`, regola 3.
+
+`[SNAPSHOT-REJECTED]` continuerà a comparire a ogni build: dal 29/08 è un falso positivo atteso, non un guasto da inseguire durante il cutover — stessa pagina wiki.
 
 **Nota sul redirect apex→www:** aggiungendo i due domini insieme, Vercel ha già creato da solo il 308 apex→www sul progetto nuovo (visto nel pannello il 28/08). Non dovrebbe servire ricrearlo — ma va **riverificato con il curl sopra**, non dato per scontato.
 
