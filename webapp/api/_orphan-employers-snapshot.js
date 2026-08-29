@@ -15,3 +15,11 @@ export const names = [
   "gi group sa",
   "team personnel solutions sa"
 ];
+
+// How many consecutive clean-zero runs (see _assess-orphan-scan.mjs) have found no orphan
+// employers in a row, without yet reaching CLEAN_ZERO_THRESHOLD. Persisted here — not just
+// in the build's own memory — because each Vercel build is a fresh checkout of this file;
+// without it the streak could never survive from one build to the next. Stays 0 whenever
+// `names` reflects an accepted run, clean-zero or not: it only holds a nonzero value while
+// a clean-zero streak is still short of being trusted.
+export const consecutiveCleanZero = 0;

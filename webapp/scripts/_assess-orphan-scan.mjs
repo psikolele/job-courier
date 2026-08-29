@@ -10,6 +10,16 @@ import { DEFAULT_PAGES } from '../api/_orphan-employers.js';
 
 export const MAX_FAILED_RATIO = 0.2;
 
+// A genuine "no orphans right now" is indistinguishable, from a single run, from a scan
+// that quietly went nowhere (see the comment on the zero-names check below). Rather than
+// trust — or freeze on — one run, an empty result has to repeat CLEAN_ZERO_THRESHOLD times
+// in a row, each one clean enough that a broken-scan explanation is unreachable, before it
+// is allowed to overwrite the committed list. Three, not one: one clean zero is still a
+// coincidence a portal hiccup could produce; three in a row, each having spent the full
+// page budget with nothing failed and nothing truncated, is a pattern a quietly-broken scan
+// cannot fake build after build.
+export const CLEAN_ZERO_THRESHOLD = 3;
+
 /**
  * How many of the committed employers the new scan no longer names.
  *
@@ -22,12 +32,34 @@ export function countRemoved(committedNames = [], names = []) {
 }
 
 /**
+ * A zero-names run is "clean" when nothing about the run itself can explain the zero away:
+ * the full page budget was spent, not one page or detail fetch failed, and nothing was left
+ * unopened by the detail cap. Deliberately stricter than the MAX_FAILED_RATIO gates above —
+ * those tolerate a *degraded* run finding real employers, but a run that found none has no
+ * such alibi available, so any failure at all keeps it out of the streak.
+ */
+function isCleanZero(scan) {
+  const { pagesRequested, pagesFailed, detailsFailed, truncated } = scan;
+  return pagesRequested === DEFAULT_PAGES && pagesFailed === 0 && detailsFailed === 0 && !truncated;
+}
+
+/**
  * @param {{names: string[], pagesRequested: number, pagesFailed: number,
  *          detailsRequested: number, detailsFailed: number, truncated: boolean}} scan
  * @param {string[]} [committedNames] the list currently committed, as the baseline
- * @returns {string|null} rejection reason, or null when the scan can be committed
+ * @param {number} [consecutiveCleanZero] the streak carried over from the committed
+ *   snapshot (see api/_orphan-employers-snapshot.js) — 0 when there is none in progress
+ * @returns {{reason: string|null, pending: boolean, consecutiveCleanZero: number}}
+ *   `reason: null` means the scan is trusted: the caller should overwrite `names` and
+ *   `generatedAt`, and persist the returned `consecutiveCleanZero` (always 0 in this case).
+ *   A non-null `reason` with `pending: false` is an outright rejection — the committed
+ *   `names`/`generatedAt` must be left alone, but `consecutiveCleanZero` still needs
+ *   persisting since it may have just been reset off of an in-progress streak.
+ *   A non-null `reason` with `pending: true` is a clean zero short of the threshold: same
+ *   rule — `names`/`generatedAt` untouched, `consecutiveCleanZero` persisted — the only
+ *   difference from an outright rejection is what the build log should say about it.
  */
-export function assessScan(scan, committedNames = []) {
+export function assessScan(scan, committedNames = [], consecutiveCleanZero = 0) {
   const { names, pagesRequested, pagesFailed, detailsRequested, detailsFailed, truncated } = scan;
 
   // Ordered from the most certain diagnosis to the least. `names.length === 0` is the
@@ -44,32 +76,68 @@ export function assessScan(scan, committedNames = []) {
   // fires loudly and a human lowers DEFAULT_PAGES deliberately, which is the right way to
   // find that out.
   if (pagesRequested < DEFAULT_PAGES) {
-    return `scansione ferma a ${pagesRequested} pagine su ${DEFAULT_PAGES}: il listing non sta rispondendo`;
+    return {
+      reason: `scansione ferma a ${pagesRequested} pagine su ${DEFAULT_PAGES}: il listing non sta rispondendo`,
+      pending: false,
+      consecutiveCleanZero: 0,
+    };
   }
 
   // Failures are swallowed by design, so the only signal that a run was thin is the ratio.
   // Each lost listing page silently removes fifteen ads from the scan.
   if (pagesRequested > 0 && pagesFailed / pagesRequested > MAX_FAILED_RATIO) {
-    return `${pagesFailed} pagine fallite su ${pagesRequested}: scansione degradata`;
+    return {
+      reason: `${pagesFailed} pagine fallite su ${pagesRequested}: scansione degradata`,
+      pending: false,
+      consecutiveCleanZero: 0,
+    };
   }
 
   // Detail failures are the nastier half: they lose employers one at a time while
   // pagesFailed stays at zero, so a run where half the details fail reports healthy pages, a
   // healthy page ratio, and half the names.
   if (detailsRequested > 0 && detailsFailed / detailsRequested > MAX_FAILED_RATIO) {
-    return `${detailsFailed} dettagli falliti su ${detailsRequested}: scansione degradata`;
+    return {
+      reason: `${detailsFailed} dettagli falliti su ${detailsRequested}: scansione degradata`,
+      pending: false,
+      consecutiveCleanZero: 0,
+    };
   }
 
   // The detail cap bit, so the module knows for a fact that anonymous ads were left
   // unopened. A knowingly partial list must never be committed.
   if (truncated) {
-    return 'scansione troncata dal tetto sui dettagli: risultato parziale';
+    return {
+      reason: 'scansione troncata dal tetto sui dettagli: risultato parziale',
+      pending: false,
+      consecutiveCleanZero: 0,
+    };
   }
 
-  // An empty result and a scan that quietly went nowhere look exactly the same from here,
-  // and overwriting with zero would throw away every employer we already know about.
+  // An empty result and a scan that quietly went nowhere look exactly the same from a
+  // single run. A run that also carries any failure or truncation is rejected outright, no
+  // streak credit — those are exactly the shapes a broken scan produces. A run with none of
+  // that alibi-shaped noise (isCleanZero) is real evidence, so it counts toward
+  // CLEAN_ZERO_THRESHOLD instead of being discarded: only once that many clean zeros have
+  // repeated back to back is the emptiness trusted enough to overwrite every employer we
+  // already know about.
   if (names.length === 0) {
-    return 'nessun datore con annunci scollegati: sospetto scansione fallita';
+    if (!isCleanZero(scan)) {
+      return {
+        reason: 'nessun datore con annunci scollegati: sospetto scansione fallita',
+        pending: false,
+        consecutiveCleanZero: 0,
+      };
+    }
+    const streak = consecutiveCleanZero + 1;
+    if (streak >= CLEAN_ZERO_THRESHOLD) {
+      return { reason: null, pending: false, consecutiveCleanZero: 0 };
+    }
+    return {
+      reason: `nessun datore con annunci scollegati, corsa pulita ${streak}/${CLEAN_ZERO_THRESHOLD}: in attesa di conferma`,
+      pending: true,
+      consecutiveCleanZero: streak,
+    };
   }
 
   // Partial collapse. Every check above answers "did the scan start"; none answers "did it
@@ -103,8 +171,12 @@ export function assessScan(scan, committedNames = []) {
   const baseline = committedNames?.length ?? 0;
   const removed = countRemoved(committedNames, names);
   if (baseline > 0 && removed > 0 && (pagesFailed > 0 || detailsFailed > 0)) {
-    return `${removed} datori spariti rispetto ai ${baseline} committati, con perdite (${pagesFailed} pagine, ${detailsFailed} dettagli): calo non distinguibile dalle perdite`;
+    return {
+      reason: `${removed} datori spariti rispetto ai ${baseline} committati, con perdite (${pagesFailed} pagine, ${detailsFailed} dettagli): calo non distinguibile dalle perdite`,
+      pending: false,
+      consecutiveCleanZero: 0,
+    };
   }
 
-  return null;
+  return { reason: null, pending: false, consecutiveCleanZero: 0 };
 }
