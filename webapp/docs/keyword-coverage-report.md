@@ -1,8 +1,8 @@
 # Copertura keyword settore/ruolo
 
-Generato automaticamente da `npm run audit:keywords` — ultimo run: 2026-08-15.
+Generato automaticamente da `npm run audit:keywords` — ultimo run: 2026-08-31.
 
-**300 offerte lette, 64 ancora "Altro/Altro" (copertura 78.7%).**
+**292 offerte lette, 62 ancora "Altro/Altro" (copertura 78.8%).**
 
 Non aggiungere queste parole a occhio: alcune sono sigle ambigue (es. "MPA", "CDI")
 o termini troppo generici per un settore/ruolo affidabile. Verificare il senso prima
@@ -12,86 +12,86 @@ di estenderle in `src/utils/jobTaxonomy.js`.
 
 | Parola | Occorrenze |
 |---|---|
-| bâtiment | 3 |
-| bereich | 3 |
-| responsable | 3 |
+| responsable | 4 |
+| automobil | 3 |
 | travaux | 3 |
-| teamleitung | 3 |
-| contremaître | 2 |
-| instandhaltungsfachmann | 2 |
-| directeur | 2 |
-| spezialist | 2 |
-| ferblantier | 2 |
-| serrurier | 2 |
-| autonome | 2 |
-| metallbauer | 2 |
+| charpentier | 3 |
+| nutzfahrzeuge | 2 |
+| conducteur | 2 |
 | schaler | 2 |
-| anlagenführer | 1 |
-| schichtig | 1 |
-| assc | 1 |
-| lucidatore | 1 |
-| smerigliatore | 1 |
-| tubista | 1 |
-| capo | 1 |
-| cantiere | 1 |
-| courtier | 1 |
-| immobilier | 1 |
-| manutentore | 1 |
-| spazi | 1 |
-| verdi | 1 |
-| elektro | 1 |
-| chargé | 1 |
-| d'affaires | 1 |
-| câblage | 1 |
-| elektroplaner | 1 |
-| constructeur | 1 |
-| métallique | 1 |
-| reifenpraktiker | 1 |
-| wintersaison | 1 |
-| warenkontrolleur | 1 |
-| mandat | 1 |
-| dépanneur | 1 |
-| sanitaire | 1 |
+| administratif | 2 |
+| géomaticien | 2 |
+| poseur | 2 |
+| operatore | 1 |
+| specializzato | 1 |
+| frese | 1 |
+| assi | 1 |
+| carrozziere | 1 |
+| verniciatore | 1 |
+| d'auto | 1 |
+| saldatore | 1 |
+| fabbro | 1 |
+| assemblatore | 1 |
+| serramenti | 1 |
+| alluminio | 1 |
+| mechatroniker | 1 |
+| fachrichtung | 1 |
+| directeur | 1 |
+| industrielackierer | 1 |
+| collaboratore | 1 |
+| trice | 1 |
+| gestione | 1 |
+| crediti | 1 |
+| ersatzteil | 1 |
+| lagerverantwortlicher | 1 |
+| diagnostiker | 1 |
+| bâtiment | 1 |
+| fachmann | 1 |
+| frau | 1 |
+| kredit | 1 |
+| leasingsspezialist | 1 |
+| beim | 1 |
+| markenimporteur | 1 |
 
 ## Esempio di titoli non coperti (max 40)
 
-- Anlagenführer / Anlagenführer (3-4 Schichtig)
-- ASSC (h/f/d) 40 à 100% missions temporaires
-- Lucidatore / smerigliatore (U/D/N) - 100%
-- Tubista capo cantiere
-- Contremaître bâtiment 80-100% CDI (H/F/D)
-- Courtier immobilier 100% CDI (H/F/D)
-- Manutentore spazi verdi
-- Elektro Bereich (a) 80-100%
-- Chargé d'affaires de câblage (H/F/D)
-- Elektroplaner/in (a) 80-100%
-- Constructeur métallique CFC 100% CDI (H/F/D)
-- Reifenpraktiker (m/w/d) 100% ? Wintersaison
-- Instandhaltungsfachmann (m/w) 80-100%
-- Warenkontrolleur (a) 100%
-- Responsable de mandat 100% CDI (H/F/D)
-- Dépanneur Sanitaire 100% CDI (H/F/D)
-- Directeur de travaux 100% (H/F/D)
-- Teamleitung Buffet & Küche (m/w/d) 100 % ? Tagschichten im Herzen von Zürich
-- Vendeur shop (H/F/X) 60%
-- Architecte HES ou EPFL 80-100% CDI (H/F/D)
-- Carreleur CFC
+- Operatore specializzato CNC Frese 3/5 assi
+- Carrozziere/Verniciatore d'auto
+- Saldatore TIG/MIG
+- Fabbro
+- Assemblatore Serramenti in alluminio
+- Automobil-Mechatroniker Fachrichtung Nutzfahrzeuge (m/w/d) 100%
+- Directeur des travaux 100% CDI (H/F/D)
+- Industrielackierer (w/m/d) 100%
+- Collaboratore/trice Gestione Crediti
+- Ersatzteil-Lagerverantwortlicher LKW 100% (m/w)
+- Automobil Diagnostiker (m/w/d)
+- Conducteur de travaux bâtiment 100% CDI (H/F/D)
+- Automobil-Fachmann/-frau Nutzfahrzeuge
+- Kredit- / Leasingsspezialist beim Markenimporteur Automobilbranche 100% (m/w)
+- Ebéniste CFC
+- Schaler (m/w/d)
+- Betonbohrer / Fräser (m/w/d)
+- Fassadenbauer (m/w/d)
+- Schaler (m/w/d)
+- Flachdachisoleur (m/w/d)
+- Firmenprofil ansehen Branche nicht angegeben 1 - 10 Mitarbeitende 1 Job
+- CNC Operator 100% (m/w/d)
+- Aide charpentier
+- Storiste CFC
+- Wirtschaftsprüfer/in 80-100%
+- Immobilienbewirtschafter/in 80?100%
+- Manutentionnaire
+- Machiniste M1-M7 (permis SUVA)
+- Vitrier CFC
+- Assistant administratif/de projet 80-100% CDI (H/F/D)
+- Géomaticien CFC 100% (H/F/D)
+- Constructeur métallique
+- Charpentier expérimenté
+- Conducteur de travaux
+- Poseur de sol
+- Étancheur
 - Adjoint Responsable Dépôt et Magasin 100% CDI (H/F/D)
-- Spezialist Industialisierung E-Mobility (m/w) 100%
-- Ferblantier 100% (H/F/D)
-- Responsable de maintenance 100% CDI (H/F/D)
-- Sachbearbeitung im Innendienst m/w/d 100%
-- Produkt-Spezialist (m/w/d) 100%
-- Kaufmännischer Allrounder mit Schwerpunkt Personal 80?100 % (m/w/d)
-- CNC-Operateur/in (m/w) 100%
-- Instandhaltungsfachmann in der Maschinenbaubranche (m/w) 100%
-- Wohngruppenleitung mit Herz
-- Préparateur technique & Aide-Serrurier
-- Physiotherapeut (m,w,d) 40-50%
-- Flexible Einsätze in der Betreuung (m,w,d)
-- Elektroniker (m/w/d) 100%
-- Profi im Bereich Automatik (m/w/d) 100%
-- Ferblantier-Couvreur CFC / Ferblantière-Couvreuse CFC 100% (H/F/D)
-- Stv. Teamleitung geschützte Wohngruppe (m,w,d) 80-100%
-- Serrurier/ière autonome atelier et pose 100% (H/F/D)
-- Chaudronnier/ère autonome (H/F/D)
+- Kommissionierer 60% (m,w,d)
+- Géomaticien CFC 100% (H/F/D)
+- Représentant en vins 100% CDI (H/F/D)
