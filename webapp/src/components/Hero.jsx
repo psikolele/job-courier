@@ -12,7 +12,13 @@ import heroBg1 from '../assets/hero-bg.jpg';
 const Hero = ({ setShowLoginModal }) => {
     const { t } = useTranslation();
     const [hoveredSide, setHoveredSide] = useState(null);
-    const [isMobile, setIsMobile] = useState(false);
+    // Lazy init from window.innerWidth, not useState(false): main.jsx uses createRoot
+    // (client-only, no hydration to match), so nothing stops reading the real viewport on
+    // the first render. Starting at false and correcting in the effect below used to render
+    // desktop sizes for a frame on every mobile load, then jump to mobile sizes right after
+    // mount — a shift on already-painted text that showed up as CLS 0.18 in GSC Core Web
+    // Vitals (mobile only, first flagged 18.08.2026).
+    const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
     const navigate = useNavigate();
 
     const [cantons, setCantons] = useState([]);
