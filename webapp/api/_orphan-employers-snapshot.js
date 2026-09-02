@@ -7,14 +7,8 @@
 // and is not hiring), and matching across the two would advertise the wrong company.
 // Read by api/_arca24.js to mark as hiring the companies the `company/jobs` probe cannot
 // see. See api/_orphan-employers.js.
-export const generatedAt = '2026-08-21T07:00:38.979Z';
-export const names = [
-  "dinamic hub",
-  "er services sagl",
-  "finders sa",
-  "gi group sa",
-  "team personnel solutions sa"
-];
+export const generatedAt = '2026-09-02T05:54:54.885Z';
+export const names = [];
 
 // How many consecutive clean-zero runs (see _assess-orphan-scan.mjs) have found no orphan
 // employers in a row, without yet reaching CLEAN_ZERO_THRESHOLD. Persisted here — not just

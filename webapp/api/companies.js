@@ -171,22 +171,31 @@ function standIn() {
 // of the showcase, so a floor is applied instead: below it the run is treated as degraded
 // and the richer stand-in wins.
 //
-// Two floors, because either one alone gets a real case wrong:
+// One floor, on the size of the roster — and deliberately not on how many of it are
+// hiring, which was tried and got the case backwards:
 //
-//   - The hiring count is the original test, and it is the one that catches a roster that
-//     came back long but stale.
-//   - It cannot be the only test, though, because it reads a quiet job market as a broken
-//     one. A sound run is 32 employers; how many of them are hiring is genuinely seasonal
-//     and has been measured as low as 8. A full roster is therefore sound on its own —
-//     reading the index is the thing that can fail here, and feed-only is 4 employers
-//     against the index's 32, with nothing in between to be ambiguous about.
-const MIN_HEALTHY_HIRING = 8;
+//   - The roster floor is the test, and it is never optional. Reading the index is the
+//     thing that fails here, and what a failed read leaves behind is the handful the job
+//     feed names — measured 02.09.2026 at 8 employers against the index's 31, with
+//     nothing in between to be ambiguous about.
+//   - The hiring count cannot gate this on its own, in either direction. Too high a floor
+//     reads a quiet job market as a broken one: how many employers are hiring is genuinely
+//     seasonal and has been measured as low as 8. And any floor at all is blind to the
+//     case that matters, because a feed-only roster is every employer flagged hiring — a
+//     list of open positions cannot name anybody who has none — so it sails past a test
+//     on the hiring count while showing a quarter of the showcase. An earlier version
+//     accepted a thin roster for exactly that reason: `hiring >= 8` short-circuited and
+//     the roster floor below it never ran.
+//
+// So: the roster must be whole, and somebody on it must be hiring (nobody hiring renders
+// an empty showcase, which is the other thing this guard exists to keep off the screen).
+//
+// The floor sits well below the sound roster because the two outcomes are far apart: the
+// whole index arrives in one payload, so a read either lands (31, plus whatever the feed
+// adds) or does not (8), with no real roster in between to be refused by mistake.
 const MIN_HEALTHY_ROSTER = 12;
 
-const isHealthy = (list) => {
-  const hiring = hiringCount(list);
-  return hiring >= MIN_HEALTHY_HIRING || (hiring >= 1 && list.length >= MIN_HEALTHY_ROSTER);
-};
+const isHealthy = (list) => list.length >= MIN_HEALTHY_ROSTER && hiringCount(list) >= 1;
 
 const hiringCount = (list) => list.filter((c) => c.has_jobs === true).length;
 

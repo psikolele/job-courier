@@ -3,17 +3,8 @@
 // The roster of employers with at least one open position, as of the last build. Read by
 // api/companies.js as the answer of last resort while a cold instance computes the real
 // one. See that file for why it is allowed to be a little out of date.
-export const generatedAt = '2026-08-21T07:00:47.597Z';
+export const generatedAt = '2026-09-02T05:55:11.132Z';
 export const companies = [
-  {
-    "id": "3243389",
-    "name": "4 U Consulting",
-    "slug": "4-u-consulting",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243389.jpg",
-    "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3243389-4-u-consulting/profile",
-    "has_jobs": true
-  },
   {
     "id": "3244683",
     "name": "Adecco",
@@ -21,6 +12,15 @@ export const companies = [
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244683.jpg",
     "jobs_count": 0,
     "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244683-adecco/profile",
+    "has_jobs": true
+  },
+  {
+    "id": "3244226",
+    "name": "Approach People Recruitment",
+    "slug": "approach-people-recruitment",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244226.jpg",
+    "jobs_count": 0,
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244226-approach-people-recruitment/profile",
     "has_jobs": true
   },
   {
@@ -119,16 +119,7 @@ export const companies = [
     "slug": "team-personnel-solutions-sa",
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243352.jpg",
     "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3243352",
-    "has_jobs": true
-  },
-  {
-    "id": "3174540",
-    "name": "Work & Work SA",
-    "slug": "work-work-sa",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3174540.jpg",
-    "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3174540",
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3243352-team-personnel-solutions-sa/profile",
     "has_jobs": true
   },
   {
@@ -137,7 +128,7 @@ export const companies = [
     "slug": "work-selection-ag",
     "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243557.jpg",
     "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/company/profile?uiid=3243557",
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3243557-work-selection-ag/profile",
     "has_jobs": true
   }
 ];

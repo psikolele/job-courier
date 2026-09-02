@@ -705,17 +705,32 @@ describe('snapshot orfani scaduto', () => {
   // Gi Group è nello snapshot degli orfani e nell indice mockato, e il suo profilo qui
   // non ha annunci: se lo snapshot vale, risulta hiring; scaduto, torna alla sonda.
   it('finché è fresco marca hiring il datore orfano', async () => {
-    // L orologio va fissato come nel test gemello: senza, questo gira sull ora reale
-    // contro il `generatedAt` committato, che nessuno aggiorna da solo (Vercel riscrive
-    // lo snapshot nella sandbox di build e non lo ricommitta). Otto giorni dopo l ultima
-    // build committata da un umano la suite diventerebbe rossa da sola, su un branch che
-    // nessuno ha toccato.
+    // Snapshot finto, non quello committato. Il file vero è dati di produzione: il
+    // 02.09.2026 il generatore lo ha riscritto a zero orfani — legittimamente, quei cinque
+    // datori non lo sono più — e questo test è diventato rosso senza che una riga di
+    // comportamento fosse cambiata, perché cercava "gi group sa" dentro `names`. L unica
+    // cosa da dimostrare qui è che un nome ancora fresco vale, e per quella serve un nome
+    // qualsiasi con una data qualsiasi.
+    //
+    // L orologio va fissato comunque: contro l ora reale, otto giorni dopo l ultima build
+    // committata da un umano la suite diventerebbe rossa da sola (Vercel riscrive lo
+    // snapshot nella sandbox di build e non lo ricommitta).
+    vi.resetModules();
+    const generatedAt = '2026-09-01T00:00:00.000Z';
+    vi.doMock('./_orphan-employers-snapshot.js', () => ({ generatedAt, names: ['gi group sa'] }));
     vi.useFakeTimers({ toFake: ['Date'] });
-    vi.setSystemTime(new Date(Date.parse(orphanGeneratedAt) + 24 * 60 * 60_000));
+    vi.setSystemTime(new Date(Date.parse(generatedAt) + 24 * 60 * 60_000));
 
+    const fresh = await import('./_arca24.js');
+    fresh.resetHasJobsCache();
+    fresh.resetFeedRosterCache();
     mockPortal({ profiles: { 3244630: PROFILE_WITHOUT_ADS } });
-    const list = await fetchCompanies({ withJobStatus: true });
+
+    const list = await fresh.fetchCompanies({ withJobStatus: true });
     expect(list.find((c) => c.id === '3244630').has_jobs).toBe(true);
+
+    vi.doUnmock('./_orphan-employers-snapshot.js');
+    vi.resetModules();
   });
 
   it('dopo otto giorni non marca hiring nessuno', async () => {

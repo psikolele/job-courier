@@ -79,6 +79,20 @@ describe('GET /api/companies?withJobs=1', () => {
     expect(res.headers['cache-control']).toContain('s-maxage=30');
   });
 
+  // The same degraded shape, one size up — and the size is the whole point. A feed-only
+  // roster is every employer flagged hiring, so as the feed grows it walks straight past
+  // any floor on the hiring count: at ten it cleared the `hiring >= 8` clause that used to
+  // short-circuit ahead of the roster floor, and a quarter of the showcase went out as
+  // `live`, cached for half an hour and kept as the new last-good.
+  it('treats a thin roster as degraded however many of it are hiring', async () => {
+    const thinButBusy = Array.from({ length: 10 }, (_, i) => ({ id: `t${i}`, name: `Thin ${i}`, has_jobs: true }));
+    vi.mocked(fetchCompanies).mockResolvedValue(thinButBusy);
+    const res = await call();
+    expect(res.body).toEqual(snapshotCompanies);
+    expect(res.headers['x-roster-source']).toBe('stand-in');
+    expect(res.headers['cache-control']).toContain('s-maxage=30');
+  });
+
   // How many employers are hiring is seasonal; whether the index could be read is not.
   // A quiet week must not be mistaken for a broken read and pin the site to a snapshot.
   it('serves a full roster live even when few of it are hiring', async () => {
