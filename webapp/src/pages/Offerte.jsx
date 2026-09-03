@@ -620,14 +620,16 @@ const Offerte = ({ setShowLoginModal }) => {
 
                                             <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 10 }}>
                                                 <button onClick={() => handleApply(selectedJob)}
+                                                    disabled={detailLoading}
                                                     style={{
                                                         background: F, color: '#FFFFFF', border: 'none',
                                                         padding: '14px 32px',
                                                         fontFamily: brand, fontWeight: 700, fontSize: 11,
                                                         letterSpacing: '0.14em', textTransform: 'uppercase',
-                                                        cursor: 'pointer', borderRadius: 0,
+                                                        cursor: detailLoading ? 'wait' : 'pointer', borderRadius: 0,
                                                         display: 'inline-flex', alignItems: 'center', gap: 8,
-                                                        width: 'fit-content'
+                                                        width: 'fit-content',
+                                                        opacity: detailLoading ? 0.5 : 1
                                                     }} className="hover:opacity-80 transition-opacity">
                                                     {applyData.redirect ? (
                                                         <>{t('jobs.apply')} <ExternalLink size={13} /></>
