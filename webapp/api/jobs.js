@@ -10,6 +10,7 @@ import {
   fetchJobDetail as fetchArca24JobDetail,
   fetchJobsForQuery as fetchArca24Query,
   fetchFacetIndex as fetchArca24FacetIndex,
+  resolveRegionFacet as resolveArca24Region,
   slugify,
 } from './_arca24.js';
 
@@ -42,6 +43,10 @@ const SHOWCASE_MAX_JOBS = 120;
 // `showcase` flag) is dropped instead of being proxied blindly.
 const UPSTREAM_PARAMS = new Set([
   'language', 'country', 'keyword', 'location', 'sector', 'role_id', 'region', 'global',
+  // Ours, not the portal's: the two-letter canton code the search widget already holds.
+  // Ads spell the canton either way — "Svizzera, Ticino, Mendrisio" but also "Svizzera,
+  // Locarno, Ti" — so matching the name alone drops the ones written with the code.
+  'canton',
 ]);
 
 // Per-page timeout. A single slow upstream page must not drag the whole
@@ -480,17 +485,35 @@ function normalizeText(value) {
  * `role_id` is deliberately absent: the list pages expose no role or sector at all, so it
  * cannot be re-checked here. That is exactly why it wins the route in `fetchJobsForQuery`.
  */
+/**
+ * True when an ad sits in the named canton.
+ *
+ * An ad writes its canton either in full ("Svizzera, Ticino, Mendrisio") or as the
+ * two-letter code ("Svizzera, Locarno, Ti"), and the second form is not rare — the Ticino
+ * HR ads that a canton-filtered search is supposed to find are all written that way.
+ * Matching the name as a substring found only the first form and silently dropped the
+ * rest, so both forms are checked, and the code is compared as a whole word: "ti" must
+ * not match inside "Bellinzona".
+ */
+function isInCanton(location, cantonName, cantonCode) {
+  const tokens = normalizeText(location).split(' ').filter(Boolean);
+  const name = normalizeText(cantonName);
+  const code = normalizeText(cantonCode);
+
+  if (name && tokens.join(' ').includes(name)) return true;
+  if (code && tokens.includes(code)) return true;
+  return false;
+}
+
 async function applyArca24LeftoverFilters(jobs, callerParams = {}, honoured = null) {
   let out = jobs;
+  // A route can honour more than one filter now (keyword ∩ role), so membership is the
+  // question, not equality.
+  const wasHonoured = (kind) => (Array.isArray(honoured) ? honoured.includes(kind) : honoured === kind);
 
   const keyword = normalizeText(callerParams.keyword);
-  if (keyword && honoured !== 'keyword') {
+  if (keyword && !wasHonoured('keyword')) {
     out = out.filter(job => normalizeText(`${job.title} ${job.company?.name || ''}`).includes(keyword));
-  }
-
-  const location = normalizeText(callerParams.location);
-  if (location) {
-    out = out.filter(job => normalizeText(job.location).includes(location));
   }
 
   const sector = normalizeText(callerParams.sector);
@@ -498,14 +521,21 @@ async function applyArca24LeftoverFilters(jobs, callerParams = {}, honoured = nu
     out = out.filter(job => normalizeText(`${job.sector} ${job.role} ${job.title}`).includes(sector));
   }
 
-  if (callerParams.region && honoured !== 'region') {
-    // Facet paths read `/it/careers/jobs_by_region/3115-214-svizzera-ticino/` — id,
-    // country code, country, then the canton, which is what the location text carries.
-    const path = (await fetchArca24FacetIndex('region')).get(String(callerParams.region));
-    const canton = path
-      ? normalizeText(decodeURIComponent(path).split('/').filter(Boolean).pop().split('-').slice(3).join(' '))
-      : '';
-    if (canton) out = out.filter(job => normalizeText(job.location).includes(canton));
+  // Region and location describe the same thing — the canton — and arrive together now,
+  // so they are applied as one test instead of two filters that each half-match.
+  if (!wasHonoured('region')) {
+    let cantonName = normalizeText(callerParams.location);
+    if (callerParams.region) {
+      // Facet paths read `/it/careers/jobs_by_region/3115-214-svizzera-ticino/` — id,
+      // country code, country, then the canton, which is what the location text carries.
+      const path = (await fetchArca24FacetIndex('region')).get(String(callerParams.region));
+      if (path) {
+        cantonName = normalizeText(decodeURIComponent(path).split('/').filter(Boolean).pop().split('-').slice(3).join(' '));
+      }
+    }
+    if (cantonName || callerParams.canton) {
+      out = out.filter(job => isInCanton(job.location, cantonName, callerParams.canton));
+    }
   }
 
   return out;
@@ -547,17 +577,46 @@ export default async function handler(req, res) {
     let honoured = null;
 
     if (arca24 && isFiltered) {
+      // The caller's canton id is not trusted on its own: the table it comes from had
+      // drifted from the portal's own index (`3095` for Argovia is listed nowhere), and
+      // most cantons carried no id at all even when the portal lists them. The index
+      // decides, and a canton named only in text still gets its route.
+      const resolvedRegion = (callerParams.region || callerParams.location)
+        ? await resolveArca24Region({ region: callerParams.region, location: callerParams.location })
+        : null;
+      const queryParams = resolvedRegion ? { ...callerParams, region: resolvedRegion } : callerParams;
+
+      // A filter the route cannot honour is applied afterwards, over the pool the route
+      // returned — so the pool has to be deep enough to still hold matches once narrowed.
+      // One page of a canton is not much to filter a keyword out of.
+      //
+      // The keyword ∩ role case needs the depth most: the portal's role facets are thin
+      // and loosely tagged (222 "Risorse umane" carried five ads on 03.09.2026, most of
+      // them not HR work), so at one page per side the two pools miss each other and an
+      // intersection that does exist reads as "nothing matches".
+      const narrowsAfterwards = Boolean(
+        (queryParams.region || callerParams.canton || callerParams.location) ||
+        callerParams.sector ||
+        (callerParams.keyword && callerParams.role_id)
+      );
+      const queryPages = narrowsAfterwards ? Math.max(pageNumbers.length, 3) : pageNumbers.length;
+      const queryMaxJobs = narrowsAfterwards ? Math.max(maxJobs, 45) : maxJobs;
+
       // Filtered queries are answered by the portal's faceted routes, not by us.
-      const query = await fetchArca24Query(callerParams, { pages: pageNumbers.length, maxJobs });
-      if (!query) {
-        // The query names a facet the portal does not list, so we cannot answer it.
-        // Saying "no matching ads" would be a claim we have not checked.
-        console.warn(`Arca24: no faceted route for ${JSON.stringify(callerParams)} — answering empty.`);
-        res.status(200).json([]);
-        return;
+      const query = await fetchArca24Query(queryParams, { pages: queryPages, maxJobs: queryMaxJobs });
+      if (query) {
+        allJobs.push(...query.jobs);
+        honoured = query.honoured;
+      } else {
+        // The portal lists no facet for this query — ten cantons have none, and a role
+        // can drop out of the index when nothing is advertised under it. That used to be
+        // answered with an empty list, which reads as "no such jobs" when what we mean is
+        // "we could not ask". Filtering the recent pool ourselves is a weaker answer than
+        // a facet, but it is an honest one and it is not empty when matches exist.
+        console.warn(`Arca24: no faceted route for ${JSON.stringify(callerParams)} — filtering the recent pool instead.`);
+        allJobs.push(...await fetchArca24Jobs({ pages: Math.max(pageNumbers.length, 3), maxJobs: Math.max(maxJobs, 45) }));
+        honoured = null;
       }
-      allJobs.push(...query.jobs);
-      honoured = query.honoured;
     } else if (arca24) {
       // The stride in SHOWCASE_PAGE_NUMBERS bought company variety on the old listing.
       // It buys nothing here — every page is the same company — so only the page count

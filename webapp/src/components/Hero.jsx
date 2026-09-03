@@ -6,6 +6,7 @@ import { Search, MapPin, Briefcase, ChevronRight, Mail, ArrowRight } from 'lucid
 import { useNavigate, Link } from 'react-router-dom';
 import { AnimatedButton } from './ui/animated-button';
 import SpotlightCard from './ui/spotlight-card';
+import { CANTONS, SECTORS, buildSearchParams } from '../utils/searchData';
 
 import heroBg1 from '../assets/hero-bg.jpg';
 
@@ -33,84 +34,20 @@ const Hero = ({ setShowLoginModal }) => {
         { label: t('hero.companies.links.recruiting_tips'), href: '#blog' }
     ];
 
+    // The hero used to keep its own copy of these tables and build its own query. Both had
+    // drifted from the portal — an Argovia id listed nowhere upstream, four sectors that
+    // do not exist, six cantons that do but were never mapped — so the home search and the
+    // offers-page search disagreed about what a filter even means. One source now.
     useEffect(() => {
         setTimeout(() => {
-            setCantons([
-            { name: 'Argovia', value: 'AG', regionId: '3095' }, { name: 'Basilea', value: 'BS', regionId: '3105' },
-            { name: 'Berna', value: 'BE', regionId: '3099' }, { name: 'Ginevra', value: 'GE', regionId: '3101' },
-            { name: 'Grigioni', value: 'GR', regionId: '3103' }, { name: 'Lucerna', value: 'LU', regionId: '3107' },
-            { name: 'San Gallo', value: 'SG', regionId: '3106' }, { name: 'Ticino', value: 'TI', regionId: '3115' },
-            { name: 'Zurigo', value: 'ZH', regionId: '3120' }, { name: 'Appenzello Esterno', value: 'AR' },
-            { name: 'Appenzello Interno', value: 'AI' }, { name: 'Basilea Campagna', value: 'BL' },
-            { name: 'Friburgo', value: 'FR' }, { name: 'Giura', value: 'JU' }, { name: 'Glarona', value: 'GL' },
-            { name: 'Neuchâtel', value: 'NE' }, { name: 'Nidvaldo', value: 'NW' }, { name: 'Obvaldo', value: 'OW' },
-            { name: 'Sciaffusa', value: 'SH' }, { name: 'Soletta', value: 'SO' }, { name: 'Svitto', value: 'SZ' },
-            { name: 'Turgovia', value: 'TG' }, { name: 'Uri', value: 'UR' }, { name: 'Vallese', value: 'VS' },
-            { name: 'Vaud', value: 'VD' }, { name: 'Zugo', value: 'ZG' }
-        ].sort((a, b) => a.name.localeCompare(b.name)));
-
-        setSectors([
-            { name: 'Amministrazione/Paghe e contributi', role: 'amministrazione-2fpaghe-e-contributi', id: '213' },
-            { name: 'Centralino/Segreteria/Servizi generali', role: 'centralino-2fsegretariato-2fservizi-generali', id: '901' },
-            { name: 'Commerciale/Vendite', role: 'commerciale-2fvendite', id: '234' },
-            { name: 'Controllo e certificazione qualità', role: 'controllo-e-certificazione-qualit-c3-a0', id: '231' },
-            { name: 'Costruzioni/Mestieri', role: 'costruzioni-2fmestieri', id: '215' },
-            { name: 'Customer Service', role: 'customer-service', id: '216' },
-            { name: 'Finanza/Contabilità/Revisione', role: 'finanza-2fcontabilit-c3-a0-2frevisione', id: '212' },
-            { name: 'IT/Technology', role: 'it-2ftechnology', id: '236' },
-            { name: 'Ingegneria/Progettazione', role: 'ingegneria-2fprogettazione', id: '219' },
-            { name: 'Logistica/Magazzino', role: 'logistica-2fmagazzino', id: '224' },
-            { name: 'Marketing/Relazioni esterne', role: 'marketing-2frelazioni-esterne', id: '226' },
-            { name: 'Medicina/Salute', role: 'medicina-2fsalute', id: '221' },
-            { name: 'Ricerca e sviluppo', role: 'ricerca-e-sviluppo', id: '232' },
-            { name: 'Risorse umane', role: 'risorse-umane', id: '222' },
-            { name: 'Ristorazione/Hotellerie', role: 'ristorazione-2fhotellerie', id: '220' },
-            { name: 'Sicurezza/Vigilanza', role: 'sicurezza-2fvigilanza', id: '233' },
-            { name: 'Trasporti', role: 'trasporti', id: '900' },
-            { name: 'Vendita al dettaglio/Servizi al pubblico', role: 'vendita-al-dettaglio-2fservizi-al-pubblico', id: '902' }
-        ]);
+            setCantons([...CANTONS].sort((a, b) => a.name.localeCompare(b.name)));
+            setSectors(SECTORS);
         }, 0);
     }, []);
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const queryParams = new URLSearchParams();
-        
-        let hasCountryRegion = false;
-        if (selectedCanton) {
-            const cantonObj = cantons.find(c => c.value === selectedCanton);
-            if (cantonObj && cantonObj.regionId) {
-                queryParams.set('country', '214'); 
-                queryParams.set('region', cantonObj.regionId);
-                hasCountryRegion = true;
-            } else {
-                queryParams.set('global', '1');
-                queryParams.set('location', cantonObj ? cantonObj.name : selectedCanton);
-            }
-        } else {
-            queryParams.set('global', '1');
-        }
-
-        if (hasCountryRegion) {
-            queryParams.set('sector', '');
-            queryParams.set('role', '');
-            queryParams.set('e_type', '');
-            queryParams.set('percent', '');
-            queryParams.set('e_type_gt', '');
-            queryParams.set('percent_gt', '');
-        }
-
-        if (keyword) queryParams.set('keyword', keyword);
-
-        if (selectedSector) {
-            const sectorObj = sectors.find(s => s.id === selectedSector);
-            if (sectorObj) {
-                queryParams.set('role', sectorObj.role);
-                queryParams.set('role_id', sectorObj.id);
-            }
-        }
-
-        navigate(`/offerte?${queryParams.toString()}`);
+        navigate(`/offerte?${buildSearchParams({ keyword, selectedSector, selectedCanton }).toString()}`);
     };
 
     useEffect(() => {

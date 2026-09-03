@@ -207,7 +207,7 @@ const Offerte = ({ setShowLoginModal }) => {
         };
         fetchJobs();
         setVisibleCount(5);
-    }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location')]);
+    }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location'), searchParams.get('canton')]);
 
     // `jobId` names an offer and `global` widens the scope — neither narrows the result,
     // so neither makes an empty answer a matter of filters.
@@ -363,7 +363,8 @@ const Offerte = ({ setShowLoginModal }) => {
                             initialSector={searchParams.get('role_id') || ''}
                             initialCanton={getCantonValueFromParams(
                                 searchParams.get('region') || '',
-                                searchParams.get('location') || ''
+                                searchParams.get('location') || '',
+                                searchParams.get('canton') || ''
                             )}
                             onSearch={(params) => {
                                 params.delete('jobId');

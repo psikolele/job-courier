@@ -381,6 +381,11 @@ export async function fetchJobDetail(id) {
 const FACET_TTL_MS = 60 * 60 * 1000;
 const facetCache = new Map();
 
+/** Tests only: the hour-long cache would otherwise carry one case's index into the next. */
+export function resetFacetCache() {
+  facetCache.clear();
+}
+
 /** "Ristorazione/Hotellerie" -> "ristorazione-hotellerie" */
 export function slugify(value) {
   return String(value ?? '')
@@ -433,15 +438,56 @@ async function fetchPagesFrom(path, pages, maxJobs) {
 }
 
 /**
+ * Resolve a region filter to a facet id the portal actually lists.
+ *
+ * Two things made region filters answer empty before this existed. The caller's table of
+ * canton ids was hand-maintained and had drifted: `3095` for Argovia is in no upstream
+ * index, so its facet lookup missed and the query was reported unanswerable. And most
+ * cantons carried no id at all, so they arrived as location text with no route to take —
+ * even the six the portal does list (Obvaldo, Sciaffusa, Soletta, Turgovia, Vaud, Zugo).
+ *
+ * The index itself is the authority: facet paths read
+ * `/it/careers/jobs_by_region/3115-214-svizzera-ticino/`, so the canton's own name is in
+ * the path and a location string can be matched back to an id without any local table.
+ * An id that the index confirms wins; otherwise the location text is resolved by slug.
+ */
+export async function resolveRegionFacet({ region, location } = {}) {
+  const index = await fetchFacetIndex('region');
+  if (region && index.has(String(region))) return String(region);
+
+  const wanted = slugify(location);
+  if (!wanted) return null;
+
+  for (const [id, path] of index) {
+    // "3115-214-svizzera-ticino" -> "ticino"; the first three parts are id, country
+    // code and country, and the canton is whatever follows them.
+    const canton = decodeURIComponent(path).split('/').filter(Boolean).pop().split('-').slice(3).join('-');
+    if (canton && slugify(canton) === wanted) return id;
+  }
+  return null;
+}
+
+/**
  * Answer a filtered query from the faceted routes.
  *
- * One route is chosen, because they cannot be combined upstream. The order is by what
- * cannot be re-checked afterwards: `role_id` first — the list pages carry no role or
- * sector at all, so a role filter has to be the route or it is lost — then `region`,
- * whose slug names the canton and so can also be matched against the location text, then
- * `keyword`, which is plain text and the easiest to apply ourselves.
+ * One route is chosen, because they cannot be combined upstream — verified 03.09.2026 by
+ * asking for one facet with the other as a query param in every shape the portal might
+ * accept: the second filter is ignored in silence and the first facet's own results come
+ * back unchanged.
  *
- * Returns the pool plus which filter the route honoured, so the caller knows what is
+ * The order is by what cannot be reconstructed afterwards, and `keyword` is first because
+ * upstream keyword search is *semantic*, not textual: `jobs_by_keyword/hr` returns
+ * "Talent Acquisition Specialist", which contains no "hr" anywhere. Nothing we can run
+ * over the pool afterwards reproduces that, so a keyword filter has to be the route or
+ * its meaning is lost. `role_id` is next — list pages expose no role or sector at all.
+ * `region` is last precisely because it is the one filter that *is* recoverable: the
+ * location text names the canton, so it can be applied to any pool.
+ *
+ * When keyword and role are both asked for, neither survives being applied afterwards, so
+ * both routes are fetched and intersected. That is two upstream reads instead of one, run
+ * in parallel, and it is the only way to honour the pair at all.
+ *
+ * Returns the pool plus which filter(s) the route honoured, so the caller knows what is
  * left to apply. A null result means the query names a facet the portal does not list —
  * that is "we cannot answer this", not "there is nothing".
  */
@@ -452,20 +498,39 @@ export async function fetchJobsForQuery(params = {}, { pages = 3, maxJobs = 45 }
     return { jobs: await fetchPagesFrom(path, pages, maxJobs), honoured: kind, path };
   };
 
-  if (params.role_id) return byFacet('role', params.role_id);
-  if (params.region) return byFacet('region', params.region);
+  const keywordSlug = params.keyword ? slugify(params.keyword) : '';
+  const byKeyword = async () => {
+    if (!keywordSlug) return null;
+    const path = `/${LANG}/careers/jobs_by_keyword/${keywordSlug}`;
+    return { jobs: await fetchPagesFrom(path, pages, maxJobs), honoured: 'keyword', path };
+  };
 
-  if (params.keyword) {
-    const slug = slugify(params.keyword);
-    if (!slug) return null;
+  if (keywordSlug && params.role_id) {
+    const [kw, role] = await Promise.all([byKeyword(), byFacet('role', params.role_id)]);
+    if (!kw) return role;
+    if (!role) return kw;
+    // Same ad is spelled differently by different routes, so match on the numeric id
+    // both carry rather than on the whole string.
+    const roleIds = new Set(role.jobs.map(j => jobKey(j)));
     return {
-      jobs: await fetchPagesFrom(`/${LANG}/careers/jobs_by_keyword/${slug}`, pages, maxJobs),
-      honoured: 'keyword',
-      path: `/${LANG}/careers/jobs_by_keyword/${slug}`,
+      jobs: kw.jobs.filter(j => roleIds.has(jobKey(j))),
+      honoured: ['keyword', 'role'],
+      path: `${kw.path} ∩ ${role.path}`,
     };
   }
 
+  if (keywordSlug) return byKeyword();
+  if (params.role_id) return byFacet('role', params.role_id);
+  if (params.region) return byFacet('region', params.region);
+
   return null;
+}
+
+/** Numeric jobroom id when there is one, so the same ad matches across routes. */
+function jobKey(job) {
+  const s = String(job?.jobroom_id || job?.id || '');
+  const m = s.match(/^(\d+)/);
+  return m ? m[1] : s;
 }
 
 /**
