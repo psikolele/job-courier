@@ -490,17 +490,26 @@ function normalizeText(value) {
  *
  * An ad writes its canton either in full ("Svizzera, Ticino, Mendrisio") or as the
  * two-letter code ("Svizzera, Locarno, Ti"), and the second form is not rare — the Ticino
- * HR ads that a canton-filtered search is supposed to find are all written that way.
- * Matching the name as a substring found only the first form and silently dropped the
- * rest, so both forms are checked, and the code is compared as a whole word: "ti" must
- * not match inside "Bellinzona".
+ * HR ads a canton search is supposed to find are nearly all written that way. Matching the
+ * name only found the first form and silently dropped the rest.
+ *
+ * Both forms are matched on whole words, never as bare substrings. A substring test reads
+ * plausibly and is wrong in both directions: "ti" appears inside "Bellinzona", and — found
+ * by the live sweep of all 26 cantons — "uri" appears inside "zurigo", which handed every
+ * Zurich ad to a search for Uri.
  */
-function isInCanton(location, cantonName, cantonCode) {
+export function isInCanton(location, cantonName, cantonCode) {
   const tokens = normalizeText(location).split(' ').filter(Boolean);
-  const name = normalizeText(cantonName);
+  const name = normalizeText(cantonName).split(' ').filter(Boolean);
   const code = normalizeText(cantonCode);
 
-  if (name && tokens.join(' ').includes(name)) return true;
+  // The canton name can be more than one word ("basilea citta"), so it matches when its
+  // words appear in order and whole, not when its letters appear inside another word.
+  if (name.length) {
+    for (let i = 0; i + name.length <= tokens.length; i++) {
+      if (name.every((word, k) => tokens[i + k] === word)) return true;
+    }
+  }
   if (code && tokens.includes(code)) return true;
   return false;
 }
