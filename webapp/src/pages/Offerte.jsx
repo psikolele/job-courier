@@ -127,6 +127,13 @@ const Offerte = ({ setShowLoginModal }) => {
     const [selectedJobDetail, setSelectedJobDetail] = useState(null);
     const [detailLoading, setDetailLoading] = useState(false);
 
+    // How many list cards are rendered. The detail column sets the row's
+    // natural height (no more fixed height/scroll); this caps the list to
+    // whole cards within roughly that height instead of an internal scrollbar
+    // that used to cut the last one in half. "Carica altro" reveals more from
+    // `jobs`, already fully loaded — no extra fetch.
+    const [visibleCount, setVisibleCount] = useState(5);
+
     const selectedJobId = searchParams.get('jobId');
 
     // Registration wall (shared logic with Filters.jsx)
@@ -199,6 +206,7 @@ const Offerte = ({ setShowLoginModal }) => {
             }
         };
         fetchJobs();
+        setVisibleCount(5);
     }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location')]);
 
     // `jobId` names an offer and `global` widens the scope — neither narrows the result,
@@ -420,8 +428,8 @@ const Offerte = ({ setShowLoginModal }) => {
                                     {hasActiveFilters ? t('jobs.none_found') : t('jobs.showcase_unavailable')}
                                 </div>
                             ) : (
-                                <div className="flex flex-col gap-1 overflow-y-auto scroll-fade" style={{ maxHeight: 'calc(100vh - 320px)', background: 'rgba(5,11,43,0.04)' }}>
-                                    {jobs.map(job => {
+                                <div className="flex flex-col gap-1" style={{ background: 'rgba(5,11,43,0.04)' }}>
+                                    {jobs.slice(0, visibleCount).map(job => {
                                         const isSelected = !!selectedJobId && jobIdKey(selectedJobId) === jobIdKey(job.id);
                                         // The card is the link. It used to be a div with only an onClick,
                                         // so an offer had no href anywhere on the site and stayed an orphan
@@ -522,16 +530,30 @@ const Offerte = ({ setShowLoginModal }) => {
                                     })}
                                 </div>
                             )}
+
+                            {jobs.length > visibleCount && (
+                                <button
+                                    onClick={() => setVisibleCount(c => c + 5)}
+                                    style={{
+                                        marginTop: 12,
+                                        background: F, color: '#FFFFFF', border: 'none',
+                                        padding: '14px 0',
+                                        fontFamily: brand, fontWeight: 700, fontSize: 11,
+                                        letterSpacing: '0.14em', textTransform: 'uppercase',
+                                        cursor: 'pointer', borderRadius: 0,
+                                        width: '100%'
+                                    }} className="hover:opacity-80 transition-opacity">
+                                    {t('jobs.load_more')}
+                                </button>
+                            )}
                         </div>
                     )}
 
                     {/* DETAIL */}
                     {showDetail && (isMobile ? activeTab === 'detail' : true) && (
                         <div className="w-full md:w-[60%] lg:w-[65%]">
-                            <div className="md:sticky md:top-[100px] flex flex-col" style={{
-                                background: '#FFFFFF',
-                                height: isMobile ? 'auto' : 'calc(100vh - 200px)',
-                                overflow: 'hidden'
+                            <div className="flex flex-col" style={{
+                                background: '#FFFFFF'
                             }}>
                                 {isMobile && (
                                     <div style={{ padding: 16, borderBottom: '1px solid rgba(5,11,43,0.07)' }}>
@@ -645,7 +667,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                             </div>
                                         </div>
 
-                                        <div className="scroll-fade" style={{ padding: '32px 36px', overflowY: 'auto', flex: 1 }}>
+                                        <div style={{ padding: '32px 36px' }}>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                                                 <span style={{ width: 28, height: 2, background: F, display: 'inline-block' }} />
                                                 <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
