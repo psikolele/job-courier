@@ -13,6 +13,7 @@ import PageSeo from '../components/PageSeo';
 import { getCantonValueFromParams } from '../utils/searchData';
 import { JobListItemSkeleton, JobDetailSkeleton } from '../components/ui/Skeleton';
 import { deriveSector, deriveRole } from '../utils/jobTaxonomy';
+import { splitPublishedLabel } from '../utils/publishedLabel';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -432,6 +433,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                 <div className="flex flex-col gap-1" style={{ background: 'rgba(5,11,43,0.04)' }}>
                                     {jobs.slice(0, visibleCount).map(job => {
                                         const isSelected = !!selectedJobId && jobIdKey(selectedJobId) === jobIdKey(job.id);
+                                        const published = splitPublishedLabel(job.published_at);
                                         // The card is the link. It used to be a div with only an onClick,
                                         // so an offer had no href anywhere on the site and stayed an orphan
                                         // page even while sitemapped — a crawler never runs handleSelectJob.
@@ -477,13 +479,18 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         }}>{job.title}</h3>
                                                         <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
                                                             <span style={{ fontFamily: body, fontSize: 12, color: GM }}>{job.company?.name || 'Azienda Riservata'}</span>
-                                                            {job.published_at && (
+                                                            {published.date && (
                                                                 <>
                                                                     <span style={{ color: 'rgba(139,143,168,0.4)', fontSize: 12 }}>·</span>
                                                                     <span style={{ fontFamily: body, fontSize: 11, color: GM, opacity: 0.7, display: 'flex', alignItems: 'center', gap: 3 }}>
-                                                                        <Calendar size={10} />{job.published_at}
+                                                                        <Calendar size={10} />{published.date}
                                                                     </span>
                                                                 </>
+                                                            )}
+                                                            {published.isNew && (
+                                                                <span style={{ fontFamily: brand, fontWeight: 900, fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: N }}>
+                                                                    {t('jobs.new_badge')}
+                                                                </span>
                                                             )}
                                                             {job.redirect && (
                                                                 <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 8, letterSpacing: '0.18em', textTransform: 'uppercase', color: F }}>● {t('jobs.external_badge')}</span>

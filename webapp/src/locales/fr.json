@@ -276,6 +276,7 @@
     "none_found": "Aucune offre ne correspond aux filtres actuels.",
     "showcase_unavailable": "Les offres sont momentanément indisponibles. Réessayez dans quelques minutes.",
     "external_badge": "Externe",
+    "new_badge": "Nouveau",
     "label_location": "Lieu",
     "label_sector": "Secteur",
     "label_role": "Fonction",

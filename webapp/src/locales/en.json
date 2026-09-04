@@ -276,6 +276,7 @@
     "none_found": "No job offers match the current filters.",
     "showcase_unavailable": "Job offers are temporarily unavailable. Please try again in a few minutes.",
     "external_badge": "External",
+    "new_badge": "New",
     "label_location": "Location",
     "label_sector": "Sector",
     "label_role": "Role",
