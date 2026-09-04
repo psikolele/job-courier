@@ -104,7 +104,12 @@ const AdSlot = ({ name, variant = 'banner' }) => {
                     style={{ display: 'block', minHeight: isCard ? 100 : 90 }}
                     data-ad-client="ca-pub-4406252930350703"
                     data-ad-slot={adUnitId}
-                    data-ad-format={isCard ? 'fluid' : 'horizontal'}
+                    // Every unit is a responsive display unit ("Adattabile"), so
+                    // the format is 'auto' for all three — matching the snippet
+                    // AdSense generated. 'fluid' belongs to in-feed units, which
+                    // we deliberately did not create: their whole purpose is to
+                    // take on the surrounding cards' look.
+                    data-ad-format="auto"
                     data-full-width-responsive="true"
                 />
             )}

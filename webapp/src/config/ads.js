@@ -12,11 +12,11 @@
  */
 export const AD_SLOTS = {
     /** Between offer cards in the /offerte list, one every three cards. */
-    offerteList: '',
+    offerteList: '2640720133',
     /** Top of a single offer's detail — wide and short. */
-    offertaTop: '',
+    offertaTop: '2308818696',
     /** Foot of a single offer's detail. */
-    offertaBottom: '',
+    offertaBottom: '1919655083',
 };
 
 export const hasAdSlot = (name) => Boolean(AD_SLOTS[name]);
