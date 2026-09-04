@@ -138,36 +138,109 @@ Cantiere separato da tenere fuori dagli sprint sopra — non toccare finché non
 
 ---
 
-## Da comunicare a Gabri — mail di fine lavori
+## Monetizzazione AdSense — stato reale (misurato 04.09.2026)
 
-Punti aperti che nascono dai lavori fatti, non dal piano originale. Da riportare
-nella prossima mail di termine lavori.
+Sezione riscritta dopo una prima versione sbagliata: avevo dedotto "jobroom non
+ha pubblicità" da due URL caricate a campione (`/it/careers/jobs` e la pagina di
+registrazione), che girano sulla piattaforma nuova `viso` e in effetti non ne
+hanno. Il report AdSense per sito dice l'opposto ed è la fonte da usare.
 
-### 1. Gli annunci si vedono solo con consenso marketing accettato
-Le tre unità AdSense passano da `AdsenseGate`, che carica lo script di Google
-dietro il consenso marketing di Cookiebot. Chi rifiuta i cookie di marketing non
-vede pubblicità: lo spazio non viene proprio renderizzato, quindi niente riquadri
-vuoti o buchi nel layout, ma quella quota di traffico non genera ricavo.
-Non è una scelta implementativa, è la conseguenza di avere pubblicità su un sito
-soggetto a nLPD/GDPR.
+### Da dove arrivano i soldi (ultimi 30 giorni)
 
-Per confronto (verificato il 04.09.2026 dal vivo): `jobroom.jobcourier.ch` non
-carica **nessuna** risorsa di terze parti — niente Google, niente Cookiebot,
-niente analytics, solo chiamate interne a `viso/`. Per questo non mostra alcun
-banner e si vede tutto subito: non ha pubblicità e non posa cookie di
-profilazione, quindi non ha nulla da far accettare. Non è un modello replicabile
-sul sito: con AdSense attivo il banner è obbligatorio.
+| Sito | Visualizz. pagina | Utili stimati | Clic |
+|---|---|---|---|
+| `jobroom.jobcourier.ch` | 6.598 | **351,62 CHF** | 899 |
+| `www.jobcourier.ch` | 415 | 5,13 CHF | 21 |
+| `viso-jobcourier.arca24.careers` | 1 | 0,00 CHF | 0 |
 
-### 2. Auto ads spenti — il ricavo ora dipende da tre piazzamenti
-Il 04.09.2026 gli Annunci automatici sono stati disattivati su `jobcourier.ch`
-(scelta esplicita: controllo sui piazzamenti e conformità alle norme Google sugli
-annunci mascherati da contenuto). Prima Google piazzava unità autonomamente su
-tutto il sito tranne la home.
+**Jobroom fa il 98,6% del ricavo.** Il sito nuovo vale l'1,4%.
 
-Conseguenza da misurare, non da assumere: tre piazzamenti controllati rendono
-quasi sempre meno di Auto ads. Riferimento pre-modifica (7 giorni): ~50 CHF di
-RPM pagina, 920 clic, 47,9K impressioni. Se il calo fosse marcato, la scelta si
-può rivedere — Auto ads si riaccende da pannello in un minuto.
+### ⚠️ Le sei unità di jobroom non vanno toccate
 
-Ottimizzazione automatica è rimasta **ON**: non piazza annunci, ottimizza solo
-quelli esistenti.
+Su `jobroom.jobcourier.ch/it/careers/latest_jobs` girano 6 unità AdSense, tutte
+riempite, inserite fra un annuncio di lavoro e l'altro — lo stesso schema che
+replichiamo noi su `/offerte`. Gli slot:
+
+`8728236901` · `9174651970` · `7527137192` · `7254548728` · `3363103858`
+
+Nel pannello AdSense compaiono con nomi che sembrano residui di un vecchio sito
+(`NEW-latest jobs orizzontale 1/2`, `NEW-searchandfilterads-1/2`, `horizontal2/3`,
+`permanent_mobile`, ultima modifica maggio 2025). **Non sono residui: sono la
+fonte di ricavo.** `NEW-latest jobs orizzontale 1` da sola fa ~31 CHF su 52 CHF
+settimanali. Non archiviarle, non rinominarle, non "fare pulizia". Stanno dentro
+pagine servite da Arca24, che non controlliamo.
+
+### Perché su jobroom gli annunci si vedono senza accettare nulla
+
+Verificato dal vivo: su jobroom non c'è Cookiebot né altro script di consenso
+nel sorgente, ma `window.__tcfapi` esiste — c'è un CMP conforme TCF gestito lato
+Google (Privacy e messaggi / Funding Choices). Navigando dalla Svizzera il banner
+non compare e gli annunci partono subito, perché l'obbligo di consenso preventivo
+per i cookie pubblicitari nasce dalla direttiva ePrivacy europea, che in Svizzera
+non si applica. La nLPD chiede trasparenza e possibilità di opporsi, non l'opt-in
+preventivo.
+
+Sul nostro dominio invece Cookiebot gira in `blockingmode="auto"` e blocca
+AdSense per **tutti**, svizzeri compresi: siamo più restrittivi sia della legge
+svizzera sia del nostro stesso applicativo che fa il 98% del fatturato. Non è un
+bug, è una configurazione — vedi il piano qui sotto.
+
+### Auto ads spenti il 04.09.2026
+
+Disattivati su `jobcourier.ch` per avere controllo sui piazzamenti e stare dentro
+le norme Google sugli annunci mascherati da contenuto. Impatto economico reale:
+tocca solo l'1,4% del ricavo totale, non il 98% che sta su jobroom.
+Ottimizzazione automatica lasciata ON (non piazza annunci, ottimizza gli
+esistenti). Reversibile da pannello in un minuto.
+
+---
+
+## Piano — consenso per regione su jobcourier.ch
+
+Obiettivo: smettere di bloccare gli annunci ai visitatori svizzeri, restando
+conformi per chi arriva dall'Unione Europea. Allineare il sito a quello che
+l'applicativo già fa.
+
+**Non sono un consulente legale.** Quanto segue è la lettura tecnica delle regole
+Google e della differenza nLPD/ePrivacy; prima di applicarlo va confermato da chi
+segue la privacy per il cliente.
+
+### Il quadro in due righe
+- **Svizzera (nLPD):** nessun obbligo di opt-in preventivo per i cookie
+  pubblicitari. Servono informativa chiara e possibilità di opporsi.
+- **UE/SEE + UK (ePrivacy + GDPR):** consenso preventivo obbligatorio, e la
+  policy di Google sul consenso degli utenti UE impone un CMP certificato TCF.
+  Cookiebot lo è già.
+
+### Passi
+
+1. **Misurare cosa si perde oggi.** Da Cookiebot: tasso di accettazione del
+   consenso marketing. Da AdSense: quota di traffico `www.jobcourier.ch` per
+   paese. Il guadagno atteso è (traffico CH) × (quota che oggi rifiuta o ignora
+   il banner). Senza questo numero non si sa se l'intervento vale.
+2. **Verificare il piano Cookiebot.** La configurazione per regione è una
+   funzione a pagamento: controllare che l'abbonamento attuale la includa.
+3. **Configurare le regioni in Cookiebot:** banner e blocco preventivo per
+   UE/SEE/UK; per Svizzera e resto del mondo, banner informativo senza blocco
+   preventivo, con opt-out sempre raggiungibile.
+4. **Verificare il codice.** `AdsenseGate` carica lo script con
+   `type="text/plain"` e `data-cookieconsent="marketing"`: è Cookiebot a
+   decidere se sbloccarlo. Con le regioni attive dovrebbe sbloccarlo da solo
+   fuori UE — da verificare dal vivo con IP svizzero e IP europeo prima di
+   dichiararlo fatto.
+5. **Aggiornare la cookie policy.** La pagina è già tradotta in 4 lingue: va
+   aggiunto che il comportamento del consenso dipende dalla regione e come
+   opporsi dalla Svizzera.
+6. **Misurare per due settimane.** Confrontare RPM pagina e impressioni di
+   `www.jobcourier.ch` prima/dopo. Restano numeri piccoli in assoluto: l'1,4%
+   del totale non diventerà la voce principale.
+
+### Il punto che vale davvero i soldi
+
+Il ricavo sta su jobroom, non sul sito. Le leve grosse sono due, entrambe fuori
+dal nostro codice e da decidere con Gabri e Arca24:
+- portare traffico dal sito verso jobroom (dove le unità già rendono), oppure
+- ottenere che Arca24 aggiunga piazzamenti nostri sull'applicativo (Task 4.2).
+
+Ottimizzare il consenso su `www.jobcourier.ch` migliora l'1,4%. Va fatto perché è
+corretto e costa poco, non perché sposti il fatturato.
