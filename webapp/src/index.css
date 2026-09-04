@@ -490,3 +490,17 @@
     transform: rotate(35deg);
   }
 }
+
+/* Legal pages render their copy from the locale files, so inline <code> and
+   <strong> in that copy have no JSX to carry styles — they are styled here. */
+.legal-page code {
+  background: var(--brand-gray-light);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.legal-page strong {
+  color: var(--brand-navy);
+  font-weight: 700;
+}

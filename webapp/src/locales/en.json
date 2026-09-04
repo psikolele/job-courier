@@ -423,5 +423,402 @@
     "subtitle": "Everything you need to know about JobCourier.",
     "no_answer": "Didn't find an answer to your question?",
     "contact_support": "Contact support"
+  },
+  "legal": {
+    "eyebrow": "Legal",
+    "prevailing": "This page is also available in other languages. In the event of any discrepancy between versions, the Italian text prevails.",
+    "terms": {
+      "title_top": "General",
+      "title_accent": "Terms.",
+      "subtitle": "General terms of sale and use of JobCourier.",
+      "blocks": [
+        {
+          "type": "h2",
+          "text": "1. Scope"
+        },
+        {
+          "type": "p",
+          "text": "These General Terms and Conditions govern the mutual relations between JobCourier and its clients/users and apply to all services and offers provided by JobCourier as set out in point 2.1 below, except for any specific agreements concluded in writing between the parties."
+        },
+        {
+          "type": "p",
+          "text": "JobCourier always reserves the right not to accept the Purchase Order created in the “Cart” section."
+        },
+        {
+          "type": "h2",
+          "text": "2. Services, prices, payment terms"
+        },
+        {
+          "type": "h3",
+          "text": "2.1. Services offered"
+        },
+        {
+          "type": "p",
+          "text": "Excluded from the services listed are all parties operating in the territory of the Principality of Liechtenstein or working in sectors or professions such as athletes, au pairs and artists."
+        },
+        {
+          "type": "p",
+          "text": "JobCourier provides its clients/users with the following services:"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Publishing job offers for company users: one job advertisement is valid for a single vacancy.",
+            "Searching CVs in the JobCourier database for company users.",
+            "Adding one's own CV to the JobCourier database for candidate users."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "These General Terms and Conditions apply to all on-demand Services offered on the Site. Registration is mandatory for all Services. Registration is personal and may not be transferred, lent or rented out."
+        },
+        {
+          "type": "p",
+          "text": "JobCourier reserves the right to suspend or discontinue its Services should the data entered prove incompatible with the Service and/or contrary to these General Terms and Conditions and/or to the law."
+        },
+        {
+          "type": "h3",
+          "text": "Publishing job offers for company users"
+        },
+        {
+          "type": "p",
+          "text": "The service allows job offers to be published transparently, that is with the company's details and logo, or anonymously. The list of published job offers stays online for 30 days and may be renewed at any time and an unlimited number of times. Clients may publish an unlimited number of job offers."
+        },
+        {
+          "type": "p",
+          "text": "Improper use of the site is prohibited, as is publishing texts not directly related to a job offer or texts that are discriminatory or damaging to the image of third parties or of JobCourier. Email addresses or links to redirect applications may not be included in the text of job offers."
+        },
+        {
+          "type": "p",
+          "text": "Access to the CV database is unlimited both in time and in number of accesses or views. Candidates may only be contacted with job proposals."
+        },
+        {
+          "type": "h3",
+          "text": "Adding your CV to the JobCourier database for candidate users"
+        },
+        {
+          "type": "p",
+          "text": "Every candidate user may register their CV free of charge. The CV registration form is divided into two sections: public data (academic and professional skills), which registered companies can consult, and private data (first name, surname, contact numbers, email), which can be consulted only with the candidate's express consent."
+        },
+        {
+          "type": "p",
+          "text": "Registering a CV is entirely free of charge for the user."
+        },
+        {
+          "type": "h3",
+          "text": "2.2. Prices and payment terms"
+        },
+        {
+          "type": "p",
+          "text": "The prices in force for the services provided, the payment methods, as well as the content and duration of the Services are published on the Site. JobCourier reserves the right to change the prices published for online offers at any time."
+        },
+        {
+          "type": "p",
+          "text": "Unless otherwise specifically agreed in writing between the parties, flat packages require advance payment by bank transfer. All other Services may be paid via PayPal or equivalent systems. All prices stated for online Services are exclusive of VAT."
+        },
+        {
+          "type": "h3",
+          "text": "2.3. Non-use"
+        },
+        {
+          "type": "p",
+          "text": "Services are activated only once payment has actually been received. Non-use (in whole or in part) of JobCourier's services by the client/user does not entitle them to any deduction from the amount due to JobCourier, which remains payable in full."
+        },
+        {
+          "type": "h2",
+          "text": "3. JobCourier's rights and obligations"
+        },
+        {
+          "type": "h3",
+          "text": "3.1. Services"
+        },
+        {
+          "type": "p",
+          "text": "JobCourier strives to continuously improve the Services to match users' needs and requirements. JobCourier reserves the right to change or remove certain functions from the Services at any time and without notice."
+        },
+        {
+          "type": "p",
+          "text": "The Services and all their content are made available without any warranty of freedom from defects. The Site or parts of the Services may be temporarily unavailable for various reasons, without JobCourier assuming any liability for this."
+        },
+        {
+          "type": "h3",
+          "text": "3.2. Liability"
+        },
+        {
+          "type": "p",
+          "text": "JobCourier assumes no liability for the accuracy, content, completeness, legality, reliability, functionality or availability of the information or material that may be displayed while using the Services."
+        },
+        {
+          "type": "p",
+          "text": "The Services are provided “as is” with no other form of warranty. Under no circumstances will JobCourier be liable for damages caused by improper use of the Services or arising from claims connected with it."
+        },
+        {
+          "type": "h3",
+          "text": "3.3. User content and conduct"
+        },
+        {
+          "type": "p",
+          "text": "JobCourier is not obliged, but is entitled, to verify and/or monitor the information entered, transmitted or made available in the Service by users."
+        },
+        {
+          "type": "p",
+          "text": "JobCourier reserves the right in any case, at its sole discretion, to investigate the use of the Service and to take appropriate measures against any user who breaches these General Terms and Conditions or applicable law, or who engages in outrageous or unlawful conduct."
+        },
+        {
+          "type": "h2",
+          "text": "4. Users' rights and obligations"
+        },
+        {
+          "type": "h3",
+          "text": "4.1. Complete and current data"
+        },
+        {
+          "type": "p",
+          "text": "Users undertake to provide all data concerning themselves in an up-to-date, correct and complete form. Users must be at least the minimum age set by law to use the Service."
+        },
+        {
+          "type": "h3",
+          "text": "4.2. User content"
+        },
+        {
+          "type": "p",
+          "text": "Each user is personally and solely responsible for entering, transmitting and/or supplying news, communications, texts, information and other content within the Service."
+        },
+        {
+          "type": "h3",
+          "text": "4.3. Saving copies"
+        },
+        {
+          "type": "p",
+          "text": "Saving copies of the content collected through the Service is prohibited. In any case, any liability of JobCourier for data processing not authorised by it is expressly excluded."
+        },
+        {
+          "type": "h3",
+          "text": "4.4. Rules of conduct"
+        },
+        {
+          "type": "p",
+          "text": "Users warrant and guarantee that they will not breach the relevant Swiss laws and, in general, all applicable regulations (FADP and GDPR), and in particular that they will not make available content of any kind that infringes third-party rights or contains unlawful material and/or material contrary to public decency."
+        },
+        {
+          "type": "h3",
+          "text": "4.5. Conduct towards other users"
+        },
+        {
+          "type": "p",
+          "text": "Users are personally and solely responsible for their conduct towards other users. JobCourier has no duty to monitor what users publish while using the Service."
+        },
+        {
+          "type": "h3",
+          "text": "4.6. Liability"
+        },
+        {
+          "type": "p",
+          "text": "Each user is personally responsible for their use of the Service and for all related actions, and holds JobCourier harmless from any liability in this respect."
+        },
+        {
+          "type": "h2",
+          "text": "5. Property rights"
+        },
+        {
+          "type": "p",
+          "text": "The Site and the Services contain JobCourier content and technology protected by industrial property rights, such as copyright. Users acknowledge that all rights arising from the Site and its content are and remain the property of JobCourier."
+        },
+        {
+          "type": "h2",
+          "text": "6. Protection of personal data"
+        },
+        {
+          "type": "p",
+          "text": "As regards the collection, storage and use of personal data, JobCourier complies with the provisions and rules in force on the protection of personal data (Swiss Federal Act on Data Protection FADP and GDPR)."
+        },
+        {
+          "type": "p",
+          "text": "Registration by candidates and companies is always voluntary and subject to acceptance of these general terms and conditions and of the personal data processing notice."
+        },
+        {
+          "type": "h2",
+          "text": "7. Termination and changes"
+        },
+        {
+          "type": "p",
+          "text": "The contractual relationship between JobCourier and the user may be terminated at any time by either party, at their own discretion, with immediate effect. Prices paid for chargeable Services are not refunded to the user under any circumstances."
+        },
+        {
+          "type": "p",
+          "text": "JobCourier reserves the right to temporarily suspend, withdraw or replace all or some of the Site's services, as well as to change the prices of the Services at any time."
+        },
+        {
+          "type": "h2",
+          "text": "8. Applicable law / Place of jurisdiction"
+        },
+        {
+          "type": "p",
+          "text": "The contractual relationship between JobCourier and the client/user is governed by the laws of the Swiss Confederation, which prevail in the event of conflict with other laws in force."
+        },
+        {
+          "type": "p",
+          "text": "The Pretura of Lugano has exclusive jurisdiction over disputes, with the right of appeal to the higher courts."
+        }
+      ]
+    },
+    "cookies": {
+      "title_top": "Cookie",
+      "title_accent": "Policy.",
+      "subtitle": "Notice on the use of cookies on jobcourier.ch",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Last updated: June 2026. This Cookie Policy describes how <strong>JobCourier Sagl</strong>, with registered office at Via delle Fornaci 6 - 6826 Riva San Vitale, uses cookies and similar technologies on the website <strong>jobcourier.ch</strong>. The policy is drawn up in accordance with EU Regulation 2016/679 (GDPR), the Swiss Federal Act on Data Protection (revFADP) and the applicable provisions on electronic communications."
+        },
+        {
+          "type": "rule"
+        },
+        {
+          "type": "h2",
+          "text": "1. What cookies are"
+        },
+        {
+          "type": "p",
+          "text": "Cookies are small text files placed on the user's device (computer, tablet, smartphone) when they visit a website. They allow the site to recognise the device during the current session or on later visits, improving the user experience and collecting statistical information about page use."
+        },
+        {
+          "type": "p",
+          "text": "Cookies contain no executable programs and cannot access other data on the device. Alongside traditional cookies, similar technologies such as web beacons, pixel tags and localStorage, which serve comparable purposes, may be used."
+        },
+        {
+          "type": "h2",
+          "text": "2. Types of cookies used"
+        },
+        {
+          "type": "h3",
+          "text": "2.1 Technical and functional cookies"
+        },
+        {
+          "type": "p",
+          "text": "These are strictly necessary for the site to work and for the services requested by the user to be delivered. Without them some features — such as login, secure browsing or storing preferences — would not be available. Under current legislation they do not require the user's consent."
+        },
+        {
+          "type": "h3",
+          "text": "2.2 Analytics cookies"
+        },
+        {
+          "type": "p",
+          "text": "These collect aggregated, anonymous information on how users interact with the site (pages visited, time spent, traffic source). They are used to improve the portal's performance and content. When managed directly by JobCourier or with anonymised IP, they are treated as technical cookies; otherwise they require consent."
+        },
+        {
+          "type": "h3",
+          "text": "2.3 Profiling and marketing cookies"
+        },
+        {
+          "type": "p",
+          "text": "These track the user's browsing habits in order to show personalised advertising and relevant job offers, both on jobcourier.ch and on third-party sites. They are used only with the user's explicit consent, which may be withdrawn at any time."
+        },
+        {
+          "type": "h3",
+          "text": "2.4 Third-party cookies"
+        },
+        {
+          "type": "p",
+          "text": "Some cookies are set by third-party services integrated into the site (e.g. Google Analytics, LinkedIn, Meta). These parties act as independent data controllers and apply their own privacy policies. JobCourier has no direct control over such cookies and invites users to consult the notices of the respective providers."
+        },
+        {
+          "type": "h2",
+          "text": "3. Specific cookies used on jobcourier.ch"
+        },
+        {
+          "type": "p",
+          "text": "The up-to-date list of cookies actually detected on the site, generated automatically by Cookiebot through periodic scanning, is shown below:"
+        },
+        {
+          "type": "widget",
+          "name": "cookieDeclaration"
+        },
+        {
+          "type": "p",
+          "text": "Google Analytics is used with IP address anonymisation enabled (<code>anonymizeIp: true</code>). The data collected does not allow users to be directly identified. For the full Google Analytics notice see: <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--brand-fuchsia); text-decoration: underline\">policies.google.com/privacy</a>."
+        },
+        {
+          "type": "h2",
+          "text": "4. How to manage and disable cookies"
+        },
+        {
+          "type": "p",
+          "text": "Users may change their cookie preferences at any time directly in their browser. Disabling technical cookies alone may impair the correct functioning of some sections of the site."
+        },
+        {
+          "type": "p",
+          "text": "Instructions for the most common browsers are given below:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "<strong>Google Chrome:</strong> <a href=\"https://support.google.com/chrome/answer/95647\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--brand-fuchsia)\">support.google.com/chrome/answer/95647</a>",
+            "<strong>Mozilla Firefox:</strong> <a href=\"https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--brand-fuchsia)\">support.mozilla.org — Enhanced Tracking Protection</a>",
+            "<strong>Apple Safari:</strong> <a href=\"https://support.apple.com/en-gb/guide/safari/sfri11471/mac\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--brand-fuchsia)\">support.apple.com — Manage cookies in Safari</a>",
+            "<strong>Microsoft Edge:</strong> <a href=\"https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--brand-fuchsia)\">support.microsoft.com — Cookies in Microsoft Edge</a>"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "As regards third-party profiling cookies, users may exercise their right to object by visiting: <a href=\"https://www.youronlinechoices.eu\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--brand-fuchsia)\">www.youronlinechoices.eu</a> (an IAB Europe initiative)."
+        },
+        {
+          "type": "p",
+          "text": "To disable Google Analytics tracking permanently, a browser add-on is available: <a href=\"https://tools.google.com/dlpage/gaoptout\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--brand-fuchsia)\">tools.google.com/dlpage/gaoptout</a>."
+        },
+        {
+          "type": "h2",
+          "text": "5. Legal basis for processing"
+        },
+        {
+          "type": "p",
+          "text": "Processing through technical and functional cookies is based on the controller's <strong>legitimate interest</strong> (Art. 6(1)(f) GDPR; Art. 31 revFADP), as it is necessary to deliver the requested service. Processing through non-essential analytics cookies and profiling cookies is based on the user's <strong>consent</strong> (Art. 6(1)(a) GDPR), given on first access to the site through the cookie management banner."
+        },
+        {
+          "type": "h2",
+          "text": "6. Data transfers"
+        },
+        {
+          "type": "p",
+          "text": "Some third-party service providers (e.g. Google LLC) are based in the United States. Transfers take place in compliance with the safeguards required by applicable law, including the standard contractual clauses approved by the European Commission and, where relevant, the EU–US Data Privacy Framework. For transfers to third countries under the revFADP, JobCourier applies the same appropriate safeguards required by Swiss law."
+        },
+        {
+          "type": "h2",
+          "text": "7. Updates to the cookie policy"
+        },
+        {
+          "type": "p",
+          "text": "JobCourier reserves the right to update this Cookie Policy to reflect technical, regulatory or operational changes. In the event of material changes, users will be informed through a visible notice on the site or, if registered, by email. The date of the last update is shown at the top of this page."
+        },
+        {
+          "type": "p",
+          "text": "We recommend checking this page periodically to stay informed about any updates."
+        },
+        {
+          "type": "h2",
+          "text": "8. Rights of data subjects"
+        },
+        {
+          "type": "p",
+          "text": "As a data subject, the user has the right to: access their data, request its rectification or erasure, object to processing for marketing purposes, request restriction of processing, and exercise the right to data portability. These rights may be exercised by contacting the controller at the details given below. Users also have the right to lodge a complaint with the Federal Data Protection and Information Commissioner (FDPIC) or with the competent supervisory authority in their EU Member State of habitual residence."
+        },
+        {
+          "type": "h2",
+          "text": "9. Contact"
+        },
+        {
+          "type": "p",
+          "text": "For any question about this Cookie Policy or about exercising the rights above, JobCourier can be contacted at:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "<strong>Email:</strong> <a href=\"mailto:privacy@jobcourier.ch\" style=\"color: var(--brand-fuchsia)\">privacy@jobcourier.ch</a>",
+            "<strong>Address:</strong> JobCourier Sagl - Via delle Fornaci 6 - 6826 Riva San Vitale"
+          ]
+        }
+      ]
+    }
   }
 }
