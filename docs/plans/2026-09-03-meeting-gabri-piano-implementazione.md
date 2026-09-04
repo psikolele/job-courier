@@ -135,3 +135,39 @@ Cantiere separato da tenere fuori dagli sprint sopra — non toccare finché non
 - Scope discipline e incidente banner: `CLAUDE.md` § "🚫 Scope discipline"
 - Redirect trailing slash / 213 URL SEO: `docs/GOLIVE-PLAN.md`
 - Audit tecnico precedente (logo/slug azienda): `docs/AUDIT-SITO-2026-08-04.md`
+
+---
+
+## Da comunicare a Gabri — mail di fine lavori
+
+Punti aperti che nascono dai lavori fatti, non dal piano originale. Da riportare
+nella prossima mail di termine lavori.
+
+### 1. Gli annunci si vedono solo con consenso marketing accettato
+Le tre unità AdSense passano da `AdsenseGate`, che carica lo script di Google
+dietro il consenso marketing di Cookiebot. Chi rifiuta i cookie di marketing non
+vede pubblicità: lo spazio non viene proprio renderizzato, quindi niente riquadri
+vuoti o buchi nel layout, ma quella quota di traffico non genera ricavo.
+Non è una scelta implementativa, è la conseguenza di avere pubblicità su un sito
+soggetto a nLPD/GDPR.
+
+Per confronto (verificato il 04.09.2026 dal vivo): `jobroom.jobcourier.ch` non
+carica **nessuna** risorsa di terze parti — niente Google, niente Cookiebot,
+niente analytics, solo chiamate interne a `viso/`. Per questo non mostra alcun
+banner e si vede tutto subito: non ha pubblicità e non posa cookie di
+profilazione, quindi non ha nulla da far accettare. Non è un modello replicabile
+sul sito: con AdSense attivo il banner è obbligatorio.
+
+### 2. Auto ads spenti — il ricavo ora dipende da tre piazzamenti
+Il 04.09.2026 gli Annunci automatici sono stati disattivati su `jobcourier.ch`
+(scelta esplicita: controllo sui piazzamenti e conformità alle norme Google sugli
+annunci mascherati da contenuto). Prima Google piazzava unità autonomamente su
+tutto il sito tranne la home.
+
+Conseguenza da misurare, non da assumere: tre piazzamenti controllati rendono
+quasi sempre meno di Auto ads. Riferimento pre-modifica (7 giorni): ~50 CHF di
+RPM pagina, 920 clic, 47,9K impressioni. Se il calo fosse marcato, la scelta si
+può rivedere — Auto ads si riaccende da pannello in un minuto.
+
+Ottimizzazione automatica è rimasta **ON**: non piazza annunci, ottimizza solo
+quelli esistenti.
