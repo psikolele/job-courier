@@ -373,7 +373,8 @@
     "forma_courses": "IT and AI courses",
     "forma_alt": "Opportunities to update skills and foster professional growth.",
     "supsi_desc": "Develop strategic skills for human resources management",
-    "supsi_cta": "Discover the Master"
+    "supsi_cta": "Discover the Master",
+    "label": "Advertisement"
   },
   "features": {
     "dynamic_search_title": "Dynamic Search",

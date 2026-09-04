@@ -373,7 +373,8 @@
     "forma_courses": "corsi di informatica ed AI",
     "forma_alt": "Opportunità per aggiornare competenze e favorire la crescita professionale.",
     "supsi_desc": "Sviluppa le competenze strategiche per la gestione delle risorse umane",
-    "supsi_cta": "Scopri il Master"
+    "supsi_cta": "Scopri il Master",
+    "label": "Annuncio"
   },
   "features": {
     "dynamic_search_title": "Ricerca Dinamica",

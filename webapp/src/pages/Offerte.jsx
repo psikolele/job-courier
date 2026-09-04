@@ -15,6 +15,7 @@ import { getCantonValueFromParams } from '../utils/searchData';
 import { JobListItemSkeleton, JobDetailSkeleton } from '../components/ui/Skeleton';
 import { deriveSector, deriveRole } from '../utils/jobTaxonomy';
 import { splitPublishedLabel } from '../utils/publishedLabel';
+import AdSlot from '../components/AdSlot';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -432,7 +433,12 @@ const Offerte = ({ setShowLoginModal }) => {
                                 </div>
                             ) : (
                                 <div className="flex flex-col gap-1" style={{ background: 'rgba(5,11,43,0.04)' }}>
-                                    {jobs.slice(0, visibleCount).map(job => {
+                                    {jobs.slice(0, visibleCount).map((job, index) => {
+                                        // One ad every three cards, after the third — never
+                                        // before the first, so the list always opens on real
+                                        // offers. AdSlot renders nothing until its unit id is
+                                        // configured, so this adds no empty boxes today.
+                                        const adAfterThis = (index + 1) % 3 === 0;
                                         const isSelected = !!selectedJobId && jobIdKey(selectedJobId) === jobIdKey(job.id);
                                         const published = splitPublishedLabel(job.published_at);
                                         // The card is the link. It used to be a div with only an onClick,
@@ -447,7 +453,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                         // Plain clicks are still handled in-app; modified clicks are left
                                         // alone so cmd/ctrl-click and middle-click open the offer in a new
                                         // tab the way any other link does.
-                                        return (
+                                        const card = (
                                             <motion.a
                                                 key={job.id}
                                                 href={`/offerta/${jobIdKey(job.id)}`}
@@ -536,6 +542,13 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 })()}
                                             </motion.a>
                                         );
+
+                                        return adAfterThis ? (
+                                            <React.Fragment key={job.id}>
+                                                {card}
+                                                <AdSlot name="offerteList" variant="card" />
+                                            </React.Fragment>
+                                        ) : card;
                                     })}
                                 </div>
                             )}

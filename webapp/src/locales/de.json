@@ -373,7 +373,8 @@
     "forma_courses": "IT- und KI-Kurse",
     "forma_alt": "Möglichkeiten zur Weiterbildung und beruflichen Weiterentwicklung.",
     "supsi_desc": "Entwickeln Sie strategische Kompetenzen im Personalmanagement",
-    "supsi_cta": "Master entdecken"
+    "supsi_cta": "Master entdecken",
+    "label": "Anzeige"
   },
   "features": {
     "dynamic_search_title": "Dynamische Suche",

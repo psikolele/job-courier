@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import RegistrationWallModal from '../components/RegistrationWallModal';
 import ApplyRedirectModal from '../components/ApplyRedirectModal';
 import { openExternal } from '../utils/openExternal';
+import AdSlot from '../components/AdSlot';
 import { isUserLoggedIn } from '../hooks/useRegistrationWall';
 import { saveReturnUrl } from '../hooks/useReturnUrl';
 import PageSeo from '../components/PageSeo';
@@ -259,12 +260,19 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                             )}
                         </div>
 
+                        {/* Ads sit outside the offer's own content, above and below it —
+                            never interleaved with the description, where a candidate
+                            reading the job would meet one mid-sentence. */}
+                        <AdSlot name="offertaTop" variant="banner" />
+
                         {/* Rich HTML Job Description extracted via Cheerio */}
                         <div 
                             className="job-description-content text-base font-normal leading-relaxed text-slate-800"
                             style={{ fontFamily: body }}
                             dangerouslySetInnerHTML={{ __html: job.description }}
                         />
+
+                        <AdSlot name="offertaBottom" variant="banner" />
 
                     </div>
 

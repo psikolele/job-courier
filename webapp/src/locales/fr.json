@@ -373,7 +373,8 @@
     "forma_courses": "cours d'informatique et d'IA",
     "forma_alt": "Opportunités pour mettre à jour ses compétences et favoriser sa croissance professionnelle.",
     "supsi_desc": "Développez des compétences stratégiques en gestion des ressources humaines",
-    "supsi_cta": "Découvrir le Master"
+    "supsi_cta": "Découvrir le Master",
+    "label": "Annonce"
   },
   "features": {
     "dynamic_search_title": "Recherche Dynamique",

@@ -1,75 +1,112 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { AD_SLOTS } from '../config/ads';
 
-const AdSlot = ({ id, type = 'internal' }) => {
-    const [isVisible, setIsVisible] = useState(false);
+const GM = 'var(--brand-gray-mid)';
+const body = 'var(--font-body)';
+
+/**
+ * One AdSense display unit.
+ *
+ * This used to be a mockup that drew a box reading "AdSense Placeholder" — it
+ * never carried an ad. It now renders a real `<ins class="adsbygoogle">`, and
+ * only when the placement has an ad-unit id in config/ads.js. Without one it
+ * renders nothing: an empty labelled box is a fake ad, and a fake ad shaped
+ * like a job card is precisely what gets an account suspended.
+ *
+ * On placement inside the offer list (`variant="card"`) it takes the width and
+ * rhythm of a card so the page still reads as one column, but never its skin:
+ * grey ground instead of white, no left accent bar, no hover, and a permanent
+ * "Annuncio" label above the unit. Google's policy is that an ad may sit near
+ * content but must not be mistakable for it; matching a card exactly and
+ * relying on the label alone is the arrangement they act on.
+ *
+ * Props:
+ *   name: key into AD_SLOTS — the placement, not the unit id
+ *   variant: 'card' (in the list) | 'banner' (page-width, short)
+ */
+const AdSlot = ({ name, variant = 'banner' }) => {
+    const { t } = useTranslation();
     const slotRef = useRef(null);
+    const insRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+    const adUnitId = AD_SLOTS[name] || '';
 
+    // Mount the unit only once it is near the viewport: the list can hold
+    // several of these, and requesting them all up front costs the candidate
+    // bandwidth for ads they may never scroll to.
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { rootMargin: '200px' }
-        );
+        if (!adUnitId) return undefined;
+        const el = slotRef.current;
+        if (!el) return undefined;
 
-        if (slotRef.current) observer.observe(slotRef.current);
-        return () => { if (observer) observer.disconnect(); };
-    }, []);
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setIsVisible(true);
+                observer.disconnect();
+            }
+        }, { rootMargin: '200px' });
 
-    const N = 'var(--brand-navy)';
-    const F = 'var(--brand-fuchsia)';
-    const GM = 'var(--brand-gray-mid)';
-    const brand = 'var(--font-brand)';
-    const body = 'var(--font-body)';
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [adUnitId]);
+
+    // Hand the unit to AdSense once, after it is in the DOM. The script itself
+    // is loaded by AdsenseGate behind Cookiebot's marketing consent, so this
+    // push can happen before the script exists — the queue is drained later.
+    useEffect(() => {
+        if (!isVisible || !insRef.current) return;
+        if (insRef.current.getAttribute('data-adsbygoogle-status')) return;
+        try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch {
+            /* consent refused or the script was blocked — leave the slot empty */
+        }
+    }, [isVisible]);
+
+    if (!adUnitId) return null;
+
+    const isCard = variant === 'card';
 
     return (
-        <div ref={slotRef} className="w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 my-12 flex justify-center items-center">
-            {isVisible ? (
-                <div className="w-full flex flex-col items-center justify-center relative overflow-hidden group"
-                    style={{
-                        height: 140,
-                        background: '#FFFFFF',
-                        border: '1px solid rgba(5,11,43,0.07)'
-                    }}>
-                    <span style={{
-                        position: 'absolute', top: 12, right: 16,
-                        fontFamily: body,
-                        fontSize: 9,
-                        fontWeight: 700,
-                        letterSpacing: '0.22em',
-                        textTransform: 'uppercase',
-                        color: GM
-                    }}>ADV {id}</span>
-                    <span style={{
-                        fontFamily: brand,
-                        fontWeight: 700,
-                        fontSize: 10,
-                        letterSpacing: '0.18em',
-                        textTransform: 'uppercase',
-                        color: GM,
-                        marginBottom: 6
-                    }}>Spazio Sponsorizzato</span>
-                    {type === 'internal' ? (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: F, display: 'inline-block' }} />
-                            <p style={{
-                                fontFamily: brand,
-                                fontWeight: 700,
-                                fontSize: 14,
-                                color: N,
-                                letterSpacing: '0.12em',
-                                textTransform: 'uppercase'
-                            }}>PREMIUM PARTNER</p>
-                        </div>
-                    ) : (
-                        <p style={{ fontFamily: body, fontSize: 12, color: GM }}>AdSense Placeholder</p>
-                    )}
-                </div>
-            ) : (
-                <div className="w-full" style={{ height: 140, background: 'transparent' }} />
+        <div
+            ref={slotRef}
+            aria-label={t('ads.label')}
+            style={{
+                // Deliberately not the card's white: an ad in the list has to be
+                // visibly a different surface at a glance, before the label is
+                // read. A dashed rule says "not a card" even in greyscale.
+                background: 'rgba(5,11,43,0.045)',
+                border: '1px dashed rgba(5,11,43,0.20)',
+                padding: isCard ? '12px 24px 16px' : '12px 16px 16px',
+                margin: isCard ? 0 : '24px 0'
+            }}
+        >
+            {/* The label is outside the unit and always rendered — never inside
+                the ad, where the advertiser's own creative could cover it. */}
+            <span style={{
+                display: 'block',
+                fontFamily: body,
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: GM,
+                marginBottom: 8
+            }}>
+                {t('ads.label')}
+            </span>
+
+            {isVisible && (
+                <ins
+                    ref={insRef}
+                    className="adsbygoogle"
+                    style={{ display: 'block', minHeight: isCard ? 100 : 90 }}
+                    data-ad-client="ca-pub-4406252930350703"
+                    data-ad-slot={adUnitId}
+                    data-ad-format={isCard ? 'fluid' : 'horizontal'}
+                    data-full-width-responsive="true"
+                />
             )}
         </div>
     );
