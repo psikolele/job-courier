@@ -36,6 +36,10 @@ Nessuno di questi task è nostro codice, ma Sprint 1-6 ci sbattono contro.
 - Verificare rilevamento "ha apply esterna" per singola offerta (non tutte ce l'hanno)
 - Aggiungere pagina di transizione brandizzata (loader con logo, animazione semplice) al posto di quella jobroom di default — è un layer sopra il modale esistente
 
+**⚠️ Residuo aperto (verificato 04/09):** l'indicatore "questa offerta si candida su un altro
+sito" esiste solo su `/offerte` (`jobs.apply_external_note`), **non** su `/offerta/:id`. Il
+meeting lo chiedeva sotto il bottone, e il dettaglio è la pagina dove si arriva da Google.
+
 ---
 
 ## Sprint 2 — Logica ricerca e lista offerte
@@ -45,7 +49,18 @@ Nessuno di questi task è nostro codice, ma Sprint 1-6 ci sbattono contro.
 - Bug riportato: `HR` + Ticino da widget home → nessun risultato; stessa query da `/offerte` → funziona, ma restituisce "saldatore" per `HR`
 - Causa nota: comportamento ricerca libera upstream Arca24, non completamente risolvibile lato nostro — mitigare con match su titolo/query più stretto, ma **segnalare a Gabri come limite upstream**, non prometterlo come fix completo
 
-### Task 2.2: Criterio unico lingua+data con fallback
+### Task 2.2: Criterio unico lingua+data con fallback — ✅ GIÀ IMPLEMENTATO (30/07)
+
+**Verificato nel codice il 04/09**, prima di riscriverlo: `hooks/useShowcaseJobs.js` fa già tutto
+quanto elencato qui sotto — cap rigido 2 per azienda (`SHOWCASE_CAP`), ordinamento per
+lingua-regione, `EN→Ticino` (`regionForLang` in `utils/localeRegion.js`), fallback che accoda le
+offerte fuori regione invece di lasciare la lista vuota. `/offerte` non applica cap.
+
+**Resta una sola cosa da chiarire con Gabriele, non da implementare al buio:** il meeting dice
+"vetrina **e correlate**", ma una sezione di offerte correlate nel dettaglio non esiste nel
+codice. O era un modo di dire per la vetrina, o è una feature nuova mai costruita.
+
+Specifica originale, tenuta come riferimento:
 **File:** `webapp/src/pages/Offerte.jsx`, `webapp/src/pages/Home.jsx` (widget correlate)
 - IT→Ticino, EN→Ticino, DE→cantoni tedeschi, FR→cantoni francesi
 - Fallback: se vuoto nella lingua/cantone selezionato → mostrare Ticino (mai lista vuota)

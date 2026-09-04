@@ -1,4 +1,70 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 29 Agosto 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 4 Settembre 2026)
+
+## Meeting Gabriele + sprint fix, ricerca, AdSense (3-4 Settembre 2026) — ✅ *in produzione*
+
+**Stack operativo:** Claude Opus 5 · caveman mode full · skill `n8n-mcp-tools-expert`,
+`update-config` · tool: Bash/Edit/Write, Browser pane, Claude in Chrome (AdSense reale), MCP n8n,
+PowerShell · commit `4858c45`, `f5811ce`, `d294729`, `25c2cb6`, `0465542`, `3d0cd65`, `8a228b2`,
+`72e3ddc`, `1ef155d` su `main` · ~1,0M token main loop, nessun subagente
+
+Handoff completo: [handoff-2026-09-04.md](handoff-2026-09-04.md). Cosa ha chiesto il cliente:
+`00_Wiki/job-courier/meeting-2026-09-03-brainstorming-e-audit.md`.
+
+**La ricerca non era un limite upstream.** L'audit del meeting aveva archiviato `HR` → *saldatore*
+come problema di rilevanza Arca24, "mitigabile ma non risolvibile". Eseguendo la pipeline di
+produzione contro l'upstream vero sono emersi **sei difetti distinti, cinque interamente nostri**:
+diciassette cantoni su ventisei erano muti da mesi. Il motivo per cui nessuno li aveva segnalati è
+che **il loro sintomo è una pagina vuota, non un errore** — e una pagina vuota si legge come "non
+ci sono offerte". Lezione: un sintomo riferito dal cliente non è una diagnosi; quando il difetto
+riguarda i filtri si interroga l'upstream prima di stimarne la portata.
+
+**Tre difetti sullo stesso percorso di candidatura, nessuno dei quali era ciò che sembrava.**
+Il "doppio click" riferito in riunione era un popup bloccato: `window.open` chiamato da
+`setTimeout` non ha un gesto utente dietro, Chrome e Safari lo rifiutano restituendo `null` senza
+alcun errore. Sotto c'era di peggio: overlay e pannello del modale partivano da `opacity: 0`
+portati a 1 da gsap, quindi **quando il tween non gira il candidato non vede nulla mentre il
+redirect parte lo stesso**. Terzo, `getApplyData` preferiva il flag stale della lista al dettaglio
+già caricato.
+
+> **Regola che ne esce:** la visibilità di un elemento non si affida mai a un'animazione. Una
+> transizione CSS che non parte atterra comunque sullo stato finale; un tween che non ticchetta
+> lascia l'elemento al valore iniziale. Stesso ragionamento per `requestAnimationFrame`, che in
+> viste embedded o in background è throttlato a zero: il flag che decide se un pannello è visibile
+> va su un timer, non su un frame.
+
+**AdSense: il mockup che sembrava un'implementazione.** `AdSlot.jsx` esisteva dal redesign e
+disegnava una scatola con scritto "AdSense Placeholder". Nel repo non c'era **un solo**
+`<ins class="adsbygoogle"`: l'unica cosa viva era lo script Auto ads. Ora tre unità display vere
+(`2640720133` lista offerte, `2308818696` dettaglio top, `1919655083` dettaglio bottom), che
+renderizzano nulla finché non hanno un id — una scatola vuota etichettata "Annuncio" è un annuncio
+finto, ed è il pattern che fa sospendere l'account.
+
+⚠️ **Il ricavo non sta sul sito: sta sull'applicativo.** Report AdSense per sito, 30 giorni:
+`jobroom.jobcourier.ch` **351,62 CHF**, `www.jobcourier.ch` 5,13 CHF. Le sei unità che li
+generano stanno su `/it/careers/latest_jobs` e nel pannello hanno nomi da residuo
+(`NEW-latest jobs orizzontale 1/2`, `NEW-searchandfilterads-1/2`, `horizontal2/3`,
+`permanent_mobile`, ultima modifica maggio 2025). **Non archiviarle mai facendo pulizia.**
+Guardiano n8n `CVA0jPFdLKvr1POi` attivo dal 04/09: ogni giorno verifica che i cinque slot id siano
+ancora nell'HTML servito, senza OAuth.
+
+**Errore di metodo commesso e corretto in sessione:** avevo scritto — e fatto committare — che
+jobroom non avesse pubblicità, deducendolo da due URL caricate a campione che girano sulla
+piattaforma nuova `viso`. Per una domanda sui ricavi si apre il report per sito, non si campionano
+due pagine.
+
+**Pagine legali tradotte, ribaltando una decisione di luglio.** La voce del 29-30 Luglio in questo
+stesso documento registra che erano state lasciate non tradotte *di proposito*, per rischio di
+conformità sulla traduzione automatica. Il meeting del 03/09 ha chiesto il contrario e la
+traduzione è stata fatta senza che quella decisione fosse nota. Mitigazione: ogni lingua chiude
+con "in caso di divergenza fa fede il testo italiano". Restano traduzioni non revisionate da un
+giurista.
+
+**Nota infrastrutturale:** il connettore `n8n-mcp` era alla 2.51.3 contro n8n Cloud aggiornato, e
+**ogni scrittura sui workflow esistenti veniva rifiutata** (`request/body must NOT have additional
+properties`) mentre la validazione dello stesso identico payload passava. Se validazione e
+salvataggio divergono, il sospetto è la versione del connettore, non il payload.
+
+---
 
 ## Cutover dominio ESEGUITO + due guasti della vetrina trovati eseguendo il gate C1 (29 Agosto 2026) — ✅ *CHIUSO, tutto in produzione*
 
