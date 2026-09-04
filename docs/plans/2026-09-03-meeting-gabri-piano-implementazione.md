@@ -334,3 +334,35 @@ Prima, il rapporto è quello atteso e l'allarme sarebbe rumore.
 Controllo 1 per primo, da solo: protegge il 98,6% del ricavo ed è quello che
 oggi manca del tutto. Gli altri tre quando i piazzamenti nuovi sono in
 produzione e hanno due settimane di storico da cui derivare le medie.
+
+### Stato: Controllo 1 implementato il 04.09.2026
+
+Workflow n8n **`Job Courier — guardiano annunci AdSense`** (`CVA0jPFdLKvr1POi`),
+**creato ma non ancora attivo** — vedi sotto.
+
+Due scelte diverse da quanto previsto qui sopra, entrambe per vincoli emersi
+implementando:
+
+**Niente OAuth, niente API AdSense.** I cinque slot id sono nell'HTML servito da
+`/it/careers/latest_jobs` (verificato: 457 KB, 5 slot su 5, 41 riferimenti
+`adsbygoogle`). Un GET e un confronto di stringhe bastano per sapere se i posti
+esistono ancora, che è il guasto che costa. Resta scoperto "Google ha smesso di
+riempirli", che richiede davvero l'API: quando servirà il Controllo 2, l'OAuth
+andrà creato allora.
+
+**Workflow separato invece che nel guardiano esistente.** Ogni scrittura sul
+workflow `g15tqVsAWtcOc48z` viene rifiutata da questa istanza n8n con
+`request/body must NOT have additional properties`: la validazione passa, il PUT
+no. La creazione di workflow nuovi funziona, gli aggiornamenti no — probabile
+disallineamento fra il connettore MCP e la versione di n8n. Da capire prima del
+prossimo intervento su un workflow esistente.
+
+**⚠️ Attivazione manuale richiesta.** Per lo stesso motivo non è attivabile via
+MCP: va acceso a mano dall'interfaccia n8n. Finché resta spento non controlla
+nulla.
+
+Logica verificata contro la pagina reale su tutti e sette i percorsi: pagina
+sana (nessuna mail), slot sparito alla prima lettura (nessuna mail), alla
+seconda (allarme), rientro, stato stabile dopo il rientro, fetch fallita alla
+prima e alla seconda (allarme distinto, con scritto che non è un calo di
+ricavo).
