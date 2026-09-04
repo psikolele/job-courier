@@ -400,7 +400,9 @@
     "title": "Redirection externe",
     "sending_you": "Nous vous envoyons",
     "to_another_site": "vers un autre site",
-    "desc": "La candidature pour cette offre est gérée de manière externe. Vous serez redirigé vers une nouvelle fenêtre sous peu."
+    "desc": "La candidature pour cette offre est gérée en externe. Nous vous y emmenons dans un instant.",
+    "go_now": "Y aller maintenant",
+    "cancel": "Annuler"
   },
   "philosophy": {
     "line1": "La plupart des portails proposent une mer d'annonces confuses, ce qui entraîne :",

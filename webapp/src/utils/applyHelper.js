@@ -19,7 +19,18 @@ export function getApplyData(job, jobDetail) {
     };
   }
 
-  // Fallback to the list data parameters
+  // Detail loaded and says this one is not external: trust it over the list.
+  // The list's flags are stale for exactly this case, and falling through to
+  // `job.apply_url` here sent the candidate to the listing's stored link rather
+  // than the ad's own apply page.
+  if (jobDetail) {
+    return {
+      redirect: false,
+      url: jobDetail.apply_url || jobDetail.original_link || job.apply_url || job.link || ''
+    };
+  }
+
+  // No detail yet — the list is all we have.
   return {
     redirect: job.redirect || false,
     url: job.apply_url || job.link || ''

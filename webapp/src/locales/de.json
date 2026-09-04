@@ -400,7 +400,9 @@
     "title": "Externe Weiterleitung",
     "sending_you": "Wir leiten Sie",
     "to_another_site": "zu einer anderen Website weiter",
-    "desc": "Die Bewerbung für diese Stelle wird extern abgewickelt. Sie werden in Kürze in einem neuen Fenster weitergeleitet."
+    "desc": "Die Bewerbung für diese Stelle wird extern abgewickelt. Wir leiten Sie gleich weiter.",
+    "go_now": "Jetzt weiter",
+    "cancel": "Abbrechen"
   },
   "philosophy": {
     "line1": "Die meisten Portale bieten eine Flut verwirrender Anzeigen, was zu führt:",

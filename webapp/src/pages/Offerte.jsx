@@ -7,6 +7,7 @@ import useRegistrationWall from '../hooks/useRegistrationWall';
 import RegistrationWallModal from '../components/RegistrationWallModal';
 import ApplyRedirectModal from '../components/ApplyRedirectModal';
 import { getApplyData } from '../utils/applyHelper';
+import { openExternal } from '../utils/openExternal';
 import { saveReturnUrl } from '../hooks/useReturnUrl';
 import JobSearchWidget from '../components/JobSearchWidget';
 import PageSeo from '../components/PageSeo';
@@ -314,7 +315,7 @@ const Offerte = ({ setShowLoginModal }) => {
         }
 
         // Internal flow → open JobRoom job page (user is already logged in)
-        window.open(applyInfo.url, '_blank', 'noopener,noreferrer');
+        openExternal(applyInfo.url);
     };
 
     const handleBackToList = () => {

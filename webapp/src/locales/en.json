@@ -400,7 +400,9 @@
     "title": "External redirect",
     "sending_you": "We're sending you",
     "to_another_site": "to another site",
-    "desc": "Applications for this job are handled externally. You will be redirected to a new window shortly."
+    "desc": "Applications for this job are handled externally. We are taking you there in a moment.",
+    "go_now": "Go now",
+    "cancel": "Cancel"
   },
   "philosophy": {
     "line1": "Most portals offer a sea of confusing listings, leading to:",

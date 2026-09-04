@@ -42,3 +42,21 @@ describe('getApplyData', () => {
     expect(result.url).toBe('');
   });
 });
+
+describe('getApplyData — detail overrides a stale list flag', () => {
+  it('drops a list redirect the detail contradicts', () => {
+    const job = { redirect: true, apply_url: 'https://jobroom.jobcourier.ch/job/view-job.php?id=789', link: '' };
+    const jobDetail = { id: '789', redirect: false, external_url: null, apply_url: 'https://jobroom.jobcourier.ch/job/apply.php?id=789' };
+
+    const result = getApplyData(job, jobDetail);
+    expect(result.redirect).toBe(false);
+    expect(result.url).toBe('https://jobroom.jobcourier.ch/job/apply.php?id=789');
+  });
+
+  it('falls back to the detail original link, then to the list', () => {
+    const job = { redirect: false, apply_url: 'https://list.example/apply' };
+    expect(getApplyData(job, { id: '1', original_link: 'https://detail.example/job' }).url)
+      .toBe('https://detail.example/job');
+    expect(getApplyData(job, { id: '1' }).url).toBe('https://list.example/apply');
+  });
+});

@@ -5,6 +5,7 @@ import { MapPin, Briefcase, Calendar, ChevronLeft, ExternalLink, Clock, Building
 import { motion } from 'framer-motion';
 import RegistrationWallModal from '../components/RegistrationWallModal';
 import ApplyRedirectModal from '../components/ApplyRedirectModal';
+import { openExternal } from '../utils/openExternal';
 import { isUserLoggedIn } from '../hooks/useRegistrationWall';
 import { saveReturnUrl } from '../hooks/useReturnUrl';
 import PageSeo from '../components/PageSeo';
@@ -144,7 +145,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
             return;
         }
 
-        window.open(job.apply_url || job.original_link, '_blank', 'noopener,noreferrer');
+        openExternal(job.apply_url || job.original_link);
     };
 
     // Rendered unconditionally so the crawler's snapshot — taken before the client-side

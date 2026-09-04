@@ -400,7 +400,9 @@
     "title": "Reindirizzamento esterno",
     "sending_you": "Ti stiamo mandando",
     "to_another_site": "su un altro sito",
-    "desc": "La candidatura per questa offerta è gestita esternamente. Verrai aperto in una nuova finestra a breve."
+    "desc": "La candidatura per questa offerta è gestita esternamente. Ti portiamo lì tra un istante.",
+    "go_now": "Vai subito",
+    "cancel": "Annulla"
   },
   "philosophy": {
     "line1": "La maggior parte dei portali offre un mare di annunci confusi:",
