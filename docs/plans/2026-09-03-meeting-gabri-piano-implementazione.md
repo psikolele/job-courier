@@ -244,3 +244,93 @@ dal nostro codice e da decidere con Gabri e Arca24:
 
 Ottimizzare il consenso su `www.jobcourier.ch` migliora l'1,4%. Va fatto perché è
 corretto e costa poco, non perché sposti il fatturato.
+
+---
+
+## Task 4.3 — Automazione di verifica AdSense (n8n)
+
+Nasce da due fatti di questa sessione: le sei unità che fanno il 98,6% del
+ricavo hanno nomi che sembrano residui da cancellare, e per tre giorni nessuno
+si sarebbe accorto se il sito avesse smesso di mostrare annunci. Oggi il calo si
+scopre guardando il pannello, cioè per caso.
+
+Va nel workflow n8n esistente del guardiano sito+feed (attivo dal 28.08, mail su
+`/api/companies` e `/api/jobs`), come sezione separata: stesso canale di allerta,
+controlli distinti.
+
+### Regole ereditate dagli allarmi precedenti
+
+Il guardiano ha già prodotto 34 mail di allarme senza guasto (02.09), per una
+soglia appoggiata al valore di ripiego. Quelle lezioni valgono anche qui:
+
+- **Mai una soglia appoggiata al valore di fallback.** Confrontare con la media
+  mobile dei 14 giorni precedenti, non con un numero fisso scritto a mano.
+- **Due letture prima della mail.** Un solo campione sotto soglia non è un
+  guasto: AdSense stesso ritarda e ricalcola i dati del giorno corrente.
+- **Leggere la provenienza del dato.** Se la risposta API è vuota o parziale,
+  è un errore di raccolta, non un calo di ricavo: va distinto nel messaggio,
+  altrimenti si rincorre un guasto che non esiste.
+
+### Controllo 1 — Le unità di jobroom sono ancora vive (priorità massima)
+
+**Cosa:** ogni giorno, AdSense Management API, report per unità sugli ultimi 3
+giorni. Verifica che le sei unità di jobroom (`8728236901`, `9174651970`,
+`7527137192`, `7254548728`, `3363103858` più la sesta senza slot esposto)
+compaiano ancora con impressioni > 0.
+
+**Allerta se:** una unità che nei 14 giorni precedenti aveva impressioni scende
+a zero per due giorni di fila, oppure sparisce dal report (archiviata).
+
+**Perché:** è il 98,6% del fatturato dentro pagine che non controlliamo. Se
+Arca24 cambia un template o qualcuno fa pulizia nel pannello, oggi ce ne
+accorgiamo a fine mese.
+
+### Controllo 2 — Crollo del ricavo per sito
+
+**Cosa:** ogni giorno, utili stimati e impressioni per sito (`jobroom`,
+`www.jobcourier.ch`), confrontati con la media mobile 14 giorni.
+
+**Allerta se:** utili < 50% della media per due giorni consecutivi. Margine
+ampio di proposito: il traffico di un portale lavoro oscilla molto fra
+settimana e weekend, e una soglia stretta genera solo rumore.
+
+### Controllo 3 — Le nostre tre unità servono davvero annunci
+
+**Cosa:** dopo il go-live dei piazzamenti, controllo giornaliero che
+`2640720133`, `2308818696`, `1919655083` abbiano richieste di annunci > 0.
+
+**Allerta se:** zero richieste per due giorni. Distingue tre guasti diversi che
+oggi sarebbero indistinguibili: piazzamento rotto da un deploy, script bloccato
+dal consenso per tutti, unità disapprovata da Google.
+
+### Controllo 4 — Copertura del consenso (dopo il Task consenso per regione)
+
+**Cosa:** confronto fra sessioni con consenso marketing accettato (Cookiebot) e
+richieste di annunci (AdSense) sul solo `www.jobcourier.ch`.
+
+**Allerta se:** la quota di richieste crolla mentre il traffico resta stabile —
+segnale che la configurazione per regione è saltata e stiamo di nuovo bloccando
+gli annunci a tutti.
+
+**Nota:** questo controllo ha senso solo dopo che le regioni sono attive.
+Prima, il rapporto è quello atteso e l'allarme sarebbe rumore.
+
+### Vincoli tecnici
+
+- **Accesso:** AdSense Management API v2, OAuth sull'account `jobcourier24@gmail.com`
+  (l'account principale non ha accesso al publisher). Serve un client OAuth e il
+  refresh token in credenziale n8n dedicata.
+- **Credenziali:** scegliere il bot Telegram/la casella mail apposta per Job
+  Courier, non fidandosi dell'etichetta di una credenziale condivisa —
+  l'istanza n8n serve più clienti e a fine agosto un workflow JC è finito sul
+  bot di BLC.
+- **Ruolo:** n8n resta osservatore. Legge e avvisa, non tocca il pannello
+  AdSense e non modifica il sito.
+- **Costo:** l'API AdSense è gratuita entro quote ampie; quattro chiamate al
+  giorno non le sfiorano.
+
+### Ordine di implementazione
+
+Controllo 1 per primo, da solo: protegge il 98,6% del ricavo ed è quello che
+oggi manca del tutto. Gli altri tre quando i piazzamenti nuovi sono in
+produzione e hanno due settimane di storico da cui derivare le medie.
