@@ -118,6 +118,8 @@ riferito da Gabriele — è raggiunta**, mentre la differenza con jobroom è str
 |---|---|
 | `01-lista-offerte-badge-nuovo.png` | badge NUOVO nero accanto alla data |
 | `02-lista-annuncio-ogni-3-card.png` | annuncio fra la terza e la quarta card |
+| `03-dettaglio-indicatore-candidatura-esterna.png` | nota "Candidatura gestita su sito esterno" (Manpower) |
+| `04-modale-transizione-brandizzato.png` | transizione verso easyapply.jobs |
 | `05-condizioni-generali-DE.png` | condizioni generali in tedesco |
 | `06-cookie-policy-FR.png` | cookie policy in francese |
 | `07a-home-widget-HR-Ticino-compilato.png` | widget home con HR + Ticino |
