@@ -179,7 +179,7 @@ export default async function handler(req, res) {
           redirect = true;
           external_url = decodeURIComponent(target);
         }
-      } catch (e) {
+      } catch {
         redirect = false;
       }
     }
