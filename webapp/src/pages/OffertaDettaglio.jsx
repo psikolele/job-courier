@@ -129,6 +129,11 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
         }
     }, [id]);
 
+    // Not every ad applies on JobCourier: some hand the candidate to the employer's
+    // own site. The detail endpoint is authoritative for this — the list's flag is
+    // stale for exactly these ads (see utils/applyHelper.js).
+    const isExternalApply = Boolean(job?.redirect && job?.external_url);
+
     const handleApplyClick = () => {
         if (!job) return;
 
@@ -371,8 +376,18 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                             }}
                         >
                             <span>{t('jobs.apply')}</span>
-                            <ExternalLink size={13} style={{ color: F }} />
+                            {isExternalApply ? <ExternalLink size={13} style={{ color: F }} /> : <span style={{ color: F }}>&rarr;</span>}
                         </button>
+
+                        {/* Same warning the list already carries: this ad is applied for on
+                            the employer's own site, so the candidate leaves JobCourier. Asked
+                            for in the 03.09 meeting and, until now, present only on /offerte —
+                            while the detail page is where Google drops people. */}
+                        {isExternalApply && (
+                            <p style={{ fontFamily: body, fontSize: 11, color: GM, fontStyle: 'italic', marginTop: 10 }}>
+                                {t('jobs.apply_external_note')}
+                            </p>
+                        )}
 
                         {/* PERCHÉ CANDIDARSI */}
                         <div style={{ marginTop: 24 }}>
