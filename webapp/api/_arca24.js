@@ -10,6 +10,7 @@
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import { sanitizeHtml } from './_sanitize.js';
+import { findExternalApplyHref } from './_externalApply.js';
 import { names as orphanNames, generatedAt as orphanGeneratedAt } from './_orphan-employers-snapshot.js';
 
 // Confirmed by Laura on 29.07: production keeps the jobroom.jobcourier.ch hostname and
@@ -314,6 +315,17 @@ export function parseJobDetailFromHtml(html, id) {
 
   const apply_url = `${ARCA24_HOST}/${LANG}/careers/jobad/${id}`;
 
+  // The portal builds the apply button from a JSON payload rather than an anchor,
+  // so this reads the raw page, not the DOM. See _externalApply.js.
+  const externalHref = findExternalApplyHref(html, $);
+  let externalTarget = null;
+  if (externalHref) {
+    try {
+      const target = new URL(externalHref, ARCA24_HOST).searchParams.get('redirect');
+      if (target) externalTarget = decodeURIComponent(target);
+    } catch { externalTarget = null; }
+  }
+
   return {
     id,
     title,
@@ -331,8 +343,14 @@ export function parseJobDetailFromHtml(html, id) {
     },
     description,
     apply_url,
-    redirect: false,
-    external_url: null,
+    // Applying does not always happen here. This adapter used to hardcode
+    // `redirect: false` without ever looking, so every Manpower, Adecco and
+    // Randstad ad — whose applications go to easyapply.jobs — was served as if it
+    // were an internal application, and the candidate landed on the portal page
+    // instead of the employer's form. Nothing errored: the notice simply never
+    // appeared anywhere on the site.
+    redirect: Boolean(externalTarget),
+    external_url: externalTarget,
     original_link: apply_url,
   };
 }

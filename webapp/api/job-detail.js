@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import { isArca24Enabled, fetchJobDetail as fetchArca24JobDetail } from './_arca24.js';
 import { sanitizeHtml } from './_sanitize.js';
+import { findExternalApplyHref } from './_externalApply.js';
 
 export default async function handler(req, res) {
   // Add CORS headers
@@ -169,9 +170,8 @@ export default async function handler(req, res) {
     let redirect = false;
     let external_url = null;
     
-    const externalAnchor = $('a[href*="externalLink.php"]').first();
-    if (externalAnchor.length > 0) {
-      const externalHref = externalAnchor.attr('href') || '';
+    const externalHref = findExternalApplyHref(html, $);
+    if (externalHref) {
       try {
         const u = new URL(externalHref, 'https://jobroom.jobcourier.ch/job/');
         const target = u.searchParams.get('redirect');
