@@ -30,6 +30,10 @@ const AdSlot = ({ name, variant = 'banner' }) => {
     const slotRef = useRef(null);
     const insRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
+    // 'attesa' until we know whether Google actually returned an ad. Never assume
+    // it will: the unit stays empty for anyone who refused marketing cookies, and
+    // for any request Google chooses not to fill.
+    const [stato, setStato] = useState('attesa');
     const adUnitId = AD_SLOTS[name] || '';
 
     // Mount the unit only once it is near the viewport: the list can hold
@@ -55,24 +59,42 @@ const AdSlot = ({ name, variant = 'banner' }) => {
     // is loaded by AdsenseGate behind Cookiebot's marketing consent, so this
     // push can happen before the script exists — the queue is drained later.
     useEffect(() => {
-        if (!isVisible || !insRef.current) return;
-        if (insRef.current.getAttribute('data-adsbygoogle-status')) return;
-        try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch {
-            /* consent refused or the script was blocked — leave the slot empty */
+        if (!isVisible || !insRef.current) return undefined;
+        const ins = insRef.current;
+        if (!ins.getAttribute('data-adsbygoogle-status')) {
+            try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+            } catch {
+                /* consent refused or the script was blocked — the poll below collapses the slot */
+            }
         }
+
+        // Collapse the frame unless an ad really arrived. Without this the page
+        // shows an "Annuncio" label over 100px of nothing to every visitor who
+        // declined marketing cookies — measured on production, 04.09. An empty
+        // labelled frame is worse than no frame: it reads as a broken ad.
+        const scaduto = Date.now() + 6000;
+        const timer = setInterval(() => {
+            const riempito = ins.getAttribute('data-ad-status');
+            if (riempito === 'unfilled') { setStato('vuoto'); clearInterval(timer); return; }
+            if (ins.offsetHeight > 20) { setStato('pieno'); clearInterval(timer); return; }
+            if (Date.now() > scaduto) { setStato('vuoto'); clearInterval(timer); }
+        }, 400);
+        return () => clearInterval(timer);
     }, [isVisible]);
 
     if (!adUnitId) return null;
 
     const isCard = variant === 'card';
 
+    const pieno = stato === 'pieno';
+
     return (
         <div
             ref={slotRef}
-            aria-label={t('ads.label')}
-            style={{
+            aria-label={pieno ? t('ads.label') : undefined}
+            aria-hidden={pieno ? undefined : true}
+            style={pieno ? {
                 // Deliberately not the card's white: an ad in the list has to be
                 // visibly a different surface at a glance, before the label is
                 // read. A dashed rule says "not a card" even in greyscale.
@@ -80,11 +102,16 @@ const AdSlot = ({ name, variant = 'banner' }) => {
                 border: '1px dashed rgba(5,11,43,0.20)',
                 padding: isCard ? '12px 24px 16px' : '12px 16px 16px',
                 margin: isCard ? 0 : '24px 0'
+            } : {
+                // No ad (yet): no frame, no label, no reserved height. The <ins>
+                // still has to be in the DOM and full-width for AdSense to fill it.
+                background: 'none', border: 'none', padding: 0, margin: 0
             }}
         >
-            {/* The label is outside the unit and always rendered — never inside
-                the ad, where the advertiser's own creative could cover it. */}
-            <span style={{
+            {/* The label sits outside the unit — never inside, where the
+                advertiser's own creative could cover it — and only once there is
+                an ad to label. */}
+            {pieno && <span style={{
                 display: 'block',
                 fontFamily: body,
                 fontSize: 9,
@@ -95,13 +122,13 @@ const AdSlot = ({ name, variant = 'banner' }) => {
                 marginBottom: 8
             }}>
                 {t('ads.label')}
-            </span>
+            </span>}
 
             {isVisible && (
                 <ins
                     ref={insRef}
                     className="adsbygoogle"
-                    style={{ display: 'block', minHeight: isCard ? 100 : 90 }}
+                    style={{ display: 'block', width: '100%', minHeight: pieno ? (isCard ? 100 : 90) : 0 }}
                     data-ad-client="ca-pub-4406252930350703"
                     data-ad-slot={adUnitId}
                     // Every unit is a responsive display unit ("Adattabile"), so
