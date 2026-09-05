@@ -1,0 +1,167 @@
+[
+  {
+    "query": "HR @ Lugano (TI)",
+    "jc": {
+      "risultati": 4,
+      "titoloContieneParola": "4/4",
+      "luogoCoerente": "4/4",
+      "primi": [
+        "HR Specialist (U/D/N)",
+        "HR Payroll Assistant (m/f/d), 50-70%",
+        "Impiegata/o amministrazione HR"
+      ]
+    },
+    "jobroom": {
+      "risultati": 17,
+      "intestazione": "17 Annunci di lavoro - Ricerca HR in Svizzera, Lugano",
+      "primi": [
+        "Impiegata/o amministrazione HR",
+        "HR Admin & General Services 80-100% (m/f/d)",
+        "HR Specialist (U/D/N)"
+      ]
+    }
+  },
+  {
+    "query": "saldatore @ Lugano (TI)",
+    "jc": {
+      "risultati": 3,
+      "titoloContieneParola": "0/3",
+      "luogoCoerente": "3/3",
+      "primi": [
+        "Operatrice Produzione Elettronica (D/U/N)",
+        "Operaia / Operatrice produzione elettronica con esperienza 100%",
+        "Operaia/o di produzione"
+      ]
+    },
+    "jobroom": {
+      "risultati": 10,
+      "intestazione": "10 Annunci di lavoro - Ricerca Saldatore in Svizzera, Lugano",
+      "primi": [
+        "Operatrice Produzione Elettronica (D/U/N)",
+        "Saldatore TIG/MIG",
+        "Operaia / Operatrice produzione elettronica con esperienza 100%"
+      ]
+    }
+  },
+  {
+    "query": "informatico @ Lugano (TI)",
+    "jc": {
+      "risultati": 20,
+      "titoloContieneParola": "0/20",
+      "luogoCoerente": "20/20",
+      "primi": [
+        "Programmatore Macchine CNC",
+        "HR Payroll Assistant (m/f/d), 50-70%",
+        "Consulente /Team Leader - Microsoft Dynamics 365 Business Central"
+      ]
+    },
+    "jobroom": {
+      "risultati": 26,
+      "intestazione": "26 Annunci di lavoro - Ricerca Informatico in Svizzera, Lugano",
+      "primi": [
+        "Gerente filiale",
+        "Logistics Specialist",
+        "Impiegata/o amministrazione HR"
+      ]
+    }
+  },
+  {
+    "query": "Elektriker @ Zürich (ZH)",
+    "jc": {
+      "risultati": 6,
+      "titoloContieneParola": "3/6",
+      "luogoCoerente": "6/6",
+      "primi": [
+        "Techniker Sicherheitstechnik 80 - 100% (m/w/d)",
+        "Elektriker*in / Betriebselektriker*in 100%",
+        "Montage-Elektriker EFZ (alle)"
+      ]
+    },
+    "jobroom": {
+      "risultati": 222,
+      "intestazione": "222 Annunci di lavoro - Ricerca Elektriker in Svizzera, Zürich",
+      "primi": [
+        "Mechaniker/Elektriker Instandhaltung (m/w/d)",
+        "Servicetechniker Zürich  (m/w/d)",
+        "Techniker Fire Safety 80 - 100 % (m/w/d)"
+      ]
+    }
+  },
+  {
+    "query": "HR @ Zürich (ZH)",
+    "jc": {
+      "risultati": 10,
+      "titoloContieneParola": "9/10",
+      "luogoCoerente": "10/10",
+      "primi": [
+        "HR Business Partnerin / HR Allrounderin 80?100 % (m/w/d)",
+        "Talent Acquisition Specialist 80?100 % (m/w/d)",
+        "HR Generalist & Recruiting 80?100 % (m/w/d)"
+      ]
+    },
+    "jobroom": {
+      "risultati": 42,
+      "intestazione": "42 Annunci di lavoro - Ricerca HR in Svizzera, Zürich",
+      "primi": [
+        "HR Business Partnerin / HR Allrounderin 80?100 % (m/w/d)",
+        "HR Business Partner (w/m/d) 100%",
+        "HR Business Partner 80?100 % (m/w/d)"
+      ]
+    }
+  },
+  {
+    "query": "vendeur @ Genève (GE)",
+    "jc": {
+      "risultati": 0,
+      "titoloContieneParola": "0/0",
+      "luogoCoerente": "0/0",
+      "primi": []
+    },
+    "jobroom": {
+      "risultati": 0,
+      "intestazione": "0 Annunci di lavoro - Ricerca Vendeur in Svizzera, Genève",
+      "primi": [
+        "Ricerche collegate"
+      ]
+    }
+  },
+  {
+    "query": "HR @ Genève (GE)",
+    "jc": {
+      "risultati": 0,
+      "titoloContieneParola": "0/0",
+      "luogoCoerente": "0/0",
+      "primi": []
+    },
+    "jobroom": {
+      "risultati": 2,
+      "intestazione": "2 Annunci di lavoro - Ricerca HR in Svizzera, Genève",
+      "primi": [
+        "Head of Finance and Operations - Banking",
+        "Assistant Trust Administrator",
+        "Ricerche collegate"
+      ]
+    }
+  },
+  {
+    "query": "Pflege @ Bern (BE)",
+    "jc": {
+      "risultati": 2,
+      "titoloContieneParola": "2/2",
+      "luogoCoerente": "2/2",
+      "primi": [
+        "Dipl. Pflegefachperson",
+        "Dipl. Pflegefachperson als Berufsbildungsverantwortliche 80-100%"
+      ]
+    },
+    "jobroom": {
+      "risultati": 73,
+      "intestazione": "73 Annunci di lavoro - Ricerca Pflege in Svizzera, Bern",
+      "primi": [
+        "Fachperson Gesundheit (m,w,d) für Spitex",
+        "Dipl. Pflegefachfrau/mann HF für Pool (m,w,d) 10-100% Raum Solothurn",
+        "Gärtner:in 100% (a)"
+      ]
+    }
+  }
+]
