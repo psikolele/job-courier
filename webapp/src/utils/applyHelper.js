@@ -6,9 +6,35 @@
  * @param {Object} jobDetail - The detailed job data loaded from the detail endpoint (/api/job-detail)
  * @returns {Object} An object containing { redirect: boolean, url: string }
  */
+/**
+ * Ids arrive in two shapes — `6738863` from the detail endpoint, sometimes
+ * `6738863-slug` from the list — so they are compared on the numeric prefix.
+ * A missing id on either side means there is nothing to contradict, so the detail stands.
+ */
+function stessoAnnuncio(job, jobDetail) {
+  const chiave = (v) => String(v ?? '').split('-')[0];
+  const delDettaglio = chiave(jobDetail?.id);
+  const delJob = chiave(job?.jobroom_id ?? job?.id);
+  // Only a genuine contradiction disqualifies the detail. When either side has no
+  // id there is nothing to compare, and refusing it there would throw away the
+  // authoritative answer for every ad whose list entry carries no id.
+  if (!delDettaglio || !delJob) return true;
+  return delDettaglio === delJob;
+}
+
 export function getApplyData(job, jobDetail) {
   if (!job) {
     return { redirect: false, url: '' };
+  }
+
+  // A detail belonging to another ad is worse than no detail: while a new
+  // selection loads, the previous ad's detail is still in state, and trusting it
+  // would answer with that ad's apply link under this ad's title.
+  if (!stessoAnnuncio(job, jobDetail)) {
+    return {
+      redirect: job.redirect || false,
+      url: job.apply_url || job.link || ''
+    };
   }
 
   // If detailed data is loaded and reports an external redirect, override listing defaults

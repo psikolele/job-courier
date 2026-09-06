@@ -19,7 +19,7 @@ const PAGINA_VECCHIA = `<html><body>
 
 const PAGINA_INTERNA = `<html><body><a href="/it/careers/jobad/6738863">Candidati</a></body></html>`;
 
-const trova = (html) => findExternalApplyHref(html, cheerio.load(html));
+const trova = (html, id) => findExternalApplyHref(html, cheerio.load(html), id);
 
 describe('findExternalApplyHref', () => {
     it('legge il link dal payload JSON della piattaforma viso', () => {
@@ -50,5 +50,28 @@ describe('findExternalApplyHref', () => {
         const escaped = PAGINA_VISO.replace(/&job_post_id/g, '\u0026job_post_id');
         const target = new URL(trova(escaped)).searchParams.get('redirect');
         expect(decodeURIComponent(target)).toBe('https://easyapply.jobs/r/BILPQNB27aCnhB2Cc3jF?utm_source=visojobcourier');
+    });
+});
+
+describe('findExternalApplyHref — annunci correlati sulla stessa pagina', () => {
+    // La pagina porta anche gli "Altri annunci di lavoro" della stessa azienda,
+    // ognuno con la propria azione di candidatura.
+    const PAGINA_CON_CORRELATI = `<html><body><script>
+    window.__DATA__ = {"related":[{"action":{"url":"https://jobroom.jobcourier.ch/job/externalLink.php?redirect=https%3A%2F%2Fats.altro-datore.ch%2Fjob%2F999&job_post_id=999"}}],
+    "actions":[{"label":"Candidati","action":{"url":"https://jobroom.jobcourier.ch/job/externalLink.php?redirect=https%3A%2F%2Feasyapply.jobs%2Fr%2FMIO&job_post_id=6738863"}}]};
+    </script></body></html>`;
+
+    it('sceglie lannuncio giusto anche se un correlato viene prima', () => {
+        const href = findExternalApplyHref(PAGINA_CON_CORRELATI, cheerio.load(PAGINA_CON_CORRELATI), '6738863');
+        expect(decodeURIComponent(new URL(href).searchParams.get('redirect'))).toBe('https://easyapply.jobs/r/MIO');
+    });
+
+    it('non spedisce il candidato altrove quando il suo annuncio non ce', () => {
+        expect(findExternalApplyHref(PAGINA_CON_CORRELATI, cheerio.load(PAGINA_CON_CORRELATI), '1111111')).toBe('');
+    });
+
+    it('senza id resta il comportamento di prima', () => {
+        const href = findExternalApplyHref(PAGINA_CON_CORRELATI, cheerio.load(PAGINA_CON_CORRELATI));
+        expect(href).toContain('externalLink.php');
     });
 });

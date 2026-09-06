@@ -170,7 +170,7 @@ export default async function handler(req, res) {
     let redirect = false;
     let external_url = null;
     
-    const externalHref = findExternalApplyHref(html, $);
+    const externalHref = findExternalApplyHref(html, $, id);
     if (externalHref) {
       try {
         const u = new URL(externalHref, 'https://jobroom.jobcourier.ch/job/');

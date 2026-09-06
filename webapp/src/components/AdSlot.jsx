@@ -73,14 +73,33 @@ const AdSlot = ({ name, variant = 'banner' }) => {
         // shows an "Annuncio" label over 100px of nothing to every visitor who
         // declined marketing cookies — measured on production, 04.09. An empty
         // labelled frame is worse than no frame: it reads as a broken ad.
-        const scaduto = Date.now() + 6000;
-        const timer = setInterval(() => {
-            const riempito = ins.getAttribute('data-ad-status');
-            if (riempito === 'unfilled') { setStato('vuoto'); clearInterval(timer); return; }
-            if (ins.offsetHeight > 20) { setStato('pieno'); clearInterval(timer); return; }
-            if (Date.now() > scaduto) { setStato('vuoto'); clearInterval(timer); }
-        }, 400);
-        return () => clearInterval(timer);
+        //
+        // 'vuoto' is a display state, never a verdict. Consent can be granted
+        // minutes after load, and AdSense then fills the <ins> that is still
+        // mounted: if we stopped watching at that point the ad would render with
+        // no label and no border, which is precisely the unlabelled in-feed ad
+        // this component exists to prevent.
+        const valuta = () => {
+            if (ins.getAttribute('data-ad-status') === 'unfilled') { setStato('vuoto'); return; }
+            setStato(ins.offsetHeight > 20 ? 'pieno' : 'vuoto');
+        };
+
+        const attributi = new MutationObserver(valuta);
+        attributi.observe(ins, { attributes: true, attributeFilter: ['data-ad-status', 'data-adsbygoogle-status', 'style', 'class'] });
+        const dimensione = typeof ResizeObserver === 'function' ? new ResizeObserver(valuta) : null;
+        if (dimensione) dimensione.observe(ins);
+
+        // The usual fill lands before either observer has anything to report, so
+        // poll briefly as well — then stop polling, not watching.
+        const sonda = setInterval(valuta, 400);
+        const fineSonda = setTimeout(() => clearInterval(sonda), 6000);
+
+        return () => {
+            attributi.disconnect();
+            if (dimensione) dimensione.disconnect();
+            clearInterval(sonda);
+            clearTimeout(fineSonda);
+        };
     }, [isVisible]);
 
     if (!adUnitId) return null;

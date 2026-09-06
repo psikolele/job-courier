@@ -60,3 +60,21 @@ describe('getApplyData — detail overrides a stale list flag', () => {
     expect(getApplyData(job, { id: '1' }).url).toBe('https://list.example/apply');
   });
 });
+
+describe('getApplyData — il dettaglio deve riguardare lo stesso annuncio', () => {
+  it('ignora il dettaglio di un altro annuncio invece di usarne il link', () => {
+    const job = { id: '111', apply_url: 'https://jobroom.jobcourier.ch/job/111', redirect: false };
+    const dettaglioAltrui = { id: '222', redirect: true, external_url: 'https://ats.altro-datore.ch/222' };
+
+    const result = getApplyData(job, dettaglioAltrui);
+    expect(result.redirect).toBe(false);
+    expect(result.url).toBe('https://jobroom.jobcourier.ch/job/111');
+  });
+
+  it('accetta il dettaglio quando lid combacia, anche col suffisso nella lista', () => {
+    const job = { id: '333-key-account-manager', apply_url: 'https://jobroom.jobcourier.ch/job/333' };
+    const dettaglio = { id: '333', redirect: true, external_url: 'https://easyapply.jobs/r/X' };
+
+    expect(getApplyData(job, dettaglio)).toEqual({ redirect: true, url: 'https://easyapply.jobs/r/X' });
+  });
+});

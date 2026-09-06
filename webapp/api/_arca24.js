@@ -317,7 +317,7 @@ export function parseJobDetailFromHtml(html, id) {
 
   // The portal builds the apply button from a JSON payload rather than an anchor,
   // so this reads the raw page, not the DOM. See _externalApply.js.
-  const externalHref = findExternalApplyHref(html, $);
+  const externalHref = findExternalApplyHref(html, $, id);
   let externalTarget = null;
   if (externalHref) {
     try {
