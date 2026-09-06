@@ -69,3 +69,17 @@ export const deriveRole = (role, title) => {
     if (role && !SKIP_VALUES.includes(role)) return role;
     return deriveRoleFromTitle(title);
 };
+
+// What a card or a detail header should actually print. Both the list card and the
+// detail header used to spell this out inline, and they drifted: the detail passed no
+// title (so nothing could be inferred) and then fell back to the raw field, which put
+// the "Non specificato" placeholder straight back on screen. One offer therefore read
+// "Responsabile" in the list and "Non specificato" in its own header. Keep every
+// consumer on these two.
+const FALLBACK_LABEL = 'Altro';
+
+export const sectorLabel = (job) =>
+    (job && deriveSector(job.title, job.sector)) || FALLBACK_LABEL;
+
+export const roleLabel = (job) =>
+    (job && deriveRole(job.role, job.title)) || FALLBACK_LABEL;

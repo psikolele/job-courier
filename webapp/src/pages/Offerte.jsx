@@ -13,7 +13,7 @@ import JobSearchWidget from '../components/JobSearchWidget';
 import PageSeo from '../components/PageSeo';
 import { getCantonValueFromParams } from '../utils/searchData';
 import { JobListItemSkeleton, JobDetailSkeleton } from '../components/ui/Skeleton';
-import { deriveSector, deriveRole } from '../utils/jobTaxonomy';
+import { sectorLabel, roleLabel } from '../utils/jobTaxonomy';
 import { splitPublishedLabel } from '../utils/publishedLabel';
 import AdSlot from '../components/AdSlot';
 
@@ -515,8 +515,8 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 </div>
                                                 {/* Tags */}
                                                 {(() => {
-                                                    const settore = deriveSector(job.title, job.sector) || 'Altro';
-                                                    const ruolo = deriveRole(job.role, job.title) || 'Altro';
+                                                    const settore = sectorLabel(job);
+                                                    const ruolo = roleLabel(job);
                                                     const chip = {
                                                         fontFamily: body, fontSize: 11, fontWeight: 600,
                                                         letterSpacing: '0.06em', textTransform: 'uppercase',
@@ -637,12 +637,12 @@ const Offerte = ({ setShowLoginModal }) => {
                                                                 <span style={metaChip()}>
                                                                     <span style={iconBox('rgba(5,11,43,0.06)')}><Briefcase size={11} color="var(--brand-navy)" /></span>
                                                                     <span style={metaLbl}>{t('jobs.label_sector')}:</span>
-                                                                    <span style={val}>{deriveSector(selectedJob.title, selectedJob.sector) || selectedJob.sector || 'Altro'}</span>
+                                                                    <span style={val}>{sectorLabel(selectedJob)}</span>
                                                                 </span>
                                                                 <span style={metaChip()}>
                                                                     <span style={iconBox('rgba(5,11,43,0.06)')}><User size={11} color="var(--brand-navy)" /></span>
                                                                     <span style={metaLbl}>{t('jobs.label_role')}:</span>
-                                                                    <span style={val}>{deriveRole(selectedJob.role) || selectedJob.role || 'Altro'}</span>
+                                                                    <span style={val}>{roleLabel(selectedJob)}</span>
                                                                 </span>
                                                             </div>
                                                         );
@@ -705,11 +705,20 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 </div>
                                             ) : selectedJobDetail ? (
                                                 <div className="flex flex-col gap-6">
+                                                    {/* The same two units the standalone /offerta/:id page carries.
+                                                        They were missing here, and this pane — not that page — is
+                                                        where a candidate actually reads an offer: every card in the
+                                                        list opens it. Above and below the description, never inside
+                                                        it, so nobody meets an ad mid-sentence. */}
+                                                    <AdSlot name="offertaTop" variant="banner" />
+
                                                     <div 
                                                         className="job-description-content text-sm font-normal leading-relaxed text-slate-800"
                                                         style={{ fontFamily: body, paddingRight: '4px' }}
                                                         dangerouslySetInnerHTML={{ __html: selectedJobDetail.description }}
                                                     />
+
+                                                    <AdSlot name="offertaBottom" variant="banner" />
                                                     
                                                     {/* Candidati Link/Button in basso col medesimo stile */}
                                                     <div style={{ borderTop: '1px solid rgba(5,11,43,0.07)', paddingTop: 20, marginTop: 10 }}>

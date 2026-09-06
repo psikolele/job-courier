@@ -9,7 +9,7 @@ import useRegistrationWall from '../hooks/useRegistrationWall';
 import useShowcaseJobs from '../hooks/useShowcaseJobs';
 import RegistrationWallModal from './RegistrationWallModal';
 import { ShowcaseCardSkeleton } from './ui/Skeleton';
-import { deriveSector, deriveRole } from '../utils/jobTaxonomy';
+import { sectorLabel, roleLabel } from '../utils/jobTaxonomy';
 
 // Last good showcase payload, kept so a repeat visit paints cards on the first frame.
 // Short-lived on purpose: these are live vacancies, and an ad that closed should not sit
@@ -488,8 +488,8 @@ const Filters = () => {
 
                                     {/* Tags row — always shown, label outside chip */}
                                     {(() => {
-                                        const settore = deriveSector(job.title, job.sector) || 'Altro';
-                                        const ruolo = deriveRole(job.role, job.title) || 'Altro';
+                                        const settore = sectorLabel(job);
+                                        const ruolo = roleLabel(job);
                                         const chip = {
                                             fontFamily: 'var(--font-body)',
                                             fontSize: 10, fontWeight: 600,
