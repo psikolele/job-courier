@@ -52,7 +52,8 @@
     "candidates_modal_desc": "Access thousands of job offers across Switzerland. Create your profile and apply in a few clicks.",
     "access_profile": "Access Profile",
     "companies_modal_desc": "Post a position and view matching candidates right away. Access over 120,000 registered candidates.",
-    "company_login": "Company Login"
+    "company_login": "Company Login",
+    "language": "Language"
   },
   "hero": {
     "candidates": {

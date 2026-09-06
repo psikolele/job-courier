@@ -52,7 +52,8 @@
     "candidates_modal_desc": "Accedi a migliaia di offerte di lavoro in tutta la Svizzera. Crea il tuo profilo e candidati in pochi click.",
     "access_profile": "Accedi al Profilo",
     "companies_modal_desc": "Pubblica una posizione e visualizza subito i candidati compatibili. Accedi a oltre 120'000 candidati registrati.",
-    "company_login": "Login Azienda"
+    "company_login": "Login Azienda",
+    "language": "Lingua"
   },
   "hero": {
     "candidates": {

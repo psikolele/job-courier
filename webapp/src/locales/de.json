@@ -52,7 +52,8 @@
     "candidates_modal_desc": "Greifen Sie auf tausende Stellenangebote in der ganzen Schweiz zu. Erstellen Sie Ihr Profil und bewerben Sie sich in wenigen Klicks.",
     "access_profile": "Profil aufrufen",
     "companies_modal_desc": "Veröffentlichen Sie eine Stelle und sehen Sie sofort passende Kandidaten. Zugriff auf über 120'000 registrierte Kandidaten.",
-    "company_login": "Unternehmens-Login"
+    "company_login": "Unternehmens-Login",
+    "language": "Sprache"
   },
   "hero": {
     "candidates": {

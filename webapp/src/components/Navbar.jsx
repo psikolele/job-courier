@@ -280,6 +280,34 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                             <IconX />
                         </button>
 
+                        {/* LINGUA — solo mobile: in alto la barra ha gia' logo, Login e
+                            hamburger, quindi il selettore non ci sta. Su desktop resta
+                            nella navbar; qui vive in cima al menu: sta sotto due sezioni intere se messo in fondo,
+                            e chi lo cerca non scorre per trovarlo. */}
+                        <div className="md:hidden flex items-center justify-center gap-1 py-5 pl-8 pr-16 bg-[var(--brand-gray-light)] border-b border-[var(--brand-navy)]/10">
+                            <span className="text-[10px] tracking-[0.2em] uppercase mr-3" style={{ color: 'var(--brand-gray-mid)', fontFamily: 'var(--font-body)' }}>
+                                {t('nav.language', 'Lingua')}
+                            </span>
+                            {['it', 'en', 'de', 'fr'].map((lng) => (
+                                <button
+                                    key={lng}
+                                    onClick={() => { changeLanguage(lng); setMenuOpen(false); }}
+                                    aria-current={i18n.language === lng ? 'true' : undefined}
+                                    // 44px di lato: il minimo perche' un dito lo prenda al primo colpo.
+                                    className="min-w-[44px] min-h-[44px] flex items-center justify-center text-xs transition-colors cursor-pointer"
+                                    style={{
+                                        color: i18n.language === lng ? 'var(--brand-navy)' : 'var(--brand-gray-mid)',
+                                        fontFamily: 'var(--font-body)',
+                                        fontWeight: i18n.language === lng ? 700 : 400,
+                                        letterSpacing: '0.1em',
+                                        borderBottom: i18n.language === lng ? '2px solid var(--brand-fuchsia)' : '2px solid transparent'
+                                    }}
+                                >
+                                    {lng.toUpperCase()}
+                                </button>
+                            ))}
+                        </div>
+
                         {/* LEFT SECTION: CANDIDATI */}
                         <div className="flex-1 flex flex-col items-center pt-10 pb-10 px-8 border-b md:border-b-0 md:border-r border-[var(--brand-navy)]/10 bg-[var(--brand-gray-light)] relative group">
                             <div className="w-12 h-12 bg-[var(--brand-navy)]/10 flex items-center justify-center mb-6 text-[var(--brand-navy)] group-hover:bg-[var(--brand-fuchsia)]/10 group-hover:text-[var(--brand-fuchsia)] transition-colors duration-300">
@@ -362,6 +390,7 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
                                 </div>
                             </div>
                         </div>
+
                     </motion.div>
                 )}
             </AnimatePresence>
