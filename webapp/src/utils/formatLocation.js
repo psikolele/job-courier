@@ -64,15 +64,27 @@ for (const [code, italian, aliases] of CANTON_TABLE) {
 
 const COUNTRY = /^(svizzera|switzerland|suisse|schweiz|schweizer|ch)$/i;
 
-/**
- * A canton name only where upstream put one.
- *
- * Only the LAST part is considered. "Zug" and "Basel" name both a canton and its
- * capital, so treating any part as a canton would rewrite the town "Zug" into the
- * canton "Zugo" — inventing a location the ad never claimed. The trailing part is
- * where upstream writes the canton when it writes one at all.
- */
 const cantonName = (part) => CANTON_BY_ALIAS.get(normaliseKey(part)) || null;
+
+/**
+ * Cantons whose name is also the name of a town — usually their own capital.
+ *
+ * These are the only parts where position matters. Upstream writes the canton
+ * last, so "Baden, Ag" is a town and its canton, while in "Zug, Baar" the
+ * leading "Zug" is the town. Translating an ambiguous name wherever it appears
+ * would turn that town into the canton "Zugo" and claim a location the ad never
+ * made. Unambiguous names ("Tessin", "Waadt", "Aargau") carry no such risk and
+ * are normalised in any position — which matters, because the feed does lead
+ * with the canton: production serves "Ticino, Chiasso, Bellinzona".
+ */
+const AMBIGUOUS = new Set([
+    'zug', 'basel', 'bale', 'geneve', 'genf', 'geneva', 'zurich', 'zuerich',
+    'luzern', 'lucerne', 'schaffhausen', 'glarus', 'neuchatel', 'neuenburg',
+    'freiburg', 'fribourg', 'solothurn', 'bern', 'berne', 'schwyz',
+    'st. gallen', 'st gallen', 'sankt gallen',
+].map(name => name));
+
+const isAmbiguous = (part) => AMBIGUOUS.has(normaliseKey(part));
 
 /** Swiss postcodes are four digits, and always lead the town they belong to. */
 const stripPostcode = (part) => part.replace(/^\d{4}\s+/, '').trim();
@@ -88,12 +100,34 @@ export const formatLocation = (loc) => {
         .filter(Boolean);
 
     if (parts.length === 0) return '';
+    // A single part is a town, whatever it is called: an ad reading only "Zug"
+    // names the town, and rewriting it to "Zugo" would widen it to a canton.
+    if (parts.length === 1) return parts[0];
 
     const last = parts.length - 1;
-    const canton = parts.length > 1 ? cantonName(parts[last]) : null;
-    if (canton) parts[last] = canton;
+    const normalised = parts.map((part, i) => {
+        // Trailing position is where upstream puts the canton, so an ambiguous
+        // name there is the canton. Anywhere else, only unambiguous names move.
+        if (i !== last && isAmbiguous(part)) return part;
+        return cantonName(part) || part;
+    });
 
-    return parts.join(', ');
+    // "Zürich, Zürich" is a town and the canton of the same name: printing both
+    // gives "Zürich, Zurigo", the same place named twice in two languages, which
+    // reads as a data error. Say it once, in the site's own spelling.
+    const deduped = [];
+    for (const part of normalised) {
+        const canonical = cantonName(part) || part;
+        const previous = deduped[deduped.length - 1];
+        if (previous && normaliseKey(cantonName(previous) || previous) === normaliseKey(canonical)) {
+            // Same place twice: keep the site's own spelling, not upstream's.
+            deduped[deduped.length - 1] = canonical;
+            continue;
+        }
+        deduped.push(part);
+    }
+
+    return deduped.join(', ');
 };
 
 export default formatLocation;

@@ -9,7 +9,9 @@ describe('formatLocation', () => {
     it('spells out a two-letter canton code', () => {
         // Upstream writes these lowercase-titlecased ("Ag"), which read as a typo.
         expect(formatLocation('Svizzera, Baden, Ag')).toBe('Baden, Argovia');
-        expect(formatLocation('Svizzera, Lucerne, Lu')).toBe('Lucerne, Lucerna');
+        // Town and canton are the same place here, so it is said once — see the
+        // duplicate-collapsing test below.
+        expect(formatLocation('Svizzera, Lucerne, Lu')).toBe('Lucerna');
     });
 
     it('translates a canton named in German or French', () => {
@@ -39,6 +41,28 @@ describe('formatLocation', () => {
 
     it('keeps a canton already written in Italian', () => {
         expect(formatLocation('Svizzera, Bellinzona, Ticino')).toBe('Bellinzona, Ticino');
+    });
+
+
+    it('normalises a canton written first, which the feed also does', () => {
+        // Randstad ads arrive as "Ticino, Chiasso, Bellinzona" — canton leading.
+        // Left untranslated, one Italian list showed both "Tessin" and "Ticino".
+        expect(formatLocation('Svizzera, Tessin, Mendrisio')).toBe('Ticino, Mendrisio');
+        expect(formatLocation('Svizzera, Waadt, Nyon')).toBe('Vaud, Nyon');
+        expect(formatLocation('Svizzera, Ticino, Chiasso, Bellinzona')).toBe('Ticino, Chiasso, Bellinzona');
+    });
+
+    it('does not rewrite a leading town that shares its canton name', () => {
+        // Zug, Basel, Zurigo and friends name both a canton and its capital. In
+        // leading position the part is the town, so it must stay the town.
+        expect(formatLocation('Svizzera, Zug, Baar')).toBe('Zug, Baar');
+        expect(formatLocation('Svizzera, Basel, Riehen')).toBe('Basel, Riehen');
+    });
+
+    it('says a place once when town and canton are the same place', () => {
+        expect(formatLocation('Svizzera, Zürich, Zürich')).toBe('Zurigo');
+        expect(formatLocation('Svizzera, Genève, Genève')).toBe('Ginevra');
+        expect(formatLocation('Svizzera, Zug, Zug')).toBe('Zugo');
     });
 
     it('handles empty and missing input', () => {

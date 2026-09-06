@@ -689,6 +689,17 @@ const Offerte = ({ setShowLoginModal }) => {
                                                     {t('jobs.details_position')}
                                                 </span>
                                             </div>
+                                            {/* The same two units the standalone /offerta/:id page carries.
+                                                They were missing here, and this pane — not that page — is where a
+                                                candidate actually reads an offer: every card in the list opens it.
+
+                                                They sit OUTSIDE the loading/detail branches on purpose. Those swap
+                                                on every card click (fetchDetail clears the detail first), so a unit
+                                                placed inside would unmount and push a fresh ad request per click —
+                                                dozens against a single pageview, which is what AdSense counts as
+                                                invalid traffic. Out here they mount once per visit to the pane. */}
+                                            <AdSlot name="offertaTop" variant="banner" />
+
                                             {detailLoading ? (
                                                 <div className="flex flex-col gap-3 animate-pulse py-4">
                                                     <div className="h-4 bg-[#050B2B]/5 w-3/4 rounded-none"></div>
@@ -698,21 +709,12 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 </div>
                                             ) : selectedJobDetail ? (
                                                 <div className="flex flex-col gap-6">
-                                                    {/* The same two units the standalone /offerta/:id page carries.
-                                                        They were missing here, and this pane — not that page — is
-                                                        where a candidate actually reads an offer: every card in the
-                                                        list opens it. Above and below the description, never inside
-                                                        it, so nobody meets an ad mid-sentence. */}
-                                                    <AdSlot name="offertaTop" variant="banner" />
-
                                                     <div 
                                                         className="job-description-content text-sm font-normal leading-relaxed text-slate-800"
                                                         style={{ fontFamily: body, paddingRight: '4px' }}
                                                         dangerouslySetInnerHTML={{ __html: selectedJobDetail.description }}
                                                     />
 
-                                                    <AdSlot name="offertaBottom" variant="banner" />
-                                                    
                                                     {/* Candidati Link/Button in basso col medesimo stile */}
                                                     <div style={{ borderTop: '1px solid rgba(5,11,43,0.07)', paddingTop: 20, marginTop: 10 }}>
                                                         <button onClick={() => handleApply(selectedJob)}
@@ -739,6 +741,8 @@ const Offerte = ({ setShowLoginModal }) => {
                                                     Seleziona un annuncio per caricarne i dettagli qui.
                                                 </p>
                                             )}
+
+                                            <AdSlot name="offertaBottom" variant="banner" />
 
                                             <div style={{ marginTop: 32 }}>
                                                 <div style={{ padding: '24px 28px', background: GL, borderLeft: `3px solid ${F}` }}>

@@ -84,8 +84,11 @@ const AdSlot = ({ name, variant = 'banner' }) => {
 
         const attributi = new MutationObserver(valuta);
         // childList matters as much as the attributes: AdSense signals a fill by
-        // appending an iframe, sometimes before it writes data-ad-status.
-        attributi.observe(ins, { attributes: true, childList: true, subtree: true, attributeFilter: ['data-ad-status', 'data-adsbygoogle-status', 'style', 'class'] });
+        // appending an iframe, sometimes before it writes data-ad-status. That
+        // iframe is a direct child, so no subtree — with it every animation and
+        // lazy asset inside the creative would re-run this check for the life of
+        // the unit, for nothing.
+        attributi.observe(ins, { attributes: true, childList: true, attributeFilter: ['data-ad-status', 'data-adsbygoogle-status', 'style', 'class'] });
         const dimensione = typeof ResizeObserver === 'function' ? new ResizeObserver(valuta) : null;
         if (dimensione) dimensione.observe(ins);
 
