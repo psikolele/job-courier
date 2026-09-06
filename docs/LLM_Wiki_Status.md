@@ -1,4 +1,4 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 4 Settembre 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 6 Settembre 2026)
 
 ## Meeting Gabriele + sprint fix, ricerca, AdSense (3-4 Settembre 2026) — ✅ *in produzione*
 
@@ -63,6 +63,27 @@ giurista.
 **ogni scrittura sui workflow esistenti veniva rifiutata** (`request/body must NOT have additional
 properties`) mentre la validazione dello stesso identico payload passava. Se validazione e
 salvataggio divergono, il sospetto è la versione del connettore, non il payload.
+
+**Aggiornamento 6 settembre — rileggere le proprie modifiche del giorno prima ha reso altri
+quattro difetti, tutti silenziosi.** Badge NUOVO confrontato col giorno UTC mentre upstream
+scrive una data svizzera (invertito fra mezzanotte e le 02:00 CEST, `43f00e1`); `AdSlot` che
+smetteva di osservare dopo sei secondi, così un annuncio riempito più tardi — consenso dato a
+pagina già aperta — compariva fra le offerte **senza etichetta né bordo**, cioè proprio
+l'annuncio in-feed indistinguibile che quel componente esiste per impedire; il parser della
+candidatura esterna che prendeva il primo `externalLink.php` della pagina, senza notare che la
+pagina porta anche gli annunci correlati della stessa azienda; e `getApplyData` che usava il
+dettaglio dell'annuncio precedente ancora in stato (gli ultimi tre in `c54cac2`).
+
+> **Tre regole che valgono oltre questo progetto.** Un timeout che smette di *osservare*
+> trasforma uno stato transitorio in un render sbagliato permanente: "non c'è ancora" non è
+> "non ci sarà". Il primo match su una pagina che contiene record fratelli è una scommessa —
+> il parser deve dire *quale* entità vuole, non prendere quella che capita. E una guardia deve
+> scattare solo su una contraddizione vera: la prima versione del controllo id scartava il
+> dettaglio anche quando l'id semplicemente mancava, e tre test esistenti l'hanno bocciata
+> subito — senza rieseguire la suite avrei rotto la candidatura per ogni annuncio la cui voce
+> di lista non porta un id.
+
+Prove e confronto filtri: `docs/verifica-2026-09-04/`. Handoff: `docs/handoff-2026-09-04.md`.
 
 ---
 
