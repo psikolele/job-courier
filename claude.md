@@ -303,7 +303,7 @@ Ref: `00_Wiki/concepts/token-optimization.md` § Temporary File Policy
 **Deadline:** URGENT  
 **Last Updated:** 2026-08-03
 
-**Ultimo handoff:** [docs/handoff-2026-08-03.md](docs/handoff-2026-08-03.md)
+**Ultimo handoff:** [docs/handoff-2026-09-06.md](docs/handoff-2026-09-06.md) (precedente: [handoff-2026-09-04.md](docs/handoff-2026-09-04.md))
 
 **🏢 VETRINA AZIENDE — DATORI CON ANNUNCI SCOLLEGATI:** se la vetrina mostra *meno* aziende del previsto, o `/aziende-che-assumono` non concorda con `/api/companies?withJobs=1`, cercare `[SNAPSHOT-EXPIRED]` e `[SNAPSHOT-REJECTED]` nei log e leggere la sezione "Datori con annunci scollegati" in `00_Wiki/job-courier/arca24-company-index.md`. Tre trappole: il file `api/_orphan-employers-snapshot.js` committato **non** è quello che legge la produzione; nella `build` il generatore orfani deve girare **prima** di quello del roster; lo snapshot scade a 7 giorni e da lì la pagina statica perde quei datori senza che nulla fallisca.
 
