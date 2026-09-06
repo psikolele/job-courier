@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AD_SLOTS } from '../config/ads';
+import { isAdFilled } from '../utils/adFill';
 
 const GM = 'var(--brand-gray-mid)';
 const body = 'var(--font-body)';
@@ -79,13 +80,12 @@ const AdSlot = ({ name, variant = 'banner' }) => {
         // mounted: if we stopped watching at that point the ad would render with
         // no label and no border, which is precisely the unlabelled in-feed ad
         // this component exists to prevent.
-        const valuta = () => {
-            if (ins.getAttribute('data-ad-status') === 'unfilled') { setStato('vuoto'); return; }
-            setStato(ins.offsetHeight > 20 ? 'pieno' : 'vuoto');
-        };
+        const valuta = () => setStato(isAdFilled(ins) ? 'pieno' : 'vuoto');
 
         const attributi = new MutationObserver(valuta);
-        attributi.observe(ins, { attributes: true, attributeFilter: ['data-ad-status', 'data-adsbygoogle-status', 'style', 'class'] });
+        // childList matters as much as the attributes: AdSense signals a fill by
+        // appending an iframe, sometimes before it writes data-ad-status.
+        attributi.observe(ins, { attributes: true, childList: true, subtree: true, attributeFilter: ['data-ad-status', 'data-adsbygoogle-status', 'style', 'class'] });
         const dimensione = typeof ResizeObserver === 'function' ? new ResizeObserver(valuta) : null;
         if (dimensione) dimensione.observe(ins);
 
