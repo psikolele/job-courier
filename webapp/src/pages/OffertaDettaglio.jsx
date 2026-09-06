@@ -10,6 +10,7 @@ import AdSlot from '../components/AdSlot';
 import { isUserLoggedIn } from '../hooks/useRegistrationWall';
 import { saveReturnUrl } from '../hooks/useReturnUrl';
 import PageSeo from '../components/PageSeo';
+import { formatLocation } from '../utils/formatLocation';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -89,14 +90,6 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const formatLocation = (loc) => {
-        if (!loc) return '';
-        let clean = loc
-            .replace(/\b(Svizzera|Switzerland|Suisse|Schweiz)\b/gi, '')
-            .trim();
-        clean = clean.replace(/^,\s*/, '').replace(/,\s*$/, '').replace(/\s*,\s*,/g, ',').trim();
-        return clean;
-    };
 
     // The JobPosting schema is emitted server-side by api/offerta-ssr.js, which renders it
     // into the initial HTML — where Google Jobs can read it without executing anything.

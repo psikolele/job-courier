@@ -10,6 +10,7 @@ import useShowcaseJobs from '../hooks/useShowcaseJobs';
 import RegistrationWallModal from './RegistrationWallModal';
 import { ShowcaseCardSkeleton } from './ui/Skeleton';
 import { sectorLabel, roleLabel } from '../utils/jobTaxonomy';
+import { formatLocation } from '../utils/formatLocation';
 
 // Last good showcase payload, kept so a repeat visit paints cards on the first frame.
 // Short-lived on purpose: these are live vacancies, and an ad that closed should not sit
@@ -286,14 +287,6 @@ const Filters = () => {
         }, 3000);
     };
 
-    const formatLocation = (loc) => {
-        if (!loc) return '';
-        let clean = loc
-            .replace(/\b(Svizzera|Switzerland|Suisse|Schweiz)\b/gi, '')
-            .trim();
-        clean = clean.replace(/^,\s*/, '').replace(/,\s*$/, '').replace(/\s*,\s*,/g, ',').trim();
-        return clean;
-    };
 
     return (
         <div id="filters" className="w-full relative z-20 py-16 md:py-20 overflow-x-hidden" style={{ background: 'var(--brand-gray-light)' }}>

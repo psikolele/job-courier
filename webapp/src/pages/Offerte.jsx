@@ -16,6 +16,7 @@ import { JobListItemSkeleton, JobDetailSkeleton } from '../components/ui/Skeleto
 import { sectorLabel, roleLabel } from '../utils/jobTaxonomy';
 import { splitPublishedLabel } from '../utils/publishedLabel';
 import AdSlot from '../components/AdSlot';
+import { formatLocation } from '../utils/formatLocation';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -109,14 +110,6 @@ const Offerte = ({ setShowLoginModal }) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
 
-    const formatLocation = (loc) => {
-        if (!loc) return '';
-        let clean = loc
-            .replace(/\b(Svizzera|Switzerland|Suisse|Schweiz)\b/gi, '')
-            .trim();
-        clean = clean.replace(/^,\s*/, '').replace(/,\s*$/, '').replace(/\s*,\s*,/g, ',').trim();
-        return clean;
-    };
 
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
