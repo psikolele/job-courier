@@ -1,5 +1,43 @@
 # LLM Wiki: Job Courier Redesign (Aggiornato: 6 Settembre 2026)
 
+## Rilettura del lavoro del 4 settembre + selettore lingua mobile (6 Settembre 2026) — ✅ *in produzione*
+
+**Stack operativo:** Claude Opus 5 · caveman mode full · skill `skill-codex`, `code-review`,
+`artifact-design` · tool: Bash/Edit/Write, Playwright headless (browser reale), Browser pane,
+Claude in Chrome, MCP n8n · commit `43f00e1`, `c54cac2`, `d8d81a8` su `main`
+
+Handoff: [handoff-2026-09-06.md](handoff-2026-09-06.md). I quattro difetti trovati e le tre
+regole che ne escono sono già registrati nella voce del 3-4 settembre, perché riguardano quel
+codice. Qui resta ciò che vale come conoscenza a sé.
+
+**Il selettore lingua non esisteva su mobile.** Stava in un contenitore `hidden md:flex`: quattro
+lingue raggiungibili solo da desktop, su un sito che vive di traffico da telefono. Ora è in cima
+al menu — la prima versione lo metteva in fondo, e finiva sotto due sezioni intere: **una
+funzione che c'è ma richiede di scorrere per essere trovata viene segnalata come mancante**, che
+è letteralmente come è arrivata la segnalazione.
+
+> **Trappola di verifica, seconda volta su questo progetto.** Nel pannello di anteprima il menu
+> risultava bloccato aperto con le voci ancora in italiano — falso su entrambi i punti: i frame
+> sono congelati quando il pannello è nascosto, quindi framer-motion non completa mai l'uscita e
+> il sottoalbero resta con le props vecchie. Le animazioni si verificano in un **browser vero**
+> (qui Playwright headless a 375×812), mai nel pannello. Vale per AnimatePresence, per gsap e per
+> qualunque cosa dipenda da `requestAnimationFrame`.
+
+**Batteria di test manuali**, che prima non esisteva: `docs/test-manuali-jobcourier.md`, 20 prove
+su produzione, ognuna con "cosa significa se fallisce" — perché su questo progetto i difetti si
+presentano come assenze e un'assenza si legge come "non c'è niente da mostrare". Pubblicata anche
+come pagina condivisibile con esiti condivisi.
+
+**Nota strumenti:** Codex non utilizzabile (quota esaurita fino al 02/10); CLI aggiornato a
+0.153.4; `gpt-5.6-sol` non è disponibile con un account ChatGPT, `terra` e `luna` sì. Il primo
+fallimento sembrava un kill del processo: era il CLI vecchio che rifiutava i modelli GPT-5.6, e
+l'errore vero stava su stderr, che la skill fa sopprimere.
+
+**Accesso Cookiebot:** `admin.cookiebot.com` reindirizza ora a `login.usercentrics.eu`. Le
+sessioni salvate sul vecchio dominio non valgono più.
+
+---
+
 ## Meeting Gabriele + sprint fix, ricerca, AdSense (3-4 Settembre 2026) — ✅ *in produzione*
 
 **Stack operativo:** Claude Opus 5 · caveman mode full · skill `n8n-mcp-tools-expert`,
