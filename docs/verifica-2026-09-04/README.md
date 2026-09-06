@@ -63,6 +63,35 @@ riempirlo), ma cornice, etichetta e altezza riservata compaiono **solo quando un
 arriva davvero** — sondato per sei secondi, poi il riquadro collassa. Lo screenshot `10`
 documenta il difetto prima del fix.
 
+## Revisione avversariale successiva (6 settembre)
+
+Ripasso mirato sui punti dove ero stato in difficoltà. Il secondo parere esterno (Codex) non
+era disponibile — l'account ha esaurito il limite fino al 2 ottobre — quindi la revisione è
+mia, con verifiche eseguite invece che ragionate.
+
+**Difetto trovato e corretto: il badge NUOVO si invertiva di notte.**
+`publishedLabel.js` confrontava la data dell'annuncio con il giorno **UTC**, mentre upstream
+scrive una data del calendario svizzero. Fra mezzanotte e le 02:00 (CEST) l'annuncio di oggi
+perdeva il badge e quello di ieri lo prendeva. Dimostrato eseguendo la funzione con
+`now = 06/09 00:30 CEST`: oggi → `isNew: false`, ieri → `isNew: true`. Ora il confronto usa il
+calendario locale, con test di regressione.
+
+Conta solo quando upstream omette il proprio marker "Nuovo!", perché quello viene controllato
+per primo — ma è esattamente il ramo di sicurezza previsto per quando la formulazione a monte
+cambia, quindi non è teorico.
+
+**Verificato senza trovare difetti:**
+
+| Controllo | Esito |
+|---|---|
+| Annunci mai in home | nessun `AdSlot` in `Home.jsx`, e `AdsenseGate` esclude `/` |
+| SSR e prerender | non toccano slot pubblicitari né badge: nessuna duplicazione |
+| Entrambi i percorsi API (adapter Arca24 e scraper legacy di riserva) | rilevano la candidatura esterna con lo stesso helper |
+| Chiavi i18n toccate oggi | `jobs.new_badge`, `jobs.apply_external_note`, `ads.label`, `redirect.*`, `legal.*` presenti e non vuote in IT/EN/DE/FR |
+| Blocchi delle pagine legali | 56 condizioni + 36 cookie in tutte e quattro le lingue, riga di prevalenza inclusa |
+| `AdSlot`: intervallo e observer | entrambi fermati allo smontaggio; il push è protetto da `data-adsbygoogle-status` |
+| Un annuncio ogni 3 card | `(index + 1) % 3 === 0`, mai prima della prima card |
+
 ---
 
 ## Confronto filtri: Job Courier ↔ jobroom

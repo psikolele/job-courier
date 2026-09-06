@@ -21,9 +21,13 @@ export function splitPublishedLabel(raw, now = Date.now()) {
     if (!match) return { date: text, isNew: false };
 
     const [, d, m, y, suffix] = match;
+    // Upstream writes a Swiss calendar date, so "today" has to be read on the
+    // reader's calendar too. Comparing against the UTC day inverted the badge
+    // between midnight and 02:00 Swiss time: an ad posted today lost it, and
+    // yesterday's ad gained it, because UTC was still on the previous day.
     const at = Date.UTC(Number(y), Number(m) - 1, Number(d));
     const today = new Date(now);
-    const startOfToday = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+    const startOfToday = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
 
     return {
         date: text.slice(0, match[0].length - suffix.length).trim(),

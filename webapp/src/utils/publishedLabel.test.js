@@ -34,4 +34,10 @@ describe('splitPublishedLabel', () => {
         expect(splitPublishedLabel(null, NOW)).toEqual({ date: '', isNew: false });
         expect(splitPublishedLabel('', NOW)).toEqual({ date: '', isNew: false });
     });
+    it('legge il giorno sul calendario locale, non su quello UTC', () => {
+        // 06/09/2026 00:30 in Svizzera (CEST) e' ancora il 05/09 a Greenwich.
+        const mezzanotteSvizzera = new Date(2026, 8, 6, 0, 30).getTime();
+        expect(splitPublishedLabel('06/09/2026', mezzanotteSvizzera).isNew).toBe(true);
+        expect(splitPublishedLabel('05/09/2026', mezzanotteSvizzera).isNew).toBe(false);
+    });
 });
