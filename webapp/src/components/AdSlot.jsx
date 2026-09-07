@@ -111,23 +111,43 @@ const AdSlot = ({ name, variant = 'banner' }) => {
 
     const pieno = stato === 'pieno';
 
+    // The horizontal box never changes between the two states, and that is the
+    // whole point of splitting it out. AdSense sizes a creative from the width
+    // the unit has when it is claimed — which is the empty state. Adding side
+    // padding once the ad lands shrinks the unit underneath an iframe that has
+    // already been laid out, and the creative then hangs out over its own frame:
+    // measured on production 07.09, a 773px creative inside a 742px unit, past
+    // the dashed rule and up to the column edge. Reserving the padding from the
+    // start means the width AdSense measures is the width it keeps. `overflow`
+    // is the backstop for a creative that ignores it anyway.
+    const scatola = {
+        boxSizing: 'border-box',
+        paddingLeft: isCard ? 24 : 16,
+        paddingRight: isCard ? 24 : 16,
+        border: '1px dashed transparent',
+        overflow: 'hidden',
+    };
+
     return (
         <div
             ref={slotRef}
             aria-label={pieno ? t('ads.label') : undefined}
             aria-hidden={pieno ? undefined : true}
             style={pieno ? {
+                ...scatola,
                 // Deliberately not the card's white: an ad in the list has to be
                 // visibly a different surface at a glance, before the label is
                 // read. A dashed rule says "not a card" even in greyscale.
                 background: 'rgba(5,11,43,0.045)',
-                border: '1px dashed rgba(5,11,43,0.20)',
-                padding: isCard ? '12px 24px 16px' : '12px 16px 16px',
+                borderColor: 'rgba(5,11,43,0.20)',
+                paddingTop: 12,
+                paddingBottom: 16,
                 margin: isCard ? 0 : '24px 0'
             } : {
+                ...scatola,
                 // No ad (yet): no frame, no label, no reserved height. The <ins>
                 // still has to be in the DOM and full-width for AdSense to fill it.
-                background: 'none', border: 'none', padding: 0, margin: 0
+                background: 'none', paddingTop: 0, paddingBottom: 0, margin: 0
             }}
         >
             {/* The label sits outside the unit — never inside, where the
