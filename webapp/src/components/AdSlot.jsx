@@ -111,19 +111,18 @@ const AdSlot = ({ name, variant = 'banner' }) => {
 
     const pieno = stato === 'pieno';
 
-    // The horizontal box never changes between the two states, and that is the
-    // whole point of splitting it out. AdSense sizes a creative from the width
-    // the unit has when it is claimed — which is the empty state. Adding side
-    // padding once the ad lands shrinks the unit underneath an iframe that has
-    // already been laid out, and the creative then hangs out over its own frame:
-    // measured on production 07.09, a 773px creative inside a 742px unit, past
-    // the dashed rule and up to the column edge. Reserving the padding from the
-    // start means the width AdSense measures is the width it keeps. `overflow`
-    // is the backstop for a creative that ignores it anyway.
+    // The frame carries no side padding, and that is deliberate. AdSense sizes a
+    // creative from the *container's* width and pays no attention to the padding
+    // inside it, so any horizontal padding here comes back as overflow of twice
+    // its width. Measured on production 07.09: 16px a side gave a 773px creative
+    // in a 742px unit, hanging over the dashed rule and out to the column edge —
+    // which is what made the ad look misaligned against the cards above it.
+    // Reserving the padding in both states did not help either, for the same
+    // reason: it is the container AdSense reads, not the <ins>. With no side
+    // padding the width it measures is the width the unit keeps. The label below
+    // carries its own inset instead, and `overflow` is the backstop.
     const scatola = {
         boxSizing: 'border-box',
-        paddingLeft: isCard ? 24 : 16,
-        paddingRight: isCard ? 24 : 16,
         border: '1px dashed transparent',
         overflow: 'hidden',
     };
@@ -161,7 +160,11 @@ const AdSlot = ({ name, variant = 'banner' }) => {
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
                 color: GM,
-                marginBottom: 8
+                marginBottom: 8,
+                // The frame has no side padding — see `scatola` — so the label
+                // insets itself rather than sitting against the dashed rule.
+                paddingLeft: isCard ? 24 : 16,
+                paddingRight: isCard ? 24 : 16
             }}>
                 {t('ads.label')}
             </span>}
