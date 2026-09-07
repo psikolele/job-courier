@@ -115,7 +115,6 @@ const Offerte = ({ setShowLoginModal }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-    const [searchQuery, setSearchQuery] = useState(searchParams.get('keyword') || '');
     // A URL that already names an offer opens on it, not on the list behind it.
     const [activeTab, setActiveTab] = useState(() => (searchParams.get('jobId') ? 'detail' : 'list'));
 
@@ -138,19 +137,12 @@ const Offerte = ({ setShowLoginModal }) => {
     // External redirect modal
     const [redirectModal, setRedirectModal] = useState({ open: false, url: null, company: '' });
 
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            const newParams = new URLSearchParams(searchParams);
-            const currentKeyword = searchParams.get('keyword') || '';
-            if (searchQuery !== currentKeyword) {
-                if (searchQuery) newParams.set('keyword', searchQuery);
-                else newParams.delete('keyword');
-                newParams.delete('jobId');
-                setSearchParams(newParams, { replace: true });
-            }
-        }, 500);
-        return () => clearTimeout(timeoutId);
-    }, [searchQuery, searchParams, setSearchParams]);
+    // The keyword lives in the URL, written by the search form on submit
+    // (`JobSearchWidget`, below). There is no second copy of it in this component:
+    // a debounced mirror used to sit here, frozen at whatever `keyword` held on
+    // mount, and half a second after every search it wrote that stale value back
+    // over the fresh one — dropping `jobId` with it, so the list reloaded and the
+    // detail pane jumped back to the previous offer.
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
