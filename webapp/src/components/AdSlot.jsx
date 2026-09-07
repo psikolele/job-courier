@@ -35,6 +35,13 @@ const AdSlot = ({ name, variant = 'banner' }) => {
     // it will: the unit stays empty for anyone who refused marketing cookies, and
     // for any request Google chooses not to fill.
     const [stato, setStato] = useState('attesa');
+    // The polling window below has closed without an ad arriving. Until it does,
+    // the unit keeps the height AdSense reserved for it: collapsing a slot that
+    // is still being decided would hand Google a zero-height target, and it does
+    // not fill what nobody can see. After it, the reserved height is just a hole
+    // in the page — measured on production 07.09, 280px of nothing at the foot
+    // of the offer list, on a unit that never received an ad.
+    const [scaduto, setScaduto] = useState(false);
     const adUnitId = AD_SLOTS[name] || '';
 
     // Mount the unit only once it is near the viewport: the list can hold
@@ -95,7 +102,13 @@ const AdSlot = ({ name, variant = 'banner' }) => {
         // The usual fill lands before either observer has anything to report, so
         // poll briefly as well — then stop polling, not watching.
         const sonda = setInterval(valuta, 400);
-        const fineSonda = setTimeout(() => clearInterval(sonda), 6000);
+        const fineSonda = setTimeout(() => {
+            clearInterval(sonda);
+            // Stop polling, keep watching, and let the frame collapse if nothing
+            // came. The observers above stay connected, so an ad that lands late
+            // still reopens it.
+            setScaduto(true);
+        }, 6000);
 
         return () => {
             attributi.disconnect();
@@ -141,12 +154,25 @@ const AdSlot = ({ name, variant = 'banner' }) => {
                 borderColor: 'rgba(5,11,43,0.20)',
                 paddingTop: 12,
                 paddingBottom: 16,
-                margin: isCard ? 0 : '24px 0'
+                // In the list the only thing between an ad and the cards either
+                // side of it was the column's 4px gap, which read as one more
+                // card in the stack. A little air is what separates "next in the
+                // list" from "not part of the list".
+                margin: isCard ? '8px 0' : '24px 0'
             } : {
                 ...scatola,
-                // No ad (yet): no frame, no label, no reserved height. The <ins>
-                // still has to be in the DOM and full-width for AdSense to fill it.
-                background: 'none', paddingTop: 0, paddingBottom: 0, margin: 0
+                // No ad (yet): no frame, no label. The <ins> still has to be in
+                // the DOM and full width for AdSense to fill it, so the height it
+                // reserved for itself is clipped away rather than removed — and
+                // only once the window above has closed.
+                //
+                // The collapse is deliberately instant. Animating it would mean
+                // starting from a concrete max-height, and a unit AdSense
+                // reserved taller than that guess would be cropped while it is
+                // still live. One reflow inside the first seconds, on a slot
+                // most readers have not scrolled to, is the cheaper trade.
+                background: 'none', paddingTop: 0, paddingBottom: 0, margin: 0,
+                maxHeight: scaduto ? 0 : undefined
             }}
         >
             {/* The label sits outside the unit — never inside, where the
