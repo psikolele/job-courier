@@ -37,6 +37,37 @@ describe('sectorLabel / roleLabel', () => {
         expect(roleLabel(undefined)).toBe('Altro');
     });
 
+    // Titles copied from the live feed on 07.09.2026, when the unfiltered /offerte
+    // listing showed "SETTORE: ALTRO / RUOLO: ALTRO" on card after card. The listing
+    // is four languages deep; these keep the non-Italian ones honest.
+    describe('the tags a card actually prints', () => {
+        const card = (title) => ({ title, sector: 'Non specificato', role: 'Non specificato' });
+
+        it.each([
+            // Accents: the keyword lists spell these without one, and used to miss.
+            ['Aide-électricien / aide-électricienne (H/F/D) - Tirage de câbles', 'Costruzioni', 'Installatore'],
+            ['Polymécanicien(ne) Tournage 100%', 'Costruzioni', 'Meccanico'],
+            // Already worked, and must keep working now that matching folds accents:
+            // every accented keyword was rewritten unaccented to stay reachable.
+            ['Ingénieur en génie civil 100%', 'Ingegneria', 'Ingegnere'],
+            ['Maçon / Maurer (m/w/d)', 'Costruzioni', 'Muratore'],
+            ['Gärtner/in 100%', 'Costruzioni', 'Giardiniere'],
+            ['Kranführer (m/w/d)', 'Costruzioni', 'Gruista'],
+            ['Einkäufer/in 80-100%', 'Amministrazione', 'Responsabile Acquisti'],
+            ['Verkäufer/in Detailhandel', 'Commerciale', 'Venditore'],
+            ['Sekretär/in 60%', 'Amministrazione', 'Segretario'],
+        ])('%s -> %s / %s', (title, sector, role) => {
+            expect(sectorLabel(card(title))).toBe(sector);
+            expect(roleLabel(card(title))).toBe(role);
+        });
+
+        // Accent-folding must not make a keyword match something it never did: the
+        // guard is that folding only strips marks, it does not loosen the words.
+        it('still says Altro when the title genuinely carries no signal', () => {
+            expect(sectorLabel(card('Opérateur/trice 100% CDI'))).toBe('Altro');
+        });
+    });
+
     it('agrees with the raw helpers used by the cards', () => {
         const job = { title: 'Autista camion', sector: 'Non specificato', role: 'Non specificato' };
         expect(sectorLabel(job)).toBe(deriveSector(job.title, job.sector));

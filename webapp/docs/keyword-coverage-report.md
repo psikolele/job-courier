@@ -1,8 +1,8 @@
 # Copertura keyword settore/ruolo
 
-Generato automaticamente da `npm run audit:keywords` — ultimo run: 2026-08-15.
+Generato automaticamente da `npm run audit:keywords` — ultimo run: 2026-09-07.
 
-**300 offerte lette, 64 ancora "Altro/Altro" (copertura 78.7%).**
+**297 offerte lette, 60 ancora "Altro/Altro" (copertura 79.8%).**
 
 Non aggiungere queste parole a occhio: alcune sono sigle ambigue (es. "MPA", "CDI")
 o termini troppo generici per un settore/ruolo affidabile. Verificare il senso prima
@@ -12,86 +12,86 @@ di estenderle in `src/utils/jobTaxonomy.js`.
 
 | Parola | Occorrenze |
 |---|---|
-| bâtiment | 3 |
-| bereich | 3 |
-| responsable | 3 |
-| travaux | 3 |
-| teamleitung | 3 |
-| contremaître | 2 |
-| instandhaltungsfachmann | 2 |
-| directeur | 2 |
-| spezialist | 2 |
-| ferblantier | 2 |
-| serrurier | 2 |
-| autonome | 2 |
-| metallbauer | 2 |
-| schaler | 2 |
-| anlagenführer | 1 |
-| schichtig | 1 |
-| assc | 1 |
-| lucidatore | 1 |
-| smerigliatore | 1 |
-| tubista | 1 |
-| capo | 1 |
-| cantiere | 1 |
-| courtier | 1 |
-| immobilier | 1 |
-| manutentore | 1 |
-| spazi | 1 |
-| verdi | 1 |
-| elektro | 1 |
-| chargé | 1 |
-| d'affaires | 1 |
-| câblage | 1 |
-| elektroplaner | 1 |
-| constructeur | 1 |
-| métallique | 1 |
-| reifenpraktiker | 1 |
-| wintersaison | 1 |
-| warenkontrolleur | 1 |
-| mandat | 1 |
-| dépanneur | 1 |
-| sanitaire | 1 |
+| reifenpraktiker | 4 |
+| spezialist | 3 |
+| sozialpädagog*in | 3 |
+| monate | 3 |
+| fachmann | 2 |
+| gérant | 2 |
+| fortune | 2 |
+| senior | 2 |
+| baumaschinenführer | 2 |
+| betriebsunterhalt | 2 |
+| agent·e | 2 |
+| forstwart | 2 |
+| opérateur | 1 |
+| trice | 1 |
+| fabrication | 1 |
+| pâte | 1 |
+| mine | 1 |
+| charge | 1 |
+| securite | 1 |
+| produktionskoordinator | 1 |
+| planning | 1 |
+| bediener | 1 |
+| erfahrung | 1 |
+| layouter | 1 |
+| fräser | 1 |
+| cartongessista | 1 |
+| disponibile | 1 |
+| subito | 1 |
+| bautenschutzfachmann | 1 |
+| professionnel | 1 |
+| bâtiment | 1 |
+| boutique | 1 |
+| swatch | 1 |
+| zürich | 1 |
+| temporär | 1 |
+| asylzentrum | 1 |
+| promotor | 1 |
+| graubünden | 1 |
+| bauführer | 1 |
+| tiefbau | 1 |
 
 ## Esempio di titoli non coperti (max 40)
 
-- Anlagenführer / Anlagenführer (3-4 Schichtig)
-- ASSC (h/f/d) 40 à 100% missions temporaires
-- Lucidatore / smerigliatore (U/D/N) - 100%
-- Tubista capo cantiere
-- Contremaître bâtiment 80-100% CDI (H/F/D)
-- Courtier immobilier 100% CDI (H/F/D)
-- Manutentore spazi verdi
-- Elektro Bereich (a) 80-100%
-- Chargé d'affaires de câblage (H/F/D)
-- Elektroplaner/in (a) 80-100%
-- Constructeur métallique CFC 100% CDI (H/F/D)
-- Reifenpraktiker (m/w/d) 100% ? Wintersaison
-- Instandhaltungsfachmann (m/w) 80-100%
-- Warenkontrolleur (a) 100%
-- Responsable de mandat 100% CDI (H/F/D)
-- Dépanneur Sanitaire 100% CDI (H/F/D)
-- Directeur de travaux 100% (H/F/D)
-- Teamleitung Buffet & Küche (m/w/d) 100 % ? Tagschichten im Herzen von Zürich
-- Vendeur shop (H/F/X) 60%
-- Architecte HES ou EPFL 80-100% CDI (H/F/D)
-- Carreleur CFC
-- Adjoint Responsable Dépôt et Magasin 100% CDI (H/F/D)
-- Spezialist Industialisierung E-Mobility (m/w) 100%
-- Ferblantier 100% (H/F/D)
-- Responsable de maintenance 100% CDI (H/F/D)
-- Sachbearbeitung im Innendienst m/w/d 100%
-- Produkt-Spezialist (m/w/d) 100%
-- Kaufmännischer Allrounder mit Schwerpunkt Personal 80?100 % (m/w/d)
-- CNC-Operateur/in (m/w) 100%
-- Instandhaltungsfachmann in der Maschinenbaubranche (m/w) 100%
-- Wohngruppenleitung mit Herz
-- Préparateur technique & Aide-Serrurier
-- Physiotherapeut (m,w,d) 40-50%
-- Flexible Einsätze in der Betreuung (m,w,d)
-- Elektroniker (m/w/d) 100%
-- Profi im Bereich Automatik (m/w/d) 100%
-- Ferblantier-Couvreur CFC / Ferblantière-Couvreuse CFC 100% (H/F/D)
-- Stv. Teamleitung geschützte Wohngruppe (m,w,d) 80-100%
-- Serrurier/ière autonome atelier et pose 100% (H/F/D)
-- Chaudronnier/ère autonome (H/F/D)
+- Opérateur/trice de Fabrication ? Pâte à Mine (H/F/D)
+- CHARGE DE SECURITE
+- Produktionskoordinator/in (m/w/d) 100%
+- Planning Spezialist 100% (d/m/w)
+- CNC - Bediener mit Erfahrung (m/w/d) 100%
+- PCB-Layouter (m/w/d) 100%
+- CNC-Fräser (m/w) 100%
+- Cartongessista disponibile da subito
+- Bautenschutzfachmann (m/w/d)
+- Professionnel du bâtiment
+- Boutique Swatch Zürich 100%
+- Sozialpädagog*in HF (m,w,d) 80-100%, temporär im Asylzentrum
+- Promotor/in 10 - 20% Region Graubünden
+- Bauführer/in Tiefbau und Infrastruktur (m/w/d)
+- Fachmann/Fachfrau Solarmontage m/w/d 100%
+- Physiotherapeut/In 50-100% (m,w,d)
+- Sertisseur baguette [H/F/X]
+- Reifenpraktiker (m/w/d) 100% für ca. 2 Monate
+- Gérant de Fortune Senior 100% CDI (H/F/D)
+- Anlageführer (m/w/d)
+- Métrologue (H/F/X)
+- Reifenpraktiker (m/w/d) 100%
+- Contrôleur qualité industrielle (F/H/D)
+- Baumaschinenführer/in
+- Reifenpraktiker (m/w/d) 100% für ca. 2 Monate
+- Logopäde / Logopädin 50-100% (m,w,d)
+- Technische:r Fachspezialist:in Betriebsunterhalt (m/w/d)
+- Concierge sur site 50% (F/H/X)
+- Agent·e Relation Clients (100%) ? Mission temporaire de 6 mois
+- Mitarbeitende/r Empfang (w/m/d) 100%
+- CNC-Operator (m/w/d) 100%
+- Compliance Officer
+- Gérant de Fortune Senior 100% CDI (H/F/D)
+- Spezialist Endmontage & Verdrahtung 100% (m/w/d)
+- Fachspezialist/in Bauverwaltung (Hochbau) (w/m/d) 100%
+- Anlagenführer EFZ (m/w/d)
+- Reifenpraktiker (m/w/d) 100% für ca. 2 Monate
+- Ausführungsarchitekt:in
+- Industrie-Lackierer/in - Perfektion in jeder Schicht! (w/m/d) 100%
+- Sozialpädagog*in als Teamleitung (m,w,d) 80-100%

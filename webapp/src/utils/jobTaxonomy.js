@@ -14,18 +14,30 @@
 
 const SKIP_VALUES = ['Non specificato', 'Other', 'Altro', 'ALTRO', 'other', ''];
 
+/**
+ * Lowercase and strip diacritics before matching.
+ *
+ * The feed is four languages deep and writes accents where the keyword lists below
+ * did not: "électricien" never matched the `electricien` keyword, "polymécanicien"
+ * never matched `mechanik`, and both showed up as "Altro" on the cards while their
+ * unaccented twins matched fine. Every accented literal in the lists has been
+ * rewritten without its accent to match — keep it that way, or a keyword written
+ * with one will silently never fire.
+ */
+const fold = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
 export const deriveSector = (title, sector) => {
     if (sector && !SKIP_VALUES.includes(sector)) return sector;
     if (!title) return null;
-    const t = title.toLowerCase();
+    const t = fold(title);
     if (/trasport|autista|camion|courier|spediz|logist|magazz|magazin|lagerist|disponent|driver|corriere|chauffeur|fahrer/.test(t)) return 'Logistica';
     if (/inferm|medic|farmac|salute|dental|fisio|cura|health|clinica|pflege|soins|infirmier|aide.soignant|auxiliaire de sant|\bmpa\b/.test(t)) return 'Medicina';
     if (/sviluppa|programm|developer|software|engineer|devops|cloud|\.net|java|python|frontend|backend|fullstack/.test(t)) return 'IT';
     if (/contab|finanz|paghe|banca|audit|fiscal|revisio|accounting|treuhand|comptab/.test(t)) return 'Finanza';
     if (/vendita|commerc|sales|account|business dev|verkauf|vente|detailhandel|vertrieb|kundenbetreu|kundendienst/.test(t)) return 'Commerciale';
-    if (/amministr|segret|assistente|reception|back.?office|sekretariat|secretariat|controller|einkäuf|einkauf/.test(t)) return 'Amministrazione';
-    if (/ingénieur|ingenieur|konstrukteur|dessinateur|génie civil|entwicklungsingenieur/.test(t)) return 'Ingegneria';
-    if (/costruzion|edil|parchett|muratore|idraulic|elettr|carpent|impianti|architett|projekt|installateur|electricien|monteur|elektrik|chauffage|heizung|zimmermann|schreiner|menuisier|maçon|maurer|maler|dachdecker|schweisser|mechanik|polymechanik|automatiker|kranführer|strassenbauer|carrosserie|klempner|schlosser|gärtner|paysagiste|bauleiter/.test(t)) return 'Costruzioni';
+    if (/amministr|segret|assistente|reception|back.?office|sekretar|secretariat|controller|einkauf/.test(t)) return 'Amministrazione';
+    if (/ingenieur|konstrukteur|dessinateur|genie civil|entwicklungsingenieur/.test(t)) return 'Ingegneria';
+    if (/costruzion|edil|parchett|muratore|idraulic|elettr|carpent|impianti|architett|projekt|installateur|electricien|monteur|elektrik|chauffage|heizung|zimmermann|schreiner|menuisier|macon|maurer|maler|dachdecker|schweisser|mechanik|polymechanik|mecanicien|automatiker|kranfuhrer|strassenbauer|carrosserie|klempner|schlosser|gartner|paysagiste|bauleiter/.test(t)) return 'Costruzioni';
     if (/ristora|chef|cuoc|camerier|pasticcier|hotell|cuisin|kellner|koch|boulanger/.test(t)) return 'Ristorazione';
     if (/marketing|social media|communic|brand|digital/.test(t)) return 'Marketing';
     if (/risorse umane|\bhr\b|human resource|selezione|reclutament|personalwesen/.test(t)) return 'HR';
@@ -35,31 +47,31 @@ export const deriveSector = (title, sector) => {
 
 export const deriveRoleFromTitle = (title) => {
     if (!title) return null;
-    const t = title.toLowerCase();
+    const t = fold(title);
     if (/autista|driver|chauffeur|fahrer/.test(t)) return 'Autista';
     if (/installateur|installator|monteur|elektrik|electricien/.test(t)) return 'Installatore';
     if (/schweisser|soudeur/.test(t)) return 'Saldatore';
     if (/schreiner|menuisier|zimmermann|falegname/.test(t)) return 'Falegname';
-    if (/maçon|maurer|muratore/.test(t)) return 'Muratore';
+    if (/macon|maurer|muratore/.test(t)) return 'Muratore';
     if (/\bmaler\b|peintre|imbianchino/.test(t)) return 'Imbianchino';
     if (/mechanik|meccanic|mecanicien/.test(t)) return 'Meccanico';
-    if (/kranführer|gruista/.test(t)) return 'Gruista';
-    if (/gärtner|paysagiste|giardin/.test(t)) return 'Giardiniere';
+    if (/kranfuhrer|gruista/.test(t)) return 'Gruista';
+    if (/gartner|paysagiste|giardin/.test(t)) return 'Giardiniere';
     if (/konstrukteur|dessinateur|projeteur|progettista/.test(t)) return 'Progettista';
-    if (/ingénieur|ingenieur|ingegnere/.test(t)) return 'Ingegnere';
+    if (/ingenieur|ingegnere/.test(t)) return 'Ingegnere';
     if (/tecnic|technician|tester|technicien|techniker|technik/.test(t)) return 'Tecnico';
     if (/specialist/.test(t)) return 'Specialista';
     if (/responsabile|manager|leiter/.test(t)) return 'Responsabile';
-    if (/einkäuf|einkauf|acquisti/.test(t)) return 'Responsabile Acquisti';
+    if (/einkauf|acquisti/.test(t)) return 'Responsabile Acquisti';
     if (/controller/.test(t)) return 'Controller';
     if (/consulente|consultant|berater/.test(t)) return 'Consulente';
     if (/addett|employe|mitarbeiter/.test(t)) return 'Addetto';
     if (/operai|ouvrier|arbeiter/.test(t)) return 'Operaio';
     if (/camerier|serveur|kellner/.test(t)) return 'Cameriere';
     if (/cuoc|cuisinier|koch|boulanger/.test(t)) return 'Cuoco';
-    if (/segreta|secretaire|sekretär/.test(t)) return 'Segretario';
+    if (/segreta|secretaire|sekretar/.test(t)) return 'Segretario';
     if (/contabil|comptable|buchhalter/.test(t)) return 'Contabile';
-    if (/vendit|commercial|verkäufer|kundenbetreu/.test(t)) return 'Venditore';
+    if (/vendit|commercial|verkaufer|kundenbetreu/.test(t)) return 'Venditore';
     if (/magazzin|magazin|lagerist|disponent/.test(t)) return 'Magazziniere';
     if (/inferm|nurse|pflege|infirmier|aide.soignant/.test(t)) return 'Infermiere';
     return null;
