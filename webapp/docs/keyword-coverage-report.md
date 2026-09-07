@@ -2,7 +2,7 @@
 
 Generato automaticamente da `npm run audit:keywords` — ultimo run: 2026-09-07.
 
-**297 offerte lette, 60 ancora "Altro/Altro" (copertura 79.8%).**
+**296 offerte lette, 59 ancora "Altro/Altro" (copertura 80.1%).**
 
 Non aggiungere queste parole a occhio: alcune sono sigle ambigue (es. "MPA", "CDI")
 o termini troppo generici per un settore/ruolo affidabile. Verificare il senso prima
@@ -37,12 +37,10 @@ di estenderle in `src/utils/jobTaxonomy.js`.
 | erfahrung | 1 |
 | layouter | 1 |
 | fräser | 1 |
+| bautenschutzfachmann | 1 |
 | cartongessista | 1 |
 | disponibile | 1 |
 | subito | 1 |
-| bautenschutzfachmann | 1 |
-| professionnel | 1 |
-| bâtiment | 1 |
 | boutique | 1 |
 | swatch | 1 |
 | zürich | 1 |
@@ -52,6 +50,8 @@ di estenderle in `src/utils/jobTaxonomy.js`.
 | graubünden | 1 |
 | bauführer | 1 |
 | tiefbau | 1 |
+| infrastruktur | 1 |
+| fachfrau | 1 |
 
 ## Esempio di titoli non coperti (max 40)
 
@@ -62,26 +62,25 @@ di estenderle in `src/utils/jobTaxonomy.js`.
 - CNC - Bediener mit Erfahrung (m/w/d) 100%
 - PCB-Layouter (m/w/d) 100%
 - CNC-Fräser (m/w) 100%
-- Cartongessista disponibile da subito
 - Bautenschutzfachmann (m/w/d)
-- Professionnel du bâtiment
+- Cartongessista disponibile da subito
 - Boutique Swatch Zürich 100%
 - Sozialpädagog*in HF (m,w,d) 80-100%, temporär im Asylzentrum
 - Promotor/in 10 - 20% Region Graubünden
 - Bauführer/in Tiefbau und Infrastruktur (m/w/d)
 - Fachmann/Fachfrau Solarmontage m/w/d 100%
 - Physiotherapeut/In 50-100% (m,w,d)
-- Sertisseur baguette [H/F/X]
 - Reifenpraktiker (m/w/d) 100% für ca. 2 Monate
 - Gérant de Fortune Senior 100% CDI (H/F/D)
-- Anlageführer (m/w/d)
+- Sertisseur baguette [H/F/X]
 - Métrologue (H/F/X)
-- Reifenpraktiker (m/w/d) 100%
+- Anlageführer (m/w/d)
+- Logopäde / Logopädin 50-100% (m,w,d)
 - Contrôleur qualité industrielle (F/H/D)
 - Baumaschinenführer/in
-- Reifenpraktiker (m/w/d) 100% für ca. 2 Monate
-- Logopäde / Logopädin 50-100% (m,w,d)
 - Technische:r Fachspezialist:in Betriebsunterhalt (m/w/d)
+- Reifenpraktiker (m/w/d) 100% für ca. 2 Monate
+- Reifenpraktiker (m/w/d) 100%
 - Concierge sur site 50% (F/H/X)
 - Agent·e Relation Clients (100%) ? Mission temporaire de 6 mois
 - Mitarbeitende/r Empfang (w/m/d) 100%
@@ -89,9 +88,10 @@ di estenderle in `src/utils/jobTaxonomy.js`.
 - Compliance Officer
 - Gérant de Fortune Senior 100% CDI (H/F/D)
 - Spezialist Endmontage & Verdrahtung 100% (m/w/d)
-- Fachspezialist/in Bauverwaltung (Hochbau) (w/m/d) 100%
+- Ausführungsarchitekt:in
 - Anlagenführer EFZ (m/w/d)
 - Reifenpraktiker (m/w/d) 100% für ca. 2 Monate
-- Ausführungsarchitekt:in
+- Fachspezialist/in Bauverwaltung (Hochbau) (w/m/d) 100%
 - Industrie-Lackierer/in - Perfektion in jeder Schicht! (w/m/d) 100%
 - Sozialpädagog*in als Teamleitung (m,w,d) 80-100%
+- Sozialpädagog*in HF (m,w,d) 50-80%
