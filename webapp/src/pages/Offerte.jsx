@@ -131,6 +131,37 @@ const Offerte = ({ setShowLoginModal }) => {
 
     const selectedJobId = searchParams.get('jobId');
 
+    // The parameters that decide which offers `/api/jobs` returns. `jobId` is not one
+    // of them: it names an offer inside the answer, it does not change the answer.
+    const queryKey = [
+        searchParams.get('keyword') || '',
+        searchParams.get('region') || '',
+        searchParams.get('role_id') || '',
+        searchParams.get('location') || '',
+        searchParams.get('canton') || '',
+    ].join('\u0000');
+
+    // Retire the previous query's results the moment the query changes, while
+    // rendering — not from the fetch effect, which only runs after the browser has
+    // already painted a frame built from them.
+    //
+    // That frame was wrong in a way users noticed: a submit deletes `jobId`, so
+    // `selectedJob` falls back to `jobs[0]`, and `jobs` still held the *old* search.
+    // The detail pane showed the previous list's first ad as the answer to the new
+    // search for ~130ms before the results landed. Clearing here means the pane has
+    // nothing to fall back to and reads as loading, which is what it is.
+    //
+    // `loading` is raised here too, not only in the effect below. The effect runs a
+    // frame later, and in between the pane would have no offer and no reason given
+    // for it — long enough to flash "seleziona un'offerta" at someone who just
+    // searched.
+    const [jobsQueryKey, setJobsQueryKey] = useState(null);
+    if (jobsQueryKey !== queryKey) {
+        setJobsQueryKey(queryKey);
+        setLoading(true);
+        if (jobs.length > 0) setJobs([]);
+    }
+
     // Registration wall (shared logic with Filters.jsx)
     const wall = useRegistrationWall();
 
@@ -151,6 +182,11 @@ const Offerte = ({ setShowLoginModal }) => {
     }, []);
 
     useEffect(() => {
+        // A superseded search must not land. Both phases below write `jobs` and one of
+        // them writes `jobId` into the URL; without this, a slow answer to a query the
+        // user has already left would overwrite the current one and select an offer
+        // that is not in it.
+        let cancelled = false;
         const fetchJobs = async () => {
             setLoading(true);
             setError(null);
@@ -163,6 +199,7 @@ const Offerte = ({ setShowLoginModal }) => {
                 const r1 = await fetch(`/api/jobs?${qs}&singlePage=1`);
                 if (!r1.ok) throw new Error('Failed to fetch jobs');
                 const firstData = await r1.json();
+                if (cancelled) return;
                 setJobs(firstData);
                 // An empty first page is not an answer yet: phase 2 reads more pages and,
                 // when the upstream listing is down, the slower company-page fallback.
@@ -177,8 +214,10 @@ const Offerte = ({ setShowLoginModal }) => {
 
                 // Phase 2: full load silently in background
                 const r2 = await fetch(`/api/jobs?${qs}`);
+                if (cancelled) return;
                 if (r2.ok) {
                     const allData = await r2.json();
+                    if (cancelled) return;
                     setJobs(allData);
                     if (!isMobile && !selectedJobId && firstData.length === 0 && allData.length > 0) {
                         const newParams = new URLSearchParams(searchParams);
@@ -188,6 +227,7 @@ const Offerte = ({ setShowLoginModal }) => {
                 }
                 setLoading(false);
             } catch (err) {
+                if (cancelled) return;
                 console.error(err);
                 setError(err.message);
                 setLoading(false);
@@ -195,7 +235,12 @@ const Offerte = ({ setShowLoginModal }) => {
         };
         fetchJobs();
         setVisibleCount(5);
-    }, [searchParams.get('keyword'), searchParams.get('region'), searchParams.get('role_id'), searchParams.get('location'), searchParams.get('canton')]);
+        return () => { cancelled = true; };
+        // `queryKey` is exactly the set of parameters the request is built from, and
+        // the same key the render above uses to retire the previous answer. They must
+        // stay one definition: if the two disagreed, a query could be cleared without
+        // ever being refetched.
+    }, [queryKey]);
 
     // `jobId` names an offer and `global` widens the scope — neither narrows the result,
     // so neither makes an empty answer a matter of filters.

@@ -46,8 +46,8 @@ const RegistrationWallModal = ({ isOpen, onClose, onOpenLogin }) => {
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    aria-label={t('footer.close')} className="absolute top-6 right-6 w-10 h-10 bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shadow-sm rounded-none border border-slate-200 cursor-pointer"
-                    aria-label="Chiudi"
+                    aria-label={t('footer.close')}
+                    className="absolute top-6 right-6 w-10 h-10 bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shadow-sm rounded-none border border-slate-200 cursor-pointer"
                 >
                     <X size={20} />
                 </button>
