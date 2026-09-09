@@ -9,7 +9,7 @@ import {
   parseCompanyRef, parseJobsFromHtml, parseJobDetailFromHtml,
   parseCompaniesFromHtml, parseCompanyDetailFromHtml, companyLogo, servedCompanyId,
   isArca24Enabled, resetSourceProbe,
-  fetchCompanies, resetHasJobsCache, resetFeedRosterCache, fetchJobsForQuery,
+  fetchCompanies, resetHasJobsCache, resetFeedRosterCache, fetchJobsForQuery, fetchJobs,
   withKnownEmployer, RESERVED_COMPANY, normalizeCompanyName, normalizeCompanyNameRaw, withHasJobs,
 } from './_arca24.js';
 import { generatedAt as orphanGeneratedAt } from './_orphan-employers-snapshot.js';
@@ -809,5 +809,53 @@ describe('route faceted: 404 con risultati', () => {
 
     const res = await fetchJobsForQuery({ keyword: 'slug-inesistente' }, { pages: 1, maxJobs: 45 });
     expect(res.jobs).toEqual([]);
+  });
+});
+
+describe('fetchJobs: profondita e concorrenza', () => {
+  beforeEach(() => { vi.mocked(fetch).mockReset(); });
+
+  const respond = (body) => ({ ok: true, status: 200, text: async () => body });
+
+  // The nightly snapshot walks sixty pages. Sixty requests at once against a partner
+  // portal is how bot protection gets tripped — and that takes api/companies down with
+  // it, not just the snapshot. Runtime callers keep the old all-at-once behaviour.
+  it('keeps at most `concurrency` requests in flight', async () => {
+    let inFlight = 0, peak = 0;
+    vi.mocked(fetch).mockImplementation(async () => {
+      inFlight += 1; peak = Math.max(peak, inFlight);
+      await new Promise(r => setTimeout(r, 2));
+      inFlight -= 1;
+      return respond(LIST_HTML);
+    });
+
+    await fetchJobs({ pages: 30, maxJobs: 900, concurrency: 5 });
+    expect(peak).toBeLessThanOrEqual(5);
+  });
+
+  it('still goes out all at once when no limit is given', async () => {
+    let inFlight = 0, peak = 0;
+    vi.mocked(fetch).mockImplementation(async () => {
+      inFlight += 1; peak = Math.max(peak, inFlight);
+      await new Promise(r => setTimeout(r, 2));
+      inFlight -= 1;
+      return respond(LIST_HTML);
+    });
+
+    await fetchJobs({ pages: 12, maxJobs: 180 });
+    expect(peak).toBe(12);
+  });
+
+  it('reads every page it was asked for', async () => {
+    const asked = [];
+    vi.mocked(fetch).mockImplementation(async (url) => {
+      asked.push(String(url).match(/page=(\d+)/)[1]);
+      return respond(LIST_HTML);
+    });
+
+    await fetchJobs({ pages: 60, maxJobs: 900, concurrency: 10 });
+    expect(asked).toHaveLength(60);
+    expect(asked[0]).toBe('1');
+    expect(asked[59]).toBe('60');
   });
 });

@@ -27,8 +27,33 @@ const BUDGET_MS = 120_000;
 // Same floor as api/jobs.js's MIN_HEALTHY_JOBS / api/sitemap-jobs.xml.js's own gate: a
 // run that returns only a handful of ads is a degraded read, not a quiet job market.
 const MIN_HEALTHY_JOBS = 10;
-const MAX_JOBS = 300;
+
+// How deep the nightly walk goes.
+//
+// Not an ordering, though the reason is narrower than it first looks. Walking the whole
+// catalogue on 09/09/2026 — all 556 pages, 8.326 unique ads, 20 employers, 73s at
+// concurrency 12 — the dates do vary: 24 distinct ones, running back to 11/08. But 8.160
+// of the 8.326 (98%) carry the current day. Upstream reimports the catalogue daily and
+// rewrites the date with it, leaving a real date only on the ~166 ads it did not touch.
+//
+// So sorting by `published_at` cannot answer "which ads are the newest": it would put
+// 8.160 ads in a single tied bucket and the genuinely older 166 behind them. The field is
+// not constant — an earlier note here said it was, from a sample that stopped at page 442
+// and never reached the tail where the variety lives — it is just too coarse to order by.
+// The RSS feed carries a real `insert-date` per ad; reaching it needs a stable URL from
+// Arca24 (see 00_Wiki/job-courier/).
+//
+// What depth does buy is coverage, which is what the snapshot is for: it feeds
+// prerender-canonicals, and every ad missing from it is an ad no page links to. 300 ads
+// was 3.6% of the catalogue; 900 is 11%, and takes the employers represented from 9 to
+// 16 of the 20 that exist. Measured cost at concurrency 10: ~5s wall, ~3s CPU — paid once
+// a night by the build, never by a visitor.
+const MAX_JOBS = 900;
 const PAGES = Math.ceil(MAX_JOBS / 15);
+
+// Sixty requests at once against a partner portal is how bot protection gets tripped,
+// and that would take api/companies down with it, not just this script.
+const CONCURRENCY = 10;
 
 // `unref` so the pending timer never holds the build open once the fetch has won the race.
 const withTimeout = (promise, ms) => Promise.race([
@@ -42,7 +67,10 @@ try {
   const arca24 = await isArca24Enabled();
   if (!arca24) throw new Error('feed Arca24 non attivo — nessuna primitiva jobroom da riusare qui');
 
-  const jobs = await withTimeout(fetchJobs({ pages: PAGES, maxJobs: MAX_JOBS }), BUDGET_MS);
+  const jobs = await withTimeout(
+    fetchJobs({ pages: PAGES, maxJobs: MAX_JOBS, concurrency: CONCURRENCY }),
+    BUDGET_MS,
+  );
 
   const withId = jobs.filter((j) => j.jobroom_id);
   if (withId.length < MIN_HEALTHY_JOBS) {
