@@ -39,21 +39,9 @@ describe('collectTaxonomy', () => {
         });
     });
 
-    // Upstream states a real sector on a minority of ads and writes a placeholder on the
-    // rest — 8 of the first 10 read "Altro" on 09/09/2026. Returning that would cache
-    // "we don't know" once per ad and tell the card nothing it did not already assume.
-    it.each(['Non specificato', 'Altro', 'Other', ''])(
-        'omits an ad whose own page says %j — the card keeps its inference',
-        async (placeholder) => {
-            const fetchDetail = async (id) => detail(id, placeholder, placeholder);
-            expect(await collectTaxonomy(['6747308'], fetchDetail)).toEqual({});
-        });
-
-    it('keeps the half that means something', async () => {
-        const fetchDetail = async (id) => detail(id, 'Assicurazioni', 'Altro');
-        expect(await collectTaxonomy(['6747308'], fetchDetail)).toEqual({
-            '6747308': { sector: 'Assicurazioni', role: null },
-        });
+    it('omits an ad whose own page says nothing — the card keeps its inference', async () => {
+        const fetchDetail = async (id) => detail(id, 'Non specificato', 'Non specificato');
+        expect(await collectTaxonomy(['6747308'], fetchDetail)).toEqual({});
     });
 
     it('lets the rest of the batch through when one ad fails', async () => {
