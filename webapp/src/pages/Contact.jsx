@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Send, ArrowRight, Check, X, BookOpen, Headphones } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import PageSeo from '../components/PageSeo';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,6 +25,7 @@ const SectionLabel = ({ children, color = F }) => (
 );
 
 const Contact = () => {
+    const lp = useLocalizedPath();
     const containerRef = useRef(null);
     const { t } = useTranslation();
 
@@ -95,7 +97,7 @@ const Contact = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen relative overflow-x-hidden" style={{ background: GL }}>
-            <PageSeo page="contatti" />
+            <PageSeo page="contatti" routeId="contatti" />
 
             {/* HERO */}
             <section className="relative pt-40 pb-24 overflow-hidden px-6 md:px-12 flex flex-col justify-center" style={{ background: N, minHeight: '60vh' }}>
@@ -182,7 +184,7 @@ const Contact = () => {
                                 <p style={{ fontFamily: body, fontSize: 14, color: GM, lineHeight: 1.6, marginBottom: 16 }}>
                                     {t('contact.faq_box_text')}
                                 </p>
-                                <Link to="/faq" style={{
+                                <Link to={lp("/faq")} style={{
                                     fontFamily: brand, fontWeight: 700, fontSize: 12,
                                     letterSpacing: '0.1em', textTransform: 'uppercase', color: F,
                                     textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8
@@ -284,7 +286,7 @@ const Contact = () => {
                             </p>
                         </div>
                     </div>
-                    <Link to="/faq" style={{
+                    <Link to={lp("/faq")} style={{
                         background: 'transparent', color: N, border: `1.5px solid ${N}`,
                         padding: '14px 28px',
                         fontFamily: brand, fontWeight: 700, fontSize: 11,

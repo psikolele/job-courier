@@ -11,6 +11,7 @@ import RegistrationWallModal from './RegistrationWallModal';
 import { ShowcaseCardSkeleton } from './ui/Skeleton';
 import { sectorLabel, roleLabel } from '../utils/jobTaxonomy';
 import { formatLocation } from '../utils/formatLocation';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 
 // Last good showcase payload, kept so a repeat visit paints cards on the first frame.
 // Short-lived on purpose: these are live vacancies, and an ad that closed should not sit
@@ -42,6 +43,7 @@ const writeCachedShowcase = (jobs) => {
 };
 
 const Filters = () => {
+    const lp = useLocalizedPath();
     const { t, i18n } = useTranslation();
     // eslint-disable-next-line no-unused-vars
     const [cantons, setCantons] = useState([]);
@@ -335,7 +337,7 @@ const Filters = () => {
                         </div>
                         
                         <button
-                            onClick={() => navigate('/offerte')}
+                            onClick={() => navigate(lp('/offerte'))}
                             className="hidden md:flex items-center gap-1 transition-opacity hover:opacity-60"
                             style={{
                                 fontFamily: 'var(--font-body)',
@@ -414,7 +416,7 @@ const Filters = () => {
                             showcaseJobs.map((job, idx) => (
                                 <motion.div
                                     onClick={() => {
-                                        navigate(`/offerte?global=1&jobId=${job.id}`);
+                                        navigate(lp(`/offerte?global=1&jobId=${job.id}`));
                                     }}
                                     key={`${job.id}-${idx}`}
                                     initial={{ opacity: 0, y: 8 }}
@@ -517,7 +519,7 @@ const Filters = () => {
                 </div>
                 
                 <div className="mt-2 flex justify-center md:hidden">
-                    <button onClick={() => navigate('/offerte')} className="text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] flex items-center gap-1 transition-colors">
+                    <button onClick={() => navigate(lp('/offerte'))} className="text-sm font-semibold text-[#0038A5] hover:text-[#002B7F] flex items-center gap-1 transition-colors">
                         {t('latest.see_all')} <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>

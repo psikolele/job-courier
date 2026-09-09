@@ -11,6 +11,7 @@ import { isUserLoggedIn } from '../hooks/useRegistrationWall';
 import { saveReturnUrl } from '../hooks/useReturnUrl';
 import PageSeo from '../components/PageSeo';
 import { formatLocation } from '../utils/formatLocation';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -21,6 +22,7 @@ const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
 const PercheCandidatiWidget = () => {
+    const lp = useLocalizedPath();
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [kw, setKw] = useState('');
@@ -33,7 +35,7 @@ const PercheCandidatiWidget = () => {
         if (kw.trim()) params.set('keyword', kw.trim());
         if (loc.trim()) params.set('location', loc.trim());
         if (settore.trim()) params.set('sector', settore.trim());
-        navigate(`/offerte?${params.toString()}`);
+        navigate(lp(`/offerte?${params.toString()}`));
     };
 
     const inputStyle = {
@@ -82,6 +84,7 @@ const PercheCandidatiWidget = () => {
 };
 
 const OffertaDettaglio = ({ setShowLoginModal }) => {
+    const lp = useLocalizedPath();
     const { t } = useTranslation();
     const { id } = useParams();
     const navigate = useNavigate();
@@ -189,7 +192,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                         {error || "L'offerta di lavoro richiesta non è stata trovata o non è più disponibile."}
                     </p>
                     <button
-                        onClick={() => navigate('/offerte')}
+                        onClick={() => navigate(lp('/offerte'))}
                         className="transition-opacity hover:opacity-80"
                         style={{
                             background: N, color: '#FFFFFF', border: 'none',

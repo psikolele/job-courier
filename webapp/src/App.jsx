@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { distinctPathsFor } from './data/routeSegments';
+import { langFromPath } from './utils/langFromPath';
 import { consumeReturnUrl, cameFromJobRoom } from './hooks/useReturnUrl';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -29,6 +32,40 @@ import NotFound from './pages/NotFound';
 
 // Canonical host: www is the indexed hostname (sitemap, robots and the 213 legacy URLs).
 const SITE = 'https://www.jobcourier.ch';
+
+/**
+ * One <Route> per distinct URL a page has across the four languages: /offerte and its
+ * /jobs, /stellenangebote and /offres-emploi, all rendering the same component. The
+ * component reads its copy from i18n as before — what changes is that each language now
+ * has a URL of its own for a crawler to index, which is the whole point (see
+ * data/routeSegments.js).
+ *
+ * Derived from the segment map rather than written out by hand so a language added there
+ * cannot silently lack a route. Every path produced here must also exist in vercel.json's
+ * rewrites: without it the URL works in-app and 404s when typed directly.
+ */
+const localizedRoutes = (routeId, element) =>
+  distinctPathsFor(routeId).map(({ path }) => <Route key={path} path={path} element={element} />);
+
+/**
+ * Keeps the rendered language in step with the URL after a client-side navigation.
+ *
+ * i18n.js reads the URL on boot, but a <Link> to /stellenangebote never re-runs that, so
+ * without this the German URL would render in whatever language was showing before —
+ * contradicting its own canonical and hreflang. Paths that name no language (home, a job
+ * ad) return null and leave the visitor's choice alone.
+ */
+const SyncLangWithPath = () => {
+  const { pathname } = useLocation();
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const lang = langFromPath(pathname);
+    if (lang && lang !== i18n.language?.slice(0, 2)) i18n.changeLanguage(lang);
+  }, [pathname, i18n]);
+
+  return null;
+};
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -107,22 +144,23 @@ function App() {
         <link rel="canonical" href={canonical} />
         <meta property="og:url" content={canonical} />
       </Helmet>
+      <SyncLangWithPath />
       <ScrollToTop />
       <AdsenseGate />
       <Navbar showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
       <Routes>
         <Route path="/" element={<Home setShowLoginModal={setShowLoginModal} />} />
-        <Route path="/soluzioni-e-tariffe" element={<Pricing />} />
-        <Route path="/contatti" element={<Contact />} />
-        <Route path="/come-funziona" element={<ComeFunziona />} />
-        <Route path="/offerte" element={<Offerte setShowLoginModal={setShowLoginModal} />} />
+        {localizedRoutes('pricing', <Pricing />)}
+        {localizedRoutes('contatti', <Contact />)}
+        {localizedRoutes('comeFunziona', <ComeFunziona />)}
+        {localizedRoutes('offerte', <Offerte setShowLoginModal={setShowLoginModal} />)}
         <Route path="/offerta/:id" element={<OffertaDettaglio setShowLoginModal={setShowLoginModal} />} />
-        <Route path="/aziende-che-assumono" element={<AziendeCheAssumono />} />
+        {localizedRoutes('aziende', <AziendeCheAssumono />)}
         <Route path="/azienda/:slug" element={<AziendaDettaglio />} />
         <Route path="/blog" element={<Navigate to="/blog/carriera" replace />} />
         <Route path="/blog/:categoria" element={<BlogCategoria />} />
         <Route path="/blog/:categoria/:slug" element={<BlogArticolo />} />
-        <Route path="/faq" element={<FAQ />} />
+        {localizedRoutes('faq', <FAQ />)}
         <Route path="/condizioni-generali" element={<CondizioniGenerali />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
         <Route path="*" element={<NotFound />} />

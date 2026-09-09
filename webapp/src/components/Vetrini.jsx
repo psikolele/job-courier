@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 
 // 15 was the length of the old hardcoded list, and it silently truncated the real one:
 // 16 employers are hiring as of 07.08, so the cap alone dropped the last one alphabetically
@@ -10,6 +11,7 @@ import { motion } from 'framer-motion';
 const MAX_TILES = 20;
 
 const Vetrini = () => {
+    const lp = useLocalizedPath();
     const { t } = useTranslation();
 
     // The showcase was a hardcoded list of fifteen employers, written before the Arca24
@@ -225,7 +227,7 @@ const Vetrini = () => {
                         }}
                     >
                         <Link
-                            to="/aziende-che-assumono"
+                            to={lp("/aziende-che-assumono")}
                             className="group relative flex flex-row items-center justify-center gap-3 w-full h-full p-6 transition-colors duration-200"
                             style={{ background: N }}
                         >

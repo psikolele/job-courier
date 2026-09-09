@@ -18,6 +18,7 @@ import { splitPublishedLabel } from '../utils/publishedLabel';
 import AdSlot from '../components/AdSlot';
 import { formatLocation } from '../utils/formatLocation';
 import { promoteCompanyVariety } from '../utils/companyVariety';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -28,6 +29,7 @@ const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
 const PercheCandidatiWidget = () => {
+    const lp = useLocalizedPath();
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [kw, setKw] = useState('');
@@ -40,7 +42,7 @@ const PercheCandidatiWidget = () => {
         if (kw.trim()) params.set('keyword', kw.trim());
         if (loc.trim()) params.set('location', loc.trim());
         if (settore.trim()) params.set('sector', settore.trim());
-        navigate(`/offerte?${params.toString()}`);
+        navigate(lp(`/offerte?${params.toString()}`));
     };
 
     const inputStyle = {
@@ -417,7 +419,7 @@ const Offerte = ({ setShowLoginModal }) => {
 
     return (
         <div className="pt-24 min-h-screen" style={{ background: GL }}>
-            <PageSeo page="offerte" />
+            <PageSeo page="offerte" routeId="offerte" />
             <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-8 pb-24 md:pb-32">
                 {/* Page header */}
                 <div className="mb-8 flex flex-col md:flex-row md:items-end gap-8 md:gap-12">

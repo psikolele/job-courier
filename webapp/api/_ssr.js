@@ -241,7 +241,7 @@ const SITE_NAV_LINKS = [
  * the flash was not the same as removing it — the snapshot still painted for a beat ahead
  * of the route loader on every cold load.
  */
-export function snapshotBody({ heading, subheading, facts, paragraphs, links, linksHeading, backLink }) {
+export function snapshotBody({ heading, subheading, facts, paragraphs, links, linksHeading, backLink, navLinks }) {
   const N = '#050B2B';
   const F = '#FF1F7A';
   const MUTED = '#8B8FA8';
@@ -260,7 +260,11 @@ export function snapshotBody({ heading, subheading, facts, paragraphs, links, li
     .map((p) => `<p style="margin:0 0 14px;color:#2A3050">${escapeHtml(p)}</p>`)
     .join('');
 
-  const siteNavItems = SITE_NAV_LINKS
+  // `navLinks` overrides the Italian default so a prerendered translation links to its own
+  // language's URLs: a German page whose nav still pointed at /offerte would hand the
+  // crawler straight back to the Italian site and leave the German pages with no link graph
+  // of their own. The runtime SSR routes pass nothing and keep the Italian nav as before.
+  const siteNavItems = (navLinks || SITE_NAV_LINKS)
     .map((l) => `<a href="${escapeHtml(l.href)}" style="color:${MUTED};text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap">${escapeHtml(l.label)}</a>`)
     .join('<span style="color:rgba(5,11,43,0.15)">&nbsp;·&nbsp;</span>');
 

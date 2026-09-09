@@ -14,8 +14,63 @@ import { fileURLToPath } from 'node:url';
 import { escapeHtml, snapshotBody, withCanonical } from '../api/_ssr.js';
 import { jobs as jobsSnapshot } from '../api/_jobs-snapshot.js';
 import { companies as companiesSnapshot } from '../api/_companies-snapshot.js';
+import {
+  ROUTE_LANGS,
+  DEFAULT_LANG,
+  distinctPathsFor,
+  alternatesFor,
+  routeSegmentFor,
+  ROUTE_SEGMENTS,
+} from '../src/data/routeSegments.js';
+import { translatePath } from '../src/utils/langFromPath.js';
 
 const SITE = 'https://www.jobcourier.ch';
+
+// Copy comes from the locale files rather than being restated here: the translations
+// already exist (that was never the gap), and a second copy of every title would drift
+// from the one the app renders. Read as JSON rather than imported so this script still
+// has no dependency on the i18n runtime.
+const locale = Object.fromEntries(
+  ROUTE_LANGS.map((lang) => [
+    lang,
+    JSON.parse(readFileSync(new URL(`../src/locales/${lang}.json`, import.meta.url), 'utf8')),
+  ])
+);
+
+// Where each localized route's title and description live in a locale file. `aziende` is
+// the odd one out: its page predates the seo.* block and keeps its copy under
+// companies_list, which is also what AziendeCheAssumono.jsx renders.
+const COPY = {
+  offerte: (l) => ({ title: l.seo.offerte.title, description: l.seo.offerte.description }),
+  aziende: (l) => ({ title: l.companies_list.meta_title, description: l.companies_list.intro }),
+  pricing: (l) => ({ title: l.seo.pricing.title, description: l.seo.pricing.description }),
+  comeFunziona: (l) => ({ title: l.seo.come_funziona.title, description: l.seo.come_funziona.description }),
+  contatti: (l) => ({ title: l.seo.contatti.title, description: l.seo.contatti.description }),
+  faq: (l) => ({ title: l.seo.faq.title, description: l.seo.faq.description }),
+};
+
+/**
+ * The reciprocal hreflang set for a route, as tags.
+ *
+ * Every localized URL needs these, the Italian one included: hreflang only works when
+ * each page points at all the others *and* at itself. Without the self-reference — and
+ * without the Italian page pointing back — the set is one-directional and search engines
+ * discard it, which is the "missing reciprocal hreflang" the audit reports.
+ */
+function hreflangTags(routeId) {
+  return alternatesFor(routeId)
+    .map(({ lang, path }) => `    <link rel="alternate" hreflang="${lang}" href="${SITE}${path}">`)
+    .join('\n');
+}
+
+/**
+ * Inserts the hreflang set before </head>, replacing any already there so the script stays
+ * idempotent over a dist it has already written (same reason withCanonical strips first).
+ */
+function withHreflang(html, routeId) {
+  const stripped = html.replace(/\s*<link rel="alternate" hreflang="[^"]*" href="[^"]*">/g, '');
+  return stripped.replace('</head>', `${hreflangTags(routeId)}\n  </head>`);
+}
 
 // Must stay in step with the non-blog rewrites in vercel.json: a route listed there and
 // missing here goes back to serving a shell with no canonical.
@@ -41,6 +96,16 @@ const distFile = (name) => fileURLToPath(new URL(`../dist/${name}`, import.meta.
 const shell = readFileSync(distFile('index.html'), 'utf8');
 
 if (!shell.includes('</head>')) throw new Error('prerender: built shell has no </head>');
+
+// index.html is both the input read above and one of the outputs written below — it ends
+// the run carrying the home page's own body. Running this script twice over the same dist
+// would therefore stamp the home page's markup into every other route's snapshot, silently:
+// the pages still build, they just all say "Il portale svizzero per il lavoro". `npm run
+// build` always runs vite first, so a shell whose #root is not empty means this ran on a
+// stale dist, and failing is better than shipping that.
+if (!/<div id="root">\s*<\/div>/i.test(shell)) {
+  throw new Error('prerender: dist/index.html already has a rendered body — run vite build first');
+}
 
 // api/_ssr.js fetches this pristine copy — with its #root still empty — to build the
 // /offerta and /azienda snapshots. It has to be written before index.html gets the home
@@ -175,6 +240,12 @@ const HUB_CONTENT = {
   },
 };
 
+// Italian path -> routeId, for the loop below: those pages now carry the hreflang set too,
+// without which the translated URLs point at an Italian page that never points back.
+const ROUTE_ID_BY_IT_PATH = Object.fromEntries(
+  Object.keys(ROUTE_SEGMENTS).map((id) => [`/${routeSegmentFor(id, DEFAULT_LANG)}`, id])
+);
+
 for (const [route, file] of Object.entries(ROUTES)) {
   // The home page keeps its trailing slash: that is the form the sitemap lists and the
   // form the site is indexed under. Every other route drops it (trailingSlash: false).
@@ -239,7 +310,114 @@ for (const [route, file] of Object.entries(ROUTES)) {
     );
   }
 
+  if (ROUTE_ID_BY_IT_PATH[route]) html = withHreflang(html, ROUTE_ID_BY_IT_PATH[route]);
+
   writeFileSync(distFile(file), html);
 }
 
-console.log(`prerender: ${Object.keys(ROUTES).length} canonical URL, ${Object.keys(HUB_CONTENT).length} hub con contenuto`);
+/**
+ * One prerendered file per translated URL — /stellenangebote.html, /offres-emploi.html and
+ * the rest — each with its own canonical, its own title and description in that language,
+ * lang="xx" on <html>, the shared hreflang set, and a body whose links stay inside the
+ * same language.
+ *
+ * This is the part that makes the translations exist for a crawler. Everything before it
+ * only mattered to a browser running the bundle: Googlebot reads this HTML, and until now
+ * the only HTML on the site said Italian no matter which URL was asked for.
+ */
+let localizedCount = 0;
+for (const routeId of Object.keys(ROUTE_SEGMENTS)) {
+  for (const { path, langs } of distinctPathsFor(routeId)) {
+    // The Italian file is written by the loop above, together with its hub body. A shared
+    // segment (/faq) is that same single file for every language — writing it again here,
+    // once per language, would just overwrite it with whichever ran last.
+    if (langs.includes(DEFAULT_LANG)) continue;
+    const lang = langs[0];
+    const { title, description } = COPY[routeId](locale[lang]);
+    const t = escapeHtml(title);
+    const d = escapeHtml(description);
+
+    let html = withCanonical(shell, `${SITE}${path}`);
+    html = withHreflang(html, routeId);
+    html = html.replace(/<html([^>]*)\slang="[^"]*"/i, '<html$1').replace(/<html/i, `<html lang="${lang}"`);
+    html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${t}</title>`);
+    html = html
+      .replace(/<meta\s+property="og:title"[^>]*>/i, `<meta property="og:title" content="${t}">`)
+      .replace(/<meta\s+property="og:description"[^>]*>/i, `<meta property="og:description" content="${d}">`);
+    html = html.replace(
+      '</head>',
+      `  <meta name="description" content="${d}">\n` +
+        `    <meta name="twitter:card" content="summary_large_image">\n  </head>`
+    );
+
+    // Same crawlable body as the Italian hubs, with every internal link translated into
+    // this language. A German page linking to /offerte would hand the crawler back to the
+    // Italian side of the site and leave the German pages with no link graph of their own —
+    // the orphan-page problem the hub work fixed for Italian in August.
+    const lp = (p) => translatePath(p, lang);
+    const heading = title.split(' - ')[0];
+
+    // The site-wide nav appended to every snapshot defaults to the Italian URLs (see
+    // SITE_NAV_LINKS in api/_ssr.js). Translated here so each language's pages link to
+    // each other rather than back into the Italian site.
+    const navLinks = [
+      ...Object.keys(ROUTE_SEGMENTS).map((id) => ({
+        href: lp(`/${routeSegmentFor(id, DEFAULT_LANG)}`),
+        label: COPY[id](locale[lang]).title.split(' - ')[0],
+      })),
+      { href: lp('/blog/carriera'), label: locale[lang].blog.page_candidates_breadcrumb },
+      { href: lp('/blog/recruiting'), label: locale[lang].blog.page_companies_breadcrumb },
+    ];
+    let body;
+    if (routeId === 'offerte') {
+      body = snapshotBody({
+        heading,
+        subheading: description,
+        links: [
+          ...jobsSnapshot.map((job) => ({
+            href: `/offerta/${job.id}`,
+            label: job.title,
+            meta: [job.company, job.location].filter(Boolean).join(', '),
+          })),
+          { href: lp('/aziende-che-assumono'), label: COPY.aziende(locale[lang]).title.split(' - ')[0] },
+        ],
+        linksHeading: heading,
+        backLink: { href: '/', label: 'JobCourier' },
+        navLinks,
+      });
+    } else if (routeId === 'aziende') {
+      body = snapshotBody({
+        heading,
+        subheading: description,
+        links: [
+          ...companiesSnapshot.map((company) => ({ href: `/azienda/${company.slug}`, label: company.name })),
+          { href: lp('/offerte'), label: COPY.offerte(locale[lang]).title.split(' - ')[0] },
+        ],
+        linksHeading: heading,
+        backLink: { href: '/', label: 'JobCourier' },
+        navLinks,
+      });
+    } else {
+      body = snapshotBody({
+        heading,
+        subheading: description,
+        links: Object.keys(ROUTE_SEGMENTS)
+          .filter((id) => id !== routeId)
+          .map((id) => ({
+            href: lp(`/${routeSegmentFor(id, DEFAULT_LANG)}`),
+            label: COPY[id](locale[lang]).title.split(' - ')[0],
+          })),
+        backLink: { href: '/', label: 'JobCourier' },
+        navLinks,
+      });
+    }
+    html = html.replace(/<div id="root">\s*<\/div>/i, `<div id="root">${body}</div>`);
+
+    writeFileSync(distFile(`${path.slice(1)}.html`), html);
+    localizedCount += 1;
+  }
+}
+
+console.log(
+  `prerender: ${Object.keys(ROUTES).length} canonical URL, ${Object.keys(HUB_CONTENT).length} hub con contenuto, ${localizedCount} URL tradotte`
+);

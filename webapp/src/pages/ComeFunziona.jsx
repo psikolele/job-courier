@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowRight, UserPlus, CreditCard, FileText, Users, MapPin, Zap, Headphones } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageSeo from '../components/PageSeo';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 import {
     HoverSlider, HoverSliderImage, HoverSliderImageWrap, TextStaggerHover,
 } from '@/components/ui/animated-slideshow';
@@ -47,6 +48,7 @@ const WHY = [
 ];
 
 const ComeFunziona = () => {
+    const lp = useLocalizedPath();
     const containerRef = useRef(null);
     const { t } = useTranslation();
 
@@ -67,7 +69,7 @@ const ComeFunziona = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen overflow-x-hidden" style={{ background: GL }}>
-            <PageSeo page="come_funziona" />
+            <PageSeo page="come_funziona" routeId="comeFunziona" />
 
             {/* HERO */}
             <section className="relative min-h-[60vh] pt-32 pb-20 px-6 md:px-12 flex flex-col justify-center" style={{ background: N }}>
@@ -102,7 +104,7 @@ const ComeFunziona = () => {
                                 }} className="hover:opacity-80 transition-opacity">
                                 {t('come_funziona.cta_btn')} →
                             </a>
-                            <Link to="/soluzioni-e-tariffe" style={{
+                            <Link to={lp("/soluzioni-e-tariffe")} style={{
                                 fontFamily: brand, fontWeight: 700, fontSize: 11,
                                 letterSpacing: '0.14em', textTransform: 'uppercase',
                                 color: 'rgba(255,255,255,0.5)',
@@ -256,7 +258,7 @@ const ComeFunziona = () => {
                             }} className="hover:opacity-80 transition-opacity">
                             {t('come_funziona.cta_btn')} <ArrowRight size={14} />
                         </a>
-                        <Link to="/soluzioni-e-tariffe" style={{
+                        <Link to={lp("/soluzioni-e-tariffe")} style={{
                             background: 'transparent', color: 'var(--brand-white)',
                             border: '1.5px solid rgba(255,255,255,0.3)',
                             padding: '14px 28px',

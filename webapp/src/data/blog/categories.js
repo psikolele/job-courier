@@ -25,3 +25,22 @@ export function categorySegmentFor(categoryId, lang) {
   if (!cat) return null;
   return cat.segments[lang] || cat.segments.it;
 }
+
+/**
+ * Which languages use a category segment: ['de'] for 'karriere', all four for
+ * 'recruiting' (same string in every locale, so one shared URL).
+ *
+ * Used by i18n.js to read the page language out of the URL instead of localStorage.
+ * A crawler has no localStorage, so it used to be served Italian on every blog URL and
+ * BlogCategoria then redirected /blog/karriere to /blog/carriera — the translated pages
+ * existed, carried the right hreflang, and were still unindexable.
+ */
+export function langsForCategorySegment(segment) {
+  for (const cat of Object.values(CATEGORIES)) {
+    const langs = Object.entries(cat.segments)
+      .filter(([, s]) => s === segment)
+      .map(([l]) => l);
+    if (langs.length) return langs;
+  }
+  return [];
+}

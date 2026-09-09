@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
 import SectionLabel from '../components/ui/SectionLabel.jsx';
+import { alternatesFor } from '../data/routeSegments.js';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -26,7 +27,7 @@ const normalize = (str) =>
         .trim();
 
 const AziendeCheAssumono = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [companies, setCompanies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -60,6 +61,9 @@ const AziendeCheAssumono = () => {
     return (
         <div className="pt-24 min-h-screen" style={{ background: '#FFFFFF' }}>
             <Helmet>
+                {/* index.html hardcodes lang="it", so a translated render kept declaring
+                    itself Italian and contradicting the hreflang set below. */}
+                <html lang={i18n.language?.slice(0, 2) || 'it'} />
                 <title>{t('companies_list.meta_title')}</title>
                 <meta
                     name="description"
@@ -73,6 +77,13 @@ const AziendeCheAssumono = () => {
                     content="Scopri le aziende con un profilo attivo su JobCourier e trova quelle che stanno cercando personale in Svizzera."
                 />
                 <meta property="og:image" content="https://www.jobcourier.ch/logo-square.png" />
+                {/* Reciprocal hreflang across this page's four URLs — the same set
+                    PageSeo emits for the other localized pages, from the same source.
+                    This page keeps its own Helmet rather than PageSeo because its title
+                    comes from `companies_list`, not the `seo.*` block. */}
+                {alternatesFor('aziende').map(({ lang, path }) => (
+                    <link key={lang} rel="alternate" hrefLang={lang} href={`https://www.jobcourier.ch${path}`} />
+                ))}
             </Helmet>
 
             <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12 md:py-16">

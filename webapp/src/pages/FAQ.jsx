@@ -127,7 +127,7 @@ const FAQ = () => {
     const { t } = useTranslation();
     return (
     <div className="min-h-screen overflow-x-hidden" style={{ background: GL }}>
-        <PageSeo page="faq" />
+        <PageSeo page="faq" routeId="faq" />
         {/* HERO */}
         <section className="relative min-h-[40vh] pt-32 pb-16 px-6 md:px-12 flex flex-col justify-center" style={{ background: N }}>
             <div className="container mx-auto w-full">

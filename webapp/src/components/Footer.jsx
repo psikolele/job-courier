@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 import { jobroomLang } from '../utils/jobroomLang';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -109,6 +110,7 @@ const RssModal = ({ onClose }) => {
 
 const Footer = ({ setShowLoginModal }) => {
     const { t } = useTranslation();
+    const lp = useLocalizedPath();
     const [showRssModal, setShowRssModal] = useState(false);
     const N = 'var(--brand-navy)';
     const F = 'var(--brand-fuchsia)';
@@ -129,17 +131,17 @@ const Footer = ({ setShowLoginModal }) => {
             { label: t('footer.link_cookies'), href: '/cookie-policy' },
         ]},
         { title: t('footer.col_candidates'), links: [
-            { label: t('footer.link_jobs'), href: '/offerte' },
+            { label: t('footer.link_jobs'), href: lp('/offerte') },
             { label: t('footer.link_upload_cv'), href: jobroomLang('https://jobroom.jobcourier.ch/job-seekers.php?lan=it&language=it') },
             { label: 'Login', href: '#login' },
-            { label: t('footer.link_faq'), href: '/faq' },
+            { label: t('footer.link_faq'), href: lp('/faq') },
         ]},
         { title: t('footer.col_companies'), inline: ['Pubblica annuncio', 'Trova Candidati'], links: [
             { label: t('footer.link_post_job'), href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
             { label: t('footer.link_find_candidates'), href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
             { label: t('footer.link_register_company'), href: jobroomLang('https://jobroom.jobcourier.ch/employer/register.php?ignoreRedirectingCookiesAll=1&lan=it&language=it') },
             { label: 'Login', href: '#login' },
-            { label: t('footer.link_contact'), href: '/contatti' },
+            { label: t('footer.link_contact'), href: lp('/contatti') },
         ]},
     ];
 

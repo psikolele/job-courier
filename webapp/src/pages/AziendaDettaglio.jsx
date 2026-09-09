@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { MapPin, Briefcase, ExternalLink, ChevronLeft } from 'lucide-react';
 import SectionLabel from '../components/ui/SectionLabel.jsx';
 import { CompanyDetailSkeleton } from '../components/ui/Skeleton';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -15,6 +16,7 @@ const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
 
 const AziendaDettaglio = () => {
+    const lp = useLocalizedPath();
     const { t } = useTranslation();
     const { slug } = useParams();
 
@@ -116,7 +118,7 @@ const AziendaDettaglio = () => {
             <div className="pt-24 min-h-screen" style={{ background: GL }}>
                 {helmet}
                 <div className="max-w-[1000px] mx-auto px-6 md:px-12 py-10 md:py-16">
-                    <Link to="/aziende-che-assumono" style={{
+                    <Link to={lp("/aziende-che-assumono")} style={{
                         fontFamily: brand, fontWeight: 700, fontSize: 11,
                         letterSpacing: '0.14em', textTransform: 'uppercase',
                         color: F, textDecoration: 'none',
@@ -152,7 +154,7 @@ const AziendaDettaglio = () => {
                     <p style={{ fontFamily: body, fontSize: 14, color: GM, marginBottom: 24 }}>
                         {t('company.not_found_desc')}
                     </p>
-                    <Link to="/aziende-che-assumono" style={{
+                    <Link to={lp("/aziende-che-assumono")} style={{
                         fontFamily: brand, fontWeight: 700, fontSize: 11,
                         letterSpacing: '0.14em', textTransform: 'uppercase',
                         color: F, textDecoration: 'none',
@@ -173,7 +175,7 @@ const AziendaDettaglio = () => {
                     <h1 style={{ fontFamily: body, fontSize: 14, color: '#C00', marginBottom: 24, fontWeight: 400 }}>
                         {t('company.load_error')}
                     </h1>
-                    <Link to="/aziende-che-assumono" style={{
+                    <Link to={lp("/aziende-che-assumono")} style={{
                         fontFamily: brand, fontWeight: 700, fontSize: 11,
                         letterSpacing: '0.14em', textTransform: 'uppercase',
                         color: F, textDecoration: 'none',
@@ -194,7 +196,7 @@ const AziendaDettaglio = () => {
             {helmet}
 
             <div className="max-w-[1000px] mx-auto px-6 md:px-12 py-10 md:py-16">
-                <Link to="/aziende-che-assumono" style={{
+                <Link to={lp("/aziende-che-assumono")} style={{
                     fontFamily: brand, fontWeight: 700, fontSize: 11,
                     letterSpacing: '0.14em', textTransform: 'uppercase',
                     color: F, textDecoration: 'none',
@@ -310,7 +312,7 @@ const AziendaDettaglio = () => {
                             <p style={{ fontFamily: body, fontSize: 14, color: GM, marginBottom: 20 }}>
                                 {t('company.no_active_jobs')}
                             </p>
-                            <Link to="/offerte" style={{
+                            <Link to={lp("/offerte")} style={{
                                 background: N, color: '#FFFFFF', border: 'none',
                                 padding: '14px 28px',
                                 fontFamily: brand, fontWeight: 700, fontSize: 11,

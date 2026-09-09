@@ -4,7 +4,9 @@ import { jobroomLang } from '../utils/jobroomLang';
 import { AnimatedButton } from './ui/animated-button';
 import { openLoginPopup, AUTH_EVENT } from '../hooks/useAuthPopup';
 
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { translatePath } from '../utils/langFromPath';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -86,6 +88,8 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const { t, i18n } = useTranslation();
     const location = useLocation();
+    const navigate = useNavigate();
+    const lp = useLocalizedPath();
     const lang = i18n.language;
     
     const isHome = location.pathname === '/';
@@ -116,14 +120,27 @@ const Navbar = ({ showLoginModal, setShowLoginModal }) => {
         else document.body.style.overflow = '';
     }, [menuOpen]);
 
+    // Switching language also moves to that language's URL: /offerte -> /stellenangebote.
+    // Each page now has one URL per language (data/routeSegments.js), so staying put would
+    // leave a German reader on the URL that declares itself Italian — contradicting the
+    // page's own canonical and hreflang. Paths with a single shared URL (home, a job ad)
+    // come back unchanged and only the language changes, as before.
     const changeLanguage = useCallback((lng) => {
         i18n.changeLanguage(lng);
-    }, [i18n]);
+        const target = translatePath(location.pathname, lng);
+        if (target !== location.pathname) navigate(target);
+    }, [i18n, navigate, location.pathname]);
 
     const navHeight = scrolled ? '64px' : '80px';
     
-    const candidateLinks = getCandidateLinks();
-    const companyLinks = getCompanyLinks();
+    // Menu targets are written as Italian paths; each becomes the URL of the language
+    // being read, so following one does not bounce the reader back to Italian (see
+    // hooks/useLocalizedPath.js). External jobroom links are left alone — jobroomLang
+    // already handles their language.
+    const localizeLinks = (links) =>
+        links.map((item) => (item.external ? item : { ...item, href: lp(item.href) }));
+    const candidateLinks = localizeLinks(getCandidateLinks());
+    const companyLinks = localizeLinks(getCompanyLinks());
 
     return (
         <>

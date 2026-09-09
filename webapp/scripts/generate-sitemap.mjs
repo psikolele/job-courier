@@ -3,13 +3,26 @@
 import { writeFileSync } from 'node:fs';
 import { blogIndex, slugFor } from '../src/data/blog/blogIndex.js';
 import { CATEGORIES, categorySegmentFor } from '../src/data/blog/categories.js';
+import { ROUTE_SEGMENTS, distinctPathsFor, alternatesFor } from '../src/data/routeSegments.js';
 
 const SITE = 'https://www.jobcourier.ch';
 const LANGS = ['it', 'en', 'de', 'fr'];
-const STATIC = ['/', '/offerte', '/soluzioni-e-tariffe', '/come-funziona', '/contatti', '/faq', '/aziende-che-assumono'];
 
-const urls = [];
-for (const p of STATIC) urls.push({ loc: `${SITE}${p}` });
+// The home page is one URL for every language, so it is listed on its own with no
+// alternates. The six localized pages come from the segment map below.
+const urls = [{ loc: `${SITE}/` }];
+
+// One <loc> per real URL — /offerte, /jobs, /stellenangebote, /offres-emploi — each
+// carrying the full reciprocal hreflang set, exactly as the blog entries below do.
+// Listing only the Italian one with the others as alternates is what left the translated
+// blog pages undiscoverable through the sitemap before, and the same rule applies here.
+// A shared segment like /faq appears once and declares all four languages.
+for (const routeId of Object.keys(ROUTE_SEGMENTS)) {
+  const alts = alternatesFor(routeId).map(({ lang, path }) => ({ l: lang, href: `${SITE}${path}` }));
+  for (const { path } of distinctPathsFor(routeId)) {
+    urls.push({ loc: `${SITE}${path}`, alts });
+  }
+}
 
 // One <url> entry per actually-distinct URL, each carrying the full reciprocal hreflang
 // set (every language's href, including its own — required by the sitemap spec, and by

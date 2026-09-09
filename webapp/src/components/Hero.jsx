@@ -9,8 +9,10 @@ import SpotlightCard from './ui/spotlight-card';
 import { CANTONS, SECTORS, buildSearchParams } from '../utils/searchData';
 
 import heroBg1 from '../assets/hero-bg.jpg';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 
 const Hero = ({ setShowLoginModal }) => {
+    const lp = useLocalizedPath();
     const { t } = useTranslation();
     const [hoveredSide, setHoveredSide] = useState(null);
     // Lazy init from window.innerWidth, not useState(false): main.jsx uses createRoot
@@ -29,8 +31,8 @@ const Hero = ({ setShowLoginModal }) => {
     const [selectedSector, setSelectedSector] = useState('');
 
     const companyLinks = [
-        { label: t('hero.companies.links.how_it_works'), href: '/come-funziona' },
-        { label: t('hero.companies.links.pricing'), href: '/soluzioni-e-tariffe' },
+        { label: t('hero.companies.links.how_it_works'), href: lp('/come-funziona') },
+        { label: t('hero.companies.links.pricing'), href: lp('/soluzioni-e-tariffe') },
         { label: t('hero.companies.links.recruiting_tips'), href: '#blog' }
     ];
 
@@ -47,7 +49,7 @@ const Hero = ({ setShowLoginModal }) => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        navigate(`/offerte?${buildSearchParams({ keyword, selectedSector, selectedCanton }).toString()}`);
+        navigate(lp(`/offerte?${buildSearchParams({ keyword, selectedSector, selectedCanton }).toString()}`));
     };
 
     useEffect(() => {
@@ -288,8 +290,8 @@ const Hero = ({ setShowLoginModal }) => {
                     <div className="w-full max-w-lg mx-auto hero-quick-links" style={{ marginTop: 16 }}>
                         <div className="flex gap-2">
                             {[
-                                { label: t('hero.candidates.links.all_offers'), href: '/offerte', external: false },
-                                { label: t('hero.candidates.links.hiring_companies'), href: '/aziende-che-assumono', external: false },
+                                { label: t('hero.candidates.links.all_offers'), href: lp('/offerte'), external: false },
+                                { label: t('hero.candidates.links.hiring_companies'), href: lp('/aziende-che-assumono'), external: false },
                                 { label: t('hero.candidates.links.career_tips'), href: '#blog', external: false }
                             ].map(({ label, href, external }) => {
                                 const btnClass = "jc-glow-btn-light flex-1 py-3 text-[13px] tracking-[0.04em] text-center text-[var(--brand-navy)]";

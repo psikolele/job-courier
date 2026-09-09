@@ -7,6 +7,8 @@ import { Lock, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SectionLabel from '../components/ui/SectionLabel.jsx';
 import PageSeo from '../components/PageSeo';
+import useLocalizedPath from '../hooks/useLocalizedPath';
+import { translatePath } from '../utils/langFromPath';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -147,7 +149,7 @@ const getLocalizedData = (lang) => {
                 tag: isIt ? 'CONSIGLIATO' : isDe ? 'EMPFOHLEN' : isFr ? 'RECOMMANDÉ' : 'RECOMMENDED',
                 highlight: true,
                 cta: isIt ? 'Contattaci' : isDe ? 'Kontakt' : isFr ? 'Contactez-nous' : 'Contact us',
-                href: '/contatti',
+                href: translatePath('/contatti', (lang || 'it').slice(0, 2)),
             },
             {
                 label: isIt ? '03 / CONTINUO' : isDe ? '03 / KONTINUIERLICH' : isFr ? '03 / CONTINU' : '03 / CONTINUOUS',
@@ -176,7 +178,7 @@ const getLocalizedData = (lang) => {
                 ],
                 tag: isIt ? 'PIÙ ACQUISTATO' : isDe ? 'MEISTGEKAUFT' : isFr ? 'PLUS ACHETÉ' : 'BEST SELLER',
                 cta: isIt ? 'Contattaci' : isDe ? 'Kontakt' : isFr ? 'Contactez-nous' : 'Contact us',
-                href: '/contatti',
+                href: translatePath('/contatti', (lang || 'it').slice(0, 2)),
             },
         ],
         agency: {
@@ -210,6 +212,7 @@ const getLocalizedData = (lang) => {
 };
 
 const Pricing = () => {
+    const lp = useLocalizedPath();
     const containerRef = useRef(null);
     const [activeTab, setActiveTab] = useState('companies');
     const [selectedPlan, setSelectedPlan] = useState(null);
@@ -229,7 +232,7 @@ const Pricing = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen overflow-x-hidden" style={{ background: GL }}>
-            <PageSeo page="pricing" />
+            <PageSeo page="pricing" routeId="pricing" />
 
             {/* HERO */}
             <section className="relative min-h-[60vh] pt-32 pb-20 px-6 md:px-12 flex flex-col justify-center animate-fade-in" style={{ background: N }}>
@@ -403,7 +406,7 @@ const Pricing = () => {
                                             </ul>
 
                                             <OutlineButton
-                                                href={plan.href || '/contatti'}
+                                                href={plan.href || lp('/contatti')}
                                                 fullWidth
                                                 target={plan.external ? '_blank' : undefined}
                                                 rel={plan.external ? 'noopener noreferrer' : undefined}
@@ -518,11 +521,11 @@ const Pricing = () => {
                                         </p>
                                     </div>
                                     <div className="flex flex-col gap-3 w-full" style={{ marginTop: 32 }}>
-                                        <FuchsiaButton href="/contatti" fullWidth compact>
+                                        <FuchsiaButton href={lp("/contatti")} fullWidth compact>
                                             <span>{data.agency.cta}</span>
                                             <ArrowRight size={14} style={{ flexShrink: 0 }} />
                                         </FuchsiaButton>
-                                        <FuchsiaOutlineButton href="/contatti" fullWidth compact>
+                                        <FuchsiaOutlineButton href={lp("/contatti")} fullWidth compact>
                                             <span>{data.agency.cta2}</span>
                                             <ArrowRight size={14} style={{ flexShrink: 0 }} />
                                         </FuchsiaOutlineButton>
@@ -598,7 +601,7 @@ const Pricing = () => {
                         }}>
                             {t('pricing.cta_sub') || 'Ascolteremo i tuoi bisogni di reclutamento e offriremo la soluzione più adeguata.'}
                         </p>
-                        <FuchsiaButton href="/contatti">{t('pricing.cta_btn') || 'CONTATTACI'} →</FuchsiaButton>
+                        <FuchsiaButton href={lp("/contatti")}>{t('pricing.cta_btn') || 'CONTATTACI'} →</FuchsiaButton>
                     </div>
                 </div>
             </section>

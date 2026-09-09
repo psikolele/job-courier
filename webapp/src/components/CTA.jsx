@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { AnimatedButton } from './ui/animated-button';
+import useLocalizedPath from '../hooks/useLocalizedPath';
 
 const CTA = () => {
+    const lp = useLocalizedPath();
     const { t } = useTranslation();
     const [activeSide, setActiveSide] = useState(null); // 'left' or 'right'
 
@@ -44,7 +46,7 @@ const CTA = () => {
                             {t('cta.candidates_desc')}
                         </p>
                         <AnimatedButton 
-                            href="/offerte"
+                            href={lp("/offerte")}
                             className="relative overflow-hidden rounded-full bg-primary px-8 py-4 font-semibold text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg"
                         >
                             {t('cta.candidates_btn')}
@@ -87,7 +89,7 @@ const CTA = () => {
                             {t('cta.companies_desc')}
                         </p>
                         <AnimatedButton 
-                            href="/soluzioni-e-tariffe"
+                            href={lp("/soluzioni-e-tariffe")}
                             className="relative overflow-hidden rounded-full bg-accent px-8 py-4 font-semibold text-foreground transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg"
                         >
                             {t('cta.companies_btn')}

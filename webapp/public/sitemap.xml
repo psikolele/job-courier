@@ -6,27 +6,171 @@
   </url>
   <url>
     <loc>https://www.jobcourier.ch/offerte</loc>
-
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/offerte"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/jobs"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/stellenangebote"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/offres-emploi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/offerte"/>
   </url>
   <url>
-    <loc>https://www.jobcourier.ch/soluzioni-e-tariffe</loc>
-
+    <loc>https://www.jobcourier.ch/jobs</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/offerte"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/jobs"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/stellenangebote"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/offres-emploi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/offerte"/>
   </url>
   <url>
-    <loc>https://www.jobcourier.ch/come-funziona</loc>
-
+    <loc>https://www.jobcourier.ch/stellenangebote</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/offerte"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/jobs"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/stellenangebote"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/offres-emploi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/offerte"/>
   </url>
   <url>
-    <loc>https://www.jobcourier.ch/contatti</loc>
-
-  </url>
-  <url>
-    <loc>https://www.jobcourier.ch/faq</loc>
-
+    <loc>https://www.jobcourier.ch/offres-emploi</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/offerte"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/jobs"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/stellenangebote"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/offres-emploi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/offerte"/>
   </url>
   <url>
     <loc>https://www.jobcourier.ch/aziende-che-assumono</loc>
-
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/aziende-che-assumono"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/companies-hiring"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/firmen-die-einstellen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/entreprises-qui-recrutent"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/aziende-che-assumono"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/companies-hiring</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/aziende-che-assumono"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/companies-hiring"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/firmen-die-einstellen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/entreprises-qui-recrutent"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/aziende-che-assumono"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/firmen-die-einstellen</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/aziende-che-assumono"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/companies-hiring"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/firmen-die-einstellen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/entreprises-qui-recrutent"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/aziende-che-assumono"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/entreprises-qui-recrutent</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/aziende-che-assumono"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/companies-hiring"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/firmen-die-einstellen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/entreprises-qui-recrutent"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/aziende-che-assumono"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/soluzioni-e-tariffe</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/soluzioni-e-tariffe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/solutions-and-pricing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/loesungen-und-preise"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/solutions-et-tarifs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/soluzioni-e-tariffe"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/solutions-and-pricing</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/soluzioni-e-tariffe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/solutions-and-pricing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/loesungen-und-preise"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/solutions-et-tarifs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/soluzioni-e-tariffe"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/loesungen-und-preise</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/soluzioni-e-tariffe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/solutions-and-pricing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/loesungen-und-preise"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/solutions-et-tarifs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/soluzioni-e-tariffe"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/solutions-et-tarifs</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/soluzioni-e-tariffe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/solutions-and-pricing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/loesungen-und-preise"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/solutions-et-tarifs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/soluzioni-e-tariffe"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/come-funziona</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/come-funziona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/so-funktioniert-es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/comment-ca-marche"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/come-funziona"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/how-it-works</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/come-funziona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/so-funktioniert-es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/comment-ca-marche"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/come-funziona"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/so-funktioniert-es</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/come-funziona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/so-funktioniert-es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/comment-ca-marche"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/come-funziona"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/comment-ca-marche</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/come-funziona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/so-funktioniert-es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/comment-ca-marche"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/come-funziona"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/contatti</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/contatti"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/contatti"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/contact-us</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/contatti"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/contatti"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/kontakt</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/contatti"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/contatti"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/contact</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/contatti"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/contact-us"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/contatti"/>
+  </url>
+  <url>
+    <loc>https://www.jobcourier.ch/faq</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.jobcourier.ch/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.jobcourier.ch/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.jobcourier.ch/faq"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.jobcourier.ch/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jobcourier.ch/faq"/>
   </url>
   <url>
     <loc>https://www.jobcourier.ch/blog/carriera</loc>
