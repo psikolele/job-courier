@@ -231,37 +231,6 @@ const Offerte = ({ setShowLoginModal }) => {
         // ever being refetched.
     }, [queryKey]);
 
-    // Only the cards actually rendered, and only those still on a guess. Joined into one
-    // key so the effect re-runs when the visible set changes — a new search, or "Carica
-    // altro" — and not on every render.
-    const pendingTaxonomyIds = listJobs
-        .slice(0, visibleCount)
-        .map(job => jobIdKey(job.jobroom_id || job.id))
-        .filter(id => /^\d+$/.test(id) && !(id in taxonomyById))
-        .join(',');
-
-    useEffect(() => {
-        if (!pendingTaxonomyIds) return;
-        let cancelled = false;
-        (async () => {
-            try {
-                const r = await fetch(`/api/job-taxonomy?ids=${encodeURIComponent(pendingTaxonomyIds)}`);
-                if (!r.ok || cancelled) return;
-                const data = await r.json();
-                if (cancelled) return;
-                // Ids that came back with nothing are recorded as such, or the effect would
-                // ask for them again on every render.
-                const asked = pendingTaxonomyIds.split(',');
-                setTaxonomyById(prev => {
-                    const next = { ...prev };
-                    for (const id of asked) next[id] = data[id] || null;
-                    return next;
-                });
-            } catch { /* a label, not a page */ }
-        })();
-        return () => { cancelled = true; };
-    }, [pendingTaxonomyIds]);
-
     // `jobId` names an offer and `global` widens the scope — neither narrows the result,
     // so neither makes an empty answer a matter of filters.
     const hasActiveFilters = [...searchParams.keys()].some(k => k !== 'jobId' && k !== 'global');
@@ -277,18 +246,6 @@ const Offerte = ({ setShowLoginModal }) => {
     // Only when nothing is filtered. Someone who searched an employer's name, a canton or
     // a sector asked for those results: reordering them by variety would answer a
     // question they did not ask, and pushing matches down the list reads as missing.
-    // Sector and role for the cards on screen, once they have been fetched.
-    //
-    // The list scrape carries neither, so a card falls back to guessing from its title
-    // and a title the keyword rules do not match reads "Altro" beside an ad that states
-    // "Assicurazioni". `/api/job-taxonomy` resolves a batch of ids to the real values.
-    //
-    // Deliberately not part of the list request. The page paints from `/api/jobs` exactly
-    // as before and this runs afterwards, replacing a guess with a fact on cards already
-    // on screen — so nothing the visitor waits for got slower. A failure costs a label,
-    // not a page: the cards keep the inference they already have.
-    const [taxonomyById, setTaxonomyById] = useState({});
-
     const listJobs = useMemo(
         () => (hasActiveFilters ? jobs : promoteCompanyVariety(jobs)),
         [jobs, hasActiveFilters],
@@ -597,18 +554,8 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 </div>
                                                 {/* Tags */}
                                                 {(() => {
-                                                    // Two sources of truth, same rule: the ad's own values win over the
-                                                    // guess. The open ad brings them in the detail already fetched for the
-                                                    // pane; every other card gets them from the batch above.
-                                                    const adId = jobIdKey(job.jobroom_id || job.id);
-                                                    const batched = taxonomyById[adId];
-                                                    // The batch answers `{sector, role}` keyed by id, so the id is put back
-                                                    // on the record: withDetailTaxonomy refuses anything it cannot match to
-                                                    // this exact ad, and that guard is the point of it.
-                                                    const shown = withDetailTaxonomy(
-                                                        job,
-                                                        selectedJobDetail || (batched && { ...batched, id: adId }),
-                                                    );
+                                                    // The selected card sits beside the pane; both must read the same.
+                                                    const shown = withDetailTaxonomy(job, selectedJobDetail);
                                                     const settore = sectorLabel(shown);
                                                     const ruolo = roleLabel(shown);
                                                     const chip = {
