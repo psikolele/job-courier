@@ -1,4 +1,51 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 6 Settembre 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 9 Settembre 2026)
+
+## Filtri offerte: varietà aziende, ricerche vuote, settore/ruolo reali (9 Settembre 2026) — ✅ *in produzione*
+
+**Stack operativo:** Claude Opus 5 · caveman mode full · tool: Bash/Edit/Write, Browser pane
+(verifica live e console), Gmail MCP, Notion MCP, `ccd_session_mgmt` · ~250k token, nessun
+subagente · commit `88bab0e`, `34f20a3`, `c9031fb`, `313fc53`, `e885504`, `44e463e`,
+`ce775fb`, `c0ad6fc` su `main`
+
+Handoff: [handoff-2026-09-09.md](handoff-2026-09-09.md). Le misure sul feed stanno nella wiki
+condivisa (`00_Wiki/job-courier/jobroom-feed-resilience.md`). Qui resta il resto.
+
+**Il 404 di Arca24 non vuol dire "vuoto", vuol dire "pochi".** Le rotte a faccetta rispondono
+404 quando i risultati sono ≤2 — e gli annunci sono comunque nel corpo. Scartando quelle
+risposte, ogni ricerca stretta diceva "nessuna offerta trovata" su annunci pubblicati, e il
+cantone Glarona (1 annuncio) era irraggiungibile. La riga del 03/08 in wiki diceva il contrario
+ed è stata corretta. Uno slug inesistente dà lo stesso 404 ma con lista vuota: la distinzione
+la fa il contenuto, mai lo status.
+
+**Un cap che filtra e un cap che promuove non sono la stessa cosa.** `/offerte` si apriva su
+cinque card Manpower perché il tetto per azienda esisteva solo nella vetrina home. Applicarlo
+come filtro avrebbe tagliato la pagina da 110 a ~27 annunci, con 9 datori in tutto il pool:
+sembra un portale vuoto. Promuovendo invece le prime tre di ogni datore in testa e lasciando il
+resto sotto, la prima schermata passa da 1 a 2 datori e le prime 15 card da 1 a 7, senza perdere
+nulla. Solo sulla lista non filtrata: chi ha cercato un datore vuole i suoi annunci.
+
+**Quattro ore di pagina bianca per un `const` letto prima di essere dichiarato.** Il blocco che
+raccoglieva gli id da arricchire era finito sopra le dichiarazioni che legge: temporal dead zone,
+`ReferenceError` al primo render, React non monta. Build verde, 423 test verdi, HTML 200 in 90 ms
+— e la pagina bianca. Avevo misurato le latenze con `curl`, che dice se il documento arriva, non
+se la pagina funziona. **Da qui in avanti: nessun deploy frontend è "fatto" finché non apro la
+pagina in un browser e leggo la console, prima del push e dopo.** Il difetto successivo
+(`selectedJobDetail || batched`, che sceglieva sempre il dettaglio dell'annuncio aperto e non
+consultava mai il batch) è stato trovato proprio guardando la pagina.
+
+**Vercel fattura la CPU attiva, non l'attesa.** L'endpoint che risolve settore e ruolo costava
+984 ms di CPU per lotto quando costruiva un DOM con cheerio; leggendo i due `itemprop` con due
+regex è sceso a 188 ms. Su un budget di ~7 min/giorno è la differenza fra +22% e +4% ogni 100
+richieste non cachate. Il commento nel codice lo dice, perché la tentazione di "ripulire"
+tornando a un parser DOM è concreta.
+
+**Il tetto blocchi di Notion dipende dai membri, non dal contenuto.** La sessione di lavoro non
+si riusciva a creare: 2+ membri nel workspace → tetto 1.000 blocchi; un solo membro → illimitati.
+Guest e integrazioni non contano, i teamspace nemmeno. Svuotare il cestino **non** riduce il
+conteggio (è cumulativo dall'iscrizione). Se ricapita, guardare Impostazioni → Persone, non lo
+spazio occupato.
+
+---
 
 ## Rilettura del lavoro del 4 settembre + selettore lingua mobile (6 Settembre 2026) — ✅ *in produzione*
 
