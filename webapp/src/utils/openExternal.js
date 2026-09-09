@@ -2,17 +2,20 @@
  * Leaves the site for an external apply page.
  *
  * `window.open` only reliably opens a tab while the browser still considers a
- * user gesture in progress. The redirect modal also fires on a timer, and a
- * timer is not a gesture: Chrome and Safari block that popup and return null,
- * with no error anywhere. That is the reported "on some ads nothing happens and
- * you have to click twice" — the second click is a gesture, so it works.
+ * user gesture in progress. A timer is not a gesture: Chrome and Safari block
+ * that popup and return null, with no error anywhere.
  *
- * So: try the new tab, and when the browser refuses, navigate the current one
- * rather than silently dropping the application.
+ * By default, when the browser refuses the new tab we navigate the current
+ * one rather than silently dropping the application — that was the reported
+ * "on some ads nothing happens and you have to click twice" (the second click
+ * is a gesture, so it works). Pass `sameTabFallback: false` for a flow where
+ * losing the current tab is worse than the redirect not firing automatically
+ * (e.g. a branded hand-off page the visitor should keep open) — the caller is
+ * responsible for giving the visitor another way to proceed (a manual button).
  *
- * Returns 'tab' | 'same-tab' | 'none' so the caller can tell what happened.
+ * Returns 'tab' | 'same-tab' | 'blocked' | 'none' so the caller can tell what happened.
  */
-export function openExternal(url, win = typeof window === 'undefined' ? undefined : window) {
+export function openExternal(url, win = typeof window === 'undefined' ? undefined : window, { sameTabFallback = true } = {}) {
     if (!url || !win) return 'none';
 
     let opened = null;
@@ -23,6 +26,8 @@ export function openExternal(url, win = typeof window === 'undefined' ? undefine
     }
 
     if (opened) return 'tab';
+
+    if (!sameTabFallback) return 'blocked';
 
     try {
         win.location.assign(url);

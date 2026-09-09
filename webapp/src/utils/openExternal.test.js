@@ -34,4 +34,16 @@ describe('openExternal', () => {
         expect(openExternal('', win)).toBe('none');
         expect(win.open).not.toHaveBeenCalled();
     });
+
+    it('reports blocked without touching the current tab when fallback is disabled', () => {
+        const win = stub(null);
+        expect(openExternal('https://ats.example/apply', win, { sameTabFallback: false })).toBe('blocked');
+        expect(win.location.assign).not.toHaveBeenCalled();
+    });
+
+    it('still opens a new tab when fallback is disabled but the popup succeeds', () => {
+        const win = stub({});
+        expect(openExternal('https://ats.example/apply', win, { sameTabFallback: false })).toBe('tab');
+        expect(win.location.assign).not.toHaveBeenCalled();
+    });
 });

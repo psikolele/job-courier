@@ -63,8 +63,11 @@ const ApplyRedirectModal = ({ isOpen, onClose, externalUrl, companyName = '', au
         const enter = setTimeout(() => setEntered(true), 16);
 
         timerRef.current = setTimeout(() => {
-            openExternal(externalUrl);
-            onCloseRef.current();
+            // Never hijack the JobCourier tab on an unattended timer — if the
+            // browser blocks the popup, leave the panel open so "Vai ora" (a
+            // real click, which always opens the tab) is still there to press.
+            const result = openExternal(externalUrl, undefined, { sameTabFallback: false });
+            if (result !== 'blocked') onCloseRef.current();
         }, autoRedirectMs);
 
         return () => {
@@ -75,8 +78,8 @@ const ApplyRedirectModal = ({ isOpen, onClose, externalUrl, companyName = '', au
 
     const handleGoNow = () => {
         if (timerRef.current) clearTimeout(timerRef.current);
-        openExternal(externalUrl);
-        onClose();
+        const result = openExternal(externalUrl, undefined, { sameTabFallback: false });
+        if (result !== 'blocked') onClose();
     };
 
     const handleCancel = () => {

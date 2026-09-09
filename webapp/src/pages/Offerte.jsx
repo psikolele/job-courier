@@ -831,7 +831,7 @@ const Offerte = ({ setShowLoginModal }) => {
                 onOpenLogin={() => setShowLoginModal(true)} 
             />
 
-            {/* External redirect modal — "Ti stiamo mandando su un altro sito" */}
+            {/* External redirect modal — "Ti stiamo reindirizzando su un altro sito" */}
             <ApplyRedirectModal
                 isOpen={redirectModal.open}
                 externalUrl={redirectModal.url}
