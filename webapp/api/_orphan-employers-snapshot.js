@@ -16,4 +16,4 @@ export const names = [];
 // without it the streak could never survive from one build to the next. Stays 0 whenever
 // `names` reflects an accepted run, clean-zero or not: it only holds a nonzero value while
 // a clean-zero streak is still short of being trusted.
-export const consecutiveCleanZero = 0;
+export const consecutiveCleanZero = 1;

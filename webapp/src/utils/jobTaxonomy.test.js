@@ -120,3 +120,39 @@ describe('withDetailTaxonomy', () => {
         expect(jobIdKey('job-12')).not.toBe(jobIdKey('job-13'));
     });
 });
+
+// Reported after the first deploy of the card enrichment: every card but the open one
+// still read "Altro". The card picked its source as `detail || batch`, which always chose
+// the open ad's detail — rejected here by the id guard — so the batch that did hold the
+// answer was never consulted. The source has to be picked by id, and these pin that.
+describe('picking the taxonomy source for a card', () => {
+    const openAd = { id: '6741422', sector: 'Industria chimica', role: 'Produzione/Operations' };
+    const card = { id: '6747308-senior-actuary', jobroom_id: '6747308-senior-actuary', title: 'Senior Actuary Life Expert (m/f/d)', sector: 'Non specificato', role: 'Non specificato' };
+    const batch = { '6747308': { sector: 'Assicurazioni', role: 'Contabilità/Banca/Finanza' } };
+
+    // What the page does per card, extracted so the rule can be tested on its own.
+    const sourceFor = (job, detail, byId) => {
+        const adId = jobIdKey(job.jobroom_id || job.id);
+        const fromDetail = detail && jobIdKey(detail.id) === adId ? detail : null;
+        const batched = byId[adId];
+        return fromDetail || (batched && { ...batched, id: adId }) || null;
+    };
+
+    it('uses the batch for a card that is not the open ad', () => {
+        const shown = withDetailTaxonomy(card, sourceFor(card, openAd, batch));
+        expect(sectorLabel(shown)).toBe('Assicurazioni');
+        expect(roleLabel(shown)).toBe('Contabilità/Banca/Finanza');
+    });
+
+    it('uses the fetched detail for the open ad itself', () => {
+        const open = { id: '6741422', jobroom_id: '6741422', title: 'Quality Assurance Officer', sector: 'Non specificato', role: 'Non specificato' };
+        const shown = withDetailTaxonomy(open, sourceFor(open, openAd, batch));
+        expect(sectorLabel(shown)).toBe('Industria chimica');
+    });
+
+    it('falls back to the title when neither source knows the ad', () => {
+        const unknown = { id: '999', jobroom_id: '999', title: 'Autista camion', sector: 'Non specificato', role: 'Non specificato' };
+        const shown = withDetailTaxonomy(unknown, sourceFor(unknown, openAd, batch));
+        expect(sectorLabel(shown)).toBe('Logistica');
+    });
+});
