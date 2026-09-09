@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ExternalLink } from 'lucide-react';
 import { AnimatedButton } from './ui/animated-button';
 import { openExternal } from '../utils/openExternal';
 
@@ -153,15 +152,18 @@ const ApplyRedirectModal = ({ isOpen, onClose, externalUrl, companyName = '', au
 
                     <div className="flex flex-col w-full gap-3">
                         <AnimatedButton onClick={handleGoNow}
-                            className="w-full flex items-center justify-center gap-2 py-4 font-bold tracking-[0.14em] text-xs uppercase"
+                            className="w-full flex items-center justify-center py-4 font-bold tracking-[0.14em] text-xs uppercase"
                             style={{
                                 background: F, color: '#FFFFFF', border: 'none',
                                 borderRadius: 0
                             }}>
-                            {t('redirect.go_now')} <ExternalLink size={13} />
+                            {t('redirect.go_now')}
                         </AnimatedButton>
+                        {/* AnimatedButton's own base classes force border-style: none (see
+                            ui/animated-button.jsx), so the border needs !important to survive
+                            regardless of Tailwind's class-generation order. */}
                         <AnimatedButton onClick={handleCancel}
-                            className="w-full py-4 text-xs font-bold tracking-[0.14em] uppercase border border-slate-200 text-slate-500 hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)]"
+                            className="w-full py-4 text-xs font-bold tracking-[0.14em] uppercase !border-2 !border-solid border-slate-200 text-slate-500 hover:border-[var(--brand-fuchsia)] hover:text-[var(--brand-fuchsia)]"
                             style={{
                                 background: 'transparent',
                                 borderRadius: 0
