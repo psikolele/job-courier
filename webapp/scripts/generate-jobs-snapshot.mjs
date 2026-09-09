@@ -30,18 +30,24 @@ const MIN_HEALTHY_JOBS = 10;
 
 // How deep the nightly walk goes.
 //
-// Not an ordering: measured 09/09/2026, `published_at` is the same day on essentially
-// every ad in the catalogue — 881 of 900 across sixty pages, and page 442 of 442 reads
-// the same date as page 1. Upstream reimports the whole catalogue daily and rewrites the
-// date with it, so there is no chronology in this source to sort by and "the latest ads"
-// cannot be recovered from it. (The RSS feed does carry a real `insert-date`; getting at
-// it needs a stable URL from Arca24 — see 00_Wiki/job-courier/.)
+// Not an ordering, though the reason is narrower than it first looks. Walking the whole
+// catalogue on 09/09/2026 — all 556 pages, 8.326 unique ads, 20 employers, 73s at
+// concurrency 12 — the dates do vary: 24 distinct ones, running back to 11/08. But 8.160
+// of the 8.326 (98%) carry the current day. Upstream reimports the catalogue daily and
+// rewrites the date with it, leaving a real date only on the ~166 ads it did not touch.
+//
+// So sorting by `published_at` cannot answer "which ads are the newest": it would put
+// 8.160 ads in a single tied bucket and the genuinely older 166 behind them. The field is
+// not constant — an earlier note here said it was, from a sample that stopped at page 442
+// and never reached the tail where the variety lives — it is just too coarse to order by.
+// The RSS feed carries a real `insert-date` per ad; reaching it needs a stable URL from
+// Arca24 (see 00_Wiki/job-courier/).
 //
 // What depth does buy is coverage, which is what the snapshot is for: it feeds
 // prerender-canonicals, and every ad missing from it is an ad no page links to. 300 ads
-// was 4.5% of the catalogue; 900 is 13%, and takes the employers represented from 9 to
-// 16. Measured cost at concurrency 10: ~5s wall, ~3s CPU — paid once a night by the
-// build, never by a visitor.
+// was 3.6% of the catalogue; 900 is 11%, and takes the employers represented from 9 to
+// 16 of the 20 that exist. Measured cost at concurrency 10: ~5s wall, ~3s CPU — paid once
+// a night by the build, never by a visitor.
 const MAX_JOBS = 900;
 const PAGES = Math.ceil(MAX_JOBS / 15);
 
