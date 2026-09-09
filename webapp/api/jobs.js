@@ -24,6 +24,9 @@ const fetchHeaders = {
 
 const PAGES_TO_FETCH = 3;   // 3 pages × 15 jobs = 45 — faster default load
 const MAX_JOBS = 45;
+// The unfiltered `/offerte` list reads deeper than that — see the branch that uses them.
+const LIST_PAGES = 12;
+const LIST_MAX_JOBS = 180;
 const BATCH_SIZE = 3;       // max concurrent fetches to avoid upstream rate-limit
 
 // The home showcase needs company variety, not volume. Upstream groups its
@@ -630,7 +633,22 @@ export default async function handler(req, res) {
       // The stride in SHOWCASE_PAGE_NUMBERS bought company variety on the old listing.
       // It buys nothing here — every page is the same company — so only the page count
       // carries over, and variety comes from the company pages below.
-      allJobs.push(...await fetchArca24Jobs({ pages: pageNumbers.length, maxJobs }));
+      //
+      // Three pages is a fast first paint, not a representative sample. `latest_jobs` is
+      // not ordered by date — measured 09/09/2026, page 1 was 08/09, page 2 was 09/09,
+      // page 5 was 08/09 again — and each page holds a single employer's block, so the
+      // first three pages are an arbitrary 45 of the catalogue and usually two or three
+      // employers. `/offerte` sorts what it gets by date, which cannot recover the ads
+      // that were never read. The full (unflagged) list request therefore reads deeper:
+      // measured at 171 unique ads across 8 employers in ~0.7s, fetched in parallel.
+      // Only here — `singlePage` stays at one page for the fast paint, `showcase` keeps
+      // its own stride, and filtered queries go through the faceted routes above, where
+      // every extra page is another upstream request against a narrower result set.
+      const wide = !singlePage && !showcase;
+      allJobs.push(...await fetchArca24Jobs({
+        pages: wide ? LIST_PAGES : pageNumbers.length,
+        maxJobs: wide ? LIST_MAX_JOBS : maxJobs,
+      }));
     } else {
       // Built here rather than above because this is the only branch that reads them:
       // with Arca24 as the live source, building them for every request bought nothing.

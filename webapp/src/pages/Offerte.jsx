@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { MapPin, Briefcase, User, ChevronLeft, Calendar, Search, ExternalLink } from 'lucide-react';
@@ -17,6 +17,7 @@ import { sectorLabel, roleLabel } from '../utils/jobTaxonomy';
 import { splitPublishedLabel } from '../utils/publishedLabel';
 import AdSlot from '../components/AdSlot';
 import { formatLocation } from '../utils/formatLocation';
+import { promoteCompanyVariety } from '../utils/companyVariety';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -194,6 +195,12 @@ const Offerte = ({ setShowLoginModal }) => {
                 const apiParams = new URLSearchParams(searchParams);
                 apiParams.delete('jobId');
                 const qs = apiParams.toString();
+                // The same test as `hasActiveFilters` below, read from the params this
+                // request is built from: the offer selected here has to be the one the
+                // list column paints first, and that column promotes company variety
+                // only on an unfiltered browse.
+                const filtered = [...apiParams.keys()].some(k => k !== 'global');
+                const firstOf = (list) => (filtered ? list : promoteCompanyVariety(list))[0];
 
                 // Phase 1: first page fast (~15 jobs, immediate render)
                 const r1 = await fetch(`/api/jobs?${qs}&singlePage=1`);
@@ -208,7 +215,7 @@ const Offerte = ({ setShowLoginModal }) => {
                 if (firstData.length > 0) setLoading(false);
                 if (!isMobile && !selectedJobId && firstData.length > 0) {
                     const newParams = new URLSearchParams(searchParams);
-                    newParams.set('jobId', firstData[0].id.toString());
+                    newParams.set('jobId', firstOf(firstData).id.toString());
                     setSearchParams(newParams, { replace: true });
                 }
 
@@ -221,7 +228,7 @@ const Offerte = ({ setShowLoginModal }) => {
                     setJobs(allData);
                     if (!isMobile && !selectedJobId && firstData.length === 0 && allData.length > 0) {
                         const newParams = new URLSearchParams(searchParams);
-                        newParams.set('jobId', allData[0].id.toString());
+                        newParams.set('jobId', firstOf(allData).id.toString());
                         setSearchParams(newParams, { replace: true });
                     }
                 }
@@ -246,6 +253,22 @@ const Offerte = ({ setShowLoginModal }) => {
     // so neither makes an empty answer a matter of filters.
     const hasActiveFilters = [...searchParams.keys()].some(k => k !== 'jobId' && k !== 'global');
 
+    // What the list column actually renders.
+    //
+    // `jobs` arrives sorted by date, and the date upstream has day granularity, so a
+    // whole employer's block dated today sits in front of everything else: on 09/09/2026
+    // eighteen of the first twenty ads were Manpower's, and the five cards this page
+    // opens with were all Manpower. The first ads of each employer are promoted ahead of
+    // that block instead — nothing is removed, the overflow follows behind.
+    //
+    // Only when nothing is filtered. Someone who searched an employer's name, a canton or
+    // a sector asked for those results: reordering them by variety would answer a
+    // question they did not ask, and pushing matches down the list reads as missing.
+    const listJobs = useMemo(
+        () => (hasActiveFilters ? jobs : promoteCompanyVariety(jobs)),
+        [jobs, hasActiveFilters],
+    );
+
     const listJob = selectedJobId
         ? jobs.find(j => jobIdKey(j.id) === jobIdKey(selectedJobId))
         : undefined;
@@ -257,7 +280,7 @@ const Offerte = ({ setShowLoginModal }) => {
     // jobroom id, rather than silently falling back to an unrelated offer.
     const detailId = listJob
         ? (listJob.jobroom_id || listJob.id)
-        : (selectedJobId || jobs[0]?.jobroom_id || jobs[0]?.id);
+        : (selectedJobId || listJobs[0]?.jobroom_id || listJobs[0]?.id);
 
     // Usable only once the fetch for THIS id has landed: `selectedJobDetail` is cleared
     // at the start of every fetch, so there is no stale-detail window.
@@ -279,7 +302,7 @@ const Offerte = ({ setShowLoginModal }) => {
 
     // With no `jobId` the page still opens on the first offer, as before. With one, it
     // never shows a different offer in its place.
-    const selectedJob = listJob || detailAsJob || (selectedJobId ? null : jobs[0]);
+    const selectedJob = listJob || detailAsJob || (selectedJobId ? null : listJobs[0]);
     const applyData = getApplyData(selectedJob, selectedJobDetail);
 
     useEffect(() => {
@@ -454,7 +477,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                 </div>
                             ) : error ? (
                                 <div style={{ padding: 16, background: '#FFF0F0', color: '#C00', fontFamily: body, fontSize: 13 }}>{error}</div>
-                            ) : jobs.length === 0 ? (
+                            ) : listJobs.length === 0 ? (
                                 <div style={{ padding: 32, textAlign: 'center', color: GM, fontFamily: body, fontSize: 14 }}>
                                     {/* "No offer matches the current filters" is only true when there
                                         are filters. With none set, an empty result means the feed
@@ -463,7 +486,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                 </div>
                             ) : (
                                 <div className="flex flex-col gap-1" style={{ background: 'rgba(5,11,43,0.04)' }}>
-                                    {jobs.slice(0, visibleCount).map((job, index) => {
+                                    {listJobs.slice(0, visibleCount).map((job, index) => {
                                         // One ad every three cards, after the third — never
                                         // before the first, so the list always opens on real
                                         // offers. AdSlot renders nothing until its unit id is
@@ -583,7 +606,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                 </div>
                             )}
 
-                            {jobs.length > visibleCount && (
+                            {listJobs.length > visibleCount && (
                                 <button
                                     onClick={() => setVisibleCount(c => c + 5)}
                                     style={{
