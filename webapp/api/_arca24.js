@@ -436,10 +436,27 @@ export async function fetchFacetIndex(kind) {
   return map;
 }
 
+/**
+ * Read a faceted route's pages.
+ *
+ * `acceptNotFound` because upstream answers 404 for a facet that matches very few ads —
+ * and serves the matching ads in that 404's body. Measured 09.09.2026: `jobs_by_keyword/
+ * openstack` returns 404 carrying both OpenStack ads, and `jobs_by_region/…-glarona`
+ * returns 404 carrying the canton's single ad, while everything from three ads upward
+ * (Friburgo's 7, Basilea Città's 8) answers 200. Discarding those bodies is what made a
+ * search for "Senior OpenStack" in Zurigo report "nessuna offerta trovata" while the ad
+ * sat published on the portal — and it hit exactly the narrow searches, where the visitor
+ * is most certain the ad exists.
+ *
+ * Not a blanket "ignore the status": the body is only worth reading because it answers
+ * the query that was asked. A slug matching nothing returns the same 404 with an empty
+ * result list and a declared count of 0, so it still parses to no ads — a real "no
+ * matches" is unchanged, it is only no longer indistinguishable from an outage.
+ */
 async function fetchPagesFrom(path, pages, maxJobs) {
   const sep = path.includes('?') ? '&' : '?';
   const urls = Array.from({ length: pages }, (_, i) => `${path}${sep}page=${i + 1}`);
-  const htmls = await Promise.all(urls.map(u => fetchHtml(u).catch(() => '')));
+  const htmls = await Promise.all(urls.map(u => fetchHtml(u, { acceptNotFound: true }).catch(() => '')));
 
   const seen = new Set();
   const out = [];

@@ -9,7 +9,7 @@ import {
   parseCompanyRef, parseJobsFromHtml, parseJobDetailFromHtml,
   parseCompaniesFromHtml, parseCompanyDetailFromHtml, companyLogo, servedCompanyId,
   isArca24Enabled, resetSourceProbe,
-  fetchCompanies, resetHasJobsCache, resetFeedRosterCache,
+  fetchCompanies, resetHasJobsCache, resetFeedRosterCache, fetchJobsForQuery,
   withKnownEmployer, RESERVED_COMPANY, normalizeCompanyName, normalizeCompanyNameRaw, withHasJobs,
 } from './_arca24.js';
 import { generatedAt as orphanGeneratedAt } from './_orphan-employers-snapshot.js';
@@ -782,5 +782,32 @@ describe('snapshot orfani scaduto', () => {
     expect(list.find((c) => c.id === '3244630').has_jobs).toBe(false);
     vi.doUnmock('./_orphan-employers-snapshot.js');
     vi.resetModules();
+  });
+});
+
+describe('route faceted: 404 con risultati', () => {
+  beforeEach(() => { vi.mocked(fetch).mockReset(); });
+
+  // Upstream answers 404 for a facet matching very few ads, and serves those ads in the
+  // 404's body — measured 09.09.2026 on `jobs_by_keyword/openstack` (2 ads) and on
+  // `jobs_by_region/…-glarona` (1 ad). Discarding the body reported "nessuna offerta
+  // trovata" for a job that was published.
+  const respond = (status, body) => ({ ok: status === 200, status, text: async () => body });
+
+  it('reads the ads out of a 404 body', async () => {
+    vi.mocked(fetch).mockImplementation(async (url) =>
+      String(url).includes('page=1') ? respond(404, LIST_HTML) : respond(404, '<html></html>'));
+
+    const res = await fetchJobsForQuery({ keyword: 'openstack' }, { pages: 1, maxJobs: 45 });
+    expect(res.honoured).toBe('keyword');
+    expect(res.jobs).toHaveLength(1);
+    expect(res.jobs[0].title).toBe('Manutentore Elettrico');
+  });
+
+  it('still reports nothing when the 404 body carries no ads', async () => {
+    vi.mocked(fetch).mockImplementation(async () => respond(404, '<html><body></body></html>'));
+
+    const res = await fetchJobsForQuery({ keyword: 'slug-inesistente' }, { pages: 1, maxJobs: 45 });
+    expect(res.jobs).toEqual([]);
   });
 });
