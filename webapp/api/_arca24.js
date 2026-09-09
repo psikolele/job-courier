@@ -244,9 +244,23 @@ export function parseJobsFromHtml(html, offset = 0) {
   return jobs;
 }
 
-export async function fetchJobs({ pages = 3, maxJobs = 45 } = {}) {
+/**
+ * `concurrency` bounds how many pages are in flight at once. It defaults to `pages`,
+ * which is what every runtime caller has always done — a dozen requests at once is fine
+ * and the visitor is waiting. The build-time snapshot walks sixty pages instead, and
+ * sixty simultaneous requests against a partner portal is how bot protection gets
+ * tripped, which would take `/api/companies` down with it. That caller passes a limit.
+ */
+export async function fetchJobs({ pages = 3, maxJobs = 45, concurrency = 0 } = {}) {
   const urls = Array.from({ length: pages }, (_, i) => `/${LANG}/careers/latest_jobs?page=${i + 1}`);
-  const htmls = await Promise.all(urls.map(u => fetchHtml(u).catch(() => '')));
+  const size = concurrency > 0 ? concurrency : urls.length;
+
+  const htmls = [];
+  for (let i = 0; i < urls.length; i += size) {
+    htmls.push(...await Promise.all(
+      urls.slice(i, i + size).map(u => fetchHtml(u).catch(() => ''))
+    ));
+  }
 
   const seen = new Set();
   const all = [];

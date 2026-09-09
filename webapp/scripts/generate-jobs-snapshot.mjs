@@ -27,8 +27,27 @@ const BUDGET_MS = 120_000;
 // Same floor as api/jobs.js's MIN_HEALTHY_JOBS / api/sitemap-jobs.xml.js's own gate: a
 // run that returns only a handful of ads is a degraded read, not a quiet job market.
 const MIN_HEALTHY_JOBS = 10;
-const MAX_JOBS = 300;
+
+// How deep the nightly walk goes.
+//
+// Not an ordering: measured 09/09/2026, `published_at` is the same day on essentially
+// every ad in the catalogue — 881 of 900 across sixty pages, and page 442 of 442 reads
+// the same date as page 1. Upstream reimports the whole catalogue daily and rewrites the
+// date with it, so there is no chronology in this source to sort by and "the latest ads"
+// cannot be recovered from it. (The RSS feed does carry a real `insert-date`; getting at
+// it needs a stable URL from Arca24 — see 00_Wiki/job-courier/.)
+//
+// What depth does buy is coverage, which is what the snapshot is for: it feeds
+// prerender-canonicals, and every ad missing from it is an ad no page links to. 300 ads
+// was 4.5% of the catalogue; 900 is 13%, and takes the employers represented from 9 to
+// 16. Measured cost at concurrency 10: ~5s wall, ~3s CPU — paid once a night by the
+// build, never by a visitor.
+const MAX_JOBS = 900;
 const PAGES = Math.ceil(MAX_JOBS / 15);
+
+// Sixty requests at once against a partner portal is how bot protection gets tripped,
+// and that would take api/companies down with it, not just this script.
+const CONCURRENCY = 10;
 
 // `unref` so the pending timer never holds the build open once the fetch has won the race.
 const withTimeout = (promise, ms) => Promise.race([
@@ -42,7 +61,10 @@ try {
   const arca24 = await isArca24Enabled();
   if (!arca24) throw new Error('feed Arca24 non attivo — nessuna primitiva jobroom da riusare qui');
 
-  const jobs = await withTimeout(fetchJobs({ pages: PAGES, maxJobs: MAX_JOBS }), BUDGET_MS);
+  const jobs = await withTimeout(
+    fetchJobs({ pages: PAGES, maxJobs: MAX_JOBS, concurrency: CONCURRENCY }),
+    BUDGET_MS,
+  );
 
   const withId = jobs.filter((j) => j.jobroom_id);
   if (withId.length < MIN_HEALTHY_JOBS) {
