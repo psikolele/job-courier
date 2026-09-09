@@ -95,3 +95,42 @@ export const sectorLabel = (job) =>
 
 export const roleLabel = (job) =>
     (job && deriveRole(job.role, job.title)) || FALLBACK_LABEL;
+
+/**
+ * Stable key for comparing job ids across sources.
+ *
+ * The same ad is identified as `6727905` on a company page and as
+ * `6727905-aiuto-cuoco-lugano` in the search listing, so a plain string compare
+ * fails whenever a link crosses from one source to the other. The leading
+ * jobroom number is the part both formats share. Synthetic ids (`job-12`, used
+ * when upstream exposes no id at all) do not start with a digit and are
+ * compared whole, so they never collapse into one another.
+ */
+export const jobIdKey = (value) => {
+    const s = String(value ?? '');
+    const m = s.match(/^(\d+)/);
+    return m ? m[1] : s;
+};
+
+/**
+ * Sector and role as the ad itself states them, when they have been fetched.
+ *
+ * The list scrape carries neither — `api/_arca24.js` hardcodes "Non specificato" for
+ * both, because the portal exposes them only on an ad's own page — so the rules above
+ * guess from the title. A guess is all a card can have, and it is a fair one.
+ *
+ * A detail view is not a card: by the time it renders it has already fetched the ad,
+ * and that response carries the real values (`itemprop="industry"` and
+ * `"occupationalCategory"`). Reported 09/09/2026 — "Senior Actuary Life Expert" read
+ * "Altro / Altro" in the /offerte pane while its own page said "Assicurazioni /
+ * Contabilità/Banca/Finanza", because the pane read the list entry and never looked at
+ * what it had already downloaded.
+ *
+ * What the ad states wins. The inference is the fallback, never the override — and a
+ * detail for a different ad is ignored rather than merged.
+ */
+export const withDetailTaxonomy = (job, detail) => {
+    if (!job || !detail) return job;
+    if (jobIdKey(detail.id) !== jobIdKey(job.jobroom_id || job.id)) return job;
+    return { ...job, sector: detail.sector || job.sector, role: detail.role || job.role };
+};

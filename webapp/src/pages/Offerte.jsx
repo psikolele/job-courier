@@ -13,7 +13,7 @@ import JobSearchWidget from '../components/JobSearchWidget';
 import PageSeo from '../components/PageSeo';
 import { getCantonValueFromParams } from '../utils/searchData';
 import { JobListItemSkeleton, JobDetailSkeleton } from '../components/ui/Skeleton';
-import { sectorLabel, roleLabel } from '../utils/jobTaxonomy';
+import { sectorLabel, roleLabel, jobIdKey, withDetailTaxonomy } from '../utils/jobTaxonomy';
 import { splitPublishedLabel } from '../utils/publishedLabel';
 import AdSlot from '../components/AdSlot';
 import { formatLocation } from '../utils/formatLocation';
@@ -26,24 +26,6 @@ const GM = 'var(--brand-gray-mid)';
 const brand = 'var(--font-brand)';
 const editorial = 'var(--font-editorial)';
 const body = 'var(--font-body)';
-
-
-
-/**
- * Stable key for comparing job ids across sources.
- *
- * The same ad is identified as `6727905` on a company page and as
- * `6727905-aiuto-cuoco-lugano` in the search listing, so a plain string compare
- * fails whenever a link crosses from one source to the other. The leading
- * jobroom number is the part both formats share. Synthetic ids (`job-12`, used
- * when upstream exposes no id at all) do not start with a digit and are
- * compared whole, so they never collapse into one another.
- */
-const jobIdKey = (value) => {
-    const s = String(value ?? '');
-    const m = s.match(/^(\d+)/);
-    return m ? m[1] : s;
-};
 
 const PercheCandidatiWidget = () => {
     const { t } = useTranslation();
@@ -303,6 +285,10 @@ const Offerte = ({ setShowLoginModal }) => {
     // With no `jobId` the page still opens on the first offer, as before. With one, it
     // never shows a different offer in its place.
     const selectedJob = listJob || detailAsJob || (selectedJobId ? null : listJobs[0]);
+    // What the detail pane prints. Same offer as `selectedJob`, with the taxonomy the
+    // fetched ad states rather than the one guessed from its title.
+    const shownJob = withDetailTaxonomy(selectedJob, selectedJobDetail);
+
     const applyData = getApplyData(selectedJob, selectedJobDetail);
 
     useEffect(() => {
@@ -568,8 +554,10 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 </div>
                                                 {/* Tags */}
                                                 {(() => {
-                                                    const settore = sectorLabel(job);
-                                                    const ruolo = roleLabel(job);
+                                                    // The selected card sits beside the pane; both must read the same.
+                                                    const shown = withDetailTaxonomy(job, selectedJobDetail);
+                                                    const settore = sectorLabel(shown);
+                                                    const ruolo = roleLabel(shown);
                                                     const chip = {
                                                         fontFamily: body, fontSize: 11, fontWeight: 600,
                                                         letterSpacing: '0.06em', textTransform: 'uppercase',
@@ -690,12 +678,12 @@ const Offerte = ({ setShowLoginModal }) => {
                                                                 <span style={metaChip()}>
                                                                     <span style={iconBox('rgba(5,11,43,0.06)')}><Briefcase size={11} color="var(--brand-navy)" /></span>
                                                                     <span style={metaLbl}>{t('jobs.label_sector')}:</span>
-                                                                    <span style={val}>{sectorLabel(selectedJob)}</span>
+                                                                    <span style={val}>{sectorLabel(shownJob)}</span>
                                                                 </span>
                                                                 <span style={metaChip()}>
                                                                     <span style={iconBox('rgba(5,11,43,0.06)')}><User size={11} color="var(--brand-navy)" /></span>
                                                                     <span style={metaLbl}>{t('jobs.label_role')}:</span>
-                                                                    <span style={val}>{roleLabel(selectedJob)}</span>
+                                                                    <span style={val}>{roleLabel(shownJob)}</span>
                                                                 </span>
                                                             </div>
                                                         );
