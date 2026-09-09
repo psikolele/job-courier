@@ -444,8 +444,8 @@ const Offerte = ({ setShowLoginModal }) => {
                             color: N, textTransform: 'uppercase',
                             letterSpacing: '-0.025em', lineHeight: 0.95, margin: 0
                         }}>
-                            <span style={{ display: 'block' }}>Ultimi annunci</span>
-                            <span style={{ display: 'block', color: F }}>Pubblicati</span>
+                            <span style={{ display: 'block' }}>{t('jobs.heading_line1')}</span>
+                            <span style={{ display: 'block', color: F }}>{t('jobs.heading_line2')}</span>
                         </h1>
                     </div>
 

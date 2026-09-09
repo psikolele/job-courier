@@ -299,7 +299,9 @@
     "loading": "Chargement de l'offre...",
     "load_error": "Erreur de chargement",
     "any_sector": "Tout secteur",
-    "all_cantons_short": "Tous les Cantons"
+    "all_cantons_short": "Tous les Cantons",
+    "heading_line1": "Dernières annonces",
+    "heading_line2": "Publiées"
   },
   "footer": {
     "rss_title": "Flux RSS",

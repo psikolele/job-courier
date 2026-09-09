@@ -299,7 +299,9 @@
     "loading": "Stelle wird geladen...",
     "load_error": "Fehler beim Laden",
     "any_sector": "Jeder Bereich",
-    "all_cantons_short": "Alle Kantone"
+    "all_cantons_short": "Alle Kantone",
+    "heading_line1": "Neueste Anzeigen",
+    "heading_line2": "Veröffentlicht"
   },
   "footer": {
     "rss_title": "RSS-Feed",

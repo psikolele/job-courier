@@ -299,7 +299,9 @@
     "loading": "Caricamento offerta in corso...",
     "load_error": "Errore di Caricamento",
     "any_sector": "Qualsiasi settore",
-    "all_cantons_short": "Tutti i Cantoni"
+    "all_cantons_short": "Tutti i Cantoni",
+    "heading_line1": "Ultimi annunci",
+    "heading_line2": "Pubblicati"
   },
   "footer": {
     "rss_title": "Feed RSS",

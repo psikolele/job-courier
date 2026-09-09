@@ -299,7 +299,9 @@
     "loading": "Loading job offer...",
     "load_error": "Loading Error",
     "any_sector": "Any sector",
-    "all_cantons_short": "All Cantons"
+    "all_cantons_short": "All Cantons",
+    "heading_line1": "Latest job ads",
+    "heading_line2": "Published"
   },
   "footer": {
     "rss_title": "RSS Feed",
