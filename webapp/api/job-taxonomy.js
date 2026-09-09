@@ -30,6 +30,23 @@ const MAX_IDS = 20;
 // Well under MAX_IDS, so the batch resolves in roughly the time of its slowest member.
 const BATCH_SIZE = 8;
 
+/**
+ * Values that carry no information, so they are not worth a byte of the response.
+ *
+ * Upstream states a real sector on a minority of ads — measured 09/09/2026, 2 of the
+ * first 10 — and writes the placeholder on the rest. Sending it back would cache and
+ * transmit "we don't know" once per ad, and the client would have to know to ignore it
+ * anyway: `src/utils/jobTaxonomy.js` already skips exactly these strings so a card can
+ * fall back to its title. Kept in step with that list; the two are deliberately not
+ * shared, because api/ must not import from src/.
+ */
+const NO_VALUE = new Set(['Non specificato', 'Altro', 'Other', 'other', '']);
+
+const meaningful = (value) => {
+  const v = String(value ?? '').trim();
+  return v && !NO_VALUE.has(v) ? v : null;
+};
+
 /** `6747308-senior-actuary-life-expert` and `6747308` name the same ad. */
 const numericId = (value) => {
   const s = String(value ?? '').trim();
@@ -58,8 +75,8 @@ export async function collectTaxonomy(ids, fetchDetail) {
     batch.forEach((id, n) => {
       const d = details[n];
       if (!d) return;
-      const sector = d.sector && d.sector !== 'Non specificato' ? d.sector : null;
-      const role = d.role && d.role !== 'Non specificato' ? d.role : null;
+      const sector = meaningful(d.sector);
+      const role = meaningful(d.role);
       // Nothing worth sending is nothing sent — the client keeps its own inference.
       if (sector || role) out[id] = { sector, role };
     });
