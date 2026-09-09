@@ -3,8 +3,17 @@
 // The roster of employers with at least one open position, as of the last build. Read by
 // api/companies.js as the answer of last resort while a cold instance computes the real
 // one. See that file for why it is allowed to be a little out of date.
-export const generatedAt = '2026-09-02T05:55:11.132Z';
+export const generatedAt = '2026-09-09T14:32:21.769Z';
 export const companies = [
+  {
+    "id": "3243389",
+    "name": "4 U Consulting",
+    "slug": "4-u-consulting",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243389.jpg",
+    "jobs_count": 0,
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3243389-4-u-consulting/profile",
+    "has_jobs": true
+  },
   {
     "id": "3244683",
     "name": "Adecco",
@@ -78,6 +87,15 @@ export const companies = [
     "has_jobs": true
   },
   {
+    "id": "3244661",
+    "name": "Manpower",
+    "slug": "manpower",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3244661.jpg",
+    "jobs_count": 0,
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3244661-manpower/profile",
+    "has_jobs": true
+  },
+  {
     "id": "3244246",
     "name": "Michael Bailey Associates",
     "slug": "michael-bailey-associates",
@@ -114,12 +132,12 @@ export const companies = [
     "has_jobs": true
   },
   {
-    "id": "3243352",
-    "name": "Team Personnel Solutions SA",
-    "slug": "team-personnel-solutions-sa",
-    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3243352.jpg",
+    "id": "3174540",
+    "name": "Work & Work SA",
+    "slug": "work-work-sa",
+    "logo": "https://jobroom.jobcourier.ch/custom_visojobcourier/media/logo/logo_company_3174540.jpg",
     "jobs_count": 0,
-    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3243352-team-personnel-solutions-sa/profile",
+    "jobroom_url": "https://jobroom.jobcourier.ch/it/careers/3174540-work-work-sa/profile",
     "has_jobs": true
   },
   {
