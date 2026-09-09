@@ -606,14 +606,24 @@ const Offerte = ({ setShowLoginModal }) => {
                                                     // Two sources, one rule: what the ad states beats the guess. The open
                                                     // ad brings it in the detail already fetched for the pane; every other
                                                     // card gets it from the batch above.
+                                                    //
+                                                    // Picked by id, not by `detail || batch`. That reads as "prefer the
+                                                    // detail", but the detail belongs to the *open* ad, so on every other
+                                                    // card it won the choice and was then rejected by the id guard below —
+                                                    // and the batch, which did have the answer, was never consulted. Every
+                                                    // card but one stayed on "Altro".
                                                     const adId = jobIdKey(job.jobroom_id || job.id);
+                                                    const fromDetail = selectedJobDetail
+                                                        && jobIdKey(selectedJobDetail.id) === adId
+                                                        ? selectedJobDetail
+                                                        : null;
                                                     const batched = taxonomyById[adId];
                                                     // The batch answers `{sector, role}` keyed by id, so the id goes back on
                                                     // the record: withDetailTaxonomy refuses anything it cannot match to
                                                     // this exact ad, and that guard is the point of it.
                                                     const shown = withDetailTaxonomy(
                                                         job,
-                                                        selectedJobDetail || (batched && { ...batched, id: adId }),
+                                                        fromDetail || (batched && { ...batched, id: adId }),
                                                     );
                                                     const settore = sectorLabel(shown);
                                                     const ruolo = roleLabel(shown);
