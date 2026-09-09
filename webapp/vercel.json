@@ -18,6 +18,9 @@
     "api/job-detail.js": {
       "maxDuration": 60
     },
+    "api/job-taxonomy.js": {
+      "maxDuration": 30
+    },
     "api/sitemap-jobs.xml.js": {
       "maxDuration": 60
     },
