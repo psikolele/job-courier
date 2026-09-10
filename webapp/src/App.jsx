@@ -7,6 +7,7 @@ import { langFromPath } from './utils/langFromPath';
 import { consumeReturnUrl, cameFromJobRoom } from './hooks/useReturnUrl';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Analytics } from '@vercel/analytics/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -167,6 +168,7 @@ function App() {
       </Routes>
       <Footer setShowLoginModal={setShowLoginModal} />
       {routeLoaderVisible && <RouteLoader />}
+      <Analytics />
     </div>
   );
 }
