@@ -55,6 +55,47 @@ il workflow, altrimenti n8n risponde `You don't have access to the credentials`.
 **Nota di merito ai dati:** il 14 settembre, con gli Auto Ads riaccesi a metà pomeriggio, jobroom ha
 fatto CHF 25,58 e 84 clic contro i 5-14 CHF dei giorni precedenti.
 
+**Il guardiano non era l'unico rotto.** Alla domanda "le automazioni funzionano?" la risposta onesta
+era no: `n8n_executions action=list` con `status: "error"` mostra in un colpo quali cron stanno
+fallendo da settimane, ed è il primo controllo da fare su un'istanza che nessuno guarda. **JC — Topic
+Scraper falliva ogni notte alle 22:00 dal 30 giugno**, cioè da quando era stato creato: in Notion i
+topic più recenti erano i seed iniziali.
+
+**Un workflow che fallisce sul primo nodo nasconde tutti i difetti a valle.** Il Topic Scraper ne
+aveva undici, non uno, e sono emersi a catena: ogni correzione spostava il guasto più avanti e
+scopriva il successivo. I nodi dopo il primo non erano mai stati eseguiti, quindi nessuno si era mai
+accorto che erano malformati. In ordine: URL 404 (la sezione di jobs.ch oggi è `/it/job-coach/`);
+`$json.body` invece di `$json.data`, **lo stesso difetto del guardiano AdSense, lo stesso giorno**;
+header `Bearer {{ ... }}` senza il prefisso `=`, che n8n manda come stringa letterale garantendo un
+401, mentre una credenziale OpenRouter dedicata esisteva già inutilizzata; `JSON.parse` senza rete;
+nodo IF con sintassi obsoleta; `Notion:create` senza `operation` né il parametro `title`, che è
+obbligatorio e sta al primo livello; chiavi property senza il formato `nome|tipo`; filtro duplicati
+senza `condition`; 230 KB di HTML grezzo incollati dentro il corpo JSON; e un modello che su
+OpenRouter non esiste più.
+
+**Due regole pratiche da quella catena.** Le regex con backslash non stanno dentro un'espressione
+`{{ }}` — si rompono nel doppio escaping e vanno in un nodo Code. E l'elenco dei modelli disponibili
+si legge da `https://openrouter.ai/api/v1/models`, che è pubblico: `claude-sonnet-4-20250514` non
+c'era più, `anthropic/claude-sonnet-5` sì.
+
+**L'ultimo difetto era strutturale, non di configurazione.** `paired_item_multiple_matches`: il Code
+node produce 3 item da 1 input, il nodo Notion di lookup li collassa a 1, e a valle
+`$('Parse JSON Topics').item` non sa più quale dei tre corrisponde. **Un `getAll` di Notion non può
+fare da filtro per-item.** Ho collegato il parser direttamente alla creazione e **disabilitato il
+controllo duplicati**: il workflow ora crea topic veri (verificati in Notion) ma può ripeterne di già
+presenti. Scelta dichiarata, non silenziosa — meglio un workflow che produce con duplicati
+rivedibili a mano che uno inerte da due mesi. Il dedup va rifatto leggendo i titoli esistenti una
+volta sola e filtrando in un Code node.
+
+**Resta aperto, per un'altra sessione: i due Campaign Launcher sono entrambi attivi.** Il sospetto
+iniziale era un doppio invio ai candidati; i dati lo ridimensionano ma aprono una domanda più
+concreta. Entrambi partono da un Webhook Trigger, quindi nessuno dei due parte da solo. Sono però due
+implementazioni diverse: `HW4NCuBjcyrI6DNN` legge via HTTP e non ha né batching né controllo
+dell'indirizzo; `YaHH9EojdHdPxag4` usa nodi Notion nativi, `Split In Batches (50)` e `IF Has Email`.
+La domanda è quale dei due webhook chiami davvero il CRM. Procedura di verifica e avvertenze in
+`00_Wiki/job-courier/n8n-automazioni-stato.md`, incluso il motivo per cui **non** si lancia quel
+webhook per prova.
+
 ---
 
 ## Auto Ads spenti su un dominio, ricavi azzerati su un altro (14 Settembre 2026) — ✅ *risolto, in propagazione*
