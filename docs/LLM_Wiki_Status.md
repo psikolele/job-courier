@@ -1,4 +1,61 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 9 Settembre 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 14 Settembre 2026)
+
+## Auto Ads spenti su un dominio, ricavi azzerati su un altro (14 Settembre 2026) — ✅ *risolto, in propagazione*
+
+**Stack operativo:** Claude Opus 5 · caveman mode full · tool: Gmail MCP (lettura thread e
+bozza), Claude in Chrome (pannello AdSense, account `jobcourier24@gmail.com`), Browser pane +
+curl/firecrawl (verifica jobroom dal vivo), Bash/Write · ~95k token, nessun subagente ·
+**nessun commit**: la modifica vive nel pannello AdSense, non nel repo
+
+Segnalazione di Laura sul crollo dei ricavi pubblicitari, con la sua ricostruzione già fatta sui
+report AdSense degli ultimi 30 giorni. Aveva ragione su tutta la linea.
+
+**In AdSense il report separa i sottodomini, il comando no.** È l'intera storia. La tabella
+Annunci → Per sito ha **una sola riga**, `jobcourier.ch`, e il suo interruttore Annunci
+automatici governa insieme `www.jobcourier.ch`, `jobroom.jobcourier.ch` e `viso-jobcourier`. I
+*report*, invece, mostrano i tre sottodomini come tre righe con ricavi distinti — e da lì sembra
+di avere tre entità indipendenti. Spegnendo gli Auto Ads il 04/09 per tenere il posizionamento
+manuale sulla vetrina, si sono spenti anche sul portale, dove sta l'85% del ricavo: da CHF 43–63
+al giorno a zero clic dal 5 settembre. Circa CHF 450 persi in dieci giorni. Nella schermata dove
+si preme l'interruttore Google non scrive da nessuna parte quali domini stai toccando: lo si
+scopre solo dai ricavi, che è esattamente come l'ha scoperto la cliente.
+
+**"Non ho toccato quel dominio" può essere vero del codice e falso dell'account.** È la ragione
+per cui il buco è rimasto aperto dieci giorni. `AdsenseGate.jsx` gira solo su www, le pagine
+jobroom le genera Arca24, nessun deploy nostro le sfiora — tutto verificabile, tutto vero, e
+completamente irrilevante, perché il conto pubblicitario è uno solo e sta sopra a entrambi. La
+separazione dei repository non implica separazione di account pubblicitari, analytics, consent o
+DNS.
+
+**Non si può escludere un intero sottodominio dagli Auto Ads.** Verificato provando: sia
+`www.jobcourier.ch` sia `www.jobcourier.ch/` con "tutte le pagine di questa sezione" vengono
+rifiutati con *"Puoi escludere la home page solo come corrispondenza esatta dell'URL"*. Si
+esclude la home, oppure si escludono singole sezioni una per una — e le route del sito sono 120+
+coi legacy, quindi enumerarle non è una strada. Conseguenza pratica: riaccendendo gli Auto Ads
+per il portale, le pagine interne della vetrina li prendono anche loro. Decisione lasciata a
+Gabriele.
+
+**Google normalizza il `www.` nelle esclusioni.** *"Gli annunci automatici utilizzano le
+esclusioni con e senza www. nello stesso modo"*. Quindi l'esclusione registrata su
+`jobcourier.ch` copre anche `www.jobcourier.ch`, benché l'apex faccia 308 verso www. Ero partito
+a sistemare un secondo difetto che non esisteva.
+
+**Nel dialogo di applicazione, "Applica ora" e non l'esperimento.** La scelta alternativa
+("Esegui prima l'esperimento") serve le nuove impostazioni al 50% del traffico per un massimo di
+90 giorni: su un ripristino dopo un guasto dimezzerebbe il recupero.
+
+**Il guardiano delle 07:40 non poteva vedere niente di tutto questo.** Da dieci controlli segnala
+"HTTP 200, risposta di 0 byte", e il motivo è che legge l'HTML server-side di jobroom, che è solo
+uno stub JS con redirect `?source=` (718 byte, misurati). Ma anche funzionando avrebbe mancato
+l'incidente: controlla che gli spazi pubblicitari siano nel markup, e gli spazi c'erano — quello
+che mancava era lo stato della configurazione a monte. **Un monitor che verifica la presenza
+degli slot non rileva un cambiamento di configurazione dell'account.** Da riscrivere.
+
+**Sui ricavi non promettere un rientro immediato.** Google impiega giorni a rimettere a regime
+unità rimaste ferme, quindi la risalita è progressiva. Detto alla cliente in anticipo, con i
+numeri veri promessi a fine settimana invece di una stima.
+
+---
 
 ## Filtri offerte: varietà aziende, ricerche vuote, settore/ruolo reali (9 Settembre 2026) — ✅ *in produzione*
 
