@@ -1,4 +1,61 @@
-# LLM Wiki: Job Courier Redesign (Aggiornato: 14 Settembre 2026)
+# LLM Wiki: Job Courier Redesign (Aggiornato: 15 Settembre 2026)
+
+## Il guardiano AdSense era cieco dalla nascita, e ora guarda anche la resa (15 Settembre 2026) — ✅ *in produzione*
+
+**Stack operativo:** Claude Opus 5 · caveman mode full · skill `n8n-mcp-tools-expert` · tool: n8n MCP
+(lettura esecuzioni, patch chirurgiche, test via webhook), Claude in Chrome (Google Cloud Console e
+pannello n8n), Bash/node per i replay, Gmail MCP · ~170k token, nessun subagente · commit
+`70b2b94` su `claude/laura-job-courier-analysis-a2beba`; il resto vive in n8n e in Google Cloud
+
+Cercavo dove aggiungere il controllo sugli Auto Ads e ho trovato che il guardiano non aveva **mai**
+funzionato.
+
+**"HTTP 200 e 0 byte" è una combinazione impossibile, ed era lì da giorni.** Il nodo httpRequest con
+`fullResponse` + `responseFormat: text` mette il corpo in **`data`**, non in `body`. Il codice leggeva
+`res.body`: sempre `undefined`, quindi ogni esecuzione concludeva "risposta di 0 byte" pur avendo
+ricevuto 200 e 427 KB. Lo `statusCode` invece si leggeva bene — ed è il punto: quando due campi della
+stessa risposta si contraddicono, il difetto è nel lettore, non nella risposta. Sono 11 mail
+"NON VERIFICATO" per un guasto che non è mai esistito, mentre quello vero passava sotto il naso.
+
+**Telegram non ha mai consegnato un avviso.** Ogni esecuzione moriva con `400 can't parse entities`: il
+nodo non imposta `parse_mode`, n8n applica il default **HTML**, e il testo conteneva caratteri letti
+come markup. Le mail partivano (quel ramo viene eseguito prima), Telegram no, e l'esecuzione finiva
+rossa ogni mattina. Nessuno se n'era accorto perché **le esecuzioni fallite di un cron non le guarda
+nessuno**. Ora il testo si costruisce nel Code già HTML-safe e `parse_mode` è esplicito.
+
+**Un monitor non è finito finché non l'hai visto scattare su un guasto finto.** Entrambi i difetti
+sarebbero emersi al primo test con dati falsificati. È la lezione che vale più dei due fix.
+
+**Il secondo controllo guarda la resa, non la presenza.** Gli slot erano tutti al loro posto durante
+tutto l'incidente del 4-14 settembre: il controllo sul markup non poteva vederlo, e correttamente.
+Mancava lo stato della configurazione a monte, che dall'HTML non è osservabile. Serve l'API AdSense,
+quindi OAuth — che il guardiano evitava di proposito e che ora ha.
+
+**RPM e non ricavo, e la ragione sta nei dati.** Il ricavo di jobroom crolla nei weekend (5,03 CHF
+sabato contro 14,67 giovedì) perché crolla il traffico: una soglia sul ricavo griderebbe ogni domenica.
+L'RPM resta piatto intorno a 10 anche nei weekend ed è saltato a 18,8 il giorno della riaccensione.
+Separa la monetizzazione dal traffico, che è esattamente la distinzione che serve. Soglia al 50% della
+mediana a 7 giorni, due letture di conferma, sotto le 200 visualizzazioni il dato è rumore e si scarta.
+
+**La baseline va congelata, altrimenti l'allarme si spegne da solo.** Rigiocando il guardiano giorno per
+giorno sullo storico che contiene l'incidente, la prima versione mandava la mail il 6 settembre — otto
+giorni prima della scoperta reale — ma il **9 settembre annunciava un "rientro" con il guasto ancora in
+pieno corso**: dopo quattro giorni di RPM a ~10 la finestra mobile si riempie di valori bassi e il
+crollo diventa la nuova normalità. Congelando il riferimento all'apertura dell'allarme (rientro solo
+sopra l'80%), il replay dà **una sola mail, il 6 settembre**, poi silenzio, e il 14 settembre resta
+giustamente in allarme perché il ricavo non è ancora tornato ai livelli di inizio mese.
+
+**Setup OAuth, i tre punti che non si indovinano.** Il redirect URI di n8n Cloud è
+`https://oauth.n8n.cloud/oauth2/callback`, un proxy centralizzato e non il dominio dell'istanza — lo
+dice il form della credenziale, e assumere l'altro avrebbe dato `redirect_uri_mismatch`. L'app OAuth va
+messa **In produzione**: in stato "Test" Google fa scadere il refresh token dopo 7 giorni e il guardiano
+morirebbe in silenzio dopo una settimana. E la credenziale va **condivisa con il progetto** in cui vive
+il workflow, altrimenti n8n risponde `You don't have access to the credentials`.
+
+**Nota di merito ai dati:** il 14 settembre, con gli Auto Ads riaccesi a metà pomeriggio, jobroom ha
+fatto CHF 25,58 e 84 clic contro i 5-14 CHF dei giorni precedenti.
+
+---
 
 ## Auto Ads spenti su un dominio, ricavi azzerati su un altro (14 Settembre 2026) — ✅ *risolto, in propagazione*
 
