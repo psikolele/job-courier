@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { MapPin, Briefcase, Calendar, ChevronLeft, ExternalLink, Clock, Building, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import RegistrationWallModal from '../components/RegistrationWallModal';
@@ -264,7 +264,11 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                         {/* Ads sit outside the offer's own content, above and below it —
                             never interleaved with the description, where a candidate
                             reading the job would meet one mid-sentence. */}
-                        <AdSlot name="offertaTop" variant="banner" />
+                        {/* Capped narrower than the content column — same "troppo invasive" fix
+                            applied on the split-view pane, see Offerte.jsx. */}
+                        <div className="max-w-[520px] mx-auto">
+                            <AdSlot name="offertaTop" variant="banner" />
+                        </div>
 
                         {/* Rich HTML Job Description extracted via Cheerio */}
                         <div 
@@ -273,7 +277,9 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                             dangerouslySetInnerHTML={{ __html: job.description }}
                         />
 
-                        <AdSlot name="offertaBottom" variant="banner" />
+                        <div className="max-w-[520px] mx-auto">
+                            <AdSlot name="offertaBottom" variant="banner" />
+                        </div>
 
                     </div>
 
@@ -283,24 +289,38 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                         {/* Company Logo and Name Block */}
                         <div className="flex flex-col items-center text-center pb-6 border-b border-[#050B2B]/6">
                             {job.company?.logo && (
-                                <div className="w-20 h-20 border border-[#050B2B]/10 p-2 flex items-center justify-center rounded-none bg-slate-50 mb-4 overflow-hidden">
-                                    <img
-                                        src={job.company.logo}
-                                        alt={job.company?.name}
-                                        className="max-w-full max-h-full object-contain"
-                                        // The old fallback guessed a domain from the company name and
-                                        // asked Google for its favicon, which answers with a generic
-                                        // globe — or JobCourier's own mark — for anything it does not
-                                        // know. An empty frame is honest; the name sits right below.
-                                        //
-                                        // An empty `logo` (ads with no company link at all) is not just
-                                        // "no fallback needed" — an unconditional <img src=""> renders a
-                                        // broken-image glyph in some browsers before onError ever fires,
-                                        // since an empty src can resolve to the current document. Guarding
-                                        // the whole block skips that render instead of racing to hide it.
-                                        onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                                    />
-                                </div>
+                                // Linkable to the company's own page when a slug exists (17/09,
+                                // Gabriele: logo was a dead end from an offer's detail). Reserved
+                                // employers carry no slug and stay a plain image.
+                                job.company?.slug ? (
+                                    <Link to={`/azienda/${job.company.slug}`} className="w-20 h-20 border border-[#050B2B]/10 p-2 flex items-center justify-center rounded-none bg-slate-50 mb-4 overflow-hidden">
+                                        <img
+                                            src={job.company.logo}
+                                            alt={job.company?.name}
+                                            className="max-w-full max-h-full object-contain"
+                                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                                        />
+                                    </Link>
+                                ) : (
+                                    <div className="w-20 h-20 border border-[#050B2B]/10 p-2 flex items-center justify-center rounded-none bg-slate-50 mb-4 overflow-hidden">
+                                        <img
+                                            src={job.company.logo}
+                                            alt={job.company?.name}
+                                            className="max-w-full max-h-full object-contain"
+                                            // The old fallback guessed a domain from the company name and
+                                            // asked Google for its favicon, which answers with a generic
+                                            // globe — or JobCourier's own mark — for anything it does not
+                                            // know. An empty frame is honest; the name sits right below.
+                                            //
+                                            // An empty `logo` (ads with no company link at all) is not just
+                                            // "no fallback needed" — an unconditional <img src=""> renders a
+                                            // broken-image glyph in some browsers before onError ever fires,
+                                            // since an empty src can resolve to the current document. Guarding
+                                            // the whole block skips that render instead of racing to hide it.
+                                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                                        />
+                                    </div>
+                                )
                             )}
                             <h3 style={{ fontFamily: brand, fontWeight: 700, fontSize: 16, color: N, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                                 {job.company?.name}

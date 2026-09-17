@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { MapPin, Briefcase, User, ChevronLeft, Calendar, Search, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useRegistrationWall from '../hooks/useRegistrationWall';
@@ -503,10 +503,17 @@ const Offerte = ({ setShowLoginModal }) => {
                     </div>
                 )}
 
-                <div className="flex flex-col md:flex-row gap-1" style={{ background: 'rgba(5,11,43,0.06)' }}>
-                    {/* LIST */}
+                <div className="flex flex-col md:flex-row md:items-start gap-1" style={{ background: 'rgba(5,11,43,0.06)' }}>
+                    {/* LIST — independent scroll from the detail column on desktop (17/09,
+                        Gabriele: scroll the list without losing the open offer). Reverses the
+                        03/09 "one page scroll" decision for the same client — see DESIGN-LOG.md,
+                        2026-09-17 entry, for why and for the two constraints it carries forward:
+                        never a card cut in half, never a third hidden scroll. Both are still true
+                        here — `visibleCount` still renders whole cards only (unchanged below);
+                        `overflow-y-auto` (never `hidden`) means a card at the edge is one scroll
+                        away, not clipped dead. Mobile (isMobile tab view) is untouched. */}
                     {showList && (isMobile ? activeTab === 'list' : true) && (
-                        <div className="w-full md:w-[40%] lg:w-[35%] flex flex-col" style={{ background: '#FFFFFF', padding: '28px 24px' }}>
+                        <div className="w-full md:w-[40%] lg:w-[35%] flex flex-col md:sticky md:top-24 md:max-h-[calc(100vh-140px)] md:overflow-y-auto" style={{ background: '#FFFFFF', padding: '28px 24px' }}>
 
                             {loading ? (
                                 <div className="flex flex-col gap-1" style={{ background: 'rgba(5,11,43,0.04)' }}>
@@ -683,9 +690,10 @@ const Offerte = ({ setShowLoginModal }) => {
                         </div>
                     )}
 
-                    {/* DETAIL */}
+                    {/* DETAIL — own scroll, independent of the list. See the LIST comment
+                        above for the constraints this carries forward from the 03/09 fix. */}
                     {showDetail && (isMobile ? activeTab === 'detail' : true) && (
-                        <div className="w-full md:w-[60%] lg:w-[65%]">
+                        <div className="w-full md:w-[60%] lg:w-[65%] md:sticky md:top-24 md:max-h-[calc(100vh-140px)] md:overflow-y-auto">
                             <div className="flex flex-col" style={{
                                 background: '#FFFFFF'
                             }}>
@@ -761,16 +769,37 @@ const Offerte = ({ setShowLoginModal }) => {
                                                     })()}
                                                 </div>
                                                 {selectedJob.company?.logo && (
-                                                    <div style={{
-                                                        width: 72, height: 72,
-                                                        background: '#FFFFFF',
-                                                        border: '1px solid rgba(5,11,43,0.07)',
-                                                        padding: 8,
-                                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                        flexShrink: 0
-                                                    }}>
-                                                        <img src={selectedJob.company.logo} alt={selectedJob.company.name} onError={e => { e.currentTarget.style.display = 'none'; }} className="max-w-full max-h-full object-contain grayscale" />
-                                                    </div>
+                                                    // The logo used to be a plain <img>, a dead end for anyone
+                                                    // expecting to reach the company's own page from it (raised
+                                                    // 17/09 by Gabriele on the Rapelli offer). Reserved employers
+                                                    // ("Azienda Riservata") carry no slug, so the guard below
+                                                    // leaves those as a plain image — there is no page to link to.
+                                                    selectedJob.company?.slug ? (
+                                                        <Link
+                                                            to={`/azienda/${selectedJob.company.slug}`}
+                                                            style={{
+                                                                width: 72, height: 72,
+                                                                background: '#FFFFFF',
+                                                                border: '1px solid rgba(5,11,43,0.07)',
+                                                                padding: 8,
+                                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                                flexShrink: 0
+                                                            }}
+                                                        >
+                                                            <img src={selectedJob.company.logo} alt={selectedJob.company.name} onError={e => { e.currentTarget.style.display = 'none'; }} className="max-w-full max-h-full object-contain grayscale" />
+                                                        </Link>
+                                                    ) : (
+                                                        <div style={{
+                                                            width: 72, height: 72,
+                                                            background: '#FFFFFF',
+                                                            border: '1px solid rgba(5,11,43,0.07)',
+                                                            padding: 8,
+                                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                            flexShrink: 0
+                                                        }}>
+                                                            <img src={selectedJob.company.logo} alt={selectedJob.company.name} onError={e => { e.currentTarget.style.display = 'none'; }} className="max-w-full max-h-full object-contain grayscale" />
+                                                        </div>
+                                                    )
                                                 )}
                                             </div>
 
@@ -817,7 +846,14 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 placed inside would unmount and push a fresh ad request per click —
                                                 dozens against a single pageview, which is what AdSense counts as
                                                 invalid traffic. Out here they mount once per visit to the pane. */}
-                                            <AdSlot name="offertaTop" variant="banner" />
+                                            {/* Capped narrower than the detail column (17/09, Gabriele: "troppo
+                                                grandi/invasive"). AdSlot sizes the creative off its container's
+                                                width (see its own comment on the 07.09 773px-overflow measurement),
+                                                so this is the lever — never the unit's reserved minHeight, which
+                                                stays untouched to keep Google's fill/CLS mechanics intact. */}
+                                            <div className="max-w-[520px] mx-auto">
+                                                <AdSlot name="offertaTop" variant="banner" />
+                                            </div>
 
                                             {detailLoading ? (
                                                 <div className="flex flex-col gap-3 animate-pulse py-4">
@@ -861,7 +897,9 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 </p>
                                             )}
 
-                                            <AdSlot name="offertaBottom" variant="banner" />
+                                            <div className="max-w-[520px] mx-auto">
+                                                <AdSlot name="offertaBottom" variant="banner" />
+                                            </div>
 
                                             <div style={{ marginTop: 32 }}>
                                                 <div style={{ padding: '24px 28px', background: GL, borderLeft: `3px solid ${F}` }}>
