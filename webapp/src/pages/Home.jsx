@@ -5,6 +5,7 @@ import Stats from '../components/Stats';
 import Filters from '../components/Filters';
 import Vetrini from '../components/Vetrini';
 import Blog from '../components/Blog';
+import SocialBanner from '../components/SocialBanner';
 
 import AdBanner from '../components/AdBanner';
 
@@ -19,6 +20,8 @@ const Home = ({ setShowLoginModal }) => {
       <AdBanner type="top" />
 
       <Vetrini />
+
+      <SocialBanner />
 
       <AdBanner type="bottom" />
 

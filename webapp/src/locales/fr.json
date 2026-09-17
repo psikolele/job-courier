@@ -290,7 +290,7 @@
     "back_to_jobs_title": "Retour aux offres d'emploi",
     "go_back": "Retour",
     "apply": "Postuler",
-    "apply_external_note": "Candidature gérée sur un site externe",
+    "apply_external_note": "Candidature directe sur le site de {{company}}",
     "load_more": "Charger plus",
     "details_position": "Détails du poste",
     "info_card": "Fiche informative",
@@ -394,6 +394,12 @@
     "title": "Entreprises et recruteurs qui font confiance à Job Courier",
     "see_jobs": "Voir les annonces",
     "see_all": "Voir toutes les entreprises"
+  },
+  "social_banner": {
+    "eyebrow": "La communauté",
+    "headline": "De nouvelles offres chaque semaine",
+    "follower_label": "abonnés sur LinkedIn",
+    "cta": "Suivez-nous sur LinkedIn"
   },
   "wall": {
     "title": "Se connecter ou s'inscrire",

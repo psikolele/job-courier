@@ -401,7 +401,7 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                             while the detail page is where Google drops people. */}
                         {isExternalApply && (
                             <p style={{ fontFamily: body, fontSize: 11, color: GM, fontStyle: 'italic', marginTop: 10 }}>
-                                {t('jobs.apply_external_note')}
+                                {t('jobs.apply_external_note', { company: job?.company?.name || "un'azienda svizzera" })}
                             </p>
                         )}
 

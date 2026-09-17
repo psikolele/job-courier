@@ -290,7 +290,7 @@
     "back_to_jobs_title": "Zurück zu den Stellenangeboten",
     "go_back": "Zurück",
     "apply": "Bewerben",
-    "apply_external_note": "Bewerbung wird auf einer externen Seite abgewickelt",
+    "apply_external_note": "Direkte Bewerbung auf der Website von {{company}}",
     "load_more": "Mehr laden",
     "details_position": "Details zur Stelle",
     "info_card": "Informationsblatt",
@@ -394,6 +394,12 @@
     "title": "Unternehmen und Recruiter, die JobCourier vertrauen",
     "see_jobs": "Anzeigen ansehen",
     "see_all": "Alle Unternehmen ansehen"
+  },
+  "social_banner": {
+    "eyebrow": "Die Community",
+    "headline": "Jede Woche neue Stellenangebote",
+    "follower_label": "Follower auf LinkedIn",
+    "cta": "Folge uns auf LinkedIn"
   },
   "wall": {
     "title": "Anmelden oder Registrieren",

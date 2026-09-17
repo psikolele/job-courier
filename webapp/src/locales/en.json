@@ -290,7 +290,7 @@
     "back_to_jobs_title": "Back to Job Offers",
     "go_back": "Go back",
     "apply": "Apply",
-    "apply_external_note": "Applications handled on an external site",
+    "apply_external_note": "Direct application on {{company}}'s website",
     "load_more": "Load more",
     "details_position": "Position details",
     "info_card": "Information sheet",
@@ -394,6 +394,12 @@
     "title": "Companies and Recruiters who trust Job Courier",
     "see_jobs": "See Listings",
     "see_all": "See all companies"
+  },
+  "social_banner": {
+    "eyebrow": "The community",
+    "headline": "New job offers every week",
+    "follower_label": "followers on LinkedIn",
+    "cta": "Follow us on LinkedIn"
   },
   "wall": {
     "title": "Sign In or Register",

@@ -824,7 +824,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 </button>
                                                 {applyData.redirect && (
                                                     <span style={{ fontFamily: body, fontSize: 11, color: GM, fontStyle: 'italic' }}>
-                                                        {t('jobs.apply_external_note')}
+                                                        {t('jobs.apply_external_note', { company: selectedJob?.company?.name || 'Azienda Riservata' })}
                                                     </span>
                                                 )}
                                             </div>
