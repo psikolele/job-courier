@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { MapPin, Briefcase, ExternalLink, ChevronLeft } from 'lucide-react';
+import { MapPin, Briefcase, ExternalLink, ChevronLeft, Globe } from 'lucide-react';
 import SectionLabel from '../components/ui/SectionLabel.jsx';
 import { CompanyDetailSkeleton } from '../components/ui/Skeleton';
 import useLocalizedPath from '../hooks/useLocalizedPath';
@@ -188,7 +188,7 @@ const AziendaDettaglio = () => {
         );
     }
 
-    const { name, logo, location, sector, brand_title, brand_description, spontaneous_url, jobs } = detail;
+    const { name, logo, location, sector, brand_title, brand_description, website, spontaneous_url, jobs } = detail;
     const hasJobs = Array.isArray(jobs) && jobs.length > 0;
 
     return (
@@ -259,6 +259,21 @@ const AziendaDettaglio = () => {
                             <p style={{ fontFamily: body, fontSize: 14, color: N, lineHeight: 1.7, opacity: 0.85, whiteSpace: 'pre-line' }}>
                                 {brand_description}
                             </p>
+                        )}
+                        {website && (
+                            <a
+                                href={website}
+                                target="_blank"
+                                rel="noopener noreferrer nofollow"
+                                style={{
+                                    marginTop: 16,
+                                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                                    fontFamily: body, fontSize: 13, color: GM, textDecoration: 'none'
+                                }}
+                                className="hover:opacity-70 transition-opacity"
+                            >
+                                <Globe size={14} color={F} /> {t('company.visit_website')}
+                            </a>
                         )}
                         {spontaneous_url && (
                             <a
