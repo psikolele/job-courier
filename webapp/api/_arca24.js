@@ -1178,6 +1178,16 @@ export function servedCompanyId(html) {
   return seg ? seg[1] : null;
 }
 
+// The "Lavora con noi" band, when the employer has one configured, renders as a
+// second `h2.md-title` — the first is always the company name itself, nested
+// inside `[itemprop="hiringOrganization"]`, and must be excluded or the band
+// title would just repeat the company name.
+function brandBandTitle($) {
+  return $('h2.md-title')
+    .filter((_, el) => $(el).parents('[itemprop="hiringOrganization"]').length === 0)
+    .first().text().replace(/\s+/g, ' ').trim();
+}
+
 export function parseCompanyDetailFromHtml(html, id, slug) {
   const $ = cheerio.load(html);
 
@@ -1189,20 +1199,18 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
   const jobs = parseJobsFromHtml(html);
   const location = jobs[0]?.location || '';
 
-  // The "Lavora con noi" band, when the employer has one configured, renders as a
-  // second `h2.md-title` — the first is always the company name itself, nested
-  // inside `[itemprop="hiringOrganization"]`, and must be excluded or the band
-  // title would just repeat the company name.
-  const brand_title = $('h2.md-title')
-    .filter((_, el) => $(el).parents('[itemprop="hiringOrganization"]').length === 0)
-    .first().text().replace(/\s+/g, ' ').trim();
+  const brand_title = brandBandTitle($);
   const brand_description = $('.md-body-1.biggerfont').first().text().replace(/\s+/g, ' ').trim();
 
   // The "Candidatura spontanea" button has no static href — see findExternalApplyCompanyHref.
   let spontaneous_url = '';
   const spontaneousHref = findExternalApplyCompanyHref(html, $, id);
   if (spontaneousHref) {
-    try { spontaneous_url = new URL(spontaneousHref, ARCA24_HOST).toString(); } catch {}
+    try {
+      spontaneous_url = new URL(spontaneousHref, ARCA24_HOST).toString();
+    } catch (err) {
+      console.warn(`[SPONTANEOUS-URL-PARSE-FAILED] id=${id} href=${spontaneousHref}: ${err.message}`);
+    }
   }
 
   return {

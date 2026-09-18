@@ -307,7 +307,7 @@ describe('parseCompanyDetailFromHtml', () => {
     expect(detail.brand_title).toBe('Lavora con noi');
     expect(detail.brand_description).toContain('Vuoi entrare a far parte del nostro team');
     expect(detail.spontaneous_url).toContain('https://jobroom.jobcourier.ch/job/externalLinkCompany.php');
-    expect(decodeURIComponent(new URL(detail.spontaneous_url).searchParams.get('redirect')))
+    expect(new URL(detail.spontaneous_url).searchParams.get('redirect'))
       .toBe('https://www.adecco.com/it-ch/candidatura-spontanea?utm_source=visojobcourier');
   });
 
