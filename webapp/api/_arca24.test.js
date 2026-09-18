@@ -334,6 +334,45 @@ describe('parseCompanyDetailFromHtml', () => {
     const detail = parseCompanyDetailFromHtml(BANDA_CON_BOTTONE, '9999999', 'altra-azienda');
     expect(detail.spontaneous_url).toBe('');
   });
+
+  // Nessun h2.md-title secondo (solo quello del nome azienda) e nessun .md-body-1.biggerfont,
+  // ma l'azione JSON della candidatura spontanea c'è — segno che i selettori CSS della banda
+  // sono quelli cambiati, non che l'azienda non ha una banda.
+  const BOTTONE_SENZA_BANDA = `
+    <h1>Adecco Annunci totali: 4317</h1>
+    <div itemprop="hiringOrganization"><h2 class="md-title">Adecco</h2></div>
+    <script>
+    window.__DATA__ = {"actions":[{"label":"Candidatura spontanea","action":{"link":"/job/externalLinkCompany.php?redirect=https%3A%2F%2Fwww.adecco.com%2Fit-ch%2Fcandidatura-spontanea%3Futm_source%3Dvisojobcourier&company_name=adecco&company_id=3244683&language=it_IT"}}]};
+    </script>`;
+
+  it('segnala quando c e unazione di candidatura spontanea ma la banda non estrae nulla', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const detail = parseCompanyDetailFromHtml(BOTTONE_SENZA_BANDA, '3244683', 'adecco');
+    expect(detail.brand_title).toBe('');
+    expect(detail.brand_description).toBe('');
+    expect(detail.spontaneous_url).not.toBe('');
+
+    const missi = warn.mock.calls.filter(([m]) => String(m).includes('[BRAND-BAND-SELECTOR-MISS]'));
+    expect(missi).toHaveLength(1);
+    expect(missi[0][0]).toContain('id=3244683');
+    warn.mockRestore();
+  });
+
+  it('nessuna banda e nessun bottone: stato normale, nessuna segnalazione', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    parseCompanyDetailFromHtml('<h1>FISIOTERAPIA IGEA SAGL Annunci totali:</h1>', '3244807', '');
+    const missi = warn.mock.calls.filter(([m]) => String(m).includes('[BRAND-BAND-SELECTOR-MISS]'));
+    expect(missi).toHaveLength(0);
+    warn.mockRestore();
+  });
+
+  it('banda completa e regolare: nessuna segnalazione', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    parseCompanyDetailFromHtml(BANDA_CON_BOTTONE, '3244683', 'adecco');
+    const missi = warn.mock.calls.filter(([m]) => String(m).includes('[BRAND-BAND-SELECTOR-MISS]'));
+    expect(missi).toHaveLength(0);
+    warn.mockRestore();
+  });
 });
 
 describe('servedCompanyId — la pagina dichiara chi ha servito davvero', () => {

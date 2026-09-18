@@ -1213,6 +1213,15 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
     }
   }
 
+  // A page that carries a spontaneous-application action but no band heading/text at
+  // all means the CSS selectors above stopped matching — the same silent-empty-field
+  // failure this whole feature was built to fix, just for a different trigger. A
+  // company genuinely without a band never reaches this branch, since it has no
+  // spontaneousHref either.
+  if (spontaneousHref && !brand_title && !brand_description) {
+    console.warn(`[BRAND-BAND-SELECTOR-MISS] id=${id} ha un'azione di candidatura spontanea ma nessun titolo/testo della banda "Lavora con noi": possibile selettore cambiato (h2.md-title / .md-body-1.biggerfont)`);
+  }
+
   return {
     id,
     name,
