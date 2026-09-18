@@ -10,7 +10,7 @@
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import { sanitizeHtml } from './_sanitize.js';
-import { findExternalApplyHref } from './_externalApply.js';
+import { findExternalApplyHref, findExternalApplyCompanyHref } from './_externalApply.js';
 import { names as orphanNames, generatedAt as orphanGeneratedAt } from './_orphan-employers-snapshot.js';
 
 // Confirmed by Laura on 29.07: production keeps the jobroom.jobcourier.ch hostname and
@@ -1189,6 +1189,22 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
   const jobs = parseJobsFromHtml(html);
   const location = jobs[0]?.location || '';
 
+  // The "Lavora con noi" band, when the employer has one configured, renders as a
+  // second `h2.md-title` — the first is always the company name itself, nested
+  // inside `[itemprop="hiringOrganization"]`, and must be excluded or the band
+  // title would just repeat the company name.
+  const brand_title = $('h2.md-title')
+    .filter((_, el) => $(el).parents('[itemprop="hiringOrganization"]').length === 0)
+    .first().text().replace(/\s+/g, ' ').trim();
+  const brand_description = $('.md-body-1.biggerfont').first().text().replace(/\s+/g, ' ').trim();
+
+  // The "Candidatura spontanea" button has no static href — see findExternalApplyCompanyHref.
+  let spontaneous_url = '';
+  const spontaneousHref = findExternalApplyCompanyHref(html, $, id);
+  if (spontaneousHref) {
+    try { spontaneous_url = new URL(spontaneousHref, ARCA24_HOST).toString(); } catch {}
+  }
+
   return {
     id,
     name,
@@ -1196,10 +1212,10 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
     logo: $('[itemprop="image"]').first().attr('content') || companyLogo(id, name || ''),
     location,
     sector: '',
-    brand_title: '',
-    brand_description: $('[itemprop="description"]').first().text().replace(/\s+/g, ' ').trim(),
+    brand_title,
+    brand_description,
     website: '',
-    spontaneous_url: '',
+    spontaneous_url,
     // Same reason the fetch above stopped using it: `company/profile?uiid=` lands on an
     // arbitrary employer, so this link — the "vai al profilo" the visitor clicks — has to
     // carry the id in the path too. Falls back to the old shape only when there is no slug

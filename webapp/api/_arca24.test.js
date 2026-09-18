@@ -282,6 +282,58 @@ describe('parseCompanyDetailFromHtml', () => {
     expect(detail.jobroom_url).toContain('/careers/3244683-adecco/profile');
     expect(detail.jobroom_url).not.toContain('uiid=');
   });
+
+  // Trimmed copy of the real markup for a company with a "Lavora con noi" band
+  // (Adecco, id 3244683, verified live 18.09.2026). Two h2.md-title on purpose:
+  // the first is the company name inside [itemprop="hiringOrganization"] and must
+  // be excluded, the second (with alignCenter) is the band heading.
+  const BANDA_CON_BOTTONE = `
+    <h1>Adecco Annunci totali: 4317</h1>
+    <div itemprop="hiringOrganization"><h2 class="md-title">Adecco</h2></div>
+    <h2 class="alignCenter nomargin md-title">Lavora con noi</h2>
+    <p class="alignCenter"><span class="md-body-1 biggerfont">Vuoi entrare a far parte del nostro team? Consulta le nostre posizioni aperte o inviaci la tua candidatura compilando il form online, saremo lieti di ricevere il tuo CV!</span></p>
+    <script>
+    window.__DATA__ = {"actions":[{"label":"Candidatura spontanea","action":{"link":"/job/externalLinkCompany.php?redirect=https%3A%2F%2Fwww.adecco.com%2Fit-ch%2Fcandidatura-spontanea%3Futm_source%3Dvisojobcourier&company_name=adecco&company_id=3244683&language=it_IT"}}]};
+    </script>`;
+
+  const BANDA_SENZA_BOTTONE = `
+    <h1>Adecco Annunci totali: 4317</h1>
+    <div itemprop="hiringOrganization"><h2 class="md-title">Adecco</h2></div>
+    <h2 class="alignCenter nomargin md-title">Lavora con noi</h2>
+    <p class="alignCenter"><span class="md-body-1 biggerfont">Vuoi entrare a far parte del nostro team?</span></p>`;
+
+  it('estrae titolo, testo e link della candidatura spontanea quando la banda esiste', () => {
+    const detail = parseCompanyDetailFromHtml(BANDA_CON_BOTTONE, '3244683', 'adecco');
+    expect(detail.brand_title).toBe('Lavora con noi');
+    expect(detail.brand_description).toContain('Vuoi entrare a far parte del nostro team');
+    expect(detail.spontaneous_url).toContain('https://jobroom.jobcourier.ch/job/externalLinkCompany.php');
+    expect(decodeURIComponent(new URL(detail.spontaneous_url).searchParams.get('redirect')))
+      .toBe('https://www.adecco.com/it-ch/candidatura-spontanea?utm_source=visojobcourier');
+  });
+
+  it('non prende il nome azienda come titolo della banda', () => {
+    const detail = parseCompanyDetailFromHtml(BANDA_CON_BOTTONE, '3244683', 'adecco');
+    expect(detail.brand_title).not.toBe('Adecco');
+  });
+
+  it('banda presente ma nessun bottone candidatura spontanea: titolo e testo si, link vuoto', () => {
+    const detail = parseCompanyDetailFromHtml(BANDA_SENZA_BOTTONE, '3244683', 'adecco');
+    expect(detail.brand_title).toBe('Lavora con noi');
+    expect(detail.brand_description).toContain('Vuoi entrare a far parte del nostro team');
+    expect(detail.spontaneous_url).toBe('');
+  });
+
+  it('nessuna banda sulla pagina: tutti e tre i campi vuoti, nessun errore', () => {
+    const detail = parseCompanyDetailFromHtml('<h1>FISIOTERAPIA IGEA SAGL Annunci totali:</h1>', '3244807', '');
+    expect(detail.brand_title).toBe('');
+    expect(detail.brand_description).toBe('');
+    expect(detail.spontaneous_url).toBe('');
+  });
+
+  it('company_id nel link non combacia con lid richiesto: link scartato', () => {
+    const detail = parseCompanyDetailFromHtml(BANDA_CON_BOTTONE, '9999999', 'altra-azienda');
+    expect(detail.spontaneous_url).toBe('');
+  });
 });
 
 describe('servedCompanyId — la pagina dichiara chi ha servito davvero', () => {
