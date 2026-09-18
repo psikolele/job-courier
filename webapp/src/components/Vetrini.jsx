@@ -206,44 +206,50 @@ const Vetrini = () => {
                         the grid can't help but leave stranded, since the roster count
                         changes daily and never lines up with every breakpoint's column
                         count) into a deliberate CTA instead of an accident. Spans
-                        exactly the columns the last row has left (a full row of its
-                        own when the count divides evenly), so it shares that row's
-                        grid track and inherits the exact same stretched height as the
-                        square tiles — which run a hair taller than their own width
-                        once their logo/label content is laid out, so a fixed aspect
-                        ratio here would always be a few px short. */}
+                        exactly the columns the last row has left — a full row of its
+                        own when the count divides evenly.
+
+                        Two different shapes depending on which of those it is (client,
+                        18/09): sharing a row with real tiles, it inherits their grid-
+                        stretched height like any other cell here — no explicit height
+                        needed, grid does that for free. Alone across the full row it
+                        used to ALSO match the square tiles' height (a talker box the
+                        client found oversized and inelegant for a single line of text);
+                        now it gets its own short fixed height instead. */}
                     <motion.div
                         key="cta"
                         initial={{ opacity: 0, y: 12 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        whileHover={{ y: -3 }}
                         transition={{ delay: companies.length * 0.03 }}
                         style={{
                             gridColumn: `span ${cols - (companies.length % cols)}`,
-                            // Only needed when the CTA has no row-mate to stretch
-                            // against (see comment above); harmless otherwise since
-                            // grid stretch already produces this same value.
-                            ...(companies.length % cols === 0 && tileHeight ? { height: tileHeight } : {})
+                            ...(companies.length % cols === 0 ? { height: 72 } : {})
                         }}
                     >
                         <Link
                             to={lp("/aziende-che-assumono")}
-                            className="group relative flex flex-row items-center justify-center gap-3 w-full h-full p-6 transition-colors duration-200"
+                            className="group relative flex flex-row items-center justify-center gap-3 w-full h-full p-6 transition-shadow duration-300 ease-out shadow-[0_0_0_rgba(5,11,43,0)] hover:shadow-[0_16px_28px_-12px_rgba(5,11,43,0.45)]"
                             style={{ background: N }}
                         >
-                            <span style={{
-                                fontFamily: brand,
-                                fontWeight: 700,
-                                fontSize: 13,
-                                color: '#FFFFFF',
-                                textAlign: 'center',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.04em'
-                            }}>
+                            {/* color lives in className, not style: an inline `color` would
+                                out-specificity `group-hover:text-[...]` no matter what, and
+                                the hover would silently never fire. */}
+                            <span
+                                className="text-white transition-colors duration-300 group-hover:text-[var(--brand-fuchsia)]"
+                                style={{
+                                    fontFamily: brand,
+                                    fontWeight: 700,
+                                    fontSize: 13,
+                                    textAlign: 'center',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.04em'
+                                }}>
                                 {t('showcase.see_all')}
                             </span>
                             <span
-                                className="transition-transform duration-200 group-hover:translate-x-1"
+                                className="transition-transform duration-300 ease-out group-hover:translate-x-1.5"
                                 style={{ color: F, fontSize: 18, lineHeight: 1 }}
                             >→</span>
                         </Link>
