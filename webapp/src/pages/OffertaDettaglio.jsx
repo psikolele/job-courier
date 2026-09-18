@@ -12,6 +12,7 @@ import { saveReturnUrl } from '../hooks/useReturnUrl';
 import PageSeo from '../components/PageSeo';
 import { formatLocation } from '../utils/formatLocation';
 import useLocalizedPath from '../hooks/useLocalizedPath';
+import { companyNameHoverClass, companyLogoHoverClass } from '../components/CompanyLink';
 
 const N = 'var(--brand-navy)';
 const F = 'var(--brand-fuchsia)';
@@ -286,22 +287,29 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                     {/* RIGHT COLUMN: 35% Employer/Quick Info Sidebar */}
                     <div className="w-full lg:w-[35%] bg-white border border-[#050B2B]/6 p-8 rounded-none shadow-sm flex flex-col gap-6 sticky top-28">
                         
-                        {/* Company Logo and Name Block */}
-                        <div className="flex flex-col items-center text-center pb-6 border-b border-[#050B2B]/6">
-                            {job.company?.logo && (
-                                // Linkable to the company's own page when a slug exists (17/09,
-                                // Gabriele: logo was a dead end from an offer's detail). Reserved
-                                // employers carry no slug and stay a plain image.
-                                job.company?.slug ? (
-                                    <Link to={`/azienda/${job.company.slug}`} className="w-20 h-20 border border-[#050B2B]/10 p-2 flex items-center justify-center rounded-none bg-slate-50 mb-4 overflow-hidden">
+                        {/* Company Logo and Name Block — name and logo are adjacent siblings
+                            here (nothing between them), so unlike the list card and the
+                            /offerte detail pane, one shared <Link> around both is safe and
+                            simplest instead of two synced ones (see CompanyLink.jsx). */}
+                        {job.company?.slug ? (
+                            <Link to={`/azienda/${job.company.slug}`} className="group flex flex-col items-center text-center pb-6 border-b border-[#050B2B]/6">
+                                {job.company?.logo && (
+                                    <div className={`w-20 h-20 border border-[#050B2B]/10 p-2 flex items-center justify-center rounded-none bg-slate-50 mb-4 overflow-hidden ${companyLogoHoverClass}`}>
                                         <img
                                             src={job.company.logo}
-                                            alt={job.company?.name}
+                                            alt={job.company.name}
                                             className="max-w-full max-h-full object-contain"
                                             onError={(e) => { e.currentTarget.style.display = 'none'; }}
                                         />
-                                    </Link>
-                                ) : (
+                                    </div>
+                                )}
+                                <h3 className={companyNameHoverClass} style={{ fontFamily: brand, fontWeight: 700, fontSize: 16, color: N, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                                    {job.company?.name}
+                                </h3>
+                            </Link>
+                        ) : (
+                            <div className="flex flex-col items-center text-center pb-6 border-b border-[#050B2B]/6">
+                                {job.company?.logo && (
                                     <div className="w-20 h-20 border border-[#050B2B]/10 p-2 flex items-center justify-center rounded-none bg-slate-50 mb-4 overflow-hidden">
                                         <img
                                             src={job.company.logo}
@@ -320,12 +328,12 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                                             onError={(e) => { e.currentTarget.style.display = 'none'; }}
                                         />
                                     </div>
-                                )
-                            )}
-                            <h3 style={{ fontFamily: brand, fontWeight: 700, fontSize: 16, color: N, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                                {job.company?.name}
-                            </h3>
-                        </div>
+                                )}
+                                <h3 style={{ fontFamily: brand, fontWeight: 700, fontSize: 16, color: N, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                                    {job.company?.name}
+                                </h3>
+                            </div>
+                        )}
 
                         {/* Quick Information Panel */}
                         <div className="flex flex-col gap-4">
