@@ -178,6 +178,17 @@ export function companyProfilePath(id, slug, name = '') {
   return s ? `/${LANG}/careers/${id}-${s}/profile` : `/${LANG}/careers/company/profile?uiid=${id}`;
 }
 
+/**
+ * Resolves a possibly root-relative Arca24 path (or an already-absolute URL, which a
+ * base argument never overrides per the URL spec) against `ARCA24_HOST`. One helper
+ * instead of four near-identical `new URL(href, ARCA24_HOST)` calls scattered through
+ * this file, each free to call `.toString()` or read a query param off the result as
+ * it needs.
+ */
+function resolveArca24Url(href) {
+  return new URL(href, ARCA24_HOST);
+}
+
 export function companyLogo(id, companyName = '') {
   if (!id) return fallbackLogo(companyName);
   return `${ARCA24_HOST}/custom_visojobcourier/media/logo/logo_company_${id}.jpg`;
@@ -202,7 +213,7 @@ export function parseJobsFromHtml(html, offset = 0) {
     if (!title || !href) return;
 
     const id = (href.match(/\/jobad\/(\d+)/) || [])[1] || null;
-    const link = new URL(href, `${ARCA24_HOST}/`).toString();
+    const link = resolveArca24Url(href).toString();
 
     const $companyLink = findCompanyLink($, $el);
     const companyName = ($companyLink ? $companyLink.text() : '').replace(/\s+/g, ' ').trim() || 'Azienda Riservata';
@@ -335,7 +346,7 @@ export function parseJobDetailFromHtml(html, id) {
   let externalTarget = null;
   if (externalHref) {
     try {
-      const target = new URL(externalHref, ARCA24_HOST).searchParams.get('redirect');
+      const target = resolveArca24Url(externalHref).searchParams.get('redirect');
       if (target) externalTarget = decodeURIComponent(target);
     } catch { externalTarget = null; }
   }
@@ -671,7 +682,7 @@ export function parseCompaniesFromHtml(html) {
       slug: slug || slugify(name),
       logo: companyLogo(id, name),
       jobs_count,
-      jobroom_url: new URL(($link && $link.attr('href')) || '', `${ARCA24_HOST}/`).toString(),
+      jobroom_url: resolveArca24Url(($link && $link.attr('href')) || '').toString(),
     });
   });
 
@@ -1207,7 +1218,7 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
   const spontaneousHref = findExternalApplyCompanyHref(html, $, id);
   if (spontaneousHref) {
     try {
-      spontaneous_url = new URL(spontaneousHref, ARCA24_HOST).toString();
+      spontaneous_url = resolveArca24Url(spontaneousHref).toString();
     } catch (err) {
       console.warn(`[SPONTANEOUS-URL-PARSE-FAILED] id=${id} href=${spontaneousHref}: ${err.message}`);
     }

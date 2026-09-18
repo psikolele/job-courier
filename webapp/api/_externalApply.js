@@ -32,6 +32,24 @@ function parametro(url, nome) {
   }
 }
 
+/**
+ * Of the candidate action URLs a JSON payload exposed, picks the one whose id param
+ * (`paramName`) matches `id` — or, when nothing is given to disambiguate by (no `id`,
+ * or the payload never names ids at all), the sole/first candidate. The payload names
+ * its entries and none of them is ours: every match belongs to something else (a
+ * related ad, another employer), so `''` is returned rather than handing back
+ * someone else's link. Shared by `findExternalApplyHref` (`job_post_id`) and
+ * `findExternalApplyCompanyHref` (`company_id`).
+ */
+function pickByIdParam(candidates, paramName, id) {
+  if (id !== undefined && id !== null && String(id) !== '') {
+    const mio = candidates.find((u) => parametro(u, paramName) === String(id));
+    if (mio) return mio;
+    if (candidates.some((u) => parametro(u, paramName) !== null)) return '';
+  }
+  return candidates[0];
+}
+
 export function findExternalApplyHref(html, $, id) {
   const anchor = $ ? $('a[href*="externalLink.php"]').first() : null;
   const fromAnchor = anchor && anchor.length > 0 ? anchor.attr('href') : '';
@@ -46,15 +64,7 @@ export function findExternalApplyHref(html, $, id) {
     .map((u) => u.replace(/&amp;/gi, '&'));
   if (trovati.length === 0) return '';
 
-  if (id !== undefined && id !== null && String(id) !== '') {
-    const mio = trovati.find((u) => parametro(u, 'job_post_id') === String(id));
-    if (mio) return mio;
-    // The payload names its ads and none of them is this one: every match belongs
-    // to a related ad, so there is nothing here to send this candidate to.
-    if (trovati.some((u) => parametro(u, 'job_post_id') !== null)) return '';
-  }
-
-  return trovati[0];
+  return pickByIdParam(trovati, 'job_post_id', id);
 }
 
 /**
@@ -76,11 +86,5 @@ export function findExternalApplyCompanyHref(html, $, id) {
     .map((u) => u.replace(/&amp;/gi, '&'));
   if (trovati.length === 0) return '';
 
-  if (id !== undefined && id !== null && String(id) !== '') {
-    const mio = trovati.find((u) => parametro(u, 'company_id') === String(id));
-    if (mio) return mio;
-    if (trovati.some((u) => parametro(u, 'company_id') !== null)) return '';
-  }
-
-  return trovati[0];
+  return pickByIdParam(trovati, 'company_id', id);
 }
