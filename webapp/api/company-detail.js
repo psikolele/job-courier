@@ -2,6 +2,19 @@ import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import { parseJobsFromHtml } from './jobs.js';
 import { isArca24Enabled, fetchCompanyDetail as fetchArca24CompanyDetail } from './_arca24.js';
+import { overrides } from './_company-overrides.js';
+
+// Gap-fills brand_description/website from the hand-written override file only
+// where the real value is empty — never replaces a real Arca24 (or legacy) value.
+function applyOverrides(detail) {
+  const override = overrides[String(detail.id)];
+  if (!override) return detail;
+  return {
+    ...detail,
+    brand_description: detail.brand_description || override.description || '',
+    website: detail.website || override.website || '',
+  };
+}
 
 const MAX_RETRIES = 3;
 const MIN_VALID_LENGTH = 2000;
@@ -146,7 +159,8 @@ export default async function handler(req, res) {
 
   try {
     if (await isArca24Enabled()) {
-      res.status(200).json(await fetchArca24CompanyDetail(String(id), slug || '', { verifyLogos: true, patient: true }));
+      const detail = await fetchArca24CompanyDetail(String(id), slug || '', { verifyLogos: true, patient: true });
+      res.status(200).json(applyOverrides(detail));
       return;
     }
 
@@ -159,7 +173,7 @@ export default async function handler(req, res) {
     }
 
     const detail = parseCompanyDetailFromHtml(html, id, slug || '');
-    res.status(200).json(detail);
+    res.status(200).json(applyOverrides(detail));
   } catch (error) {
     console.error('Error fetching company detail:', error);
     res.setHeader('Cache-Control', 'no-store');
