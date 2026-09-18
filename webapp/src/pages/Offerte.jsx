@@ -574,8 +574,11 @@ const Offerte = ({ setShowLoginModal }) => {
                                                 }}
                                                 whileHover={{ backgroundColor: 'var(--brand-gray-light)' }}
                                             >
-                                                {/* Title + logo */}
-                                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 10 }}>
+                                                {/* Title + logo — `group` sits here, not on the name row below,
+                                                    so the logo (a sibling of this whole block, not a descendant
+                                                    of the name row) still shares the hover cue: CSS `:hover`
+                                                    bubbles to every ancestor, including this shared one. */}
+                                                <div className="group" style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 10 }}>
                                                     <div style={{ flex: 1, minWidth: 0 }}>
                                                         <h3 style={{
                                                             fontFamily: brand, fontWeight: 700, fontSize: 14,
@@ -583,7 +586,23 @@ const Offerte = ({ setShowLoginModal }) => {
                                                             letterSpacing: '-0.01em', marginBottom: 5
                                                         }}>{job.title}</h3>
                                                         <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-                                                            <span style={{ fontFamily: body, fontSize: 12, color: GM }}>{job.company?.name || 'Azienda Riservata'}</span>
+                                                            {job.company?.slug ? (
+                                                                // The card itself is an <a> (see the comment above it) — a
+                                                                // real nested <Link> would be invalid HTML, so this is a
+                                                                // click-to-navigate span instead, not a literal anchor.
+                                                                <span
+                                                                    role="link"
+                                                                    tabIndex={0}
+                                                                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); navigate(`/azienda/${job.company.slug}`); }}
+                                                                    onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); navigate(`/azienda/${job.company.slug}`); } }}
+                                                                    className={companyNameHoverClass}
+                                                                    style={{ fontFamily: body, fontSize: 12, color: GM, cursor: 'pointer' }}
+                                                                >
+                                                                    {job.company.name}
+                                                                </span>
+                                                            ) : (
+                                                                <span style={{ fontFamily: body, fontSize: 12, color: GM }}>{job.company?.name || 'Azienda Riservata'}</span>
+                                                            )}
                                                             {published.date && (
                                                                 <>
                                                                     <span style={{ color: 'rgba(139,143,168,0.4)', fontSize: 12 }}>·</span>
@@ -603,12 +622,30 @@ const Offerte = ({ setShowLoginModal }) => {
                                                         </div>
                                                     </div>
                                                     {job.company?.logo && (
-                                                        <img
-                                                            src={job.company.logo}
-                                                            alt={job.company?.name}
-                                                            onError={e => { e.currentTarget.style.display = 'none'; }}
-                                                            style={{ width: 48, height: 48, objectFit: 'contain', flexShrink: 0, borderRadius: 6, background: '#f8f8f8', padding: 3 }}
-                                                        />
+                                                        job.company?.slug ? (
+                                                            <span
+                                                                role="link"
+                                                                tabIndex={0}
+                                                                onClick={(e) => { e.preventDefault(); e.stopPropagation(); navigate(`/azienda/${job.company.slug}`); }}
+                                                                onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); navigate(`/azienda/${job.company.slug}`); } }}
+                                                                className={companyLogoHoverClass}
+                                                                style={{ flexShrink: 0, cursor: 'pointer', display: 'inline-flex' }}
+                                                            >
+                                                                <img
+                                                                    src={job.company.logo}
+                                                                    alt={job.company.name}
+                                                                    onError={e => { e.currentTarget.style.display = 'none'; }}
+                                                                    style={{ width: 48, height: 48, objectFit: 'contain', borderRadius: 6, background: '#f8f8f8', padding: 3 }}
+                                                                />
+                                                            </span>
+                                                        ) : (
+                                                            <img
+                                                                src={job.company.logo}
+                                                                alt={job.company?.name}
+                                                                onError={e => { e.currentTarget.style.display = 'none'; }}
+                                                                style={{ width: 48, height: 48, objectFit: 'contain', flexShrink: 0, borderRadius: 6, background: '#f8f8f8', padding: 3 }}
+                                                            />
+                                                        )
                                                     )}
                                                 </div>
                                                 {/* Tags */}
