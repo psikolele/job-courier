@@ -208,7 +208,14 @@ const AdSlot = ({ name, variant = 'banner' }) => {
                     // we deliberately did not create: their whole purpose is to
                     // take on the surrounding cards' look.
                     data-ad-format="auto"
-                    data-full-width-responsive="true"
+                    // 'true' is Google's own mobile override: it deliberately
+                    // ignores the parent element's width and stretches the
+                    // creative to the full viewport instead — the opposite of
+                    // what every wrapper here (`max-w-[520px]`, the card column)
+                    // is trying to enforce. 'false' is what makes the unit size
+                    // itself from the container, which is the only thing this
+                    // component was ever built to do.
+                    data-full-width-responsive="false"
                 />
             )}
         </div>
