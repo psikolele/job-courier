@@ -50,3 +50,31 @@ Decisions and rejected alternatives, one entry per design fork. Append-only.
 ### Rejected: extending this slice to mobile
 - **Considered because:** consistency — why would mobile not also get a scroll improvement.
 - **Rejected because:** Gabriele's request was specific to the two-column desktop layout; mobile already uses a different pattern (tab switch between list and detail, `isMobile` branch) that the request never addressed. Out of scope until asked for.
+
+---
+
+## 2026-09-19 — Company page: linkable name+logo, external site link, curated description fallback
+
+**Context:** Gabriele, reviewing production screenshots (job listing card, job detail sidebar, split-view detail pane), asked why the company name text isn't clickable anywhere — only the logo is (17/09 fix) — and proposed going further: show the company's own external website, and a short description "presa dal sito e rielaborata" when we don't have one. This is the "unify company description" item explicitly deferred out of the 2026-09-17 entry above, now unblocked and picked up on its own. Aligned via `/ae-align` before any code.
+
+**Shared design concept:** The company page is where everything we know about an employer collects (ads, "Lavora con noi" band, now also the external site) — and it becomes reachable from every place that today shows only the logo (name+logo merged into one link, one shared hover treatment). Any extra content (site, description) comes only from data Arca24 already provides when it provides it; where it doesn't, the field stays empty until hand-written in a dedicated session — never generated automatically, at build time or request time.
+
+**Budgeted resource:** company-page reliability/latency. Tiebreaker: whenever a choice trades "more content" against "one more runtime fetch/dependency," zero-runtime-fetch wins, even if that means showing less.
+
+**Constraints:** no recurring paid API for text generation; `_arca24.js` touched only to read the already-parsed-but-unused `website` field, nothing else; manual overrides live in a new static `webapp/api/_company-overrides.json` keyed by company `id`, read and merged only where the real field is empty — never overrides real data.
+
+### Rejected: fetch the company's external site at request time to build the description live
+- **Considered because:** it's the most literal reading of "presa dal sito e rielaborata" — go get it fresh each time.
+- **Rejected because:** reliability/latency is the budgeted resource here; a slow or down third-party site would degrade or break a page this session explicitly does not want fragile. Same category of risk this project has already been burned by more than once with upstream scraping (see `arca24-company-index.md`, `jobroom-feed-resilience.md`).
+
+### Rejected: auto-generate a description for every company missing `brand_description`, via a paid rewriting API
+- **Considered because:** it would cover all ~34 companies uniformly with zero manual work.
+- **Rejected because:** explicit constraint against recurring paid API cost, and against ever showing invented text about a paying client company. Falls back to "empty until hand-written" instead — slower coverage, zero fabrication risk.
+
+### Rejected: keep waiting for Laura to supply real per-company descriptions
+- **Considered because:** it was the original plan (see the 2026-09-17 deferral above and `docs/meeting-gabriele-2026-09-17.md`).
+- **Rejected because:** blocked for months with no resolution in sight; the `website` field and real `brand_description` (fixed 2026-09-18) already cover some companies for free, and a manual-override file covers the rest without an external dependency on Laura's timeline.
+
+### Deferred, not rejected: vetrina tiles (`Vetrini.jsx`) and a broader company-page redesign
+- **Considered because:** raised as adjacent ideas during alignment, not ruled out.
+- **Deferred because:** neither was part of the concrete ask (clickable name+logo, external site, description fallback); no shared code path or budgeted resource established for either yet. Revisit as its own aligned slice if requested.
