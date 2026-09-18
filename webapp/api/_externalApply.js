@@ -26,7 +26,7 @@
  */
 function parametro(url, nome) {
   try {
-    return new URL(url).searchParams.get(nome);
+    return new URL(url, 'https://x.invalid').searchParams.get(nome);
   } catch {
     return null;
   }
@@ -52,6 +52,34 @@ export function findExternalApplyHref(html, $, id) {
     // The payload names its ads and none of them is this one: every match belongs
     // to a related ad, so there is nothing here to send this candidate to.
     if (trovati.some((u) => parametro(u, 'job_post_id') !== null)) return '';
+  }
+
+  return trovati[0];
+}
+
+/**
+ * The apply link of the "Candidatura spontanea" button on a company profile page.
+ *
+ * Same problem as `findExternalApplyHref`, different endpoint and shape: the
+ * company page's button action carries its target under `link` as a root-relative
+ * path (`/job/externalLinkCompany.php?redirect=...`), not under `url` as an
+ * absolute one. `id` here is the company id (`company_id` in the payload), not a
+ * job id — a mismatch means the payload identified its own company and it isn't
+ * the one asked for, so nothing is returned rather than another employer's link.
+ */
+export function findExternalApplyCompanyHref(html, $, id) {
+  const anchor = $ ? $('a[href*="externalLinkCompany.php"]').first() : null;
+  const fromAnchor = anchor && anchor.length > 0 ? anchor.attr('href') : '';
+  if (fromAnchor) return fromAnchor;
+
+  const trovati = (String(html || '').match(/\/job\/externalLinkCompany\.php\?[^"'\s\\]*/gi) || [])
+    .map((u) => u.replace(/&amp;/gi, '&'));
+  if (trovati.length === 0) return '';
+
+  if (id !== undefined && id !== null && String(id) !== '') {
+    const mio = trovati.find((u) => parametro(u, 'company_id') === String(id));
+    if (mio) return mio;
+    if (trovati.some((u) => parametro(u, 'company_id') !== null)) return '';
   }
 
   return trovati[0];

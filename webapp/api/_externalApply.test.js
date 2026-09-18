@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import * as cheerio from 'cheerio';
-import { findExternalApplyHref } from './_externalApply.js';
+import { findExternalApplyHref, findExternalApplyCompanyHref } from './_externalApply.js';
 
 /**
  * The payload below is the shape the `viso` platform actually served for the
@@ -73,5 +73,47 @@ describe('findExternalApplyHref — annunci correlati sulla stessa pagina', () =
     it('senza id resta il comportamento di prima', () => {
         const href = findExternalApplyHref(PAGINA_CON_CORRELATI, cheerio.load(PAGINA_CON_CORRELATI));
         expect(href).toContain('externalLink.php');
+    });
+});
+
+describe('findExternalApplyCompanyHref', () => {
+    // Trimmed copy of the real payload served for Adecco (id 3244683) on 18.09.2026 —
+    // the company-page apply button is built the same way the job-ad one is (see
+    // findExternalApplyHref above): from JSON, not from a static anchor. Unlike the
+    // job-ad payload, the link here is root-relative (no scheme/host) and lives under
+    // the key `link`, not `url`.
+    const PAGINA_AZIENDA_VISO = `<!doctype html><html><body><div id="app"></div><script>
+window.__DATA__ = {"actions":[{"label":"Annunci dell'azienda","action":{"link":"/it/careers/3244683-adecco/jobs"}},
+{"icon":"arrow-up-right-from-square","label":"Candidatura spontanea","fluo":true,"action":{"link":"/job/externalLinkCompany.php?redirect=https%3A%2F%2Fwww.adecco.com%2Fit-ch%2Fcandidatura-spontanea%3Futm_source%3Dvisojobcourier&company_name=adecco&company_id=3244683&language=it_IT"}}]};
+</script></body></html>`;
+
+    const PAGINA_SENZA_BOTTONE = `<!doctype html><html><body><div id="app"></div><script>
+window.__DATA__ = {"actions":[{"label":"Annunci dell'azienda","action":{"link":"/it/careers/3244683-adecco/jobs"}}]};
+</script></body></html>`;
+
+    const trova = (html, id) => findExternalApplyCompanyHref(html, cheerio.load(html), id);
+
+    it('legge il link dal payload JSON della pagina azienda', () => {
+        const href = trova(PAGINA_AZIENDA_VISO, '3244683');
+        expect(href).toContain('externalLinkCompany.php');
+        const target = new URL(href, 'https://jobroom.jobcourier.ch').searchParams.get('redirect');
+        expect(decodeURIComponent(target)).toBe('https://www.adecco.com/it-ch/candidatura-spontanea?utm_source=visojobcourier');
+    });
+
+    it('non spedisce il candidato da un\'altra azienda quando company_id non combacia', () => {
+        expect(trova(PAGINA_AZIENDA_VISO, '9999999')).toBe('');
+    });
+
+    it('senza id resta il comportamento di sempre', () => {
+        expect(trova(PAGINA_AZIENDA_VISO)).toContain('externalLinkCompany.php');
+    });
+
+    it('nessun bottone candidatura spontanea sulla pagina: nessun link', () => {
+        expect(trova(PAGINA_SENZA_BOTTONE, '3244683')).toBe('');
+    });
+
+    it('regge una pagina vuota o assente', () => {
+        expect(findExternalApplyCompanyHref('', null)).toBe('');
+        expect(findExternalApplyCompanyHref(null, null)).toBe('');
     });
 });
