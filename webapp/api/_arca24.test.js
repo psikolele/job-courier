@@ -373,6 +373,37 @@ describe('parseCompanyDetailFromHtml', () => {
     expect(missi).toHaveLength(0);
     warn.mockRestore();
   });
+
+  // Il "Sito web" della banda è un'ancora piana, non un'azione JSON come il bottone —
+  // verificato dal vivo (18.09.2026) su .../3244683-adecco/profile: due <span> fratelli
+  // dentro lo stesso <p>, "Sito web" in un span.md-body-1 senza altre classi (da non
+  // confondere con lo span.md-body-1.biggerfont della descrizione) e il link vero e
+  // proprio nello span.md-body-2 accanto.
+  const BANDA_CON_SITO_WEB = `
+    <h1>Adecco Annunci totali: 4317</h1>
+    <div itemprop="hiringOrganization"><h2 class="md-title">Adecco</h2></div>
+    <h2 class="alignCenter nomargin md-title">Lavora con noi</h2>
+    <p class="alignCenter"><span class="md-body-1 biggerfont">Vuoi entrare a far parte del nostro team?</span></p>
+    <p><span class="md-body-1"><span>Sito web </span></span><span class="md-body-2"><a href="https://www.adecco.com/it-ch/candidatura-spontanea" target="_blank"> www.adecco.com/it-ch/candidatura-spontanea</a></span></p>`;
+
+  it('estrae il sito web reale della banda quando ce', () => {
+    const detail = parseCompanyDetailFromHtml(BANDA_CON_SITO_WEB, '3244683', 'adecco');
+    expect(detail.website).toBe('https://www.adecco.com/it-ch/candidatura-spontanea');
+  });
+
+  it('nessuna riga Sito web: website resta vuoto, nessun errore', () => {
+    const detail = parseCompanyDetailFromHtml(BANDA_SENZA_BOTTONE, '3244683', 'adecco');
+    expect(detail.website).toBe('');
+  });
+
+  it('non confonde il paragrafo descrizione (md-body-1.biggerfont) con Sito web', () => {
+    // BANDA_CON_SITO_WEB porta ENTRAMBI gli span.md-body-1 sulla pagina: quello della
+    // descrizione (con .biggerfont) e quello di "Sito web" (senza). Il filtro per testo
+    // esatto deve prendere il secondo, non il primo per posizione nel documento.
+    const detail = parseCompanyDetailFromHtml(BANDA_CON_SITO_WEB, '3244683', 'adecco');
+    expect(detail.brand_description).toContain('Vuoi entrare a far parte del nostro team');
+    expect(detail.website).not.toContain('Vuoi entrare');
+  });
 });
 
 describe('servedCompanyId — la pagina dichiara chi ha servito davvero', () => {

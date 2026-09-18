@@ -1199,6 +1199,17 @@ function brandBandTitle($) {
     .first().text().replace(/\s+/g, ' ').trim();
 }
 
+// The band's "Sito web" line is a plain anchor, not a JSON-payload action like the
+// spontaneous-application button — verified live 19.09.2026. `span.md-body-1` alone
+// isn't unique (the description paragraph is `.md-body-1.biggerfont`, same base
+// class), so this filters by the label's exact text instead of the class, then reads
+// the href off the sibling `.md-body-2` span the real markup always pairs it with.
+function brandBandWebsite($) {
+  const label = $('span.md-body-1').filter((_, el) => $(el).text().trim() === 'Sito web').first();
+  if (label.length === 0) return '';
+  return label.next('.md-body-2').find('a').first().attr('href') || '';
+}
+
 export function parseCompanyDetailFromHtml(html, id, slug) {
   const $ = cheerio.load(html);
 
@@ -1212,6 +1223,7 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
 
   const brand_title = brandBandTitle($);
   const brand_description = $('.md-body-1.biggerfont').first().text().replace(/\s+/g, ' ').trim();
+  const website = brandBandWebsite($);
 
   // The "Candidatura spontanea" button has no static href — see findExternalApplyCompanyHref.
   let spontaneous_url = '';
@@ -1242,7 +1254,7 @@ export function parseCompanyDetailFromHtml(html, id, slug) {
     sector: '',
     brand_title,
     brand_description,
-    website: '',
+    website,
     spontaneous_url,
     // Same reason the fetch above stopped using it: `company/profile?uiid=` lands on an
     // arbitrary employer, so this link — the "vai al profilo" the visitor clicks — has to
