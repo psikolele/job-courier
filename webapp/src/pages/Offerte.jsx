@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
+import { companyNameHoverClass, companyLogoHoverClass } from '../components/CompanyLink';
 import { MapPin, Briefcase, User, ChevronLeft, Calendar, Search, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useRegistrationWall from '../hooks/useRegistrationWall';
@@ -714,13 +715,23 @@ const Offerte = ({ setShowLoginModal }) => {
                                 {selectedJob ? (
                                     <>
                                         <div style={{ padding: '32px 36px', borderBottom: '1px solid rgba(5,11,43,0.07)' }}>
-                                            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                                            <div className="group flex flex-col md:flex-row md:items-start justify-between gap-6">
                                                 <div style={{ flex: 1 }}>
                                                     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
                                                         <span style={{ width: 8, height: 8, borderRadius: '50%', background: F, display: 'inline-block' }} />
-                                                        <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
-                                                            {selectedJob.company?.name || 'Azienda Riservata'}
-                                                        </span>
+                                                        {selectedJob.company?.slug ? (
+                                                            <Link
+                                                                to={`/azienda/${selectedJob.company.slug}`}
+                                                                className={companyNameHoverClass}
+                                                                style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}
+                                                            >
+                                                                {selectedJob.company?.name || 'Azienda Riservata'}
+                                                            </Link>
+                                                        ) : (
+                                                            <span style={{ fontFamily: brand, fontWeight: 700, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: F }}>
+                                                                {selectedJob.company?.name || 'Azienda Riservata'}
+                                                            </span>
+                                                        )}
                                                     </div>
                                                     {/* h2: the page's own heading is the listing title above.
                                                         This pane is the selected offer within it, and the offer
@@ -777,6 +788,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                     selectedJob.company?.slug ? (
                                                         <Link
                                                             to={`/azienda/${selectedJob.company.slug}`}
+                                                            className={companyLogoHoverClass}
                                                             style={{
                                                                 width: 72, height: 72,
                                                                 background: '#FFFFFF',
