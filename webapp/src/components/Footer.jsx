@@ -119,7 +119,7 @@ const Footer = ({ setShowLoginModal }) => {
     const body = 'var(--font-body)';
 
     const socials = [
-        { icon: <IconLinkedIn />, href: 'https://www.linkedin.com/company/jobcourier-ch', label: 'LinkedIn' },
+        { icon: <IconLinkedIn />, href: 'https://www.linkedin.com/company/jobcourier/', label: 'LinkedIn' },
         { icon: <IconInstagram />, href: 'https://www.instagram.com/job_courier/', label: 'Instagram' },
         { icon: <IconFacebook />, href: 'https://www.facebook.com/JobCourier.ch', label: 'Facebook' },
         { icon: <IconRSS />, href: '#rss', label: 'RSS Feed', onClick: (e) => { e.preventDefault(); setShowRssModal(true); } },
