@@ -251,8 +251,12 @@ const AziendaDettaglio = () => {
                     </div>
                 </div>
 
-                {/* Lavora con noi */}
-                {(brand_title || brand_description) && (
+                {/* Lavora con noi — website and spontaneous_url are both in the gate:
+                    an override that only sets a website (no brand_title/description)
+                    must still render, and so must the "Candidatura spontanea" button
+                    when the band selector misses ([BRAND-BAND-SELECTOR-MISS]) but the
+                    JSON-payload apply action was still found. */}
+                {(brand_title || brand_description || website || spontaneous_url) && (
                     <div className="mb-10" style={{ background: '#FFFFFF', padding: '32px 36px' }}>
                         <SectionLabel>{brand_title || 'Lavora con noi'}</SectionLabel>
                         {brand_description && (

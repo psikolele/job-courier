@@ -11,6 +11,7 @@ import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import { sanitizeHtml } from './_sanitize.js';
 import { findExternalApplyHref, findExternalApplyCompanyHref } from './_externalApply.js';
+import { normalizeExternalHref } from './_url.js';
 import { names as orphanNames, generatedAt as orphanGeneratedAt } from './_orphan-employers-snapshot.js';
 
 // Confirmed by Laura on 29.07: production keeps the jobroom.jobcourier.ch hostname and
@@ -1207,7 +1208,8 @@ function brandBandTitle($) {
 function brandBandWebsite($) {
   const label = $('span.md-body-1').filter((_, el) => $(el).text().trim() === 'Sito web').first();
   if (label.length === 0) return '';
-  return label.next('.md-body-2').find('a').first().attr('href') || '';
+  const href = label.next('.md-body-2').find('a').first().attr('href') || '';
+  return href ? normalizeExternalHref(href) : '';
 }
 
 export function parseCompanyDetailFromHtml(html, id, slug) {

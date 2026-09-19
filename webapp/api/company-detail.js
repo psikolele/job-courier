@@ -3,16 +3,19 @@ import * as cheerio from 'cheerio';
 import { parseJobsFromHtml } from './jobs.js';
 import { isArca24Enabled, fetchCompanyDetail as fetchArca24CompanyDetail } from './_arca24.js';
 import { overrides } from './_company-overrides.js';
+import { normalizeExternalHref } from './_url.js';
 
 // Gap-fills brand_description/website from the hand-written override file only
 // where the real value is empty — never replaces a real Arca24 (or legacy) value.
+// The override website is normalized the same way a scraped one would be, so a
+// hand-typed "www.example.com" doesn't resolve as a relative /azienda/ path.
 function applyOverrides(detail) {
   const override = overrides[String(detail.id)];
   if (!override) return detail;
   return {
     ...detail,
     brand_description: detail.brand_description || override.description || '',
-    website: detail.website || override.website || '',
+    website: detail.website || (override.website ? normalizeExternalHref(override.website) : ''),
   };
 }
 
@@ -112,7 +115,7 @@ function parseCompanyDetailFromHtml(html, id, slug) {
       const redirect = u.searchParams.get('redirect');
       if (redirect) {
         const target = decodeURIComponent(redirect);
-        website = /^https?:\/\//i.test(target) ? target : `https://${target}`;
+        website = normalizeExternalHref(target);
       }
     } catch (_) {}
   }

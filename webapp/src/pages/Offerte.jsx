@@ -96,6 +96,32 @@ const Offerte = ({ setShowLoginModal }) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
 
+    // The card these spans live inside is a real <a> and already guards its own
+    // onClick against modifier keys (see comment above it) so cmd/ctrl/shift-click
+    // opens a new tab instead of navigating in place. These spans have no href for
+    // the browser to act on, so that has to be replicated by hand or the modifier
+    // is silently swallowed. altKey is deliberately excluded — on a real link it
+    // triggers a download, which there is nothing to replicate here, so alt-click
+    // just falls through to a normal in-app navigation.
+    const openCompanyProfile = (e, slug) => {
+        e.stopPropagation();
+        const url = `/azienda/${slug}`;
+        if (e.metaKey || e.ctrlKey || e.shiftKey) {
+            e.preventDefault();
+            window.open(url, '_blank', 'noopener');
+            return;
+        }
+        e.preventDefault();
+        navigate(url);
+    };
+    // onClick never fires for the middle button — only onAuxClick does.
+    const openCompanyProfileOnMiddleClick = (e, slug) => {
+        if (e.button !== 1) return;
+        e.stopPropagation();
+        e.preventDefault();
+        window.open(`/azienda/${slug}`, '_blank', 'noopener');
+    };
+
 
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -593,7 +619,8 @@ const Offerte = ({ setShowLoginModal }) => {
                                                                 <span
                                                                     role="link"
                                                                     tabIndex={0}
-                                                                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); navigate(`/azienda/${job.company.slug}`); }}
+                                                                    onClick={(e) => openCompanyProfile(e, job.company.slug)}
+                                                                    onAuxClick={(e) => openCompanyProfileOnMiddleClick(e, job.company.slug)}
                                                                     onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); navigate(`/azienda/${job.company.slug}`); } }}
                                                                     className={companyNameHoverClass}
                                                                     style={{ fontFamily: body, fontSize: 12, color: GM, cursor: 'pointer' }}
@@ -626,7 +653,8 @@ const Offerte = ({ setShowLoginModal }) => {
                                                             <span
                                                                 role="link"
                                                                 tabIndex={0}
-                                                                onClick={(e) => { e.preventDefault(); e.stopPropagation(); navigate(`/azienda/${job.company.slug}`); }}
+                                                                onClick={(e) => openCompanyProfile(e, job.company.slug)}
+                                                                onAuxClick={(e) => openCompanyProfileOnMiddleClick(e, job.company.slug)}
                                                                 onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); navigate(`/azienda/${job.company.slug}`); } }}
                                                                 className={companyLogoHoverClass}
                                                                 style={{ flexShrink: 0, cursor: 'pointer', display: 'inline-flex' }}

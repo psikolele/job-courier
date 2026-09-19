@@ -379,30 +379,54 @@ describe('parseCompanyDetailFromHtml', () => {
   // dentro lo stesso <p>, "Sito web" in un span.md-body-1 senza altre classi (da non
   // confondere con lo span.md-body-1.biggerfont della descrizione) e il link vero e
   // proprio nello span.md-body-2 accanto.
+  // Il decoy "Telefono" è un secondo .md-body-1/.md-body-2 con testo ed href diversi,
+  // messo PRIMA della riga "Sito web" apposta: un'estrazione che ignorasse il filtro
+  // per testo esatto e prendesse il primo .md-body-1 con un .md-body-2 accanto
+  // restituirebbe il numero di telefono, non il sito — questi test lo scoprirebbero.
   const BANDA_CON_SITO_WEB = `
     <h1>Adecco Annunci totali: 4317</h1>
     <div itemprop="hiringOrganization"><h2 class="md-title">Adecco</h2></div>
     <h2 class="alignCenter nomargin md-title">Lavora con noi</h2>
     <p class="alignCenter"><span class="md-body-1 biggerfont">Vuoi entrare a far parte del nostro team?</span></p>
+    <p><span class="md-body-1"><span>Telefono </span></span><span class="md-body-2"><a href="tel:+41911234567">+41 91 123 45 67</a></span></p>
     <p><span class="md-body-1"><span>Sito web </span></span><span class="md-body-2"><a href="https://www.adecco.com/it-ch/candidatura-spontanea" target="_blank"> www.adecco.com/it-ch/candidatura-spontanea</a></span></p>`;
 
-  it('estrae il sito web reale della banda quando ce', () => {
+  const BANDA_SOLO_ALTRA_ETICHETTA = `
+    <h1>Adecco Annunci totali: 4317</h1>
+    <div itemprop="hiringOrganization"><h2 class="md-title">Adecco</h2></div>
+    <h2 class="alignCenter nomargin md-title">Lavora con noi</h2>
+    <p class="alignCenter"><span class="md-body-1 biggerfont">Vuoi entrare a far parte del nostro team?</span></p>
+    <p><span class="md-body-1"><span>Telefono </span></span><span class="md-body-2"><a href="tel:+41911234567">+41 91 123 45 67</a></span></p>`;
+
+  const BANDA_SITO_WEB_SENZA_SCHEMA = `
+    <h1>Adecco Annunci totali: 4317</h1>
+    <div itemprop="hiringOrganization"><h2 class="md-title">Adecco</h2></div>
+    <h2 class="alignCenter nomargin md-title">Lavora con noi</h2>
+    <p><span class="md-body-1"><span>Sito web </span></span><span class="md-body-2"><a href="www.adecco.com/it-ch/candidatura-spontanea"> www.adecco.com/it-ch/candidatura-spontanea</a></span></p>`;
+
+  it('estrae il sito web reale della banda quando ce, ignorando un altro .md-body-1/.md-body-2 precedente', () => {
     const detail = parseCompanyDetailFromHtml(BANDA_CON_SITO_WEB, '3244683', 'adecco');
     expect(detail.website).toBe('https://www.adecco.com/it-ch/candidatura-spontanea');
   });
 
-  it('nessuna riga Sito web: website resta vuoto, nessun errore', () => {
-    const detail = parseCompanyDetailFromHtml(BANDA_SENZA_BOTTONE, '3244683', 'adecco');
+  it('nessuna riga Sito web ma unaltra etichetta .md-body-1 presente: website resta vuoto, non prende laltro link', () => {
+    const detail = parseCompanyDetailFromHtml(BANDA_SOLO_ALTRA_ETICHETTA, '3244683', 'adecco');
     expect(detail.website).toBe('');
   });
 
-  it('non confonde il paragrafo descrizione (md-body-1.biggerfont) con Sito web', () => {
-    // BANDA_CON_SITO_WEB porta ENTRAMBI gli span.md-body-1 sulla pagina: quello della
-    // descrizione (con .biggerfont) e quello di "Sito web" (senza). Il filtro per testo
-    // esatto deve prendere il secondo, non il primo per posizione nel documento.
+  it('non confonde il paragrafo descrizione (md-body-1.biggerfont) ne laltra etichetta con Sito web', () => {
+    // BANDA_CON_SITO_WEB porta TRE span.md-body-1 sulla pagina: la descrizione
+    // (.biggerfont), il decoy "Telefono" e "Sito web". Il filtro per testo esatto deve
+    // prendere solo il terzo, non il primo per posizione ne il secondo per somiglianza.
     const detail = parseCompanyDetailFromHtml(BANDA_CON_SITO_WEB, '3244683', 'adecco');
     expect(detail.brand_description).toContain('Vuoi entrare a far parte del nostro team');
-    expect(detail.website).not.toContain('Vuoi entrare');
+    expect(detail.website).not.toContain('tel:');
+    expect(detail.website).not.toContain('41911234567');
+  });
+
+  it('normalizza uno href della banda senza schema (www...) aggiungendo https://', () => {
+    const detail = parseCompanyDetailFromHtml(BANDA_SITO_WEB_SENZA_SCHEMA, '3244683', 'adecco');
+    expect(detail.website).toBe('https://www.adecco.com/it-ch/candidatura-spontanea');
   });
 });
 
