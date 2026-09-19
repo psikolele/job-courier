@@ -356,6 +356,7 @@
     "loading": "Loading company profile",
     "spontaneous_application": "Spontaneous application",
     "visit_website": "Visit website",
+    "about_label": "The company",
     "active_listings": "Active listings",
     "no_active_jobs": "No active job offers for this company at the moment."
   },

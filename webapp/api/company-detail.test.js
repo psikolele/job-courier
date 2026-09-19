@@ -6,7 +6,7 @@ vi.mock('./_arca24.js', () => ({
 }));
 vi.mock('./_company-overrides.js', () => ({
   overrides: {
-    '999': { description: 'Descrizione di test', website: 'https://esempio-test.ch' },
+    '999': { about: 'Descrizione di test', website: 'https://esempio-test.ch' },
   },
 }));
 
@@ -31,24 +31,30 @@ describe('company-detail handler — merge degli override', () => {
     vi.mocked(fetchCompanyDetail).mockReset();
   });
 
-  it('usa il testo di override solo quando il dato reale e vuoto', async () => {
+  it('espone about dal file override anche se brand_description e gia pieno (boilerplate della banda)', async () => {
+    vi.mocked(fetchCompanyDetail).mockResolvedValue({
+      id: '999', name: 'Test SA', brand_description: 'Vuoi entrare a far parte del nostro team?', website: '', spontaneous_url: '', jobs: [],
+    });
+    const res = mockRes();
+    await handler({ method: 'GET', query: { id: '999', slug: 'test-sa' } }, res);
+    expect(res.body.about).toBe('Descrizione di test');
+    expect(res.body.brand_description).toBe('Vuoi entrare a far parte del nostro team?');
+  });
+
+  it('il website di override riempie solo un valore vuoto, mai uno reale', async () => {
     vi.mocked(fetchCompanyDetail).mockResolvedValue({
       id: '999', name: 'Test SA', brand_description: '', website: '', spontaneous_url: '', jobs: [],
     });
-    const res = mockRes();
-    await handler({ method: 'GET', query: { id: '999', slug: 'test-sa' } }, res);
-    expect(res.body.brand_description).toBe('Descrizione di test');
-    expect(res.body.website).toBe('https://esempio-test.ch');
-  });
+    const empty = mockRes();
+    await handler({ method: 'GET', query: { id: '999', slug: 'test-sa' } }, empty);
+    expect(empty.body.website).toBe('https://esempio-test.ch');
 
-  it('non sovrascrive un valore reale con loverride', async () => {
     vi.mocked(fetchCompanyDetail).mockResolvedValue({
-      id: '999', name: 'Test SA', brand_description: 'Testo vero già presente', website: '', spontaneous_url: '', jobs: [],
+      id: '999', name: 'Test SA', brand_description: '', website: 'https://vero.ch', spontaneous_url: '', jobs: [],
     });
-    const res = mockRes();
-    await handler({ method: 'GET', query: { id: '999', slug: 'test-sa' } }, res);
-    expect(res.body.brand_description).toBe('Testo vero già presente');
-    expect(res.body.website).toBe('https://esempio-test.ch');
+    const real = mockRes();
+    await handler({ method: 'GET', query: { id: '999', slug: 'test-sa' } }, real);
+    expect(real.body.website).toBe('https://vero.ch');
   });
 
   it('azienda senza voce di override: risposta invariata', async () => {
@@ -57,7 +63,7 @@ describe('company-detail handler — merge degli override', () => {
     });
     const res = mockRes();
     await handler({ method: 'GET', query: { id: '1', slug: 'altra-sa' } }, res);
-    expect(res.body.brand_description).toBe('');
+    expect(res.body.about).toBe('');
     expect(res.body.website).toBe('');
   });
 });

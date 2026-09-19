@@ -190,7 +190,7 @@ const AziendaDettaglio = () => {
         );
     }
 
-    const { name, logo, location, sector, brand_title, brand_description, website, spontaneous_url, jobs } = detail;
+    const { name, logo, location, sector, brand_title, brand_description, about, website, spontaneous_url, jobs } = detail;
     const hasJobs = Array.isArray(jobs) && jobs.length > 0;
 
     return (
@@ -252,6 +252,15 @@ const AziendaDettaglio = () => {
                         </div>
                     </div>
                 </div>
+
+                {about && (
+                    <div className="mb-10" style={{ background: '#FFFFFF', padding: '32px 36px' }}>
+                        <SectionLabel>{t('company.about_label')}</SectionLabel>
+                        <p style={{ fontFamily: body, fontSize: 14, color: N, lineHeight: 1.7, opacity: 0.85 }}>
+                            {about}
+                        </p>
+                    </div>
+                )}
 
                 {/* Lavora con noi — website and spontaneous_url are both in the gate:
                     an override that only sets a website (no brand_title/description)

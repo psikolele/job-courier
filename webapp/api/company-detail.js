@@ -5,16 +5,16 @@ import { isArca24Enabled, fetchCompanyDetail as fetchArca24CompanyDetail } from 
 import { overrides } from './_company-overrides.js';
 import { normalizeExternalHref } from './_url.js';
 
-// Gap-fills brand_description/website from the hand-written override file only
-// where the real value is empty — never replaces a real Arca24 (or legacy) value.
-// The override website is normalized the same way a scraped one would be, so a
-// hand-typed "www.example.com" doesn't resolve as a relative /azienda/ path.
+// `about` is a separate field from brand_description: upstream's band text is the same
+// generic "work with us" boilerplate for every employer, so it is never a company
+// description and an override can't be gated on it being empty.
+// The override website gap-fills only an empty value and is normalized like a scraped
+// one, so a hand-typed "www.example.com" doesn't resolve as a relative /azienda/ path.
 function applyOverrides(detail) {
-  const override = overrides[String(detail.id)];
-  if (!override) return detail;
+  const override = overrides[String(detail.id)] || {};
   return {
     ...detail,
-    brand_description: detail.brand_description || override.description || '',
+    about: override.about || '',
     website: detail.website || (override.website ? normalizeExternalHref(override.website) : ''),
   };
 }

@@ -78,3 +78,15 @@ Decisions and rejected alternatives, one entry per design fork. Append-only.
 ### Deferred, not rejected: vetrina tiles (`Vetrini.jsx`) and a broader company-page redesign
 - **Considered because:** raised as adjacent ideas during alignment, not ruled out.
 - **Deferred because:** neither was part of the concrete ask (clickable name+logo, external site, description fallback); no shared code path or budgeted resource established for either yet. Revisit as its own aligned slice if requested.
+
+---
+
+## 2026-09-19 (later) — Company descriptions: `about` field, AI-drafted, human-reviewed, static
+
+**Context:** production measurement showed the Arca24 band text is one identical 169-char boilerplate for all 34 employers: 0/34 real descriptions. The override `description` path could never fire (it was gated on `brand_description` being empty, and it never is).
+
+**Decision (user-approved 2026-09-19):** loosens the "never auto-generated" rule above in one bounded way — descriptions are *drafted offline once* by Claude from each company's own public site (rewritten, facts only from that site, no superlatives), *reviewed by a person*, then committed as static text in `webapp/api/_company-overrides.js` (`about`, 28 companies with a site). Still no runtime fetch, no recurring paid API, no generation at build or request time. The 6 companies without a site get no block (no invention).
+
+**Design fix:** new response field `about`, separate from `brand_description`; new "L'azienda" block above "Lavora con noi". The boilerplate stays only as the intro of the spontaneous-application block. Override file is `.js`, not the `.json` planned above.
+
+**Known limits:** text is Italian-only (label is translated in it/en/de/fr, body is not); `about` is not in SSR (`api/azienda-ssr.js`) yet; JARM (owner of challengetires.com, confirmed from its terms) and S & M beauty (linked salon page does not name the company; drafted as "collegata al salone DESSANGE di Lugano") are the two lower-confidence entries; some `website` values are deep links (Adecco, Manpower `/en`, S & M beauty).
