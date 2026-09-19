@@ -12,9 +12,13 @@ import { normalizeExternalHref } from './_url.js';
 // one, so a hand-typed "www.example.com" doesn't resolve as a relative /azienda/ path.
 function applyOverrides(detail) {
   const override = overrides[String(detail.id)] || {};
+  // `about` is the Italian text (what the server-rendered snapshot uses); the other
+  // languages travel alongside so the client can pick one without another request.
+  const { it: about = '', ...about_i18n } = override.about || {};
   return {
     ...detail,
-    about: override.about || '',
+    about,
+    about_i18n,
     website: detail.website || (override.website ? normalizeExternalHref(override.website) : ''),
   };
 }

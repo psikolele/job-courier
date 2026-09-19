@@ -6,7 +6,10 @@ vi.mock('./_arca24.js', () => ({
 }));
 vi.mock('./_company-overrides.js', () => ({
   overrides: {
-    '999': { about: 'Descrizione di test', website: 'https://esempio-test.ch' },
+    '999': {
+      about: { it: 'Descrizione di test', en: 'Test description', de: 'Testbeschreibung' },
+      website: 'https://esempio-test.ch',
+    },
   },
 }));
 
@@ -41,6 +44,16 @@ describe('company-detail handler — merge degli override', () => {
     expect(res.body.brand_description).toBe('Vuoi entrare a far parte del nostro team?');
   });
 
+  it('espone le traduzioni in about_i18n, solo per le lingue presenti, e mai it (e in about)', async () => {
+    vi.mocked(fetchCompanyDetail).mockResolvedValue({
+      id: '999', name: 'Test SA', brand_description: '', website: '', spontaneous_url: '', jobs: [],
+    });
+    const res = mockRes();
+    await handler({ method: 'GET', query: { id: '999', slug: 'test-sa' } }, res);
+    expect(res.body.about).toBe('Descrizione di test');
+    expect(res.body.about_i18n).toEqual({ en: 'Test description', de: 'Testbeschreibung' });
+  });
+
   it('il website di override riempie solo un valore vuoto, mai uno reale', async () => {
     vi.mocked(fetchCompanyDetail).mockResolvedValue({
       id: '999', name: 'Test SA', brand_description: '', website: '', spontaneous_url: '', jobs: [],
@@ -64,6 +77,7 @@ describe('company-detail handler — merge degli override', () => {
     const res = mockRes();
     await handler({ method: 'GET', query: { id: '1', slug: 'altra-sa' } }, res);
     expect(res.body.about).toBe('');
+    expect(res.body.about_i18n).toEqual({});
     expect(res.body.website).toBe('');
   });
 });

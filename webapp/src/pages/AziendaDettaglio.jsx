@@ -19,7 +19,7 @@ const body = 'var(--font-body)';
 
 const AziendaDettaglio = () => {
     const lp = useLocalizedPath();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { slug } = useParams();
 
     // The company grid and the home showcase already hold the name and logo of the tile
@@ -190,7 +190,8 @@ const AziendaDettaglio = () => {
         );
     }
 
-    const { name, logo, location, sector, brand_title, brand_description, about, website, spontaneous_url, jobs } = detail;
+    const { name, logo, location, sector, brand_title, brand_description, about: aboutIt, about_i18n, website, spontaneous_url, jobs } = detail;
+    const about = about_i18n?.[i18n.language?.slice(0, 2)] || aboutIt;
     const hasJobs = Array.isArray(jobs) && jobs.length > 0;
 
     return (
