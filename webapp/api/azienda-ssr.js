@@ -52,9 +52,14 @@ async function fetchJson(url, timeoutMs) {
 // employer and stays only as the body's second paragraph and the meta fallback.
 export function buildCompanySeo(detail, canonical) {
   const lead = detail.about || detail.brand_description;
+  // "WWF Svizzera — WWF Svizzera fa parte…": skip the name prefix when the text already
+  // opens with the name's first word (whole word, so "ER" does not match "Erwin").
+  const firstWord = String(detail.name).split(/[\s.,&]+/)[0];
+  const opensWithName =
+    !!firstWord && new RegExp(`^${firstWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\p{L}\\p{N}])`, 'iu').test(lead || '');
   const description = clamp(
     lead
-      ? `${detail.name} — ${lead}`
+      ? (opensWithName ? lead : `${detail.name} — ${lead}`)
       : `Scopri ${detail.name} su JobCourier: sede, settore e opportunità di candidatura.`
   );
 

@@ -30,3 +30,30 @@ describe('buildCompanySeo — about nel rendering server', () => {
     expect(seo.description).toContain('Scopri Betacom su JobCourier');
   });
 });
+
+describe('buildCompanySeo — nome non ripetuto nella meta description', () => {
+  const desc = (name, about) => buildCompanySeo({ name, about, brand_description: BOILERPLATE }, canonical).description;
+
+  it('non antepone il nome quando il testo inizia già con lo stesso nome', () => {
+    expect(desc('WWF Svizzera', 'WWF Svizzera fa parte della rete del WWF.')).toBe('WWF Svizzera fa parte della rete del WWF.');
+    expect(desc('E-Work Sagl', "E-Work è un'agenzia che propone personale.")).toBe("E-Work è un'agenzia che propone personale.");
+  });
+
+  it('riconosce il nome anche quando il testo usa solo la prima parola', () => {
+    expect(desc('Rapelli - ORIOR Food AG', 'Rapelli produce salumeria.')).toBe('Rapelli produce salumeria.');
+    expect(desc('Arca24.com SA', 'Arca24 sviluppa software HR.')).toBe('Arca24 sviluppa software HR.');
+  });
+
+  it('mantiene il nome quando il testo non lo contiene in apertura', () => {
+    expect(desc('Sormani Servizi Sagl', 'Sandro Sormani SA si occupa di pittura.')).toBe('Sormani Servizi Sagl — Sandro Sormani SA si occupa di pittura.');
+  });
+
+  it('non scambia un prefisso di parola per il nome (Er ≠ Erwin)', () => {
+    expect(desc('ER Services', 'Erwin produce viti.')).toBe('ER Services — Erwin produce viti.');
+  });
+
+  it('con il solo boilerplate della banda il nome resta davanti', () => {
+    const d = buildCompanySeo({ name: 'Betacom', brand_description: BOILERPLATE }, canonical).description;
+    expect(d.startsWith('Betacom — Vuoi entrare')).toBe(true);
+  });
+});
