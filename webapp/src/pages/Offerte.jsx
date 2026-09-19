@@ -623,7 +623,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                                     onAuxClick={(e) => openCompanyProfileOnMiddleClick(e, job.company.slug)}
                                                                     onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); navigate(`/azienda/${job.company.slug}`); } }}
                                                                     className={companyNameHoverClass}
-                                                                    style={{ fontFamily: body, fontSize: 12, color: GM, cursor: 'pointer' }}
+                                                                    style={{ fontFamily: body, fontSize: 12, color: '#5B5F7A', fontWeight: 500, cursor: 'pointer' }}
                                                                 >
                                                                     {job.company.name}
                                                                 </span>
@@ -657,7 +657,7 @@ const Offerte = ({ setShowLoginModal }) => {
                                                                 onAuxClick={(e) => openCompanyProfileOnMiddleClick(e, job.company.slug)}
                                                                 onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); navigate(`/azienda/${job.company.slug}`); } }}
                                                                 className={companyLogoHoverClass}
-                                                                style={{ flexShrink: 0, cursor: 'pointer', display: 'inline-flex' }}
+                                                                style={{ flexShrink: 0, cursor: 'pointer', display: 'inline-flex', borderRadius: 6 }}
                                                             >
                                                                 <img
                                                                     src={job.company.logo}

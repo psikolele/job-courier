@@ -15,7 +15,7 @@
  * ancestor too (CSS hover bubbles to ancestors), which is what drives both
  * even when they aren't nested inside each other.
  *
- * Underline, not a color shift: the name is already brand-fuchsia at rest in
+ * Underline (a 1px line growing in from the left), not a color shift: the name is already brand-fuchsia at rest in
  * one of the three call sites, so a `group-hover:text-[...]` would have
  * nothing to shift to there — and an inline `color` always wins over a
  * Tailwind class of any kind regardless (see `meeting-2026-09-17-scroll-
@@ -23,5 +23,5 @@
  * that exact trap). An underline reads as "this is a link" independent of
  * whatever color the text already has.
  */
-export const companyNameHoverClass = 'transition-all duration-200 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2';
-export const companyLogoHoverClass = 'transition-transform duration-200 group-hover:scale-105';
+export const companyNameHoverClass = 'box-decoration-clone bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat bg-[length:0%_1px] bg-[position:0_100%] pb-px transition-[background-size] duration-300 ease-out group-hover:bg-[length:100%_1px] motion-reduce:transition-none';
+export const companyLogoHoverClass = 'transition-all duration-200 group-hover:scale-105 group-hover:shadow-[0_6px_16px_-4px_rgba(255,31,122,0.35)] motion-reduce:transition-none motion-reduce:group-hover:scale-100';

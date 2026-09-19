@@ -303,8 +303,8 @@ const OffertaDettaglio = ({ setShowLoginModal }) => {
                                         />
                                     </div>
                                 )}
-                                <h3 className={companyNameHoverClass} style={{ fontFamily: brand, fontWeight: 700, fontSize: 16, color: N, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                                    {job.company?.name}
+                                <h3 style={{ fontFamily: brand, fontWeight: 700, fontSize: 16, color: N, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                                    <span className={companyNameHoverClass}>{job.company?.name}</span>
                                 </h3>
                             </Link>
                         ) : (

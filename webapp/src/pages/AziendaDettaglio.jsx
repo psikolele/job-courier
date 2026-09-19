@@ -4,6 +4,8 @@ import { useParams, useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { MapPin, Briefcase, ExternalLink, ChevronLeft, Globe } from 'lucide-react';
 import SectionLabel from '../components/ui/SectionLabel.jsx';
+import SlideTextLink from '../components/ui/slide-text-link.jsx';
+import GradientCtaButton from '../components/ui/gradient-cta-button.jsx';
 import { CompanyDetailSkeleton } from '../components/ui/Skeleton';
 import useLocalizedPath from '../hooks/useLocalizedPath';
 
@@ -264,39 +266,28 @@ const AziendaDettaglio = () => {
                                 {brand_description}
                             </p>
                         )}
-                        {website && (
-                            <a
-                                href={website}
-                                target="_blank"
-                                rel="noopener noreferrer nofollow"
-                                style={{
-                                    marginTop: 16,
-                                    display: 'inline-flex', alignItems: 'center', gap: 6,
-                                    fontFamily: body, fontSize: 13, color: GM, textDecoration: 'none'
-                                }}
-                                className="hover:opacity-70 transition-opacity"
-                            >
-                                <Globe size={14} color={F} /> {t('company.visit_website')}
-                            </a>
-                        )}
-                        {spontaneous_url && (
-                            <a
-                                href={spontaneous_url}
-                                target="_blank"
-                                rel="noopener noreferrer nofollow"
-                                style={{
-                                    marginTop: 24,
-                                    background: F, color: '#FFFFFF', border: 'none',
-                                    padding: '14px 28px',
-                                    fontFamily: brand, fontWeight: 700, fontSize: 11,
-                                    letterSpacing: '0.14em', textTransform: 'uppercase',
-                                    cursor: 'pointer', borderRadius: 0, textDecoration: 'none',
-                                    display: 'inline-flex', alignItems: 'center', gap: 8
-                                }}
-                                className="hover:opacity-80 transition-opacity"
-                            >
-                                {t('company.spontaneous_application')} <ExternalLink size={13} />
-                            </a>
+                        {(website || spontaneous_url) && (
+                            <div className="flex flex-wrap items-center gap-3" style={{ marginTop: 24 }}>
+                                {website && (
+                                    <SlideTextLink
+                                        href={website}
+                                        target="_blank"
+                                        rel="noopener noreferrer nofollow"
+                                        icon={<Globe size={14} color={F} />}
+                                        text={t('company.visit_website')}
+                                    />
+                                )}
+                                {spontaneous_url && (
+                                    <GradientCtaButton
+                                        href={spontaneous_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer nofollow"
+                                        icon={<ExternalLink size={13} />}
+                                    >
+                                        {t('company.spontaneous_application')}
+                                    </GradientCtaButton>
+                                )}
+                            </div>
                         )}
                     </div>
                 )}
