@@ -62,7 +62,7 @@ export function buildCompanySeo(detail, canonical) {
   const description = clamp(
     lead
       ? (opensWithName ? lead : `${detail.name} — ${lead}`)
-      : `Scopri ${detail.name} su JobCourier: sede, settore e opportunità di candidatura.`
+      : `Scopri ${detail.name} su JobCourier: offerte di lavoro e candidatura spontanea.`
   );
 
   const organization = {

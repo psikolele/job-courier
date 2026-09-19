@@ -28,7 +28,7 @@ describe('buildCompanySeo — about nel rendering server', () => {
 
   it('senza about né banda: descrizione generica', () => {
     const seo = buildCompanySeo({ name: 'Betacom' }, canonical);
-    expect(seo.description).toContain('Scopri Betacom su JobCourier');
+    expect(seo.description).toBe('Scopri Betacom su JobCourier: offerte di lavoro e candidatura spontanea.');
   });
 });
 
