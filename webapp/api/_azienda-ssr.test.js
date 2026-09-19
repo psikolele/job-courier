@@ -18,9 +18,10 @@ describe('buildCompanySeo — about nel rendering server', () => {
     expect(seo.paragraphs).toEqual([ABOUT, BOILERPLATE]);
   });
 
-  it('senza about: come prima, descrizione dalla banda e nessun description nel JSON-LD', () => {
+  it('senza about: frase generica (mai il boilerplate della banda) e nessun description nel JSON-LD', () => {
     const seo = buildCompanySeo({ name: 'Betacom', brand_description: BOILERPLATE, about: '' }, canonical);
-    expect(seo.description).toContain(BOILERPLATE);
+    expect(seo.description).toContain('Scopri Betacom su JobCourier');
+    expect(seo.description).not.toContain('Vuoi entrare');
     expect(seo.organization.description).toBeUndefined();
     expect(seo.paragraphs).toEqual(['', BOILERPLATE]);
   });
@@ -52,8 +53,8 @@ describe('buildCompanySeo — nome non ripetuto nella meta description', () => {
     expect(desc('ER Services', 'Erwin produce viti.')).toBe('ER Services — Erwin produce viti.');
   });
 
-  it('con il solo boilerplate della banda il nome resta davanti', () => {
+  it('con il solo boilerplate della banda si usa la frase generica', () => {
     const d = buildCompanySeo({ name: 'Betacom', brand_description: BOILERPLATE }, canonical).description;
-    expect(d.startsWith('Betacom — Vuoi entrare')).toBe(true);
+    expect(d.startsWith('Scopri Betacom su JobCourier')).toBe(true);
   });
 });

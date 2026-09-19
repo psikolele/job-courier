@@ -49,9 +49,11 @@ async function fetchJson(url, timeoutMs) {
 
 // `about` (hand-reviewed description) leads everywhere it can: it is the only real
 // company text; brand_description is the same "work with us" boilerplate for every
-// employer and stays only as the body's second paragraph and the meta fallback.
+// employer and stays only as the body's second paragraph.
 export function buildCompanySeo(detail, canonical) {
-  const lead = detail.about || detail.brand_description;
+  // brand_description is deliberately not a fallback: it is the same generic band text for
+  // every employer, so as a meta description it would be identical across all pages.
+  const lead = detail.about;
   // "WWF Svizzera — WWF Svizzera fa parte…": skip the name prefix when the text already
   // opens with the name's first word (whole word, so "ER" does not match "Erwin").
   const firstWord = String(detail.name).split(/[\s.,&]+/)[0];
