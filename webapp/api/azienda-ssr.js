@@ -47,6 +47,37 @@ async function fetchJson(url, timeoutMs) {
   }
 }
 
+// `about` (hand-reviewed description) leads everywhere it can: it is the only real
+// company text; brand_description is the same "work with us" boilerplate for every
+// employer and stays only as the body's second paragraph and the meta fallback.
+export function buildCompanySeo(detail, canonical) {
+  const lead = detail.about || detail.brand_description;
+  const description = clamp(
+    lead
+      ? `${detail.name} — ${lead}`
+      : `Scopri ${detail.name} su JobCourier: sede, settore e opportunità di candidatura.`
+  );
+
+  const organization = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: detail.name,
+    url: canonical,
+  };
+  if (detail.about) organization.description = detail.about;
+  if (detail.logo && /^https?:\/\//i.test(detail.logo)) organization.logo = detail.logo;
+  if (detail.website) organization.sameAs = [detail.website];
+  if (detail.location) {
+    organization.address = {
+      '@type': 'PostalAddress',
+      addressLocality: detail.location,
+      addressCountry: 'CH',
+    };
+  }
+
+  return { description, organization, paragraphs: [detail.about, detail.brand_description] };
+}
+
 export default async function handler(req, res) {
   const origin = siteOrigin(req);
   const slug = String(req.query?.slug ?? '').trim();
@@ -98,27 +129,7 @@ export default async function handler(req, res) {
 
   // Same title the client sets, so the tab does not change text on mount.
   const title = `${detail.name} - Lavora con noi - JobCourier`;
-  const description = clamp(
-    detail.brand_description
-      ? `${detail.name} — ${detail.brand_description}`
-      : `Scopri ${detail.name} su JobCourier: sede, settore e opportunità di candidatura.`
-  );
-
-  const organization = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: detail.name,
-    url: canonical,
-  };
-  if (detail.logo && /^https?:\/\//i.test(detail.logo)) organization.logo = detail.logo;
-  if (detail.website) organization.sameAs = [detail.website];
-  if (detail.location) {
-    organization.address = {
-      '@type': 'PostalAddress',
-      addressLocality: detail.location,
-      addressCountry: 'CH',
-    };
-  }
+  const { description, organization, paragraphs } = buildCompanySeo(detail, canonical);
 
   const html = renderShell(template, {
     title,
@@ -133,7 +144,7 @@ export default async function handler(req, res) {
         { label: 'Sede', value: detail.location },
         { label: 'Settore', value: detail.sector },
       ],
-      paragraphs: [detail.brand_description],
+      paragraphs,
       linksHeading: 'Annunci attivi',
       links: jobs.map((job) => ({
         href: `/offerta/${job.id}`,
